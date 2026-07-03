@@ -8,13 +8,13 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="max-w-3xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-6">Chính sách bảo mật</h1>
-      <section className="prose leading-relaxed text-gray-700 space-y-6">
+    <main className="max-w-3xl mx-auto py-12 px-4 bg-white dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 min-h-screen">
+      <h1 className="text-3xl font-bold mb-6 text-slate-950 dark:text-white">Chính sách bảo mật</h1>
+      <section className="prose dark:prose-invert leading-relaxed text-slate-700 dark:text-zinc-300 space-y-6">
         <p>
           EnStudey tôn trọng quyền riêng tư của bạn. Mọi thông tin cá nhân và dữ liệu giọng nói 
           (khi sử dụng tính năng Speaking) đều được xử lý cục bộ trên trình duyệt của bạn (Web Speech API), 
-          và chỉ những bản ghi kết quả tối giản mới được gửi về máy chủ.
+          và chỉ những bản ghi kết quả tối giản mới được gửi về máy chủ của chúng tôi.
         </p>
         <p>
           Chúng tôi sử dụng Google Analytics và các cookies cần thiết để cải thiện chất lượng dịch vụ 
@@ -22,10 +22,12 @@ export default function PrivacyPage() {
         </p>
       </section>
       <div className="mt-8">
-        <Link href="/" className="text-blue-600 hover:underline">
+        <Link href="/" className="text-orange-600 dark:text-orange-500 hover:underline inline-flex items-center gap-1 font-medium">
           &larr; Quay lại Trang chủ
         </Link>
       </div>
     </main>
   );
 }
+
+

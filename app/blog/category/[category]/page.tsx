@@ -33,31 +33,31 @@ export default function BlogCategoryPage({ params }: { params: { category: strin
   const filteredPosts = MOCK_POSTS.filter(post => post.category === params.category);
 
   return (
-    <main className="max-w-4xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-6 uppercase">
+    <main className="max-w-4xl mx-auto py-12 px-4 bg-white dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 min-h-screen">
+      <h1 className="text-3xl font-bold mb-6 text-slate-950 dark:text-white uppercase">
         Danh mục: {params.category === "skills" ? "Kỹ năng học thuật" : "Mẹo làm đề thi"}
       </h1>
 
       <div className="mb-8">
-        <Link href="/blog" className="text-blue-600 hover:underline">
-          &larr; Tất cả bài viết
+        <Link href="/blog" className="text-orange-600 dark:text-orange-500 hover:underline inline-flex items-center gap-1 font-medium">
+          &larr; Tất cả bài viết nha
         </Link>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         {filteredPosts.map((post, idx) => (
           <React.Fragment key={post.slug}>
-            <div className="border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-              <h2 className="text-xl font-bold mb-3">
-                <Link href={`/blog/${post.slug}`} className="hover:text-blue-600 transition">
+            <div className="border border-slate-150 dark:border-zinc-800 bg-slate-50/50 dark:bg-zinc-900/50 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/30 dark:hover:border-orange-500/30 transition duration-300">
+              <h2 className="text-xl font-bold mb-3 text-slate-950 dark:text-white">
+                <Link href={`/blog/${post.slug}`} className="hover:text-orange-600 dark:hover:text-orange-500 transition duration-200">
                   {post.title}
                 </Link>
               </h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed mb-4">
                 {post.description}
               </p>
-              <Link href={`/blog/${post.slug}`} className="text-sm text-blue-600 font-medium hover:underline">
-                Đọc tiếp &rarr;
+              <Link href={`/blog/${post.slug}`} className="text-sm text-orange-600 dark:text-orange-500 font-medium hover:underline inline-flex items-center gap-1">
+                Đọc tiếp nha &rarr;
               </Link>
             </div>
             {idx === 1 && (
@@ -71,3 +71,4 @@ export default function BlogCategoryPage({ params }: { params: { category: strin
     </main>
   );
 }
+

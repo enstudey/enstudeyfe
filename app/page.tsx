@@ -4,7 +4,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "EnStudey - Luyện thi TOEIC & IELTS thông minh bằng AI",
-  description: "Bẻ gãy áp lực phòng thi với Trợ lý Luyện đề AI thế hệ mới. Đăng ký học miễn phí ngay hôm nay.",
+  description: "Bẻ gãy áp lực phòng thi với Trợ lý Luyện đề AI thế hệ mới. Học miễn phí liền nè bạn ơi! 🚀",
 };
 
 export default function LandingPage() {
@@ -12,13 +12,13 @@ export default function LandingPage() {
     <div className="min-h-screen bg-background text-foreground font-sans antialiased transition-colors duration-200">
       {/* Header */}
       <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-blue-600 tracking-tight">
+        <Link href="/" className="text-2xl font-bold text-orange-600 dark:text-orange-500 tracking-tight">
           EnStudey
         </Link>
         <div className="flex items-center gap-4">
           <ThemeToggle />
-          <Link 
-            href="/dashboard" 
+          <Link
+            href="/dashboard"
             className="text-sm font-semibold bg-foreground text-background px-5 py-2.5 rounded-xl hover:opacity-90 transition"
           >
             Vào học ngay
@@ -28,24 +28,24 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center space-y-8">
-        <div className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-full text-xs font-bold text-blue-700 uppercase tracking-wider dark:bg-blue-950/45 dark:border-blue-900 dark:text-blue-300">
+        <div className="inline-flex items-center gap-1.5 bg-orange-50 border border-orange-200/60 px-3 py-1 rounded-full text-xs font-bold text-orange-700 uppercase tracking-wider dark:bg-orange-950/45 dark:border-orange-900 dark:text-orange-300">
           ✨ Kỷ nguyên EdTech cá nhân hóa 2026
         </div>
         <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-[1.15]">
-          Bẻ gãy áp lực phòng thi với <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Trợ lý Luyện đề AI</span> thế hệ mới
+          Bẻ gãy áp lực phòng thi với <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Trợ lý Luyện đề AI</span> thế hệ mới
         </h1>
         <p className="opacity-75 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-          Tối ưu hóa điểm số TOEIC & IELTS thông qua phương pháp học chia nhỏ (Micro Sessions) và chấm điểm nói trực tiếp bằng Web Speech API.
+          Tối ưu hóa điểm số TOEIC & IELTS cực dễ thông qua phương pháp học chia nhỏ (Micro Sessions) và chấm điểm nói trực tiếp bằng Web Speech API nha.
         </p>
         <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
-          <Link 
+          <Link
             href="/dashboard"
             className="w-full sm:w-auto text-center font-bold text-lg bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:scale-98"
           >
-            Học miễn phí
+            Học miễn phí liền nè! 🚀
           </Link>
           <span className="text-xs opacity-50 font-medium sm:block hidden">
-            ⚡ Không cần thẻ tín dụng &bull; Đăng ký trong 5 giây
+            ⚡ Join cùng chúng mình nha
           </span>
         </div>
       </section>
@@ -56,25 +56,24 @@ export default function LandingPage() {
           <p className="text-xs font-semibold opacity-50 uppercase tracking-widest">
             Bám sát cấu trúc đề thi chuẩn ETS TOEIC & Dự báo Forecast IELTS mới nhất
           </p>
-          
+
           {/* GitHub Contributions Style Grid mock */}
           <div className="max-w-xl mx-auto bg-background border border-card-border rounded-2xl p-6 shadow-sm space-y-4">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-bold opacity-85">Lịch sử rèn luyện của học viên</span>
-              <span className="text-xs text-orange-600 font-bold">5 ngày Streak 🔥</span>
+              <span className="text-sm font-bold opacity-85">Lịch sử rèn luyện của chúng mình nè</span>
+              <span className="text-xs text-orange-600 font-bold">Giữ lửa 5 ngày liên tiếp rồi nè, đỉnh chóp bạn ơi! ⚡</span>
             </div>
-            
+
             {/* Contrib grid */}
             <div className="grid grid-cols-12 gap-1.5">
               {Array.from({ length: 36 }).map((_, i) => (
-                <div 
-                  key={i} 
-                  className={`aspect-square rounded-sm ${
-                    i > 28 ? "bg-emerald-500" :
+                <div
+                  key={i}
+                  className={`aspect-square rounded-sm ${i > 28 ? "bg-emerald-500" :
                     i > 20 ? "bg-emerald-400" :
-                    i > 10 ? "bg-emerald-200" :
-                    "bg-card-border"
-                  }`}
+                      i > 10 ? "bg-emerald-200" :
+                        "bg-card-border"
+                    }`}
                 />
               ))}
             </div>
@@ -133,16 +132,16 @@ export default function LandingPage() {
         <div className="bg-slate-900 text-white rounded-3xl p-12 text-center relative overflow-hidden shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15),transparent_60%)] pointer-events-none" />
           <div className="relative z-10 space-y-6 max-w-xl mx-auto">
-            <h2 className="text-3xl font-extrabold">Bắt đầu chinh phục TOEIC & IELTS ngay hôm nay</h2>
+            <h2 className="text-3xl font-extrabold">Bắt đầu chinh phục TOEIC & IELTS cùng chúng mình nha! 🎯</h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Tham gia cùng hàng ngàn học viên đang tiến bộ mỗi ngày bằng phương pháp học thông minh của EnStudey.
+              Join cùng hàng ngàn bạn đang tiến bộ mỗi ngày bằng phương pháp học thông minh của EnStudey nha.
             </p>
             <div className="pt-2">
-              <Link 
+              <Link
                 href="/dashboard"
                 className="inline-block font-bold text-lg bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                Học miễn phí
+                Học miễn phí liền nè! 🚀
               </Link>
             </div>
           </div>
@@ -163,3 +162,4 @@ export default function LandingPage() {
     </div>
   );
 }
+

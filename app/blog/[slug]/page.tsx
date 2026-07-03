@@ -27,27 +27,27 @@ const MOCK_POSTS: Record<string, { title: string; category: string; content: str
 
 export default function BlogPostDetail({ params }: { params: { slug: string } }) {
   const post = MOCK_POSTS[params.slug] || {
-    title: "Bài viết không tồn tại",
+    title: "Bài viết không tồn tại rồi bạn ơi 🥺",
     category: "system",
-    content: "Xin lỗi, bài viết bạn yêu cầu hiện không có trên hệ thống hoặc đã bị xóa."
+    content: "Hình như bài viết bạn yêu cầu hiện không có trên hệ thống hoặc đã được di chuyển đi nơi khác rồi nè."
   };
 
   return (
-    <main className="max-w-3xl mx-auto py-12 px-4">
+    <main className="max-w-3xl mx-auto py-12 px-4 bg-white dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 min-h-screen">
       <div className="mb-6">
-        <Link href="/blog" className="text-sm text-blue-600 hover:underline">
-          &larr; Quay lại Blog
+        <Link href="/blog" className="text-sm text-orange-600 dark:text-orange-500 hover:underline inline-flex items-center gap-1 font-medium">
+          &larr; Quay lại Blog nha
         </Link>
       </div>
 
-      <article className="prose leading-relaxed text-gray-700">
-        <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">
-          {post.category === "skills" ? "Kỹ năng học thuật" : "Mẹo làm đề"}
+      <article className="prose dark:prose-invert leading-relaxed text-slate-750 dark:text-zinc-300">
+        <span className="text-xs font-semibold text-orange-600 dark:text-orange-500 uppercase tracking-wider">
+          {post.category === "skills" ? "Kỹ năng học thuật" : post.category === "tips" ? "Mẹo làm đề" : "Hệ thống"}
         </span>
-        <h1 className="text-3xl font-extrabold mt-2 mb-6 text-gray-900 leading-tight">
+        <h1 className="text-3xl font-extrabold mt-2 mb-6 text-slate-950 dark:text-white leading-tight">
           {post.title}
         </h1>
-        <div className="text-base text-gray-700 space-y-4">
+        <div className="text-base text-slate-700 dark:text-zinc-300 space-y-4">
           <p>{post.content}</p>
         </div>
       </article>
@@ -56,3 +56,4 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
     </main>
   );
 }
+

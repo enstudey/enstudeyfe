@@ -19,25 +19,25 @@ export default function DashboardPage() {
       {/* Header */}
       <header className="bg-card border-b border-card-border sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-blue-600">
+          <Link href="/" className="text-2xl font-bold text-orange-600 dark:text-orange-500">
             EnStudey
           </Link>
           <div className="flex items-center gap-6">
             {/* Navigation links */}
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium opacity-80">
-              <Link href="/quiz" className="hover:text-blue-600">Luyện đề</Link>
-              <Link href="/speaking" className="hover:text-blue-600">Luyện nói AI</Link>
-              <Link href="/mistake-bank" className="hover:text-blue-600">Sổ tay câu sai</Link>
-              <Link href="/analytics" className="hover:text-blue-600">Phân tích</Link>
-              <Link href="/blog" className="hover:text-blue-600">Blog</Link>
+              <Link href="/quiz" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Luyện đề</Link>
+              <Link href="/speaking" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Luyện nói AI</Link>
+              <Link href="/mistake-bank" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Sổ tay câu sai</Link>
+              <Link href="/analytics" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Phân tích</Link>
+              <Link href="/blog" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Blog</Link>
             </nav>
 
             <ThemeToggle />
 
             {/* Streak Widget */}
-            <div className="flex items-center gap-1.5 bg-orange-50 border border-orange-200 px-3 py-1.5 rounded-full" title="Chuỗi ngày học liên tiếp">
+            <div className="flex items-center gap-1.5 bg-orange-50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-900 px-3 py-1.5 rounded-full" title="Chuỗi ngày học liên tiếp">
               <span className="text-orange-500 text-lg">🔥</span>
-              <span className="font-bold text-orange-700 text-sm">5 ngày</span>
+              <span className="font-bold text-orange-700 dark:text-orange-400 text-sm">5 ngày nè</span>
             </div>
           </div>
         </div>
@@ -48,18 +48,18 @@ export default function DashboardPage() {
         {/* Left & Middle Column (Main features) */}
         <div className="md:col-span-2 space-y-8">
           {/* Hero Widget: Daily Mini-Test */}
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
-            <div className="relative z-10 space-y-4 max-w-md">
-              <span className="bg-blue-500/30 text-blue-100 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
-                Hôm nay
+          <div className="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
+            <div className="relative z-10 space-y-4 max-w-lg">
+              <span className="bg-orange-400/30 text-orange-100 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
+                Hôm nay nè bạn ơi! 🔥
               </span>
-              <h2 className="text-3xl font-extrabold">Daily Mini-Test</h2>
-              <p className="text-blue-100 text-sm leading-relaxed">
-                Hoàn thành nhanh 10 câu hỏi rút gọn để duy trì chuỗi Streak và củng cố ngữ pháp, từ vựng hôm nay.
+              <h2 className="text-3xl font-extrabold">Hello bạn nha! Hôm nay chúng mình làm tí Mini-test nhỉ? 🔥</h2>
+              <p className="text-orange-100/90 text-sm leading-relaxed">
+                Hoàn thành nhanh 10 câu hỏi rút gọn để giữ lửa Streak đỉnh chóp và củng cố ngữ pháp, từ vựng hôm nay nha.
               </p>
               <div>
-                <Link href="/quiz" className="inline-flex items-center justify-center bg-white text-blue-700 font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-50 transition">
-                  Bắt đầu ngay &rarr;
+                <Link href="/quiz" className="inline-flex items-center justify-center bg-white text-orange-600 font-bold px-6 py-3 rounded-xl shadow-md hover:bg-orange-50 transition transform hover:-translate-y-0.5">
+                  Chiến luôn đề này nha! 🎯
                 </Link>
               </div>
             </div>
@@ -72,17 +72,17 @@ export default function DashboardPage() {
           <div className="grid gap-6 sm:grid-cols-2">
             <Link href="/speaking" className="bg-card border border-card-border rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left group">
               <span className="text-3xl">🎙️</span>
-              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-blue-600 transition">Luyện nói &ldquo;Du kích&rdquo; với AI</h3>
+              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition">Luyện nói &ldquo;Du kích&rdquo; với AI nha</h3>
               <p className="opacity-70 text-sm leading-relaxed">
-                Hội thoại 5 phút phản xạ nhanh cùng Chatbot AI kết hợp Web Speech API.
+                Chúng mình đang lắng nghe bạn nói nè, cứ tự nhiên phản xạ không độ trễ nha.
               </p>
             </Link>
 
             <Link href="/mistake-bank" className="bg-card border border-card-border rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left group">
-              <span className="text-3xl">📘</span>
-              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-blue-600 transition">Sổ tay câu sai (Mistake Bank)</h3>
+              <span className="text-3xl">💎</span>
+              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition">Sổ tay "gột rửa" câu sai 💎</h3>
               <p className="opacity-70 text-sm leading-relaxed">
-                Tự động lưu và phân tích chi tiết lỗi sai giúp bạn cải thiện lỗ hổng.
+                Kho báu tự động lưu và phân loại chi tiết lỗi sai giúp bạn sửa đổi lỗ hổng kiến thức.
               </p>
             </Link>
           </div>
@@ -119,10 +119,10 @@ export default function DashboardPage() {
           <Link href="/analytics" className="block bg-card border border-card-border rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left">
             <h3 className="text-lg font-bold mb-2">Hiệu năng học tập</h3>
             <p className="opacity-70 text-sm leading-relaxed mb-4">
-              Xem chi tiết biểu đồ mạng nhện kỹ năng và lịch đóng góp học tập hàng ngày.
+              Xem chi tiết biểu đồ kỹ năng và lịch đóng góp học tập hàng ngày của bạn nè.
             </p>
-            <span className="text-sm font-semibold text-blue-600 hover:underline">
-              Xem phân tích &rarr;
+            <span className="text-sm font-semibold text-orange-600 dark:text-orange-500 hover:underline">
+              Xem phân tích ngay &rarr;
             </span>
           </Link>
         </div>
@@ -142,3 +142,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+
