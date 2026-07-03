@@ -36,10 +36,10 @@ export default function BlogListPage() {
         <Link href="/blog" className="text-sm font-semibold bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200">
           Tất cả
         </Link>
-        <Link href="/blog/skills" className="text-sm font-semibold bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200">
+        <Link href="/blog/category/skills" className="text-sm font-semibold bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200">
           Kỹ năng
         </Link>
-        <Link href="/blog/tips" className="text-sm font-semibold bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200">
+        <Link href="/blog/category/tips" className="text-sm font-semibold bg-gray-100 px-3 py-1.5 rounded-full hover:bg-gray-200">
           Mẹo & Tips
         </Link>
       </div>

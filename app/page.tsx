@@ -1,138 +1,162 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
-  title: "Dashboard - EnStudey",
-  description: "Trang chủ học tập cá nhân hóa của bạn tại EnStudey.",
+  title: "EnStudey - Luyện thi TOEIC & IELTS thông minh bằng AI",
+  description: "Bẻ gãy áp lực phòng thi với Trợ lý Luyện đề AI thế hệ mới. Đăng ký học miễn phí ngay hôm nay.",
 };
 
-const MOCK_LEADERBOARD = [
-  { rank: 1, name: "Thành Đạt", streakCount: 42 },
-  { rank: 2, name: "Khánh Linh", streakCount: 38 },
-  { rank: 3, name: "Minh Tuấn", streakCount: 35 },
-];
-
-export default function DashboardPage() {
+export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
+    <div className="min-h-screen bg-background text-foreground font-sans antialiased transition-colors duration-200">
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-blue-600">
-            EnStudey
+      <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
+        <Link href="/" className="text-2xl font-bold text-blue-600 tracking-tight">
+          EnStudey
+        </Link>
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+          <Link 
+            href="/dashboard" 
+            className="text-sm font-semibold bg-foreground text-background px-5 py-2.5 rounded-xl hover:opacity-90 transition"
+          >
+            Vào học ngay
           </Link>
-          <div className="flex items-center gap-6">
-            {/* Navigation links */}
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-              <Link href="/quiz" className="hover:text-blue-600">Luyện đề</Link>
-              <Link href="/speaking" className="hover:text-blue-600">Luyện nói AI</Link>
-              <Link href="/mistake-bank" className="hover:text-blue-600">Sổ tay câu sai</Link>
-              <Link href="/analytics" className="hover:text-blue-600">Phân tích</Link>
-              <Link href="/blog" className="hover:text-blue-600">Blog</Link>
-            </nav>
-
-            {/* Streak Widget */}
-            <div className="flex items-center gap-1.5 bg-orange-50 border border-orange-200 px-3 py-1.5 rounded-full" title="Chuỗi ngày học liên tiếp">
-              <span className="text-orange-500 text-lg">🔥</span>
-              <span className="font-bold text-orange-700 text-sm">5 ngày</span>
-            </div>
-          </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-3">
-        {/* Left & Middle Column (Main features) */}
-        <div className="md:col-span-2 space-y-8">
-          {/* Hero Widget: Daily Mini-Test */}
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
-            <div className="relative z-10 space-y-4 max-w-md">
-              <span className="bg-blue-500/30 text-blue-100 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
-                Hôm nay
-              </span>
-              <h2 className="text-3xl font-extrabold">Daily Mini-Test</h2>
-              <p className="text-blue-100 text-sm leading-relaxed">
-                Hoàn thành nhanh 10 câu hỏi rút gọn để duy trì chuỗi Streak và củng cố ngữ pháp, từ vựng hôm nay.
-              </p>
-              <div>
-                <Link href="/quiz" className="inline-flex items-center justify-center bg-white text-blue-700 font-bold px-6 py-3 rounded-xl shadow-md hover:bg-blue-50 transition">
-                  Bắt đầu ngay &rarr;
-                </Link>
-              </div>
-            </div>
-            <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none text-9xl select-none font-bold">
-              10Q
-            </div>
-          </div>
-
-          {/* Quick Access Grid */}
-          <div className="grid gap-6 sm:grid-cols-2">
-            <Link href="/speaking" className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left group">
-              <span className="text-3xl">🎙️</span>
-              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-blue-600 transition">Luyện nói &ldquo;Du kích&rdquo; với AI</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Hội thoại 5 phút phản xạ nhanh cùng Chatbot AI kết hợp Web Speech API.
-              </p>
-            </Link>
-
-            <Link href="/mistake-bank" className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left group">
-              <span className="text-3xl">📘</span>
-              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-blue-600 transition">Sổ tay câu sai (Mistake Bank)</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Tự động lưu và phân tích chi tiết lỗi sai giúp bạn cải thiện lỗ hổng.
-              </p>
-            </Link>
-          </div>
+      {/* Hero Section */}
+      <section className="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center space-y-8">
+        <div className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-full text-xs font-bold text-blue-700 uppercase tracking-wider dark:bg-blue-950/45 dark:border-blue-900 dark:text-blue-300">
+          ✨ Kỷ nguyên EdTech cá nhân hóa 2026
         </div>
+        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-[1.15]">
+          Bẻ gãy áp lực phòng thi với <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Trợ lý Luyện đề AI</span> thế hệ mới
+        </h1>
+        <p className="opacity-75 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          Tối ưu hóa điểm số TOEIC & IELTS thông qua phương pháp học chia nhỏ (Micro Sessions) và chấm điểm nói trực tiếp bằng Web Speech API.
+        </p>
+        <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+          <Link 
+            href="/dashboard"
+            className="w-full sm:w-auto text-center font-bold text-lg bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:scale-98"
+          >
+            Học miễn phí
+          </Link>
+          <span className="text-xs opacity-50 font-medium sm:block hidden">
+            ⚡ Không cần thẻ tín dụng &bull; Đăng ký trong 5 giây
+          </span>
+        </div>
+      </section>
 
-        {/* Right Column (Side widgets) */}
-        <div className="space-y-8">
-          {/* Leaderboard Widget */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-            <h3 className="text-lg font-bold mb-4 text-slate-800 flex items-center justify-between">
-              <span>Bảng Xếp Hạng</span>
-              <span className="text-xs font-semibold text-slate-400">Streak tuần</span>
-            </h3>
-            <div className="space-y-3">
-              {MOCK_LEADERBOARD.map((user) => (
-                <div key={user.rank} className="flex items-center justify-between py-2 border-b border-slate-50 last:border-0">
-                  <div className="flex items-center gap-3">
-                    <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                      user.rank === 1 ? "bg-amber-100 text-amber-800" :
-                      user.rank === 2 ? "bg-slate-100 text-slate-800" :
-                      "bg-orange-100 text-orange-800"
-                    }`}>
-                      {user.rank}
-                    </span>
-                    <span className="font-medium text-sm text-slate-700">{user.name}</span>
-                  </div>
-                  <span className="text-sm font-bold text-orange-600">{user.streakCount} 🔥</span>
-                </div>
+      {/* Section 2: Social Proof / Contributions Grid */}
+      <section className="bg-card border-y border-card-border py-16">
+        <div className="max-w-6xl mx-auto px-6 text-center space-y-10">
+          <p className="text-xs font-semibold opacity-50 uppercase tracking-widest">
+            Bám sát cấu trúc đề thi chuẩn ETS TOEIC & Dự báo Forecast IELTS mới nhất
+          </p>
+          
+          {/* GitHub Contributions Style Grid mock */}
+          <div className="max-w-xl mx-auto bg-background border border-card-border rounded-2xl p-6 shadow-sm space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-sm font-bold opacity-85">Lịch sử rèn luyện của học viên</span>
+              <span className="text-xs text-orange-600 font-bold">5 ngày Streak 🔥</span>
+            </div>
+            
+            {/* Contrib grid */}
+            <div className="grid grid-cols-12 gap-1.5">
+              {Array.from({ length: 36 }).map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`aspect-square rounded-sm ${
+                    i > 28 ? "bg-emerald-500" :
+                    i > 20 ? "bg-emerald-400" :
+                    i > 10 ? "bg-emerald-200" :
+                    "bg-card-border"
+                  }`}
+                />
               ))}
             </div>
+            <div className="flex justify-end items-center gap-1.5 text-xs opacity-50">
+              <span>Ít</span>
+              <div className="w-2.5 h-2.5 bg-card-border rounded-sm" />
+              <div className="w-2.5 h-2.5 bg-emerald-200 rounded-sm" />
+              <div className="w-2.5 h-2.5 bg-emerald-400 rounded-sm" />
+              <div className="w-2.5 h-2.5 bg-emerald-500 rounded-sm" />
+              <span>Nhiều</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Core Value Propositions */}
+      <section className="max-w-6xl mx-auto px-6 py-24 space-y-16">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <h2 className="text-3xl font-extrabold">
+            Học thông minh hơn, không mệt mỏi hơn
+          </h2>
+          <p className="opacity-70 text-sm md:text-base leading-relaxed">
+            Thay thế các bài kiểm tra dài 2 tiếng gây nản bằng các thử thách tinh gọn được tối ưu hóa cho người bận rộn.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm hover:shadow-md transition space-y-4">
+            <span className="text-3xl">🚀</span>
+            <h3 className="text-lg font-bold">Daily Mini-Challenge</h3>
+            <p className="opacity-75 text-sm leading-relaxed">
+              10 câu hỏi rút gọn mỗi ngày giúp bẻ nhỏ bài test, duy trì chuỗi Streak và duy trì động lực học tập.
+            </p>
           </div>
 
-          {/* Quick Analytics Summary */}
-          <Link href="/analytics" className="block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left">
-            <h3 className="text-lg font-bold mb-2 text-slate-800">Hiệu năng học tập</h3>
-            <p className="text-slate-500 text-sm leading-relaxed mb-4">
-              Xem chi tiết biểu đồ mạng nhện kỹ năng và lịch đóng góp học tập hàng ngày.
+          <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm hover:shadow-md transition space-y-4">
+            <span className="text-3xl">📘</span>
+            <h3 className="text-lg font-bold">Sổ tay câu sai (Mistake Bank)</h3>
+            <p className="opacity-75 text-sm leading-relaxed">
+              Tự động phát hiện lỗi sai, phân loại theo chuyên đề và giải thích chi tiết lỗ hổng kiến thức.
             </p>
-            <span className="text-sm font-semibold text-blue-600 hover:underline">
-              Xem phân tích &rarr;
-            </span>
-          </Link>
+          </div>
+
+          <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm hover:shadow-md transition space-y-4">
+            <span className="text-3xl">🎙️</span>
+            <h3 className="text-lg font-bold">AI Micro Speaking Session</h3>
+            <p className="opacity-75 text-sm leading-relaxed">
+              Luyện nói tiếng Anh giao tiếp 5 phút phản xạ không độ trễ tận dụng Web Speech API miễn phí trên client.
+            </p>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Section 4: Bottom CTA */}
+      <section className="max-w-5xl mx-auto px-6 pb-24">
+        <div className="bg-slate-900 text-white rounded-3xl p-12 text-center relative overflow-hidden shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15),transparent_60%)] pointer-events-none" />
+          <div className="relative z-10 space-y-6 max-w-xl mx-auto">
+            <h2 className="text-3xl font-extrabold">Bắt đầu chinh phục TOEIC & IELTS ngay hôm nay</h2>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Tham gia cùng hàng ngàn học viên đang tiến bộ mỗi ngày bằng phương pháp học thông minh của EnStudey.
+            </p>
+            <div className="pt-2">
+              <Link 
+                href="/dashboard"
+                className="inline-block font-bold text-lg bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+              >
+                Học miễn phí
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 mt-20">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
-          <span>&copy; 2026 EnStudey. All rights reserved.</span>
+      <footer className="bg-card border-t border-card-border">
+        <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6 opacity-75 text-sm">
+          <span>&copy; 2026 EnStudey. Tối ưu hóa học tập bằng AI.</span>
           <div className="flex gap-6">
             <Link href="/about" className="hover:underline">Giới thiệu</Link>
             <Link href="/privacy" className="hover:underline">Chính sách bảo mật</Link>
-            <Link href="/terms" className="hover:underline">Điều khoản</Link>
+            <Link href="/terms" className="hover:underline">Điều khoản sử dụng</Link>
           </div>
         </div>
       </footer>
