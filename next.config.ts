@@ -38,6 +38,22 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: false,
       },
+      // Redirects cho các bài blog cũ sang category mới
+      {
+        source: "/blog/spaced-repetition-hoc-tu-vung",
+        destination: "/blog/skills/spaced-repetition-hoc-tu-vung",
+        permanent: true,
+      },
+      {
+        source: "/blog/5-meo-tranh-bay-part-1-toeic",
+        destination: "/blog/toeic/5-meo-tranh-bay-part-1-toeic",
+        permanent: true,
+      },
+      {
+        source: "/blog/cach-phan-bo-thoi-gian-reading-ielts",
+        destination: "/blog/skills/cach-phan-bo-thoi-gian-reading-ielts",
+        permanent: true,
+      },
     ];
   },
 };
