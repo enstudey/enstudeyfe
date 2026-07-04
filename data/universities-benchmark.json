@@ -1,0 +1,42 @@
+[
+  {
+    "majorCode": "7340101",
+    "majorName": "Quản trị kinh doanh",
+    "universityCode": "NEU",
+    "universityName": "Đại học Kinh tế Quốc dân",
+    "subjectGroup": "A00, A01, D01",
+    "benchmark": 26.00,
+    "location": "Miền Bắc",
+    "category": "Kinh tế"
+  },
+  {
+    "majorCode": "7480101",
+    "majorName": "Công nghệ thông tin",
+    "universityCode": "TLU",
+    "universityName": "Đại học Thủy lợi",
+    "subjectGroup": "A00, A01",
+    "benchmark": 25.50,
+    "location": "Miền Bắc",
+    "category": "Công nghệ"
+  },
+  {
+    "majorCode": "7340120",
+    "majorName": "Logistics & Chuỗi cung ứng",
+    "universityCode": "FTU",
+    "universityName": "Đại học Ngoại thương",
+    "subjectGroup": "A00, A01",
+    "benchmark": 28.25,
+    "location": "Miền Bắc",
+    "category": "Kinh tế"
+  },
+  {
+    "majorCode": "7720101",
+    "majorName": "Y đa khoa",
+    "universityCode": "HMU",
+    "universityName": "Đại học Y Hà Nội",
+    "subjectGroup": "B00",
+    "benchmark": 29.15,
+    "location": "Miền Bắc",
+    "category": "Y Dược"
+  }
+]

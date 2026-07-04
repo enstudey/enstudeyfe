@@ -1,165 +1,111 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "EnStudey - Luyện thi TOEIC & IELTS thông minh bằng AI",
-  description: "Bẻ gãy áp lực phòng thi với Trợ lý Luyện đề AI thế hệ mới. Học miễn phí liền nè bạn ơi! 🚀",
+  title: "EnStudy - Nền tảng tra cứu học thuật & nguyện vọng Đại học",
+  description: "Công cụ hỗ trợ ôn thi TOEIC/IELTS, tính điểm thi tốt nghiệp THPT và gợi ý nguyện vọng đại học an toàn, tối ưu nhất.",
 };
 
-export default function LandingPage() {
+export default function LandingPortalPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans antialiased transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
       {/* Header */}
-      <header className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-orange-600 dark:text-orange-500 tracking-tight">
-          EnStudey
-        </Link>
-        <div className="flex items-center gap-4">
-          <ThemeToggle />
-          <Link
-            href="/dashboard"
-            className="text-sm font-semibold bg-foreground text-background px-5 py-2.5 rounded-xl hover:opacity-90 transition"
-          >
-            Vào học ngay
-          </Link>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center space-y-8">
-        <div className="inline-flex items-center gap-1.5 bg-orange-50 border border-orange-200/60 px-3 py-1 rounded-full text-xs font-bold text-orange-700 uppercase tracking-wider dark:bg-orange-950/45 dark:border-orange-900 dark:text-orange-300">
-          ✨ Kỷ nguyên EdTech cá nhân hóa 2026
-        </div>
-        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-[1.15]">
-          Bẻ gãy áp lực phòng thi với <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Trợ lý Luyện đề AI</span> thế hệ mới
-        </h1>
-        <p className="opacity-75 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-          Tối ưu hóa điểm số TOEIC & IELTS cực dễ thông qua phương pháp học chia nhỏ (Micro Sessions) và chấm điểm nói trực tiếp bằng Web Speech API nha.
-        </p>
-        <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
-          <Link
-            href="/dashboard"
-            className="w-full sm:w-auto text-center font-bold text-lg bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:scale-98"
-          >
-            Học miễn phí liền nè! 🚀
-          </Link>
-          <span className="text-xs opacity-50 font-medium sm:block hidden">
-            ⚡ Join cùng chúng mình nha
-          </span>
-        </div>
-      </section>
-
-      {/* Section 2: Social Proof / Contributions Grid */}
-      <section className="bg-card border-y border-card-border py-16">
-        <div className="max-w-6xl mx-auto px-6 text-center space-y-10">
-          <p className="text-xs font-semibold opacity-50 uppercase tracking-widest">
-            Bám sát cấu trúc đề thi chuẩn ETS TOEIC & Dự báo Forecast IELTS mới nhất
-          </p>
-
-          {/* GitHub Contributions Style Grid mock */}
-          <div className="max-w-xl mx-auto bg-background border border-card-border rounded-2xl p-6 shadow-sm space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-bold opacity-85">Lịch sử rèn luyện của chúng mình nè</span>
-              <span className="text-xs text-orange-600 font-bold">Giữ lửa 5 ngày liên tiếp rồi nè, đỉnh chóp bạn ơi! ⚡</span>
-            </div>
-
-            {/* Contrib grid */}
-            <div className="grid grid-cols-12 gap-1.5">
-              {Array.from({ length: 36 }).map((_, i) => (
-                <div
-                  key={i}
-                  className={`aspect-square rounded-sm ${i > 28 ? "bg-emerald-500" :
-                    i > 20 ? "bg-emerald-400" :
-                      i > 10 ? "bg-emerald-200" :
-                        "bg-card-border"
-                    }`}
-                />
-              ))}
-            </div>
-            <div className="flex justify-end items-center gap-1.5 text-xs opacity-50">
-              <span>Ít</span>
-              <div className="w-2.5 h-2.5 bg-card-border rounded-sm" />
-              <div className="w-2.5 h-2.5 bg-emerald-200 rounded-sm" />
-              <div className="w-2.5 h-2.5 bg-emerald-400 rounded-sm" />
-              <div className="w-2.5 h-2.5 bg-emerald-500 rounded-sm" />
-              <span>Nhiều</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: Core Value Propositions */}
-      <section className="max-w-6xl mx-auto px-6 py-24 space-y-16">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <h2 className="text-3xl font-extrabold">
-            Học thông minh hơn, không mệt mỏi hơn
-          </h2>
-          <p className="opacity-70 text-sm md:text-base leading-relaxed">
-            Thay thế các bài kiểm tra dài 2 tiếng gây nản bằng các thử thách tinh gọn được tối ưu hóa cho người bận rộn.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm hover:shadow-md transition space-y-4">
-            <span className="text-3xl">🚀</span>
-            <h3 className="text-lg font-bold">Daily Mini-Challenge</h3>
-            <p className="opacity-75 text-sm leading-relaxed">
-              10 câu hỏi rút gọn mỗi ngày giúp bẻ nhỏ bài test, duy trì chuỗi Streak và duy trì động lực học tập.
-            </p>
-          </div>
-
-          <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm hover:shadow-md transition space-y-4">
-            <span className="text-3xl">📘</span>
-            <h3 className="text-lg font-bold">Sổ tay câu sai (Mistake Bank)</h3>
-            <p className="opacity-75 text-sm leading-relaxed">
-              Tự động phát hiện lỗi sai, phân loại theo chuyên đề và giải thích chi tiết lỗ hổng kiến thức.
-            </p>
-          </div>
-
-          <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm hover:shadow-md transition space-y-4">
-            <span className="text-3xl">🎙️</span>
-            <h3 className="text-lg font-bold">AI Micro Speaking Session</h3>
-            <p className="opacity-75 text-sm leading-relaxed">
-              Luyện nói tiếng Anh giao tiếp 5 phút phản xạ không độ trễ tận dụng Web Speech API miễn phí trên client.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: Bottom CTA */}
-      <section className="max-w-5xl mx-auto px-6 pb-24">
-        <div className="bg-slate-900 text-white rounded-3xl p-12 text-center relative overflow-hidden shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15),transparent_60%)] pointer-events-none" />
-          <div className="relative z-10 space-y-6 max-w-xl mx-auto">
-            <h2 className="text-3xl font-extrabold">Bắt đầu chinh phục TOEIC & IELTS cùng chúng mình nha! 🎯</h2>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Join cùng hàng ngàn bạn đang tiến bộ mỗi ngày bằng phương pháp học thông minh của EnStudey nha.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/dashboard"
-                className="inline-block font-bold text-lg bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
-              >
-                Học miễn phí liền nè! 🚀
+      <header className="bg-white dark:bg-zinc-900 border-b border-slate-100 dark:border-zinc-800">
+        <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <span className="font-bold text-2xl text-slate-950 dark:text-white tracking-tight">EnStudy</span>
+            <div className="hidden md:flex gap-6">
+              <Link href="/tin-tuc" className="text-xs font-bold text-slate-500 hover:text-slate-950 dark:hover:text-white transition-colors uppercase tracking-wider">
+                Tin tức học thuật
+              </Link>
+              <Link href="/tinh-diem" className="text-xs font-bold text-slate-500 hover:text-slate-950 dark:hover:text-white transition-colors uppercase tracking-wider">
+                Công cụ tính điểm
+              </Link>
+              <Link href="/tra-cuu-truong-dai-hoc" className="text-xs font-bold text-slate-500 hover:text-slate-950 dark:hover:text-white transition-colors uppercase tracking-wider">
+                Tra cứu trường đại học
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+          </div>
+        </nav>
+      </header>
 
-      {/* Footer */}
-      <footer className="bg-card border-t border-card-border">
-        <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6 opacity-75 text-sm">
-          <span>&copy; 2026 EnStudey. Tối ưu hóa học tập bằng AI.</span>
-          <div className="flex gap-6">
-            <Link href="/about" className="hover:underline">Giới thiệu</Link>
-            <Link href="/privacy" className="hover:underline">Chính sách bảo mật</Link>
-            <Link href="/terms" className="hover:underline">Điều khoản sử dụng</Link>
+      {/* Hero Section */}
+      <main className="max-w-5xl mx-auto px-6 py-16 flex-1 flex flex-col justify-center space-y-12 w-full text-center">
+        <div className="space-y-6">
+          <div className="inline-flex items-center gap-1.5 bg-orange-50 dark:bg-zinc-900 border border-orange-200/50 dark:border-zinc-800 px-4 py-1.5 rounded-full text-xs font-bold text-orange-600 dark:text-orange-500 uppercase tracking-wider">
+            ✨ Kỷ nguyên EdTech cá nhân hóa
+          </div>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight text-slate-950 dark:text-white">
+            Công cụ hỗ trợ ôn thi tốt nghiệp & <br />
+            <span className="bg-gradient-to-r from-orange-600 to-red-500 bg-clip-text text-transparent">Gợi ý nguyện vọng Đại học</span> thông minh
+          </h1>
+          <p className="text-slate-500 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            Tra cứu điểm chuẩn các năm của các trường đại học, tính điểm xét tuyển tổ hợp môn tự động và tối ưu hóa danh sách nguyện vọng tốt nghiệp của bạn.
+          </p>
+        </div>
+
+        {/* Feature Cards / Portals */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto w-full">
+          {/* Card 1: Blog */}
+          <div className="bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/20 dark:hover:border-orange-500/20 transition duration-300 flex flex-col justify-between text-left space-y-4">
+            <div className="space-y-2">
+              <span className="text-3xl">🚀</span>
+              <h2 className="text-lg font-bold text-slate-950 dark:text-white">Tin tức học thuật</h2>
+              <p className="text-slate-500 dark:text-zinc-400 text-xs leading-relaxed">
+                Chia sẻ lộ trình học tập, cẩm nang ngữ pháp TOEIC/IELTS và cập nhật các phương thức tuyển sinh mới nhất từ Bộ Giáo dục.
+              </p>
+            </div>
+            <Link
+              href="/tin-tuc"
+              className="w-full text-center py-2.5 bg-slate-900 dark:bg-zinc-850 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition"
+            >
+              Xem tin tức &rarr;
+            </Link>
+          </div>
+
+          {/* Card 2: Calculator */}
+          <div className="bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/20 dark:hover:border-orange-500/20 transition duration-300 flex flex-col justify-between text-left space-y-4">
+            <div className="space-y-2">
+              <span className="text-3xl">✨</span>
+              <h2 className="text-lg font-bold text-slate-950 dark:text-white">Tính điểm xét tuyển</h2>
+              <p className="text-slate-500 dark:text-zinc-400 text-xs leading-relaxed">
+                Nhập điểm thi THPT quốc gia của bạn để tự động tính điểm theo các tổ hợp môn phổ biến A00, A01, B00, D01.
+              </p>
+            </div>
+            <Link
+              href="/tinh-diem"
+              className="w-full text-center py-2.5 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-650 text-white text-xs font-bold rounded-xl shadow-sm transition"
+            >
+              Tính điểm ngay &rarr;
+            </Link>
+          </div>
+
+          {/* Card 3: Finder */}
+          <div className="bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/20 dark:hover:border-orange-500/20 transition duration-300 flex flex-col justify-between text-left space-y-4">
+            <div className="space-y-2">
+              <span className="text-3xl">🔍</span>
+              <h2 className="text-lg font-bold text-slate-950 dark:text-white">Tra cứu trường Đại học</h2>
+              <p className="text-slate-500 dark:text-zinc-400 text-xs leading-relaxed">
+                Đối sánh điểm thi của bạn với cơ sở dữ liệu điểm chuẩn năm ngoái để phân loại vùng nguyện vọng An toàn/Cọ xát/Rủi ro.
+              </p>
+            </div>
+            <Link
+              href="/tra-cuu-truong-dai-hoc"
+              className="w-full text-center py-2.5 bg-slate-900 dark:bg-zinc-850 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition"
+            >
+              Tra cứu ngay &rarr;
+            </Link>
           </div>
         </div>
-      </footer>
+      </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
-
