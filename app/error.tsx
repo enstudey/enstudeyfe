@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import ErrorReportForm from "@/components/error-report-form";
 
 export default function Error({
   error,
@@ -38,6 +39,7 @@ export default function Error({
             Về trang chủ thôi &rarr;
           </Link>
         </div>
+        <ErrorReportForm errorCode="500" errorMessage={error.message || error.stack} />
       </div>
     </div>
   );

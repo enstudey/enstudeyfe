@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
 import { ErrorCode } from "@/types/error-code";
+import ErrorReportForm from "@/components/error-report-form";
 
 function ErrorPageContent() {
   const searchParams = useSearchParams();
@@ -53,6 +54,7 @@ function ErrorPageContent() {
             Về trang chủ nha
           </Link>
         </div>
+        <ErrorReportForm errorCode={codeParam || "UNKNOWN_ERROR"} errorMessage="Redirected to error page" />
       </div>
     </div>
   );

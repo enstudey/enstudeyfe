@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import ErrorReportForm from "@/components/error-report-form";
 
 export const metadata: Metadata = {
   title: "Trang này đi đâu mất rồi - EnStudey",
@@ -24,6 +25,7 @@ export default function NotFound() {
             Về trang chủ nha
           </Link>
         </div>
+        <ErrorReportForm errorCode="404" errorMessage="Page not found" />
       </div>
     </div>
   );
