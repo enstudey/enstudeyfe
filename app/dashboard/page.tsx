@@ -1,5 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
@@ -13,7 +16,65 @@ const MOCK_LEADERBOARD = [
   { rank: 3, name: "Minh Tuấn", streakCount: 35 },
 ];
 
-export default function DashboardPage() {
+interface UserDto {
+  id: string;
+  email: string;
+  fullName: string;
+  avatarUrl: string;
+  role: string;
+}
+
+interface UserStreakDto {
+  currentStreak: number;
+  longestStreak: number;
+  lastActivityDate: string | null;
+}
+
+export default async function DashboardPage() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
+
+  if (!token) {
+    redirect("/login");
+  }
+
+  let user: UserDto | null = null;
+  let streak: UserStreakDto = { currentStreak: 0, longestStreak: 0, lastActivityDate: null };
+  let fetchFailed = false;
+
+  try {
+    const [userRes, streakRes] = await Promise.all([
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+        next: { revalidate: 0 }
+      }),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me/streak`, {
+        headers: { Authorization: `Bearer ${token}` },
+        next: { revalidate: 0 }
+      })
+    ]);
+
+    if (!userRes.ok) {
+      fetchFailed = true;
+    } else {
+      const userData = await userRes.json();
+      user = userData.data as UserDto;
+    }
+
+    if (streakRes.ok) {
+      const streakData = await streakRes.json();
+      streak = streakData.data as UserStreakDto;
+    }
+  } catch (error) {
+    console.error("Failed to fetch dashboard data", error);
+    fetchFailed = true;
+  }
+
+  if (fetchFailed) {
+    redirect("/login");
+  }
+
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans transition-colors duration-200">
       {/* Header */}
@@ -23,7 +84,6 @@ export default function DashboardPage() {
             EnStudey
           </Link>
           <div className="flex items-center gap-6">
-            {/* Navigation links */}
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium opacity-80">
               <Link href="/quiz" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Luyện đề</Link>
               <Link href="/speaking" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Luyện nói AI</Link>
@@ -37,15 +97,29 @@ export default function DashboardPage() {
             {/* Streak Widget */}
             <div className="flex items-center gap-1.5 bg-orange-50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-900 px-3 py-1.5 rounded-full" title="Chuỗi ngày học liên tiếp">
               <span className="text-orange-500 text-lg">🔥</span>
-              <span className="font-bold text-orange-700 dark:text-orange-400 text-sm">5 ngày nè</span>
+              <span className="font-bold text-orange-700 dark:text-orange-400 text-sm">
+                {streak.currentStreak} ngày nè
+              </span>
             </div>
+
+            {/* User Avatar */}
+            {user && user.avatarUrl && (
+              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-card-border">
+                <Image
+                  src={user.avatarUrl}
+                  alt={user.fullName}
+                  fill
+                  sizes="36px"
+                  className="object-cover"
+                />
+              </div>
+            )}
           </div>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-3">
-        {/* Left & Middle Column (Main features) */}
         <div className="md:col-span-2 space-y-8">
           {/* Hero Widget: Daily Mini-Test */}
           <div className="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
@@ -53,7 +127,9 @@ export default function DashboardPage() {
               <span className="bg-orange-400/30 text-orange-100 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
                 Hôm nay nè bạn ơi! 🔥
               </span>
-              <h2 className="text-3xl font-extrabold">Hello bạn nha! Hôm nay chúng mình làm tí Mini-test nhỉ? 🔥</h2>
+              <h2 className="text-3xl font-extrabold">
+                Chào {user ? user.fullName : "bạn"} nha! Hôm nay chúng mình làm tí Mini-test nhỉ? 🔥
+              </h2>
               <p className="text-orange-100/90 text-sm leading-relaxed">
                 Hoàn thành nhanh 10 câu hỏi rút gọn để giữ lửa Streak đỉnh chóp và củng cố ngữ pháp, từ vựng hôm nay nha.
               </p>
@@ -88,34 +164,32 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Right Column (Side widgets) */}
+        {/* Right Column */}
         <div className="space-y-8">
-          {/* Leaderboard Widget */}
           <div className="bg-card border border-card-border rounded-2xl p-6 shadow-sm">
             <h3 className="text-lg font-bold mb-4 flex items-center justify-between">
               <span>Bảng Xếp Hạng</span>
               <span className="text-xs font-semibold opacity-50">Streak tuần</span>
             </h3>
             <div className="space-y-3">
-              {MOCK_LEADERBOARD.map((user) => (
-                <div key={user.rank} className="flex items-center justify-between py-2 border-b border-card-border/50 last:border-0">
+              {MOCK_LEADERBOARD.map((u) => (
+                <div key={u.rank} className="flex items-center justify-between py-2 border-b border-card-border/50 last:border-0">
                   <div className="flex items-center gap-3">
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                      user.rank === 1 ? "bg-amber-100 text-amber-800" :
-                      user.rank === 2 ? "bg-slate-100 text-slate-800" :
+                      u.rank === 1 ? "bg-amber-100 text-amber-800" :
+                      u.rank === 2 ? "bg-slate-100 text-slate-800" :
                       "bg-orange-100 text-orange-800"
                     }`}>
-                      {user.rank}
+                      {u.rank}
                     </span>
-                    <span className="font-medium text-sm">{user.name}</span>
+                    <span className="font-medium text-sm">{u.name}</span>
                   </div>
-                  <span className="text-sm font-bold text-orange-600">{user.streakCount} 🔥</span>
+                  <span className="text-sm font-bold text-orange-600">{u.streakCount} 🔥</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Quick Analytics Summary */}
           <Link href="/analytics" className="block bg-card border border-card-border rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left">
             <h3 className="text-lg font-bold mb-2">Hiệu năng học tập</h3>
             <p className="opacity-70 text-sm leading-relaxed mb-4">
@@ -142,4 +216,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
