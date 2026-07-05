@@ -263,3 +263,76 @@ export const calculateAllCombinations = (
     equivEnglish
   };
 };
+
+export interface SubjectSemesterScores {
+  grade10_hk1: string;
+  grade10_hk2: string;
+  grade11_hk1: string;
+  grade11_hk2: string;
+  grade12_hk1: string;
+  grade12_hk2: string;
+}
+
+export const TRANSCRIPT_SUBJECTS = {
+  math: "Toán",
+  literature: "Ngữ văn",
+  english: "Tiếng Anh",
+  physics: "Vật lý",
+  chemistry: "Hóa học",
+  biology: "Sinh học",
+  history: "Lịch sử",
+  geography: "Địa lý",
+  gdktpl: "GDKTPL",
+  informatics: "Tin học",
+  techIndustrial: "Công nghệ CN",
+  techAgricultural: "Công nghệ NN"
+} as const;
+
+export type TranscriptSubjectKey = keyof typeof TRANSCRIPT_SUBJECTS;
+
+export const TRANSCRIPT_SUBJECT_GROUPS: Record<string, TranscriptSubjectKey[]> = {
+  A00: ["math", "physics", "chemistry"],
+  A01: ["math", "physics", "english"],
+  B00: ["math", "chemistry", "biology"],
+  C00: ["literature", "history", "geography"],
+  D01: ["math", "literature", "english"],
+  D07: ["math", "chemistry", "english"],
+  D08: ["math", "biology", "english"]
+};
+
+export const calculateSubjectAverage = (semesters: SubjectSemesterScores): number => {
+  const values = [
+    parseFloat(semesters.grade10_hk1),
+    parseFloat(semesters.grade10_hk2),
+    parseFloat(semesters.grade11_hk1),
+    parseFloat(semesters.grade11_hk2),
+    parseFloat(semesters.grade12_hk1),
+    parseFloat(semesters.grade12_hk2)
+  ].filter(v => !isNaN(v));
+
+  if (values.length === 0) return 0;
+  const sum = values.reduce((acc, val) => acc + val, 0);
+  return parseFloat((sum / values.length).toFixed(2));
+};
+
+export const calculateTranscriptPriorityScore = (gpaSum: number, basePriority: number): number => {
+  if (gpaSum < 22.5) return Math.min(basePriority, 3.0);
+  const actualPriority = ((30 - gpaSum) / 7.5) * basePriority;
+  return parseFloat(Math.min(actualPriority, 3.0).toFixed(4));
+};
+
+export const calculateTranscriptScore = (
+  subjectAvgs: Record<TranscriptSubjectKey, number>,
+  selectedGroup: string,
+  basePriority: number
+): { totalScore: number; gpaSum: number; priorityScore: number } => {
+  const subjects = TRANSCRIPT_SUBJECT_GROUPS[selectedGroup];
+  if (!subjects) return { totalScore: 0, gpaSum: 0, priorityScore: 0 };
+
+  const gpaSum = subjects.reduce((acc, sub) => acc + (subjectAvgs[sub] || 0), 0);
+  const priorityScore = calculateTranscriptPriorityScore(gpaSum, basePriority);
+  const totalScore = parseFloat((gpaSum + priorityScore).toFixed(4));
+
+  return { totalScore, gpaSum, priorityScore };
+};
+

@@ -1,0 +1,62 @@
+[
+  {
+    "universityCode": "FTU",
+    "universityName": "Trường Đại học Ngoại thương",
+    "majorCode": "7340120",
+    "majorName": "Logistics & Chuỗi cung ứng",
+    "subjectGroup": "A00, A01, D01",
+    "benchmark": 28.00,
+    "requiredSchoolType": "HIGH_SCHOOL_FOR_GIFTED",
+    "minYearlyGpa": 8.0,
+    "minConduct": "KHA",
+    "minThptExamScore": 24.0,
+    "requiresIelts": false,
+    "minIelts": 0.0,
+    "description": "Chỉ xét học sinh chuyên THPT, GPA 5 học kỳ >= 8.0, Hạnh kiểm Khá trở lên, và điểm thi tốt nghiệp THPT tổ hợp >= 24.0 điểm."
+  },
+  {
+    "universityCode": "HNUE",
+    "universityName": "Trường Đại học Sư phạm Hà Nội",
+    "majorCode": "7140201",
+    "majorName": "Sư phạm Toán học",
+    "subjectGroup": "A00, A01",
+    "benchmark": 27.50,
+    "requiredSchoolType": "ALL",
+    "minYearlyGpa": 8.0,
+    "minConduct": "TOT",
+    "minThptExamScore": 15.0,
+    "requiresIelts": false,
+    "minIelts": 0.0,
+    "description": "Học lực lớp Giỏi (GPA >= 8.0) cả 3 năm cấp THPT và Hạnh kiểm 6 học kỳ đạt loại Tốt."
+  },
+  {
+    "universityCode": "NHA",
+    "universityName": "Học viện Ngân hàng",
+    "majorCode": "7340201",
+    "majorName": "Tài chính - Ngân hàng",
+    "subjectGroup": "A00, A01, D01",
+    "benchmark": 26.50,
+    "requiredSchoolType": "ALL",
+    "minYearlyGpa": 8.0,
+    "minConduct": "KHA",
+    "minThptExamScore": 15.0,
+    "requiresIelts": false,
+    "minIelts": 0.0,
+    "description": "Học lực Giỏi năm lớp 12 và điểm trung bình cộng 3 năm của từng môn trong tổ hợp xét tuyển phải >= 8.0."
+  },
+  {
+    "universityCode": "NUCE",
+    "universityName": "Trường Đại học Xây dựng Hà Nội",
+    "majorCode": "7580201",
+    "majorName": "Kỹ thuật Xây dựng",
+    "subjectGroup": "A00, A01, D07",
+    "benchmark": 19.00,
+    "requiredSchoolType": "ALL",
+    "minYearlyGpa": 6.0,
+    "minConduct": "KHA",
+    "minThptExamScore": 15.0,
+    "requiresIelts": false,
+    "minIelts": 0.0,
+    "description": "Tổng điểm trung bình 3 năm của 3 môn trong tổ hợp đạt từ 18.0 điểm trở lên và không có môn nào dưới 5.50 điểm."
+  }
+]
