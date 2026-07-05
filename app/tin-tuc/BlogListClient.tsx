@@ -122,8 +122,10 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {paginatedPosts.map((post, idx) => (
                   <React.Fragment key={post.slug}>
-                    <div className="group bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl overflow-hidden hover:shadow-md transition duration-300 cursor-pointer flex flex-col justify-between">
+                    <div className="relative group bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-2xl overflow-hidden hover:shadow-md transition duration-300 cursor-pointer flex flex-col justify-between">
                       <div className="h-44 overflow-hidden relative">
+
+
                         <Image
                           alt={post.title}
                           fill
@@ -138,7 +140,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
                             #{post.category.toUpperCase()}
                           </span>
                           <h2 className="text-base font-bold text-slate-950 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors line-clamp-2">
-                            <Link href={`/tin-tuc/${post.slug}`}>
+                            <Link href={`/tin-tuc/${post.slug}`} className="after:absolute after:inset-0">
                               {post.title}
                             </Link>
                           </h2>
@@ -150,12 +152,13 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
                           <div className="flex items-center gap-2 text-[10px] text-slate-400 dark:text-zinc-500 font-semibold uppercase tracking-wider">
                             <span>{post.date}</span>
                           </div>
-                          <Link href={`/tin-tuc/${post.slug}`} className="text-xs font-bold text-orange-600 dark:text-orange-500 hover:underline">
+                          <span className="text-xs font-bold text-orange-600 dark:text-orange-500 group-hover:underline">
                             Đọc tiếp &rarr;
-                          </Link>
+                          </span>
                         </div>
                       </div>
                     </div>
+
                     {(idx === 1 || idx === 3) && idx < paginatedPosts.length - 1 && (
                       <div className="col-span-full py-2">
                         {/* Khung trống giữ chỗ chống CLS, Google AdSense Dashboard sẽ tự động chèn nhãn Quảng cáo đẹp mắt */}
