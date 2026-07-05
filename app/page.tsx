@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "EnStudy - Nền tảng tra cứu học thuật & nguyện vọng Đại học",
-  description: "Công cụ hỗ trợ ôn thi TOEIC/IELTS, tính điểm thi tốt nghiệp THPT và gợi ý nguyện vọng đại học an toàn, tối ưu nhất.",
+  description: "Công cụ hỗ trợ ôn thi TOEIC/IELTS, tính điểm thi tốt nghiệp THPT và gợi ý nguyện vọng đại học an toàn, tối ưu.",
 };
 
 export default function LandingPortalPage() {
@@ -58,7 +58,7 @@ export default function LandingPortalPage() {
               </p>
             </div>
             <Link
-              href="/tinh-diem"
+              href="/tinh-diem-tot-nghiep"
               className="w-full text-center py-2.5 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-650 text-white text-xs font-bold rounded-xl shadow-sm transition"
             >
               Tính điểm ngay &rarr;
@@ -75,7 +75,7 @@ export default function LandingPortalPage() {
               </p>
             </div>
             <Link
-              href="/tra-cuu-truong-dai-hoc"
+              href="/tra-cuu-tuyen-sinh"
               className="w-full text-center py-2.5 bg-slate-900 dark:bg-zinc-850 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition"
             >
               Tra cứu ngay &rarr;

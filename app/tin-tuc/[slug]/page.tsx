@@ -36,18 +36,26 @@ function insertInArticleAd(htmlContent: string): string {
 // Thiết lập Dynamic Metadata
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const posts = getAllPosts();
+  const posts = getAllPosts(true);
   const post = posts.find(p => p.slug === slug);
 
+  if (!post) {
+    return {
+      title: "Bài viết không tồn tại - EnStudy",
+      description: "Đọc các bài viết chuyên sâu về luyện thi tiếng Anh.",
+    };
+  }
+
   return {
-    title: post ? `${post.title} - Tin tức EnStudy` : "Bài viết không tồn tại - EnStudy",
-    description: post ? post.description : "Đọc các bài viết chuyên sâu về luyện thi tiếng Anh.",
+    title: `${post.title} - Tin tức EnStudy`,
+    description: post.description,
+    robots: post.isDraft ? { index: false, follow: false } : undefined,
   };
 }
 
 export default async function BlogPostDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const posts = getAllPosts();
+  const posts = getAllPosts(true);
   const post = posts.find(p => p.slug === slug);
 
   if (!post) {
@@ -133,7 +141,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium">Rèn luyện lý thuyết vừa đọc để nhớ lâu hơn nhé.</p>
           </div>
           <Link 
-            href="/tinh-diem" 
+            href="/tinh-diem-tot-nghiep" 
             className="px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition duration-200 whitespace-nowrap"
           >
             Làm Test liền &rarr;

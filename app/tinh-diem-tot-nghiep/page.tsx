@@ -5,7 +5,6 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-
 export default function CalculatorPage() {
   const [scores, setScores] = useState({
     math: "",
@@ -99,7 +98,9 @@ export default function CalculatorPage() {
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">Công cụ tính điểm xét tuyển ✨</h1>
+          <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">
+            Công cụ tính điểm tốt nghiệp THPT 2026 chính xác
+          </h1>
           <p className="text-slate-500 dark:text-zinc-400 text-sm max-w-lg mx-auto">
             Hệ thống tự động đề xuất điểm tổ hợp môn tối ưu dựa trên điểm số cá nhân của bạn.
           </p>
@@ -155,7 +156,7 @@ export default function CalculatorPage() {
                   <h3 className="text-3xl font-extrabold mt-1">{highestGroup.name}: {highestGroup.score} Điểm</h3>
                 </div>
                 <Link
-                  href="/tra-cuu-truong-dai-hoc"
+                  href="/tra-cuu-tuyen-sinh"
                   className="px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition"
                 >
                   Tra cứu trường &rarr;
@@ -163,14 +164,14 @@ export default function CalculatorPage() {
               </div>
 
               {/* Anti-CLS Ad Slot */}
-              <div className="ad-container ad-v-block w-full">
-                {/* AdSlot */}
+              <div className="ad-container ad-v-block w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl my-6">
+                <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 {Object.entries(computedScores).map(([grp, val]) => (
                   <div key={grp} className="p-4 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50/50 dark:bg-zinc-900/30 flex justify-between items-center">
-                    <span className="font-bold text-sm text-slate-700 dark:text-zinc-300">{grp}</span>
+                    <span className="font-bold text-sm text-slate-700 dark:text-zinc-350">{grp}</span>
                     <span className="font-extrabold text-base text-orange-600 dark:text-orange-500">{val}</span>
                   </div>
                 ))}

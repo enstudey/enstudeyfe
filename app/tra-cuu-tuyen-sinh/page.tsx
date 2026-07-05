@@ -31,6 +31,9 @@ export default function FinderPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
+  // Trạng thái key quảng cáo để kích hoạt auto-refresh
+  const [adKey, setAdKey] = useState(0);
+
   // Đọc điểm đã lưu từ localStorage khi Component được mount
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -44,6 +47,14 @@ export default function FinderPage() {
       }
     }, 0);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Thiết lập làm mới quảng cáo tự động sau mỗi 45 giây
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAdKey(prev => prev + 1);
+    }, 45000);
+    return () => clearInterval(interval);
   }, []);
 
   // Thực hiện lọc dữ liệu
@@ -112,7 +123,9 @@ export default function FinderPage() {
       <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">Tra cứu trường đại học 🔍</h1>
+            <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">
+              Hệ thống tra cứu nguyện vọng thông minh 🔍
+            </h1>
             <p className="text-slate-500 dark:text-zinc-400 text-sm">Gợi ý và sắp xếp các nguyện vọng phù hợp với khoảng điểm và tổ hợp của bạn.</p>
           </div>
           <div className="flex gap-2 text-[10px] font-bold uppercase tracking-wider">
@@ -133,14 +146,14 @@ export default function FinderPage() {
             <span>
               Hệ thống đang đối sánh tự động dựa trên điểm số đã tính: A00: {computedScores.A00} | A01: {computedScores.A01} | B00: {computedScores.B00} | D01: {computedScores.D01}
             </span>
-            <Link href="/tinh-diem" className="text-orange-600 dark:text-orange-500 hover:underline">
+            <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-500 hover:underline">
               Tính điểm lại &rarr;
             </Link>
           </div>
         ) : (
           <div className="bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-4 text-xs font-semibold text-slate-600 dark:text-zinc-400 flex justify-between items-center">
             <span>Bạn chưa tính điểm thi THPT? Tính ngay để xem gợi ý các phân vùng an toàn/rủi ro.</span>
-            <Link href="/tinh-diem" className="text-orange-600 dark:text-orange-500 hover:underline">
+            <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-500 hover:underline">
               Tính điểm thi &rarr;
             </Link>
           </div>
@@ -218,7 +231,11 @@ export default function FinderPage() {
                         {idx === 1 && (
                           <tr className="bg-slate-50/20 dark:bg-zinc-950/20">
                             <td className="p-0" colSpan={4}>
-                              <div className="ad-container ad-h-banner w-full flex items-center justify-between px-6 py-4">
+                              {/* Anti-CLS AdSlot Container bọc có định vị chiều cao và hỗ trợ auto-refresh bằng adKey */}
+                              <div 
+                                key={adKey} 
+                                className="ad-container ad-h-banner w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-between px-6 py-4 rounded-xl transition duration-300"
+                              >
                                 <div className="flex items-center gap-3">
                                   <div className="w-12 h-12 bg-slate-200 dark:bg-zinc-850 rounded-xl flex items-center justify-center font-bold">🏫</div>
                                   <div>

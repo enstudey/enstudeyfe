@@ -7,8 +7,8 @@ import Footer from "@/components/Footer";
 
 const FAQ_ITEMS = [
   {
-    q: "Làm thế nào để tính điểm xét tuyển đại học chính xác nhất?",
-    a: "Điểm xét tuyển đại học thường bằng tổng điểm 3 môn thi THPT thuộc tổ hợp xét tuyển (ví dụ Toán - Lý - Hóa đối với khối A00) cộng với điểm ưu tiên đối tượng và điểm ưu tiên khu vực nếu có. Bạn có thể sử dụng trực tiếp công cụ tính điểm tại trang '/tinh-diem' để tính điểm nhanh chóng và chính xác."
+    q: "Làm thế nào để tính điểm xét tuyển đại học chính xác?",
+    a: "Điểm xét tuyển đại học thường bằng tổng điểm 3 môn thi THPT thuộc tổ hợp xét tuyển (ví dụ Toán - Lý - Hóa đối với khối A00) cộng với điểm ưu tiên đối tượng và điểm ưu tiên khu vực nếu có. Bạn có thể sử dụng trực tiếp công cụ tính điểm tại trang '/tinh-diem-tot-nghiep' để tính điểm nhanh chóng và chính xác."
   },
   {
     q: "Quy chế cộng điểm ưu tiên khu vực năm nay như thế nào?",
@@ -16,7 +16,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Cách sắp xếp thứ tự các nguyện vọng đại học thông minh để tránh bị trượt?",
-    a: "Bạn nên sắp xếp nguyện vọng yêu thích nhất lên đầu (Nguyện vọng 1). Hệ thống tuyển sinh sẽ xét tuyển lần lượt từ trên xuống dưới. Nếu bạn đã đỗ ở nguyện vọng trên, các nguyện vọng dưới sẽ tự động bị hủy bỏ. Hãy sử dụng bộ lọc tại trang '/tra-cuu-truong-dai-hoc' để phân tích và rải đều các nguyện vọng vào Vùng an toàn (Safe) và Vùng cọ xát (Fight)."
+    a: "Bạn nên sắp xếp nguyện vọng yêu thích nhất lên đầu (Nguyện vọng 1). Hệ thống tuyển sinh sẽ xét tuyển lần lượt từ trên xuống dưới. Nếu bạn đã đỗ ở nguyện vọng trên, các nguyện vọng dưới sẽ tự động bị hủy bỏ. Hãy sử dụng bộ lọc tại trang '/tra-cuu-tuyen-sinh' để phân tích và rải đều các nguyện vọng vào Vùng an toàn (Safe) và Vùng cọ xát (Fight)."
   },
   {
     q: "Tôi có thể thay đổi nguyện vọng sau khi biết điểm thi không?",

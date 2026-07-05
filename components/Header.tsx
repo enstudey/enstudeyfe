@@ -101,10 +101,10 @@ export default function Header({ isStatic = false }: HeaderProps) {
               <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news">
                 Tin tức học thuật
               </Link>
-              <Link href="/tinh-diem" className={getLinkClass("/tinh-diem")} data-testid="link-calc">
+              <Link href="/tinh-diem-tot-nghiep" className={getLinkClass("/tinh-diem-tot-nghiep")} data-testid="link-calc">
                 Công cụ tính điểm
               </Link>
-              <Link href="/tra-cuu-truong-dai-hoc" className={getLinkClass("/tra-cuu-truong-dai-hoc")} data-testid="link-univ">
+              <Link href="/tra-cuu-tuyen-sinh" className={getLinkClass("/tra-cuu-tuyen-sinh")} data-testid="link-univ">
                 Tra cứu trường đại học
               </Link>
             </div>

@@ -14,6 +14,7 @@ export interface PostData {
   image?: string;
   contentHtml: string;
   faq?: Array<{ question: string; answer: string }>;
+  isDraft?: boolean;
 }
 
 function slugify(text: string): string {
@@ -58,6 +59,11 @@ export function getPostBySlug(category: string, slug: string): PostData | null {
     const contentHtmlRaw = marked(content) as string;
     const contentHtml = injectHeadingIds(contentHtmlRaw);
 
+    const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
+    const isDraft = data.draft === true ||
+                    content.toLowerCase().includes("[đang cập nhật...]") ||
+                    (wordCount < 800 && !data.forceIndex);
+
     return {
       slug,
       category,
@@ -67,6 +73,7 @@ export function getPostBySlug(category: string, slug: string): PostData | null {
       image: data.image || "",
       contentHtml,
       faq: data.faq || [],
+      isDraft,
     };
   } catch {
     return null;
@@ -74,7 +81,7 @@ export function getPostBySlug(category: string, slug: string): PostData | null {
 }
 
 
-export function getAllPosts(): PostData[] {
+export function getAllPosts(includeDraft: boolean = false): PostData[] {
   const categories = ["skills", "toeic", "ielts", "grammar"];
   const posts: PostData[] = [];
 
@@ -91,7 +98,7 @@ export function getAllPosts(): PostData[] {
       }
       const slug = fileName.replace(/\.md$/, "");
       const post = getPostBySlug(category, slug);
-      if (post) {
+      if (post && (includeDraft || !post.isDraft)) {
         posts.push(post);
       }
     }
@@ -102,7 +109,7 @@ export function getAllPosts(): PostData[] {
 }
 
 export function getRelatedPosts(currentSlug: string, category: string, limit: number = 4): PostData[] {
-  const allPosts = getAllPosts();
+  const allPosts = getAllPosts(false);
   return allPosts
     .filter(post => post.category === category && post.slug !== currentSlug)
     .slice(0, limit);

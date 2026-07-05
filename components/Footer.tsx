@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start justify-between">
           <div className="space-y-3">
             <h3 className="text-xl font-bold text-slate-950 dark:text-white">EnStudey</h3>
-            <p className="text-sm font-semibold text-slate-800 dark:text-zinc-200">Nền tảng hỗ trợ học tập cá nhân hóa</p>
+            <p className="text-sm font-semibold text-slate-800 dark:text-zinc-200">Nền tảng hỗ trợ học tập cá nhân hóa.</p>
             <div className="space-y-1.5 text-xs text-slate-500 dark:text-zinc-400">
               <p>Chịu trách nhiệm nội dung: Nguyễn Đức Tâm</p>
               <p>Địa chỉ: Tổ 2, Phường Cầu Giấy, TP. Hà Nội</p>
@@ -20,10 +20,10 @@ export default function Footer() {
               <Link href="/gioi-thieu" className="hover:text-slate-950 dark:hover:text-white transition">
                 Giới thiệu
               </Link>
-              <Link href="/dieu-khoan-su-dung" className="hover:text-slate-950 dark:hover:text-white transition">
+              <Link href="/terms-of-service" className="hover:text-slate-950 dark:hover:text-white transition">
                 Điều khoản dịch vụ
               </Link>
-              <Link href="/chinh-sach-bao-mat" className="hover:text-slate-950 dark:hover:text-white transition">
+              <Link href="/privacy-policy" className="hover:text-slate-950 dark:hover:text-white transition">
                 Chính sách bảo mật
               </Link>
             </div>
