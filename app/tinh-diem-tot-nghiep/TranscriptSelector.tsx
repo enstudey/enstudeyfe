@@ -5,7 +5,8 @@ import {
   TRANSCRIPT_SUBJECTS,
   TRANSCRIPT_SUBJECT_GROUPS,
   TranscriptSubjectKey,
-  SubjectSemesterScores
+  SubjectSemesterScores,
+  TRANSCRIPT_GROUP_CATEGORIES
 } from "./utils";
 
 interface Props {
@@ -22,6 +23,8 @@ interface Props {
   totalScore: number;
   isCalculated: boolean;
   onCalculate: () => void;
+  otherLanguageType: "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian";
+  setOtherLanguageType: (val: "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian") => void;
 }
 
 const SEMESTERS: { key: keyof SubjectSemesterScores; name: string }[] = [
@@ -32,6 +35,15 @@ const SEMESTERS: { key: keyof SubjectSemesterScores; name: string }[] = [
   { key: "grade12_hk1", name: "Lớp 12 HK1" },
   { key: "grade12_hk2", name: "Lớp 12 HK2" }
 ];
+
+const LANGUAGE_LABEL_MAPPING: Record<string, string> = {
+  Korean: "Tiếng Hàn",
+  Chinese: "Tiếng Trung",
+  Japanese: "Tiếng Nhật",
+  French: "Tiếng Pháp",
+  German: "Tiếng Đức",
+  Russian: "Tiếng Nga"
+};
 
 export default function TranscriptSelector({
   selectedGroup,
@@ -46,9 +58,12 @@ export default function TranscriptSelector({
   priorityScore,
   totalScore,
   isCalculated,
-  onCalculate
+  onCalculate,
+  otherLanguageType,
+  setOtherLanguageType
 }: Props) {
   const [adKey, setAdKey] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<string>("A");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,6 +73,7 @@ export default function TranscriptSelector({
   }, []);
 
   const subjects = TRANSCRIPT_SUBJECT_GROUPS[selectedGroup] || [];
+  const hasOtherLanguage = subjects.includes("otherLanguage");
 
   const getThptSum = () => {
     let sum = 0;
@@ -77,30 +93,86 @@ export default function TranscriptSelector({
   const hasThptFloorViolation = thptComplete && thptSum < 15.0;
   const hasRequiredSubjects = subjects.includes("math") || subjects.includes("literature");
 
+  // Lấy danh sách tổ hợp thuộc Category đang active
+  const categoryGroups = TRANSCRIPT_GROUP_CATEGORIES[activeCategory] || [];
+
   return (
     <div className="space-y-6">
-      {/* Chọn tổ hợp xét học bạ */}
+      {/* Chọn Khối Tổ hợp (Tabs) */}
       <div className="space-y-3">
         <label className="text-sm font-bold text-slate-700 dark:text-zinc-300">
-          Chọn tổ hợp môn xét tuyển học bạ:
+          Chọn khối học bạ:
+        </label>
+        <div className="flex flex-wrap gap-2 border-b border-slate-100 dark:border-zinc-800 pb-3">
+          {[
+            { id: "A", name: "Khối A" },
+            { id: "B", name: "Khối B" },
+            { id: "C", name: "Khối C" },
+            { id: "D", name: "Khối D" },
+            { id: "X_TH", name: "Khối X & TH" }
+          ].map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                setActiveCategory(cat.id);
+                // Tự động select tổ hợp đầu tiên trong nhóm mới để tránh lệch state
+                const firstGroup = TRANSCRIPT_GROUP_CATEGORIES[cat.id]?.[0];
+                if (firstGroup) setSelectedGroup(firstGroup);
+              }}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 cursor-pointer ${activeCategory === cat.id
+                ? "bg-slate-900 text-white dark:bg-zinc-100 dark:text-zinc-950"
+                : "bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300"
+                }`}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Lựa chọn tổ hợp môn thuộc khối */}
+      <div className="space-y-3">
+        <label className="text-sm font-bold text-slate-700 dark:text-zinc-300">
+          Chọn tổ hợp môn xét tuyển:
         </label>
         <div className="flex flex-wrap gap-2">
-          {Object.keys(TRANSCRIPT_SUBJECT_GROUPS).map(group => (
+          {categoryGroups.map(group => (
             <button
               key={group}
               onClick={() => setSelectedGroup(group)}
               data-testid={`btn-select-group-${group}`}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
-                selectedGroup === group
-                  ? "bg-orange-600 text-white shadow-md shadow-orange-500/20"
-                  : "bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300"
-              }`}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${selectedGroup === group
+                ? "bg-orange-600 text-white shadow-md shadow-orange-500/20"
+                : "bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300"
+                }`}
             >
               {group}
             </button>
           ))}
         </div>
       </div>
+
+      {/* Nhập loại ngoại ngữ khác nếu tổ hợp yêu cầu */}
+      {hasOtherLanguage && (
+        <div className="p-4 bg-orange-50/50 dark:bg-orange-955/10 border border-orange-500/20 rounded-2xl space-y-3 animate-fade-in">
+          <label className="text-xs font-bold text-slate-700 dark:text-zinc-300">
+            Chọn loại Ngoại ngữ phụ cho tổ hợp D:
+          </label>
+          <select
+            value={otherLanguageType}
+            onChange={e => setOtherLanguageType(e.target.value as "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian")}
+            data-testid="select-transcript-other-lang"
+            className="w-full sm:w-64 px-3 py-2 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 text-xs font-bold"
+          >
+            <option value="Korean">Tiếng Hàn</option>
+            <option value="Chinese">Tiếng Trung</option>
+            <option value="Japanese">Tiếng Nhật</option>
+            <option value="French">Tiếng Pháp</option>
+            <option value="German">Tiếng Đức</option>
+            <option value="Russian">Tiếng Nga</option>
+          </select>
+        </div>
+      )}
 
       {/* Form nhập điểm 6 học kỳ */}
       <div className="space-y-6 pt-4">
@@ -115,7 +187,8 @@ export default function TranscriptSelector({
 
         <div className="space-y-6">
           {subjects.map(subKey => {
-            const subjectName = TRANSCRIPT_SUBJECTS[subKey];
+            const rawName = TRANSCRIPT_SUBJECTS[subKey];
+            const subjectName = subKey === "otherLanguage" ? `Ngoại ngữ phụ (${LANGUAGE_LABEL_MAPPING[otherLanguageType]})` : rawName;
             return (
               <div key={subKey} className="space-y-3 bg-slate-50/50 dark:bg-zinc-900/40 p-4 border border-slate-100 dark:border-zinc-800/80 rounded-2xl">
                 <span className="text-sm font-bold text-slate-700 dark:text-zinc-300 block">
@@ -137,11 +210,10 @@ export default function TranscriptSelector({
                           value={semesterScores[subKey][sem.key] || ""}
                           onChange={e => handleScoreChange(subKey, sem.key, e.target.value)}
                           data-testid={`input-transcript-${subKey}-${sem.key}`}
-                          className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-sm ${
-                            isErr
-                              ? "border-red-500 focus:border-red-500 text-red-500"
-                              : "border-slate-200 dark:border-zinc-850 focus:border-orange-500"
-                          }`}
+                          className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-sm ${isErr
+                            ? "border-red-500 focus:border-red-500 text-red-500"
+                            : "border-slate-200 dark:border-zinc-850 focus:border-orange-500"
+                            }`}
                         />
                         {isErr && (
                           <p className="text-red-500 text-[9px] font-semibold">{errors[errorKey]}</p>
@@ -181,12 +253,16 @@ export default function TranscriptSelector({
                 Điểm trung bình 6 học kỳ từng môn
               </span>
               <div className="space-y-2">
-                {subjects.map(sub => (
-                  <div key={sub} className="flex justify-between items-center text-sm font-semibold">
-                    <span className="text-slate-600 dark:text-zinc-400">{TRANSCRIPT_SUBJECTS[sub]}</span>
-                    <span className="text-slate-900 dark:text-white font-bold">{subjectAvgs[sub]?.toFixed(2) || "0.00"}</span>
-                  </div>
-                ))}
+                {subjects.map(sub => {
+                  const rawName = TRANSCRIPT_SUBJECTS[sub];
+                  const displayName = sub === "otherLanguage" ? `Ngoại ngữ phụ (${LANGUAGE_LABEL_MAPPING[otherLanguageType]})` : rawName;
+                  return (
+                    <div key={sub} className="flex justify-between items-center text-sm font-semibold">
+                      <span className="text-slate-600 dark:text-zinc-400">{displayName}</span>
+                      <span className="text-slate-900 dark:text-white font-bold">{subjectAvgs[sub]?.toFixed(2) || "0.00"}</span>
+                    </div>
+                  );
+                })}
               </div>
 
               <div className="pt-4 border-t border-slate-200/55 dark:border-zinc-800 space-y-2 text-sm font-bold">
@@ -211,22 +287,26 @@ export default function TranscriptSelector({
                   Xác thực điểm thi tốt nghiệp THPT tương ứng (Ngưỡng sàn 15đ)
                 </span>
                 <div className="grid grid-cols-3 gap-3">
-                  {subjects.map(sub => (
-                    <div key={sub} className="space-y-1">
-                      <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase block">
-                        Thi {TRANSCRIPT_SUBJECTS[sub]}
-                      </label>
-                      <input
-                        type="number"
-                        step="0.1"
-                        placeholder="0.0"
-                        value={thptScores[sub] || ""}
-                        onChange={e => handleThptChange(sub, e.target.value)}
-                        data-testid={`input-thpt-${sub}`}
-                        className="w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 font-bold text-sm"
-                      />
-                    </div>
-                  ))}
+                  {subjects.map(sub => {
+                    const rawName = TRANSCRIPT_SUBJECTS[sub];
+                    const displayName = sub === "otherLanguage" ? `Ngoại ngữ phụ` : rawName;
+                    return (
+                      <div key={sub} className="space-y-1">
+                        <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase block">
+                          Thi {displayName}
+                        </label>
+                        <input
+                          type="number"
+                          step="0.1"
+                          placeholder="0.0"
+                          value={thptScores[sub] || ""}
+                          onChange={e => handleThptChange(sub, e.target.value)}
+                          data-testid={`input-thpt-${sub}`}
+                          className="w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 font-bold text-sm"
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div className="pt-2 space-y-2 text-xs font-semibold">
@@ -262,7 +342,7 @@ export default function TranscriptSelector({
           </div>
 
           {/* Anti-CLS In-feed AdSlot */}
-          <div 
+          <div
             key={`infeed-${adKey}`}
             className="ad-container ad-v-block w-full min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 flex flex-col items-center justify-center p-4 border border-dashed border-slate-200 dark:border-zinc-800 rounded-2xl transition duration-300"
             data-testid="ad-infeed-transcript"

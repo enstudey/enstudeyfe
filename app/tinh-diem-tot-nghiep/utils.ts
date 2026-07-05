@@ -291,13 +291,82 @@ export const TRANSCRIPT_SUBJECTS = {
 export type TranscriptSubjectKey = keyof typeof TRANSCRIPT_SUBJECTS;
 
 export const TRANSCRIPT_SUBJECT_GROUPS: Record<string, TranscriptSubjectKey[]> = {
+  // Khối A
   A00: ["math", "physics", "chemistry"],
   A01: ["math", "physics", "english"],
+  A02: ["math", "physics", "biology"],
+  A0T: ["math", "physics", "informatics"],
+  A0C: ["math", "physics", "techIndustrial"],
+  A10: ["math", "physics", "gdktpl"],
+  A09: ["math", "geography", "gdktpl"],
+  A08: ["math", "history", "gdktpl"],
+  A11: ["math", "chemistry", "gdktpl"],
+  
+  // Khối B
   B00: ["math", "chemistry", "biology"],
+  B08: ["math", "biology", "english"],
+  B03: ["math", "biology", "literature"],
+  B01: ["math", "history", "biology"],
+  B02: ["math", "biology", "geography"],
+  B04: ["math", "biology", "gdktpl"],
+  B0C: ["math", "chemistry", "techIndustrial"],
+
+  // Khối C
   C00: ["literature", "history", "geography"],
-  D01: ["math", "literature", "english"],
+  C01: ["literature", "math", "physics"],
+  C02: ["literature", "math", "chemistry"],
+  C03: ["literature", "math", "history"],
+  C04: ["literature", "math", "geography"],
+  C14: ["literature", "math", "gdktpl"],
+  C16: ["literature", "physics", "gdktpl"],
+  C17: ["literature", "chemistry", "gdktpl"],
+  C19: ["literature", "history", "gdktpl"],
+  C20: ["literature", "geography", "gdktpl"],
+  C05: ["literature", "physics", "chemistry"],
+  C06: ["literature", "physics", "biology"],
+  C08: ["literature", "chemistry", "biology"],
+
+  // Khối D
+  D01: ["literature", "math", "english"],
   D07: ["math", "chemistry", "english"],
-  D08: ["math", "biology", "english"]
+  D08: ["math", "biology", "english"],
+  D09: ["math", "history", "english"],
+  D10: ["math", "geography", "english"],
+  D11: ["literature", "physics", "english"],
+  D14: ["literature", "history", "english"],
+  D15: ["literature", "geography", "english"],
+  D02: ["literature", "math", "otherLanguage"],
+  D03: ["literature", "math", "otherLanguage"],
+  D04: ["literature", "math", "otherLanguage"],
+  D05: ["literature", "math", "otherLanguage"],
+  D06: ["literature", "math", "otherLanguage"],
+  DD2: ["literature", "math", "otherLanguage"],
+  D66: ["literature", "gdktpl", "english"],
+  D84: ["math", "english", "gdktpl"],
+  D0C: ["math", "english", "techAgricultural"],
+  DK: ["math", "literature", "informatics"],
+
+  // Khối X & TH
+  TH1: ["math", "physics", "informatics"],
+  TH3: ["math", "physics", "techIndustrial"],
+  TH5: ["math", "chemistry", "techIndustrial"],
+  TH6: ["math", "literature", "informatics"],
+  X02: ["math", "literature", "informatics"],
+  X03: ["math", "literature", "techIndustrial"],
+  X10: ["math", "chemistry", "informatics"],
+  X01: ["literature", "math", "gdktpl"],
+  X21: ["math", "geography", "gdktpl"],
+  X25: ["math", "english", "gdktpl"],
+  X70: ["literature", "history", "gdktpl"],
+  X74: ["literature", "geography", "gdktpl"]
+};
+
+export const TRANSCRIPT_GROUP_CATEGORIES: Record<string, string[]> = {
+  A: ["A00", "A01", "A02", "A0T", "A0C", "A10", "A09", "A08", "A11"],
+  B: ["B00", "B08", "B03", "B01", "B02", "B04", "B0C"],
+  C: ["C00", "C01", "C02", "C03", "C04", "C14", "C16", "C17", "C19", "C20", "C05", "C06", "C08"],
+  D: ["D01", "D07", "D08", "D09", "D10", "D11", "D14", "D15", "D02", "D03", "D04", "D05", "D06", "DD2", "D66", "D84", "D0C", "DK"],
+  X_TH: ["TH1", "TH3", "TH5", "TH6", "X02", "X03", "X10", "X01", "X21", "X25", "X70", "X74"]
 };
 
 export const calculateSubjectAverage = (semesters: SubjectSemesterScores): number => {

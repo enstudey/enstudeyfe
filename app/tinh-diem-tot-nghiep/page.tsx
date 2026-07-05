@@ -96,6 +96,7 @@ export default function CalculatorPage() {
   });
 
   const [transcriptThptScores, setTranscriptThptScores] = useState<Record<string, string>>({});
+  const [transcriptOtherLanguageType, setTranscriptOtherLanguageType] = useState<"Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian">("Korean");
   const [isTranscriptCalculated, setIsTranscriptCalculated] = useState(false);
   const [computedTranscriptData, setComputedTranscriptData] = useState<{
     totalScore: number;
@@ -401,6 +402,8 @@ export default function CalculatorPage() {
                 totalScore={computedTranscriptData?.totalScore || 0}
                 isCalculated={isTranscriptCalculated}
                 onCalculate={handleCalculateTranscript}
+                otherLanguageType={transcriptOtherLanguageType}
+                setOtherLanguageType={setTranscriptOtherLanguageType}
               />
 
               <div className="space-y-8 pt-6 border-t border-slate-100 dark:border-zinc-850">
