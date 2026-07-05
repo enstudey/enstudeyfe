@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -21,19 +21,58 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
     ? posts
     : posts.filter(post => post.category === selectedTab);
 
+  // Chỉ đọc URL search params khi component đã mounted ở client (Hydration Safety)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const params = new URLSearchParams(window.location.search);
+      const pageVal = parseInt(params.get("page") || "1", 10);
+      if (!isNaN(pageVal) && pageVal > 0) {
+        setCurrentPage(pageVal);
+      }
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Tính toán phân trang
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const paginatedPosts = filteredPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
-
-  // Cuộn mượt lên đầu danh sách bài viết khi chuyển trang hoặc tab
+  // Chuyển trang kết hợp cập nhật URL và smooth scroll lên đầu danh sách bài viết
   const handlePageChange = (page: number) => {
+    if (page < 1 || page > totalPages) return;
     setCurrentPage(page);
-    const feedElement = document.getElementById("posts-feed");
-    if (feedElement) {
-      feedElement.scrollIntoView({ behavior: "smooth" });
-    }
+    
+    // Cập nhật URL ngầm
+    const newUrl = `${window.location.pathname}?page=${page}`;
+    window.history.pushState(null, "", newUrl);
+
+    // Đợi DOM cập nhật rồi mới cuộn mượt
+    setTimeout(() => {
+      const feedElement = document.getElementById("posts-feed");
+      if (feedElement) {
+        const yOffset = -80; // Bù trừ chiều cao Header cố định
+        const y = feedElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 50);
+  };
+
+  const handleTabChange = (tabId: string) => {
+    setSelectedTab(tabId);
+    setCurrentPage(1);
+    const newUrl = window.location.pathname;
+    window.history.pushState(null, "", newUrl);
+
+    // Cuộn mượt khi đổi tab
+    setTimeout(() => {
+      const feedElement = document.getElementById("posts-feed");
+      if (feedElement) {
+        const yOffset = -80;
+        const y = feedElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 50);
   };
 
   return (
@@ -92,10 +131,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
           ].map(tab => (
             <button
               key={tab.id}
-              onClick={() => {
-                setSelectedTab(tab.id);
-                setCurrentPage(1);
-              }}
+              onClick={() => handleTabChange(tab.id)}
               className={`text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer ${
                 selectedTab === tab.id
                   ? "bg-orange-600 text-white"
@@ -163,39 +199,53 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
               </div>
             )}
 
-            {/* Pagination Controls */}
+            {/* Pagination Controls - Tối ưu hóa SEO & AdSense */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-2 pt-6">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className="px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
+                <Link
+                  href={`/tin-tuc?page=${currentPage - 1}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handlePageChange(currentPage - 1);
+                  }}
+                  className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 transition ${
+                    currentPage === 1 ? "pointer-events-none opacity-50" : ""
+                  }`}
                 >
                   &larr; Trước
-                </button>
+                </Link>
                 {Array.from({ length: totalPages }, (_, index) => {
                   const pageNumber = index + 1;
                   return (
-                    <button
+                    <Link
                       key={pageNumber}
-                      onClick={() => handlePageChange(pageNumber)}
-                      className={`w-8 h-8 text-xs font-bold rounded-lg transition cursor-pointer ${
+                      href={`/tin-tuc?page=${pageNumber}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handlePageChange(pageNumber);
+                      }}
+                      className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-lg transition ${
                         currentPage === pageNumber
                           ? "bg-orange-600 text-white"
                           : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800"
                       }`}
                     >
                       {pageNumber}
-                    </button>
+                    </Link>
                   );
                 })}
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  className="px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
+                <Link
+                  href={`/tin-tuc?page=${currentPage + 1}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handlePageChange(currentPage + 1);
+                  }}
+                  className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 transition ${
+                    currentPage === totalPages ? "pointer-events-none opacity-50" : ""
+                  }`}
                 >
                   Sau &rarr;
-                </button>
+                </Link>
               </div>
             )}
           </div>

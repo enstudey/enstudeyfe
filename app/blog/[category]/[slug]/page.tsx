@@ -49,7 +49,7 @@ export default async function BlogPostDetail({ params }: BlogPostPageProps) {
   }
 
   // Schema Markup JSON-LD (Article & FAQ)
-  const jsonLd: Record<string, any> = {
+  const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,

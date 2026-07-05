@@ -2,6 +2,10 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #f8fafc; /* bg-slate-50 */
   --foreground: #0f172a; /* text-slate-950 */

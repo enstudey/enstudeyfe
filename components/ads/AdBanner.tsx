@@ -34,7 +34,10 @@ export default function AdBanner() {
 
   useEffect(() => {
     // Pick a random mock ad on mount
-    setAdIndex(Math.floor(Math.random() * MOCK_ADS.length));
+    const timer = setTimeout(() => {
+      setAdIndex(Math.floor(Math.random() * MOCK_ADS.length));
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const ad = MOCK_ADS[adIndex];

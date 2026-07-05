@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {

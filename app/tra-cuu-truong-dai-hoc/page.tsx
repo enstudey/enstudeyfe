@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -33,18 +33,21 @@ export default function FinderPage() {
 
   // Đọc điểm đã lưu từ localStorage khi Component được mount
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("user_scores");
-      if (stored) {
-        setComputedScores(JSON.parse(stored));
+    const timer = setTimeout(() => {
+      try {
+        const stored = localStorage.getItem("user_scores");
+        if (stored) {
+          setComputedScores(JSON.parse(stored));
+        }
+      } catch (e) {
+        console.error("Lỗi khi đọc điểm từ localStorage", e);
       }
-    } catch (e) {
-      console.error("Lỗi khi đọc điểm từ localStorage", e);
-    }
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Thực hiện lọc dữ liệu
-  const applyFilters = () => {
+  const applyFilters = useCallback(() => {
     let list = (universitiesData as UniversityBenchmark[]);
 
     if (searchTerm.trim() !== "") {
@@ -65,11 +68,14 @@ export default function FinderPage() {
 
     setFilteredResults(list);
     setCurrentPage(1);
-  };
+  }, [searchTerm, selectedGroup, scoreRange]);
 
   useEffect(() => {
-    applyFilters();
-  }, [searchTerm, selectedGroup, scoreRange]);
+    const timer = setTimeout(() => {
+      applyFilters();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [applyFilters]);
 
   const totalPages = Math.ceil(filteredResults.length / itemsPerPage);
   const paginatedResults = filteredResults.slice(
