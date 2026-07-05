@@ -120,6 +120,11 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
           </div>
         </div>
 
+        {/* 2. Leaderboard Ad: Ngay dưới tiêu đề trang, trên danh mục lọc */}
+        <div className="ad-container ad-leaderboard w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl py-2 mb-4">
+          <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+        </div>
+
         {/* Categories filters */}
         <div id="posts-feed" className="flex flex-wrap gap-3 scroll-mt-20">
           {[
@@ -183,11 +188,10 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
                         </div>
                       </div>
                     </div>
-                    {idx === 1 && (
-                      <div className="col-span-full">
-                        <div className="ad-container ad-h-banner w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
-                          <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Quảng cáo AdSense</span>
-                        </div>
+                    {(idx === 1 || idx === 3) && idx < paginatedPosts.length - 1 && (
+                      <div className="col-span-full py-2">
+                        {/* Khung trống giữ chỗ chống CLS, Google AdSense Dashboard sẽ tự động chèn nhãn Quảng cáo đẹp mắt */}
+                        <div className="ad-container ad-in-feed w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 rounded-xl" />
                       </div>
                     )}
                   </React.Fragment>
@@ -196,6 +200,13 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
             ) : (
               <div className="text-center py-12 text-slate-500">
                 Không tìm thấy bài viết nào.
+              </div>
+            )}
+
+            {/* 3. Bottom Banner (Ngăn cách an toàn với thanh phân trang) */}
+            {totalPages > 1 && (
+              <div className="ad-container ad-bottom w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mt-8 mb-6">
+                <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
               </div>
             )}
 
@@ -208,7 +219,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
                     e.preventDefault();
                     handlePageChange(currentPage - 1);
                   }}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 transition ${
+                  className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
                     currentPage === 1 ? "pointer-events-none opacity-50" : ""
                   }`}
                 >
@@ -240,7 +251,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
                     e.preventDefault();
                     handlePageChange(currentPage + 1);
                   }}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 transition ${
+                  className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
                     currentPage === totalPages ? "pointer-events-none opacity-50" : ""
                   }`}
                 >
@@ -250,8 +261,8 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
             )}
           </div>
           <aside className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-24 ad-container ad-sidebar w-full min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
-              <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Quảng cáo Sidebar</span>
+            <div className="sticky top-24 ad-container ad-sidebar w-full min-h-[500px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
+              <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
             </div>
           </aside>
         </div>

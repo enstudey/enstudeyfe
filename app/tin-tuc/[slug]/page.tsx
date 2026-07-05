@@ -4,6 +4,28 @@ import ThemeToggle from "@/components/ThemeToggle";
 import Footer from "@/components/Footer";
 import { getAllPosts } from "@/lib/markdown";
 
+// Helper chèn quảng cáo vào giữa nội dung bài viết (chống CLS)
+function insertInArticleAd(htmlContent: string): string {
+  const adBlockHtml = `
+    <div class="ad-container ad-in-article my-8 w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl" contenteditable="false">
+      <span class="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold block text-center py-6 w-full">Quảng cáo</span>
+    </div>
+  `;
+  
+  if (htmlContent.includes("</h2>")) {
+    return htmlContent.replace("</h2>", "</h2>" + adBlockHtml);
+  } else {
+    let count = 0;
+    return htmlContent.replace(/<\/p>/g, (match) => {
+      count++;
+      if (count === 3) {
+        return match + adBlockHtml;
+      }
+      return match;
+    });
+  }
+}
+
 // Thiết lập Dynamic Metadata
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -90,15 +112,21 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             {post.title}
           </h1>
           <p className="text-xs text-slate-400 dark:text-zinc-500 mb-6">{post.date}</p>
+
+          {/* Under-title Ad: Dưới tiêu đề bài viết */}
+          <div className="ad-container ad-under-title w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mb-6">
+            <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+          </div>
+
           <div 
             className="text-base text-slate-700 dark:text-zinc-300 space-y-4 article-content"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            dangerouslySetInnerHTML={{ __html: insertInArticleAd(post.contentHtml) }}
           />
         </article>
 
-        {/* In-content Anti-CLS Ad Container */}
-        <div className="ad-container ad-v-block w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
-          <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Quảng cáo AdSense</span>
+        {/* End-of-article Ad: Cuối bài viết */}
+        <div className="ad-container ad-end w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mt-8">
+          <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
         </div>
       </main>
 
