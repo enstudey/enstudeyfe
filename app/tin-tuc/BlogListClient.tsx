@@ -1,0 +1,214 @@
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import ThemeToggle from "@/components/ThemeToggle";
+import Footer from "@/components/Footer";
+import { PostData } from "@/lib/markdown";
+
+interface BlogListClientProps {
+  posts: PostData[];
+}
+
+export default function BlogListClient({ posts }: BlogListClientProps) {
+  const [selectedTab, setSelectedTab] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const POSTS_PER_PAGE = 6;
+
+  // Lọc bài viết theo category tab
+  const filteredPosts = selectedTab === "all"
+    ? posts
+    : posts.filter(post => post.category === selectedTab);
+
+  // Tính toán phân trang
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+
+
+  // Cuộn mượt lên đầu danh sách bài viết khi chuyển trang hoặc tab
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    const feedElement = document.getElementById("posts-feed");
+    if (feedElement) {
+      feedElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
+      {/* Header */}
+      <header className="bg-white dark:bg-zinc-900 border-b border-slate-100 dark:border-zinc-800">
+        <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <Link href="/" className="font-bold text-2xl text-slate-950 dark:text-white tracking-tight">
+              EnStudy
+            </Link>
+            <div className="hidden md:flex gap-6">
+              <Link href="/tin-tuc" className="text-xs font-bold text-slate-950 dark:text-white border-b-2 border-orange-500 pb-1 uppercase tracking-wider">
+                Tin tức học thuật
+              </Link>
+              <Link href="/tinh-diem" className="text-xs font-bold text-slate-500 hover:text-slate-950 dark:hover:text-white transition-colors uppercase tracking-wider">
+                Công cụ tính điểm
+              </Link>
+              <Link href="/tra-cuu-truong-dai-hoc" className="text-xs font-bold text-slate-500 hover:text-slate-950 dark:hover:text-white transition-colors uppercase tracking-wider">
+                Tra cứu trường đại học
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-200 dark:border-zinc-700 relative">
+              <Image
+                alt="Student avatar"
+                fill
+                sizes="32px"
+                className="object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjghjyecPinfjIHMict2_kkli8HFkdKMaDr8VbTZGtaddaraGLrRiCkdV8QyB31wpQ9ezCMUTmPsl2UTMeWYFNZhm2knAWrGxu1F1jcp5h3m325xEViW3RF7NzHMEmcJeKngME5eug8vubbBgqlY7yx1PbIblqunhE1xNI4U0npKdg6FajzjUgBD1gkPaHydLxssd7BEWnkVIbmpnAz0srU9xBcDf0kAz06rDdw6HDHpSEk7O0oWwSaw"
+              />
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
+        <div className="flex justify-between items-end">
+          <div>
+            <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">Tin tức học thuật 🚀</h1>
+            <p className="text-slate-500 dark:text-zinc-400 text-sm">Cập nhật lộ trình học tập, cẩm nang ngữ pháp tiếng Anh tuyển sinh.</p>
+          </div>
+        </div>
+
+        {/* Categories filters */}
+        <div id="posts-feed" className="flex flex-wrap gap-3 scroll-mt-20">
+          {[
+            { id: "all", label: "Tất cả" },
+            { id: "skills", label: "Phương pháp" },
+            { id: "toeic", label: "TOEIC" },
+            { id: "ielts", label: "IELTS" },
+            { id: "grammar", label: "Ngữ pháp" }
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => {
+                setSelectedTab(tab.id);
+                setCurrentPage(1);
+              }}
+              className={`text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer ${
+                selectedTab === tab.id
+                  ? "bg-orange-600 text-white"
+                  : "bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-850"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-9 space-y-8">
+            {paginatedPosts.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {paginatedPosts.map((post, idx) => (
+                  <React.Fragment key={post.slug}>
+                    <div className="group bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl overflow-hidden hover:shadow-md transition duration-300 cursor-pointer flex flex-col justify-between">
+                      <div className="h-44 overflow-hidden relative">
+                        <Image
+                          alt={post.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 400px"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy68J4o8dKl44S0VEuDO6Uw6yz7fEltv-vTcFQFEIYSKKEofQSjsD1o5uKdsIypOpMo5j7-nmNBxyDavkE3KjfLKNuGRXrFv6I0Sn5cveFI9AL4gb3FCa6i5S1fJz9937QelwGnW-FNlOxE1HHI4bhwS0Iz49TA3Sp30gs7vgu3lNfI0_xK5zax-D1qeuhUr6rgeWmv0zt6p5qMGgH8eS2W-O2CaElRHOPrWHHjFviy3frXKzVTI43nQ"
+                        />
+                      </div>
+                      <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                        <div className="space-y-2">
+                          <span className="inline-block px-2.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 rounded-lg text-[10px] font-bold uppercase tracking-wider">
+                            #{post.category.toUpperCase()}
+                          </span>
+                          <h2 className="text-base font-bold text-slate-950 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors line-clamp-2">
+                            <Link href={`/tin-tuc/${post.slug}`}>
+                              {post.title}
+                            </Link>
+                          </h2>
+                          <p className="text-slate-500 dark:text-zinc-400 text-xs line-clamp-2 leading-relaxed">
+                            {post.description}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between pt-2">
+                          <div className="flex items-center gap-2 text-[10px] text-slate-400 dark:text-zinc-500 font-semibold uppercase tracking-wider">
+                            <span>{post.date}</span>
+                          </div>
+                          <Link href={`/tin-tuc/${post.slug}`} className="text-xs font-bold text-orange-600 dark:text-orange-500 hover:underline">
+                            Đọc tiếp &rarr;
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                    {idx === 1 && (
+                      <div className="col-span-full">
+                        <div className="ad-container ad-h-banner w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
+                          <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Quảng cáo AdSense</span>
+                        </div>
+                      </div>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12 text-slate-500">
+                Không tìm thấy bài viết nào.
+              </div>
+            )}
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 pt-6">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
+                >
+                  &larr; Trước
+                </button>
+                {Array.from({ length: totalPages }, (_, index) => {
+                  const pageNumber = index + 1;
+                  return (
+                    <button
+                      key={pageNumber}
+                      onClick={() => handlePageChange(pageNumber)}
+                      className={`w-8 h-8 text-xs font-bold rounded-lg transition cursor-pointer ${
+                        currentPage === pageNumber
+                          ? "bg-orange-600 text-white"
+                          : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800"
+                      }`}
+                    >
+                      {pageNumber}
+                    </button>
+                  );
+                })}
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
+                >
+                  Sau &rarr;
+                </button>
+              </div>
+            )}
+          </div>
+          <aside className="hidden lg:block lg:col-span-3">
+            <div className="sticky top-24 ad-container ad-sidebar w-full min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
+              <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Quảng cáo Sidebar</span>
+            </div>
+          </aside>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+}
