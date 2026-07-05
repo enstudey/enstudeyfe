@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { DonateModal, useDonateStatus } from "@/components/donate";
 
 import universitiesData from "@/data/universities-benchmark.json";
 
@@ -23,6 +24,10 @@ const LOCATION_OPTIONS = ["Tất cả khu vực", "Miền Bắc", "Miền Trung"
 
 export default function FinderPage() {
   const [computedScores, setComputedScores] = useState<Record<string, number> | null>(null);
+
+  // Trạng thái modal donate
+  const [isDonateOpen, setIsDonateOpen] = useState(false);
+  const { isAvailable } = useDonateStatus();
 
   // Bộ lọc nguyện vọng
   const [searchTerm, setSearchTerm] = useState("");
@@ -140,7 +145,17 @@ export default function FinderPage() {
             <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">
               Hệ thống tra cứu nguyện vọng thông minh 🔍
             </h1>
-            <p className="text-slate-500 dark:text-zinc-400 text-sm">Gợi ý và sắp xếp các nguyện vọng phù hợp với khoảng điểm và tổ hợp của bạn.</p>
+            <div className="flex items-center gap-3 flex-wrap mt-1">
+              <p className="text-slate-500 dark:text-zinc-400 text-sm">Gợi ý và sắp xếp các nguyện vọng phù hợp với khoảng điểm và tổ hợp của bạn.</p>
+              {isAvailable && (
+                <button
+                  onClick={() => setIsDonateOpen(true)}
+                  className="px-2.5 py-1 text-[11px] bg-orange-600/10 hover:bg-orange-600/20 text-orange-700 dark:text-orange-400 dark:bg-orange-500/10 dark:hover:bg-orange-500/20 font-bold rounded-lg transition cursor-pointer"
+                >
+                  ☕ Tiếp sức cho Admin
+                </button>
+              )}
+            </div>
           </div>
           <div className="flex gap-2 text-[10px] font-bold uppercase tracking-wider">
             <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-zinc-900 rounded-full">
@@ -365,6 +380,9 @@ export default function FinderPage() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Modal Donate */}
+      <DonateModal isOpen={isDonateOpen} onClose={() => setIsDonateOpen(false)} />
     </div>
   );
 }

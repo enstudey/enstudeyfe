@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { DonateSection } from "@/components/donate";
 
 export const metadata: Metadata = {
   title: "Giới thiệu về EnStudey - Nền tảng học tập & hướng nghiệp",
@@ -66,6 +67,9 @@ export default function AboutPage() {
               <li><strong>Email hỗ trợ:</strong> contact@enstudey.com</li>
             </ul>
           </section>
+
+          {/* Donate Section */}
+          <DonateSection />
 
           <p className="font-bold text-orange-600 dark:text-orange-500 mt-6">
             Cứ tự nhiên học tập và tra cứu nhé. Chúc bạn một mùa thi rực rỡ và đỗ ngay nguyện vọng 1! ✨

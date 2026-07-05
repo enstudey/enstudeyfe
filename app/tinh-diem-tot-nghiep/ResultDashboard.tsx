@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import { DonateModal, useDonateStatus } from "@/components/donate";
 
 interface Props {
   computedScores: Record<string, number> | null;
@@ -18,6 +19,9 @@ export default function ResultDashboard({
   setActiveTab,
   visibleScores
 }: Props) {
+  const [isDonateOpen, setIsDonateOpen] = useState(false);
+  const { isAvailable } = useDonateStatus();
+
   if (!computedScores || !highestGroup) return null;
 
   return (
@@ -89,6 +93,18 @@ export default function ResultDashboard({
         </div>
       )}
 
+      {/* Button Donate Tiếp Sức cho Admin */}
+      {isAvailable && (
+        <div className="flex justify-center mb-8">
+          <button
+            onClick={() => setIsDonateOpen(true)}
+            className="px-5 py-2.5 bg-orange-600/10 hover:bg-orange-600/20 text-orange-700 dark:text-orange-400 dark:bg-orange-500/10 dark:hover:bg-orange-500/20 font-bold rounded-xl text-xs uppercase tracking-wider transition cursor-pointer"
+          >
+            ☕ Tiếp sức cho Admin
+          </button>
+        </div>
+      )}
+
       <div className="text-[11px] text-slate-400 dark:text-zinc-500 italic text-center">
         * Kết quả tính điểm chỉ mang tính chất tham khảo và định hướng cá nhân. Vui lòng đối chiếu với đề án tuyển sinh chính thức của các trường Đại học.
       </div>
@@ -98,6 +114,9 @@ export default function ResultDashboard({
           Liên kết tài trợ
         </span>
       </div>
+
+      {/* Modal Donate */}
+      <DonateModal isOpen={isDonateOpen} onClose={() => setIsDonateOpen(false)} />
     </div>
   );
 }

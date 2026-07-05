@@ -1,0 +1,43 @@
+{
+  "bank_name": "MBBank",
+  "account_name": "NGUYEN DUC TAM",
+  "account_no": "70026112004",
+  "qr_template_url": "/qr-donate.png",
+  "donors": [
+    {
+      "name": "Nguyễn Đức T***",
+      "amount": "20k",
+      "message": "Thank kiu admin, có điểm chuẩn 2026 nhớ cập nhật luôn nhá."
+    },
+    {
+      "name": "Lê Trọng T***",
+      "amount": "50k",
+      "message": "Chúc admin có nhiều sức khỏe để ae có web xịn nhé."
+    },
+    {
+      "name": "Trần Linh C**",
+      "amount": "10k",
+      "message": "Đậu nguyện vọng 1 vào NEU nhaaa mnn!"
+    },
+    {
+      "name": "Phạm Minh H***",
+      "amount": "30k",
+      "message": "Web tính điểm siêu chuẩn, nhanh gọn lẹ."
+    },
+    {
+      "name": "Nguyễn Hoàng A***",
+      "amount": "100k",
+      "message": "Ủng hộ admin ly cà phê sữa đá Highland nha."
+    },
+    {
+      "name": "Vũ Mai P***",
+      "amount": "20k",
+      "message": "Tra cứu nguyện vọng trực quan và dễ hiểu quá ạ."
+    },
+    {
+      "name": "Người bạn giấu tên",
+      "amount": "15k",
+      "message": "Chúc dự án ngày càng phát triển và giúp ích nhiều bạn học sinh."
+    }
+  ]
+}
