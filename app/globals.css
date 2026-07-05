@@ -144,3 +144,16 @@ body {
 .dark .risk-zone {
   background-color: rgba(239, 68, 68, 0.15) !important;
 }
+
+/* Tối ưu hóa hình ảnh trong bài viết Markdown để tránh chói mắt ở Dark Mode */
+.dark img {
+  filter: opacity(.8) brightness(.9);
+  transition: filter 0.3s ease;
+}
+
+/* Tối ưu hóa độ chói của các quảng cáo banner Google AdSense trong Dark Mode */
+.dark .adsbygoogle {
+  filter: grayscale(10%) brightness(90%);
+  transition: filter 0.3s ease;
+}
+

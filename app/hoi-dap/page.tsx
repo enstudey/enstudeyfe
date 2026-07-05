@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ThemeToggle from "@/components/ThemeToggle";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const FAQ_ITEMS = [
@@ -35,38 +35,7 @@ export default function FAQPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
       {/* Header */}
-      <header className="bg-white dark:bg-zinc-900 border-b border-slate-100 dark:border-zinc-800">
-        <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="font-bold text-2xl text-slate-950 dark:text-white tracking-tight">
-              EnStudy
-            </Link>
-            <div className="hidden md:flex gap-6">
-              <Link href="/tin-tuc" className="text-xs font-bold text-slate-500 hover:text-slate-950 dark:hover:text-white transition-colors uppercase tracking-wider">
-                Tin tức học thuật
-              </Link>
-              <Link href="/tinh-diem" className="text-xs font-bold text-slate-500 hover:text-slate-950 dark:hover:text-white transition-colors uppercase tracking-wider">
-                Công cụ tính điểm
-              </Link>
-              <Link href="/tra-cuu-truong-dai-hoc" className="text-xs font-bold text-slate-500 hover:text-slate-950 dark:hover:text-white transition-colors uppercase tracking-wider">
-                Tra cứu trường đại học
-              </Link>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-200 dark:border-zinc-700 relative">
-              <Image
-                alt="Student avatar"
-                fill
-                sizes="32px"
-                className="object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjghjyecPinfjIHMict2_kkli8HFkdKMaDr8VbTZGtaddaraGLrRiCkdV8QyB31wpQ9ezCMUTmPsl2UTMeWYFNZhm2knAWrGxu1F1jcp5h3m325xEViW3RF7NzHMEmcJeKngME5eug8vubbBgqlY7yx1PbIblqunhE1xNI4U0npKdg6FajzjUgBD1gkPaHydLxssd7BEWnkVIbmpnAz0srU9xBcDf0kAz06rDdw6HDHpSEk7O0oWwSaw"
-              />
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-8">

@@ -1,52 +1,37 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
+  // Tránh hydration mismatch bằng cách kiểm tra trạng thái mounted của Client
   useEffect(() => {
-    // Check initial theme from localStorage or system preference
-    const timer = setTimeout(() => {
-      const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      
-      const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
-      setTheme(initialTheme);
-      
-      if (initialTheme === "dark") {
-        document.documentElement.classList.add("dark");
-        document.documentElement.classList.remove("light");
-      } else {
-        document.documentElement.classList.add("light");
-        document.documentElement.classList.remove("dark");
-      }
-    }, 0);
-    return () => clearTimeout(timer);
+    setMounted(true);
   }, []);
 
-  const toggleTheme = () => {
-    const nextTheme = theme === "light" ? "dark" : "light";
-    setTheme(nextTheme);
-    localStorage.setItem("theme", nextTheme);
+  if (!mounted) {
+    // Trả về nút placeholder có cùng kích thước để tránh CLS (Layout Shift)
+    return (
+      <div className="w-[38px] h-[38px] rounded-xl bg-card border border-card-border animate-pulse" />
+    );
+  }
 
-    if (nextTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-    } else {
-      document.documentElement.classList.add("light");
-      document.documentElement.classList.remove("dark");
-    }
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "light" ? "dark" : "light");
   };
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-xl bg-card border border-card-border hover:bg-background transition-colors text-lg"
+      className="p-2 rounded-xl bg-card border border-card-border hover:bg-background transition-colors text-lg cursor-pointer flex items-center justify-center w-[38px] h-[38px]"
       aria-label="Toggle theme"
       data-testid="btn-theme-toggle"
     >
-      {theme === "light" ? "🌙" : "☀️"}
+      {resolvedTheme === "light" ? "🌙" : "☀️"}
     </button>
   );
 }
+
