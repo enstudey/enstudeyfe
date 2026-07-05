@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -18,14 +18,18 @@ interface UniversityBenchmark {
   category: string;
 }
 
+const CATEGORY_OPTIONS = ["Tất cả nhóm ngành", "Kinh tế", "Công nghệ", "Y Dược"];
+const LOCATION_OPTIONS = ["Tất cả khu vực", "Miền Bắc", "Miền Trung", "Miền Nam"];
+
 export default function FinderPage() {
   const [computedScores, setComputedScores] = useState<Record<string, number> | null>(null);
 
   // Bộ lọc nguyện vọng
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGroup, setSelectedGroup] = useState("Tất cả tổ hợp");
+  const [selectedCategory, setSelectedCategory] = useState("Tất cả nhóm ngành");
+  const [selectedLocation, setSelectedLocation] = useState("Tất cả khu vực");
   const [scoreRange, setScoreRange] = useState<number>(30);
-  const [filteredResults, setFilteredResults] = useState<UniversityBenchmark[]>([]);
 
   // Phân trang
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,8 +61,8 @@ export default function FinderPage() {
     return () => clearInterval(interval);
   }, []);
 
-  // Thực hiện lọc dữ liệu
-  const applyFilters = useCallback(() => {
+  // Thực hiện lọc dữ liệu đa chiều bằng useMemo để tối ưu hóa hiệu năng
+  const filteredResults = useMemo(() => {
     let list = (universitiesData as UniversityBenchmark[]);
 
     if (searchTerm.trim() !== "") {
@@ -75,18 +79,23 @@ export default function FinderPage() {
       list = list.filter(item => item.subjectGroup.includes(selectedGroup));
     }
 
+    if (selectedCategory !== "Tất cả nhóm ngành") {
+      list = list.filter(item => item.category === selectedCategory);
+    }
+
+    if (selectedLocation !== "Tất cả khu vực") {
+      list = list.filter(item => item.location === selectedLocation);
+    }
+
     list = list.filter(item => item.benchmark <= scoreRange);
 
-    setFilteredResults(list);
-    setCurrentPage(1);
-  }, [searchTerm, selectedGroup, scoreRange]);
+    return list;
+  }, [searchTerm, selectedGroup, selectedCategory, selectedLocation, scoreRange]);
 
+  // Reset trang về 1 khi tiêu chí lọc thay đổi
   useEffect(() => {
-    const timer = setTimeout(() => {
-      applyFilters();
-    }, 0);
-    return () => clearTimeout(timer);
-  }, [applyFilters]);
+    setCurrentPage(1);
+  }, [searchTerm, selectedGroup, selectedCategory, selectedLocation, scoreRange]);
 
   const totalPages = Math.ceil(filteredResults.length / itemsPerPage);
   const paginatedResults = filteredResults.slice(
@@ -109,9 +118,11 @@ export default function FinderPage() {
     if (userScore === 0) return "";
 
     const diff = userScore - item.benchmark;
-    if (diff >= 1.5) return "safe-zone";
-    if (diff <= -1.5) return "risk-zone";
-    return "fight-zone";
+    
+    // Áp dụng đúng quy tắc BR-2 trong 0-ba-spec.md
+    if (diff >= 1.5) return "safe-zone";      // T >= D + 1.5
+    if (diff <= -1.5) return "risk-zone";    // T <= D - 1.5
+    return "fight-zone";                     // D - 1.5 < T < D + 1.5
   };
 
   return (
@@ -142,13 +153,28 @@ export default function FinderPage() {
         </div>
 
         {computedScores ? (
-          <div className="bg-orange-50/50 dark:bg-zinc-900 border border-orange-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 dark:text-zinc-350 flex justify-between items-center">
-            <span>
-              Hệ thống đang đối sánh tự động dựa trên điểm số đã tính: A00: {computedScores.A00} | A01: {computedScores.A01} | B00: {computedScores.B00} | D01: {computedScores.D01}
-            </span>
-            <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-500 hover:underline">
-              Tính điểm lại &rarr;
-            </Link>
+          <div className="space-y-4">
+            <div className="bg-orange-50/50 dark:bg-zinc-900 border border-orange-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 dark:text-zinc-350 flex justify-between items-center">
+              <span>
+                Hệ thống đang đối sánh tự động dựa trên điểm số đã tính: A00: {computedScores.A00} | A01: {computedScores.A01} | B00: {computedScores.B00} | D01: {computedScores.D01}
+              </span>
+              <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-500 hover:underline">
+                Tính điểm lại &rarr;
+              </Link>
+            </div>
+            
+            {/* Anti-CLS In-feed AdSlot dưới phần điểm tổng */}
+            <div 
+              key={`infeed-${adKey}`}
+              className="ad-container ad-v-block w-full min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 flex flex-col items-center justify-center p-4 border border-dashed border-slate-200 dark:border-zinc-800 rounded-2xl transition duration-300"
+              data-testid="ad-infeed-points"
+            >
+              <div className="text-center space-y-2">
+                <span className="text-[10px] text-slate-400 dark:text-zinc-500 font-bold uppercase tracking-wider block">Liên kết tài trợ</span>
+                <p className="font-bold text-sm text-slate-700 dark:text-zinc-350">Lộ trình học IELTS 7.5+ cấp tốc cho học sinh lớp 12</p>
+                <p className="text-xs text-slate-400 dark:text-zinc-500">Đăng ký ngay hôm nay để nhận học bổng giảm giá 30% học phí tại EnStudey.</p>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-4 text-xs font-semibold text-slate-600 dark:text-zinc-400 flex justify-between items-center">
@@ -169,6 +195,7 @@ export default function FinderPage() {
                 placeholder="Nhập mã trường, tên ngành..."
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
+                data-testid="input-search"
                 className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
               />
             </div>
@@ -177,13 +204,41 @@ export default function FinderPage() {
               <select
                 value={selectedGroup}
                 onChange={e => setSelectedGroup(e.target.value)}
+                data-testid="select-group"
                 className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
               >
                 <option>Tất cả tổ hợp</option>
                 <option>A00</option>
                 <option>A01</option>
                 <option>B00</option>
+                <option>C00</option>
                 <option>D01</option>
+              </select>
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Nhóm ngành đào tạo</label>
+              <select
+                value={selectedCategory}
+                onChange={e => setSelectedCategory(e.target.value)}
+                data-testid="select-category"
+                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+              >
+                {CATEGORY_OPTIONS.map(opt => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Khu vực địa lý</label>
+              <select
+                value={selectedLocation}
+                onChange={e => setSelectedLocation(e.target.value)}
+                data-testid="select-location"
+                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+              >
+                {LOCATION_OPTIONS.map(opt => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
               </select>
             </div>
             <div className="space-y-2">
@@ -198,13 +253,14 @@ export default function FinderPage() {
                 step="0.1"
                 value={scoreRange}
                 onChange={e => setScoreRange(parseFloat(e.target.value))}
+                data-testid="input-score-range"
                 className="w-full accent-orange-600 dark:accent-orange-500 cursor-pointer"
               />
             </div>
           </div>
 
           {/* Bảng kết quả bên phải */}
-          <div className="lg:col-span-9 overflow-hidden border border-slate-150 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm">
+          <div className="lg:col-span-9 overflow-hidden border border-slate-150 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-sm">
                 <thead>
@@ -228,24 +284,24 @@ export default function FinderPage() {
                           <td className="px-6 py-4 font-bold text-slate-600 dark:text-zinc-400 text-xs">{item.subjectGroup}</td>
                           <td className="px-6 py-4 text-right font-extrabold text-orange-600 dark:text-orange-500 text-base">{item.benchmark}</td>
                         </tr>
-                        {idx === 1 && (
+                        
+                        {/* Native Ads xen kẽ sau mỗi 5 kết quả */}
+                        {(idx + 1) % 5 === 0 && (
                           <tr className="bg-slate-50/20 dark:bg-zinc-950/20">
                             <td className="p-0" colSpan={4}>
-                              {/* Anti-CLS AdSlot Container bọc có định vị chiều cao và hỗ trợ auto-refresh bằng adKey */}
                               <div 
-                                key={adKey} 
-                                className="ad-container ad-h-banner w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-between px-6 py-4 rounded-xl transition duration-300"
+                                key={`native-${idx}-${adKey}`} 
+                                className="ad-container ad-h-banner w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 flex items-center justify-between px-6 py-4 rounded-xl transition duration-300"
+                                data-testid={`ad-native-result-${idx}`}
                               >
                                 <div className="flex items-center gap-3">
                                   <div className="w-12 h-12 bg-slate-200 dark:bg-zinc-850 rounded-xl flex items-center justify-center font-bold">🏫</div>
                                   <div>
-                                    <p className="font-bold text-sm text-slate-900 dark:text-white">Thông tin học bổng học phí 2026</p>
-                                    <p className="text-xs text-slate-400 dark:text-zinc-500 mt-0.5">Nhận ngay học bổng tài trợ 50% dành cho các tân sinh viên.</p>
+                                    <p className="font-bold text-sm text-slate-900 dark:text-white">Thông tin tuyển sinh 2026 chính thức</p>
+                                    <p className="text-xs text-slate-400 dark:text-zinc-500 mt-0.5">Nhận cẩm nang hướng dẫn đăng ký nguyện vọng Đại học miễn phí.</p>
                                   </div>
                                 </div>
-                                <button className="px-4 py-2 border-2 border-orange-600 hover:bg-orange-600 hover:text-white text-orange-600 text-xs font-extrabold rounded-full transition duration-200 cursor-pointer">
-                                  XEM CHI TIẾT
-                                </button>
+                                <span className="text-[9px] text-slate-400 dark:text-zinc-600 font-bold border border-slate-350 dark:border-zinc-800 rounded px-1">QUẢNG CÁO</span>
                               </div>
                             </td>
                           </tr>
@@ -261,6 +317,11 @@ export default function FinderPage() {
                   )}
                 </tbody>
               </table>
+            </div>
+
+            {/* Tuyên bố miễn trừ trách nhiệm ở chân bảng kết quả */}
+            <div className="px-6 py-4 bg-slate-50/50 dark:bg-zinc-950/30 border-t border-slate-100 dark:border-zinc-850 text-[11px] text-slate-400 dark:text-zinc-500 italic">
+              * Kết quả tra cứu và gợi ý mức độ an toàn chỉ mang tính chất tham khảo. Thí sinh bắt buộc phải đối chiếu với đề án tuyển sinh chính thức của các trường Đại học trước khi đăng ký nguyện vọng.
             </div>
 
             {/* Phân trang */}

@@ -8,18 +8,29 @@ export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const mountTimer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+
+    let showTimer: NodeJS.Timeout | undefined;
+
     try {
       const consent = localStorage.getItem("cookie_consent");
       if (consent !== "true") {
-        const timer = setTimeout(() => {
+        showTimer = setTimeout(() => {
           setIsVisible(true);
         }, 100);
-        return () => clearTimeout(timer);
       }
     } catch (e) {
       console.error("Failed to read cookie_consent from localStorage:", e);
     }
+
+    return () => {
+      clearTimeout(mountTimer);
+      if (showTimer) {
+        clearTimeout(showTimer);
+      }
+    };
   }, []);
 
   const handleAccept = () => {
