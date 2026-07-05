@@ -1,7 +1,7 @@
 ---
 title: "Ứng dụng phương pháp cung điện ký ức (Memory Palace) để ghi nhớ từ vựng dài"
 description: "Tìm hiểu cách xây dựng Cung điện ký ức để ghi nhớ những từ vựng tiếng Anh học thuật dài và phức tạp một cách trực quan sinh động."
-date: "2026-07-05"
+date: "2026-01-05"
 category: "skills"
 faq:
   - question: "Cung điện ký ức là gì?"

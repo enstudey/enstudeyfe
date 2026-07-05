@@ -1,7 +1,7 @@
 ---
 title: "Những khó khăn khi học viết tiếng Anh thường gặp và giải pháp khắc phục triệt để"
 description: "Phân tích các khó khăn lớn nhất khi tự học kỹ năng viết tiếng Anh tại nhà và gợi ý các giải pháp cải thiện hiệu quả nhất."
-date: "2026-07-05"
+date: "2026-03-31"
 category: "grammar"
 faq:
   - question: "Làm thế nào để cải thiện tư duy viết câu tiếng Anh?"

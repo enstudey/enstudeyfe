@@ -1,7 +1,7 @@
 ---
 title: "5 mẹo tránh bẫy từ vựng đồng nghĩa thường gặp trong đề thi TOEIC Part 1"
 description: "Tổng hợp các mẹo tránh bẫy từ vựng đồng nghĩa, từ đồng âm thường gặp trong đề thi TOEIC Part 1 Listening giúp bạn đạt điểm tuyệt đối."
-date: "2026-07-05"
+date: "2026-05-08"
 category: "toeic"
 faq:
   - question: "Làm sao để không bị lừa bởi các từ đồng âm trong Part 1?"

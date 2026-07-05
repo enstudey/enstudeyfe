@@ -1,7 +1,7 @@
 ---
 title: "Hướng dẫn chi tiết thủ tục và địa điểm đăng ký dự thi TOEIC tại Việt Nam"
 description: "Tổng hợp thông tin chi tiết về thủ tục đăng ký, lệ phí thi và các địa điểm thi TOEIC uy tín của IIG tại Việt Nam mới nhất."
-date: "2026-07-05"
+date: "2026-06-16"
 category: "toeic"
 faq:
   - question: "Đăng ký thi TOEIC cần chuẩn bị giấy tờ gì?"

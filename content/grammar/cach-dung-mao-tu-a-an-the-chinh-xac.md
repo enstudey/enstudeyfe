@@ -1,7 +1,7 @@
 ---
 title: "Phân biệt cách dùng mạo từ A, An và The một cách chính xác trong văn viết"
 description: "Hướng dẫn quy tắc sử dụng mạo từ xác định (The) và mạo từ bất định (A, An) chính xác trong ngữ pháp tiếng Anh viết."
-date: "2026-07-05"
+date: "2026-05-12"
 category: "grammar"
 faq:
   - question: "Khi nào dùng mạo từ An thay vì A?"

@@ -1,7 +1,7 @@
 ---
 title: "Tại sao học từ vựng tiếng Anh không hiệu quả? Nguyên nhân cốt lõi và cách xử lý nhanh"
 description: "Tìm hiểu các nguyên nhân cốt lõi khiến bạn học từ vựng tiếng Anh mãi không thuộc và các giải pháp khoa học giúp xử lý nhanh vấn đề."
-date: "2026-07-05"
+date: "2026-06-04"
 category: "skills"
 faq:
   - question: "Học bao nhiêu từ vựng một ngày là hợp lý?"

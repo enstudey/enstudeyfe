@@ -1,7 +1,7 @@
 ---
 title: "Trọn bộ công thức và dấu hiệu nhận biết 12 thì cơ bản trong tiếng Anh phổ thông"
 description: "Tổng hợp chi tiết công thức, cách dùng và các từ nhận biết của 12 thì tiếng Anh cơ bản giúp bạn nắm chắc kiến thức ngữ pháp."
-date: "2026-07-05"
+date: "2026-06-16"
 category: "grammar"
 faq:
   - question: "Làm sao để nhớ nhanh công thức 12 thì?"

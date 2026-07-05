@@ -1,7 +1,7 @@
 ---
 title: "Cách giải nhanh bài thi TOEIC Part 5 dựa theo dữ kiện ngữ pháp và phương pháp loại trừ"
 description: "Hướng dẫn phương pháp phân loại câu hỏi và giải nhanh TOEIC Part 5 chỉ trong 10-15 giây mỗi câu bằng kỹ năng loại trừ."
-date: "2026-07-05"
+date: "2026-06-07"
 category: "toeic"
 faq:
   - question: "Nên dành bao nhiêu thời gian cho Part 5?"

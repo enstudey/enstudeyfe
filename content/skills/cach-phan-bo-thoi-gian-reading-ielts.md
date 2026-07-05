@@ -1,7 +1,7 @@
 ---
 title: "Cách phân bổ thời gian làm bài Reading IELTS (Quy tắc 15-20-25)"
 description: "Làm thế nào để hoàn thành cả 3 đoạn văn Reading IELTS trong 60 phút mà vẫn đạt điểm tối đa?"
-date: "2026-07-05"
+date: "2026-05-30"
 category: "skills"
 faq:
   - question: "Quy tắc 15-20-25 là gì?"

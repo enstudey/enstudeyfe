@@ -1,7 +1,7 @@
 ---
 title: "Quy tắc 15-20-25: Bí quyết phân bổ thời gian làm bài Reading IELTS hiệu quả nhất"
 description: "Khám phá quy tắc 15-20-25 giúp bạn phân bổ thời gian làm bài IELTS Reading hợp lý, tránh việc thiếu giờ làm Passage 3."
-date: "2026-07-05"
+date: "2026-06-21"
 category: "ielts"
 faq:
   - question: "Quy tắc 15-20-25 hoạt động thế nào?"

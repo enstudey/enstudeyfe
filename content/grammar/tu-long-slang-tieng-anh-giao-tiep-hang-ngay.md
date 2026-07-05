@@ -1,7 +1,7 @@
 ---
 title: "Tổng hợp các từ lóng (Slang) tiếng Anh thường gặp nhất trong giao tiếp hằng ngày của giới trẻ"
 description: "Tổng hợp các từ lóng tiếng Anh giao tiếp thông dụng của giới trẻ giúp bạn hiểu rõ các bộ phim nước ngoài và giao tiếp tự nhiên hơn."
-date: "2026-07-05"
+date: "2026-01-13"
 category: "grammar"
 faq:
   - question: "Có nên sử dụng Slang trong bài thi IELTS Writing không?"

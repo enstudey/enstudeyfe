@@ -1,7 +1,7 @@
 ---
 title: "Chiến lược làm bài TOEIC Listening Part 3 dành cho người học có trí nhớ ngắn hạn"
 description: "Mách bạn chiến lược làm bài thi nghe TOEIC Part 3 hiệu quả cho người có trí nhớ ngắn hạn, không kịp ghi nhớ hết thông tin bài đối thoại."
-date: "2026-07-05"
+date: "2026-06-02"
 category: "toeic"
 faq:
   - question: "Part 3 TOEIC gồm những chủ đề đối thoại nào?"

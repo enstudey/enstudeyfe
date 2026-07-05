@@ -1,7 +1,7 @@
 ---
 title: "Mẹo chia động từ chính trong câu có danh từ tập hợp (Collective Nouns) làm chủ ngữ"
 description: "Hướng dẫn quy tắc chia động từ số ít hoặc số nhiều khi chủ ngữ là các danh từ tập hợp (Collective Nouns) dễ nhầm lẫn."
-date: "2026-07-05"
+date: "2026-04-02"
 category: "grammar"
 faq:
   - question: "Danh từ tập hợp là gì?"

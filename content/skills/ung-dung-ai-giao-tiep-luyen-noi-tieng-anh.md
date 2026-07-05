@@ -1,7 +1,7 @@
 ---
 title: "Xu hướng ứng dụng AI giao tiếp vào lộ trình luyện nói tiếng Anh cá nhân hóa"
 description: "Khám phá xu hướng ứng dụng trí tuệ nhân tạo (AI) trong việc luyện nói tiếng Anh giao tiếp cá nhân hóa hiệu quả vượt trội tại nhà."
-date: "2026-07-05"
+date: "2026-02-09"
 category: "skills"
 faq:
   - question: "AI có thể sửa lỗi phát âm chính xác không?"

@@ -1,7 +1,7 @@
 ---
 title: "10 sai lầm cần tránh khi tận dụng phim ảnh để luyện nghe nói tiếng Anh tại nhà"
 description: "Vạch trần 10 sai lầm phổ biến khi học tiếng Anh qua phim ảnh khiến bạn tốn thời gian mà không đạt hiệu quả cải thiện phát âm."
-date: "2026-07-05"
+date: "2026-05-14"
 category: "grammar"
 faq:
   - question: "Có nên bật phụ đề tiếng Việt khi xem phim không?"

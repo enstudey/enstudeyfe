@@ -1,7 +1,7 @@
 ---
 title: "Bí quyết Paraphrase (Viết lại câu) từ vựng ăn điểm trong IELTS Writing Task 2"
 description: "Hướng dẫn các phương pháp Paraphrase hiệu quả trong viết mở bài và triển khai ý tưởng cho bài thi IELTS Writing Task 2."
-date: "2026-07-05"
+date: "2026-06-15"
 category: "ielts"
 faq:
   - question: "Có những cách Paraphrase phổ biến nào?"

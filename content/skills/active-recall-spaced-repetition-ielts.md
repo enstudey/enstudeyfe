@@ -1,7 +1,7 @@
 ---
 title: "Bứt phá band điểm IELTS bằng cách kết hợp Spaced Repetition với kỹ thuật Active Recall"
 description: "Khám phá cách kết hợp giữa Lặp lại ngắt quãng (Spaced Repetition) và Gợi nhớ chủ động (Active Recall) để nâng band điểm từ vựng IELTS thần tốc."
-date: "2026-07-05"
+date: "2026-06-19"
 category: "skills"
 faq:
   - question: "Active Recall khác gì so với việc đọc lại bài thông thường?"

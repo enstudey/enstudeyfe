@@ -1,7 +1,7 @@
 ---
 title: "Trọn bộ từ vựng TOEIC chủ đề Job Advertising and Recruiting (Tuyển dụng và Việc làm)"
 description: "Tổng hợp từ vựng TOEIC chủ đề tuyển dụng nhân sự, quảng cáo việc làm kèm ví dụ minh họa chi tiết giúp bạn vượt qua các bài đọc Part 7 dễ dàng."
-date: "2026-07-05"
+date: "2026-04-16"
 category: "toeic"
 faq:
   - question: "Các từ vựng tuyển dụng hay gặp nhất là gì?"

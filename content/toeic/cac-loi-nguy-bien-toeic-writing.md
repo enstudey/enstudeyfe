@@ -1,7 +1,7 @@
 ---
 title: "Các lỗi ngụy biện thường gặp khiến học viên mất điểm oan trong bài thi TOEIC Writing"
 description: "Nhận diện và sửa đổi các lỗi lập luận ngụy biện thường gặp trong bài thi viết TOEIC Writing để cải thiện band điểm tối đa."
-date: "2026-07-05"
+date: "2026-01-14"
 category: "toeic"
 faq:
   - question: "TOEIC Writing gồm những phần thi nào?"

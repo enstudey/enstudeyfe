@@ -1,7 +1,7 @@
 ---
 title: "Trọn bộ từ vựng TOEIC chủ đề Office (Văn phòng) hay xuất hiện nhất trong Part 5 và 6"
 description: "Tổng hợp danh sách từ vựng TOEIC chủ đề văn phòng (Office) kèm theo nghĩa, phiên âm và ví dụ thực tế giúp bạn tự tin làm bài thi."
-date: "2026-07-05"
+date: "2026-04-01"
 category: "toeic"
 faq:
   - question: "Tại sao từ vựng văn phòng lại quan trọng trong thi TOEIC?"

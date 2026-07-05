@@ -1,7 +1,7 @@
 ---
 title: "5 sai lầm kinh điển khiến người mất gốc tự học tiếng Anh tại nhà mãi không tiến bộ"
 description: "Vạch trần 5 sai lầm phổ biến khi tự học tiếng Anh tại nhà và giải pháp khắc phục triệt để giúp người mất gốc bứt phá nhanh chóng."
-date: "2026-07-05"
+date: "2026-03-12"
 category: "skills"
 faq:
   - question: "Người mất gốc nên bắt đầu tự học từ đâu?"

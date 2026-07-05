@@ -1,7 +1,7 @@
 ---
 title: "Cách ứng dụng phương pháp SQ3R để cải thiện kỹ năng đọc hiểu bài thi quốc tế"
 description: "Hướng dẫn chi tiết phương pháp đọc hiểu SQ3R giúp cải thiện tốc độ và độ chính xác trong các bài thi IELTS Reading và TOEIC Reading."
-date: "2026-07-05"
+date: "2026-03-07"
 category: "skills"
 faq:
   - question: "SQ3R viết tắt của cụm từ gì?"

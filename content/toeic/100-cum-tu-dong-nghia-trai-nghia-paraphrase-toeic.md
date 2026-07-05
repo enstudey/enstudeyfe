@@ -1,7 +1,7 @@
 ---
 title: "Tổng hợp 100 cụm từ đồng nghĩa và trái nghĩa cốt lõi chuyên dùng để Paraphrase trong đề thi TOEIC"
 description: "Tài liệu tổng hợp 100 cụm từ đồng nghĩa và trái nghĩa cốt lõi xuất hiện liên tục trong đề thi TOEIC Reading giúp nâng cao điểm số của bạn."
-date: "2026-07-05"
+date: "2026-06-25"
 category: "toeic"
 faq:
   - question: "Paraphrase là gì và tại sao nó quan trọng trong TOEIC?"

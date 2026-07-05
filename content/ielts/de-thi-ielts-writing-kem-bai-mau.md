@@ -1,7 +1,7 @@
 ---
 title: "Tổng hợp đề thi IELTS Writing kèm bài mẫu chuẩn band cao – Cập nhật liên tục"
 description: "Tổng hợp đề thi IELTS Writing Task 1 và Task 2 thực tế kèm bài mẫu phân tích chi tiết chuẩn band 7.0+ trở lên."
-date: "2026-07-05"
+date: "2026-01-05"
 category: "ielts"
 faq:
   - question: "Học bài mẫu IELTS Writing thế nào cho hiệu quả?"

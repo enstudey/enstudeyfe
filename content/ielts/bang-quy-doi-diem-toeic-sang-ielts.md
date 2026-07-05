@@ -1,7 +1,7 @@
 ---
 title: "Bảng quy đổi điểm tương đương từ chứng chỉ TOEIC sang IELTS mới nhất"
 description: "Cập nhật bảng quy đổi điểm tương đương giữa chứng chỉ TOEIC và IELTS mới nhất giúp bạn so sánh và lựa chọn kỳ thi phù hợp."
-date: "2026-07-05"
+date: "2026-01-12"
 category: "ielts"
 faq:
   - question: "Quy đổi điểm TOEIC sang IELTS có giá trị pháp lý tương đương không?"

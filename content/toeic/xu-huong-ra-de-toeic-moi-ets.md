@@ -1,7 +1,7 @@
 ---
 title: "Phân tích xu hướng ra đề TOEIC mới của ETS và cách xây dựng chiến thuật làm bài"
 description: "Cập nhật phân tích xu hướng ra đề thi TOEIC mới nhất từ ETS và các thay đổi trong cách xây dựng chiến thuật ôn luyện."
-date: "2026-07-05"
+date: "2026-02-18"
 category: "toeic"
 faq:
   - question: "Cấu trúc đề thi TOEIC mới có gì thay đổi lớn không?"

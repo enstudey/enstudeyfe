@@ -1,7 +1,7 @@
 ---
 title: "Áp dụng kỹ thuật Foveal Processing để tăng tốc độ quét từ khóa trong IELTS Reading"
 description: "Tìm hiểu kỹ thuật đọc nhanh Foveal Processing giúp mở rộng tầm nhìn của mắt, tăng tốc độ tìm kiếm từ khóa trong IELTS Reading."
-date: "2026-07-05"
+date: "2026-05-25"
 category: "ielts"
 faq:
   - question: "Foveal Processing là gì?"

@@ -1,7 +1,7 @@
 ---
 title: "Phương pháp Spaced Repetition (Lặp lại ngắt quãng) trong học từ vựng TOEIC"
 description: "Làm thế nào để nhớ hàng ngàn từ vựng TOEIC mà không bao giờ quên? Hãy tìm hiểu phương pháp lặp lại ngắt quãng."
-date: "2026-07-05"
+date: "2026-02-01"
 category: "skills"
 faq:
   - question: "Nên lặp lại từ vựng theo chu kỳ nào?"

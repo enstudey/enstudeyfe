@@ -1,7 +1,7 @@
 ---
 title: "7 cách tạo động lực học tiếng Anh và duy trì cảm hứng mỗi ngày"
 description: "Tổng hợp 7 bí quyết giúp bạn duy trì kỷ luật tự học tiếng Anh bền bỉ và tạo động lực học tập tràn đầy năng lượng mỗi ngày."
-date: "2026-07-05"
+date: "2026-01-31"
 category: "skills"
 faq:
   - question: "Làm thế nào khi cảm thấy chán nản và muốn bỏ cuộc?"

@@ -1,7 +1,7 @@
 ---
 title: "Phương pháp học từ vựng theo ngữ cảnh (Contextual Learning) giúp nhớ lâu và ứng dụng chuẩn xác"
 description: "Học từ vựng theo ngữ cảnh giúp bạn hiểu sâu ý nghĩa từ, nhớ lâu và sử dụng từ vựng tiếng Anh một cách tự nhiên chuẩn xác nhất."
-date: "2026-07-05"
+date: "2026-04-26"
 category: "skills"
 faq:
   - question: "Thế nào là học từ vựng theo ngữ cảnh?"

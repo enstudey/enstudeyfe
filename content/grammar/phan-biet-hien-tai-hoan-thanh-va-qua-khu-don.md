@@ -1,7 +1,7 @@
 ---
 title: "Phân biệt cách sử dụng thì Hiện tại Hoàn thành và Quá khứ Đơn"
 description: "Phân biệt chi tiết sự khác nhau về cấu trúc, cách dùng và dấu hiệu nhận biết của thì Hiện tại Hoàn thành và Quá khứ Đơn."
-date: "2026-07-05"
+date: "2026-01-30"
 category: "grammar"
 faq:
   - question: "Dấu hiệu nhận biết chính của thì Quá khứ Đơn là gì?"

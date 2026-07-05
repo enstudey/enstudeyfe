@@ -1,7 +1,7 @@
 ---
 title: "Kỹ thuật dự đoán thông tin (Prediction) trước khi nghe trong đề thi TOEIC Part 4"
 description: "Hướng dẫn kỹ thuật đọc đề và dự đoán thông tin trước khi nghe giúp nâng cao tỷ lệ trả lời đúng trong đề thi TOEIC Part 4."
-date: "2026-07-05"
+date: "2026-02-20"
 category: "toeic"
 faq:
   - question: "Tại sao cần đọc trước câu hỏi Part 4?"

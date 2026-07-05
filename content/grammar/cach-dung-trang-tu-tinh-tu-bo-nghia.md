@@ -1,7 +1,7 @@
 ---
 title: "Cách sử dụng trạng từ và tính từ bổ nghĩa chính xác trong câu tiếng Anh giao tiếp"
 description: "Phân biệt vai trò, vị trí và cách sử dụng tính từ, trạng từ bổ nghĩa cho các thành phần khác trong câu tiếng Anh."
-date: "2026-07-05"
+date: "2026-07-04"
 category: "grammar"
 faq:
   - question: "Tính từ bổ nghĩa cho thành phần nào?"

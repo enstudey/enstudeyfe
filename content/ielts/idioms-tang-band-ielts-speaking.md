@@ -1,7 +1,7 @@
 ---
 title: "Tầm quan trọng của Idioms (Thành ngữ) trong việc cải thiện band điểm IELTS Speaking"
 description: "Hướng dẫn cách sử dụng thành ngữ (Idioms) một cách tự nhiên và chính xác để bứt phá lên band điểm 7.0+ IELTS Speaking."
-date: "2026-07-05"
+date: "2026-03-24"
 category: "ielts"
 faq:
   - question: "Sử dụng bao nhiêu Idioms trong bài thi Speaking là vừa đủ?"

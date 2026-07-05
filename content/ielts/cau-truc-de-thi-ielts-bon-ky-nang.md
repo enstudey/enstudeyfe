@@ -1,7 +1,7 @@
 ---
 title: "Phân tích chi tiết cấu trúc đề thi IELTS cho cả bốn kỹ năng Nghe, Nói, Đọc, Viết"
 description: "Tìm hiểu cấu trúc đề thi IELTS học thuật (Academic) chi tiết cho cả 4 kỹ năng giúp bạn lên lộ trình học tập hiệu quả."
-date: "2026-07-05"
+date: "2026-04-20"
 category: "ielts"
 faq:
   - question: "Thi IELTS gồm những hình thức nào?"

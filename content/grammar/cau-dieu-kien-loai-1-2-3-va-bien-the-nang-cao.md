@@ -1,7 +1,7 @@
 ---
 title: "Tổng hợp cấu trúc câu điều kiện loại 1, 2, 3 và các biến thể nâng cao"
 description: "Tổng hợp kiến thức câu điều kiện loại 1, 2, 3 và các dạng đảo ngữ, câu điều kiện hỗn hợp nâng cao đầy đủ nhất."
-date: "2026-07-05"
+date: "2026-03-10"
 category: "grammar"
 faq:
   - question: "Thế nào là câu điều kiện hỗn hợp?"

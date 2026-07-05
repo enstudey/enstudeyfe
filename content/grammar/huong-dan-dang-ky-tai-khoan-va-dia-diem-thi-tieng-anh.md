@@ -1,7 +1,7 @@
 ---
 title: "Hướng dẫn chi tiết cách đăng ký tài khoản trực tuyến và quy trình chọn địa điểm thi"
 description: "Hướng dẫn chi tiết các bước đăng ký tài khoản trực tuyến để thi các chứng chỉ quốc tế và kinh nghiệm chọn địa điểm thi phù hợp."
-date: "2026-07-05"
+date: "2026-01-14"
 category: "grammar"
 faq:
   - question: "Đăng ký tài khoản online trước bao nhiêu ngày là tốt nhất?"

@@ -1,7 +1,7 @@
 ---
 title: "Luyện nghe tiếng Anh thụ động (Tắm ngôn ngữ) – Giải pháp tối ưu cho người bận rộn"
 description: "Tìm hiểu phương pháp tắm ngôn ngữ giúp luyện nghe tiếng Anh thụ động hiệu quả cho những người bận rộn không có nhiều thời gian rảnh."
-date: "2026-07-05"
+date: "2026-04-24"
 category: "skills"
 faq:
   - question: "Tắm ngôn ngữ có giúp cải thiện kỹ năng nói không?"

@@ -1,7 +1,7 @@
 ---
 title: "Lộ trình tự học TOEIC tại nhà từ con số 0 lên 800+ trong 3 đến 5 tháng"
 description: "Chia sẻ lộ trình tự học TOEIC chi tiết từ con số 0 đến band điểm 800+ hiệu quả, tiết kiệm thời gian ngay tại nhà."
-date: "2026-07-05"
+date: "2026-02-27"
 category: "toeic"
 faq:
   - question: "Người mất gốc có tự học lên 800 TOEIC được không?"

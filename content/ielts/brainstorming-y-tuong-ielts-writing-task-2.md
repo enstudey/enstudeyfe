@@ -1,7 +1,7 @@
 ---
 title: "Kỹ thuật Brainstorming (Tìm ý tưởng) giúp triển khai luận điểm IELTS Writing Task 2 thần tốc"
 description: "Hướng dẫn kỹ thuật tìm ý tưởng (Brainstorming) nhanh chóng trong 5 phút đầu giờ thi giúp bài luận Task 2 mạch lạc, sâu sắc."
-date: "2026-07-05"
+date: "2026-07-06"
 category: "ielts"
 faq:
   - question: "Nên dành bao nhiêu thời gian để tìm ý tưởng trước khi viết?"

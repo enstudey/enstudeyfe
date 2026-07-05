@@ -1,7 +1,7 @@
 ---
 title: "Top 10 App học tiếng Anh miễn phí tốt nhất hỗ trợ cho việc thực hành hàng ngày"
 description: "Tổng hợp và đánh giá chi tiết top 10 ứng dụng học tiếng Anh miễn phí tốt nhất hiện nay giúp bạn tự học giao tiếp, từ vựng và ngữ pháp."
-date: "2026-07-05"
+date: "2026-04-23"
 category: "skills"
 faq:
   - question: "Có app miễn phí nào luyện phát âm tốt không?"

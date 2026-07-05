@@ -1,7 +1,7 @@
 ---
 title: "Thang điểm TOEIC và bảng quy đổi chi tiết số câu đúng sang điểm số thực tế"
 description: "Cập nhật bảng quy đổi điểm TOEIC chi tiết từ số câu trả lời đúng sang điểm số thực tế cho cả hai kỹ năng Listening và Reading."
-date: "2026-07-05"
+date: "2026-02-09"
 category: "toeic"
 faq:
   - question: "Điểm tối đa của bài thi TOEIC là bao nhiêu?"

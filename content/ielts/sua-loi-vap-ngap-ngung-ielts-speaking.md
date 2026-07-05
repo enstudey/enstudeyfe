@@ -1,7 +1,7 @@
 ---
 title: "Cách sửa lỗi vấp và nói ngập ngừng khi luyện IELTS Speaking một mình tại nhà"
 description: "Bí quyết giúp bạn khắc phục triệt để lỗi nói vấp, ngập ngừng (hesitation) để tăng điểm tiêu chí Fluency trong IELTS Speaking."
-date: "2026-07-05"
+date: "2026-02-20"
 category: "ielts"
 faq:
   - question: "Tại sao tôi lại hay bị ngập ngừng khi nói?"

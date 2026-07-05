@@ -1,7 +1,7 @@
 ---
 title: "Phân tích chi tiết cấu trúc 7 phần Nghe và Đọc của đề thi TOEIC mới nhất"
 description: "Tìm hiểu chi tiết cấu trúc đề thi TOEIC định dạng mới bao gồm 7 phần Listening và Reading giúp bạn chuẩn bị tốt nhất trước kỳ thi."
-date: "2026-07-05"
+date: "2026-05-18"
 category: "toeic"
 faq:
   - question: "Đề thi TOEIC gồm bao nhiêu câu hỏi và thời gian làm bài thế nào?"

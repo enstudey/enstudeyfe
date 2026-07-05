@@ -1,7 +1,7 @@
 ---
 title: "Cách viết dạng bài Natural Process (Quy trình tự nhiên) ăn điểm trong IELTS Writing Task 1"
 description: "Hướng dẫn chi tiết cách viết bài mô tả quy trình tự nhiên (Natural Process) trong IELTS Writing Task 1 chuẩn cấu trúc ăn điểm."
-date: "2026-07-05"
+date: "2026-05-21"
 category: "ielts"
 faq:
   - question: "Natural Process khác gì so với Manufacturing Process?"

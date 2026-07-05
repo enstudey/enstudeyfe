@@ -1,7 +1,7 @@
 ---
 title: "150 Collocations trong IELTS – Cách dùng chuẩn bản ngữ để tăng band Lexical Resource"
 description: "Tổng hợp 150 cụm từ cố định (Collocations) phổ biến trong kỳ thi IELTS giúp nâng cao điểm tiêu chí từ vựng của bạn."
-date: "2026-07-05"
+date: "2026-02-03"
 category: "ielts"
 faq:
   - question: "Collocation là gì?"

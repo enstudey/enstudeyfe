@@ -1,7 +1,7 @@
 ---
 title: "Phân biệt nhóm từ chỉ thu nhập dễ nhầm lẫn: Income, Pay, Salary, Wage và Earnings"
 description: "Phân biệt sự khác nhau tinh tế giữa các danh từ chỉ thu nhập: Income, Pay, Salary, Wage, Earnings để sử dụng chính xác trong văn viết."
-date: "2026-07-05"
+date: "2026-01-06"
 category: "grammar"
 faq:
   - question: "Wage và Salary khác nhau như thế nào?"

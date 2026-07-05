@@ -1,7 +1,7 @@
 ---
 title: "Tổng hợp từ vựng IELTS Writing Task 1 dạng Map (Bản đồ) và cách mô tả vị trí, phương hướng"
 description: "Cung cấp trọn bộ từ vựng và cấu trúc ngữ pháp dùng để mô tả sự thay đổi của bản đồ (Map) trong bài thi IELTS Writing Task 1."
-date: "2026-07-05"
+date: "2026-06-26"
 category: "ielts"
 faq:
   - question: "Dạng bài Map thường yêu cầu mô tả những gì?"

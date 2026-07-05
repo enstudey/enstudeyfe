@@ -1,7 +1,7 @@
 ---
 title: "Quy trình 3 bước khắc phục tâm lý căng thẳng trước khi bước vào phòng thi IELTS"
 description: "Chia sẻ quy trình 3 bước giúp bạn làm chủ tâm lý, giữ bình tĩnh tuyệt đối trước khi bước vào kỳ thi IELTS đầy áp lực."
-date: "2026-07-05"
+date: "2026-03-11"
 category: "skills"
 faq:
   - question: "Làm gì khi bị run trong phòng thi Speaking?"

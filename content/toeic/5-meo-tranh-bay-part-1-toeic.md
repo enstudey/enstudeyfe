@@ -1,7 +1,7 @@
 ---
 title: "5 Mẹo tránh bẫy Part 1 TOEIC cực kỳ hiệu quả"
 description: "Part 1 TOEIC thường gài những bẫy âm thanh tương tự hoặc mô tả sai hành động. Xem ngay mẹo khắc phục."
-date: "2026-07-05"
+date: "2026-06-05"
 category: "toeic"
 faq:
   - question: "Bẫy phổ biến nhất trong Part 1 TOEIC là gì?"
