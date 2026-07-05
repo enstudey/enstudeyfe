@@ -3,9 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getAllPosts } from "@/lib/markdown";
+import { getAllPosts, getRelatedPosts } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
 import TableOfContents from "@/components/TableOfContents";
+import RelatedArticles from "@/components/RelatedArticles";
 
 // Helper chèn quảng cáo vào giữa nội dung bài viết (chống CLS)
 function insertInArticleAd(htmlContent: string): string {
@@ -68,6 +69,8 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
     );
   }
 
+  const relatedPosts = getRelatedPosts(slug, post.category, 4);
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
       {/* Header */}
@@ -118,6 +121,23 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
         {/* End-of-article Ad: Cuối bài viết */}
         <div className="ad-container ad-end w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mt-8">
           <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+        </div>
+
+        {/* Bài viết liên quan */}
+        <RelatedArticles posts={relatedPosts} />
+
+        {/* CTA Mini-Test */}
+        <div className="mt-8 p-6 bg-orange-50 dark:bg-zinc-900/40 border border-orange-200 dark:border-zinc-800 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="space-y-1">
+            <h4 className="text-sm font-bold text-slate-950 dark:text-white">Thực hành ngay với Mini-Test hôm nay</h4>
+            <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium">Rèn luyện lý thuyết vừa đọc để nhớ lâu hơn nhé.</p>
+          </div>
+          <Link 
+            href="/tinh-diem" 
+            className="px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition duration-200 whitespace-nowrap"
+          >
+            Làm Test liền &rarr;
+          </Link>
         </div>
       </main>
 

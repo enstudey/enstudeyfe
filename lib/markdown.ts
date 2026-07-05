@@ -100,3 +100,10 @@ export function getAllPosts(): PostData[] {
   // Sort by date descending
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
+
+export function getRelatedPosts(currentSlug: string, category: string, limit: number = 4): PostData[] {
+  const allPosts = getAllPosts();
+  return allPosts
+    .filter(post => post.category === category && post.slug !== currentSlug)
+    .slice(0, limit);
+}
