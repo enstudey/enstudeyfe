@@ -4,13 +4,17 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Tránh hydration mismatch bằng cách kiểm tra trạng thái mounted của Client
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
+
 
   if (!mounted) {
     // Trả về nút placeholder có cùng kích thước để tránh CLS (Layout Shift)

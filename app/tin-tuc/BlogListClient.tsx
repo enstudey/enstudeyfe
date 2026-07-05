@@ -6,6 +6,7 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PostData } from "@/lib/markdown";
+import { getCategoryFallbackImage } from "@/lib/images";
 
 interface BlogListClientProps {
   posts: PostData[];
@@ -131,7 +132,7 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
                           fill
                           sizes="(max-width: 768px) 100vw, 400px"
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy68J4o8dKl44S0VEuDO6Uw6yz7fEltv-vTcFQFEIYSKKEofQSjsD1o5uKdsIypOpMo5j7-nmNBxyDavkE3KjfLKNuGRXrFv6I0Sn5cveFI9AL4gb3FCa6i5S1fJz9937QelwGnW-FNlOxE1HHI4bhwS0Iz49TA3Sp30gs7vgu3lNfI0_xK5zax-D1qeuhUr6rgeWmv0zt6p5qMGgH8eS2W-O2CaElRHOPrWHHjFviy3frXKzVTI43nQ"
+                          src={post.image || getCategoryFallbackImage(post.category)}
                         />
                       </div>
                       <div className="p-5 flex-1 flex flex-col justify-between space-y-3">

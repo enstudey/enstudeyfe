@@ -1,0 +1,11 @@
+// Ảnh fallback chuẩn cho từng danh mục chủ đề của EnStudy
+const CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
+  toeic: "https://lh3.googleusercontent.com/aida-public/AB6AXuCy68J4o8dKl44S0VEuDO6Uw6yz7fEltv-vTcFQFEIYSKKEofQSjsD1o5uKdsIypOpMo5j7-nmNBxyDavkE3KjfLKNuGRXrFv6I0Sn5cveFI9AL4gb3FCa6i5S1fJz9937QelwGnW-FNlOxE1HHI4bhwS0Iz49TA3Sp30gs7vgu3lNfI0_xK5zax-D1qeuhUr6rgeWmv0zt6p5qMGgH8eS2W-O2CaElRHOPrWHHjFviy3frXKzVTI43nQ",
+  ielts: "https://lh3.googleusercontent.com/aida-public/AB6AXuCy68J4o8dKl44S0VEuDO6Uw6yz7fEltv-vTcFQFEIYSKKEofQSjsD1o5uKdsIypOpMo5j7-nmNBxyDavkE3KjfLKNuGRXrFv6I0Sn5cveFI9AL4gb3FCa6i5S1fJz9937QelwGnW-FNlOxE1HHI4bhwS0Iz49TA3Sp30gs7vgu3lNfI0_xK5zax-D1qeuhUr6rgeWmv0zt6p5qMGgH8eS2W-O2CaElRHOPrWHHjFviy3frXKzVTI43nQ",
+  grammar: "https://lh3.googleusercontent.com/aida-public/AB6AXuCy68J4o8dKl44S0VEuDO6Uw6yz7fEltv-vTcFQFEIYSKKEofQSjsD1o5uKdsIypOpMo5j7-nmNBxyDavkE3KjfLKNuGRXrFv6I0Sn5cveFI9AL4gb3FCa6i5S1fJz9937QelwGnW-FNlOxE1HHI4bhwS0Iz49TA3Sp30gs7vgu3lNfI0_xK5zax-D1qeuhUr6rgeWmv0zt6p5qMGgH8eS2W-O2CaElRHOPrWHHjFviy3frXKzVTI43nQ",
+  skills: "https://lh3.googleusercontent.com/aida-public/AB6AXuCy68J4o8dKl44S0VEuDO6Uw6yz7fEltv-vTcFQFEIYSKKEofQSjsD1o5uKdsIypOpMo5j7-nmNBxyDavkE3KjfLKNuGRXrFv6I0Sn5cveFI9AL4gb3FCa6i5S1fJz9937QelwGnW-FNlOxE1HHI4bhwS0Iz49TA3Sp30gs7vgu3lNfI0_xK5zax-D1qeuhUr6rgeWmv0zt6p5qMGgH8eS2W-O2CaElRHOPrWHHjFviy3frXKzVTI43nQ",
+};
+
+export function getCategoryFallbackImage(category: string): string {
+  return CATEGORY_FALLBACK_IMAGES[category] ?? CATEGORY_FALLBACK_IMAGES["toeic"];
+}

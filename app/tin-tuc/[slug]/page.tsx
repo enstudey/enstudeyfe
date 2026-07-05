@@ -1,8 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getAllPosts } from "@/lib/markdown";
+import { getCategoryFallbackImage } from "@/lib/images";
 
 // Helper chèn quảng cáo vào giữa nội dung bài viết (chống CLS)
 function insertInArticleAd(htmlContent: string): string {
@@ -83,6 +85,17 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             {post.title}
           </h1>
           <p className="text-xs text-slate-400 dark:text-zinc-500 mb-6">{post.date}</p>
+
+          <div className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden mb-6">
+            <Image
+              src={post.image || getCategoryFallbackImage(post.category)}
+              alt={post.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 800px"
+              className="object-cover"
+              priority
+            />
+          </div>
 
           {/* Under-title Ad: Dưới tiêu đề bài viết */}
           <div className="ad-container ad-under-title w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mb-6">

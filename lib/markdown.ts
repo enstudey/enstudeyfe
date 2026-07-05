@@ -11,6 +11,7 @@ export interface PostData {
   title: string;
   description: string;
   date: string;
+  image?: string;
   contentHtml: string;
   faq?: Array<{ question: string; answer: string }>;
 }
@@ -31,6 +32,7 @@ export function getPostBySlug(category: string, slug: string): PostData | null {
       title: data.title || "",
       description: data.description || "",
       date: data.date || "",
+      image: data.image || "",
       contentHtml,
       faq: data.faq || [],
     };
@@ -38,6 +40,7 @@ export function getPostBySlug(category: string, slug: string): PostData | null {
     return null;
   }
 }
+
 
 export function getAllPosts(): PostData[] {
   const categories = ["skills", "toeic", "ielts", "grammar"];
