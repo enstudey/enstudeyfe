@@ -139,7 +139,7 @@ export default function CalculatorPage() {
           </p>
         </div>
 
-        <div className="bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl p-6 md:p-8 shadow-sm space-y-8">
+        <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-2xl p-6 md:p-8 shadow-sm space-y-8">
           
           <SubjectScoresInput
             scores={scores}
@@ -149,7 +149,7 @@ export default function CalculatorPage() {
             handleScoreChange={handleScoreChange}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t border-slate-100 dark:border-zinc-850">
+          <div className="space-y-8 pt-6 border-t border-slate-100 dark:border-zinc-850">
             <CertificateConverter
               certType={certType}
               setCertType={setCertType}
