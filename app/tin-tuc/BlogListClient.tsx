@@ -10,70 +10,47 @@ import { getCategoryFallbackImage } from "@/lib/images";
 
 interface BlogListClientProps {
   posts: PostData[];
+  initialPage: number;
 }
 
-export default function BlogListClient({ posts }: BlogListClientProps) {
+export default function BlogListClient({ posts, initialPage }: BlogListClientProps) {
   const [selectedTab, setSelectedTab] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(initialPage);
+  const [prevInitialPage, setPrevInitialPage] = useState(initialPage);
   const POSTS_PER_PAGE = 6;
+
+  // Render-phase derived state: đồng bộ currentPage khi initialPage từ Server Component thay đổi
+  if (initialPage !== prevInitialPage) {
+    setPrevInitialPage(initialPage);
+    setCurrentPage(initialPage);
+  }
 
   // Lọc bài viết theo category tab
   const filteredPosts = selectedTab === "all"
     ? posts
     : posts.filter(post => post.category === selectedTab);
 
-  // Chỉ đọc URL search params khi component đã mounted ở client (Hydration Safety)
+  // Cuộn mượt lên đầu danh sách bài viết khi chuyển trang hoặc chuyển tab
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const params = new URLSearchParams(window.location.search);
-      const pageVal = parseInt(params.get("page") || "1", 10);
-      if (!isNaN(pageVal) && pageVal > 0) {
-        setCurrentPage(pageVal);
-      }
-    }, 0);
-    return () => clearTimeout(timer);
-  }, []);
+    const feedElement = document.getElementById("posts-feed");
+    if (feedElement) {
+      const yOffset = -80; // Bù trừ chiều cao Header cố định
+      const y = feedElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }, [currentPage, selectedTab]);
 
   // Tính toán phân trang
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const paginatedPosts = filteredPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
-  // Chuyển trang kết hợp cập nhật URL và smooth scroll lên đầu danh sách bài viết
-  const handlePageChange = (page: number) => {
-    if (page < 1 || page > totalPages) return;
-    setCurrentPage(page);
-    
-    // Cập nhật URL ngầm
-    const newUrl = `${window.location.pathname}?page=${page}`;
-    window.history.pushState(null, "", newUrl);
-
-    // Đợi DOM cập nhật rồi mới cuộn mượt
-    setTimeout(() => {
-      const feedElement = document.getElementById("posts-feed");
-      if (feedElement) {
-        const yOffset = -80; // Bù trừ chiều cao Header cố định
-        const y = feedElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }, 50);
-  };
-
   const handleTabChange = (tabId: string) => {
     setSelectedTab(tabId);
     setCurrentPage(1);
-    const newUrl = window.location.pathname;
+    // Khi đổi tab, reset URL về trang 1
+    const newUrl = `${window.location.pathname}?page=1`;
     window.history.pushState(null, "", newUrl);
-
-    // Cuộn mượt khi đổi tab
-    setTimeout(() => {
-      const feedElement = document.getElementById("posts-feed");
-      if (feedElement) {
-        const yOffset = -80;
-        const y = feedElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }, 50);
   };
 
   return (
@@ -162,8 +139,10 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
 
                     {(idx === 1 || idx === 3) && idx < paginatedPosts.length - 1 && (
                       <div className="col-span-full py-2">
-                        {/* Khung trống giữ chỗ chống CLS, Google AdSense Dashboard sẽ tự động chèn nhãn Quảng cáo đẹp mắt */}
-                        <div className="ad-container ad-in-feed w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 rounded-xl" />
+                        {/* Khung trống giữ chỗ chống CLS, hiển thị nhãn Quảng cáo mờ */}
+                        <div className="ad-container ad-in-feed w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 rounded-xl flex items-center justify-center">
+                          <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+                        </div>
                       </div>
                     )}
                   </React.Fragment>
@@ -177,20 +156,16 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
 
             {/* 3. Bottom Banner (Ngăn cách an toàn với thanh phân trang) */}
             {totalPages > 1 && (
-              <div className="ad-container ad-bottom w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mt-8 mb-6">
+              <div className="ad-container ad-bottom w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mt-8 mb-6">
                 <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
               </div>
             )}
 
-            {/* Pagination Controls - Tối ưu hóa SEO & AdSense */}
+            {/* Pagination Controls - Tối ưu hóa SEO & AdSense (Crawlable) */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-2 pt-6">
                 <Link
                   href={`/tin-tuc?page=${currentPage - 1}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handlePageChange(currentPage - 1);
-                  }}
                   className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
                     currentPage === 1 ? "pointer-events-none opacity-50" : ""
                   }`}
@@ -203,10 +178,6 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
                     <Link
                       key={pageNumber}
                       href={`/tin-tuc?page=${pageNumber}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handlePageChange(pageNumber);
-                      }}
                       className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-lg transition ${
                         currentPage === pageNumber
                           ? "bg-orange-600 text-white"
@@ -219,10 +190,6 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
                 })}
                 <Link
                   href={`/tin-tuc?page=${currentPage + 1}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handlePageChange(currentPage + 1);
-                  }}
                   className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
                     currentPage === totalPages ? "pointer-events-none opacity-50" : ""
                   }`}

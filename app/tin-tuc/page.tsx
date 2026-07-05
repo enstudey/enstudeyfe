@@ -8,7 +8,15 @@ export const metadata: Metadata = {
   description: "Tổng hợp các phương pháp tự học tiếng Anh khoa học, cẩm nang luyện thi TOEIC, tài liệu ôn thi IELTS và kho tra cứu ngữ pháp tiếng Anh đầy đủ nhất.",
 };
 
-export default function BlogListPage() {
+interface PageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function BlogListPage({ searchParams }: PageProps) {
+  const resolvedSearchParams = await searchParams;
+  const pageParam = resolvedSearchParams.page;
+  const initialPage = typeof pageParam === "string" ? parseInt(pageParam, 10) : 1;
+
   const posts = getAllPosts();
-  return <BlogListClient posts={posts} />;
+  return <BlogListClient posts={posts} initialPage={initialPage} />;
 }

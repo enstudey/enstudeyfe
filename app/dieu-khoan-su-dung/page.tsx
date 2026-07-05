@@ -1,6 +1,14 @@
+import { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+export const metadata: Metadata = {
+  title: "Điều khoản dịch vụ - EnStudey",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function TermsOfServicePage() {
   return (

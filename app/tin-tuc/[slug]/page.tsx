@@ -5,27 +5,31 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getAllPosts } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
+import TableOfContents from "@/components/TableOfContents";
 
 // Helper chèn quảng cáo vào giữa nội dung bài viết (chống CLS)
 function insertInArticleAd(htmlContent: string): string {
   const adBlockHtml = `
-    <div class="ad-container ad-in-article my-8 w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl" contenteditable="false">
+    <div class="ad-container ad-in-article my-8 w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl" contenteditable="false">
       <span class="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold block text-center py-6 w-full">Quảng cáo</span>
     </div>
   `;
-  
-  if (htmlContent.includes("</h2>")) {
-    return htmlContent.replace("</h2>", "</h2>" + adBlockHtml);
-  } else {
+
+  // Đếm số <p> để quyết định có đủ ngưỡng 3 đoạn không
+  const paragraphCount = (htmlContent.match(/<\/p>/g) ?? []).length;
+
+  if (paragraphCount >= 3) {
+    // Tạo regex mới mỗi lần gọi (tránh bug lastIndex của global regex)
     let count = 0;
     return htmlContent.replace(/<\/p>/g, (match) => {
       count++;
-      if (count === 3) {
-        return match + adBlockHtml;
-      }
-      return match;
+      return count === 3 ? match + adBlockHtml : match;
     });
+  } else if (htmlContent.includes("</h2>")) {
+    return htmlContent.replace("</h2>", "</h2>" + adBlockHtml);
   }
+  
+  return htmlContent;
 }
 
 // Thiết lập Dynamic Metadata
@@ -97,8 +101,11 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             />
           </div>
 
+          {/* Table of Contents */}
+          <TableOfContents contentHtml={post.contentHtml} />
+
           {/* Under-title Ad: Dưới tiêu đề bài viết */}
-          <div className="ad-container ad-under-title w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mb-6">
+          <div className="ad-container ad-under-title w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mb-6">
             <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
           </div>
 
@@ -109,7 +116,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
         </article>
 
         {/* End-of-article Ad: Cuối bài viết */}
-        <div className="ad-container ad-end w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mt-8">
+        <div className="ad-container ad-end w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mt-8">
           <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
         </div>
       </main>

@@ -16,6 +16,37 @@ export interface PostData {
   faq?: Array<{ question: string; answer: string }>;
 }
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[đĐ]/g, "d")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
+function injectHeadingIds(html: string): string {
+  const usedIds = new Set<string>();
+  // Dùng [\s\S]*? thay vì .*? để match heading có nội dung nhiều dòng
+  return html.replace(/<h([23])>([\s\S]*?)<\/h\1>/g, (match, level, text) => {
+    const cleanText = text.replace(/<[^>]*>/g, "");
+    let slug = slugify(cleanText);
+    if (!slug) slug = `section-${level}`;
+    if (usedIds.has(slug)) {
+      let suffix = 1;
+      while (usedIds.has(`${slug}-${suffix}`)) {
+        suffix++;
+      }
+      slug = `${slug}-${suffix}`;
+    }
+    usedIds.add(slug);
+    return `<h${level} id="${slug}">${text}</h${level}>`;
+  });
+}
+
 export function getPostBySlug(category: string, slug: string): PostData | null {
   try {
     const fullPath = path.join(CONTENT_DIRECTORY, category, `${slug}.md`);
@@ -24,7 +55,8 @@ export function getPostBySlug(category: string, slug: string): PostData | null {
     }
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
-    const contentHtml = marked(content) as string;
+    const contentHtmlRaw = marked(content) as string;
+    const contentHtml = injectHeadingIds(contentHtmlRaw);
 
     return {
       slug,
