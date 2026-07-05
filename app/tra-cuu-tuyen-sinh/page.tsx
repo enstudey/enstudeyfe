@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -92,9 +92,12 @@ export default function FinderPage() {
     return list;
   }, [searchTerm, selectedGroup, selectedCategory, selectedLocation, scoreRange]);
 
-  // Reset trang về 1 khi tiêu chí lọc thay đổi
+  // Reset trang về 1 khi tiêu chí lọc thay đổi bằng setTimeout để tránh cascading renders
   useEffect(() => {
-    setCurrentPage(1);
+    const timer = setTimeout(() => {
+      setCurrentPage(1);
+    }, 0);
+    return () => clearTimeout(timer);
   }, [searchTerm, selectedGroup, selectedCategory, selectedLocation, scoreRange]);
 
   const totalPages = Math.ceil(filteredResults.length / itemsPerPage);
