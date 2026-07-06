@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -94,8 +95,9 @@ export default function Header({ isStatic = false }: HeaderProps) {
       <header className={headerClass} data-testid="header-container">
         <nav className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link href="/" className="font-bold text-2xl text-slate-950 dark:text-white tracking-tight" data-testid="link-logo">
-              EnStudy
+            <Link href="/" className="flex items-center gap-2 font-bold text-2xl text-slate-950 dark:text-white tracking-tight" data-testid="link-logo">
+              <Image src="/logo.svg" alt="EnStudy Logo" width={32} height={32} className="w-8 h-8" />
+              <span>EnStudy</span>
             </Link>
             <div className="hidden md:flex gap-6">
               <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news">

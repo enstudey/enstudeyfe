@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M50 20L15 40L50 60L85 40L50 20Z" fill="#1a2b4b" />
+  <path d="M15 40V65C15 65 30 75 50 75C70 75 85 65 85 65V40" fill="none" stroke="#1a2b4b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M85 40V60" fill="none" stroke="#1a2b4b" stroke-width="4" stroke-linecap="round" />
+  <circle cx="85" cy="62" r="3" fill="#1a2b4b" />
+  <path d="M50 45L55 35L65 30L55 25L50 15L45 25L35 30L45 35L50 45Z" fill="#ff6b00">
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+  </path>
+</svg>
