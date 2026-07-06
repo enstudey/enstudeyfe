@@ -54,7 +54,7 @@ function insertAffiliateTextLink(htmlContent: string): string {
       <span class="text-[10px] uppercase tracking-wider text-orange-600 dark:text-orange-500 font-bold block mb-1">Gợi ý dành cho bạn</span>
       <p class="text-sm text-slate-700 dark:text-zinc-350 m-0 leading-relaxed">
         Bạn có thể tham khảo thêm tài liệu trong cuốn 
-        <a href="/go/${affiliateProduct.slug}" target="_blank" rel="noopener noreferrer nofollow" class="text-orange-600 dark:text-orange-500 hover:underline font-bold">${affiliateProduct.title}</a> 
+        <a href="/go/${affiliateProduct.slug}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-orange-600 dark:text-orange-500 hover:underline font-bold">${affiliateProduct.title}</a> 
         để ôn luyện hiệu quả hơn.
       </p>
     </div>

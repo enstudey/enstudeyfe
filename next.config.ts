@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import affiliateLinks from "./affiliate-links.json";
 
 const nextConfig: NextConfig = {
   images: {
@@ -12,7 +13,7 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    return [
+    const defaultRedirects = [
       {
         source: "/dashboard",
         destination: "/",
@@ -54,38 +55,15 @@ const nextConfig: NextConfig = {
         destination: "/blog/skills/cach-phan-bo-thoi-gian-reading-ielts",
         permanent: true,
       },
-      // --- Shopee Affiliate Redirects (302) ---
-      {
-        source: "/go/sach-toeic",
-        destination: "https://shopee.vn",
-        permanent: false,
-      },
-      {
-        source: "/go/balo-laptop",
-        destination: "https://shopee.vn",
-        permanent: false,
-      },
-      {
-        source: "/go/den-ban-led",
-        destination: "https://shopee.vn",
-        permanent: false,
-      },
-      {
-        source: "/go/hanh-trang-2026",
-        destination: "https://shopee.vn",
-        permanent: false,
-      },
-      {
-        source: "/go/sach-ielts-cam-12",
-        destination: "https://shopee.vn",
-        permanent: false,
-      },
-      {
-        source: "/go/sach-ets-toeic-2026",
-        destination: "https://shopee.vn",
-        permanent: false,
-      },
     ];
+
+    const affiliateRedirects = affiliateLinks.map((link) => ({
+      source: link.source,
+      destination: link.destination,
+      permanent: false,
+    }));
+
+    return [...defaultRedirects, ...affiliateRedirects];
   },
 };
 

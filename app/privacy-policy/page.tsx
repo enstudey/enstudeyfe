@@ -57,16 +57,16 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">3. LƯU Ý QUAN TRỌNG VỀ QUẢNG CÁO (Google AdSense) 🍪</h2>
+            <h2 className="text-lg font-bold text-slate-950 dark:text-white">3. LƯU Ý QUAN TRỌNG VỀ QUẢNG CÁO & TIẾP THỊ LIÊN KẾT (Shopee Affiliate) 🍪</h2>
             <p>
-              Để EnStudey có kinh phí duy trì server 24/7 và luôn mở cửa miễn phí cho tất cả các bạn học sinh, trang web có sử dụng hệ thống quảng cáo từ đối tác <strong>Google AdSense</strong>. Đây là quy định chung từ phía Google mà bạn cần lưu ý nha:
+              Để EnStudey có kinh phí duy trì server 24/7 và luôn mở cửa miễn phí cho tất cả các bạn học sinh, trang web có sử dụng hệ thống quảng cáo từ đối tác <strong>Google AdSense</strong> và các liên kết giới thiệu sản phẩm tiếp thị liên kết từ đối tác <strong>Shopee Affiliate</strong>. Đây là các quy định chung bạn cần lưu ý nha:
             </p>
             <ul className="list-disc pl-5 space-y-1">
               <li>
                 Các nhà cung cấp bên thứ ba, bao gồm cả Google, sẽ sử dụng <strong>Cookie</strong> để phân phát các quảng cáo phù hợp dựa trên các lượt truy cập trước đó của bạn vào EnStudey hoặc các trang web khác trên Internet.
               </li>
               <li>
-                Việc Google và các đối tác của họ sử dụng Cookie quảng cáo cho phép họ hiển thị những quảng cáo có liên quan và hữu ích nhất đến bạn.
+                Các liên kết giới thiệu sản phẩm (như sách học tiếng Anh, balo, đồ dùng học tập) hiển thị trên EnStudey sẽ chuyển hướng bạn đến trang mua sắm Shopee thông qua hệ thống Shopee Affiliate. Hoạt động này hoàn toàn không làm phát sinh thêm bất kỳ chi phí mua sắm nào cho bạn.
               </li>
               <li>
                 Bạn hoàn toàn có quyền chủ động <strong>từ chối</strong> việc sử dụng Cookie cho quảng cáo được cá nhân hóa bằng cách truy cập vào trang <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-orange-500 hover:underline">Cài đặt quảng cáo của Google</a>.

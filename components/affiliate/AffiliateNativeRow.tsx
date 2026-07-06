@@ -27,7 +27,7 @@ export default function AffiliateNativeRow({ rowIndex }: Props) {
         <a
           href={`/go/${product.slug}`}
           target="_blank"
-          rel="noopener noreferrer nofollow"
+          rel="noopener noreferrer nofollow sponsored"
           className="flex items-center justify-between gap-3 px-6 py-4 hover:bg-slate-100/30 dark:hover:bg-zinc-900/30 transition duration-200 group"
           data-testid={`affiliate-native-row-${rowIndex}`}
         >
@@ -49,7 +49,7 @@ export default function AffiliateNativeRow({ rowIndex }: Props) {
             </div>
           </div>
           <span className="text-[9px] text-slate-400 dark:text-zinc-600 font-bold border border-slate-200 dark:border-zinc-800 rounded px-1.5 py-0.5 flex-shrink-0 whitespace-nowrap">
-            GỢI Ý
+            LIÊN KẾT TIẾP THỊ
           </span>
         </a>
       </td>

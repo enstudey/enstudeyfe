@@ -52,11 +52,11 @@ export default function TermsOfServicePage() {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">3. Điều khoản về Quảng cáo và Duy trì hệ thống</h2>
-            <p>Để EnStudey có thể duy trì server hoạt động 24/7 và nâng cấp thêm nhiều công cụ xịn xò hơn cho bạn sử dụng hoàn toàn miễn phí, chúng mình có đặt các vị trí quảng cáo từ đối tác Google AdSense.</p>
+            <h2 className="text-lg font-bold text-slate-950 dark:text-white">3. Điều khoản về Quảng cáo, Tiếp thị liên kết và Duy trì hệ thống</h2>
+            <p>Để EnStudey có thể duy trì server hoạt động 24/7 và nâng cấp thêm nhiều công cụ hữu ích hơn cho bạn sử dụng hoàn toàn miễn phí, chúng mình có đặt các vị trí quảng cáo từ đối tác Google AdSense và chèn các liên kết tiếp thị Shopee Affiliate giới thiệu tài liệu học tập, hành trang học sinh.</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>Chúng mình cam kết các vị trí quảng cáo luôn được thiết kế gọn gàng, không che khuất bảng tính điểm hay nội dung bạn đang đọc.</li>
-              <li><strong>Nghiêm cấm hành vi gian lận:</strong> Mong bạn KHÔNG sử dụng bất kỳ phần mềm, công cụ tự động (bot) nào để bấm (click) liên tục vào quảng cáo trên EnStudey nhằm mục đích phá hoại. Nếu hệ thống phát hiện IP có hành vi bất thường, tụi mình buộc lòng phải chặn truy cập của bạn để bảo vệ hệ thống.</li>
+              <li>Chúng mình cam kết các vị trí quảng cáo và gợi ý tiếp thị luôn được thiết kế gọn gàng, không che khuất bảng tính điểm hay nội dung bạn đang đọc.</li>
+              <li><strong>Nghiêm cấm hành vi gian lận:</strong> Mong bạn KHÔNG sử dụng bất kỳ phần mềm, công cụ tự động (bot) nào để bấm (click) liên tục vào quảng cáo hoặc liên kết tiếp thị trên EnStudey nhằm mục đích phá hoại. Nếu hệ thống phát hiện IP có hành vi bất thường, tụi mình buộc lòng phải chặn truy cập của bạn để bảo vệ an toàn cho hệ thống.</li>
             </ul>
           </section>
 

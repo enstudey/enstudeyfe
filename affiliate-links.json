@@ -1,0 +1,26 @@
+[
+  {
+    "source": "/go/sach-toeic",
+    "destination": "https://shopee.vn"
+  },
+  {
+    "source": "/go/sach-ielts-cam-12",
+    "destination": "https://shopee.vn"
+  },
+  {
+    "source": "/go/sach-ets-toeic-2026",
+    "destination": "https://shopee.vn"
+  },
+  {
+    "source": "/go/hanh-trang-2026",
+    "destination": "https://shopee.vn"
+  },
+  {
+    "source": "/go/balo-laptop",
+    "destination": "https://shopee.vn"
+  },
+  {
+    "source": "/go/den-ban-led",
+    "destination": "https://shopee.vn"
+  }
+]
