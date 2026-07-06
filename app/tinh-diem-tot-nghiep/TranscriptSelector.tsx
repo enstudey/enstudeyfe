@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   TRANSCRIPT_SUBJECTS,
-  TRANSCRIPT_SUBJECT_GROUPS,
   TranscriptSubjectKey,
-  SubjectSemesterScores,
-  TRANSCRIPT_GROUP_CATEGORIES
+  SubjectSemesterScores
 } from "./utils";
 
 interface Props {
@@ -15,13 +13,6 @@ interface Props {
   semesterScores: Record<TranscriptSubjectKey, SubjectSemesterScores>;
   errors: Record<string, string>;
   handleScoreChange: (subKey: TranscriptSubjectKey, semKey: keyof SubjectSemesterScores, val: string) => void;
-  thptScores: Record<string, string>;
-  handleThptChange: (sub: string, val: string) => void;
-  subjectAvgs: Record<TranscriptSubjectKey, number>;
-  gpaSum: number;
-  priorityScore: number;
-  totalScore: number;
-  isCalculated: boolean;
   onCalculate: () => void;
   otherLanguageType: "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian";
   setOtherLanguageType: (val: "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian") => void;
@@ -45,183 +36,167 @@ const LANGUAGE_LABEL_MAPPING: Record<string, string> = {
   Russian: "Tiếng Nga"
 };
 
+// Phân nhóm môn học bạ để hiển thị co giãn
+const SUBJECT_GROUPS: {
+  id: "required" | "natural" | "social" | "other";
+  name: string;
+  subjects: TranscriptSubjectKey[];
+}[] = [
+  {
+    id: "required",
+    name: "Nhóm môn bắt buộc",
+    subjects: ["math", "literature", "english"]
+  },
+  {
+    id: "natural",
+    name: "Tổ hợp Khoa học Tự nhiên",
+    subjects: ["physics", "chemistry", "biology"]
+  },
+  {
+    id: "social",
+    name: "Tổ hợp Khoa học Xã hội",
+    subjects: ["history", "geography", "gdktpl"]
+  },
+  {
+    id: "other",
+    name: "Môn Công nghệ & Ngoại ngữ phụ",
+    subjects: ["informatics", "techIndustrial", "techAgricultural", "otherLanguage"]
+  }
+];
+
 export default function TranscriptSelector({
-  selectedGroup,
-  setSelectedGroup,
   semesterScores,
   errors,
   handleScoreChange,
-  thptScores,
-  handleThptChange,
-  subjectAvgs,
-  gpaSum,
-  priorityScore,
-  totalScore,
-  isCalculated,
   onCalculate,
   otherLanguageType,
   setOtherLanguageType
 }: Props) {
-  const [adKey, setAdKey] = useState(0);
-  const [activeCategory, setActiveCategory] = useState<string>("A");
+  // Trạng thái mở rộng của các nhóm môn học
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({
+    required: true, // Luôn mở
+    natural: false,
+    social: false,
+    other: false
+  });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAdKey(prev => prev + 1);
-    }, 45000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const subjects = TRANSCRIPT_SUBJECT_GROUPS[selectedGroup] || [];
-  const hasOtherLanguage = subjects.includes("otherLanguage");
-
-  const getThptSum = () => {
-    let sum = 0;
-    let complete = true;
-    subjects.forEach(sub => {
-      const score = parseFloat(thptScores[sub]);
-      if (isNaN(score)) {
-        complete = false;
-      } else {
-        sum += score;
-      }
-    });
-    return { sum, complete };
+  const toggleGroup = (groupId: string) => {
+    if (groupId === "required") return; // Bắt buộc luôn mở
+    setExpandedGroups(prev => ({
+      ...prev,
+      [groupId]: !prev[groupId]
+    }));
   };
 
-  const { sum: thptSum, complete: thptComplete } = getThptSum();
-  const hasThptFloorViolation = thptComplete && thptSum < 15.0;
-  const hasRequiredSubjects = subjects.includes("math") || subjects.includes("literature");
+  const renderSubjectInput = (subKey: TranscriptSubjectKey) => {
+    const rawName = TRANSCRIPT_SUBJECTS[subKey];
+    const subjectName = subKey === "otherLanguage" ? `Ngoại ngữ phụ (${LANGUAGE_LABEL_MAPPING[otherLanguageType]})` : rawName;
 
-  // Lấy danh sách tổ hợp thuộc Category đang active
-  const categoryGroups = TRANSCRIPT_GROUP_CATEGORIES[activeCategory] || [];
+    return (
+      <div key={subKey} className="space-y-3 bg-slate-50/50 dark:bg-zinc-900/40 p-4 border border-slate-100 dark:border-zinc-800/80 rounded-2xl animate-fade-in">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <span className="text-sm font-bold text-slate-700 dark:text-zinc-300">
+            Môn {subjectName}
+          </span>
+          {subKey === "otherLanguage" && (
+            <div className="flex items-center gap-2">
+              <label className="text-xs font-bold text-slate-500 dark:text-zinc-400">
+                Loại ngoại ngữ:
+              </label>
+              <select
+                value={otherLanguageType}
+                onChange={e => setOtherLanguageType(e.target.value as "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian")}
+                data-testid="select-transcript-other-lang"
+                className="px-2.5 py-1 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-lg focus:outline-none focus:border-orange-500 text-[11px] font-bold"
+              >
+                <option value="Korean">Tiếng Hàn</option>
+                <option value="Chinese">Tiếng Trung</option>
+                <option value="Japanese">Tiếng Nhật</option>
+                <option value="French">Tiếng Pháp</option>
+                <option value="German">Tiếng Đức</option>
+                <option value="Russian">Tiếng Nga</option>
+              </select>
+            </div>
+          )}
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+          {SEMESTERS.map(sem => {
+            const errorKey = `${subKey}_${sem.key}`;
+            const isErr = !!errors[errorKey];
+            return (
+              <div key={sem.key} className="space-y-1">
+                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase block">
+                  {sem.name}
+                </label>
+                <input
+                  type="number"
+                  step="0.1"
+                  placeholder="0.0"
+                  value={semesterScores[subKey]?.[sem.key] || ""}
+                  onChange={e => handleScoreChange(subKey, sem.key, e.target.value)}
+                  data-testid={`input-transcript-${subKey}-${sem.key}`}
+                  className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-sm ${isErr
+                    ? "border-red-500 focus:border-red-500 text-red-500"
+                    : "border-slate-200 dark:border-zinc-850 focus:border-orange-500"
+                    }`}
+                />
+                {isErr && (
+                  <p className="text-red-500 text-[9px] font-semibold">{errors[errorKey]}</p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="space-y-6">
-      {/* Chọn Khối Tổ hợp (Tabs) */}
-      <div className="space-y-3">
-        <label className="text-sm font-bold text-slate-700 dark:text-zinc-300">
-          Chọn khối học bạ:
-        </label>
-        <div className="flex flex-wrap gap-2 border-b border-slate-100 dark:border-zinc-800 pb-3">
-          {[
-            { id: "A", name: "Khối A" },
-            { id: "B", name: "Khối B" },
-            { id: "C", name: "Khối C" },
-            { id: "D", name: "Khối D" },
-            { id: "X_TH", name: "Khối X & TH" }
-          ].map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => {
-                setActiveCategory(cat.id);
-                // Tự động select tổ hợp đầu tiên trong nhóm mới để tránh lệch state
-                const firstGroup = TRANSCRIPT_GROUP_CATEGORIES[cat.id]?.[0];
-                if (firstGroup) setSelectedGroup(firstGroup);
-              }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 cursor-pointer ${activeCategory === cat.id
-                ? "bg-slate-900 text-white dark:bg-zinc-100 dark:text-zinc-950"
-                : "bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300"
-                }`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Lựa chọn tổ hợp môn thuộc khối */}
-      <div className="space-y-3">
-        <label className="text-sm font-bold text-slate-700 dark:text-zinc-300">
-          Chọn tổ hợp môn xét tuyển:
-        </label>
-        <div className="flex flex-wrap gap-2">
-          {categoryGroups.map(group => (
-            <button
-              key={group}
-              onClick={() => setSelectedGroup(group)}
-              data-testid={`btn-select-group-${group}`}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${selectedGroup === group
-                ? "bg-orange-600 text-white shadow-md shadow-orange-500/20"
-                : "bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300"
-                }`}
-            >
-              {group}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Nhập loại ngoại ngữ khác nếu tổ hợp yêu cầu */}
-      {hasOtherLanguage && (
-        <div className="p-4 bg-orange-50/50 dark:bg-orange-955/10 border border-orange-500/20 rounded-2xl space-y-3 animate-fade-in">
-          <label className="text-xs font-bold text-slate-700 dark:text-zinc-300">
-            Chọn loại Ngoại ngữ phụ cho tổ hợp D:
-          </label>
-          <select
-            value={otherLanguageType}
-            onChange={e => setOtherLanguageType(e.target.value as "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian")}
-            data-testid="select-transcript-other-lang"
-            className="w-full sm:w-64 px-3 py-2 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 text-xs font-bold"
-          >
-            <option value="Korean">Tiếng Hàn</option>
-            <option value="Chinese">Tiếng Trung</option>
-            <option value="Japanese">Tiếng Nhật</option>
-            <option value="French">Tiếng Pháp</option>
-            <option value="German">Tiếng Đức</option>
-            <option value="Russian">Tiếng Nga</option>
-          </select>
-        </div>
-      )}
-
-      {/* Form nhập điểm 6 học kỳ */}
-      <div className="space-y-6 pt-4">
-        <div className="flex items-center justify-between border-l-4 border-orange-500 pl-3">
+      <div className="space-y-4 pt-2">
+        <div className="border-l-4 border-orange-500 pl-3">
           <h3 className="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-wider">
             1. Nhập điểm học bạ 6 học kỳ (Thang điểm 10)
           </h3>
-          <span className="px-3 py-1 bg-orange-100 dark:bg-orange-950/40 text-orange-700 dark:text-orange-400 font-bold text-xs rounded-full">
-            Tổ hợp {selectedGroup}
-          </span>
+          <p className="text-[11px] text-slate-500 dark:text-zinc-400 mt-1 italic font-medium">
+            * Mẹo gõ nhanh: Chỉ cần gõ liền số (ví dụ gõ 85 tự ra 8.5, gõ 775 tự ra 7.75) mà không cần gõ dấu chấm.
+          </p>
         </div>
 
-        <div className="space-y-6">
-          {subjects.map(subKey => {
-            const rawName = TRANSCRIPT_SUBJECTS[subKey];
-            const subjectName = subKey === "otherLanguage" ? `Ngoại ngữ phụ (${LANGUAGE_LABEL_MAPPING[otherLanguageType]})` : rawName;
+        <div className="space-y-4">
+          {SUBJECT_GROUPS.map(group => {
+            const isExpanded = expandedGroups[group.id];
             return (
-              <div key={subKey} className="space-y-3 bg-slate-50/50 dark:bg-zinc-900/40 p-4 border border-slate-100 dark:border-zinc-800/80 rounded-2xl">
-                <span className="text-sm font-bold text-slate-700 dark:text-zinc-300 block">
-                  Môn {subjectName}
-                </span>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-                  {SEMESTERS.map(sem => {
-                    const errorKey = `${subKey}_${sem.key}`;
-                    const isErr = !!errors[errorKey];
-                    return (
-                      <div key={sem.key} className="space-y-1">
-                        <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase block">
-                          {sem.name}
-                        </label>
-                        <input
-                          type="number"
-                          step="0.1"
-                          placeholder="0.0"
-                          value={semesterScores[subKey][sem.key] || ""}
-                          onChange={e => handleScoreChange(subKey, sem.key, e.target.value)}
-                          data-testid={`input-transcript-${subKey}-${sem.key}`}
-                          className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-sm ${isErr
-                            ? "border-red-500 focus:border-red-500 text-red-500"
-                            : "border-slate-200 dark:border-zinc-850 focus:border-orange-500"
-                            }`}
-                        />
-                        {isErr && (
-                          <p className="text-red-500 text-[9px] font-semibold">{errors[errorKey]}</p>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
+              <div key={group.id} className="border border-slate-200/60 dark:border-zinc-800/80 rounded-2xl overflow-hidden bg-white dark:bg-zinc-900/10">
+                {/* Accordion Header */}
+                <button
+                  type="button"
+                  onClick={() => toggleGroup(group.id)}
+                  className={`w-full px-5 py-4 flex items-center justify-between text-left transition ${
+                    group.id !== "required" ? "hover:bg-slate-50 dark:hover:bg-zinc-900/50 cursor-pointer" : ""
+                  }`}
+                >
+                  <span className="text-xs font-extrabold text-slate-800 dark:text-zinc-100 uppercase tracking-wider flex items-center gap-2">
+                    {group.name}
+                    {group.id === "required" && (
+                      <span className="px-2 py-0.5 bg-orange-100 dark:bg-orange-955/40 text-orange-700 dark:text-orange-400 text-[9px] font-bold rounded-full normal-case">
+                        Bắt buộc
+                      </span>
+                    )}
+                  </span>
+                  {group.id !== "required" && (
+                    <span className="text-slate-400 dark:text-zinc-500 font-extrabold text-xs transition duration-200">
+                      {isExpanded ? "▲ Thu gọn" : "▼ Mở rộng"}
+                    </span>
+                  )}
+                </button>
+
+                {/* Accordion Body */}
+                {isExpanded && (
+                  <div className="p-5 border-t border-slate-100 dark:border-zinc-800/60 space-y-4">
+                    {group.subjects.map(sub => renderSubjectInput(sub))}
+                  </div>
+                )}
               </div>
             );
           })}
@@ -229,7 +204,7 @@ export default function TranscriptSelector({
       </div>
 
       {/* Button tính điểm */}
-      <div className="pt-6 flex flex-col items-center border-t border-slate-100 dark:border-zinc-800/80">
+      <div className="pt-6 flex flex-col items-center border-t border-slate-100 dark:border-zinc-850">
         <button
           onClick={onCalculate}
           data-testid="btn-calculate-transcript"
@@ -239,122 +214,6 @@ export default function TranscriptSelector({
           <span className="font-bold">⚡</span>
         </button>
       </div>
-
-      {/* Hiển thị kết quả tính toán */}
-      {isCalculated && (
-        <div id="result-area" className="space-y-6 pt-6 border-t border-slate-100 dark:border-zinc-800/80">
-          <h3 className="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-wider border-l-4 border-orange-500 pl-3">
-            2. Kết quả tính điểm học bạ và Đối sánh quy chế
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-4 bg-slate-50/50 dark:bg-zinc-900/40 p-5 border border-slate-100 dark:border-zinc-800/80 rounded-2xl">
-              <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 tracking-wider uppercase block">
-                Điểm trung bình 6 học kỳ từng môn
-              </span>
-              <div className="space-y-2">
-                {subjects.map(sub => {
-                  const rawName = TRANSCRIPT_SUBJECTS[sub];
-                  const displayName = sub === "otherLanguage" ? `Ngoại ngữ phụ (${LANGUAGE_LABEL_MAPPING[otherLanguageType]})` : rawName;
-                  return (
-                    <div key={sub} className="flex justify-between items-center text-sm font-semibold">
-                      <span className="text-slate-600 dark:text-zinc-400">{displayName}</span>
-                      <span className="text-slate-900 dark:text-white font-bold">{subjectAvgs[sub]?.toFixed(2) || "0.00"}</span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="pt-4 border-t border-slate-200/55 dark:border-zinc-800 space-y-2 text-sm font-bold">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-500 dark:text-zinc-400">Tổng điểm 3 môn:</span>
-                  <span className="text-slate-900 dark:text-white">{gpaSum.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-500 dark:text-zinc-400">Điểm ưu tiên thực tế:</span>
-                  <span className="text-orange-600 dark:text-orange-400">+{priorityScore.toFixed(4)}</span>
-                </div>
-                <div className="flex justify-between items-center text-base pt-2 border-t border-dashed border-slate-200 dark:border-zinc-800">
-                  <span className="text-slate-800 dark:text-zinc-200">ĐIỂM XÉT TUYỂN HỌC BẠ:</span>
-                  <span className="text-xl text-orange-600 dark:text-orange-500 font-extrabold">{totalScore.toFixed(4)}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-4 bg-slate-50/50 dark:bg-zinc-900/40 p-5 border border-slate-100 dark:border-zinc-800/80 rounded-2xl flex flex-col justify-between">
-              <div className="space-y-4">
-                <span className="text-xs font-bold text-slate-400 dark:text-zinc-500 tracking-wider uppercase block">
-                  Xác thực điểm thi tốt nghiệp THPT tương ứng (Ngưỡng sàn 15đ)
-                </span>
-                <div className="grid grid-cols-3 gap-3">
-                  {subjects.map(sub => {
-                    const rawName = TRANSCRIPT_SUBJECTS[sub];
-                    const displayName = sub === "otherLanguage" ? `Ngoại ngữ phụ` : rawName;
-                    return (
-                      <div key={sub} className="space-y-1">
-                        <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase block">
-                          Thi {displayName}
-                        </label>
-                        <input
-                          type="number"
-                          step="0.1"
-                          placeholder="0.0"
-                          value={thptScores[sub] || ""}
-                          onChange={e => handleThptChange(sub, e.target.value)}
-                          data-testid={`input-thpt-${sub}`}
-                          className="w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 font-bold text-sm"
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <div className="pt-2 space-y-2 text-xs font-semibold">
-                  {!hasRequiredSubjects && (
-                    <div className="p-3 bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 border border-red-200/50 dark:border-red-900/50 rounded-xl">
-                      ⚠️ Tổ hợp xét tuyển học bạ bắt buộc phải chứa môn Toán hoặc môn Ngữ văn theo Quy chế 2026.
-                    </div>
-                  )}
-
-                  {hasThptFloorViolation && (
-                    <div className="p-3 bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 border border-red-200/50 dark:border-red-900/50 rounded-xl" data-testid="warning-thpt-floor">
-                      ⚠️ Kết quả xét học bạ không hợp lệ do tổng điểm thi tốt nghiệp THPT 3 môn tương ứng nhỏ hơn 15.0 điểm.
-                    </div>
-                  )}
-
-                  {!thptComplete && (
-                    <div className="p-3 bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 border border-blue-200/50 dark:border-blue-900/50 rounded-xl">
-                      ℹ️ Nhập điểm thi tốt nghiệp THPT tương ứng để kiểm tra điều kiện sàn 15 điểm bắt buộc.
-                    </div>
-                  )}
-
-                  {thptComplete && !hasThptFloorViolation && (
-                    <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-400 border border-emerald-200/50 dark:border-emerald-900/50 rounded-xl">
-                      ✓ Đạt điều kiện sàn thi tốt nghiệp THPT (tổng = {thptSum.toFixed(2)} &ge; 15.0).
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="text-[10px] text-slate-400 dark:text-zinc-500 font-semibold italic">
-                * Kết quả tính toán chỉ mang tính tham khảo và đối sánh.
-              </div>
-            </div>
-          </div>
-
-          {/* Anti-CLS In-feed AdSlot */}
-          <div
-            key={`infeed-${adKey}`}
-            className="ad-container ad-v-block w-full min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 flex flex-col items-center justify-center p-4 border border-dashed border-slate-200 dark:border-zinc-800 rounded-2xl transition duration-300"
-            data-testid="ad-infeed-transcript"
-          >
-            <div className="text-center space-y-2">
-              <span className="text-[10px] text-slate-400 dark:text-zinc-500 font-bold uppercase tracking-wider block">Liên kết tài trợ</span>
-              <p className="font-bold text-sm text-slate-700 dark:text-zinc-350">Lộ trình học IELTS 7.5+ cấp tốc cho xét tuyển Đại học học bạ</p>
-              <p className="text-xs text-slate-400 dark:text-zinc-500">Đăng ký ôn tập tại EnStudey để tối ưu hóa điểm số và chứng chỉ xét tuyển.</p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

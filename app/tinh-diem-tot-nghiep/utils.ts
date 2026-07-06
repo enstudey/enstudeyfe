@@ -285,7 +285,8 @@ export const TRANSCRIPT_SUBJECTS = {
   gdktpl: "GDKTPL",
   informatics: "Tin học",
   techIndustrial: "Công nghệ CN",
-  techAgricultural: "Công nghệ NN"
+  techAgricultural: "Công nghệ NN",
+  otherLanguage: "Ngoại ngữ phụ"
 } as const;
 
 export type TranscriptSubjectKey = keyof typeof TRANSCRIPT_SUBJECTS;
@@ -403,5 +404,71 @@ export const calculateTranscriptScore = (
   const totalScore = parseFloat((gpaSum + priorityScore).toFixed(4));
 
   return { totalScore, gpaSum, priorityScore };
+};
+
+export const formatInputScore = (val: string): string => {
+  if (/^\d+$/.test(val)) {
+    if (val.length === 3) {
+      const num = parseInt(val, 10);
+      if (num === 100) return "10";
+      return (num / 100).toString();
+    }
+    if (val.length === 2) {
+      const num = parseInt(val, 10);
+      if (num === 10) return "10";
+      return (num / 10).toString();
+    }
+  }
+  return val;
+};
+
+export const calculateAllTranscriptCombinations = (
+  semesterScores: Record<TranscriptSubjectKey, SubjectSemesterScores>,
+  otherLanguageType: "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian",
+  areaPriority: "KV3" | "KV2" | "KV2-NT" | "KV1",
+  objectPriority: "none" | "UT1" | "UT2"
+) => {
+  const subjectAvgs = {} as Record<TranscriptSubjectKey, number>;
+  const keys = Object.keys(TRANSCRIPT_SUBJECTS) as TranscriptSubjectKey[];
+  keys.forEach(k => {
+    subjectAvgs[k] = calculateSubjectAverage(semesterScores[k]);
+  });
+
+  let areaScore = 0;
+  if (areaPriority === "KV1") areaScore = 0.75;
+  if (areaPriority === "KV2-NT") areaScore = 0.5;
+  if (areaPriority === "KV2") areaScore = 0.25;
+
+  let objectScore = 0;
+  if (objectPriority === "UT1") objectScore = 2.0;
+  if (objectPriority === "UT2") objectScore = 1.0;
+
+  const basePriority = areaScore + objectScore;
+  const results: Record<string, number> = {};
+
+  Object.entries(TRANSCRIPT_SUBJECT_GROUPS).forEach(([groupName, subjects]) => {
+    const isValid = subjects.every(sub => (subjectAvgs[sub] || 0) > 0);
+    if (isValid) {
+      const gpaSum = subjects.reduce((acc, sub) => acc + (subjectAvgs[sub] || 0), 0);
+      const priorityScore = calculateTranscriptPriorityScore(gpaSum, basePriority);
+      const totalScore = parseFloat((gpaSum + priorityScore).toFixed(4));
+      results[groupName] = totalScore;
+    }
+  });
+
+  let maxGroup = "";
+  let maxVal = -1;
+  Object.entries(results).forEach(([grp, val]) => {
+    if (val > maxVal) {
+      maxVal = val;
+      maxGroup = grp;
+    }
+  });
+
+  return {
+    results,
+    highestGroup: maxGroup !== "" ? { name: maxGroup, score: maxVal } : null,
+    subjectAvgs
+  };
 };
 

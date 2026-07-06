@@ -32,7 +32,7 @@ export default function LandingPortalPage() {
         {/* Feature Cards / Portals */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto w-full">
           {/* Card 1: Blog */}
-          <div className="bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/20 dark:hover:border-orange-500/20 transition duration-300 flex flex-col justify-between text-left space-y-4">
+          <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/20 dark:hover:border-orange-500/20 transition duration-300 flex flex-col justify-between text-left space-y-4">
             <div className="space-y-2">
               <span className="text-3xl">🚀</span>
               <h2 className="text-lg font-bold text-slate-950 dark:text-white">Tin tức học thuật</h2>
@@ -49,7 +49,7 @@ export default function LandingPortalPage() {
           </div>
 
           {/* Card 2: Calculator */}
-          <div className="bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/20 dark:hover:border-orange-500/20 transition duration-300 flex flex-col justify-between text-left space-y-4">
+          <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/20 dark:hover:border-orange-500/20 transition duration-300 flex flex-col justify-between text-left space-y-4">
             <div className="space-y-2">
               <span className="text-3xl">✨</span>
               <h2 className="text-lg font-bold text-slate-950 dark:text-white">Tính điểm xét tuyển</h2>
@@ -66,7 +66,7 @@ export default function LandingPortalPage() {
           </div>
 
           {/* Card 3: Finder */}
-          <div className="bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/20 dark:hover:border-orange-500/20 transition duration-300 flex flex-col justify-between text-left space-y-4">
+          <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-orange-500/20 dark:hover:border-orange-500/20 transition duration-300 flex flex-col justify-between text-left space-y-4">
             <div className="space-y-2">
               <span className="text-3xl">🔍</span>
               <h2 className="text-lg font-bold text-slate-950 dark:text-white">Tra cứu trường Đại học</h2>

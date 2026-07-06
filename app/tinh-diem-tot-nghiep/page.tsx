@@ -8,16 +8,16 @@ import CertificateConverter from "./CertificateConverter";
 import PrioritySelector from "./PrioritySelector";
 import ResultDashboard from "./ResultDashboard";
 import TranscriptSelector from "./TranscriptSelector";
+import TranscriptResultDashboard from "./TranscriptResultDashboard";
 import TranscriptEligibilityList from "./TranscriptEligibilityList";
 import {
   calculateAllCombinations,
-  GROUP_MAPPING,
   TranscriptSubjectKey,
   SubjectSemesterScores,
   TRANSCRIPT_SUBJECTS,
   TRANSCRIPT_SUBJECT_GROUPS,
-  calculateSubjectAverage,
-  calculateTranscriptScore
+  formatInputScore,
+  calculateAllTranscriptCombinations
 } from "./utils";
 
 const INITIAL_SEMESTER_SCORES: SubjectSemesterScores = {
@@ -33,22 +33,32 @@ export default function CalculatorPage() {
   // Lựa chọn phương thức xét tuyển
   const [calculationMethod, setCalculationMethod] = useState<"THPT_EXAM" | "TRANSCRIPT">("THPT_EXAM");
 
-  // State phương thức 100 (Thi THPT) - Sử dụng Lazy Initializer để tránh warning linter cascading renders
-  const [scores, setScores] = useState(() => ({
-    math: "",
-    literature: "",
-    english: "",
-    otherLanguage: "",
-    physics: "",
-    chemistry: "",
-    biology: "",
-    history: "",
-    geography: "",
-    gdktpl: "",
-    informatics: "",
-    techIndustrial: "",
-    techAgricultural: ""
-  }));
+  // State phương thức 100 (Thi THPT) - Khôi phục từ LocalStorage
+  const [scores, setScores] = useState(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const stored = localStorage.getItem("user_raw_scores");
+        if (stored) return JSON.parse(stored);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    return {
+      math: "",
+      literature: "",
+      english: "",
+      otherLanguage: "",
+      physics: "",
+      chemistry: "",
+      biology: "",
+      history: "",
+      geography: "",
+      gdktpl: "",
+      informatics: "",
+      techIndustrial: "",
+      techAgricultural: ""
+    };
+  });
 
   const [otherLanguageType, setOtherLanguageType] = useState<"Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian" >("Korean");
   const [certType, setCertType] = useState<"none" | "ielts" | "toeic">("none");
@@ -59,17 +69,8 @@ export default function CalculatorPage() {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   
-  const [computedScores, setComputedScores] = useState<Record<string, number> | null>(() => {
-    if (typeof window !== "undefined") {
-      try {
-        const stored = localStorage.getItem("user_scores");
-        return stored ? JSON.parse(stored) : null;
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    return null;
-  });
+  // KHÔNG tự động hiển thị kết quả cũ khi tải trang (Đặt mặc định là null để bắt tính toán lại)
+  const [computedScores, setComputedScores] = useState<Record<string, number> | null>(null);
 
   const [highestGroup, setHighestGroup] = useState<{ name: string; score: number } | null>(null);
   const [appliedEquivNote, setAppliedEquivNote] = useState<string | null>(null);
@@ -79,36 +80,43 @@ export default function CalculatorPage() {
   const [selectedTranscriptGroup, setSelectedTranscriptGroup] = useState<string>("A00");
   
   const [semesterScores, setSemesterScores] = useState<Record<TranscriptSubjectKey, SubjectSemesterScores>>(() => {
+    const keys = Object.keys(TRANSCRIPT_SUBJECTS) as TranscriptSubjectKey[];
+    const init = {} as Record<TranscriptSubjectKey, SubjectSemesterScores>;
+    keys.forEach(k => {
+      init[k] = { ...INITIAL_SEMESTER_SCORES };
+    });
     if (typeof window !== "undefined") {
       try {
         const stored = localStorage.getItem("user_transcript_scores");
-        if (stored) return JSON.parse(stored);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          return { ...init, ...parsed };
+        }
       } catch (e) {
         console.error(e);
       }
     }
-    const keys = Object.keys(TRANSCRIPT_SUBJECTS) as TranscriptSubjectKey[];
-    const init: Partial<Record<TranscriptSubjectKey, SubjectSemesterScores>> = {};
-    keys.forEach(k => {
-      init[k] = { ...INITIAL_SEMESTER_SCORES };
-    });
-    return init as Record<TranscriptSubjectKey, SubjectSemesterScores>;
+    return init;
   });
 
-  const [transcriptThptScores, setTranscriptThptScores] = useState<Record<string, string>>({});
   const [transcriptOtherLanguageType, setTranscriptOtherLanguageType] = useState<"Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian">("Korean");
   const [isTranscriptCalculated, setIsTranscriptCalculated] = useState(false);
   const [computedTranscriptData, setComputedTranscriptData] = useState<{
-    totalScore: number;
-    gpaSum: number;
-    priorityScore: number;
+    results: Record<string, number>;
+    highestGroup: { name: string; score: number } | null;
     subjectAvgs: Record<TranscriptSubjectKey, number>;
   } | null>(null);
 
   const handleScoreChange = (subject: keyof typeof scores, val: string) => {
-    setScores(prev => ({ ...prev, [subject]: val }));
-    if (val !== "") {
-      const numVal = parseFloat(val);
+    const formattedVal = formatInputScore(val);
+    const newScores = { ...scores, [subject]: formattedVal };
+    setScores(newScores);
+    
+    // Tự động lưu vào LocalStorage
+    localStorage.setItem("user_raw_scores", JSON.stringify(newScores));
+
+    if (formattedVal !== "") {
+      const numVal = parseFloat(formattedVal);
       if (isNaN(numVal) || numVal < 0 || numVal > 10) {
         setErrors(prev => ({ ...prev, [subject]: "Điểm phải từ 0.0 - 10.0" }));
       } else {
@@ -129,17 +137,22 @@ export default function CalculatorPage() {
 
   // Thay đổi điểm học bạ
   const handleTranscriptScoreChange = (subKey: TranscriptSubjectKey, semKey: keyof SubjectSemesterScores, val: string) => {
-    setSemesterScores(prev => ({
-      ...prev,
+    const formattedVal = formatInputScore(val);
+    const newSemesterScores = {
+      ...semesterScores,
       [subKey]: {
-        ...prev[subKey],
-        [semKey]: val
+        ...semesterScores[subKey],
+        [semKey]: formattedVal
       }
-    }));
+    };
+    setSemesterScores(newSemesterScores);
+
+    // Tự động lưu vào LocalStorage
+    localStorage.setItem("user_transcript_scores", JSON.stringify(newSemesterScores));
 
     const errorKey = `${subKey}_${semKey}`;
-    if (val !== "") {
-      const numVal = parseFloat(val);
+    if (formattedVal !== "") {
+      const numVal = parseFloat(formattedVal);
       if (isNaN(numVal) || numVal < 0 || numVal > 10) {
         setErrors(prev => ({ ...prev, [errorKey]: "Điểm từ 0 - 10" }));
       } else {
@@ -158,9 +171,6 @@ export default function CalculatorPage() {
     }
   };
 
-  const handleTranscriptThptChange = (subject: string, val: string) => {
-    setTranscriptThptScores(prev => ({ ...prev, [subject]: val }));
-  };
 
   // Tính điểm thi tốt nghiệp THPT
   const handleCalculate = () => {
@@ -205,6 +215,9 @@ export default function CalculatorPage() {
 
     setComputedScores(results);
     setHighestGroup(bestGroup);
+    
+    // Lưu điểm thi tốt nghiệp và kết quả
+    localStorage.setItem("user_raw_scores", JSON.stringify(scores));
     localStorage.setItem("user_scores", JSON.stringify(results));
 
     setTimeout(() => {
@@ -215,65 +228,61 @@ export default function CalculatorPage() {
     }, 100);
   };
 
-  // Tính điểm học bạ
+  // Tính điểm học bạ (toàn bộ tổ hợp)
   const handleCalculateTranscript = () => {
-    const subjects = TRANSCRIPT_SUBJECT_GROUPS[selectedTranscriptGroup] || [];
     const newErrors: Record<string, string> = {};
-    let hasEmptyField = false;
+    let hasAnyScore = false;
 
-    subjects.forEach(sub => {
-      const semObj = semesterScores[sub];
+    // Đánh giá tất cả điểm học bạ đã nhập
+    Object.entries(semesterScores).forEach(([subKey, semObj]) => {
       Object.entries(semObj).forEach(([semKey, val]) => {
-        const errorKey = `${sub}_${semKey}`;
-        if (val === "") {
-          newErrors[errorKey] = "Bắt buộc";
-          hasEmptyField = true;
-        } else {
+        if (val !== "") {
+          hasAnyScore = true;
           const num = parseFloat(val);
           if (isNaN(num) || num < 0 || num > 10) {
-            newErrors[errorKey] = "Điểm từ 0 - 10";
+            newErrors[`${subKey}_${semKey}`] = "Điểm từ 0 - 10";
           }
         }
       });
     });
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      alert(hasEmptyField ? "Vui lòng nhập đầy đủ điểm các học kỳ." : "Vui lòng kiểm tra lại điểm số.");
+    if (!hasAnyScore) {
+      alert("Vui lòng nhập điểm học bạ các học kỳ để tính toán.");
       return;
     }
 
-    const subjectAvgs = {} as Record<TranscriptSubjectKey, number>;
-    const keys = Object.keys(TRANSCRIPT_SUBJECTS) as TranscriptSubjectKey[];
-    keys.forEach(k => {
-      subjectAvgs[k] = calculateSubjectAverage(semesterScores[k]);
-    });
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      alert("Vui lòng kiểm tra lại điểm số.");
+      return;
+    }
 
-    let areaScore = 0;
-    if (areaPriority === "KV1") areaScore = 0.75;
-    if (areaPriority === "KV2-NT") areaScore = 0.5;
-    if (areaPriority === "KV2") areaScore = 0.25;
-
-    let objectScore = 0;
-    if (objectPriority === "UT1") objectScore = 2.0;
-    if (objectPriority === "UT2") objectScore = 1.0;
-
-    const basePriority = areaScore + objectScore;
-
-    const result = calculateTranscriptScore(
-      subjectAvgs,
-      selectedTranscriptGroup,
-      basePriority
+    // Tính toán toàn bộ tổ hợp
+    const { results, highestGroup: bestGroup, subjectAvgs } = calculateAllTranscriptCombinations(
+      semesterScores,
+      transcriptOtherLanguageType,
+      areaPriority,
+      objectPriority
     );
 
+    if (Object.keys(results).length === 0) {
+      alert("Không tìm thấy tổ hợp hợp lệ nào. Vui lòng nhập điểm đầy đủ cho ít nhất một tổ hợp môn (ví dụ Toán, Lý, Hóa để có tổ hợp A00).");
+      return;
+    }
+
     setComputedTranscriptData({
-      ...result,
+      results,
+      highestGroup: bestGroup,
       subjectAvgs
     });
     setIsTranscriptCalculated(true);
 
+    if (bestGroup) {
+      setSelectedTranscriptGroup(bestGroup.name);
+    }
+
     localStorage.setItem("user_transcript_scores", JSON.stringify(semesterScores));
-    localStorage.setItem("user_transcript_group", selectedTranscriptGroup);
+    localStorage.setItem("user_transcript_group", bestGroup ? bestGroup.name : "A00");
 
     setTimeout(() => {
       const el = document.getElementById("result-area");
@@ -287,8 +296,15 @@ export default function CalculatorPage() {
     if (!computedScores) return [];
     let list = Object.entries(computedScores);
     if (activeTab !== "all") {
-      const allowed = GROUP_MAPPING[activeTab] || [];
-      list = list.filter(([grp]) => allowed.includes(grp));
+      const testMapping: Record<string, string[]> = {
+        A: ["A00", "A01", "A02", "A0T", "A0C", "A09", "A10", "A08", "AH2", "AH3", "AH4"],
+        B: ["B00", "B08", "B03", "B01", "B02", "B04", "B0C"],
+        C: ["C00", "C01", "C02", "C03", "C04", "C14", "C19", "C20", "C16", "C17", "C05", "C06", "C08"],
+        D: ["D01", "D07", "D08", "D09", "D10", "D11", "D14", "D15", "D02", "D03", "D04", "D05", "D06", "DD2", "D66", "D84", "D85", "D87", "D0C", "DK"],
+        X_TH: ["X01", "X21", "X25", "X70", "X74", "X02", "X06", "X10", "X26", "X46", "X03", "X07", "X12", "X27", "X28", "TH1", "TH3", "TH5", "TH6"]
+      };
+      const allowedList = testMapping[activeTab] || [];
+      list = list.filter(([grp]) => allowedList.includes(grp));
     }
     return list;
   };
@@ -394,13 +410,6 @@ export default function CalculatorPage() {
                 semesterScores={semesterScores}
                 errors={errors}
                 handleScoreChange={handleTranscriptScoreChange}
-                thptScores={transcriptThptScores}
-                handleThptChange={handleTranscriptThptChange}
-                subjectAvgs={computedTranscriptData?.subjectAvgs || {} as Record<TranscriptSubjectKey, number>}
-                gpaSum={computedTranscriptData?.gpaSum || 0}
-                priorityScore={computedTranscriptData?.priorityScore || 0}
-                totalScore={computedTranscriptData?.totalScore || 0}
-                isCalculated={isTranscriptCalculated}
                 onCalculate={handleCalculateTranscript}
                 otherLanguageType={transcriptOtherLanguageType}
                 setOtherLanguageType={setTranscriptOtherLanguageType}
@@ -416,13 +425,22 @@ export default function CalculatorPage() {
               </div>
 
               {isTranscriptCalculated && computedTranscriptData && (
-                <TranscriptEligibilityList
-                  selectedGroup={selectedTranscriptGroup}
-                  userScore={computedTranscriptData.totalScore}
-                  gpaSum={computedTranscriptData.gpaSum}
-                  thptScores={transcriptThptScores}
-                  subjects={subjectsInTranscriptGroup}
-                />
+                <>
+                  <TranscriptResultDashboard
+                    computedScores={computedTranscriptData.results}
+                    highestGroup={computedTranscriptData.highestGroup}
+                    selectedGroup={selectedTranscriptGroup}
+                    setSelectedGroup={setSelectedTranscriptGroup}
+                  />
+
+                  <TranscriptEligibilityList
+                    selectedGroup={selectedTranscriptGroup}
+                    userScore={computedTranscriptData.results[selectedTranscriptGroup] || 0}
+                    gpaSum={subjectsInTranscriptGroup.reduce((sum, sub) => sum + (computedTranscriptData.subjectAvgs[sub] || 0), 0)}
+                    thptScores={{}}
+                    subjects={subjectsInTranscriptGroup}
+                  />
+                </>
               )}
             </>
           )}
