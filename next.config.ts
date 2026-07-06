@@ -70,6 +70,21 @@ const nextConfig: NextConfig = {
         destination: "https://shopee.vn",
         permanent: false,
       },
+      {
+        source: "/go/hanh-trang-2026",
+        destination: "https://shopee.vn",
+        permanent: false,
+      },
+      {
+        source: "/go/sach-ielts-cam-12",
+        destination: "https://shopee.vn",
+        permanent: false,
+      },
+      {
+        source: "/go/sach-ets-toeic-2026",
+        destination: "https://shopee.vn",
+        permanent: false,
+      },
     ];
   },
 };

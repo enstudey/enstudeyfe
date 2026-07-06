@@ -1,4 +1,4 @@
-export type AffiliateCategory = "study" | "dorm";
+export type AffiliateCategory = "study" | "dorm" | "collection";
 
 export interface AffiliateProduct {
   id: string;
@@ -7,4 +7,6 @@ export interface AffiliateProduct {
   description: string;
   imagePath: string;
   category: AffiliateCategory;
+  tags?: string[];
+  ctaLabel?: string;
 }

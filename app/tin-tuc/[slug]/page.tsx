@@ -7,6 +7,8 @@ import { getAllPosts, getRelatedPosts } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
 import TableOfContents from "@/components/TableOfContents";
 import RelatedArticles from "@/components/RelatedArticles";
+import type { AffiliateProduct } from "@/types/affiliate";
+import productsData from "@/data/shopee-affiliate-products.json";
 
 // Helper chèn quảng cáo vào giữa nội dung bài viết (chống CLS)
 function insertInArticleAd(htmlContent: string): string {
@@ -28,6 +30,43 @@ function insertInArticleAd(htmlContent: string): string {
     });
   } else if (htmlContent.includes("</h2>")) {
     return htmlContent.replace("</h2>", "</h2>" + adBlockHtml);
+  }
+  
+  return htmlContent;
+}
+
+// Helper chèn contextual text-link affiliate sau thẻ </p> thứ 5
+function insertAffiliateTextLink(htmlContent: string): string {
+  let affiliateProduct: AffiliateProduct | null = null;
+  try {
+    const products = productsData as AffiliateProduct[];
+    // Lấy cuốn sách học đầu tiên
+    affiliateProduct = products.find(p => p.category === "study") ?? null;
+  } catch (error) {
+    console.error("Error loading affiliate text link product:", error);
+    return htmlContent;
+  }
+
+  if (!affiliateProduct) return htmlContent;
+
+  const affiliateHtml = `
+    <div class="affiliate-text-block my-6 p-4 bg-slate-100/40 dark:bg-zinc-900/30 border border-slate-200/50 dark:border-zinc-800 rounded-xl" contenteditable="false">
+      <span class="text-[10px] uppercase tracking-wider text-orange-600 dark:text-orange-500 font-bold block mb-1">Gợi ý dành cho bạn</span>
+      <p class="text-sm text-slate-700 dark:text-zinc-350 m-0 leading-relaxed">
+        Bạn có thể tham khảo thêm tài liệu trong cuốn 
+        <a href="/go/${affiliateProduct.slug}" target="_blank" rel="noopener noreferrer nofollow" class="text-orange-600 dark:text-orange-500 hover:underline font-bold">${affiliateProduct.title}</a> 
+        để ôn luyện hiệu quả hơn.
+      </p>
+    </div>
+  `;
+
+  const paragraphCount = (htmlContent.match(/<\/p>/g) ?? []).length;
+  if (paragraphCount >= 6) {
+    let count = 0;
+    return htmlContent.replace(/<\/p>/g, (match) => {
+      count++;
+      return count === 5 ? match + affiliateHtml : match;
+    });
   }
   
   return htmlContent;
@@ -122,7 +161,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
           <div 
             className="text-base text-slate-700 dark:text-zinc-300 space-y-4 article-content"
-            dangerouslySetInnerHTML={{ __html: insertInArticleAd(post.contentHtml) }}
+            dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml)) }}
           />
         </article>
 

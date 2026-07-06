@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SubjectScoresInput from "./SubjectScoresInput";
 import CertificateConverter from "./CertificateConverter";
+import AffiliateCertWidget from "@/components/affiliate/AffiliateCertWidget";
 import PrioritySelector from "./PrioritySelector";
 import ResultDashboard from "./ResultDashboard";
 import TranscriptSelector from "./TranscriptSelector";
@@ -400,6 +401,8 @@ export default function CalculatorPage() {
                   conversionTarget={conversionTarget}
                   setConversionTarget={setConversionTarget}
                 />
+
+                <AffiliateCertWidget certType={certType} certScore={certScore} />
 
                 <PrioritySelector
                   areaPriority={areaPriority}

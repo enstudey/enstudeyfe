@@ -9,6 +9,8 @@ import { PostData } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
 import { getCategoryBySlug } from "@/lib/categories";
 import CategoryIcon from "@/components/category-icon";
+import AffiliateInFeedCard from "@/components/affiliate/AffiliateInFeedCard";
+import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
 
 interface BlogListClientProps {
   posts: PostData[];
@@ -149,6 +151,11 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                       </div>
                     </div>
 
+                    {/* Chèn AffiliateInFeedCard sau mỗi 3 bài viết, chỉ khi tổng bài viết trên trang >= 3 */}
+                    {(idx + 1) % 3 === 0 && paginatedPosts.length >= 3 && (
+                      <AffiliateInFeedCard />
+                    )}
+
                     {(idx === 1 || idx === 3) && idx < paginatedPosts.length - 1 && (
                       <div className="col-span-full py-2">
                         {/* Khung trống giữ chỗ chống CLS, hiển thị nhãn Quảng cáo mờ */}
@@ -212,8 +219,11 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
             )}
           </div>
           <aside className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-24 ad-container ad-sidebar w-full min-h-[500px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+            <div className="sticky top-24 space-y-6">
+              <AffiliateSidebarWidget />
+              <div className="ad-container ad-sidebar w-full min-h-[500px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
+                <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+              </div>
             </div>
           </aside>
         </div>

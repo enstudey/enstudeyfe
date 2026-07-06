@@ -5,7 +5,35 @@
     "title": "Combo Sách Ôn Thi TOEIC Cấp Tốc",
     "description": "Tài liệu ôn luyện tiếng Anh chuẩn bị cho bài kiểm tra đầu vào Đại học tháng 8",
     "imagePath": "/images/affiliate/sach-toeic.webp",
-    "category": "study"
+    "category": "study",
+    "tags": ["toeic"]
+  },
+  {
+    "id": "sach-ielts-cam-12",
+    "slug": "sach-ielts-cam-12",
+    "title": "Cambridge IELTS 12 Academic (Kèm CD)",
+    "description": "Bộ đề luyện thi IELTS Academic chính hãng Cambridge, kèm audio luyện nghe.",
+    "imagePath": "/images/affiliate/sach-ielts-cam-12.webp",
+    "category": "study",
+    "tags": ["ielts"]
+  },
+  {
+    "id": "sach-ets-toeic-2026",
+    "slug": "sach-ets-toeic-2026",
+    "title": "ETS TOEIC 2026 - Official Test Preparation",
+    "description": "Bộ đề thi TOEIC chính hãng ETS, luyện thi Nghe và Đọc hiệu quả.",
+    "imagePath": "/images/affiliate/sach-ets-toeic-2026.webp",
+    "category": "study",
+    "tags": ["toeic"]
+  },
+  {
+    "id": "collection-hanh-trang-2026",
+    "slug": "hanh-trang-2026",
+    "title": "Combo Hành Trang Nhập Học 2026",
+    "description": "Bộ sưu tập đầy đủ balo, đèn học, sách tiếng Anh cho tân sinh viên.",
+    "imagePath": "/images/affiliate/hanh-trang-2026.webp",
+    "category": "collection",
+    "ctaLabel": "XEM TRỌN BỘ HÀNH TRANG SĨ TỬ"
   },
   {
     "id": "balo-laptop-2026",
@@ -13,7 +41,8 @@
     "title": "Balo Laptop Chống Sốc Tân Sinh Viên",
     "description": "Thiết kế bền bỉ, ngăn chống sốc riêng biệt, phù hợp hành trình lên thành phố học",
     "imagePath": "/images/affiliate/balo-laptop.webp",
-    "category": "dorm"
+    "category": "dorm",
+    "tags": []
   },
   {
     "id": "den-ban-led-2026",
@@ -21,6 +50,7 @@
     "title": "Đèn Bàn Học LED Bảo Vệ Mắt",
     "description": "Ánh sáng dịu nhẹ, tiết kiệm điện, phù hợp phòng trọ sinh viên",
     "imagePath": "/images/affiliate/den-ban-led.webp",
-    "category": "dorm"
+    "category": "dorm",
+    "tags": []
   }
 ]
