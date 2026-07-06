@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 import AdBanner from "@/components/ads/AdBanner";
+import { getCategoryBySlug } from "@/lib/categories";
+import CategoryIcon from "@/components/category-icon";
 
 export const metadata: Metadata = {
   title: "Danh mục bài viết - Blog EnStudey",
@@ -30,12 +32,14 @@ const MOCK_POSTS = [
 ];
 
 export default function BlogCategoryPage({ params }: { params: { category: string } }) {
+  const cat = getCategoryBySlug(params.category);
   const filteredPosts = MOCK_POSTS.filter(post => post.category === params.category);
 
   return (
     <main className="max-w-4xl mx-auto py-12 px-4 bg-white dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6 text-slate-950 dark:text-white uppercase">
-        Danh mục: {params.category === "skills" ? "Kỹ năng học thuật" : "Mẹo làm đề thi"}
+      <h1 className="inline-flex items-center gap-2.5 text-3xl font-bold mb-6 text-slate-950 dark:text-white">
+        {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={30} />}
+        Danh mục: {cat ? cat.name : params.category}
       </h1>
 
       <div className="mb-8">

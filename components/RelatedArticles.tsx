@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { PostData } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
+import { getCategoryBySlug } from "@/lib/categories";
+import CategoryIcon from "@/components/category-icon";
 
 interface RelatedArticlesProps {
   posts: PostData[];
@@ -32,9 +34,15 @@ export default function RelatedArticles({ posts }: RelatedArticlesProps) {
               </div>
               <div className="p-4 flex-1 flex flex-col justify-between space-y-2">
                 <div className="space-y-1">
-                  <span className="inline-block px-2 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 rounded-lg text-[9px] font-bold uppercase tracking-wider">
-                    #{post.category.toUpperCase()}
-                  </span>
+                  {(() => {
+                    const cat = getCategoryBySlug(post.category);
+                    return (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 rounded-lg text-[9px] font-bold uppercase tracking-wider">
+                        {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={10} />}
+                        {cat ? cat.name : post.category}
+                      </span>
+                    );
+                  })()}
                   <h4 className="text-sm font-bold text-slate-950 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors line-clamp-2">
                     {post.title}
                   </h4>

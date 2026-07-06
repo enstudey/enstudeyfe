@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -34,7 +35,11 @@ export default function ThemeToggle() {
       aria-label="Toggle theme"
       data-testid="btn-theme-toggle"
     >
-      {resolvedTheme === "light" ? "🌙" : "☀️"}
+      {resolvedTheme === "light" ? (
+        <Moon className="w-4 h-4 text-slate-700 dark:text-zinc-300" />
+      ) : (
+        <Sun className="w-4 h-4 text-slate-700 dark:text-zinc-300" />
+      )}
     </button>
   );
 }

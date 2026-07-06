@@ -7,6 +7,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PostData } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
+import { getCategoryBySlug } from "@/lib/categories";
+import CategoryIcon from "@/components/category-icon";
 
 interface BlogListClientProps {
   posts: PostData[];
@@ -79,19 +81,23 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
             { id: "toeic", label: "TOEIC" },
             { id: "ielts", label: "IELTS" },
             { id: "grammar", label: "Ngữ pháp" }
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => handleTabChange(tab.id)}
-              className={`text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer ${
-                selectedTab === tab.id
-                  ? "bg-orange-600 text-white"
-                  : "bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-850"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+          ].map(tab => {
+            const cat = getCategoryBySlug(tab.id);
+            return (
+              <button
+                key={tab.id}
+                onClick={() => handleTabChange(tab.id)}
+                className={`inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer ${
+                  selectedTab === tab.id
+                    ? "bg-orange-600 text-white"
+                    : "bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-850"
+                }`}
+              >
+                {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={12} />}
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -114,9 +120,15 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                       </div>
                       <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                         <div className="space-y-2">
-                          <span className="inline-block px-2.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 rounded-lg text-[10px] font-bold uppercase tracking-wider">
-                            #{post.category.toUpperCase()}
-                          </span>
+                          {(() => {
+                            const cat = getCategoryBySlug(post.category);
+                            return (
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 rounded-lg text-[10px] font-bold uppercase tracking-wider">
+                                {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={10} />}
+                                {cat ? cat.name : post.category}
+                              </span>
+                            );
+                          })()}
                           <h2 className="text-base font-bold text-slate-950 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors line-clamp-2">
                             <Link href={`/tin-tuc/${post.slug}`} className="after:absolute after:inset-0">
                               {post.title}
