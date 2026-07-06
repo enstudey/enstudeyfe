@@ -236,7 +236,7 @@ export default function CalculatorPage() {
 
     const rawEnglish = parseFloat(scores.english) || 0;
     if (equivEnglish > 0 && equivEnglish > rawEnglish) {
-      setAppliedEquivNote(`Đã áp dụng mức điểm quy đổi tốt nhất (${equivEnglish.toFixed(1)} điểm) cho môn Tiếng Anh theo đề án trường.`);
+      setAppliedEquivNote(`Đã áp dụng mức điểm quy đổi tối ưu (${equivEnglish.toFixed(1)} điểm) cho môn Tiếng Anh theo đề án trường.`);
     } else {
       setAppliedEquivNote(null);
     }

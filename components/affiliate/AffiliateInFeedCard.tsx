@@ -49,7 +49,7 @@ export default function AffiliateInFeedCard() {
           <a
             href={`/go/${product.slug}`}
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="noopener noreferrer nofollow sponsored"
             className="text-xs font-bold text-orange-600 dark:text-orange-500 group-hover:underline"
           >
             {product.ctaLabel || "Xem trên Shopee"} &rarr;

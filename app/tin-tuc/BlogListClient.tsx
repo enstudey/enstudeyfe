@@ -168,8 +168,16 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 text-slate-500">
-                Không tìm thấy bài viết nào.
+              <div className="text-center py-12 px-6 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl space-y-4">
+                <p className="font-bold text-lg text-slate-900 dark:text-white">Góc tin tức học thuật & cẩm nang tuyển sinh</p>
+                <p className="text-sm text-slate-500 dark:text-zinc-400 max-w-md mx-auto leading-relaxed">
+                  Các bài viết hướng dẫn phương pháp học tập, cẩm nang ngữ pháp TOEIC/IELTS và mẹo thi đang được chuẩn bị và kiểm duyệt nội dung. Quay lại sau bạn nhé!
+                </p>
+                <div className="pt-2">
+                  <Link href="/tinh-diem-tot-nghiep" className="px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition inline-block">
+                    Thử công cụ tính điểm ngay &rarr;
+                  </Link>
+                </div>
               </div>
             )}
 

@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     title: `${post.title} - Blog EnStudey`,
     description: post.description,
+    robots: post.isDraft ? { index: false, follow: false } : undefined,
     openGraph: {
       title: post.title,
       description: post.description,

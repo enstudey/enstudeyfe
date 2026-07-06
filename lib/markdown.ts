@@ -60,8 +60,11 @@ export function getPostBySlug(category: string, slug: string): PostData | null {
     const contentHtml = injectHeadingIds(contentHtmlRaw);
 
     const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
+    const contentLower = content.toLowerCase();
     const isDraft = data.draft === true ||
-                    content.toLowerCase().includes("[đang cập nhật...]") ||
+                    contentLower.includes("[đang cập nhật...]") ||
+                    contentLower.includes("sẽ được cập nhật sau") ||
+                    contentLower.includes("chưa hoàn thiện") ||
                     (wordCount < 800 && !data.forceIndex);
 
     return {
