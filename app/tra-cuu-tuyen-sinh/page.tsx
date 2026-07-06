@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { DonateModal, useDonateStatus } from "@/components/donate";
 
 import universitiesData from "@/data/universities-benchmark.json";
+import AffiliateNativeRow from "@/components/affiliate/AffiliateNativeRow";
 
 interface UniversityBenchmark {
   majorCode: string;
@@ -304,25 +305,8 @@ export default function FinderPage() {
                         </tr>
                         
                         {/* Native Ads xen kẽ sau mỗi 5 kết quả */}
-                        {(idx + 1) % 5 === 0 && (
-                          <tr className="bg-slate-50/20 dark:bg-zinc-950/20">
-                            <td className="p-0" colSpan={4}>
-                              <div 
-                                key={`native-${idx}-${adKey}`} 
-                                className="ad-container ad-h-banner w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 flex items-center justify-between px-6 py-4 rounded-xl transition duration-300"
-                                data-testid={`ad-native-result-${idx}`}
-                              >
-                                <div className="flex items-center gap-3">
-                                  <div className="w-12 h-12 bg-slate-200 dark:bg-zinc-850 rounded-xl flex items-center justify-center font-bold">🏫</div>
-                                  <div>
-                                    <p className="font-bold text-sm text-slate-900 dark:text-white">Thông tin tuyển sinh 2026 chính thức</p>
-                                    <p className="text-xs text-slate-400 dark:text-zinc-500 mt-0.5">Nhận cẩm nang hướng dẫn đăng ký nguyện vọng Đại học miễn phí.</p>
-                                  </div>
-                                </div>
-                                <span className="text-[9px] text-slate-400 dark:text-zinc-600 font-bold border border-slate-350 dark:border-zinc-800 rounded px-1">QUẢNG CÁO</span>
-                              </div>
-                            </td>
-                          </tr>
+                        {(idx + 1) % 5 === 0 && paginatedResults.length >= 5 && (
+                          <AffiliateNativeRow rowIndex={idx} />
                         )}
                       </React.Fragment>
                     ))

@@ -58,7 +58,7 @@ export default function DonateModal({ isOpen, onClose }: Props) {
           {/* QR Code Container */}
           <div className="relative mx-auto w-48 h-48 border-4 border-orange-500/10 rounded-2xl overflow-hidden shadow-md bg-slate-50 dark:bg-zinc-950 flex items-center justify-center">
             <Image
-              src="/qr-donate.png"
+              src="/qr-donate.webp"
               alt="Mã QR chuyển khoản ủng hộ VietQR"
               fill
               sizes="(max-width: 192px) 100vw, 192px"

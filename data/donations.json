@@ -2,7 +2,7 @@
   "bank_name": "MBBank",
   "account_name": "NGUYEN DUC TAM",
   "account_no": "70026112004",
-  "qr_template_url": "/qr-donate.png",
+  "qr_template_url": "/qr-donate.webp",
   "donors": [
     {
       "name": "Nguyễn Đức T***",

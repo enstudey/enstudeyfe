@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { DonateModal, useDonateStatus } from "@/components/donate";
+import AffiliateBox from "@/components/affiliate/AffiliateBox";
 
 interface Props {
   computedScores: Record<string, number> | null;
@@ -108,6 +109,8 @@ export default function ResultDashboard({
       <div className="text-[11px] text-slate-400 dark:text-zinc-500 italic text-center">
         * Kết quả tính điểm chỉ mang tính chất tham khảo và định hướng cá nhân. Vui lòng đối chiếu với đề án tuyển sinh chính thức của các trường Đại học.
       </div>
+
+      <AffiliateBox />
 
       <div className="ad-container ad-v-block w-full min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-700 flex items-center justify-center rounded-xl my-6">
         <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">

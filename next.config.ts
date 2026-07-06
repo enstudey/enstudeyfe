@@ -54,6 +54,22 @@ const nextConfig: NextConfig = {
         destination: "/blog/skills/cach-phan-bo-thoi-gian-reading-ielts",
         permanent: true,
       },
+      // --- Shopee Affiliate Redirects (302) ---
+      {
+        source: "/go/sach-toeic",
+        destination: "https://shopee.vn",
+        permanent: false,
+      },
+      {
+        source: "/go/balo-laptop",
+        destination: "https://shopee.vn",
+        permanent: false,
+      },
+      {
+        source: "/go/den-ban-led",
+        destination: "https://shopee.vn",
+        permanent: false,
+      },
     ];
   },
 };

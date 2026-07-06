@@ -1,0 +1,26 @@
+[
+  {
+    "id": "toeic-combo-2026",
+    "slug": "sach-toeic",
+    "title": "Combo Sách Ôn Thi TOEIC Cấp Tốc",
+    "description": "Tài liệu ôn luyện tiếng Anh chuẩn bị cho bài kiểm tra đầu vào Đại học tháng 8",
+    "imagePath": "/images/affiliate/sach-toeic.webp",
+    "category": "study"
+  },
+  {
+    "id": "balo-laptop-2026",
+    "slug": "balo-laptop",
+    "title": "Balo Laptop Chống Sốc Tân Sinh Viên",
+    "description": "Thiết kế bền bỉ, ngăn chống sốc riêng biệt, phù hợp hành trình lên thành phố học",
+    "imagePath": "/images/affiliate/balo-laptop.webp",
+    "category": "dorm"
+  },
+  {
+    "id": "den-ban-led-2026",
+    "slug": "den-ban-led",
+    "title": "Đèn Bàn Học LED Bảo Vệ Mắt",
+    "description": "Ánh sáng dịu nhẹ, tiết kiệm điện, phù hợp phòng trọ sinh viên",
+    "imagePath": "/images/affiliate/den-ban-led.webp",
+    "category": "dorm"
+  }
+]
