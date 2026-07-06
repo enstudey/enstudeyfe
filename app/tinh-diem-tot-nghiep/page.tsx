@@ -122,14 +122,14 @@ export default function CalculatorPage() {
       } else {
         setErrors(prev => {
           const copy = { ...prev };
-          delete copy[subject];
+          delete copy[subject as string];
           return copy;
         });
       }
     } else {
       setErrors(prev => {
         const copy = { ...prev };
-        delete copy[subject];
+        delete copy[subject as string];
         return copy;
       });
     }
@@ -171,14 +171,41 @@ export default function CalculatorPage() {
     }
   };
 
+  // Reset nhanh toàn bộ điểm thi và học bạ
+  const handleReset = () => {
+    if (calculationMethod === "THPT_EXAM") {
+      const resetScores = {
+        math: "", literature: "", english: "", otherLanguage: "",
+        physics: "", chemistry: "", biology: "", history: "",
+        geography: "", gdktpl: "", informatics: "", techIndustrial: "", techAgricultural: ""
+      };
+      setScores(resetScores);
+      localStorage.removeItem("user_raw_scores");
+      setComputedScores(null);
+      setHighestGroup(null);
+      setAppliedEquivNote(null);
+    } else {
+      const resetTranscript = {} as Record<TranscriptSubjectKey, SubjectSemesterScores>;
+      (Object.keys(TRANSCRIPT_SUBJECTS) as TranscriptSubjectKey[]).forEach(key => {
+        resetTranscript[key] = { ...INITIAL_SEMESTER_SCORES };
+      });
+      setSemesterScores(resetTranscript);
+      localStorage.removeItem("user_transcript_scores");
+      setIsTranscriptCalculated(false);
+      setComputedTranscriptData(null);
+    }
+    setErrors({});
+  };
+
 
   // Tính điểm thi tốt nghiệp THPT
   const handleCalculate = () => {
     const newErrors: Record<string, string> = {};
     
     Object.entries(scores).forEach(([subj, val]) => {
-      if (val !== "") {
-        const numVal = parseFloat(val);
+      const valStr = val as string;
+      if (valStr !== "") {
+        const numVal = parseFloat(valStr);
         if (isNaN(numVal) || numVal < 0 || numVal > 10) {
           newErrors[subj] = "Điểm phải từ 0.0 - 10.0";
         }
@@ -382,11 +409,18 @@ export default function CalculatorPage() {
                 />
               </div>
 
-              <div className="pt-6 flex flex-col items-center border-t border-slate-100 dark:border-zinc-855">
+              <div className="pt-6 flex flex-wrap gap-4 items-center justify-center border-t border-slate-100 dark:border-zinc-855">
+                <button
+                  onClick={handleReset}
+                  data-testid="btn-reset-scores"
+                  className="px-6 py-3.5 border border-slate-200 dark:border-zinc-700 hover:bg-slate-50 dark:hover:bg-zinc-900 text-slate-650 dark:text-zinc-400 font-bold rounded-2xl transition duration-200 text-sm sm:text-base cursor-pointer"
+                >
+                  Xóa nhập lại 🔄
+                </button>
                 <button
                   onClick={handleCalculate}
                   data-testid="btn-calculate-scores"
-                  className="px-8 py-3.5 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-650 text-white font-bold rounded-2xl shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-98 transition duration-200 flex items-center gap-2 text-base cursor-pointer"
+                  className="px-8 py-3.5 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-650 text-white font-bold rounded-2xl shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-98 transition duration-200 flex items-center gap-2 text-sm sm:text-base cursor-pointer"
                 >
                   <span>Tính điểm xét tuyển</span>
                   <span className="font-bold">⚡</span>
@@ -411,6 +445,7 @@ export default function CalculatorPage() {
                 errors={errors}
                 handleScoreChange={handleTranscriptScoreChange}
                 onCalculate={handleCalculateTranscript}
+                onReset={handleReset}
                 otherLanguageType={transcriptOtherLanguageType}
                 setOtherLanguageType={setTranscriptOtherLanguageType}
               />
