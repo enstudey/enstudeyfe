@@ -17,7 +17,7 @@ Nó bao phủ hầu hết các tình huống giao tiếp, thông báo, báo cáo
 
 Nếu không sở hữu một vốn từ vựng và cụm từ cố định (collocations) phong phú về chủ đề này, bạn sẽ rất dễ gặp khó khăn khi đọc hiểu các email trao đổi giữa đồng nghiệp, các thông báo bảo trì thiết bị văn phòng hay các báo cáo tiến độ công việc trong Part 7.
 
-Để xây dựng năng lực ngôn ngữ thực chiến và bứt phá điểm số đọc hiểu, bạn cần học từ vựng theo hướng hệ thống hóa các cụm từ kết hợp tự nhiên xoay quanh 3 mảng hoạt động chính dưới đây.
+Để xây dựng năng lực ngôn ngữ thực chiến và bứt phá điểm số đọc hiểu, bạn cần học từ vựng theo hướng hệ thống hóa các cụm từ kết hợp tự nhiên xoay quanh các hoạt động chính dưới đây.
 
 ## 1. Hoạt động Họp hành và Thảo luận công việc (Meetings & Discussions)
 
@@ -60,9 +60,24 @@ Hoạt động xử lý giấy tờ, công văn, báo cáo tài chính là công
 - **Confidential document**: Tài liệu bảo mật, thông tin không được tiết lộ ra ngoài.
   - *All employee payroll records are treated as confidential documents.*
 
+## 4. Ngân sách văn phòng và Dịch vụ khách hàng (Budgeting & Customer Relations)
+
+Đây là những cụm collocations nâng cao giúp bạn xử lý nhanh các đoạn thư tín thương mại phức tạp ở cuối Part 7:
+
+- **Allocate funds**: Phân bổ nguồn quỹ, ngân sách (tự nhiên hơn *give money*).
+  - *The board of directors agreed to allocate funds for the office renovation project.*
+- **Cut down on expenses**: Cắt giảm chi phí vận hành văn phòng.
+  - *We must cut down on paper waste to reduce office expenses.*
+- **Resolve customer complaints**: Giải quyết khiếu nại của khách hàng (chuyên nghiệp hơn *solve complaints*).
+  - *The customer service team is trained to resolve complaints promptly.*
+- **Exceed expectations**: Vượt quá sự mong đợi, vượt chỉ tiêu đề ra.
+  - *Our sales figures for this quarter have exceeded all expectations.*
+- **Enhance customer loyalty**: Nâng cao lòng trung thành của khách hàng.
+  - *Offering high-quality services is key to enhancing customer loyalty.*
+
 ## Điều đáng nhớ
 
 - Chủ đề Office chiếm tỷ trọng từ vựng lớn nhất trong đề thi TOEIC, cần học có hệ thống.
 - Học từ vựng gắn liền với các động từ kết hợp tự nhiên (collocations) như *schedule a meeting*, *conduct a presentation*, *submit a report*.
 - Làm quen với các cách diễn đạt sự cố thiết bị văn phòng như *out of order*, *malfunction*, *undergo maintenance*.
-- Sử dụng các cụm từ tiếng Anh công sở này để tăng tốc độ đọc hiểu email và thông báo trong Part 7.
+- Sử dụng các cụm từ về ngân sách và dịch vụ khách hàng (*allocate funds*, *resolve complaints*) để tăng tốc độ đọc hiểu email và thông báo trong Part 7.

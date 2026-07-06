@@ -27,41 +27,64 @@ Hãy cùng phân tích một đề bài vô cùng phổ biến về chủ đề 
 
 Đây là dạng bài Discussion (Thảo luận hai quan điểm và đưa ra ý kiến cá nhân). Yêu cầu bắt buộc là bạn phải thảo luận công bằng cả hai khía cạnh trước khi đưa ra nhận định của riêng mình.
 
-## Bài mẫu Band 6.0: Lỗi liệt kê và sự thiếu mạch lạc trong lập luận
+## So sánh cấu trúc Mở bài (Introduction)
 
-Dưới đây là cách một thí sinh Band 6.0 tiếp cận phần viết về luận điểm thứ nhất (trường đại học nên dạy kỹ năng thực tế):
+Mở bài quyết định ấn tượng đầu tiên của giám khảo về khả năng định hình vấn đề của bạn.
 
+### Mở bài Band 6.0
+- *Nowadays, many people study at university. Some people think that universities should teach practical skills for jobs. However, other people believe that university is a place to learn knowledge for fun. In this essay, I will discuss both sides and give my opinion.*
+
+**Phân tích lỗi**: 
+- Sử dụng trạng từ *Nowadays* sáo rỗng.
+- Cấu trúc câu đơn giản, lặp lại từ vựng của đề bài một cách thô sơ (*practical skills*, *learn knowledge*).
+- Câu kết luận mở bài (Thesis Statement) viết theo kiểu công thức máy móc (*In this essay, I will discuss...*), không đưa ra được lập trường (opinion) rõ ràng của người viết ngay từ đầu.
+
+### Mở bài Band 8.0
+- *In the contemporary era, there is an ongoing debate regarding whether higher education institutions should tailor their courses to meet the practical demands of employers, or focus on disseminating theoretical knowledge for its own value. While acknowledging the importance of academic pursuit, I argue that the primary role of tertiary education should be to equip graduates with vocational skills to facilitate their transition into the workforce.*
+
+**Điểm vượt trội**:
+- Diễn đạt lại đề bài (paraphrase) một cách xuất sắc: *universities* thành *higher education institutions / tertiary education*, *skills needed in the workplace* thành *practical demands of employers*.
+- Thesis Statement cực kỳ rõ ràng, vừa tóm tắt được hai quan điểm vừa khẳng định ngay lập tức lập trường của tác giả ở vế sau.
+
+## So sánh cấu trúc Thân bài (Body Paragraph)
+
+Hãy cùng đối chiếu chi tiết cách triển khai luận điểm chính của phần thân bài.
+
+### Thân bài Band 6.0
 - *On the one hand, many people believe that universities should focus on practical skills. Nowadays, finding a job is very difficult because there are too many graduates. If students learn workplace skills, they can get a job easily. For example, learning computer science or marketing is very good for their career. Furthermore, companies do not want to train new employees from the beginning because it wastes their time and money. Therefore, university courses should be practical.*
 
-### Nhận xét từ giám khảo
-
-Đoạn văn này viết khá trôi chảy và ít lỗi ngữ pháp nghiêm trọng. Tuy nhiên, nó bị giới hạn ở Band 6.0 vì những lý do sau:
-
+**Phân tích lỗi**:
 - **Lập luận hời hợt**: Người viết chỉ liệt kê các ý tưởng (*tìm việc khó*, *học lập trình/marketing dễ xin việc*, *công ty không muốn đào tạo*) một cách rời rạc mà không có sự đào sâu phân tích nguyên nhân - kết quả.
 - **Sử dụng từ nối máy móc**: Các từ nối như *Furthermore*, *Therefore* được dùng một cách rập khuôn ở đầu câu để chuyển ý, thay vì xây dựng sự liên kết tự nhiên từ nội dung bên trong của các câu.
 - **Từ vựng lặp và đơn giản**: Sử dụng nhiều cấu trúc lặp đi lặp lại như *very difficult*, *very good*, *get a job*.
 
-## Bài mẫu Band 8.0: Chiều sâu lập luận và sự linh hoạt trong sử dụng từ vựng
-
-Hãy quan sát cách một thí sinh Band 8.0 viết về cùng một luận điểm trên:
-
+### Thân bài Band 8.0
 - *On the one hand, there is a growing demand for tertiary education to align its curricula with the requirements of the modern job market. Proponents of this view argue that the primary purpose of higher education is to prepare students for professional careers. In an increasingly competitive global economy, graduates equipped with practical skills, such as software development or digital marketing, possess a distinct advantage over those with purely theoretical knowledge. Consequently, this vocational approach not only accelerates the transition of graduates into the workforce but also reduces the training costs incurred by employers.*
 
-### Nhận xét từ giám khảo
-
-Đoạn văn này đạt Band 8.0+ vì đã giải quyết triệt để các hạn chế của bài viết trước đó:
-
-- **Mạch lập luận chặt chẽ**: Ý tưởng được phát triển theo một chuỗi logic rõ ràng: *nhu cầu thị trường việc làm -> mục đích chuẩn bị sự nghiệp -> lợi thế cạnh tranh của kỹ năng thực tế -> kết quả là tăng tốc độ chuyển tiếp công việc và giảm chi phí đào tạo*. Mỗi câu sau đều bổ nghĩa và làm rõ cho câu trước đó.
+**Điểm vượt trội**:
+- **Mạch lập luận chặt chẽ (Coherence)**: Ý tưởng được phát triển theo một chuỗi logic rõ ràng: *nhu cầu thị trường việc làm -> mục đích chuẩn bị sự nghiệp -> lợi thế cạnh tranh của kỹ năng thực tế -> kết quả là tăng tốc độ chuyển tiếp công việc và giảm chi phí đào tạo*. Mỗi câu sau đều bổ nghĩa và làm rõ cho câu trước đó.
 - **Sử dụng từ vựng chính xác và tự nhiên (Collocations)**: Các cụm từ kết hợp chuẩn xác như *tertiary education* (giáo dục đại học), *align its curricula* (điều chỉnh chương trình giảng dạy), *theoretical knowledge* (kiến thức lý thuyết), *accelerate the transition* (đẩy nhanh sự chuyển tiếp), *training costs incurred by employers* (chi phí đào tạo mà nhà tuyển dụng phải gánh chịu).
 - **Ngữ pháp linh hoạt**: Sử dụng các cấu trúc câu phức tạp một cách tự nhiên như cấu trúc song song (*not only... but also...*), mệnh đề quan hệ rút gọn (*graduates equipped with...*).
 
-## Rút ra bài học cốt lõi để nâng band điểm
+## So sánh cấu trúc Kết bài (Conclusion)
 
-Qua việc so sánh trên, chúng ta thấy rõ rằng sự khác biệt lớn nhất giữa Band 6.0 và Band 8.0 không phải là việc cố gắng đưa những triết lý xa vời vào bài luận.
+Kết bài là nơi bạn khẳng định lại lập trường mà không được đưa thêm thông tin mới.
 
-Chìa khóa nằm ở việc bạn chọn một hoặc hai luận điểm thực sự chất lượng, sau đó tập trung phân tích sâu để làm rõ mối quan hệ nguyên nhân - kết quả của luận điểm đó.
+### Kết bài Band 6.0
+- *In conclusion, both sides have good points. Universities should teach practical skills and also academic knowledge. In my opinion, students should choose what they want to study at university.*
 
-Thay vì viết 4 câu ngắn diễn đạt 4 ý khác nhau, hãy viết 3 câu dài hơn, được kết nối chặt chẽ để chứng minh một ý duy nhất. Hãy tập trung học các cụm từ cố định (collocations) theo chủ đề để diễn đạt ý tưởng một cách chuyên nghiệp và tự nhiên, thay vì sử dụng các từ ngữ quá bình dân của ngôn ngữ nói hằng ngày.
+**Phân tích lỗi**:
+- Quá ngắn và hời hợt.
+- Không tóm tắt lại được các luận điểm chính đã viết ở thân bài.
+- Ý kiến cá nhân mang tính nước đôi, không dứt khoát.
+
+### Kết bài Band 8.0
+- *In conclusion, while the pursuit of pure knowledge remains a noble function of academia, it is far more practical for universities to prioritize career-oriented training. In today's economy, equipping students with marketable skills is essential to ensure both individual employment prospects and overall economic productivity.*
+
+**Điểm vượt trội**:
+- Tóm tắt hoàn hảo hai luồng quan điểm đã thảo luận.
+- Khẳng định lại lập trường một cách mạnh mẽ, rõ ràng.
+- Sử dụng các từ vựng học thuật xuất sắc (*pursuit of pure knowledge*, *career-oriented training*, *marketable skills*).
 
 ## Điều đáng nhớ
 
@@ -69,3 +92,4 @@ Thay vì viết 4 câu ngắn diễn đạt 4 ý khác nhau, hãy viết 3 câu 
 - Bài viết Band 6.0 thường mắc lỗi liệt kê ý tưởng hời hợt và sử dụng từ nối rập khuôn ở đầu câu.
 - Bài viết Band 8.0 phát triển ý tưởng theo chuỗi logic nguyên nhân - kết quả chặt chẽ và sử dụng collocations tự nhiên.
 - Tập trung phân tích sâu một luận điểm chất lượng tốt hơn việc liệt kê nhiều luận điểm nhưng không giải thích.
+- Thesis Statement và Kết bài phải đồng nhất lập trường rõ ràng để đạt điểm tối ưu tiêu chí Task Achievement.

@@ -45,22 +45,31 @@ Hãy quan sát cách kết hợp từ trong câu sau:
 
 Việc dùng đúng các động từ chuyên biệt này giúp câu văn của bạn trở nên chính xác, khoa học và tự nhiên như một bài báo khoa học thực sự.
 
-## Cách sử dụng liên từ chỉ thứ tự để kết nối các giai đoạn mạch lạc
+## Phân tích thực chiến: Chu trình vòng đời của loài côn trùng
 
-Để đạt điểm cao tiêu chí Coherence and Cohesion, bài viết của bạn không thể là một danh sách các câu đơn lẻ mô tả từng bước một cách rời rạc. Bạn cần sử dụng các liên từ chỉ thời gian và thứ tự một cách linh hoạt để người đọc dễ dàng theo dõi dòng chảy của chu trình.
+Hãy cùng bóc tách cách viết cho một đề bài cụ thể: *Mô tả vòng đời của loài bướm (The life cycle of a butterfly).*
 
-Thay vì lặp đi lặp lại những từ đơn giản như *first*, *second*, *next*, *then*, hãy đa dạng hóa bằng các cấu trúc phức tạp hơn:
+Sơ đồ gồm các giai đoạn: Trứng trên lá -> Nở thành sâu bướm (caterpillar) -> Sâu bướm ăn lá và lột xác -> Tạo kén (chrysalis) bám vào cành cây -> Bướm trưởng thành chui ra từ kén.
 
-- *At the initial stage of the cycle...* (Ở giai đoạn đầu của chu kỳ...)
-- *Following this...* / *Subsequent to this stage...* (Tiếp theo giai đoạn này...)
-- *Once the tadpoles have fully developed...* (Một khi nòng nọc đã phát triển hoàn thiện...)
-- *The process culminates in the formation of...* (Quy trình kết thúc bằng sự hình thành của...)
+- **Đoạn mô tả giai đoạn đầu**:
+  - *The cycle begins when a mature female butterfly lays her eggs on the surface of a leaf. After a short gestation period, these eggs hatch into larvae, commonly known as caterpillars.*
+- **Đoạn mô tả giai đoạn sinh trưởng và biến thái**:
+  - *During the larval stage, the caterpillar feeds continuously on leaves, growing rapidly in size and shedding its skin multiple times. Once it reaches its maximum size, it enters the pupal stage by spinning a cocoon, or chrysalis, around itself, attached to a plant stem. Inside this protective shell, the organism undergoes a remarkable metamorphosis.*
+- **Giai đoạn cuối**:
+  - *Ultimately, the shell splits open, and an adult butterfly emerges. Having dried its wings, the insect is ready to fly, and the cycle repeats when it finds a mate to lay new eggs.*
 
-Đặc biệt, việc sử dụng các mệnh đề quan hệ rút gọn hoặc mệnh đề trạng ngữ chỉ thời gian giúp bạn gộp nhiều bước nhỏ vào trong một câu phức một cách mượt mà:
+Mạch viết sử dụng 100% thể chủ động và các động từ sinh học cực kỳ chính xác (*hatch, feed, shed skin, spin cocoon, emerge*).
 
-- *Having grown into mature adults, the frogs return to the pond to lay a new batch of eggs, thereby restarting the entire cycle.* (Sau khi đã phát triển thành ếch trưởng thành, chúng quay trở lại ao để đẻ một lứa trứng mới, từ đó khởi động lại toàn bộ chu kỳ).
+## Cấu trúc câu so sánh giữa các giai đoạn trong quy trình
 
-Cấu trúc này không chỉ giúp bài viết gọn gàng mà còn chứng minh khả năng kiểm soát ngữ pháp câu phức rất tốt của bạn dưới áp lực phòng thi.
+Để đạt điểm cao tiêu chí Grammatical Range (Đa dạng ngữ pháp), bạn cần sử dụng các cấu trúc so sánh hoặc cấu trúc câu phức để kết nối trạng thái trước và sau của đối tượng.
+
+- **Cấu trúc mô tả sự biến đổi hình thái**:
+  - *Compared to the larval stage where the organism is wingless and bound to the ground, the mature butterfly possesses wings, enabling it to fly and cover vast distances.* (So với giai đoạn ấu trùng khi sinh vật không có cánh và bám đất, con bướm trưởng thành sở hữu đôi cánh...).
+- **Cấu trúc so sánh về thời lượng và kích thước**:
+  - *While the pupal stage lasts for several weeks in a stationary state, the preceding larval stage is characterized by active movement and rapid growth.* (Trong khi giai đoạn nhộng kéo dài vài tuần ở trạng thái bất động, giai đoạn ấu trùng trước đó đặc trưng bởi sự di chuyển tích cực và tăng trưởng nhanh).
+
+Các cấu trúc câu phức tạp này giúp bài viết của bạn có tính học thuật cao vượt trội so với lối liệt kê tuyến tính thông thường.
 
 ## Điều đáng nhớ
 
@@ -68,3 +77,4 @@ Cấu trúc này không chỉ giúp bài viết gọn gàng mà còn chứng min
 - Lựa chọn động từ mô tả sinh học và địa lý chính xác thay vì các động từ sản xuất công nghiệp.
 - Sử dụng các liên từ chỉ thứ tự và thời gian đa dạng để kết nối các giai đoạn một cách mượt mà.
 - Gộp các giai đoạn nhỏ thành câu phức bằng mệnh đề trạng ngữ hoặc mệnh đề quan hệ để tăng tính mạch lạc.
+- Sử dụng các cấu trúc so sánh giữa các giai đoạn để nâng cao điểm tiêu chí ngữ pháp câu phức.

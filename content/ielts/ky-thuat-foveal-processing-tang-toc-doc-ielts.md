@@ -13,10 +13,6 @@ tags:
 
 Áp lực lớn nhất của bài thi IELTS Reading không nằm ở từ vựng quá khó hay cấu trúc câu quá phức tạp.
 
-Nó nằm ở thời gian.
-
-Phải đọc hiểu và trả lời 40 câu hỏi dựa trên 3 văn bản học thuật dài tổng cộng hơn 2700 từ trong vòng 60 phút là thử thách cực đại đối với đại đa số người học.
-
 Nhiều thí sinh dù có vốn từ vựng rất tốt vẫn không thể hoàn thành bài thi vì tốc độ đọc quá chậm. Họ thường cố gắng đọc từng từ một, lẩm nhẩm trong đầu và dịch thầm sang tiếng Việt. Để thay đổi cục diện này, bạn cần hiểu rõ cơ chế sinh học của mắt và thay đổi thói quen đọc bằng kỹ thuật Foveal Processing.
 
 ## Cơ chế sinh học của mắt và giới hạn của việc đọc từng từ đơn lẻ
@@ -45,21 +41,32 @@ Hãy quan sát sự khác biệt trực quan sau:
 
 Bằng cách gom từ thành các cụm có nghĩa (collocations hoặc mệnh đề ngắn), bộ não của bạn sẽ xử lý thông tin theo mạch ý tưởng thay vì từng ký tự riêng lẻ. Tốc độ đọc hiểu từ đó tăng lên gấp 2 đến 3 lần một cách hoàn toàn tự nhiên.
 
-## Các bước luyện tập để xóa bỏ thói quen đọc thầm trong đầu
+## Cơ chế di chuyển của mắt khi gặp từ vựng mới
 
-Đọc thầm (subvocalization) - thói quen lẩm nhẩm phát âm từng từ trong đầu khi đọc - là rào cản lớn nhất ngăn cản việc mở rộng tầm nhìn của mắt. Vì tốc độ nói của con người chỉ giới hạn ở mức 150-250 từ/phút, nếu bạn đọc thầm, tốc độ đọc của bạn cũng sẽ bị giới hạn ở mức đó.
+Khi áp dụng Foveal Processing, bộ não của bạn sẽ phản ứng thế nào khi đột ngột gặp một từ vựng mới hoặc cấu trúc câu lạ?
 
-Để loại bỏ thói quen này và làm quen với Foveal Processing, hãy áp dụng các bước luyện tập sau:
+Dưới góc độ khoa học nhận thức, khi mắt nhảy (saccade) qua một từ lạ, tín hiệu xử lý ngôn ngữ bị tắc nghẽn. Lúc này, mắt sẽ thực hiện hành động **nhảy giật lùi (regressions)** để định vị lại từ khóa đó và phân tích ngữ cảnh xung quanh.
 
-- **Bước 1: Sử dụng vật dẫn đường (Pacing)**: Dùng một chiếc bút chì hoặc ngón tay di chuyển liên tục dưới dòng chữ với tốc độ nhanh hơn tốc độ đọc bình thường của bạn một chút. Mắt của bạn bắt buộc phải di chuyển theo bút chì và không có thời gian để lẩm nhẩm phát âm từng từ.
-- **Bước 2: Căn lề trong (Indentation)**: Khi đọc một dòng chữ, đừng đặt điểm dừng mắt đầu tiên ở từ đầu tiên của dòng, hãy đặt ở từ thứ hai hoặc thứ ba. Tương tự, hãy rút mắt lại trước khi chạm tới từ cuối cùng của dòng. Hãy để tầm nhìn ngoại vi tự động ghi nhận các từ ở đầu và cuối dòng.
-- **Bước 3: Luyện tập với tài liệu dễ trước**: Đừng bắt đầu ngay với các bài đọc IELTS Reading phức tạp. Hãy thực hành trên các bài báo ngắn, sách truyện tiếng Anh đơn giản để xây dựng thói quen và sự tự tin cho mắt trước.
+Một người đọc không có chiến thuật sẽ dừng lại ở từ lạ đó rất lâu, cố gắng lẩm nhẩm phát âm và suy đoán nghĩa một cách cô lập. Hành động này làm đứt gãy hoàn toàn mạch đọc của Foveal Processing.
 
-Chỉ sau vài tuần luyện tập kiên trì, bạn sẽ thấy khả năng bóc tách thông tin của mắt nhạy bén hơn rất nhiều. Áp lực thời gian trong phòng thi IELTS Reading sẽ không còn là nỗi ám ảnh.
+Ngược lại, người đọc có kỹ thuật sẽ sử dụng tầm nhìn ngoại vi (parafovea) để nhận diện nhanh từ lạ đó, ghi nhận vị trí của nó, rồi tiếp tục di chuyển mắt qua các khối từ tiếp theo để tìm kiếm manh mối ngữ cảnh (context clues) trước khi thực hiện một cú nhảy giật lùi có tính toán để đoán nghĩa của từ. Việc này giúp giữ vững dòng chảy thông tin của toàn bài đọc.
+
+## Lộ trình rèn luyện Foveal Processing trong vòng 14 ngày
+
+Để làm chủ kỹ thuật này, bạn cần rèn luyện cơ mắt và bộ não theo một lộ trình tăng dần độ khó:
+
+### Tuần 1: Giải phóng thói quen đọc thầm và điều hướng mắt (Ngày 1 - 7)
+- **Hằng ngày**: Dành 15 phút sử dụng một chiếc bút chì di chuyển liên tục dưới các dòng chữ của một cuốn sách truyện tiếng Anh dễ. Di chuyển bút với tốc độ nhanh hơn tốc độ đọc bình thường của bạn. Ép mắt phải di chuyển theo bút và tuyệt đối không lẩm nhẩm phát âm từ trong đầu.
+- **Mục tiêu**: Làm quen với cảm giác tiếp nhận thông tin bằng mắt mà không cần phát âm.
+
+### Tuần 2: Gom cụm thông tin và đọc căn lề trong (Ngày 8 - 14)
+- **Hằng ngày**: Khi đọc bài đọc IELTS Reading, hãy vẽ hai đường thẳng mờ dọc theo trang giấy, cách lề trái và lề phải khoảng 1.5 cm. Khi đọc, chỉ đặt điểm dừng mắt đầu tiên ở bên phải đường lề trái, và nhấc mắt lên trước khi chạm tới đường lề phải.
+- **Mục tiêu**: Buộc tầm nhìn ngoại vi phải tự động bóc tách các từ ở rìa trang giấy mà không cần mắt phải nhìn trực diện vào chúng. Tập thói quen gom từ 3-4 từ thành một cụm tại mỗi điểm dừng.
 
 ## Điều đáng nhớ
 
 - Tốc độ đọc chậm chủ yếu do thói quen đọc từng từ đơn lẻ và đọc thầm phát âm trong đầu.
 - Foveal Processing giúp mở rộng tầm nhìn ngoại vi để gom các từ thành các khối thông tin có nghĩa tại mỗi điểm dừng của mắt.
 - Giảm số lượng điểm dừng của mắt trên dòng chữ giúp tăng tốc độ đọc hiểu và giảm mệt mỏi cho não bộ.
-- Sử dụng vật dẫn đường (bút chì) và đọc căn lề trong để rèn luyện thói quen đọc cụm từ hiệu quả.
+- Khi gặp từ mới, sử dụng tầm nhìn ngoại vi để nhận diện nhanh và tiếp tục di chuyển mắt tìm manh mối ngữ cảnh thay vì đứng hình phân tích cô lập.
+- Kiên trì thực hiện lộ trình 14 ngày luyện tập với vật dẫn đường và đọc căn lề trong để tối ưu hóa cơ mắt.

@@ -43,6 +43,27 @@ IELTS lại yêu cầu sự tương tác chủ động và chính xác tối đa
 
 Do đó, một người đạt 800 hay 900 điểm TOEIC Listening & Reading hoàn toàn có thể rơi vào trạng thái khủng hoảng khi lần đầu làm bài thi IELTS, bởi vì họ chưa bao giờ được rèn luyện kỹ năng viết luận học thuật hay trình bày quan điểm cá nhân một cách mạch lạc dưới áp lực thời gian.
 
+## Phân tích kỹ thuật chi tiết ở hai kỹ năng Nghe và Đọc
+
+Để hiểu rõ tại sao việc quy đổi điểm chỉ mang tính tương đối, chúng ta cần so sánh chi tiết cơ chế làm bài của từng kỹ năng ở cả hai bài thi.
+
+### Kỹ năng Nghe: Nhận diện từ khóa ngắn hạn vs. Nắm bắt mạch lập luận dài hạn
+
+Trong bài thi TOEIC Listening, các đoạn hội thoại ở Part 3 hay độc thoại ở Part 4 thường ngắn gọn, tốc độ trung bình và thông tin cần trả lời hiển thị trực tiếp bằng các từ khóa đồng nghĩa rõ ràng. Thí sinh có thể áp dụng các mẹo làm bài nghe như bắt từ khóa (keyword matching) để chọn đáp án đúng ngay cả khi không hiểu 40% còn lại của đoạn văn.
+
+Trong bài thi IELTS Listening, cấu trúc bài nghe phức tạp hơn rất nhiều. Ở Section 3 (thảo luận học thuật giữa 2-3 sinh viên) và Section 4 (bài giảng độc thoại của giảng viên), người nói sẽ liên tục paraphrase thông tin và sử dụng các từ nối mang tính phủ định, lật ngược vấn đề (*however, in contrast, despite*). Thí sinh không thể chỉ nghe bắt từ khóa đơn lẻ vì các phương án lựa chọn sai thường chứa chính xác từ khóa đó để gài bẫy. Bạn phải nắm bắt được mạch lập luận và thái độ thực tế của người nói trong suốt cả đoạn văn dài.
+
+### Kỹ năng Đọc: Quét thông tin trực diện vs. Phân tích cấu trúc lập luận phức tạp
+
+Bài đọc TOEIC Part 7 chủ yếu là các văn bản ngắn như email thương mại, hóa đơn, hoặc tin nhắn nội bộ. Mục tiêu của người đọc là quét nhanh thông tin trực tiếp (Ví dụ: *Khi nào cuộc họp diễn ra? Ai là người gửi thư?*). Các thông tin này hiển thị rõ ràng trên bề mặt văn bản.
+
+Ngược lại, các bài đọc IELTS Reading là các bài luận học thuật dài hơn 900 từ với cấu trúc câu phức dày đặc. Để trả lời được các dạng câu hỏi như Matching Headings hoặc Summary Completion, thí sinh phải có khả năng phân tích cấu trúc ngữ pháp câu phức, hiểu rõ lập luận logic của tác giả và suy luận ra ý kiến ẩn giấu đằng sau mặt chữ thô. Sự chênh lệch về khối lượng từ vựng học thuật giữa hai bài đọc là vô cùng lớn.
+
+### Bảng so sánh tiêu chí đánh giá cốt lõi của hai bài thi
+
+- **TOEIC**: Đánh giá khả năng hiểu tiếng Anh giao tiếp thương mại thông thường | Định dạng trắc nghiệm 100% | Tập trung vào tốc độ xử lý thông tin ngắn | Không yêu cầu viết hoặc nói chủ động (trong bài thi truyền thống).
+- **IELTS**: Đánh giá khả năng sử dụng tiếng Anh học thuật chuyên sâu | Kết hợp trắc nghiệm và tự luận điền từ | Tập trung vào chiều sâu tư duy phân tích và lập luận | Đánh giá toàn diện khả năng sản sinh ngôn ngữ chủ động ở cả Writing và Speaking.
+
 ## Cách tiếp cận đúng đắn khi chuyển đổi lộ trình học tập
 
 Nếu bạn đang sở hữu một số điểm TOEIC khá và muốn chuyển hướng sang chinh phục IELTS, việc đầu tiên cần làm là reset lại kỳ vọng của bản thân.

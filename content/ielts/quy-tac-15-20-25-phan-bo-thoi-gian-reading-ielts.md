@@ -43,21 +43,38 @@ Chiến thuật này được phân bổ cụ thể như sau:
 
 Sự dịch chuyển phân bổ thời gian này giúp bạn tối đa hóa điểm số ở những phần dễ, đồng thời tạo ra một khoảng đệm an toàn về mặt tâm lý để đối phó với phần khó nhất của bài thi.
 
-## Cách kiểm soát áp lực thời gian thực tế tại phòng thi
+## Phân bổ thời gian chi tiết cho từng dạng câu hỏi chuyên biệt
 
-Để vận hành thành công quy tắc 15-20-25, bạn cần rèn luyện khả năng buông bỏ (letting go) trong quá trình làm bài.
+Bên cạnh việc phân chia thời gian cho từng Passage, bạn cần nắm rõ thời lượng trung bình cho phép đối với mỗi dạng câu hỏi khác nhau để chủ động kiểm soát tiến độ làm bài:
 
-Lỗi lớn nhất của thí sinh là bị kẹt lại quá lâu ở một câu hỏi khó.
+### Dạng câu hỏi định vị thông tin nhanh (Gap-filling, Sentence Completion)
+- **Thời gian**: Tối đa **1 phút / câu**.
+- **Cách làm**: Dạng câu hỏi này thông tin hiển thị trực tiếp và theo thứ tự. Bạn nên làm nhanh để tích lũy quỹ thời gian.
 
-Họ tự nhủ: *“Mình đã dành 2 phút cho câu này rồi, cố thêm chút nữa chắc sẽ ra.”* Và rồi họ mất tới 5 phút cho một câu hỏi trị giá đúng 1 điểm, trực tiếp cướp đi thời gian làm của 3 câu hỏi dễ khác ở phía sau.
+### Dạng câu hỏi lựa chọn ý kiến, chi tiết (True/False/Not Given, Multiple Choice)
+- **Thời gian**: Tối đa **1.5 phút / câu**.
+- **Cách làm**: Dạng câu hỏi này bắt buộc bạn phải so sánh từ khóa paraphrase và phân tích các chi tiết gây nhiễu (distractors). Nếu sau 1.5 phút vẫn phân vân giữa 2 đáp án, hãy chọn theo trực giác tốt nhất, đánh dấu lại và chuyển sang câu tiếp theo.
 
-Nếu sau 1 phút rưỡi đọc đi đọc lại một đoạn văn mà bạn vẫn không thể quyết định được đáp án cho một câu hỏi: Hãy đánh dấu lại, chọn một đáp án theo trực giác tốt nhất và lập tức chuyển sang câu tiếp theo.
+### Dạng câu hỏi bao quát và nối thông tin (Matching Headings, Matching Information)
+- **Thời gian**: Tối đa **2 phút / câu**.
+- **Cách làm**: Đây là những câu hỏi tốn thời gian nhất vì bạn phải đọc hiểu mạch logic của toàn đoạn văn. Dành nhiều thời gian hơn cho dạng bài này là hoàn toàn hợp lý, nhưng hãy làm chúng sau cùng của mỗi Passage.
 
-Nguyên tắc vàng của IELTS Reading là tất cả các câu hỏi đều có giá trị điểm số ngang nhau. Một câu điền từ đơn giản ở Passage 1 cũng bằng điểm một câu suy luận phức tạp ở Passage 3. Đừng bao giờ hy sinh những điểm số dễ chỉ vì sự bướng bỉnh muốn giải bằng được một câu hỏi khó.
+## Kỹ thuật kiểm soát tâm lý khi bị trễ giờ làm bài
+
+Một hiện tượng rất hay gặp là khi bạn nhìn lên đồng hồ phòng thi và nhận ra mình đang bị trễ so với kế hoạch (ví dụ: đã hết 20 phút nhưng bạn vẫn chưa hoàn thành xong Passage 1).
+
+Sự hoảng loạn lập tức xuất hiện. Nhịp tim tăng nhanh và bạn bắt đầu đọc lướt qua các câu tiếp theo một cách cẩu thả mà không hiểu nghĩa. Đây là lúc sai lầm hệ thống xảy ra.
+
+Hãy áp dụng kỹ thuật **Reset tâm lý trong 5 giây**:
+1. Nhắm mắt lại, hít một hơi thật sâu và thở ra chậm rãi.
+2. Tự nói với bản thân: *“Trễ 2 phút không phải là thảm họa. Mình sẽ bù lại bằng cách đẩy nhanh tốc độ đọc quét ở các câu điền từ tiếp theo. Tập trung vào câu hiện tại.”*
+3. Chấp nhận bỏ qua (đánh dấu chọn đại) 1-2 câu hỏi khó mà bạn đang bị kẹt để lập tức đưa nhịp độ làm bài quay trở lại đúng quỹ đạo thời gian. Việc kiểm soát cảm xúc tốt giúp bạn tránh được chuỗi sai lầm kéo theo ở các phần thi phía sau.
 
 ## Điều đáng nhớ
 
 - Độ khó tăng dần của IELTS Reading khiến việc chia đều 20 phút cho mỗi đoạn văn trở nên bất hợp lý.
 - Quy tắc 15-20-25 phân bổ thời gian tăng dần tương ứng với độ khó của các đoạn văn trong đề thi.
 - Giải quyết nhanh Passage 1 trong 15 phút để tích lũy điểm số dễ và tạo quỹ thời gian cho Passage 3.
+- Phân chia thời lượng chi tiết cho từng dạng bài: 1 phút cho điền từ, 1.5 phút cho True/False, và tối đa 2 phút cho Matching Headings.
 - Rèn luyện kỹ năng buông bỏ câu hỏi khó để tránh bị cháy giáo án thời gian làm bài.
+- Sử dụng kỹ thuật reset tâm lý 5 giây để lấy lại sự điềm tĩnh khi phát hiện mình đang bị trễ giờ.

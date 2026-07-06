@@ -30,27 +30,29 @@ Bảng quy đổi điểm được điều chỉnh liên tục cho từng đợt
 - Nếu đề thi của đợt đó được đánh giá là **khó hơn bình thường**: Thang quy đổi sẽ trở nên "dễ thở" hơn. Bạn có thể làm sai nhiều câu hơn nhưng vẫn đạt được điểm số cao (ví dụ: làm đúng 88 câu Listening vẫn có thể đạt tối đa 495 điểm).
 - Nếu đề thi được đánh giá là **dễ hơn bình thường**: Thang quy đổi sẽ siết chặt lại. Sai một vài câu dễ có thể khiến điểm số của bạn bị trừ rất nặng (ví dụ: làm đúng 95 câu Reading chỉ đạt 450 điểm).
 
-Quy trình này đảm bảo tính công bằng tuyệt đối cho mọi thí sinh, giúp điểm số phản ánh chính xác năng lực ngôn ngữ thực tế của bạn cho dù bạn thi vào đợt đề dễ hay đề khó.
+### Hiện tượng sụt giảm điểm số cực đoan khi đề thi quá dễ
+Một hiện tượng tâm lý gây hoang mang cho thí sinh là việc nhận điểm số thấp bất ngờ dù làm bài cảm giác rất tốt.
 
-## Cách sử dụng bảng quy đổi điểm tiêu chuẩn khi luyện đề tại nhà
+Khi đề thi của đợt đó quá dễ, hầu hết các thí sinh đều làm được bài, đồ thị phân phối điểm số sẽ bị lệch. Để phân hóa trình độ, thang quy đổi điểm thô lúc này sẽ bị siết cực chặt.
 
-Để phục vụ cho việc tự đánh giá năng lực khi giải đề thi thử tại nhà, người học có thể sử dụng một bảng quy đổi điểm tiêu chuẩn (bảng quy đổi trung bình của các đề thi ETS). Bảng này cung cấp một khoảng điểm số dự đoán tương đối chính xác.
+Một lỗi sai nhỏ ở các câu ngữ pháp cơ bản có thể khiến bạn bị trừ từ 10 đến 15 điểm trực tiếp thay vì 5 điểm như bình thường. Đây là lý do tại sao bạn phải giữ sự cẩn trọng tối đa ở từng câu hỏi, bất kể đề thi dễ hay khó.
 
-Dưới đây là một số mốc quy đổi điểm thô sang điểm số thực tế tiêu biểu:
+## Bảng quy đổi điểm tiêu chuẩn tham khảo khi giải đề tại nhà
 
-### Phần thi Listening (100 câu - 495 điểm tối đa)
+Để phục vụ cho việc tự đánh giá năng lực khi giải đề thi thử tại nhà, người học có thể sử dụng một bảng quy đổi điểm tiêu chuẩn dưới đây để dự đoán khoảng điểm số:
 
-- **90 - 100 câu đúng**: Dự kiến đạt từ 450 đến 495 điểm.
-- **80 - 89 câu đúng**: Dự kiến đạt từ 395 đến 445 điểm.
-- **70 - 79 câu đúng**: Dự kiến đạt từ 335 đến 390 điểm.
-- **50 - 69 câu đúng**: Dự kiến đạt từ 220 đến 330 điểm.
-
-### Phần thi Reading (100 câu - 495 điểm tối đa)
-
-- **90 - 100 câu đúng**: Dự kiến đạt từ 440 đến 495 điểm.
-- **80 - 89 câu đúng**: Dự kiến đạt từ 385 đến 435 điểm.
-- **70 - 79 câu đúng**: Dự kiến đạt từ 325 đến 380 điểm.
-- **50 - 69 câu đúng**: Dự kiến đạt từ 210 đến 320 điểm.
+| Số câu đúng (trên 100 câu) | Điểm số Listening tương ứng | Điểm số Reading tương ứng |
+| :---: | :---: | :---: |
+| **96 - 100** | 490 - 495 | 485 - 495 |
+| **91 - 95** | 460 - 485 | 450 - 480 |
+| **86 - 90** | 430 - 455 | 415 - 445 |
+| **81 - 85** | 395 - 425 | 385 - 410 |
+| **76 - 80** | 365 - 390 | 350 - 380 |
+| **71 - 75** | 335 - 360 | 320 - 345 |
+| **66 - 70** | 305 - 330 | 290 - 315 |
+| **61 - 65** | 275 - 300 | 260 - 285 |
+| **51 - 60** | 225 - 270 | 210 - 255 |
+| **41 - 50** | 175 - 220 | 160 - 205 |
 
 Khi sửa đề tại nhà, hãy lấy tổng số câu đúng của từng phần thi đối chiếu vào bảng quy đổi tương ứng để tính ra khoảng điểm số dự kiến của mình. Đừng bao giờ cộng gộp số câu đúng của cả hai phần rồi nhân với một hệ số cố định.
 
@@ -65,5 +67,6 @@ Hiểu rõ cơ chế quy đổi điểm giúp bạn xây dựng chiến thuật 
 
 - Điểm thi TOEIC được tính bằng điểm quy đổi (Scaled Score) từ số câu đúng, không tính bằng cách nhân trực tiếp hệ số.
 - Thang điểm quy đổi biến động theo từng mã đề thi dựa trên kỹ thuật cân bằng điểm số (equating) của ETS để đảm bảo tính công bằng.
+- Khi đề thi quá dễ, thang quy đổi sẽ siết rất chặt; làm sai câu dễ sẽ bị trừ điểm rất nặng.
 - Sử dụng bảng quy đổi trung bình khi làm đề tại nhà để ước lượng khoảng điểm số thực tế của bản thân.
 - Bảo vệ điểm số Reading bằng cách làm đúng tuyệt đối các câu ngữ pháp dễ ở Part 5 trước khi giải quyết Part 7.

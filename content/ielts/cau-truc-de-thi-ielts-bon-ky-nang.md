@@ -67,9 +67,22 @@ Tuy nhiên, nhược điểm lớn nhất là bạn phải tự đếm số từ
 
 Thi máy mang lại những lợi ích vượt trội cho kỹ năng Writing: Máy tính tự động đếm số từ cho bạn, việc chỉnh sửa, cắt ghép đoạn văn vô cùng nhanh chóng và tiện lợi mà không sợ làm bẩn bài viết. Trong bài thi Reading, màn hình được chia đôi (một bên là bài đọc, một bên là câu hỏi) giúp bạn không phải lật trang liên tục.
 
+Hơn thế nữa, thi máy cung cấp các công cụ đắc lực:
+- **Công cụ Highlight (Tô màu)**: Cho phép bạn bôi đen và tô đậm các từ khóa quan trọng trực tiếp trên văn bản đọc.
+- **Công cụ Note (Ghi chú)**: Cho phép click chuột phải để ghi chú nhanh ý kiến bên cạnh đoạn văn mà không sợ làm rối giao diện.
+
 Nhưng thi máy đòi hỏi bạn phải có tốc độ gõ phím tốt và khả năng đọc hiểu văn bản dài trên màn hình mà không bị mỏi mắt.
 
-Việc lựa chọn hình thức thi vì vậy nên dựa trên thói quen làm việc thực tế của bạn chứ không nên chạy theo xu hướng chung.
+## Kinh nghiệm kiểm soát thời gian chết và duy trì thể lực
+
+Buổi thi chính thức kéo dài liên tục gần 3 tiếng không nghỉ. Rất nhiều thí sinh bị đuối sức ở phần thi Writing - môn thi cuối cùng - dẫn đến việc đầu óc bị mỏi mệt và không thể tập trung triển khai ý tưởng.
+
+Hãy tận dụng tối đa các khoảng **thời gian chết** hợp pháp để nghỉ ngơi và lấy lại sự cân bằng:
+
+- **Giữa Listening và Reading**: Có khoảng 2-3 phút giám khảo thu lại đề thi hoặc kiểm tra hệ thống máy tính. Hãy nhắm mắt lại, thực hiện vài nhịp thở sâu để hạ nhịp tim và reset lại bộ nhớ làm việc.
+- **Giữa Reading và Writing**: Tương tự, hãy thả lỏng cơ vai và cổ. Tránh việc dằn vặt bản thân về những câu hỏi chưa chắc chắn ở phần Reading; hãy hướng sự tập trung hoàn toàn vào việc chuẩn bị dàn ý cho Task 1 và Task 2 Writing.
+
+Sự chuẩn bị tốt về mặt thể chất này giúp bạn duy trì phong độ làm bài ổn định nhất xuyên suốt cả kỳ thi đầy áp lực.
 
 ## Điều đáng nhớ
 
@@ -77,3 +90,5 @@ Việc lựa chọn hình thức thi vì vậy nên dựa trên thói quen làm 
 - Phân bổ thời gian Reading theo nguyên tắc lũy tiến, dành nhiều thời gian hơn cho Passage cuối.
 - Thi Speaking là một cuộc hội thoại tự nhiên, hãy tránh việc học thuộc lòng bài mẫu.
 - Lựa chọn thi giấy hay thi máy dựa trên thói quen ghi chú và tốc độ gõ phím của bản thân.
+- Tận dụng các công cụ highlight và note của giao diện thi máy để tăng tốc độ định vị đáp án Reading.
+- Kiểm soát các khoảng thời gian chết giữa các môn thi để hồi phục thể lực và tập trung tinh thần.

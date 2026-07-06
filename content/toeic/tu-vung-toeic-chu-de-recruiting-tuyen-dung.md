@@ -17,7 +17,7 @@ Nó xuất hiện xuyên suốt dưới dạng các bản tin thông báo tuyể
 
 Nhiều người học thường bị bối rối trước các từ vựng mang tính học thuật về quy chế tuyển dụng hoặc mô tả phúc lợi công việc.
 
-Để nâng cao khả năng đọc hiểu và phản xạ từ vựng chính xác, việc hệ thống hóa các cụm từ kết hợp tự nhiên (collocations) theo trình tự của quy trình tuyển dụng thực tế là giải pháp tối ưu nhất.
+Để nâng cao khả năng đọc hiểu và phản xạ từ vựng chính xác, việc hệ thống hóa các cụm từ kết hợp tự nhiên (collocations) theo trình tự của quy trình nhân sự thực tế là giải pháp tối ưu nhất.
 
 ## 1. Giai đoạn Tìm kiếm và Nộp đơn ứng tuyển (Applying for a Job)
 
@@ -58,9 +58,24 @@ Giai đoạn cuối cùng là đưa ra lời mời làm việc, ký kết hợp 
 - **Sign a contract**: Ký kết hợp đồng lao động chính thức.
   - *Once the terms are agreed upon, both parties will sign the employment contract.*
 
+## 4. Thăng tiến sự nghiệp và Sa thải/Nghỉ việc (Career Promotion & Termination)
+
+Mảng quản trị nhân sự nội bộ cũng thường xuyên xuất hiện trong Part 6 và Part 7 dưới dạng các thông báo nhân sự mới hoặc thay đổi cơ cấu công ty:
+
+- **Promote to a position**: Thăng chức lên một vị trí cao hơn.
+  - *She was promoted to the position of marketing director after her resounding success.*
+- **Step down from a role**: Từ chức, bước xuống từ một vai trò quản lý.
+  - *Mr. Jackson decided to step down from his role as president due to health issues.*
+- **Lay off employees**: Sa thải nhân viên (do cắt giảm nhân sự, thu hẹp quy mô công ty).
+  - *The company had to lay off fifty workers to cut down on operating expenses.*
+- **Resign**: Xin nghỉ việc, từ chức (chủ động nộp đơn nghỉ).
+  - *He plans to resign from the firm at the end of this month.*
+- **Severance pay**: Tiền trợ cấp thôi việc (khoản tiền nhận được khi bị sa thải/nghỉ việc).
+  - *Laid-off workers are entitled to receive two months of severance pay.*
+
 ## Điều đáng nhớ
 
-- Hệ thống hóa từ vựng Recruiting theo trình tự: Nộp đơn -> Phỏng vấn -> Nhận việc & Phúc lợi để xây dựng liên kết mạch tư duy.
+- Hệ thống hóa từ vựng Recruiting theo trình tự: Nộp đơn -> Phỏng vấn -> Nhận việc & Phúc lợi -> Thăng chức & Nghỉ việc để xây dựng liên kết mạch tư duy.
 - Sử dụng các động từ collocations chuẩn xác như *submit an application*, *conduct an interview*, *offer a position*.
 - Làm quen với các khái niệm phúc lợi thương mại như *compensation package*, *benefits*, *references*.
-- Tận dụng vốn từ vựng này để đọc hiểu nhanh các đoạn hội thoại phỏng vấn hoặc tin tuyển dụng trong Part 7.
+- Hiểu rõ các thuật ngữ thay đổi nhân sự nội bộ như *step down*, *lay off*, *severance pay* để xử lý nhanh Part 7.

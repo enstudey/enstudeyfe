@@ -29,7 +29,7 @@ Lý do phổ biến nhất là quá trình dịch thầm (mental translation) di
 
 Quy trình 3 bước này ngốn quá nhiều thời gian xử lý của bộ não. Chỉ cần gặp một từ tiếng Việt không có từ tiếng Anh tương đương trực tiếp, mạch nói của bạn lập tức bị đứt gãy. Sự im lặng xuất hiện, và bạn bắt đầu phát ra những âm thanh vô nghĩa như *uhm*, *err* liên tục để kéo dài thời gian.
 
-### Áo tưởng về những từ vựng hoàn hảo
+### Ảo tưởng về những từ vựng hoàn hảo
 
 Lý do thứ hai là sự cầu toàn quá mức trong việc chọn từ.
 
@@ -54,6 +54,20 @@ Hãy quan sát ví dụ sau:
 
 Việc sử dụng các cụm từ này giúp bạn có thêm từ 2 đến 3 giây để sắp xếp ý tưởng trong đầu mà không làm gián đoạn dòng chảy của âm thanh. Nó tạo cảm giác bạn đang thực sự đối thoại và suy nghĩ tự nhiên, chứ không phải đang trả bài một cách máy móc.
 
+### Bộ Filler Words học thuật và trang trọng dành riêng cho Part 3
+
+Đối với Part 3 - phần thảo luận xã hội yêu cầu tính trang trọng cao, việc sử dụng các filler words thông thường của Part 1 như *well* hoặc *you know* sẽ khiến bài nói bị đánh giá là thiếu chuẩn mực.
+
+Hãy thay thế bằng các cấu trúc đệm mang tính học thuật (academic fillers):
+
+- *Broadly speaking, I would say that...* (Nói một cách khái quát, tôi cho rằng...)
+- *Looking at this from a societal perspective, it appears that...* (Nhìn nhận vấn đề này từ góc độ xã hội, có vẻ như...)
+- *That is a multifaceted issue, but one primary aspect is...* (Đó là một vấn đề đa diện, nhưng một khía cạnh chính là...)
+- *To the best of my knowledge, it seems that...* (Theo những gì tôi được biết, có vẻ như...)
+- *If we consider the long-term implications, we can argue that...* (Nếu chúng ta cân nhắc những ảnh hưởng dài hạn, chúng ta có thể lập luận rằng...)
+
+Sử dụng các cấu trúc này giúp bạn nâng cấp phong thái nói lên mức chuyên nghiệp, trang trọng và có chiều sâu lập luận học thuật rõ nét.
+
 ## Giải pháp 2: Kỹ thuật nói chậm lại để não kịp xử lý thông tin
 
 Nhiều thí sinh lầm tưởng rằng nói nhanh là biểu hiện của sự trôi chảy. Họ cố gắng nói thật nhanh ngay khi bắt đầu câu trả lời.
@@ -68,9 +82,26 @@ Hãy chủ động nói chậm lại.
 
 Việc nói chậm và kiểm soát nhịp điệu giúp bộ não của bạn luôn đi trước cơ miệng một bước, chuẩn bị sẵn sàng từ vựng cho câu tiếp theo. Điều này giúp loại bỏ hoàn toàn lỗi vấp và mang lại phong thái tự tin, chuyên nghiệp trong phòng thi.
 
+## Hướng dẫn phương pháp tự ghi âm và phân tích lỗi vấp tại nhà
+
+Cách hiệu quả nhất để sửa lỗi vấp là tự đối mặt với nó thông qua việc ghi âm giọng nói. Hãy thực hiện quy trình sau hằng tuần:
+
+1. **Ghi âm**: Chọn một câu hỏi Speaking ngẫu nhiên và ghi âm lại câu trả lời tự do của bạn trong 2 phút (tuyệt đối không chuẩn bị trước).
+2. **Nghe lại và chép chính tả (Transcribing)**: Hãy nghe lại bản ghi âm và chép lại chính xác từng từ bạn đã phát ra, bao gồm cả những chỗ vấp, ngập ngừng (*uhm, ah*), những chỗ lặp từ và các lỗi ngữ pháp.
+3. **Phân tích lỗi sai**: 
+   - Đánh dấu đỏ vào các vị trí bạn bị ngập ngừng quá 3 giây.
+   - Phân tích nguyên nhân: Tại vị trí đó bạn bị vấp là do thiếu từ vựng (language search) hay do bí ý tưởng (content search)?
+   - Nếu do từ vựng: Tra cứu và ghi lại 2-3 collocations có thể dùng để diễn đạt ý tưởng đó.
+   - Nếu do bí ý: Thiết lập dàn ý tư duy nhanh cho câu hỏi đó theo mô hình chuẩn.
+4. **Nói lại lần 2**: Thực hiện nói lại câu hỏi đó một lần nữa với mục tiêu khắc phục triệt để các vị trí đã đánh dấu đỏ.
+
+Sự tự chẩn đoán này giúp bạn nhanh chóng phát hiện ra các thói quen nói vấp lặp đi lặp lại của bản thân và sửa đổi chúng tận gốc.
+
 ## Điều đáng nhớ
 
 - Ngập ngừng để tìm từ vựng bị trừ điểm nặng hơn việc ngập ngừng để suy nghĩ ý tưởng.
 - Loại bỏ thói quen dịch thầm từ tiếng Việt và ngưng tìm kiếm từ vựng hoàn hảo khi đang nói.
 - Sử dụng các filler words tự nhiên để kéo dài thời gian suy nghĩ mà không làm đứt gãy mạch nói.
+- Trang bị bộ filler words học thuật cho Part 3 để nâng cấp phong thái nói trang trọng.
 - Nói chậm lại với nhịp điệu điềm tĩnh để bộ não có đủ thời gian chuẩn bị từ vựng cho câu tiếp theo.
+- Tự ghi âm, chép chính tả bài nói của mình để phân tích chi tiết nguyên nhân gây vấp và sửa lỗi tận gốc.

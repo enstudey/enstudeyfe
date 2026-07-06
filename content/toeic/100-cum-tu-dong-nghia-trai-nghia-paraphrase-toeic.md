@@ -1,90 +1,86 @@
 ---
-title: "Cụm từ đồng nghĩa và trái nghĩa trong TOEIC: Nghệ thuật paraphrase bứt phá điểm số"
-description: "Tại sao từ vựng đồng nghĩa và trái nghĩa quyết định điểm số Part 7 của bạn? Khám phá cách paraphrase để định vị nhanh đáp án đúng."
+title: "100 cụm từ đồng nghĩa trái nghĩa paraphrase TOEIC: Chinh phục điểm số Part 7"
+description: "Tại sao việc học từ vựng đơn lẻ đang giới hạn điểm số đọc hiểu của bạn? Khám phá cách nâng cấp phản xạ paraphrase để giải nhanh Part 7."
 date: "2026-07-07"
 category: "toeic"
 tags:
-  - "từ đồng nghĩa toeic"
+  - "từ vựng toeic"
   - "paraphrase toeic"
-  - "toeic reading"
+  - "part 7 toeic"
 ---
 
-# Cụm từ đồng nghĩa và trái nghĩa trong TOEIC: Nghệ thuật paraphrase bứt phá điểm số
+# 100 cụm từ đồng nghĩa trái nghĩa paraphrase TOEIC: Chinh phục điểm số Part 7
 
-Một quy luật bất biến trong đề thi TOEIC Reading (đặc biệt là Part 7) mà ai cũng phải biết là: **Đáp án đúng gần như không bao giờ lặp lại y hệt từ vựng có trong bài đọc.**
+Trong bài thi TOEIC Reading, đặc biệt là Part 7 (Đọc hiểu văn bản), ETS sử dụng một kỹ thuật gài bẫy kinh điển: **Paraphrase (Diễn đạt lại bằng cách khác)**.
 
-ETS thiết kế đề thi để kiểm tra khả năng hiểu bản chất ngôn ngữ của bạn.
+Hầu như không bao giờ đáp án đúng chứa chính xác từ vựng đã xuất hiện trong bài đọc.
 
-Họ làm việc này thông qua kỹ thuật diễn đạt lại (paraphrase).
+Thay vào đó, câu trả lời đúng sẽ sử dụng một từ đồng nghĩa (synonym) hoặc một cách diễn đạt tương đương để kiểm tra vốn từ thực chất của bạn.
 
-Nếu câu hỏi hỏi về việc *giảm giá sản phẩm*, bài đọc sẽ dùng cụm từ *offer a discount*, còn đáp án đúng sẽ được biến đổi thành *reduce the price*.
+Nếu bạn chỉ luyện nghe và đọc theo phương pháp “khớp từ khóa” (keyword matching), bạn sẽ liên tục bị lỡ thông tin và rơi vào bẫy của các câu trả lời nhiễu. Việc tích lũy các cặp từ đồng nghĩa, trái nghĩa và hiểu sâu sắc cách chúng được paraphrase trong ngữ cảnh thương mại là điều kiện bắt buộc để đạt điểm số 800+ TOEIC.
 
-Nếu bạn chỉ đi tìm những đáp án chứa từ vựng giống hệt bài đọc (keyword matching), bạn sẽ liên tục rơi vào các bẫy câu nhiễu của đề thi. Để đạt điểm số cao, bạn bắt buộc phải làm chủ hệ thống các cặp từ đồng nghĩa và trái nghĩa thường gặp nhất trong bối cảnh tiếng Anh thương mại.
+## Bản chất của bẫy Paraphrase trong đề thi đọc hiểu Part 7
 
-## Bản chất của bẫy keyword matching trong đề thi đọc hiểu
+ETS hiểu rất rõ thói quen của thí sinh: Khi đọc câu hỏi và thấy từ khóa *free of charge* (miễn phí), mắt họ sẽ tự động quét nhanh trong văn bản để tìm cụm từ đó.
 
-Cái bẫy phổ biến nhất trong Part 7 là bẫy lặp từ (literal word trap).
+Nắm bắt tâm lý này, ETS sẽ giấu thông tin đi bằng cách sử dụng các từ đồng nghĩa:
 
-Thí sinh bận rộn thường đọc lướt câu hỏi, nhặt ra 1-2 từ khóa, rồi đối chiếu nhanh lên bài đọc để tìm câu chứa các từ khóa đó. Khi thấy một đáp án chứa từ vựng giống hệt, họ lập tức chọn ngay lập tức mà không phân tích kỹ ý nghĩa toàn câu.
+- Trong bài đọc viết: *“We will provide lunch at no additional cost.”*
+- Đáp án đúng sẽ viết: *“Lunch is complimentary.”*
+- Hoặc bài đọc viết: *“The workshop has been moved from Monday to Thursday.”*
+- Đáp án đúng sẽ viết: *“The event has been postponed.”*
 
-Tuy nhiên, ETS rất hay đưa từ khóa của bài đọc vào các đáp án sai nhưng thay đổi chủ thể hành động hoặc phủ định nghĩa của nó.
+Nếu thí sinh không biết *at no additional cost* đồng nghĩa với *complimentary* (hoặc *free*), hay *moved to a later date* tương đương với *postponed*, họ sẽ mất rất nhiều thời gian phân vân và cuối cùng chọn sai đáp án.
 
-Trong khi đó, đáp án đúng lại sử dụng những từ đồng nghĩa hoàn toàn khác biệt về mặt ký tự nhưng tương đương về mặt ý nghĩa.
+## 10 Cặp từ đồng nghĩa/trái nghĩa thương mại chất lượng cao trong Part 7
 
-Việc làm chủ paraphrase giúp bạn thoát khỏi thói quen đọc bắt từ khóa khô khan, chuyển sang tư duy đọc hiểu ý tưởng (idea comprehension) - kỹ năng cốt lõi để giải quyết nhanh chóng các bài đọc đôi (double passages) và bài đọc ba (triple passages) dưới áp lực thời gian.
+Hãy đưa ngay các cặp từ thường xuyên xuất hiện làm đáp án trực tiếp trong Part 7 dưới đây vào hệ thống ghi nhớ của bạn:
 
-## Các cặp từ đồng nghĩa thương mại tần suất cao nhất trong TOEIC
+### Nhóm từ đồng nghĩa (Synonyms)
+1. **Submit** = **Hand in** (Nộp tài liệu)
+   - *Please submit your application before Friday.* / *Candidates must hand in their resumes.*
+2. **Postpone** = **Delay** = **Put off** (Trì hoãn)
+   - *The meeting was postponed due to the weather.*
+3. **Complimentary** = **Free of charge** = **At no cost** (Miễn phí)
+   - *Guests receive a complimentary breakfast.*
+4. **Renovate** = **Remodel** = **Redecorate** (Cải tạo, nâng cấp cơ sở vật chất)
+   - *The office lobby will be renovated next month.*
+5. **Reimburse** = **Refund** = **Pay back** (Hoàn tiền, thanh toán lại chi phí phát sinh)
+   - *We will reimburse all travel expenses incurred.*
 
-Dưới đây là một số nhóm từ đồng nghĩa bản lề thường xuất hiện để paraphrase giữa câu hỏi và bài đọc:
+### Nhóm từ trái nghĩa (Antonyms)
+6. **Obsolete** (Lỗi thời) >< **State-of-the-art** (Hiện đại nhất)
+   - *The system is obsolete and needs upgrading.* >< *We use state-of-the-art technology.*
+7. **Densely populated** (Mật độ dân cư đông) >< **Sparsely populated** (Thưa thớt)
+8. **Prohibit** (Nghiêm cấm) >< **Permit** / **Authorize** (Cho phép, cấp quyền)
+   - *Smoking is prohibited in the building.* >< *Only authorized personnel can enter.*
+9. **Deficit** (Thâm hụt ngân sách) >< **Surplus** (Dư thừa, thặng dư)
+10. **Temporary** (Tạm thời) >< **Permanent** (Lâu dài, vĩnh viễn)
 
-### Nhóm liên quan đến Hoạt động kinh doanh và Giao dịch
+## Phân tích thực chiến: Cách paraphrase một đoạn email thương mại
 
-- **Postpone / Delay / Put off**: Hoãn lại một sự kiện.
-  - *The meeting has been postponed until next Monday.* -> *The event will be delayed.*
-- **Cancel / Call off**: Hủy bỏ hoàn toàn (phân biệt rõ với hoãn lại).
-  - *They decided to cancel the project due to financial issues.* -> *The project was called off.*
-- **Decrease / Reduce / Cut / Curtail**: Cắt giảm (chi phí, nhân sự).
-  - *We must reduce our marketing expenditures.* -> *Advertising costs need to be cut.*
+Hãy cùng xem xét cách ETS thiết lập câu hỏi và đáp án dựa trên một đoạn email mô phỏng thực tế dưới đây:
 
-### Nhóm liên quan đến Nhân sự và Công việc
+- **Đoạn văn trong bài đọc**: *“Due to the scheduled maintenance of our online payment gateway this Sunday, customers will not be able to process credit card transactions between 2:00 AM and 5:00 AM. We apologize for any inconvenience this temporary disruption may cause.”*
 
-- **Hire / Recruit / Employ / Take on**: Tuyển dụng nhân viên mới.
-  - *The firm is looking to hire three new developers.* -> *They are recruiting staff.*
-- **Resign / Step down / Quit**: Từ chức, nghỉ việc.
-  - *The director decided to resign from his position.* -> *The leader is stepping down.*
-- **Promote / Advance**: Thăng chức, phát triển sự nghiệp.
-  - *She was promoted to manager last month.* -> *She achieved career advancement.*
+### Phân tích câu hỏi và đáp án paraphrase:
 
-## Các cặp từ trái nghĩa định vị thông tin phủ định trong Part 7
+- **Câu hỏi**: *What is indicated about the online payment service this Sunday?* (Điều gì được chỉ ra về dịch vụ thanh toán trực tuyến vào Chủ Nhật này?).
+- **Các phương án lựa chọn**:
+  - (A) *It will be permanently shut down.* (Sai vì bài viết ghi *temporary disruption* - gián đoạn tạm thời, chứ không phải *permanently* - vĩnh viễn).
+  - (B) *It will undergo inspection next week.* (Sai vì sự kiện diễn ra vào Chủ Nhật này, không phải tuần sau).
+  - (C) *It will be unavailable for a brief period.* (Đáp án đúng).
+  - (D) *It will offer discounts on transaction fees.* (Thông tin không có trong bài).
 
-Bên cạnh từ đồng nghĩa, việc hiểu các cặp từ trái nghĩa giúp bạn nhanh chóng giải quyết dạng câu hỏi loại trừ: *Which of the following is NOT mentioned in the text?* (Điều nào dưới đây không được đề cập?).
+**Cơ chế paraphrase của đáp án (C)**:
+- Cụm từ *will not be able to process transactions* (không thể thực hiện giao dịch) đã được paraphrase thành *unavailable* (không sẵn sàng hoạt động).
+- Mốc thời gian *between 2:00 AM and 5:00 AM* (3 tiếng) được diễn đạt lại thành *for a brief period* (trong một khoảng thời gian ngắn).
 
-Dưới đây là các cặp từ trái nghĩa thương mại kinh điển:
-
-- **Domestic** (Trong nước) >< **International / Foreign** (Ngoài nước).
-  - *The company focuses on domestic sales.* >< *They target international markets.*
-- **Temporary** (Tạm thời) >< **Permanent** (Vĩnh viễn, lâu dài).
-  - *We need temporary workers for the holiday season.* >< *She is looking for a permanent job.*
-- **Deficit** (Thâm hụt) >< **Surplus** (Dư thừa, thặng dư).
-  - *The budget deficit was significant.* >< *A surplus of funds was recorded.*
-
-## Phương pháp tích lũy từ đồng nghĩa để tạo phản xạ phòng thi
-
-Cách học từ đồng nghĩa hiệu quả không phải là học thuộc lòng một bảng đối chiếu dài hàng trăm từ đứng riêng lẻ.
-
-Hãy ghi chép từ vựng theo cặp hoặc theo nhóm nghĩa ngay khi bạn giải đề thi thử.
-
-Khi bạn sửa lỗi một câu sai trong Part 7:
-
-1. Xác định từ khóa ở đáp án đúng và từ khóa tương ứng trong bài đọc đã giúp bạn ra được đáp án đó.
-2. Ghi chép cặp từ đó vào sổ tay dưới dạng: *[Từ trong bài đọc] = [Từ trong câu hỏi/đáp án]* (Ví dụ: *launch a product = introduce a new item*).
-3. Đọc lại danh sách này trước mỗi buổi luyện đề tiếp theo để xây dựng phản xạ nhận diện từ đồng nghĩa tức thì khi đọc.
-
-Quá trình tích lũy từ thực tế giải đề này giúp bạn ghi nhớ từ vựng gắn liền với ngữ cảnh thực chiến của ETS, mang lại hiệu quả vượt trội.
+Nếu bạn có tư duy phản xạ paraphrase tốt, bạn sẽ chọn ngay được đáp án (C) trong vòng 5 giây mà không cần phải đọc đi đọc lại đoạn email.
 
 ## Điều đáng nhớ
 
-- Đáp án đúng trong TOEIC Reading Part 7 luôn được paraphrase từ thông tin trong bài đọc.
-- Cảnh giác với các đáp án chứa từ vựng giống hệt bài đọc vì đó thường là các câu nhiễu gài bẫy.
-- Tích lũy các cặp từ đồng nghĩa/trái nghĩa thương mại phổ biến để tăng tốc độ định vị đáp án.
-- Ghi chép từ vựng theo cặp thực tế từ quá trình giải đề và sửa câu sai để tối ưu hóa phản xạ phòng thi.
+- ETS sử dụng kỹ thuật paraphrase trong hầu hết các đáp án đúng của Part 7 để chống lại phương pháp đọc bắt từ khóa thô sơ.
+- Luôn học từ vựng kèm theo các từ đồng nghĩa và trái nghĩa thương mại phổ biến.
+- Rèn luyện kỹ năng phân tích mối quan hệ tương đương về mặt ngữ nghĩa giữa thông tin trong bài viết và phương án lựa chọn.
+- Nhận diện nhanh các từ khóa chỉ trạng thái thời gian (*temporary*, *permanent*) và chi phí (*complimentary*, *at no cost*) để loại trừ bẫy nhiễu.

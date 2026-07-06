@@ -27,9 +27,18 @@ Tương tự, cụm từ *gặp khó khăn* thường bị dịch thành *meet d
 
 Những lỗi kết hợp từ này không làm bạn bị trừ điểm ngữ pháp, nhưng nó gửi đi một tín hiệu rất rõ ràng tới giám khảo: Bạn đang dịch từ ngôn ngữ mẹ đẻ chứ chưa thực sự tư duy bằng tiếng Anh. Điểm Lexical Resource của bạn sẽ bị giới hạn ở Band 6.0 hoặc thấp hơn vì thiếu đi sự chính xác và tự nhiên trong việc dùng từ.
 
+### Bảng so sánh trực quan lỗi kết hợp từ tự dịch và chuẩn bản ngữ
+
+- **Lỗi tự dịch**: *make a seminar* (tổ chức hội thảo) -> **Chuẩn bản ngữ**: **conduct a seminar** / **hold a seminar**.
+- **Lỗi tự dịch**: *give an opinion* (đưa ra ý kiến) -> **Chuẩn bản ngữ**: **express an opinion** / **voice an opinion**.
+- **Lỗi tự dịch**: *big success* (thành công lớn) -> **Chuẩn bản ngữ**: **resounding success** / **huge success**.
+- **Lỗi tự dịch**: *do a mistake* (phạm sai lầm) -> **Chuẩn bản ngữ**: **make a mistake** / **commit an error**.
+
 ## Bản chất của Collocations: Tại sao từ điển đồng nghĩa là không đủ
 
 Mỗi từ tiếng Anh khi đứng riêng lẻ có thể mang một nghĩa chung, nhưng khả năng kết hợp của nó với các từ khác lại bị giới hạn bởi thói quen sử dụng hàng thế kỷ của người bản xứ.
+
+Dưới góc độ khoa học nhận thức, bộ não của chúng ta lưu trữ thông tin dưới dạng các "chunk" (khối thông tin liên kết). Khi người bản xứ nói hoặc viết, họ không lắp ghép từng từ đơn lẻ theo quy tắc ngữ pháp. Họ truy xuất toàn bộ khối từ vựng đã được liên kết sẵn trong trí nhớ dài hạn.
 
 Hãy lấy ví dụ về hai tính từ có nghĩa tương tự nhau: *fast* và *quick*.
 
@@ -42,7 +51,7 @@ Do đó, thay vì cố gắng học 20 từ đơn lẻ mỗi ngày, hãy tập t
 
 ## Danh sách Collocations chất lượng cao chia theo chủ đề kinh điển
 
-Dưới đây là một số cụm từ cố định tự nhiên giúp bạn nâng cấp lập luận trong bài thi IELTS Writing và Speaking.
+Dưới đây là hệ thống các cụm từ cố định tự nhiên giúp bạn nâng cấp lập luận trong bài thi IELTS Writing và Speaking.
 
 ### Chủ đề Giáo dục (Education)
 
@@ -52,6 +61,8 @@ Dưới đây là một số cụm từ cố định tự nhiên giúp bạn nâ
   - *Continuous assessment provides a more accurate reflection of a student's academic performance than a final exam.*
 - **Fall behind with studies**: Học đuối, chậm tiến độ so với các bạn (thay vì *study slowly*).
   - *Without proper guidance, self-studying students easily fall behind with their studies.*
+- **Distantly delivered education**: Giáo dục trực tuyến/từ xa (học thuật hơn *online learning*).
+  - *The rise of distantly delivered education has democratized access to learning resources.*
 
 ### Chủ đề Công nghệ và Đổi mới (Technology & Innovation)
 
@@ -61,6 +72,8 @@ Dưới đây là một số cụm từ cố định tự nhiên giúp bạn nâ
   - *Healthy competition among tech giants helps to spur innovation.*
 - **Harness technology**: Khai thác, tận dụng công nghệ (thay vì *use technology*).
   - *Modern classrooms should harness technology to create interactive learning environments.*
+- **Obsolete technology**: Công nghệ lỗi thời (thay vì *old technology*).
+  - *Businesses that fail to adapt will be left behind with obsolete technology.*
 
 ### Chủ đề Môi trường và Đô thị (Environment & Urbanization)
 
@@ -70,6 +83,30 @@ Dưới đây là một số cụm từ cố định tự nhiên giúp bạn nâ
   - *Densely populated cities often face severe traffic congestion during rush hours.*
 - **Environmental degradation**: Sự suy thoái môi trường (tự nhiên hơn *environmental bad state*).
   - *Industrial waste discharge is a primary driver of environmental degradation.*
+- **Pristine environment**: Môi trường nguyên sơ, chưa bị ô nhiễm (thay vì *clean nature*).
+  - *Ecotourism can generate revenue while preserving the pristine environment.*
+
+### Chủ đề Công việc và Sự nghiệp (Work & Career)
+
+- **Career prospects**: Triển vọng nghề nghiệp (tự nhiên hơn *job future*).
+  - *Acquiring soft skills can significantly enhance a graduate's career prospects.*
+- **Heavy workload**: Khối lượng công việc nặng nề (thay vì *much work*).
+  - *Many employees suffer from burnout due to a heavy workload and tight deadlines.*
+- **Work-life balance**: Sự cân bằng giữa công việc và cuộc sống (thay vì *work and life balance*).
+  - *Forward-thinking companies introduce flexible hours to promote a healthy work-life balance.*
+- **Fulfill a duty**: Hoàn thành nghĩa vụ, trách nhiệm (học thuật hơn *do a job*).
+  - *Every employee must fulfill their duty to ensure the project runs smoothly.*
+
+### Chủ đề Sức khỏe và Lối sống (Health & Lifestyle)
+
+- **Sedentary lifestyle**: Lối sống ít vận động (học thuật hơn *lazy lifestyle*).
+  - *A sedentary lifestyle is linked to various chronic health issues, including obesity.*
+- **Build up resistance**: Xây dựng khả năng đề kháng, hệ miễn dịch.
+  - *Regular exercise and a balanced diet help to build up resistance against common illnesses.*
+- **Nutritional value**: Giá trị dinh dưỡng (tự nhiên hơn *health value in food*).
+  - *Processed foods often lose their nutritional value during manufacturing.*
+- **Take regular exercise**: Tập thể dục đều đặn (chuẩn bản ngữ hơn *do sports regularly*).
+  - *Physicians advise individuals of all ages to take regular exercise.*
 
 ## Cách tích lũy Collocations để biến chúng thành phản xạ tự nhiên
 

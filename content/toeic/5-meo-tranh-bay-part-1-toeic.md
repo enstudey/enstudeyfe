@@ -1,90 +1,89 @@
 ---
-title: "5 mẹo tránh bẫy Part 1 TOEIC: Bí quyết đạt điểm tối đa phần tranh tả"
-description: "Làm thế nào để không bị lừa bởi các bẫy âm thanh tương tự hay mô tả sai bối cảnh trong Part 1 TOEIC? Khám phá 5 mẹo loại trừ bẫy hiệu quả."
+title: "5 mẹo tránh bẫy Part 1 TOEIC: Làm chủ phần thi tả tranh"
+description: "Tại sao bạn vẫn làm sai những bức tranh đơn giản trong Part 1? Khám phá cách nhận diện và loại trừ các bẫy cấu trúc ngữ pháp và từ vựng."
 date: "2026-07-07"
 category: "toeic"
 tags:
   - "toeic listening"
-  - "tránh bẫy part 1"
-  - "kinh nghiệm thi toeic"
+  - "mẹo part 1 toeic"
+  - "luyện nghe toeic"
 ---
 
-# 5 mẹo tránh bẫy Part 1 TOEIC: Bí quyết đạt điểm tối đa phần tranh tả
+# 5 mẹo tránh bẫy Part 1 TOEIC: Làm chủ phần thi tả tranh
 
-Part 1 (Mô tả tranh) của bài thi TOEIC Listening thường bị đánh giá thấp.
+Part 1 của bài thi TOEIC Listening (Tả tranh) thường được coi là phần thi dễ kiếm điểm nhất.
 
-Nhiều thí sinh chủ quan nghĩ rằng phần này rất dễ vì chỉ có 6 bức tranh trực quan và các câu mô tả khá ngắn.
+Đề thi chỉ gồm 6 bức tranh vẽ người hoặc vật thể kèm theo 4 mô tả ngắn cho mỗi tranh.
 
-Tuy nhiên, đây lại là nơi ETS gài rất nhiều bẫy tinh vi để loại bỏ những người nghe hời hợt.
+Tuy nhiên, rất nhiều thí sinh dù có khả năng nghe tốt vẫn bị mất điểm oan uổng ở phần này.
 
-Chỉ cần mất tập trung một giây, bạn sẽ dễ dàng chọn phải một câu nhiễu chứa từ vựng mô tả một vật thể có thật trong tranh nhưng lại sai hoàn toàn về hành động hoặc trạng thái. Để đạt điểm số tối đa phần thi khởi động này, bạn cần làm chủ 5 kỹ thuật nhận diện và tránh bẫy dưới đây.
+ETS áp dụng các kỹ thuật gài bẫy vô cùng tinh vi liên quan đến cấu trúc ngữ pháp và vị trí không gian để đánh lừa những người nghe bắt từ khóa (keyword matching) thụ động. Để đạt điểm số tuyệt đối 6/6 câu Part 1, bạn bắt buộc phải nhận diện được các dạng bẫy kinh điển và làm chủ kỹ năng loại trừ phương án sai.
 
-## 1. Bẫy being trong tranh tả vật không có người xuất hiện
+## Bẫy 1: Bẫy cấu trúc bị động tiếp diễn (Being Trap) trong tranh tả vật
 
-Đây có lẽ là cái bẫy kinh điển và dễ khiến thí sinh mất điểm nhất trong Part 1.
+Đây là bẫy ngữ pháp nguy hiểm nhất và có tần suất xuất hiện cao nhất trong Part 1.
 
-Khi bức tranh chỉ mô tả vật thể (ví dụ: một chiếc xe ô tô đỗ bên đường, hoặc những cuốn sách xếp trên kệ) và hoàn toàn không có bất kỳ người nào xuất hiện trong khung hình.
+Trong một bức tranh **chỉ có đồ vật và phong cảnh (không có sự xuất hiện của con người)**, ETS sẽ đưa ra một phương án mô tả chứa cấu trúc bị động tiếp diễn: **Subject + is/are + being + V3/ed**.
 
-Nếu bạn nghe thấy một đáp án sử dụng thì hiện tại tiếp diễn ở thể bị động chứa từ **being**:
+Ví dụ: Bức tranh vẽ chiếc xe ô tô đỗ bên đường. Câu mô tả của băng nghe:
+- *“The car is being parked on the street.”*
 
-- Cấu trúc: *S + is/are + being + V3/ed* (Ví dụ: *The car is being repaired.*)
-- Hãy lập tức **loại bỏ** đáp án đó ngay lập tức.
+Nếu bạn nghe thấy từ *car* và *parked* phù hợp với hình ảnh chiếc xe đang đỗ, bạn sẽ rất dễ chọn đáp án này.
 
-Thì hiện tại tiếp diễn thể bị động (*is being repaired*) mô tả một hành động đang được thực hiện bởi một tác nhân con người tại thời điểm nói (chiếc xe đang được ai đó sửa). Vì tranh không có người, hành động này không thể diễn ra.
+Tuy nhiên, về mặt ngữ pháp, cấu trúc *is being parked* diễn tả một hành động **đang được thực hiện bởi ai đó tại thời điểm nói** (tức là phải có người tài xế đang lái xe lùi vào chỗ đỗ). Vì bức tranh không có người, câu mô tả này hoàn toàn sai thực tế.
 
-Ngoại trừ một số động từ mô tả trạng thái tự nhiên như *display* (*are being displayed* - đang được trưng bày), hầu hết các câu chứa *being* trong tranh tả vật đều là đáp án sai.
+**Mẹo loại trừ**: Đối với tranh chỉ có vật, hãy lập tức loại bỏ tất cả các câu có chứa từ **being** (trừ một vài trường hợp ngoại lệ hiếm hoi như *The grass is being watered* bởi hệ thống phun tự động).
 
-## 2. Bẫy động từ đúng danh từ sai và ngược lại
+## Bẫy 2: Bẫy vị trí không gian (Prepositional Traps) của vật thể
 
-ETS rất hay lừa thí sinh bằng cách ghép một động từ mô tả đúng hành động trong tranh với một danh từ chỉ một vật thể hoàn toàn không có mặt trong khung hình, hoặc ngược lại.
+Một dạng gài bẫy khác liên quan đến việc mô tả sai lệch vị trí của các vật thể thông qua các giới từ chỉ nơi chốn (*under, next to, on top of, behind*).
 
-Ví dụ, bức tranh mô tả một người phụ nữ đang viết bài trên một cuốn sổ tay đặt trên bàn.
+ETS sẽ dùng các danh từ chỉ vật xuất hiện chính xác trong tranh, nhưng lại ghép chúng với một giới từ sai lệch để đánh lừa thính giác của thí sinh.
 
-- Câu nhiễu: *The woman is writing on a computer.* (Động từ *writing* đúng hành động, nhưng danh từ *computer* sai thực tế tranh).
-- Hoặc: *The woman is looking at the keyboard.* (Danh từ *keyboard* có thể có trên bàn, nhưng hành động *looking at* không phải là hành động chủ đạo của nhân vật).
+Ví dụ: Bức tranh vẽ chiếc máy tính đặt trên bàn, và bên dưới gầm bàn là một chiếc sọt rác.
+- Câu nhiễu: *“The wastebasket has been placed on top of the desk.”*
+- Thí sinh nghe bắt được từ *wastebasket* và *desk* lập tức chọn đáp án này, trong khi thực tế vị trí của sọt rác là ở *under* (bên dưới) chứ không phải *on top of* (trên bề mặt).
 
-Khi nghe, bạn bắt buộc phải nghe trọn vẹn cả câu, kiểm tra xem cả chủ ngữ, động từ và tân ngữ có khớp hoàn toàn với thông tin trực quan trong tranh hay không. Đừng nghe thấy từ *writing* quen thuộc đã vội vàng tô đáp án.
+Hãy luôn kiểm tra tính logic của giới từ đi kèm danh từ chỉ vật trong câu mô tả.
 
-## 3. Bẫy âm thanh tương tự (Similar Sounds)
+## Bẫy 3: Bẫy trạng thái vật thể tĩnh và động (Wearing vs. Putting on)
 
-Đây là bẫy đánh vào những người học nghe bắt từ khóa (keyword matching) nhưng phát âm chưa chuẩn. ETS sẽ sử dụng các từ có phát âm gần giống với các vật thể xuất hiện trong tranh để đánh lừa thính giác của bạn.
+Đối với tranh tả người, sự nhầm lẫn giữa hành động đang xảy ra (động) và trạng thái đã hoàn thành (tĩnh) là chiếc bẫy từ vựng kinh điển.
 
-Ví dụ, trong tranh có chiếc thuyền (*boat*).
+Cặp từ gây nhầm lẫn nhiều nhất là **Wearing** (trạng thái đã mặc/đội sẵn trên người) và **Putting on** (hành động đang mặc vào/đội vào).
 
-- Câu nhiễu sẽ chứa từ: *coat* (áo khoác) hoặc *goat* (con dê).
-- Hoặc tranh mô tả người đang đi bộ trên đường (*walking*), câu nhiễu sẽ dùng từ *working* (làm việc).
+- **Wearing**: Tranh vẽ một người đang đội mũ bảo hiểm khi làm việc. Câu đúng: *“The man is wearing a safety helmet.”*
+- **Putting on**: Câu mô tả: *“The man is putting on a safety helmet.”* Câu này chỉ đúng nếu bức tranh chụp cảnh người đàn ông đang đưa tay cầm chiếc mũ bảo hiểm đặt lên đầu của mình.
 
-Để vượt qua bẫy này, bạn phải nâng cao khả năng phát âm chuẩn xác của bản thân. Khi bạn phát âm đúng, tai bạn sẽ tự động phân biệt được các phụ âm đầu và nguyên âm đôi khác biệt giữa các từ đồng âm gần giống nhau này.
+Tương tự với các cặp từ khác như *holding* (đang cầm) >< *picking up* (đang nhặt lên), *riding* (đang cưỡi/đi xe) >< *mounting* (hành động trèo lên xe).
 
-## 4. Bẫy mô tả tiểu tiết không rõ ràng hoặc mang tính suy diễn
+## Mẹo 4: Kỹ thuật nhắm mắt tập trung thính giác trong 1.5 giây đầu tiên
 
-Tranh Part 1 yêu cầu sự chính xác khách quan tuyệt đối. Các đáp án đúng luôn mô tả những hành động hoặc trạng thái rõ ràng nhất, đập ngay vào mắt người xem ở trung tâm bức tranh.
+Nhiều thí sinh bị phân tâm do việc vừa nhìn tranh vừa cố gắng dịch nghĩa các phương án nghe. Sự phân tâm này làm giảm độ nhạy bén của tai.
 
-Hãy loại bỏ ngay các đáp án mang tính suy đoán logic hoặc mô tả các chi tiết quá nhỏ, nhòe nhoẹt ở góc khuất của bức tranh.
+Hãy áp dụng kỹ thuật **Nhắm mắt tập trung thính giác (Hearing Focus)**:
 
-Ví dụ, tranh vẽ một người đàn ông đang đứng trước cửa hàng bán đồ lưu niệm.
+- Trong vòng **1.5 giây đầu tiên** khi băng phát ra một câu mô tả, hãy nhắm mắt lại (hoặc tập trung ánh nhìn vào khoảng không) để dồn toàn bộ công suất xử lý của não bộ cho thính giác.
+- 1.5 giây đầu này là thời điểm băng đọc Chủ ngữ và Động từ chính của câu (quyết định 80% tính đúng sai của câu mô tả).
+- Ngay sau khi nghe xong động từ chính, lập tức mở mắt đối chiếu nhanh với hình ảnh trong tranh để đưa ra phán đoán đúng sai. Kỹ thuật này giúp nâng cao độ chính xác của phản xạ nghe lên đáng kể.
 
-- Câu nhiễu: *The man is planning to buy a gift for his wife.* (Đây là sự suy diễn về ý định của nhân vật, không thể xác định được qua tranh vẽ).
-- Hãy ưu tiên các câu miêu tả trực quan vật lý như: *The man is standing outdoors.* hoặc *The man is looking at the shop window.*
+## Mẹo 5: Sử dụng đầu bút chì làm công cụ loại trừ trực quan (Pencil Tracking)
 
-## 5. Sử dụng phương pháp loại trừ chủ động bằng đầu bút chì
+Nhịp độ đọc của Part 1 rất nhanh, việc phân vân giữa các câu hỏi dễ khiến bạn bị loạn thông tin.
 
-Kỹ thuật làm bài hiệu quả nhất cho Part 1 thi giấy là sử dụng đầu bút chì đặt trực tiếp lên tờ trả lời (Answer Sheet) để loại trừ ngay lập tức khi đang nghe.
+Hãy tận dụng chiếc bút chì (do IIG cấp) làm công cụ đánh dấu trực quan ngay trên trang giấy đề thi:
 
-Khi nghe từng câu A, B, C, D:
+- Đặt đầu bút chì vào vị trí tương ứng với phương án (A) trên tờ đề.
+- Nghe câu (A): Nếu thấy câu này chắc chắn sai, lập tức gạt đầu bút chì ra. Nếu thấy có khả năng đúng, giữ nguyên đầu bút chì tại đó.
+- Nghe tiếp câu (B): Nếu câu (B) tốt hơn câu (A), di chuyển đầu bút chì sang (B). Nếu câu (B) sai, giữ nguyên đầu bút chì ở vị trí cũ.
+- Lặp lại cho đến câu (D). Phương án nào giữ đầu bút chì cuối cùng chính là đáp án bạn chọn để tô vào Answer Sheet.
 
-- Nếu câu A chắc chắn sai: Đánh dấu nháp loại trừ (hoặc nhấc bút chì đi).
-- Nếu câu B phân vân: Giữ đầu bút chì ở đó.
-- Nếu câu C chắc chắn sai: Loại bỏ.
-- Nếu câu D chắc chắn sai: Loại bỏ.
-- Quay lại tô ngay đáp án B.
-
-Phương pháp này giúp bạn giải phóng bộ nhớ làm việc. Bạn không cần phải cố nhớ cả 4 câu trong đầu để so sánh sau khi băng nghe kết thúc. Bạn quyết định số phận của từng câu ngay tại thời điểm âm thanh phát ra.
+Kỹ thuật đơn giản này giải phóng hoàn toàn bộ nhớ làm việc của bạn khỏi việc phải nhớ xem câu (A) hay (B) trước đó nghe như thế nào, giúp bạn giữ được sự tập trung tuyệt đối.
 
 ## Điều đáng nhớ
 
-- Loại bỏ ngay các câu chứa cấu trúc bị động tiếp diễn (being + V3) đối với tranh chỉ tả vật và không có người.
-- Nghe trọn vẹn chủ ngữ, động từ và tân ngữ; không quyết định đáp án dựa trên một từ khóa riêng lẻ.
-- Cảnh giác với các từ đồng âm gần giống nhau (boat/coat, walk/work) trong các câu nhiễu.
-- Loại trừ các đáp án mang tính suy diễn cảm xúc hoặc mô tả chi tiết quá nhỏ không rõ ràng trong tranh.
-- Dùng đầu bút chì loại trừ trực tiếp từng câu khi nghe để giảm tải áp lực cho bộ nhớ ngắn hạn.
+- Loại bỏ tất cả các câu chứa cấu trúc bị động tiếp diễn *being* đối với các bức tranh chỉ tả vật không có người.
+- Luôn kiểm tra kỹ tính chính xác của giới từ chỉ vị trí không gian kết nối giữa các vật thể trong tranh.
+- Phân biệt rõ sự khác biệt giữa động từ chỉ trạng thái tĩnh (*wearing*, *holding*) và hành động động (*putting on*, *picking up*).
+- Nhắm mắt tập trung trong 1.5 giây đầu của mỗi câu để thu nhận trọn vẹn chủ ngữ và động từ chính.
+- Sử dụng kỹ thuật Pencil Tracking bằng đầu bút chì trên đề thi để quản lý loại trừ đáp án trực quan.

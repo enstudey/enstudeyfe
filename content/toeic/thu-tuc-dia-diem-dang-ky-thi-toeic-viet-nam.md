@@ -53,11 +53,24 @@ IIG Việt Nam có các văn phòng đại diện lớn tại ba miền đất n
 - **Tại TP. Hồ Chí Minh**:
   - Văn phòng IIG TP. HCM: Tầng 1, Tháp 1, Tòa nhà The Sun Avenue, 28 Mai Chí Thọ, Phường An Phú, TP. Thủ Đức.
 
-Bên cạnh đó, IIG còn liên kết tổ chức thi tại các trường đại học lớn như Đại học Bách Khoa Hà Nội, Đại học Kinh tế Quốc dân, Đại học Sư phạm kỹ thuật TP. HCM... Bạn nên truy cập trang chủ IIG để cập nhật lịch thi cụ thể của từng địa điểm.
+## 4. Các lưu ý quan trọng về ngày thi và quy chế sau thi
+
+Để ngày thi diễn ra suôn sẻ và giải quyết nhanh các vấn đề phát sinh sau khi có điểm, hãy ghi nhớ các quy định sau:
+
+- **Các vật dụng được phép mang vào phòng thi**: 
+  - Bạn chỉ được phép mang theo **CCCD gốc/Hộ chiếu gốc** và **Phiếu báo danh** vào phòng thi.
+  - Tuyệt đối không mang bút chì, tẩy, bút bi cá nhân, đồng hồ đeo tay hay trang sức kim loại vào phòng thi. IIG sẽ cung cấp sẵn cho mỗi thí sinh 1 chiếc bút chì có gắn tẩy ở đuôi để làm bài.
+  - Toàn bộ đồ dùng cá nhân phải gửi tại tủ đồ bên ngoài phòng thi dưới sự giám sát của giám thị.
+- **Thời gian nhận chứng chỉ bản cứng**:
+  - Thông thường, điểm thi trực tuyến sẽ hiển thị sau **5 đến 7 ngày làm việc** (đối với thi máy) hoặc **10 đến 12 ngày** (đối với thi giấy).
+  - Chứng chỉ bản cứng (Phiếu điểm) sẽ được trả trực tiếp tại văn phòng bạn đăng ký sau khoảng **10 đến 15 ngày làm việc** kể từ ngày thi. Thí sinh có thể đăng ký dịch vụ chuyển phát nhanh về tận nhà khi hoàn tất thủ tục đăng ký thi.
+- **Quy trình phúc khảo điểm thi (Score Review)**:
+  - Nếu bạn không hài lòng với kết quả thi và tin rằng có sự sai sót trong quá trình chấm điểm (đặc biệt đối với thi giấy), bạn có quyền nộp đơn yêu cầu phúc khảo tại văn phòng IIG trong vòng **6 tháng** kể từ ngày thi. Lệ phí phúc khảo sẽ được hoàn lại 100% nếu điểm số sau phúc khảo có sự thay đổi so với điểm cũ.
 
 ## Điều đáng nhớ
 
 - Giấy tờ tùy thân (CCCD/Hộ chiếu) mang đi đăng ký thi phải hoàn toàn nguyên vẹn, không bong tróc, không ép dẻo lại.
 - Ảnh thẻ 3x4 chụp nền trắng, không đeo kính cận, lộ rõ hai tai và chụp không quá 3 tháng.
-- Bắt buộc phải thực hiện bước đăng ký thông tin online trên trang chủ IIG trước khi đến văn phòng hoàn tất thủ tục trực tiếp.
-- Giữ kỹ phiếu báo danh sau khi đóng lệ phí thi và kiểm tra chính xác địa điểm phòng thi trước ngày thi.
+- Bắt buộc đăng ký thông tin online trước khi đến văn phòng IIG trực tiếp đóng tiền lệ phí.
+- Không mang bất kỳ đồ dùng cá nhân nào (kể cả bút, tẩy, đồng hồ) vào phòng thi; chỉ sử dụng bút chì do IIG cung cấp.
+- Phiếu điểm bản cứng được trả sau 10-15 ngày làm việc và có thời hạn phúc khảo trong vòng 6 tháng kể từ ngày thi.

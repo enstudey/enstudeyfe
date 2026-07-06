@@ -58,7 +58,26 @@ Một hiện tượng rất hay gặp trong dạng bài Map là một công trì
 - **Relocate**: Di dời sang một vị trí mới.
   - *The playground was relocated to the south of the park, next to the main entrance.*
 
-Việc sử dụng linh hoạt các động từ mô tả sự biến chuyển này chứng minh khả năng sử dụng từ vựng đa dạng và chính xác của bạn trong việc mô tả không gian địa lý.
+## Sự biến chuyển từ nông thôn sang đô thị (Urbanization)
+
+Đối với các bản đồ mô tả sự phát triển của một thị trấn hoặc một hòn đảo qua nhiều năm, xu hướng thay đổi lớn nhất luôn là quá trình đô thị hóa (urbanization).
+
+Bạn cần chuẩn bị vốn từ vựng mô tả sự dịch chuyển cảnh quan tự nhiên sang hạ tầng nhân tạo:
+
+- **Deforestation**: Sự tàn phá rừng, chặt cây (mô tả sự sụt giảm của mảng xanh).
+  - *The period saw extensive deforestation in the eastern sector to accommodate industrial estates.*
+- **Residential expansion**: Sự mở rộng của khu dân cư (thay cho *many houses built*).
+  - *The woodland was cleared to make way for residential expansion.*
+- **Commercialization**: Sự thương mại hóa, xuất hiện nhiều cửa hàng, dịch vụ.
+  - *The quiet coastal village underwent rapid commercialization with the erection of hotels.*
+
+## Đoạn văn miêu tả mẫu hoàn chỉnh cho bản đồ quy hoạch
+
+Hãy cùng theo dõi cách viết một đoạn văn hoàn chỉnh mô tả sự quy hoạch lại của một khu vực nông thôn (nơi có nhiều cây cối, một con đường đất và một vài ngôi nhà cổ) sang một khu đô thị hiện đại:
+
+- *Overall, the area witnessed a complete transformation from a rural, nature-dominated landscape into a highly developed urban zone. The most notable change was the extensive deforestation in the northern region, where a large woodland was cleared to facilitate residential expansion. In place of the agricultural fields, a modern residential complex was constructed, accompanied by a new shopping mall erected at the intersection. Furthermore, the old dirt track running through the centre was paved and converted into a multi-lane main road, thereby improving the connectivity of the entire town.*
+
+Đoạn văn này chứng minh khả năng sử dụng linh hoạt các cấu trúc ngữ pháp câu phức và từ vựng mô tả quy hoạch cực kỳ chính xác (*deforestation, residential expansion, paved, connectivity*).
 
 ## Điều đáng nhớ
 
@@ -66,3 +85,4 @@ Việc sử dụng linh hoạt các động từ mô tả sự biến chuyển n
 - Sử dụng các động từ chuyên biệt như *demolish*, *clear* để mô tả sự phá dỡ, dọn dẹp mặt bằng.
 - Thay thế từ *build* đơn giản bằng các động từ học thuật hơn như *construct*, *erect*, *relocate*.
 - Sử dụng cấu trúc *make way for* hoặc *convert into* để mô tả sự chuyển đổi công năng công trình một cách mượt mà.
+- Học các thuật ngữ mô tả sự đô thị hóa (*deforestation, commercialization*) để viết bài về sự phát triển địa lý của khu vực.
