@@ -193,7 +193,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
               <div className="flex items-center justify-center gap-1.5 sm:gap-2 pt-6">
                 <Link
                   href={`/tin-tuc?page=${currentPage - 1}`}
-                  className={`px-3 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
+                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
                     currentPage === 1 ? "pointer-events-none opacity-50" : ""
                   }`}
                 >
@@ -244,7 +244,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                         <Link
                           key={`dots-${index}`}
                           href={`/tin-tuc?page=${item.page}`}
-                          className="flex items-center justify-center w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-lg transition"
+                          className="flex items-center justify-center w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition"
                           title={`Đi tới trang ${item.page}`}
                         >
                           {item.label}
@@ -256,7 +256,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                       <Link
                         key={item}
                         href={`/tin-tuc?page=${item}`}
-                        className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-lg transition ${
+                        className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-full transition ${
                           currentPage === item
                             ? "bg-orange-600 text-white"
                             : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800"
@@ -270,7 +270,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
                 <Link
                   href={`/tin-tuc?page=${currentPage + 1}`}
-                  className={`px-3 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
+                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
                     currentPage === totalPages ? "pointer-events-none opacity-50" : ""
                   }`}
                 >

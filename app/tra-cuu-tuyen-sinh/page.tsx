@@ -420,36 +420,164 @@ export default function FinderPage() {
               * Kết quả tra cứu và gợi ý mức độ an toàn chỉ mang tính chất tham khảo. Thí sinh bắt buộc phải đối chiếu với đề án tuyển sinh chính thức của các trường Đại học trước khi đăng ký nguyện vọng.
             </div>
 
-            {/* Phân trang */}
+            {/* Phân trang thích ứng */}
             {totalPages > 1 && (
-              <div className="p-5 bg-slate-50 dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800 flex justify-center gap-2">
-                <button
-                  disabled={currentPage === 1}
-                  onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                  className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center hover:bg-white dark:hover:bg-zinc-900 disabled:opacity-40 disabled:cursor-not-allowed transition"
-                >
-                  &larr;
-                </button>
-                {Array.from({ length: totalPages }).map((_, i) => (
+              <div className="p-5 bg-slate-50 dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
+                {/* 1. Phiên bản Mobile (flex md:hidden) - Bán kính 1, lùi/tiến 2 trang */}
+                <div className="flex md:hidden items-center justify-center gap-1.5">
                   <button
-                    key={i}
-                    onClick={() => setCurrentPage(i + 1)}
-                    className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition ${
-                      currentPage === i + 1
-                        ? "bg-slate-900 dark:bg-zinc-800 text-white"
-                        : "border border-slate-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-900"
-                    }`}
+                    disabled={currentPage === 1}
+                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                    className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
+                    title="Trang trước"
                   >
-                    {i + 1}
+                    &larr;
                   </button>
-                ))}
-                <button
-                  disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-                  className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center hover:bg-white dark:hover:bg-zinc-900 disabled:opacity-40 disabled:cursor-not-allowed transition"
-                >
-                  &rarr;
-                </button>
+
+                  {(() => {
+                    const range: (number | { label: string; page: number })[] = [];
+                    const left = Math.max(currentPage - 1, 1);
+                    const right = Math.min(currentPage + 1, totalPages);
+
+                    range.push(1);
+                    if (left > 2) {
+                      if (left === 3) {
+                        range.push(2);
+                      } else {
+                        range.push({ label: "...", page: Math.max(currentPage - 2, 1) });
+                      }
+                    }
+                    for (let i = left; i <= right; i++) {
+                      if (i !== 1 && i !== totalPages) {
+                        range.push(i);
+                      }
+                    }
+                    if (right < totalPages - 1) {
+                      if (right === totalPages - 2) {
+                        range.push(totalPages - 1);
+                      } else {
+                        range.push({ label: "...", page: Math.min(currentPage + 2, totalPages) });
+                      }
+                    }
+                    if (totalPages > 1) {
+                      range.push(totalPages);
+                    }
+
+                    return range.map((item, idx) => {
+                      if (typeof item === "object") {
+                        return (
+                          <button
+                            key={`mobile-dots-${idx}`}
+                            onClick={() => setCurrentPage(item.page)}
+                            className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer"
+                            title={`Đi tới trang ${item.page}`}
+                          >
+                            {item.label}
+                          </button>
+                        );
+                      }
+                      return (
+                        <button
+                          key={`mobile-page-${item}`}
+                          onClick={() => setCurrentPage(item)}
+                          className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${
+                            currentPage === item
+                              ? "bg-orange-600 text-white font-extrabold"
+                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-855 text-slate-600 dark:text-zinc-400"
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      );
+                    });
+                  })()}
+
+                  <button
+                    disabled={currentPage === totalPages}
+                    onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                    className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
+                    title="Trang sau"
+                  >
+                    &rarr;
+                  </button>
+                </div>
+
+                {/* 2. Phiên bản Desktop (hidden md:flex) - Bán kính 2, lùi/tiến 5 trang */}
+                <div className="hidden md:flex items-center justify-center gap-2">
+                  <button
+                    disabled={currentPage === 1}
+                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-600 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
+                  >
+                    &larr; Trước
+                  </button>
+
+                  {(() => {
+                    const range: (number | { label: string; page: number })[] = [];
+                    const left = Math.max(currentPage - 2, 1);
+                    const right = Math.min(currentPage + 2, totalPages);
+
+                    range.push(1);
+                    if (left > 2) {
+                      if (left === 3) {
+                        range.push(2);
+                      } else {
+                        range.push({ label: "...", page: Math.max(currentPage - 5, 1) });
+                      }
+                    }
+                    for (let i = left; i <= right; i++) {
+                      if (i !== 1 && i !== totalPages) {
+                        range.push(i);
+                      }
+                    }
+                    if (right < totalPages - 1) {
+                      if (right === totalPages - 2) {
+                        range.push(totalPages - 1);
+                      } else {
+                        range.push({ label: "...", page: Math.min(currentPage + 5, totalPages) });
+                      }
+                    }
+                    if (totalPages > 1) {
+                      range.push(totalPages);
+                    }
+
+                    return range.map((item, idx) => {
+                      if (typeof item === "object") {
+                        return (
+                          <button
+                            key={`desktop-dots-${idx}`}
+                            onClick={() => setCurrentPage(item.page)}
+                            className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer"
+                            title={`Đi tới trang ${item.page}`}
+                          >
+                            {item.label}
+                          </button>
+                        );
+                      }
+                      return (
+                        <button
+                          key={`desktop-page-${item}`}
+                          onClick={() => setCurrentPage(item)}
+                          className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${
+                            currentPage === item
+                              ? "bg-orange-600 text-white font-extrabold"
+                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-850 text-slate-600 dark:text-zinc-400"
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      );
+                    });
+                  })()}
+
+                  <button
+                    disabled={currentPage === totalPages}
+                    onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-600 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
+                  >
+                    Sau &rarr;
+                  </button>
+                </div>
               </div>
             )}
           </div>
