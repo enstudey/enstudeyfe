@@ -5,25 +5,47 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { DonateModal, useDonateStatus } from "@/components/donate";
-
-import universitiesData from "@/data/universities-benchmark.json";
 import AffiliateNativeRow from "@/components/affiliate/AffiliateNativeRow";
 
-interface UniversityBenchmark {
-  majorCode: string;
-  majorName: string;
-  universityCode: string;
-  universityName: string;
-  subjectGroup: string;
-  benchmark: number;
-  location: string;
-  category: string;
+interface MajorBenchmark {
+  code: string;
+  name: string;
+  groups: string[];
+  scores: Record<string, Record<string, number>>;
+  scale: number;
+  note: string;
 }
 
-const CATEGORY_OPTIONS = ["Tất cả nhóm ngành", "Kinh tế", "Công nghệ", "Y Dược"];
-const LOCATION_OPTIONS = ["Tất cả khu vực", "Miền Bắc", "Miền Trung", "Miền Nam"];
+interface UniversityData {
+  name: string;
+  majors: MajorBenchmark[];
+}
+
+type ScoresData = Record<string, UniversityData>;
+
+interface FlatBenchmarkItem {
+  universityCode: string;
+  universityName: string;
+  majorCode: string;
+  majorName: string;
+  groups: string[];
+  score: number | null;
+  scale: number;
+  note: string;
+}
+
+const YEAR_OPTIONS = ["2025", "2024", "2022", "2020", "2019", "2018"];
+const METHOD_OPTIONS = [
+  { value: "THPT", label: "Xét điểm thi THPT" },
+  { value: "HOC_BA", label: "Xét học bạ" },
+  { value: "DGNL", label: "Đánh giá năng lực" },
+  { value: "DGTD", label: "Đánh giá tư duy" }
+];
 
 export default function FinderPage() {
+  const [scoresData, setScoresData] = useState<ScoresData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [computedScores, setComputedScores] = useState<Record<string, number> | null>(null);
 
   // Trạng thái modal donate
@@ -33,16 +55,34 @@ export default function FinderPage() {
   // Bộ lọc nguyện vọng
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGroup, setSelectedGroup] = useState("Tất cả tổ hợp");
-  const [selectedCategory, setSelectedCategory] = useState("Tất cả nhóm ngành");
-  const [selectedLocation, setSelectedLocation] = useState("Tất cả khu vực");
+  const [selectedYear, setSelectedYear] = useState("2025");
+  const [selectedMethod, setSelectedMethod] = useState("THPT");
   const [scoreRange, setScoreRange] = useState<number>(30);
 
   // Phân trang
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   // Trạng thái key quảng cáo để kích hoạt auto-refresh
   const [adKey, setAdKey] = useState(0);
+
+  // Tải dữ liệu bất đồng bộ client-side
+  useEffect(() => {
+    fetch("/data/diem_chuan_optimized.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("Không thể tải dữ liệu điểm chuẩn");
+        return res.json();
+      })
+      .then((data) => {
+        setScoresData(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Lỗi khi tải dữ liệu điểm chuẩn:", err);
+        setIsError(true);
+        setIsLoading(false);
+      });
+  }, []);
 
   // Đọc điểm đã lưu từ localStorage khi Component được mount
   useEffect(() => {
@@ -62,41 +102,56 @@ export default function FinderPage() {
   // Thiết lập làm mới quảng cáo tự động sau mỗi 45 giây
   useEffect(() => {
     const interval = setInterval(() => {
-      setAdKey(prev => prev + 1);
+      setAdKey((prev) => prev + 1);
     }, 45000);
     return () => clearInterval(interval);
   }, []);
 
-  // Thực hiện lọc dữ liệu đa chiều bằng useMemo để tối ưu hóa hiệu năng
+  // Thực hiện chuyển đổi và lọc dữ liệu đa chiều bằng useMemo để tối ưu hóa hiệu năng
   const filteredResults = useMemo(() => {
-    let list = (universitiesData as UniversityBenchmark[]);
+    if (!scoresData) return [];
+    
+    const flatList: FlatBenchmarkItem[] = [];
+
+    Object.entries(scoresData).forEach(([uniCode, uniData]) => {
+      uniData.majors.forEach((major) => {
+        const methodScores = major.scores[selectedMethod] || {};
+        const score = methodScores[selectedYear] !== undefined ? methodScores[selectedYear] : null;
+
+        flatList.push({
+          universityCode: uniCode,
+          universityName: uniData.name,
+          majorCode: major.code,
+          majorName: major.name,
+          groups: major.groups,
+          score,
+          scale: major.scale,
+          note: major.note
+        });
+      });
+    });
+
+    let list = flatList;
 
     if (searchTerm.trim() !== "") {
       const term = searchTerm.toLowerCase();
-      list = list.filter(item => 
+      list = list.filter((item) =>
         item.universityName.toLowerCase().includes(term) ||
         item.universityCode.toLowerCase().includes(term) ||
         item.majorName.toLowerCase().includes(term) ||
-        item.majorCode.includes(term)
+        item.majorCode.toLowerCase().includes(term)
       );
     }
 
     if (selectedGroup !== "Tất cả tổ hợp") {
-      list = list.filter(item => item.subjectGroup.includes(selectedGroup));
+      list = list.filter((item) => item.groups.includes(selectedGroup));
     }
 
-    if (selectedCategory !== "Tất cả nhóm ngành") {
-      list = list.filter(item => item.category === selectedCategory);
-    }
-
-    if (selectedLocation !== "Tất cả khu vực") {
-      list = list.filter(item => item.location === selectedLocation);
-    }
-
-    list = list.filter(item => item.benchmark <= scoreRange);
+    // Bộ lọc theo khoảng điểm sàn (chỉ lọc nếu ngành có điểm chuẩn hợp lệ)
+    list = list.filter((item) => item.score === null || item.score <= scoreRange);
 
     return list;
-  }, [searchTerm, selectedGroup, selectedCategory, selectedLocation, scoreRange]);
+  }, [scoresData, searchTerm, selectedGroup, selectedYear, selectedMethod, scoreRange]);
 
   // Reset trang về 1 khi tiêu chí lọc thay đổi bằng setTimeout để tránh cascading renders
   useEffect(() => {
@@ -104,7 +159,7 @@ export default function FinderPage() {
       setCurrentPage(1);
     }, 0);
     return () => clearTimeout(timer);
-  }, [searchTerm, selectedGroup, selectedCategory, selectedLocation, scoreRange]);
+  }, [searchTerm, selectedGroup, selectedYear, selectedMethod, scoreRange]);
 
   const totalPages = Math.ceil(filteredResults.length / itemsPerPage);
   const paginatedResults = filteredResults.slice(
@@ -112,13 +167,12 @@ export default function FinderPage() {
     currentPage * itemsPerPage
   );
 
-  const getZoneClass = (item: UniversityBenchmark) => {
-    if (!computedScores) return "";
+  const getZoneClass = (item: FlatBenchmarkItem) => {
+    if (!computedScores || item.score === null) return "";
     
-    const groups = item.subjectGroup.split(",").map(g => g.trim());
     let userScore = 0;
     
-    groups.forEach(g => {
+    item.groups.forEach((g) => {
       if (computedScores[g] && computedScores[g] > userScore) {
         userScore = computedScores[g];
       }
@@ -126,9 +180,8 @@ export default function FinderPage() {
 
     if (userScore === 0) return "";
 
-    const diff = userScore - item.benchmark;
+    const diff = userScore - item.score;
     
-    // Áp dụng đúng quy tắc BR-2 trong 0-ba-spec.md
     if (diff >= 1.5) return "safe-zone";      // T >= D + 1.5
     if (diff <= -1.5) return "risk-zone";    // T <= D - 1.5
     return "fight-zone";                     // D - 1.5 < T < D + 1.5
@@ -206,25 +259,51 @@ export default function FinderPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Bộ lọc bên trái */}
-          <div className="lg:col-span-3 bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl p-5 space-y-5 sticky top-24">
+          <div className="lg:col-span-3 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-5 space-y-5 sticky top-24">
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Tìm kiếm trường / ngành</label>
               <input
                 type="text"
                 placeholder="Nhập mã trường, tên ngành..."
                 value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 data-testid="input-search"
-                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
               />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Năm tuyển sinh</label>
+              <select
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                data-testid="select-year"
+                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+              >
+                {YEAR_OPTIONS.map((year) => (
+                  <option key={year} value={year}>Năm {year}</option>
+                ))}
+              </select>
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Phương thức tuyển sinh</label>
+              <select
+                value={selectedMethod}
+                onChange={(e) => setSelectedMethod(e.target.value)}
+                data-testid="select-method"
+                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+              >
+                {METHOD_OPTIONS.map((method) => (
+                  <option key={method.value} value={method.value}>{method.label}</option>
+                ))}
+              </select>
             </div>
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Tổ hợp môn</label>
               <select
                 value={selectedGroup}
-                onChange={e => setSelectedGroup(e.target.value)}
+                onChange={(e) => setSelectedGroup(e.target.value)}
                 data-testid="select-group"
-                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
               >
                 <option>Tất cả tổ hợp</option>
                 <option>A00</option>
@@ -232,32 +311,7 @@ export default function FinderPage() {
                 <option>B00</option>
                 <option>C00</option>
                 <option>D01</option>
-              </select>
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Nhóm ngành đào tạo</label>
-              <select
-                value={selectedCategory}
-                onChange={e => setSelectedCategory(e.target.value)}
-                data-testid="select-category"
-                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
-              >
-                {CATEGORY_OPTIONS.map(opt => (
-                  <option key={opt} value={opt}>{opt}</option>
-                ))}
-              </select>
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Khu vực địa lý</label>
-              <select
-                value={selectedLocation}
-                onChange={e => setSelectedLocation(e.target.value)}
-                data-testid="select-location"
-                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
-              >
-                {LOCATION_OPTIONS.map(opt => (
-                  <option key={opt} value={opt}>{opt}</option>
-                ))}
+                <option>D07</option>
               </select>
             </div>
             <div className="space-y-2">
@@ -267,11 +321,11 @@ export default function FinderPage() {
               </div>
               <input
                 type="range"
-                min="15"
-                max="30"
+                min="10"
+                max="40"
                 step="0.1"
                 value={scoreRange}
-                onChange={e => setScoreRange(parseFloat(e.target.value))}
+                onChange={(e) => setScoreRange(parseFloat(e.target.value))}
                 data-testid="input-score-range"
                 className="w-full accent-orange-600 dark:accent-orange-500 cursor-pointer"
               />
@@ -279,59 +333,99 @@ export default function FinderPage() {
           </div>
 
           {/* Bảng kết quả bên phải */}
-          <div className="lg:col-span-9 overflow-hidden border border-slate-150 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-sm">
-                <thead>
-                  <tr className="bg-slate-50 dark:bg-zinc-950 border-b border-slate-150 dark:border-zinc-800 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
-                    <th className="px-6 py-4">Mã ngành</th>
-                    <th className="px-6 py-4">Tên ngành / Trường</th>
-                    <th className="px-6 py-4">Tổ hợp</th>
-                    <th className="px-6 py-4 text-right">Điểm chuẩn năm trước</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-150 dark:divide-zinc-800">
-                  {paginatedResults.length > 0 ? (
-                    paginatedResults.map((item, idx) => (
-                      <React.Fragment key={`${item.universityCode}-${item.majorCode}`}>
-                        <tr className={`group hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer ${getZoneClass(item)}`}>
-                          <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">{item.majorCode}</td>
-                          <td className="px-6 py-4">
-                            <p className="font-bold text-slate-900 dark:text-white">{item.majorName}</p>
-                            <p className="text-xs text-slate-400 dark:text-zinc-500 mt-0.5">{item.universityName} ({item.universityCode})</p>
-                          </td>
-                          <td className="px-6 py-4 font-bold text-slate-600 dark:text-zinc-400 text-xs">{item.subjectGroup}</td>
-                          <td className="px-6 py-4 text-right font-extrabold text-orange-600 dark:text-orange-500 text-base">{item.benchmark}</td>
-                        </tr>
-                        
-                        {/* Native Ads xen kẽ sau mỗi 5 kết quả */}
-                        {(idx + 1) % 5 === 0 && paginatedResults.length >= 5 && (
-                          <AffiliateNativeRow rowIndex={idx} />
-                        )}
-                      </React.Fragment>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan={4} className="text-center py-12 text-slate-400 dark:text-zinc-500 font-semibold">
-                        Không tìm thấy trường nào phù hợp với bộ lọc hiện tại.
-                      </td>
+          <div className="lg:col-span-9 overflow-hidden border border-slate-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between min-h-[400px]">
+            {isLoading ? (
+              <div className="p-8 space-y-4">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="animate-pulse flex space-x-4 py-3 border-b border-slate-100 dark:border-zinc-850">
+                    <div className="h-4 bg-slate-200 dark:bg-zinc-800 rounded w-1/12"></div>
+                    <div className="flex-1 space-y-2">
+                      <div className="h-4 bg-slate-200 dark:bg-zinc-800 rounded w-3/4"></div>
+                      <div className="h-3 bg-slate-200 dark:bg-zinc-800 rounded w-1/2"></div>
+                    </div>
+                    <div className="h-4 bg-slate-200 dark:bg-zinc-800 rounded w-2/12"></div>
+                    <div className="h-4 bg-slate-200 dark:bg-zinc-800 rounded w-1/12"></div>
+                  </div>
+                ))}
+              </div>
+            ) : isError ? (
+              <div className="text-center py-20 text-red-500 font-semibold text-sm">
+                ❌ Đã xảy ra lỗi khi tải dữ liệu điểm chuẩn. Vui lòng thử lại sau.
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-sm">
+                  <thead>
+                    <tr className="bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
+                      <th className="px-6 py-4">Mã ngành</th>
+                      <th className="px-6 py-4">Tên ngành / Trường</th>
+                      <th className="px-6 py-4">Tổ hợp</th>
+                      <th className="px-6 py-4 text-right">Điểm chuẩn</th>
                     </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200 dark:divide-zinc-800">
+                    {paginatedResults.length > 0 ? (
+                      paginatedResults.map((item, idx) => (
+                        <React.Fragment key={`${item.universityCode}-${item.majorCode}-${item.majorName}`}>
+                          <tr className={`group hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer ${getZoneClass(item)}`}>
+                            <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">{item.majorCode}</td>
+                            <td className="px-6 py-4">
+                              <p className="font-bold text-slate-900 dark:text-white">
+                                {item.majorName}
+                                {item.scale === 40 && (
+                                  <span className="ml-2 text-[9px] bg-blue-150 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-1.5 py-0.5 rounded font-bold uppercase">Thang 40</span>
+                                )}
+                              </p>
+                              <p className="text-xs text-slate-400 dark:text-zinc-500 mt-0.5">
+                                {item.universityName} ({item.universityCode})
+                              </p>
+                              {item.note && (
+                                <p className="text-[10px] text-orange-600 dark:text-orange-400 italic mt-0.5">{item.note}</p>
+                              )}
+                            </td>
+                            <td className="px-6 py-4 font-bold text-slate-600 dark:text-zinc-400 text-xs">
+                              <div className="flex flex-wrap gap-1">
+                                {item.groups.map((g) => (
+                                  <span key={g} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
+                                    {g}
+                                  </span>
+                                ))}
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 text-right font-extrabold text-orange-600 dark:text-orange-500 text-base">
+                              {item.score !== null ? item.score : "-"}
+                            </td>
+                          </tr>
+                          
+                          {/* Native Ads xen kẽ sau mỗi 5 kết quả */}
+                          {(idx + 1) % 5 === 0 && paginatedResults.length >= 5 && (
+                            <AffiliateNativeRow rowIndex={idx} />
+                          )}
+                        </React.Fragment>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={4} className="text-center py-12 text-slate-400 dark:text-zinc-500 font-semibold">
+                          Không tìm thấy trường nào phù hợp với bộ lọc hiện tại.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
 
             {/* Tuyên bố miễn trừ trách nhiệm ở chân bảng kết quả */}
-            <div className="px-6 py-4 bg-slate-50/50 dark:bg-zinc-950/30 border-t border-slate-100 dark:border-zinc-850 text-[11px] text-slate-400 dark:text-zinc-500 italic">
+            <div className="px-6 py-4 bg-slate-50/50 dark:bg-zinc-950/30 border-t border-slate-200 dark:border-zinc-800 text-[11px] text-slate-400 dark:text-zinc-500 italic">
               * Kết quả tra cứu và gợi ý mức độ an toàn chỉ mang tính chất tham khảo. Thí sinh bắt buộc phải đối chiếu với đề án tuyển sinh chính thức của các trường Đại học trước khi đăng ký nguyện vọng.
             </div>
 
             {/* Phân trang */}
             {totalPages > 1 && (
-              <div className="p-5 bg-slate-50 dark:bg-zinc-950 border-t border-slate-100 dark:border-zinc-800 flex justify-center gap-2">
+              <div className="p-5 bg-slate-50 dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800 flex justify-center gap-2">
                 <button
                   disabled={currentPage === 1}
-                  onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+                  onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
                   className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center hover:bg-white dark:hover:bg-zinc-900 disabled:opacity-40 disabled:cursor-not-allowed transition"
                 >
                   &larr;
@@ -351,7 +445,7 @@ export default function FinderPage() {
                 ))}
                 <button
                   disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+                  onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
                   className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center hover:bg-white dark:hover:bg-zinc-900 disabled:opacity-40 disabled:cursor-not-allowed transition"
                 >
                   &rarr;
