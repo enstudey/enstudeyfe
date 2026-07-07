@@ -190,38 +190,91 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
             {/* Pagination Controls - Tối ưu hóa SEO & AdSense (Crawlable) */}
             {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 pt-6">
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 pt-6">
                 <Link
                   href={`/tin-tuc?page=${currentPage - 1}`}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
+                  className={`px-3 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
                     currentPage === 1 ? "pointer-events-none opacity-50" : ""
                   }`}
                 >
-                  &larr; Trước
+                  &larr;<span className="hidden sm:inline">&nbsp;Trước</span>
                 </Link>
-                {Array.from({ length: totalPages }, (_, index) => {
-                  const pageNumber = index + 1;
-                  return (
-                    <Link
-                      key={pageNumber}
-                      href={`/tin-tuc?page=${pageNumber}`}
-                      className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-lg transition ${
-                        currentPage === pageNumber
-                          ? "bg-orange-600 text-white"
-                          : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800"
-                      }`}
-                    >
-                      {pageNumber}
-                    </Link>
-                  );
-                })}
+                
+                {(() => {
+                  const range: (number | { label: string; page: number })[] = [];
+                  const leftBoundary = Math.max(currentPage - 1, 1);
+                  const rightBoundary = Math.min(currentPage + 1, totalPages);
+
+                  // Luôn thêm trang 1
+                  range.push(1);
+
+                  // Xử lý khoảng cách bên trái
+                  if (leftBoundary > 2) {
+                    if (leftBoundary === 3) {
+                      range.push(2);
+                    } else {
+                      range.push({ label: "...", page: Math.max(currentPage - 2, 1) });
+                    }
+                  }
+
+                  // Thêm các trang ở giữa (tránh trùng với trang 1 hoặc trang cuối)
+                  for (let i = leftBoundary; i <= rightBoundary; i++) {
+                    if (i !== 1 && i !== totalPages) {
+                      range.push(i);
+                    }
+                  }
+
+                  // Xử lý khoảng cách bên phải
+                  if (rightBoundary < totalPages - 1) {
+                    if (rightBoundary === totalPages - 2) {
+                      range.push(totalPages - 1);
+                    } else {
+                      range.push({ label: "...", page: Math.min(currentPage + 2, totalPages) });
+                    }
+                  }
+
+                  // Luôn thêm trang cuối nếu tổng số trang > 1
+                  if (totalPages > 1) {
+                    range.push(totalPages);
+                  }
+
+                  return range.map((item, index) => {
+                    if (typeof item === "object") {
+                      return (
+                        <Link
+                          key={`dots-${index}`}
+                          href={`/tin-tuc?page=${item.page}`}
+                          className="flex items-center justify-center w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-lg transition"
+                          title={`Đi tới trang ${item.page}`}
+                        >
+                          {item.label}
+                        </Link>
+                      );
+                    }
+
+                    return (
+                      <Link
+                        key={item}
+                        href={`/tin-tuc?page=${item}`}
+                        className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-lg transition ${
+                          currentPage === item
+                            ? "bg-orange-600 text-white"
+                            : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800"
+                        }`}
+                      >
+                        {item}
+                      </Link>
+                    );
+                  });
+                })()}
+
                 <Link
                   href={`/tin-tuc?page=${currentPage + 1}`}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
+                  className={`px-3 py-2 text-xs font-bold rounded-lg border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
                     currentPage === totalPages ? "pointer-events-none opacity-50" : ""
                   }`}
                 >
-                  Sau &rarr;
+                  <span className="hidden sm:inline">Sau&nbsp;</span>&rarr;
                 </Link>
               </div>
             )}
