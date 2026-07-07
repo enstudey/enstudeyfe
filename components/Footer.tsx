@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -6,7 +7,10 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start justify-between">
           <div className="space-y-3">
-            <h3 className="text-xl font-bold text-slate-950 dark:text-white">EnStudey</h3>
+            <div className="flex items-center gap-2">
+              <Image src="/logo.svg" alt="EnStudey Logo" width={24} height={24} className="w-6 h-6" />
+              <span className="text-xl font-bold text-slate-950 dark:text-white">EnStudey</span>
+            </div>
             <p className="text-sm font-semibold text-slate-800 dark:text-zinc-200">Nền tảng hỗ trợ học tập cá nhân hóa.</p>
             <div className="space-y-1.5 text-xs text-slate-500 dark:text-zinc-400">
               <p>Chịu trách nhiệm nội dung: Nguyễn Đức Tâm</p>

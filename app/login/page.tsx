@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Đăng nhập - EnStudey",
@@ -16,9 +17,10 @@ export default function LoginPage() {
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-md bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-8 shadow-2xl relative z-10 text-center space-y-8">
-        <div className="space-y-2">
-          <Link href="/" className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 tracking-tight">
-            EnStudey
+        <div className="space-y-2 flex flex-col items-center">
+          <Link href="/" className="inline-flex items-center gap-2 text-3xl font-extrabold text-slate-100 hover:text-orange-500 transition-colors tracking-tight">
+            <Image src="/logo.svg" alt="EnStudey Logo" width={36} height={36} className="w-9 h-9" />
+            <span className="bg-gradient-to-r from-orange-500 to-red-500 text-transparent bg-clip-text">EnStudey</span>
           </Link>
           <p className="text-slate-400 text-sm">Chinh phục TOEIC & IELTS thông minh cùng trợ lý AI</p>
         </div>
