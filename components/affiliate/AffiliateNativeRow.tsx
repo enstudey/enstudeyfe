@@ -6,9 +6,10 @@ import productsData from "@/data/shopee-affiliate-products.json";
 
 interface Props {
   rowIndex: number;
+  currentPage: number;
 }
 
-export default function AffiliateNativeRow({ rowIndex }: Props) {
+export default function AffiliateNativeRow({ rowIndex, currentPage }: Props) {
   let dormProducts: AffiliateProduct[] = [];
   try {
     dormProducts = (productsData as AffiliateProduct[]).filter(p => p.category === "dorm");
@@ -19,7 +20,9 @@ export default function AffiliateNativeRow({ rowIndex }: Props) {
 
   if (dormProducts.length === 0) return null;
 
-  const product = dormProducts[rowIndex % dormProducts.length];
+  // Tính chỉ số dòng toàn cục để đổi sản phẩm khác nhau trên từng trang phân trang
+  const globalIndex = (currentPage - 1) + rowIndex;
+  const product = dormProducts[globalIndex % dormProducts.length];
 
   return (
     <tr className="bg-slate-50/20 dark:bg-zinc-950/20">

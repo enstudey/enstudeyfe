@@ -152,7 +152,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
           </div>
 
           {/* Table of Contents */}
-          <TableOfContents contentHtml={post.contentHtml} />
+          <TableOfContents contentHtml={post.contentHtml ?? ""} />
 
           {/* Under-title Ad: Dưới tiêu đề bài viết */}
           <div className="ad-container ad-under-title w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mb-6">
@@ -161,7 +161,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
           <div 
             className="text-base text-slate-700 dark:text-zinc-300 space-y-4 article-content"
-            dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml)) }}
+            dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml ?? "")) }}
           />
         </article>
 

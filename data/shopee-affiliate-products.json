@@ -52,5 +52,50 @@
     "imagePath": "/images/affiliate/den-ban-led.webp",
     "category": "dorm",
     "tags": []
+  },
+  {
+    "id": "binh-giu-nhiet-2026",
+    "slug": "binh-giu-nhiet",
+    "title": "Bình Giữ Nhiệt Inox 304 Cao Cấp 1L",
+    "description": "Giữ nhiệt nóng lạnh suốt 24h, tặng kèm bao da và ống hút silicon tiện dụng.",
+    "imagePath": "/images/affiliate/den-ban-led.webp",
+    "category": "dorm",
+    "tags": []
+  },
+  {
+    "id": "quat-de-ban-2026",
+    "slug": "quat-de-ban",
+    "title": "Quạt Tích Điện Để Bàn Mini Siêu Mát",
+    "description": "3 tốc độ gió cực mát, pin bền bỉ 8 tiếng sử dụng liên tục khi mất điện.",
+    "imagePath": "/images/affiliate/balo-laptop.webp",
+    "category": "dorm",
+    "tags": []
+  },
+  {
+    "id": "tai-nghe-bluetooth-2026",
+    "slug": "tai-nghe-bluetooth",
+    "title": "Tai Nghe Không Dây Chống Ồn Chủ Động",
+    "description": "Âm bass cực căng, chống ồn đàm thoại, thiết kế công thái học đeo siêu êm.",
+    "imagePath": "/images/affiliate/sach-toeic.webp",
+    "category": "study",
+    "tags": []
+  },
+  {
+    "id": "so-tay-dat-muc-tieu-2026",
+    "slug": "so-tay-dat-muc-tieu",
+    "title": "Sổ Tay Đặt Mục Tiêu & Lập Kế Hoạch 2026",
+    "description": "Bìa da sang trọng, hỗ trợ lập thời khóa biểu và theo dõi tiến độ thi cử khoa học.",
+    "imagePath": "/images/affiliate/sach-ielts-cam-12.webp",
+    "category": "study",
+    "tags": []
+  },
+  {
+    "id": "router-wifi-mini-2026",
+    "slug": "router-wifi-mini",
+    "title": "Router Wifi Mini 3G/4G Tốc Độ Cao",
+    "description": "Bộ phát wifi di động bỏ túi cực kỳ nhỏ gọn, lắp sim là dùng, kết nối 10 thiết bị.",
+    "imagePath": "/images/affiliate/balo-laptop.webp",
+    "category": "dorm",
+    "tags": []
   }
 ]

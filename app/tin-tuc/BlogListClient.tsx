@@ -153,7 +153,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
                     {/* Chèn AffiliateInFeedCard sau mỗi 3 bài viết, chỉ khi tổng bài viết trên trang >= 3 */}
                     {(idx + 1) % 3 === 0 && paginatedPosts.length >= 3 && (
-                      <AffiliateInFeedCard />
+                      <AffiliateInFeedCard currentPage={currentPage} rowIndex={idx} />
                     )}
 
                     {(idx === 1 || idx === 3) && idx < paginatedPosts.length - 1 && (
@@ -281,7 +281,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
           </div>
           <aside className="hidden lg:block lg:col-span-3">
             <div className="sticky top-24 space-y-6">
-              <AffiliateSidebarWidget />
+              <AffiliateSidebarWidget currentPage={currentPage} />
               <div className="ad-container ad-sidebar w-full min-h-[500px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
                 <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
               </div>

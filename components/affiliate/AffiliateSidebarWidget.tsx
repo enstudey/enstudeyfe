@@ -4,13 +4,32 @@ import Image from "next/image";
 import type { AffiliateProduct } from "@/types/affiliate";
 import productsData from "@/data/shopee-affiliate-products.json";
 
-export default function AffiliateSidebarWidget() {
+interface Props {
+  currentPage?: number;
+  seed?: string;
+}
+
+export default function AffiliateSidebarWidget({ currentPage, seed }: Props) {
   let product: AffiliateProduct | null = null;
   try {
     const products = productsData as AffiliateProduct[];
-    product = products.find(p => p.category === "collection") ?? null;
+    if (currentPage && currentPage > 0) {
+      // Chọn sản phẩm modulo theo trang
+      const index = (currentPage - 1) % products.length;
+      product = products[index] ?? null;
+    } else if (seed) {
+      // Hash seed (slug) để hiển thị sản phẩm cố định cho bài viết cụ thể
+      let hash = 0;
+      for (let i = 0; i < seed.length; i++) {
+        hash = seed.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      const index = Math.abs(hash) % products.length;
+      product = products[index] ?? null;
+    } else {
+      product = products.find(p => p.category === "collection") ?? null;
+    }
   } catch (error) {
-    console.error("Error loading affiliate sidebar collection:", error);
+    console.error("Error loading affiliate sidebar product:", error);
     return null;
   }
 

@@ -4,13 +4,24 @@ import Image from "next/image";
 import type { AffiliateProduct } from "@/types/affiliate";
 import productsData from "@/data/shopee-affiliate-products.json";
 
-export default function AffiliateInFeedCard() {
+interface Props {
+  currentPage?: number;
+  rowIndex?: number;
+}
+
+export default function AffiliateInFeedCard({ currentPage, rowIndex }: Props) {
   let product: AffiliateProduct | null = null;
   try {
     const products = productsData as AffiliateProduct[];
-    product = products.find(p => p.category === "collection") ?? null;
+    if (currentPage && currentPage > 0) {
+      const globalIndex = (currentPage - 1) * 3 + (rowIndex ?? 0);
+      const index = globalIndex % products.length;
+      product = products[index] ?? null;
+    } else {
+      product = products.find(p => p.category === "collection") ?? null;
+    }
   } catch (error) {
-    console.error("Error loading affiliate in-feed collection:", error);
+    console.error("Error loading affiliate in-feed product:", error);
     return null;
   }
 

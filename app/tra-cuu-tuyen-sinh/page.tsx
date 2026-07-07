@@ -399,7 +399,7 @@ export default function FinderPage() {
                           
                           {/* Native Ads xen kẽ sau mỗi 5 kết quả */}
                           {(idx + 1) % 5 === 0 && paginatedResults.length >= 5 && (
-                            <AffiliateNativeRow rowIndex={idx} />
+                            <AffiliateNativeRow rowIndex={idx} currentPage={currentPage} />
                           )}
                         </React.Fragment>
                       ))

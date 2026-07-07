@@ -114,7 +114,7 @@ export default async function BlogPostDetail({ params }: BlogPostPageProps) {
           </h1>
           <div
             className="text-base text-slate-700 dark:text-zinc-300 space-y-4 md-content"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            dangerouslySetInnerHTML={{ __html: post.contentHtml ?? "" }}
           />
         </article>
 
