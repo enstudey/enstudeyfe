@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { cache } from "react";
 
 const CONTENT_DIRECTORY = path.join(process.cwd(), "content");
 
@@ -12,7 +13,7 @@ export interface PostData {
   description: string;
   date: string;
   image?: string;
-  contentHtml: string;
+  contentHtml?: string;
   faq?: Array<{ question: string; answer: string }>;
   isDraft?: boolean;
 }
@@ -48,7 +49,11 @@ function injectHeadingIds(html: string): string {
   });
 }
 
-export function getPostBySlug(category: string, slug: string): PostData | null {
+export const getPostBySlug = cache((
+  category: string,
+  slug: string,
+  options: { includeContent?: boolean } = { includeContent: true }
+): PostData | null => {
   try {
     const fullPath = path.join(CONTENT_DIRECTORY, category, `${slug}.md`);
     if (!fs.existsSync(fullPath)) {
@@ -56,8 +61,12 @@ export function getPostBySlug(category: string, slug: string): PostData | null {
     }
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
-    const contentHtmlRaw = marked(content) as string;
-    const contentHtml = injectHeadingIds(contentHtmlRaw);
+    
+    let contentHtml = "";
+    if (options.includeContent !== false) {
+      const contentHtmlRaw = marked(content) as string;
+      contentHtml = injectHeadingIds(contentHtmlRaw);
+    }
 
     const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
     const contentLower = content.toLowerCase();
@@ -81,10 +90,9 @@ export function getPostBySlug(category: string, slug: string): PostData | null {
   } catch {
     return null;
   }
-}
+});
 
-
-export function getAllPosts(includeDraft: boolean = false): PostData[] {
+export const getAllPostsMetadata = cache((includeDraft: boolean = false): PostData[] => {
   const categories = ["skills", "toeic", "ielts", "grammar"];
   const posts: PostData[] = [];
 
@@ -100,7 +108,7 @@ export function getAllPosts(includeDraft: boolean = false): PostData[] {
         continue;
       }
       const slug = fileName.replace(/\.md$/, "");
-      const post = getPostBySlug(category, slug);
+      const post = getPostBySlug(category, slug, { includeContent: false });
       if (post && (includeDraft || !post.isDraft)) {
         posts.push(post);
       }
@@ -109,11 +117,38 @@ export function getAllPosts(includeDraft: boolean = false): PostData[] {
 
   // Sort by date descending
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
-}
+});
 
-export function getRelatedPosts(currentSlug: string, category: string, limit: number = 4): PostData[] {
-  const allPosts = getAllPosts(false);
+export const getAllPosts = cache((includeDraft: boolean = false): PostData[] => {
+  const categories = ["skills", "toeic", "ielts", "grammar"];
+  const posts: PostData[] = [];
+
+  for (const category of categories) {
+    const categoryPath = path.join(CONTENT_DIRECTORY, category);
+    if (!fs.existsSync(categoryPath)) {
+      continue;
+    }
+
+    const fileNames = fs.readdirSync(categoryPath);
+    for (const fileName of fileNames) {
+      if (!fileName.endsWith(".md")) {
+        continue;
+      }
+      const slug = fileName.replace(/\.md$/, "");
+      const post = getPostBySlug(category, slug, { includeContent: true });
+      if (post && (includeDraft || !post.isDraft)) {
+        posts.push(post);
+      }
+    }
+  }
+
+  // Sort by date descending
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+});
+
+export const getRelatedPosts = cache((currentSlug: string, category: string, limit: number = 4): PostData[] => {
+  const allPosts = getAllPostsMetadata(false);
   return allPosts
     .filter(post => post.category === category && post.slug !== currentSlug)
     .slice(0, limit);
-}
+});

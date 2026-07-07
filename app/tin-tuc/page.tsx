@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { getAllPosts } from "@/lib/markdown";
+import { getAllPostsMetadata } from "@/lib/markdown";
 import BlogListClient from "./BlogListClient";
 
 export const metadata: Metadata = {
@@ -17,6 +17,6 @@ export default async function BlogListPage({ searchParams }: PageProps) {
   const pageParam = resolvedSearchParams.page;
   const initialPage = typeof pageParam === "string" ? parseInt(pageParam, 10) : 1;
 
-  const posts = getAllPosts();
+  const posts = getAllPostsMetadata();
   return <BlogListClient posts={posts} initialPage={initialPage} />;
 }

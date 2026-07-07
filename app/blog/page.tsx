@@ -2,7 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import AdBanner from "@/components/ads/AdBanner";
-import { getAllPosts } from "@/lib/markdown";
+import { getAllPostsMetadata } from "@/lib/markdown";
 import { CATEGORIES, getCategoryBySlug } from "@/lib/categories";
 import CategoryIcon from "@/components/category-icon";
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogListPage() {
-  const posts = getAllPosts();
+  const posts = getAllPostsMetadata();
 
   return (
     <main className="max-w-4xl mx-auto py-12 px-4 bg-white dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 min-h-screen">

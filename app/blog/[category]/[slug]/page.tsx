@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdBanner from "@/components/ads/AdBanner";
-import { getPostBySlug, getAllPosts } from "@/lib/markdown";
+import { getPostBySlug, getAllPostsMetadata } from "@/lib/markdown";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -12,7 +12,7 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = getAllPostsMetadata();
   return posts.map((post) => ({
     category: post.category,
     slug: post.slug,
