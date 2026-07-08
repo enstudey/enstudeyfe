@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { toast } from "@/lib/toast";
 import SubjectScoresInput from "./SubjectScoresInput";
 import CertificateConverter from "./CertificateConverter";
 import AffiliateCertWidget from "@/components/affiliate/AffiliateCertWidget";
@@ -215,7 +216,7 @@ export default function CalculatorPage() {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      alert("Vui lòng kiểm tra lại các điểm số đã nhập.");
+      toast.error("Vui lòng kiểm tra lại các điểm số đã nhập.");
       return;
     }
 
@@ -230,7 +231,7 @@ export default function CalculatorPage() {
     );
 
     if (Object.keys(results).length === 0) {
-      alert("Vui lòng nhập điểm thi các môn để tính toán tổ hợp.");
+      toast.error("Vui lòng nhập điểm thi các môn để tính toán tổ hợp.");
       return;
     }
 
@@ -275,13 +276,13 @@ export default function CalculatorPage() {
     });
 
     if (!hasAnyScore) {
-      alert("Vui lòng nhập điểm học bạ các học kỳ để tính toán.");
+      toast.error("Vui lòng nhập điểm học bạ các học kỳ để tính toán.");
       return;
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      alert("Vui lòng kiểm tra lại điểm số.");
+      toast.error("Vui lòng kiểm tra lại điểm số.");
       return;
     }
 
@@ -294,7 +295,7 @@ export default function CalculatorPage() {
     );
 
     if (Object.keys(results).length === 0) {
-      alert("Không tìm thấy tổ hợp hợp lệ nào. Vui lòng nhập điểm đầy đủ cho ít nhất một tổ hợp môn (ví dụ Toán, Lý, Hóa để có tổ hợp A00).");
+      toast.error("Không tìm thấy tổ hợp hợp lệ nào. Vui lòng nhập điểm đầy đủ cho ít nhất một tổ hợp môn (ví dụ Toán, Lý, Hóa để có tổ hợp A00).");
       return;
     }
 

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import CookieBanner from "@/components/cookie-banner";
+import ToastContainer from "@/components/toast/ToastContainer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,6 +55,7 @@ export default function RootLayout({
         >
           {children}
           <CookieBanner />
+          <ToastContainer />
         </ThemeProvider>
       </body>
     </html>
