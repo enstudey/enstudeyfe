@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
   scroll-behavior: smooth;
@@ -165,5 +165,63 @@ body {
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Dark Mode Overrides thủ công cho các trang prose và widget affiliate */
+.dark body {
+  background-color: #09090b !important;
+  color: #f4f4f5 !important;
+}
+
+.dark .prose {
+  color: #d4d4d8 !important;
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose strong {
+  color: #ffffff !important;
+}
+
+.dark .prose a {
+  color: #f97316 !important;
+}
+
+.dark .prose li {
+  color: #d4d4d8 !important;
+}
+
+/* Fix màu chữ cho các widget affiliate trong Dark Mode */
+.dark [data-testid="affiliate-sidebar-widget"],
+.dark [data-testid="affiliate-cert-widget"],
+.dark [data-testid="affiliate-box-study"],
+.dark [data-testid="affiliate-infeed-card"] {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+}
+
+.dark [data-testid="affiliate-sidebar-widget"] h4,
+.dark [data-testid="affiliate-cert-widget"] p,
+.dark [data-testid="affiliate-box-study"] p,
+.dark [data-testid="affiliate-infeed-card"] h2 {
+  color: #ffffff !important;
+}
+
+.dark [data-testid="affiliate-sidebar-widget"] p,
+.dark [data-testid="affiliate-cert-widget"] p:last-child,
+.dark [data-testid="affiliate-box-study"] p:last-child,
+.dark [data-testid="affiliate-infeed-card"] p {
+  color: #a1a1aa !important;
+}
+
+/* Fix màu chữ cho khối affiliate chèn động trong bài viết tin tức */
+.dark .affiliate-text-block {
+  background-color: rgba(24, 24, 27, 0.3) !important;
+  border-color: #27272a !important;
+}
+.dark .affiliate-text-block p {
+  color: #d4d4d8 !important;
 }
 
