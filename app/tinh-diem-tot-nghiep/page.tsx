@@ -127,7 +127,7 @@ export default function CalculatorPage() {
     setScores(newScores);
     localStorage.setItem("user_raw_scores", JSON.stringify(newScores));
 
-    if (errors[subject]) {
+    if (errors[subject as string]) {
       setErrors(prev => {
         const copy = { ...prev };
         delete copy[subject as string];
@@ -147,7 +147,7 @@ export default function CalculatorPage() {
     setScores(newScores);
     localStorage.setItem("user_raw_scores", JSON.stringify(newScores));
 
-    if (res.isValid && errors[subject]) {
+    if (res.isValid && errors[subject as string]) {
       setErrors(prev => {
         const copy = { ...prev };
         delete copy[subject as string];
