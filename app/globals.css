@@ -225,3 +225,12 @@ body {
   color: #d4d4d8 !important;
 }
 
+/* Bù trừ chiều cao Header cố định khi cuộn tới tiêu đề qua Table of Contents hoặc Anchor Link */
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.prose h2,
+.prose h3,
+.prose h4 {
+  scroll-margin-top: 5.5rem; /* ~ 88px, bảo vệ không bị Header che mất tiêu đề */
+}

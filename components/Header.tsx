@@ -16,6 +16,33 @@ export default function Header({ isStatic = false }: HeaderProps) {
   const [isSticky, setIsSticky] = useState(false);
   const lastScrollY = useRef(0);
   const scrollThreshold = 15; // Ngưỡng cuộn lên tối thiểu (px) để tránh giật lag
+  const prevPathname = useRef(pathname);
+
+  useEffect(() => {
+    // Xác định xem đây có phải là chuyển đổi giữa các bài viết chi tiết tin tức (Related Articles click)
+    const isRelatedArticleClick =
+      prevPathname.current.startsWith("/tin-tuc/") &&
+      prevPathname.current !== "/tin-tuc" &&
+      pathname.startsWith("/tin-tuc/") &&
+      pathname !== "/tin-tuc" &&
+      prevPathname.current !== pathname;
+
+    const handleScrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: isRelatedArticleClick ? "smooth" : "instant",
+      });
+    };
+
+    // Thực hiện cuộn ngay lập tức
+    handleScrollToTop();
+
+    // Thực hiện cuộn lại sau khi DOM/layout ổn định (tránh bị lệch do CLS ảnh)
+    const timer = setTimeout(handleScrollToTop, 50);
+
+    prevPathname.current = pathname;
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   useEffect(() => {
     if (isStatic) return;

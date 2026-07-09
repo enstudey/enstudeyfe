@@ -21,6 +21,7 @@ export default function RelatedArticles({ posts }: RelatedArticlesProps) {
           <React.Fragment key={post.slug}>
             <Link 
               href={`/tin-tuc/${post.slug}`} 
+              scroll={false}
               className="group relative bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-2xl overflow-hidden hover:shadow-md transition duration-300 flex flex-col h-full"
             >
               <div className="h-32 overflow-hidden relative">

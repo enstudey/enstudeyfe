@@ -148,6 +148,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
               sizes="(max-width: 768px) 100vw, 800px"
               className="object-cover"
               priority
+              loading="eager"
             />
           </div>
 
