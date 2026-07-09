@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   title: "EnStudey - Nền tảng học tập cá nhân hóa",
   description: "Chinh phục TOEIC & IELTS thông minh cùng trợ lý AI",
   icons: {
-    icon: "/icon-white-rounded.png",
-    apple: "/icon-white-rounded.png",
+    icon: "/favicon-cropped.png",
+    apple: "/favicon-cropped.png",
   },
 };
 
