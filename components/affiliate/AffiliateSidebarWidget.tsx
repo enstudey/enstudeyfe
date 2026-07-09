@@ -68,7 +68,7 @@ export default function AffiliateSidebarWidget({ currentPage, seed }: Props) {
       <a
         href={`/go/${product.slug}`}
         target="_blank"
-        rel="noopener noreferrer nofollow"
+        rel="noopener noreferrer nofollow sponsored"
         className="w-full py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition duration-200 text-center block"
       >
         {product.ctaLabel || "Xem trên Shopee"}

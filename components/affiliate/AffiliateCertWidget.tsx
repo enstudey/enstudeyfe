@@ -55,7 +55,7 @@ export default function AffiliateCertWidget({ certType, certScore }: Props) {
       <a
         href={`/go/${product.slug}`}
         target="_blank"
-        rel="noopener noreferrer nofollow"
+        rel="noopener noreferrer nofollow sponsored"
         className="flex-shrink-0 px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition duration-200 whitespace-nowrap"
       >
         Xem trên Shopee
