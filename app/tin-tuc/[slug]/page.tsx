@@ -32,7 +32,7 @@ function insertInArticleAd(htmlContent: string): string {
   } else if (htmlContent.includes("</h2>")) {
     return htmlContent.replace("</h2>", "</h2>" + adBlockHtml);
   }
-  
+
   return htmlContent;
 }
 
@@ -69,7 +69,7 @@ function insertAffiliateTextLink(htmlContent: string): string {
       return count === 5 ? match + affiliateHtml : match;
     });
   }
-  
+
   return htmlContent;
 }
 
@@ -182,7 +182,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
               <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
             </div>
 
-            <div 
+            <div
               className="text-base text-slate-700 dark:text-zinc-300 space-y-4 article-content"
               dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml ?? "")) }}
             />
@@ -197,7 +197,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
                 <div className="text-center">
                   <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold block mb-2">Liên kết tài trợ</span>
                   <div className="w-[160px] h-[500px] bg-slate-200/50 dark:bg-zinc-800/50 mx-auto rounded-lg flex items-center justify-center">
-                    <span className="text-xs text-slate-400">Banner quảng cáo dọc</span>
+                    <span className="text-xs text-slate-400">Quảng cáo</span>
                   </div>
                 </div>
               </div>
@@ -219,8 +219,8 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             <h4 className="text-sm font-bold text-slate-950 dark:text-white">Thực hành ngay với Mini-Test hôm nay</h4>
             <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium">Rèn luyện lý thuyết vừa đọc để nhớ lâu hơn nhé.</p>
           </div>
-          <Link 
-            href="/tinh-diem-tot-nghiep" 
+          <Link
+            href="/tinh-diem-tot-nghiep"
             className="px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition duration-200 whitespace-nowrap"
           >
             Làm Test liền &rarr;

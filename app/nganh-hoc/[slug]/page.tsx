@@ -170,7 +170,7 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
               <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
             </div>
 
-            <div 
+            <div
               className="text-base text-slate-700 dark:text-zinc-350 space-y-4 article-content"
               dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml ?? "")) }}
             />
@@ -192,7 +192,7 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
                 <div className="text-center">
                   <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold block mb-2">Liên kết tài trợ</span>
                   <div className="w-[160px] h-[500px] bg-slate-200/50 dark:bg-zinc-800/50 mx-auto rounded-lg flex items-center justify-center">
-                    <span className="text-xs text-slate-400">Banner quảng cáo dọc</span>
+                    <span className="text-xs text-slate-400">Quảng cáo</span>
                   </div>
                 </div>
               </div>
