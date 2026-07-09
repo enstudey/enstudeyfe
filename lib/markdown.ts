@@ -93,7 +93,7 @@ export const getPostBySlug = cache((
 });
 
 export const getAllPostsMetadata = cache((includeDraft: boolean = false): PostData[] => {
-  const categories = ["skills", "toeic", "ielts", "grammar"];
+  const categories = ["skills", "toeic", "ielts", "grammar", "nganh-hoc"];
   const posts: PostData[] = [];
 
   for (const category of categories) {
@@ -120,7 +120,7 @@ export const getAllPostsMetadata = cache((includeDraft: boolean = false): PostDa
 });
 
 export const getAllPosts = cache((includeDraft: boolean = false): PostData[] => {
-  const categories = ["skills", "toeic", "ielts", "grammar"];
+  const categories = ["skills", "toeic", "ielts", "grammar", "nganh-hoc"];
   const posts: PostData[] = [];
 
   for (const category of categories) {

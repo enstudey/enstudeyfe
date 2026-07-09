@@ -87,8 +87,8 @@ export default function AffiliateNativeRow({ rowIndex, currentPage, isCard = fal
               </p>
             </div>
           </div>
-          <span className="text-[9px] text-slate-400 dark:text-zinc-600 font-bold border border-slate-200 dark:border-zinc-800 rounded px-1.5 py-0.5 flex-shrink-0 whitespace-nowrap">
-            LIÊN KẾT TIẾP THỊ
+          <span className="text-[9px] text-slate-400 dark:text-zinc-650 font-bold border border-slate-200 dark:border-zinc-800 rounded px-1.5 py-0.5 flex-shrink-0 whitespace-nowrap">
+            LIÊN KẾT TÀI TRỢ
           </span>
         </a>
       </td>

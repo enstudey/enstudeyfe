@@ -54,8 +54,16 @@ export default function TermsOfServicePage() {
           <section className="space-y-2">
             <h2 className="text-lg font-bold text-slate-950 dark:text-white">3. Điều khoản về Quảng cáo, Tiếp thị liên kết và Duy trì hệ thống</h2>
             <p>Để EnStudey có thể duy trì server hoạt động 24/7 và nâng cấp thêm nhiều công cụ hữu ích hơn cho bạn sử dụng hoàn toàn miễn phí, chúng mình có đặt các vị trí quảng cáo từ đối tác Google AdSense và chèn các liên kết tiếp thị Shopee Affiliate giới thiệu tài liệu học tập, hành trang học sinh.</p>
-            <ul className="list-disc pl-5 space-y-1">
+            <ul className="list-disc pl-5 space-y-2">
               <li>Chúng mình cam kết các vị trí quảng cáo và gợi ý tiếp thị luôn được thiết kế gọn gàng, không che khuất bảng tính điểm hay nội dung bạn đang đọc.</li>
+              <li>
+                <strong>Quy chuẩn nội dung và hiển thị quảng bá tiếp thị liên kết (Affiliate Copywriting):</strong>
+                <ul className="list-circle pl-5 space-y-1 mt-1 text-xs text-slate-500 dark:text-zinc-400">
+                  <li><strong>Nhãn nhận diện:</strong> Mọi liên kết tiếp thị liên kết phải được gắn kèm nhãn nhận diện trực quan rõ ràng, sử dụng các cụm từ quy chuẩn: &quot;Gợi ý dành cho bạn&quot;, &quot;Được tài trợ&quot; hoặc &quot;Liên kết tài trợ&quot; mờ và nhỏ.</li>
+                  <li><strong>Ngôn từ trung thực:</strong> Tuyệt đối nghiêm cấm việc sử dụng các từ ngữ khẳng định tối cao mang tính quảng cáo tuyệt đối như &quot;nhất&quot;, &quot;tốt nhất&quot;, &quot;rẻ nhất&quot;, &quot;số 1&quot; trên hệ thống nếu không có tài liệu chứng minh hợp pháp. Thay vào đó, khuyến khích sử dụng các từ ngữ mô tả trải nghiệm cá nhân như &quot;tối ưu&quot;, &quot;phù hợp&quot;, &quot;xu hướng&quot;.</li>
+                  <li><strong>Chuẩn mực ngôn ngữ:</strong> Giữ gìn chính tả tiếng Việt phổ thông, tuyệt đối không sử dụng teencode, từ lóng lệch chuẩn trong các nội dung giới thiệu sản phẩm để đảm bảo tính chuyên nghiệp.</li>
+                </ul>
+              </li>
               <li><strong>Nghiêm cấm hành vi gian lận:</strong> Mong bạn KHÔNG sử dụng bất kỳ phần mềm, công cụ tự động (bot) nào để bấm (click) liên tục vào quảng cáo hoặc liên kết tiếp thị trên EnStudey nhằm mục đích phá hoại. Nếu hệ thống phát hiện IP có hành vi bất thường, tụi mình buộc lòng phải chặn truy cập của bạn để bảo vệ an toàn cho hệ thống.</li>
             </ul>
           </section>

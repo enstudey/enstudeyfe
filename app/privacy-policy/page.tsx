@@ -59,14 +59,22 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-2">
             <h2 className="text-lg font-bold text-slate-950 dark:text-white">3. LƯU Ý QUAN TRỌNG VỀ QUẢNG CÁO & TIẾP THỊ LIÊN KẾT (Shopee Affiliate) 🍪</h2>
             <p>
-              Để EnStudey có kinh phí duy trì server 24/7 và luôn mở cửa miễn phí cho tất cả các bạn học sinh, trang web có sử dụng hệ thống quảng cáo từ đối tác <strong>Google AdSense</strong> và các liên kết giới thiệu sản phẩm tiếp thị liên kết từ đối tác <strong>Shopee Affiliate</strong>. Đây là các quy định chung bạn cần lưu ý nha:
+              Để EnStudey có kinh phí duy trì server 24/7 và luôn mở cửa miễn phí cho tất cả các bạn học sinh, trang web có sử dụng hệ thống quảng cáo từ đối tác <strong>Google AdSense</strong> và các liên kết giới thiệu sản phẩm tiếp thị liên kết từ đối tác <strong>Shopee Affiliate</strong>. Đây là các quy định chung và chính sách thuế liên quan bắt buộc áp dụng từ năm 2026 bạn cần lưu ý nha:
             </p>
-            <ul className="list-disc pl-5 space-y-1">
+            <ul className="list-disc pl-5 space-y-2">
               <li>
                 Các nhà cung cấp bên thứ ba, bao gồm cả Google, sẽ sử dụng <strong>Cookie</strong> để phân phát các quảng cáo phù hợp dựa trên các lượt truy cập trước đó của bạn vào EnStudey hoặc các trang web khác trên Internet.
               </li>
               <li>
                 Các liên kết giới thiệu sản phẩm (như sách học tiếng Anh, balo, đồ dùng học tập) hiển thị trên EnStudey sẽ chuyển hướng bạn đến trang mua sắm Shopee thông qua hệ thống Shopee Affiliate. Hoạt động này hoàn toàn không làm phát sinh thêm bất kỳ chi phí mua sắm nào cho bạn.
+              </li>
+              <li>
+                <strong>Quy định pháp lý & Nghĩa vụ thuế 2026 đối với cộng tác viên làm tiếp thị liên kết:</strong>
+                <ul className="list-circle pl-5 space-y-1 mt-1 text-xs text-slate-500 dark:text-zinc-400">
+                  <li><strong>Xác thực danh tính điện tử:</strong> Tất cả đối tác làm tiếp thị liên kết trên hệ thống bắt buộc phải hoàn tất xác thực danh tính cá nhân bằng Căn cước công dân (CCCD) gắn chip trên cổng Shopee Affiliate để đảm bảo tính hợp pháp của dòng tiền hoa hồng.</li>
+                  <li><strong>Khấu trừ thuế TNCN tại nguồn:</strong> Đối với tài khoản cá nhân, thuế thu nhập cá nhân sẽ được tự động tính toán và khấu trừ tại nguồn theo quy định của pháp luật trước khi thanh toán.</li>
+                  <li><strong>Quy định đối với Hộ kinh doanh (HKD):</strong> Nhằm tuân thủ Thông tư 40/2021/TT-BTC, tài khoản ngân hàng nhận hoa hồng tiếp thị liên kết của HKD bắt buộc phải đứng tên trùng khớp 100% với tên người đại diện trên Giấy chứng nhận đăng ký kinh doanh và phải được thông báo chính thức với Cơ quan Thuế.</li>
+                </ul>
               </li>
               <li>
                 Bạn hoàn toàn có quyền chủ động <strong>từ chối</strong> việc sử dụng Cookie cho quảng cáo được cá nhân hóa bằng cách truy cập vào trang <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-orange-500 hover:underline">Cài đặt quảng cáo của Google</a>.
