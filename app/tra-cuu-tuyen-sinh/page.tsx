@@ -129,7 +129,7 @@ export default function FinderPage() {
   const topThreeScores = useMemo(() => {
     if (!computedScores) return [];
     return Object.entries(computedScores)
-      .filter(([_, val]) => typeof val === "number")
+      .filter(([, val]) => typeof val === "number")
       .sort((a, b) => b[1] - a[1])
       .slice(0, 3);
   }, [computedScores]);
@@ -201,7 +201,7 @@ export default function FinderPage() {
     });
 
     return list;
-  }, [scoresData, searchTerm, selectedGroup, selectedYear, selectedMethod, scoreRange, computedScores]);
+  }, [scoresData, searchTerm, selectedGroup, selectedYear, selectedMethod, scoreRange]);
 
   // Reset trang về 1 khi tiêu chí lọc thay đổi bằng setTimeout để tránh cascading renders
   useEffect(() => {
@@ -252,11 +252,11 @@ export default function FinderPage() {
       <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">
+            <h1 className="text-3xl font-extrabold text-slate-955 dark:text-white tracking-tight">
               Hệ thống tra cứu nguyện vọng thông minh 🔍
             </h1>
             <div className="flex items-center gap-3 flex-wrap mt-1">
-              <p className="text-slate-500 dark:text-zinc-400 text-sm">Gợi ý và sắp xếp các nguyện vọng phù hợp với khoảng điểm và tổ hợp của bạn.</p>
+              <p className="text-slate-505 dark:text-zinc-400 text-sm">Gợi ý và sắp xếp các nguyện vọng phù hợp với khoảng điểm và tổ hợp của bạn.</p>
               {isAvailable && (
                 <button
                   onClick={() => setIsDonateOpen(true)}
@@ -282,17 +282,18 @@ export default function FinderPage() {
 
         {computedScores ? (
           <div className="space-y-4">
-            <div className="bg-orange-50/50 dark:bg-zinc-900 border border-orange-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 dark:text-zinc-350 flex justify-between items-center">
-              <span>
+            <div className="bg-orange-50/50 dark:bg-zinc-900 border border-orange-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 dark:text-zinc-350 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <span className="leading-relaxed">
                 Hệ thống đang đối sánh tự động dựa trên điểm số đã tính:{" "}
-                {topThreeScores.map(([group, score], i) => (
-                  <span key={group}>
-                    {i > 0 && " | "}
-                    <span className="font-bold text-orange-600 dark:text-orange-400">{group}</span>: {score.toFixed(2)}
-                  </span>
-                ))}
+                <span className="inline-flex flex-wrap gap-x-2 gap-y-1 mt-1.5 sm:mt-0 sm:ml-1 align-middle">
+                  {topThreeScores.map(([group, score]) => (
+                    <span key={group} className="inline-block bg-white dark:bg-zinc-950 px-2 py-0.5 rounded border border-orange-500/10 whitespace-nowrap text-[11px]">
+                      <span className="font-bold text-orange-600 dark:text-orange-400">{group}</span>: {score.toFixed(2)}
+                    </span>
+                  ))}
+                </span>
               </span>
-              <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-500 hover:underline">
+              <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-555 hover:underline whitespace-nowrap font-bold flex-shrink-0 self-start sm:self-auto">
                 Tính điểm lại &rarr;
               </Link>
             </div>
@@ -304,16 +305,16 @@ export default function FinderPage() {
               data-testid="ad-infeed-points"
             >
               <div className="text-center space-y-2">
-                <span className="text-[10px] text-slate-400 dark:text-zinc-500 font-bold uppercase tracking-wider block">Liên kết tài trợ</span>
+                <span className="text-[10px] text-slate-400 dark:text-zinc-555 font-bold uppercase tracking-wider block">Liên kết tài trợ</span>
                 <p className="font-bold text-sm text-slate-700 dark:text-zinc-350">Lộ trình học IELTS 7.5+ cấp tốc cho học sinh lớp 12</p>
-                <p className="text-xs text-slate-400 dark:text-zinc-500">Đăng ký ngay hôm nay để nhận học bổng giảm giá 30% học phí tại EnStudey.</p>
+                <p className="text-xs text-slate-400 dark:text-zinc-555">Đăng ký ngay hôm nay để nhận học bổng giảm giá 30% học phí tại EnStudey.</p>
               </div>
             </div>
           </div>
         ) : (
           <div className="bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-4 text-xs font-semibold text-slate-600 dark:text-zinc-400 flex justify-between items-center">
             <span>Bạn chưa tính điểm thi THPT? Tính ngay để xem gợi ý các phân vùng an toàn/rủi ro.</span>
-            <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-500 hover:underline">
+            <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-555 hover:underline">
               Tính điểm thi &rarr;
             </Link>
           </div>
@@ -391,7 +392,7 @@ export default function FinderPage() {
                 value={scoreRange}
                 onChange={(e) => setScoreRange(parseFloat(e.target.value))}
                 data-testid="input-score-range"
-                className="w-full accent-orange-600 dark:accent-orange-500 cursor-pointer"
+                className="w-full accent-orange-600 dark:accent-orange-555 cursor-pointer"
               />
             </div>
           </div>
@@ -436,7 +437,7 @@ export default function FinderPage() {
                       {paginatedResults.length > 0 ? (
                         paginatedResults.map((item, idx) => (
                           <React.Fragment key={`desktop-${item.universityCode}-${item.majorCode}-${item.majorName}`}>
-                            <tr className="group hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer">
+                            <tr className="group hover:bg-slate-55/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer">
                               <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">{item.majorCode}</td>
                               <td className="px-6 py-4">
                                 <p className="font-bold text-slate-900 dark:text-white">
@@ -452,10 +453,10 @@ export default function FinderPage() {
                                   <p className="text-[10px] text-orange-600 dark:text-orange-400 italic mt-0.5">{item.note}</p>
                                 )}
                               </td>
-                              <td className="px-6 py-4 font-bold text-slate-600 dark:text-zinc-400 text-xs">
+                              <td className="px-6 py-4 font-bold text-slate-650 dark:text-zinc-400 text-xs">
                                 <div className="flex flex-wrap gap-1">
                                   {item.groups.map((g, gIdx) => (
-                                    <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
+                                    <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-650 dark:text-zinc-400 rounded text-[10px] font-semibold">
                                       {g}
                                     </span>
                                   ))}
@@ -488,7 +489,7 @@ export default function FinderPage() {
                   {paginatedResults.length > 0 ? (
                     paginatedResults.map((item, idx) => (
                       <React.Fragment key={`mobile-${item.universityCode}-${item.majorCode}-${item.majorName}`}>
-                        <div className="p-5 flex flex-col gap-3 hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer">
+                        <div className="p-5 flex flex-col gap-3 hover:bg-slate-55/50 dark:hover:bg-zinc-855/30 transition duration-200 cursor-pointer">
                           <div className="flex justify-between items-start gap-4">
                             <div className="space-y-1">
                               <h4 className="font-bold text-slate-900 dark:text-white text-sm leading-snug">
@@ -502,7 +503,7 @@ export default function FinderPage() {
                               </p>
                             </div>
                             <div className="text-right flex-shrink-0">
-                              <span className="text-[9px] text-slate-400 dark:text-zinc-500 font-bold block uppercase tracking-wider">Điểm chuẩn</span>
+                              <span className="text-[9px] text-slate-400 dark:text-zinc-555 font-bold block uppercase tracking-wider">Điểm chuẩn</span>
                               <span className={`text-lg block mt-0.5 ${getScoreColorClass(item)}`}>
                                 {item.score !== null ? item.score : "-"}
                               </span>
@@ -511,17 +512,17 @@ export default function FinderPage() {
                           <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-100/50 dark:border-zinc-850/30">
                             <div className="flex flex-wrap gap-1">
                               {item.groups.map((g, gIdx) => (
-                                <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
+                                <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-650 dark:text-zinc-400 rounded text-[10px] font-semibold">
                                   {g}
                                 </span>
                               ))}
                             </div>
-                            <span className="text-[10px] text-slate-400 dark:text-zinc-500 font-semibold">
+                            <span className="text-[10px] text-slate-400 dark:text-zinc-555 font-semibold">
                               Mã ngành: <span className="font-bold text-slate-700 dark:text-zinc-300">{item.majorCode}</span>
                             </span>
                           </div>
                           {item.note && (
-                            <p className="text-[10px] text-orange-600 dark:text-orange-400 italic leading-relaxed bg-orange-50/20 dark:bg-orange-950/10 p-2 rounded-lg border border-orange-500/10 mt-1">{item.note}</p>
+                            <p className="text-[10px] text-orange-600 dark:text-orange-400 italic leading-relaxed bg-orange-50/20 dark:bg-orange-955/10 p-2 rounded-lg border border-orange-500/10 mt-1">{item.note}</p>
                           )}
                         </div>
 
@@ -532,7 +533,7 @@ export default function FinderPage() {
                       </React.Fragment>
                     ))
                   ) : (
-                    <div className="text-center py-12 text-slate-400 dark:text-zinc-500 font-semibold text-sm">
+                    <div className="text-center py-12 text-slate-400 dark:text-zinc-555 font-semibold text-sm">
                       Không tìm thấy trường nào phù hợp với bộ lọc hiện tại.
                     </div>
                   )}
@@ -541,19 +542,19 @@ export default function FinderPage() {
             )}
 
             {/* Tuyên bố miễn trừ trách nhiệm ở chân bảng kết quả */}
-            <div className="px-6 py-4 bg-slate-50/50 dark:bg-zinc-950/30 border-t border-slate-200 dark:border-zinc-800 text-[11px] text-slate-400 dark:text-zinc-500 italic">
+            <div className="px-6 py-4 bg-slate-50/50 dark:bg-zinc-950/30 border-t border-slate-200 dark:border-zinc-800 text-[11px] text-slate-400 dark:text-zinc-555 italic">
               * Kết quả tra cứu và gợi ý mức độ an toàn chỉ mang tính chất tham khảo. Thí sinh bắt buộc phải đối chiếu với đề án tuyển sinh chính thức của các trường Đại học trước khi đăng ký nguyện vọng.
             </div>
 
             {/* Phân trang thích ứng */}
             {totalPages > 1 && (
               <div className="p-5 bg-slate-50 dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
-                {/* 1. Phiên bản Mobile (flex md:hidden) - Bán kính 1, lùi/tiến 2 trang */}
-                <div className="flex md:hidden items-center justify-center gap-1.5">
+                {/* 1. Phiên bản Mobile (flex md:hidden) - Hiển thị tối thiểu 3 trang đầu, padding/margin giảm */}
+                <div className="flex md:hidden items-center justify-center gap-1">
                   <button
                     disabled={currentPage === 1}
                     onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
-                    className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
+                    className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0"
                     title="Trang trước"
                   >
                     &larr;
@@ -561,30 +562,29 @@ export default function FinderPage() {
 
                   {(() => {
                     const range: (number | { label: string; page: number })[] = [];
-                    const left = Math.max(currentPage - 1, 1);
-                    const right = Math.min(currentPage + 1, totalPages);
-
-                    range.push(1);
-                    if (left > 2) {
-                      if (left === 3) {
-                        range.push(2);
-                      } else {
-                        range.push({ label: "...", page: Math.max(currentPage - 2, 1) });
-                      }
-                    }
-                    for (let i = left; i <= right; i++) {
-                      if (i !== 1 && i !== totalPages) {
+                    if (totalPages <= 4) {
+                      for (let i = 1; i <= totalPages; i++) {
                         range.push(i);
                       }
-                    }
-                    if (right < totalPages - 1) {
-                      if (right === totalPages - 2) {
-                        range.push(totalPages - 1);
-                      } else {
-                        range.push({ label: "...", page: Math.min(currentPage + 2, totalPages) });
+                    } else {
+                      // Luôn giữ tối thiểu 3 trang đầu tiên
+                      range.push(1);
+                      range.push(2);
+                      range.push(3);
+
+                      // Nếu trang hiện tại lớn hơn 3 và nhỏ hơn trang cuối
+                      if (currentPage > 3 && currentPage < totalPages) {
+                        if (currentPage > 4) {
+                          range.push({ label: "...", page: currentPage - 1 });
+                        }
+                        range.push(currentPage);
                       }
-                    }
-                    if (totalPages > 1) {
+
+                      // Nếu trang hiện tại nhỏ hơn trang cuối - 1
+                      if (currentPage < totalPages - 1) {
+                        range.push({ label: "...", page: currentPage + 1 });
+                      }
+
                       range.push(totalPages);
                     }
 
@@ -594,7 +594,7 @@ export default function FinderPage() {
                           <button
                             key={`mobile-dots-${idx}`}
                             onClick={() => handlePageChange(item.page)}
-                            className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer"
+                            className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-555 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer flex-shrink-0"
                             title={`Đi tới trang ${item.page}`}
                           >
                             {item.label}
@@ -605,10 +605,10 @@ export default function FinderPage() {
                         <button
                           key={`mobile-page-${item}`}
                           onClick={() => handlePageChange(item)}
-                          className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${
+                          className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer flex-shrink-0 ${
                             currentPage === item
                               ? "bg-orange-600 text-white font-extrabold"
-                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-850 text-slate-600 dark:text-zinc-400"
+                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-850 text-slate-650 dark:text-zinc-400"
                           }`}
                         >
                           {item}
@@ -620,7 +620,7 @@ export default function FinderPage() {
                   <button
                     disabled={currentPage === totalPages}
                     onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
-                    className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
+                    className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0"
                     title="Trang sau"
                   >
                     &rarr;
@@ -632,7 +632,7 @@ export default function FinderPage() {
                   <button
                     disabled={currentPage === 1}
                     onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
-                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-600 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
+                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
                   >
                     &larr; Trước
                   </button>
@@ -672,7 +672,7 @@ export default function FinderPage() {
                           <button
                             key={`desktop-dots-${idx}`}
                             onClick={() => handlePageChange(item.page)}
-                            className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer"
+                            className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-555 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer"
                             title={`Đi tới trang ${item.page}`}
                           >
                             {item.label}
@@ -686,7 +686,7 @@ export default function FinderPage() {
                           className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${
                             currentPage === item
                               ? "bg-orange-600 text-white font-extrabold"
-                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-850 text-slate-600 dark:text-zinc-400"
+                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-855 text-slate-650 dark:text-zinc-400"
                           }`}
                         >
                           {item}
@@ -698,7 +698,7 @@ export default function FinderPage() {
                   <button
                     disabled={currentPage === totalPages}
                     onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
-                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-600 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
+                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
                   >
                     Sau &rarr;
                   </button>

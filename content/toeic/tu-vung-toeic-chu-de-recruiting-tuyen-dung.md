@@ -17,7 +17,7 @@ Nó xuất hiện xuyên suốt dưới dạng các bản tin thông báo tuyể
 
 Nhiều người học thường bị bối rối trước các từ vựng mang tính học thuật về quy chế tuyển dụng hoặc mô tả phúc lợi công việc.
 
-Để nâng cao khả năng đọc hiểu và phản xạ từ vựng chính xác, việc hệ thống hóa các cụm từ kết hợp tự nhiên (collocations) theo trình tự của quy trình nhân sự thực tế là giải pháp tối ưu nhất.
+Để nâng cao khả năng đọc hiểu và phản xạ từ vựng chính xác, việc hệ thống hóa các cụm từ kết hợp tự nhiên (collocations) theo trình tự của quy trình nhân sự thực tế là giải pháp tối ưu.
 
 ## 1. Giai đoạn Tìm kiếm và Nộp đơn ứng tuyển (Applying for a Job)
 

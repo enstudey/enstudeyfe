@@ -12,12 +12,12 @@ export default function AboutPage() {
       <h1 className="text-3xl font-bold mb-6 text-slate-950 dark:text-white">Về EnStudey</h1>
       <section className="prose dark:prose-invert leading-relaxed text-slate-700 dark:text-zinc-300 space-y-6">
         <p>
-          EnStudey là nền tảng học tiếng Anh (TOEIC & IELTS) thông minh, tận dụng sức mạnh của trí tuệ nhân tạo (AI) 
-          và các tương tác tối giản (Micro Sessions) để mang lại trải nghiệm luyện tập hiệu quả nhất.
+          EnStudey là nền tảng học tiếng Anh (TOEIC & IELTS) thông minh, tận dụng sức mạnh của trí tuệ nhân tạo (AI)
+          và các tương tác tối giản (Micro Sessions) để mang lại trải nghiệm luyện tập hiệu quả.
         </p>
         <h2 className="text-xl font-semibold mt-8 mb-4 text-slate-950 dark:text-white">Sứ mệnh của chúng tôi</h2>
         <p>
-          Chúng tôi mong muốn giúp học viên xây dựng thói quen học tập bền vững thông qua mô hình 
+          Chúng tôi mong muốn giúp học viên xây dựng thói quen học tập bền vững thông qua mô hình
           &ldquo;Daily Mini-Test&rdquo; và luyện nói giao tiếp hiệu quả cùng trợ lý ảo AI.
         </p>
       </section>

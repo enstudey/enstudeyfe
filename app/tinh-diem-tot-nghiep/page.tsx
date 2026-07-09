@@ -21,6 +21,7 @@ import {
   formatInputScore,
   calculateAllTranscriptCombinations
 } from "./utils";
+import { useScoreValidation } from "@/hooks/useScoreValidation";
 
 const INITIAL_SEMESTER_SCORES: SubjectSemesterScores = {
   grade10_hk1: "",
@@ -32,6 +33,8 @@ const INITIAL_SEMESTER_SCORES: SubjectSemesterScores = {
 };
 
 export default function CalculatorPage() {
+  const { validateScore, sanitizeInput } = useScoreValidation();
+
   // Lựa chọn phương thức xét tuyển
   const [calculationMethod, setCalculationMethod] = useState<"THPT_EXAM" | "TRANSCRIPT">("THPT_EXAM");
 
@@ -109,26 +112,42 @@ export default function CalculatorPage() {
     subjectAvgs: Record<TranscriptSubjectKey, number>;
   } | null>(null);
 
+  // Quản lý trạng thái mở rộng accordion của các nhóm môn học bạ ở cấp trang
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({
+    required: true,
+    natural: false,
+    social: false,
+    other: false
+  });
+
   const handleScoreChange = (subject: keyof typeof scores, val: string) => {
-    const formattedVal = formatInputScore(val);
-    const newScores = { ...scores, [subject]: formattedVal };
+    // Làm sạch và giới hạn 2 chữ số thập phân khi gõ
+    const cleaned = sanitizeInput(val);
+    const newScores = { ...scores, [subject]: cleaned };
     setScores(newScores);
-    
-    // Tự động lưu vào LocalStorage
     localStorage.setItem("user_raw_scores", JSON.stringify(newScores));
 
-    if (formattedVal !== "") {
-      const numVal = parseFloat(formattedVal);
-      if (isNaN(numVal) || numVal < 0 || numVal > 10) {
-        setErrors(prev => ({ ...prev, [subject]: "Điểm phải từ 0.0 - 10.0" }));
-      } else {
-        setErrors(prev => {
-          const copy = { ...prev };
-          delete copy[subject as string];
-          return copy;
-        });
-      }
-    } else {
+    if (errors[subject]) {
+      setErrors(prev => {
+        const copy = { ...prev };
+        delete copy[subject as string];
+        return copy;
+      });
+    }
+  };
+
+  const handleScoreBlur = (subject: keyof typeof scores, val: string) => {
+    let formattedVal = val;
+    if (/^\d+$/.test(val)) {
+      formattedVal = formatInputScore(val);
+    }
+    
+    const res = validateScore(formattedVal, "subject", false);
+    const newScores = { ...scores, [subject]: res.cleanedVal };
+    setScores(newScores);
+    localStorage.setItem("user_raw_scores", JSON.stringify(newScores));
+
+    if (res.isValid && errors[subject]) {
       setErrors(prev => {
         const copy = { ...prev };
         delete copy[subject as string];
@@ -139,32 +158,20 @@ export default function CalculatorPage() {
 
   // Thay đổi điểm học bạ
   const handleTranscriptScoreChange = (subKey: TranscriptSubjectKey, semKey: keyof SubjectSemesterScores, val: string) => {
-    const formattedVal = formatInputScore(val);
+    // Làm sạch và giới hạn 2 chữ số thập phân khi gõ
+    const cleaned = sanitizeInput(val);
     const newSemesterScores = {
       ...semesterScores,
       [subKey]: {
         ...semesterScores[subKey],
-        [semKey]: formattedVal
+        [semKey]: cleaned
       }
     };
     setSemesterScores(newSemesterScores);
-
-    // Tự động lưu vào LocalStorage
     localStorage.setItem("user_transcript_scores", JSON.stringify(newSemesterScores));
 
     const errorKey = `${subKey}_${semKey}`;
-    if (formattedVal !== "") {
-      const numVal = parseFloat(formattedVal);
-      if (isNaN(numVal) || numVal < 0 || numVal > 10) {
-        setErrors(prev => ({ ...prev, [errorKey]: "Điểm từ 0 - 10" }));
-      } else {
-        setErrors(prev => {
-          const copy = { ...prev };
-          delete copy[errorKey];
-          return copy;
-        });
-      }
-    } else {
+    if (errors[errorKey]) {
       setErrors(prev => {
         const copy = { ...prev };
         delete copy[errorKey];
@@ -173,7 +180,33 @@ export default function CalculatorPage() {
     }
   };
 
-  // Reset nhanh toàn bộ điểm thi và học bạ
+  const handleTranscriptScoreBlur = (subKey: TranscriptSubjectKey, semKey: keyof SubjectSemesterScores, val: string) => {
+    let formattedVal = val;
+    if (/^\d+$/.test(val)) {
+      formattedVal = formatInputScore(val);
+    }
+
+    const res = validateScore(formattedVal, "subject", false);
+    const newSemesterScores = {
+      ...semesterScores,
+      [subKey]: {
+        ...semesterScores[subKey],
+        [semKey]: res.cleanedVal
+      }
+    };
+    setSemesterScores(newSemesterScores);
+    localStorage.setItem("user_transcript_scores", JSON.stringify(newSemesterScores));
+
+    const errorKey = `${subKey}_${semKey}`;
+    if (res.isValid && errors[errorKey]) {
+      setErrors(prev => {
+        const copy = { ...prev };
+        delete copy[errorKey];
+        return copy;
+      });
+    }
+  };
+
   const handleReset = () => {
     if (calculationMethod === "THPT_EXAM") {
       const resetScores = {
@@ -195,10 +228,15 @@ export default function CalculatorPage() {
       localStorage.removeItem("user_transcript_scores");
       setIsTranscriptCalculated(false);
       setComputedTranscriptData(null);
+      setExpandedGroups({
+        required: true,
+        natural: false,
+        social: false,
+        other: false
+      });
     }
     setErrors({});
   };
-
 
   // Tính điểm thi tốt nghiệp THPT
   const handleCalculate = () => {
@@ -206,17 +244,28 @@ export default function CalculatorPage() {
     
     Object.entries(scores).forEach(([subj, val]) => {
       const valStr = val as string;
-      if (valStr !== "") {
-        const numVal = parseFloat(valStr);
-        if (isNaN(numVal) || numVal < 0 || numVal > 10) {
-          newErrors[subj] = "Điểm phải từ 0.0 - 10.0";
-        }
+      const isRequired = subj === "math" || subj === "literature";
+      const res = validateScore(valStr, "subject", isRequired);
+      if (!res.isValid) {
+        newErrors[subj] = res.error;
       }
     });
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       toast.error("Vui lòng kiểm tra lại các điểm số đã nhập.");
+      
+      // Tìm ô lỗi đầu tiên và cuộn màn hình tới
+      const firstErrKey = Object.keys(newErrors)[0];
+      if (firstErrKey) {
+        setTimeout(() => {
+          const el = document.getElementById(`input-score-${firstErrKey}`);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "center" });
+            el.focus();
+          }
+        }, 100);
+      }
       return;
     }
 
@@ -245,7 +294,6 @@ export default function CalculatorPage() {
     setComputedScores(results);
     setHighestGroup(bestGroup);
     
-    // Lưu điểm thi tốt nghiệp và kết quả
     localStorage.setItem("user_raw_scores", JSON.stringify(scores));
     localStorage.setItem("user_scores", JSON.stringify(results));
 
@@ -262,14 +310,14 @@ export default function CalculatorPage() {
     const newErrors: Record<string, string> = {};
     let hasAnyScore = false;
 
-    // Đánh giá tất cả điểm học bạ đã nhập
     Object.entries(semesterScores).forEach(([subKey, semObj]) => {
       Object.entries(semObj).forEach(([semKey, val]) => {
         if (val !== "") {
           hasAnyScore = true;
-          const num = parseFloat(val);
-          if (isNaN(num) || num < 0 || num > 10) {
-            newErrors[`${subKey}_${semKey}`] = "Điểm từ 0 - 10";
+          const isRequired = subKey === "math" || subKey === "literature" || subKey === "english";
+          const res = validateScore(val, "subject", isRequired);
+          if (!res.isValid) {
+            newErrors[`${subKey}_${semKey}`] = res.error;
           }
         }
       });
@@ -283,10 +331,35 @@ export default function CalculatorPage() {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       toast.error("Vui lòng kiểm tra lại điểm số.");
+
+      // Tìm môn đầu tiên bị lỗi, tự động mở rộng accordion và cuộn tới ô input đó
+      const firstErrKey = Object.keys(newErrors)[0]; // Định dạng: "physics_grade10_hk1"
+      if (firstErrKey) {
+        const [subKey] = firstErrKey.split("_");
+        
+        let groupId = "required";
+        if (["physics", "chemistry", "biology"].includes(subKey)) {
+          groupId = "natural";
+        } else if (["history", "geography", "gdktpl"].includes(subKey)) {
+          groupId = "social";
+        } else if (["informatics", "techIndustrial", "techAgricultural", "otherLanguage"].includes(subKey)) {
+          groupId = "other";
+        }
+
+        // Tự động mở rộng accordion
+        setExpandedGroups(prev => ({ ...prev, [groupId]: true }));
+
+        setTimeout(() => {
+          const el = document.getElementById(`input-transcript-${firstErrKey}`);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "center" });
+            el.focus();
+          }
+        }, 150);
+      }
       return;
     }
 
-    // Tính toán toàn bộ tổ hợp
     const { results, highestGroup: bestGroup, subjectAvgs } = calculateAllTranscriptCombinations(
       semesterScores,
       transcriptOtherLanguageType,
@@ -295,7 +368,7 @@ export default function CalculatorPage() {
     );
 
     if (Object.keys(results).length === 0) {
-      toast.error("Không tìm thấy tổ hợp hợp lệ nào. Vui lòng nhập điểm đầy đủ cho ít nhất một tổ hợp môn (ví dụ Toán, Lý, Hóa để có tổ hợp A00).");
+      toast.error("Không tìm thấy tổ hợp hợp lệ nào. Vui lòng nhập điểm đầy đủ cho ít nhất một tổ hợp môn.");
       return;
     }
 
@@ -347,7 +420,7 @@ export default function CalculatorPage() {
 
       <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">
+          <h1 className="text-3xl font-extrabold text-slate-955 dark:text-white tracking-tight">
             Công cụ tính điểm xét tuyển Đại học 2026 chính xác
           </h1>
           <p className="text-slate-500 dark:text-zinc-400 text-sm max-w-lg mx-auto">
@@ -373,8 +446,8 @@ export default function CalculatorPage() {
                   onClick={() => setCalculationMethod(item.id as "THPT_EXAM" | "TRANSCRIPT")}
                   className={`px-4 py-3 rounded-xl border text-center font-bold text-xs transition duration-150 cursor-pointer ${
                     calculationMethod === item.id
-                      ? "border-orange-500 bg-orange-50 dark:bg-orange-955/20 text-orange-600 dark:text-orange-500 shadow-sm"
-                      : "border-slate-200 dark:border-zinc-850 hover:bg-slate-50 dark:hover:bg-zinc-900 text-slate-600 dark:text-zinc-400"
+                      ? "border-orange-500 bg-orange-50 dark:bg-orange-955/20 text-orange-600 dark:text-orange-555 shadow-sm"
+                      : "border-slate-200 dark:border-zinc-855 hover:bg-slate-50 dark:hover:bg-zinc-900 text-slate-650 dark:text-zinc-400"
                   }`}
                 >
                   {item.name}
@@ -391,9 +464,10 @@ export default function CalculatorPage() {
                 otherLanguageType={otherLanguageType}
                 setOtherLanguageType={setOtherLanguageType}
                 handleScoreChange={handleScoreChange}
+                handleScoreBlur={handleScoreBlur}
               />
 
-              <div className="space-y-8 pt-6 border-t border-slate-100 dark:border-zinc-850">
+              <div className="space-y-8 pt-6 border-t border-slate-100 dark:border-zinc-855">
                 <CertificateConverter
                   certType={certType}
                   setCertType={setCertType}
@@ -448,10 +522,13 @@ export default function CalculatorPage() {
                 semesterScores={semesterScores}
                 errors={errors}
                 handleScoreChange={handleTranscriptScoreChange}
+                handleScoreBlur={handleTranscriptScoreBlur}
                 onCalculate={handleCalculateTranscript}
                 onReset={handleReset}
                 otherLanguageType={transcriptOtherLanguageType}
                 setOtherLanguageType={setTranscriptOtherLanguageType}
+                expandedGroups={expandedGroups}
+                setExpandedGroups={setExpandedGroups}
               />
 
               <div className="space-y-8 pt-6 border-t border-slate-100 dark:border-zinc-850">

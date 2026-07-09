@@ -46,11 +46,11 @@ export default function TranscriptResultDashboard({
 
   return (
     <div id="result-area" className="space-y-6 pt-4 border-t border-slate-100 dark:border-zinc-700 animate-fade-in">
-      
+
       <div className="flex flex-col md:flex-row gap-6 items-center justify-between bg-slate-900 dark:bg-zinc-950 p-6 rounded-2xl text-white">
         <div>
           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-            Tổ hợp học bạ tối ưu nhất của bạn
+            Tổ hợp học bạ tối ưu của bạn
           </p>
           <h3 className="text-3xl font-extrabold mt-1">
             {highestGroup.name}: {highestGroup.score.toFixed(2)} Điểm
@@ -77,11 +77,10 @@ export default function TranscriptResultDashboard({
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id as "all" | "A" | "B" | "C" | "D" | "X_TH")}
-            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${
-              activeTab === tab.id
-                ? "bg-orange-600 text-white"
-                : "bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-850"
-            }`}
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${activeTab === tab.id
+              ? "bg-orange-600 text-white"
+              : "bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-850"
+              }`}
           >
             {tab.name}
           </button>
@@ -99,11 +98,10 @@ export default function TranscriptResultDashboard({
                 key={grp}
                 type="button"
                 onClick={() => setSelectedGroup(grp)}
-                className={`p-4 border rounded-xl flex flex-col items-center justify-center gap-1 transition duration-150 cursor-pointer text-center w-full ${
-                  selectedGroup === grp
-                    ? "border-orange-500 bg-orange-50/50 dark:bg-orange-955/20 ring-2 ring-orange-500"
-                    : "border-slate-200 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/30 hover:bg-slate-100 dark:hover:bg-zinc-850"
-                }`}
+                className={`p-4 border rounded-xl flex flex-col items-center justify-center gap-1 transition duration-150 cursor-pointer text-center w-full ${selectedGroup === grp
+                  ? "border-orange-500 bg-orange-50/50 dark:bg-orange-955/20 ring-2 ring-orange-500"
+                  : "border-slate-200 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/30 hover:bg-slate-100 dark:hover:bg-zinc-850"
+                  }`}
               >
                 <span className="font-bold text-xs text-slate-500 dark:text-zinc-400">{grp}</span>
                 <span className="font-extrabold text-lg text-orange-600 dark:text-orange-500">

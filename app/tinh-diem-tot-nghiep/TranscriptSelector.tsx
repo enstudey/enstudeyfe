@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   TRANSCRIPT_SUBJECTS,
   TranscriptSubjectKey,
@@ -13,10 +13,13 @@ interface Props {
   semesterScores: Record<TranscriptSubjectKey, SubjectSemesterScores>;
   errors: Record<string, string>;
   handleScoreChange: (subKey: TranscriptSubjectKey, semKey: keyof SubjectSemesterScores, val: string) => void;
+  handleScoreBlur?: (subKey: TranscriptSubjectKey, semKey: keyof SubjectSemesterScores, val: string) => void;
   onCalculate: () => void;
   onReset: () => void;
   otherLanguageType: "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian";
   setOtherLanguageType: (val: "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian") => void;
+  expandedGroups: Record<string, boolean>;
+  setExpandedGroups: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
 }
 
 const SEMESTERS: { key: keyof SubjectSemesterScores; name: string }[] = [
@@ -69,19 +72,14 @@ export default function TranscriptSelector({
   semesterScores,
   errors,
   handleScoreChange,
+  handleScoreBlur,
   onCalculate,
   onReset,
   otherLanguageType,
-  setOtherLanguageType
+  setOtherLanguageType,
+  expandedGroups,
+  setExpandedGroups
 }: Props) {
-  // Trạng thái mở rộng của các nhóm môn học
-  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({
-    required: true, // Luôn mở
-    natural: false,
-    social: false,
-    other: false
-  });
-
   const toggleGroup = (groupId: string) => {
     if (groupId === "required") return; // Bắt buộc luôn mở
     setExpandedGroups(prev => ({
@@ -131,15 +129,16 @@ export default function TranscriptSelector({
                   {sem.name}
                 </label>
                 <input
-                  type="number"
-                  step="0.1"
+                  type="text"
                   placeholder="0.0"
                   value={semesterScores[subKey]?.[sem.key] || ""}
                   onChange={e => handleScoreChange(subKey, sem.key, e.target.value)}
+                  onBlur={e => handleScoreBlur && handleScoreBlur(subKey, sem.key, e.target.value)}
+                  id={`input-transcript-${subKey}-${sem.key}`}
                   data-testid={`input-transcript-${subKey}-${sem.key}`}
                   className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-sm ${isErr
                     ? "border-red-500 focus:border-red-500 text-red-500"
-                    : "border-slate-200 dark:border-zinc-850 focus:border-orange-500"
+                    : "border-slate-200 dark:border-zinc-850 focus:border-orange-500 dark:focus:border-orange-500"
                     }`}
                 />
                 {isErr && (

@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
   scores: {
     math: string;
@@ -20,6 +18,7 @@ interface Props {
   otherLanguageType: "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian";
   setOtherLanguageType: (val: "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian") => void;
   handleScoreChange: (subject: keyof Props["scores"], val: string) => void;
+  handleScoreBlur?: (subject: keyof Props["scores"], val: string) => void;
 }
 
 export default function SubjectScoresInput({
@@ -27,7 +26,8 @@ export default function SubjectScoresInput({
   errors,
   otherLanguageType,
   setOtherLanguageType,
-  handleScoreChange
+  handleScoreChange,
+  handleScoreBlur
 }: Props) {
   return (
     <div className="space-y-6">
@@ -57,11 +57,12 @@ export default function SubjectScoresInput({
                 {sub.name}
               </label>
               <input
-                type="number"
-                step="0.1"
+                type="text"
                 placeholder="0.0"
                 value={scores[sub.id as keyof typeof scores]}
                 onChange={e => handleScoreChange(sub.id as keyof typeof scores, e.target.value)}
+                onBlur={e => handleScoreBlur && handleScoreBlur(sub.id as keyof typeof scores, e.target.value)}
+                id={`input-score-${sub.id}`}
                 data-testid={`input-score-${sub.id}`}
                 className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-base ${
                   errors[sub.id]
@@ -70,7 +71,7 @@ export default function SubjectScoresInput({
                 }`}
               />
               {errors[sub.id] && (
-                <p className="text-red-500 text-[10px] font-semibold">{errors[sub.id]}</p>
+                <p className="text-red-500 text-[10px] font-semibold mt-1">{errors[sub.id]}</p>
               )}
             </div>
           ))}
@@ -87,32 +88,44 @@ export default function SubjectScoresInput({
               Công nghệ Công nghiệp
             </label>
             <input
-              type="number"
-              step="0.1"
+              type="text"
               placeholder="0.0"
               value={scores.techIndustrial}
               onChange={e => handleScoreChange("techIndustrial", e.target.value)}
+              onBlur={e => handleScoreBlur && handleScoreBlur("techIndustrial", e.target.value)}
+              id="input-score-techIndustrial"
               data-testid="input-score-techIndustrial"
               className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-base ${
-                errors.techIndustrial ? "border-red-500 text-red-500" : "border-slate-200 dark:border-zinc-850 focus:border-orange-500"
+                errors.techIndustrial
+                  ? "border-red-500 focus:border-red-500 text-red-500"
+                  : "border-slate-200 dark:border-zinc-855 focus:border-orange-500 dark:focus:border-orange-500"
               }`}
             />
+            {errors.techIndustrial && (
+              <p className="text-red-500 text-[10px] font-semibold mt-1">{errors.techIndustrial}</p>
+            )}
           </div>
           <div className="space-y-1">
             <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
               Công nghệ Nông nghiệp
             </label>
             <input
-              type="number"
-              step="0.1"
+              type="text"
               placeholder="0.0"
               value={scores.techAgricultural}
               onChange={e => handleScoreChange("techAgricultural", e.target.value)}
+              onBlur={e => handleScoreBlur && handleScoreBlur("techAgricultural", e.target.value)}
+              id="input-score-techAgricultural"
               data-testid="input-score-techAgricultural"
               className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-base ${
-                errors.techAgricultural ? "border-red-500 text-red-500" : "border-slate-200 dark:border-zinc-850 focus:border-orange-500"
+                errors.techAgricultural
+                  ? "border-red-500 focus:border-red-500 text-red-500"
+                  : "border-slate-200 dark:border-zinc-855 focus:border-orange-500 dark:focus:border-orange-500"
               }`}
             />
+            {errors.techAgricultural && (
+              <p className="text-red-500 text-[10px] font-semibold mt-1">{errors.techAgricultural}</p>
+            )}
           </div>
           <div className="space-y-1">
             <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
@@ -137,16 +150,22 @@ export default function SubjectScoresInput({
               Điểm ngoại ngữ khác
             </label>
             <input
-              type="number"
-              step="0.1"
+              type="text"
               placeholder="0.0"
               value={scores.otherLanguage}
               onChange={e => handleScoreChange("otherLanguage", e.target.value)}
+              onBlur={e => handleScoreBlur && handleScoreBlur("otherLanguage", e.target.value)}
+              id="input-score-otherLanguage"
               data-testid="input-score-otherLanguage"
               className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-base ${
-                errors.otherLanguage ? "border-red-500 text-red-500" : "border-slate-200 dark:border-zinc-850 focus:border-orange-500"
+                errors.otherLanguage
+                  ? "border-red-500 focus:border-red-500 text-red-500"
+                  : "border-slate-200 dark:border-zinc-850 focus:border-orange-500 dark:focus:border-orange-500"
               }`}
             />
+            {errors.otherLanguage && (
+              <p className="text-red-500 text-[10px] font-semibold mt-1">{errors.otherLanguage}</p>
+            )}
           </div>
         </div>
       </div>
