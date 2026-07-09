@@ -100,7 +100,15 @@ export default function FinderPage() {
       try {
         const stored = localStorage.getItem("user_scores");
         if (stored) {
-          setComputedScores(JSON.parse(stored));
+          const parsed = JSON.parse(stored);
+          setComputedScores(parsed);
+          
+          // Tính điểm tốt nghiệp cao nhất và set làm scoreRange ban đầu (max + 1)
+          const validScores = Object.values(parsed).filter((s): s is number => typeof s === "number");
+          if (validScores.length > 0) {
+            const maxScore = Math.max(...validScores);
+            setScoreRange(maxScore + 1);
+          }
         }
       } catch (e) {
         console.error("Lỗi khi đọc điểm từ localStorage", e);
@@ -116,6 +124,15 @@ export default function FinderPage() {
     }, 45000);
     return () => clearInterval(interval);
   }, []);
+
+  // Lấy 3 tổ hợp môn có điểm số cao nhất của học viên
+  const topThreeScores = useMemo(() => {
+    if (!computedScores) return [];
+    return Object.entries(computedScores)
+      .filter(([_, val]) => typeof val === "number")
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3);
+  }, [computedScores]);
 
   // Thực hiện chuyển đổi và lọc dữ liệu đa chiều bằng useMemo để tối ưu hóa hiệu năng
   const filteredResults = useMemo(() => {
@@ -160,31 +177,31 @@ export default function FinderPage() {
     // Bộ lọc theo khoảng điểm sàn (chỉ lọc nếu ngành có điểm chuẩn hợp lệ)
     list = list.filter((item) => item.score === null || item.score <= scoreRange);
 
-    // Sắp xếp: Ưu tiên bản ghi có đầy đủ thông tin (mã ngành, tổ hợp môn, điểm chuẩn) lên trước
+    // Sắp xếp:
+    // 1. Ưu tiên có mã ngành lên trước, không có mã ngành ra sau cùng
+    // 2. Điểm chuẩn từ cao tới thấp, không có điểm ném ra sau
+    // 3. Ưu tiên có nhiều tổ hợp môn hơn
     list.sort((a, b) => {
-      const getWeight = (item: FlatBenchmarkItem) => {
-        let weight = 0;
-        if (item.score !== null) weight += 100;
-        if (item.majorCode && item.majorCode.trim() !== "") weight += 10;
-        if (item.groups && item.groups.length > 0) weight += 1;
-        return weight;
-      };
+      const hasCodeA = a.majorCode && a.majorCode.trim() !== "";
+      const hasCodeB = b.majorCode && b.majorCode.trim() !== "";
 
-      const weightA = getWeight(a);
-      const weightB = getWeight(b);
+      if (hasCodeA && !hasCodeB) return -1;
+      if (!hasCodeA && hasCodeB) return 1;
 
-      if (weightA !== weightB) {
-        return weightB - weightA;
-      }
-      
+      if (a.score !== null && b.score === null) return -1;
+      if (a.score === null && b.score !== null) return 1;
+
       if (a.score !== null && b.score !== null) {
-        return b.score - a.score;
+        if (a.score !== b.score) {
+          return b.score - a.score;
+        }
       }
-      return 0;
+
+      return b.groups.length - a.groups.length;
     });
 
     return list;
-  }, [scoresData, searchTerm, selectedGroup, selectedYear, selectedMethod, scoreRange]);
+  }, [scoresData, searchTerm, selectedGroup, selectedYear, selectedMethod, scoreRange, computedScores]);
 
   // Reset trang về 1 khi tiêu chí lọc thay đổi bằng setTimeout để tránh cascading renders
   useEffect(() => {
@@ -200,24 +217,30 @@ export default function FinderPage() {
     currentPage * itemsPerPage
   );
 
-  const getZoneClass = (item: FlatBenchmarkItem) => {
-    if (!computedScores || item.score === null) return "";
+  const getScoreColorClass = (item: FlatBenchmarkItem) => {
+    if (!computedScores || item.score === null) return "text-slate-600 dark:text-zinc-400 font-bold";
     
     let userScore = 0;
-    
-    item.groups.forEach((g) => {
-      if (computedScores[g] && computedScores[g] > userScore) {
-        userScore = computedScores[g];
+    if (selectedGroup !== "Tất cả tổ hợp") {
+      userScore = computedScores[selectedGroup] || 0;
+    } else {
+      const validScores = item.groups
+        .map((g) => computedScores[g])
+        .filter((s): s is number => s !== undefined && s !== null);
+      if (validScores.length > 0) {
+        userScore = Math.max(...validScores);
       }
-    });
+    }
 
-    if (userScore === 0) return "";
+    if (userScore === 0) return "text-slate-600 dark:text-zinc-400 font-bold";
 
-    const diff = userScore - item.score;
-    
-    if (diff >= 1.5) return "safe-zone";      // T >= D + 1.5
-    if (diff <= -1.5) return "risk-zone";    // T <= D - 1.5
-    return "fight-zone";                     // D - 1.5 < T < D + 1.5
+    if (item.score >= userScore - 2 && item.score <= userScore + 2) {
+      return "text-amber-500 dark:text-amber-400 font-extrabold";
+    } else if (item.score < userScore - 2) {
+      return "text-emerald-600 dark:text-emerald-500 font-extrabold";
+    } else {
+      return "text-rose-600 dark:text-rose-500 font-extrabold";
+    }
   };
 
   return (
@@ -261,7 +284,13 @@ export default function FinderPage() {
           <div className="space-y-4">
             <div className="bg-orange-50/50 dark:bg-zinc-900 border border-orange-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 dark:text-zinc-350 flex justify-between items-center">
               <span>
-                Hệ thống đang đối sánh tự động dựa trên điểm số đã tính: A00: {computedScores.A00} | A01: {computedScores.A01} | B00: {computedScores.B00} | D01: {computedScores.D01}
+                Hệ thống đang đối sánh tự động dựa trên điểm số đã tính:{" "}
+                {topThreeScores.map(([group, score], i) => (
+                  <span key={group}>
+                    {i > 0 && " | "}
+                    <span className="font-bold text-orange-600 dark:text-orange-400">{group}</span>: {score.toFixed(2)}
+                  </span>
+                ))}
               </span>
               <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-500 hover:underline">
                 Tính điểm lại &rarr;
@@ -407,7 +436,7 @@ export default function FinderPage() {
                       {paginatedResults.length > 0 ? (
                         paginatedResults.map((item, idx) => (
                           <React.Fragment key={`desktop-${item.universityCode}-${item.majorCode}-${item.majorName}`}>
-                            <tr className={`group hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer ${getZoneClass(item)}`}>
+                            <tr className="group hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer">
                               <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">{item.majorCode}</td>
                               <td className="px-6 py-4">
                                 <p className="font-bold text-slate-900 dark:text-white">
@@ -425,14 +454,14 @@ export default function FinderPage() {
                               </td>
                               <td className="px-6 py-4 font-bold text-slate-600 dark:text-zinc-400 text-xs">
                                 <div className="flex flex-wrap gap-1">
-                                  {item.groups.map((g) => (
-                                    <span key={g} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
+                                  {item.groups.map((g, gIdx) => (
+                                    <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
                                       {g}
                                     </span>
                                   ))}
                                 </div>
                               </td>
-                              <td className="px-6 py-4 text-right font-extrabold text-orange-600 dark:text-orange-500 text-base">
+                              <td className={`px-6 py-4 text-right text-base ${getScoreColorClass(item)}`}>
                                 {item.score !== null ? item.score : "-"}
                               </td>
                             </tr>
@@ -459,7 +488,7 @@ export default function FinderPage() {
                   {paginatedResults.length > 0 ? (
                     paginatedResults.map((item, idx) => (
                       <React.Fragment key={`mobile-${item.universityCode}-${item.majorCode}-${item.majorName}`}>
-                        <div className={`p-5 flex flex-col gap-3 hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer ${getZoneClass(item)}`}>
+                        <div className="p-5 flex flex-col gap-3 hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer">
                           <div className="flex justify-between items-start gap-4">
                             <div className="space-y-1">
                               <h4 className="font-bold text-slate-900 dark:text-white text-sm leading-snug">
@@ -474,15 +503,15 @@ export default function FinderPage() {
                             </div>
                             <div className="text-right flex-shrink-0">
                               <span className="text-[9px] text-slate-400 dark:text-zinc-500 font-bold block uppercase tracking-wider">Điểm chuẩn</span>
-                              <span className="text-lg font-extrabold text-orange-600 dark:text-orange-500 block mt-0.5">
+                              <span className={`text-lg block mt-0.5 ${getScoreColorClass(item)}`}>
                                 {item.score !== null ? item.score : "-"}
                               </span>
                             </div>
                           </div>
                           <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-100/50 dark:border-zinc-850/30">
                             <div className="flex flex-wrap gap-1">
-                              {item.groups.map((g) => (
-                                <span key={g} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
+                              {item.groups.map((g, gIdx) => (
+                                <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
                                   {g}
                                 </span>
                               ))}
