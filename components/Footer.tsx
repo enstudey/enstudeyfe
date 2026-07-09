@@ -20,7 +20,7 @@ export default function Footer() {
           </div>
           <div className="space-y-3 md:text-right">
             <h4 className="text-xs font-bold text-slate-900 dark:text-white tracking-widest uppercase">Thông tin pháp lý</h4>
-            <div className="flex flex-wrap md:justify-end gap-x-6 gap-y-2 text-xs text-slate-500 dark:text-zinc-400">
+            <div className="flex flex-col md:items-end gap-2 text-xs text-slate-500 dark:text-zinc-400">
               <Link href="/gioi-thieu" className="hover:text-slate-950 dark:hover:text-white transition">
                 Giới thiệu
               </Link>
@@ -29,6 +29,9 @@ export default function Footer() {
               </Link>
               <Link href="/privacy-policy" className="hover:text-slate-950 dark:hover:text-white transition">
                 Chính sách bảo mật
+              </Link>
+              <Link href="/tram-sac-nang-luong" className="hover:text-slate-950 dark:hover:text-white transition">
+                Trạm sạc năng lượng
               </Link>
             </div>
           </div>

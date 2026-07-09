@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   isOpen: boolean;
@@ -56,15 +57,32 @@ export default function DonateModal({ isOpen, onClose }: Props) {
           </p>
 
           {/* QR Code Container */}
-          <div className="relative mx-auto w-48 h-48 border-4 border-orange-500/10 rounded-2xl overflow-hidden shadow-md bg-slate-50 dark:bg-zinc-950 flex items-center justify-center">
+          <a
+            href="/qr-donate.webp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-auto w-48 h-48 border-4 border-orange-500/10 rounded-2xl overflow-hidden shadow-md bg-slate-50 dark:bg-zinc-950 flex items-center justify-center cursor-zoom-in block"
+            title="Bấm để phóng to / mở ảnh QR trong tab mới"
+          >
             <Image
               src="/qr-donate.webp"
               alt="Mã QR chuyển khoản ủng hộ VietQR"
-              fill
-              sizes="(max-width: 192px) 100vw, 192px"
+              width={176}
+              height={176}
               priority
-              className="object-cover"
+              className="object-contain"
             />
+          </a>
+
+          {/* Link vinh danh */}
+          <div className="pt-1">
+            <Link
+              href="/tram-sac-nang-luong"
+              onClick={onClose}
+              className="text-xs font-bold text-orange-600 dark:text-orange-400 hover:underline inline-flex items-center gap-1"
+            >
+              🌟 Xem danh sách các Nhà tài trợ thầm lặng tại đây
+            </Link>
           </div>
 
           {/* Bank Info Container */}

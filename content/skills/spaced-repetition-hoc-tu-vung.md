@@ -1,6 +1,6 @@
 ---
 title: "Spaced Repetition: Khoa học đằng sau phương pháp lặp lại ngắt quãng"
-description: "Khám phá thuật toán SuperMemo-2 và phương pháp hộp Leitner để tự thiết lập hệ thống ghi nhớ từ vựng tiếng Anh tối ưu nhất."
+description: "Khám phá thuật toán SuperMemo-2 và phương pháp hộp Leitner để tự thiết lập hệ thống ghi nhớ từ vựng tiếng Anh tối ưu."
 date: "2026-07-07"
 category: "skills"
 tags:

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { DonateModal, useDonateStatus } from "@/components/donate";
+import { DonateModal, useDonateStatus, DonateBarMinimal } from "@/components/donate";
 import AffiliateNativeRow from "@/components/affiliate/AffiliateNativeRow";
 
 interface MajorBenchmark {
@@ -248,14 +248,6 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
             </h1>
             <div className="flex items-center gap-3 flex-wrap mt-1">
               <p className="text-slate-505 dark:text-zinc-400 text-sm">Gợi ý và sắp xếp các nguyện vọng phù hợp với khoảng điểm và tổ hợp của bạn.</p>
-              {isAvailable && (
-                <button
-                  onClick={() => setIsDonateOpen(true)}
-                  className="px-2.5 py-1 text-[11px] bg-orange-600/10 hover:bg-orange-600/20 text-orange-700 dark:text-orange-400 dark:bg-orange-500/10 dark:hover:bg-orange-500/20 font-bold rounded-lg transition cursor-pointer"
-                >
-                  ☕ Tiếp sức cho Admin
-                </button>
-              )}
             </div>
           </div>
           <div className="flex gap-2 text-[10px] font-bold uppercase tracking-wider">
@@ -669,6 +661,8 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               </div>
             )}
           </div>
+
+          <DonateBarMinimal />
         </div>
       </main>
 

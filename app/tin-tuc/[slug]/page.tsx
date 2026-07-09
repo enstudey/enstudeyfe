@@ -10,6 +10,7 @@ import RelatedArticles from "@/components/RelatedArticles";
 import type { AffiliateProduct } from "@/types/affiliate";
 import productsData from "@/data/shopee-affiliate-products.json";
 import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
+import { DonateCardDetailed } from "@/components/donate";
 
 // Helper chèn quảng cáo vào giữa nội dung bài viết (chống CLS)
 function insertInArticleAd(htmlContent: string): string {
@@ -186,6 +187,11 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
               className="text-base text-slate-700 dark:text-zinc-300 space-y-4 article-content"
               dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml ?? "")) }}
             />
+
+            {/* Khung quyên góp chi tiết Mẫu 1 */}
+            <div className="mt-8">
+              <DonateCardDetailed />
+            </div>
           </article>
 
           {/* Sticky Sidebar */}
@@ -214,7 +220,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
         <RelatedArticles posts={relatedPosts} />
 
         {/* CTA Mini-Test */}
-        <div className="mt-8 p-6 bg-orange-50 dark:bg-zinc-900/40 border border-orange-200 dark:border-zinc-800 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        {/* <div className="mt-8 p-6 bg-orange-50 dark:bg-zinc-900/40 border border-orange-200 dark:border-zinc-800 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="space-y-1">
             <h4 className="text-sm font-bold text-slate-950 dark:text-white">Thực hành ngay với Mini-Test hôm nay</h4>
             <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium">Rèn luyện lý thuyết vừa đọc để nhớ lâu hơn nhé.</p>
@@ -225,7 +231,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
           >
             Làm Test liền &rarr;
           </Link>
-        </div>
+        </div> */}
       </main>
 
       {/* Footer */}

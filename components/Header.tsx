@@ -136,6 +136,9 @@ export default function Header({ isStatic = false }: HeaderProps) {
               <Link href="/tra-cuu-tuyen-sinh" className={getLinkClass("/tra-cuu-tuyen-sinh")} data-testid="link-univ">
                 Tra cứu trường đại học
               </Link>
+              <Link href="/tram-sac-nang-luong" className={getLinkClass("/tram-sac-nang-luong")} data-testid="link-donors">
+                Trạm sạc 🥤
+              </Link>
             </div>
           </div>
           <div className="flex items-center gap-4">

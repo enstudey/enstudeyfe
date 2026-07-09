@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { cookies } from "next/headers";
 import ThemeToggle from "@/components/ThemeToggle";
+import { DonateCardDetailed } from "@/components/donate";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Dashboard - EnStudey",
@@ -264,20 +266,12 @@ export default async function DashboardPage() {
               Xem phân tích ngay &rarr;
             </span>
           </Link>
+
+          <DonateCardDetailed />
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-card border-t border-card-border mt-20">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-75 text-sm">
-          <span>&copy; 2026 EnStudey. All rights reserved.</span>
-          <div className="flex gap-6">
-            <Link href="/about" className="hover:underline">Giới thiệu</Link>
-            <Link href="/privacy" className="hover:underline">Chính sách bảo mật</Link>
-            <Link href="/terms" className="hover:underline">Điều khoản</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

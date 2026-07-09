@@ -98,13 +98,13 @@ export default function DonateSection() {
         </div>
 
         {/* Mã QR */}
-        <div className="w-44 h-44 relative border-4 border-dashed border-orange-500/20 rounded-2xl overflow-hidden shadow-md shrink-0 bg-slate-50 dark:bg-zinc-950 flex items-center justify-center">
+        <div className="w-44 h-44 border-4 border-dashed border-orange-500/20 rounded-2xl overflow-hidden shadow-md shrink-0 bg-slate-50 dark:bg-zinc-950 flex items-center justify-center">
           <Image
             src={config.qr_template_url}
             alt="Mã QR chuyển khoản ủng hộ VietQR"
-            fill
-            sizes="(max-width: 176px) 100vw, 176px"
-            className="object-cover"
+            width={160}
+            height={160}
+            className="object-contain"
           />
         </div>
       </div>
