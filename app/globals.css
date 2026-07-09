@@ -147,7 +147,7 @@ body {
 }
 
 /* Tối ưu hóa hình ảnh trong bài viết Markdown để tránh chói mắt ở Dark Mode (ngoại trừ logo thương hiệu) */
-.dark img:not([src*="logo.svg"]) {
+.dark img:not([src*="icon-transparent.png"]) {
   filter: opacity(.8) brightness(.9);
   transition: filter 0.3s ease;
 }

@@ -96,7 +96,7 @@ export default function Header({ isStatic = false }: HeaderProps) {
         <nav className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2 font-bold text-2xl text-slate-950 dark:text-white tracking-tight" data-testid="link-logo">
-              <Image src="/logo.svg" alt="EnStudey Logo" width={32} height={32} className="w-8 h-8" />
+              <Image src="/icon-transparent.png" alt="EnStudey Logo" width={32} height={32} className="w-8 h-8" />
               <span>EnStudey</span>
             </Link>
             <div className="hidden md:flex gap-6">

@@ -76,7 +76,7 @@ export default async function DashboardPage() {
       <header className="bg-card border-b border-card-border sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-orange-600 dark:text-orange-500">
-            <Image src="/logo.svg" alt="EnStudey Logo" width={28} height={28} className="w-7 h-7" />
+            <Image src="/icon-transparent.png" alt="EnStudey Logo" width={28} height={28} className="w-7 h-7" />
             <span>EnStudey</span>
           </Link>
           <div className="flex items-center gap-6">

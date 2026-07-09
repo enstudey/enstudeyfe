@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start justify-between">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Image src="/logo.svg" alt="EnStudey Logo" width={24} height={24} className="w-6 h-6" />
+              <Image src="/icon-transparent.png" alt="EnStudey Logo" width={24} height={24} className="w-6 h-6" />
               <span className="text-xl font-bold text-slate-950 dark:text-white">EnStudey</span>
             </div>
             <p className="text-sm font-semibold text-slate-800 dark:text-zinc-200">Nền tảng hỗ trợ học tập cá nhân hóa.</p>
