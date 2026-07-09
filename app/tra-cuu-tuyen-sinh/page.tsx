@@ -63,6 +63,16 @@ export default function FinderPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    const section = document.getElementById("search-results-section");
+    if (section) {
+      const yOffset = -80; // Bù trừ chiều cao Header cố định
+      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   // Trạng thái key quảng cáo để kích hoạt auto-refresh
   const [adKey, setAdKey] = useState(0);
 
@@ -149,6 +159,29 @@ export default function FinderPage() {
 
     // Bộ lọc theo khoảng điểm sàn (chỉ lọc nếu ngành có điểm chuẩn hợp lệ)
     list = list.filter((item) => item.score === null || item.score <= scoreRange);
+
+    // Sắp xếp: Ưu tiên bản ghi có đầy đủ thông tin (mã ngành, tổ hợp môn, điểm chuẩn) lên trước
+    list.sort((a, b) => {
+      const getWeight = (item: FlatBenchmarkItem) => {
+        let weight = 0;
+        if (item.score !== null) weight += 100;
+        if (item.majorCode && item.majorCode.trim() !== "") weight += 10;
+        if (item.groups && item.groups.length > 0) weight += 1;
+        return weight;
+      };
+
+      const weightA = getWeight(a);
+      const weightB = getWeight(b);
+
+      if (weightA !== weightB) {
+        return weightB - weightA;
+      }
+      
+      if (a.score !== null && b.score !== null) {
+        return b.score - a.score;
+      }
+      return 0;
+    });
 
     return list;
   }, [scoresData, searchTerm, selectedGroup, selectedYear, selectedMethod, scoreRange]);
@@ -257,64 +290,66 @@ export default function FinderPage() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Bộ lọc bên trái */}
-          <div className="lg:col-span-3 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-5 space-y-5 sticky top-24">
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Tìm kiếm trường / ngành</label>
-              <input
-                type="text"
-                placeholder="Nhập mã trường, tên ngành..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                data-testid="input-search"
-                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
-              />
+        <div className="space-y-6">
+          {/* Bộ lọc ở trên chiếm full-width */}
+          <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-5 space-y-5">
+            <div className="grid grid-cols-1 lg:grid-cols-10 gap-4">
+              <div className="lg:col-span-4 space-y-1.5">
+                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Tìm kiếm trường / ngành</label>
+                <input
+                  type="text"
+                  placeholder="Nhập mã trường, tên ngành..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  data-testid="input-search"
+                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                />
+              </div>
+              <div className="lg:col-span-2 space-y-1.5">
+                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Năm tuyển sinh</label>
+                <select
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                  data-testid="select-year"
+                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                >
+                  {YEAR_OPTIONS.map((year) => (
+                    <option key={year} value={year}>Năm {year}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="lg:col-span-2 space-y-1.5">
+                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Phương thức tuyển sinh</label>
+                <select
+                  value={selectedMethod}
+                  onChange={(e) => setSelectedMethod(e.target.value)}
+                  data-testid="select-method"
+                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                >
+                  {METHOD_OPTIONS.map((method) => (
+                    <option key={method.value} value={method.value}>{method.label}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="lg:col-span-2 space-y-1.5">
+                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Tổ hợp môn</label>
+                <select
+                  value={selectedGroup}
+                  onChange={(e) => setSelectedGroup(e.target.value)}
+                  data-testid="select-group"
+                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                >
+                  <option>Tất cả tổ hợp</option>
+                  <option>A00</option>
+                  <option>A01</option>
+                  <option>B00</option>
+                  <option>C00</option>
+                  <option>D01</option>
+                  <option>D07</option>
+                </select>
+              </div>
             </div>
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Năm tuyển sinh</label>
-              <select
-                value={selectedYear}
-                onChange={(e) => setSelectedYear(e.target.value)}
-                data-testid="select-year"
-                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
-              >
-                {YEAR_OPTIONS.map((year) => (
-                  <option key={year} value={year}>Năm {year}</option>
-                ))}
-              </select>
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Phương thức tuyển sinh</label>
-              <select
-                value={selectedMethod}
-                onChange={(e) => setSelectedMethod(e.target.value)}
-                data-testid="select-method"
-                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
-              >
-                {METHOD_OPTIONS.map((method) => (
-                  <option key={method.value} value={method.value}>{method.label}</option>
-                ))}
-              </select>
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Tổ hợp môn</label>
-              <select
-                value={selectedGroup}
-                onChange={(e) => setSelectedGroup(e.target.value)}
-                data-testid="select-group"
-                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
-              >
-                <option>Tất cả tổ hợp</option>
-                <option>A00</option>
-                <option>A01</option>
-                <option>B00</option>
-                <option>C00</option>
-                <option>D01</option>
-                <option>D07</option>
-              </select>
-            </div>
-            <div className="space-y-2">
+            <div className="space-y-2 pt-4 border-t border-slate-100 dark:border-zinc-800">
               <div className="flex justify-between text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
                 <span>Khoảng điểm sàn</span>
                 <span className="text-orange-600 dark:text-orange-500">{scoreRange} Điểm</span>
@@ -332,8 +367,11 @@ export default function FinderPage() {
             </div>
           </div>
 
-          {/* Bảng kết quả bên phải */}
-          <div className="lg:col-span-9 overflow-hidden border border-slate-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between min-h-[400px]">
+          {/* Điểm neo cho hành vi cuộn phân trang */}
+          <div id="search-results-section" className="scroll-mt-20" />
+
+          {/* Bảng kết quả ở dưới */}
+          <div className="w-full overflow-hidden border border-slate-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between min-h-[400px]">
             {isLoading ? (
               <div className="p-8 space-y-4">
                 {[...Array(5)].map((_, i) => (
@@ -353,66 +391,124 @@ export default function FinderPage() {
                 ❌ Đã xảy ra lỗi khi tải dữ liệu điểm chuẩn. Vui lòng thử lại sau.
               </div>
             ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse text-sm">
-                  <thead>
-                    <tr className="bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
-                      <th className="px-6 py-4">Mã ngành</th>
-                      <th className="px-6 py-4">Tên ngành / Trường</th>
-                      <th className="px-6 py-4">Tổ hợp</th>
-                      <th className="px-6 py-4 text-right">Điểm chuẩn</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-200 dark:divide-zinc-800">
-                    {paginatedResults.length > 0 ? (
-                      paginatedResults.map((item, idx) => (
-                        <React.Fragment key={`${item.universityCode}-${item.majorCode}-${item.majorName}`}>
-                          <tr className={`group hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer ${getZoneClass(item)}`}>
-                            <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">{item.majorCode}</td>
-                            <td className="px-6 py-4">
-                              <p className="font-bold text-slate-900 dark:text-white">
+              <>
+                {/* Phiên bản Desktop: Dạng bảng (Table) */}
+                <div className="hidden md:block overflow-x-auto">
+                  <table className="w-full text-left border-collapse text-sm">
+                    <thead>
+                      <tr className="bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
+                        <th className="px-6 py-4">Mã ngành</th>
+                        <th className="px-6 py-4">Tên ngành / Trường</th>
+                        <th className="px-6 py-4">Tổ hợp</th>
+                        <th className="px-6 py-4 text-right">Điểm chuẩn</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200 dark:divide-zinc-800">
+                      {paginatedResults.length > 0 ? (
+                        paginatedResults.map((item, idx) => (
+                          <React.Fragment key={`desktop-${item.universityCode}-${item.majorCode}-${item.majorName}`}>
+                            <tr className={`group hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer ${getZoneClass(item)}`}>
+                              <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">{item.majorCode}</td>
+                              <td className="px-6 py-4">
+                                <p className="font-bold text-slate-900 dark:text-white">
+                                  {item.majorName}
+                                  {item.scale === 40 && (
+                                    <span className="ml-2 text-[9px] bg-blue-150 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-1.5 py-0.5 rounded font-bold uppercase">Thang 40</span>
+                                  )}
+                                </p>
+                                <p className="text-xs text-slate-400 dark:text-zinc-500 mt-0.5">
+                                  {item.universityName} ({item.universityCode})
+                                </p>
+                                {item.note && (
+                                  <p className="text-[10px] text-orange-600 dark:text-orange-400 italic mt-0.5">{item.note}</p>
+                                )}
+                              </td>
+                              <td className="px-6 py-4 font-bold text-slate-600 dark:text-zinc-400 text-xs">
+                                <div className="flex flex-wrap gap-1">
+                                  {item.groups.map((g) => (
+                                    <span key={g} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
+                                      {g}
+                                    </span>
+                                  ))}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 text-right font-extrabold text-orange-600 dark:text-orange-500 text-base">
+                                {item.score !== null ? item.score : "-"}
+                              </td>
+                            </tr>
+                            
+                            {/* Native Ads xen kẽ sau mỗi 5 kết quả trên desktop */}
+                            {(idx + 1) % 5 === 0 && paginatedResults.length >= 5 && (
+                              <AffiliateNativeRow rowIndex={idx} currentPage={currentPage} />
+                            )}
+                          </React.Fragment>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan={4} className="text-center py-12 text-slate-400 dark:text-zinc-500 font-semibold">
+                            Không tìm thấy trường nào phù hợp với bộ lọc hiện tại.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Phiên bản Mobile: Dạng danh sách Card (List) */}
+                <div className="block md:hidden divide-y divide-slate-200 dark:divide-zinc-800 bg-white dark:bg-zinc-900">
+                  {paginatedResults.length > 0 ? (
+                    paginatedResults.map((item, idx) => (
+                      <React.Fragment key={`mobile-${item.universityCode}-${item.majorCode}-${item.majorName}`}>
+                        <div className={`p-5 flex flex-col gap-3 hover:bg-slate-50/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer ${getZoneClass(item)}`}>
+                          <div className="flex justify-between items-start gap-4">
+                            <div className="space-y-1">
+                              <h4 className="font-bold text-slate-900 dark:text-white text-sm leading-snug">
                                 {item.majorName}
                                 {item.scale === 40 && (
-                                  <span className="ml-2 text-[9px] bg-blue-150 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-1.5 py-0.5 rounded font-bold uppercase">Thang 40</span>
+                                  <span className="ml-2 text-[9px] bg-blue-150 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
                                 )}
-                              </p>
-                              <p className="text-xs text-slate-400 dark:text-zinc-500 mt-0.5">
+                              </h4>
+                              <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium">
                                 {item.universityName} ({item.universityCode})
                               </p>
-                              {item.note && (
-                                <p className="text-[10px] text-orange-600 dark:text-orange-400 italic mt-0.5">{item.note}</p>
-                              )}
-                            </td>
-                            <td className="px-6 py-4 font-bold text-slate-600 dark:text-zinc-400 text-xs">
-                              <div className="flex flex-wrap gap-1">
-                                {item.groups.map((g) => (
-                                  <span key={g} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
-                                    {g}
-                                  </span>
-                                ))}
-                              </div>
-                            </td>
-                            <td className="px-6 py-4 text-right font-extrabold text-orange-600 dark:text-orange-500 text-base">
-                              {item.score !== null ? item.score : "-"}
-                            </td>
-                          </tr>
-                          
-                          {/* Native Ads xen kẽ sau mỗi 5 kết quả */}
-                          {(idx + 1) % 5 === 0 && paginatedResults.length >= 5 && (
-                            <AffiliateNativeRow rowIndex={idx} currentPage={currentPage} />
+                            </div>
+                            <div className="text-right flex-shrink-0">
+                              <span className="text-[9px] text-slate-400 dark:text-zinc-500 font-bold block uppercase tracking-wider">Điểm chuẩn</span>
+                              <span className="text-lg font-extrabold text-orange-600 dark:text-orange-500 block mt-0.5">
+                                {item.score !== null ? item.score : "-"}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-100/50 dark:border-zinc-850/30">
+                            <div className="flex flex-wrap gap-1">
+                              {item.groups.map((g) => (
+                                <span key={g} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 rounded text-[10px] font-semibold">
+                                  {g}
+                                </span>
+                              ))}
+                            </div>
+                            <span className="text-[10px] text-slate-400 dark:text-zinc-500 font-semibold">
+                              Mã ngành: <span className="font-bold text-slate-700 dark:text-zinc-300">{item.majorCode}</span>
+                            </span>
+                          </div>
+                          {item.note && (
+                            <p className="text-[10px] text-orange-600 dark:text-orange-400 italic leading-relaxed bg-orange-50/20 dark:bg-orange-950/10 p-2 rounded-lg border border-orange-500/10 mt-1">{item.note}</p>
                           )}
-                        </React.Fragment>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan={4} className="text-center py-12 text-slate-400 dark:text-zinc-500 font-semibold">
-                          Không tìm thấy trường nào phù hợp với bộ lọc hiện tại.
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
+                        </div>
+
+                        {/* Native Ads xen kẽ sau mỗi 5 kết quả trên mobile */}
+                        {(idx + 1) % 5 === 0 && paginatedResults.length >= 5 && (
+                          <AffiliateNativeRow rowIndex={idx} currentPage={currentPage} isCard={true} />
+                        )}
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    <div className="text-center py-12 text-slate-400 dark:text-zinc-500 font-semibold text-sm">
+                      Không tìm thấy trường nào phù hợp với bộ lọc hiện tại.
+                    </div>
+                  )}
+                </div>
+              </>
             )}
 
             {/* Tuyên bố miễn trừ trách nhiệm ở chân bảng kết quả */}
@@ -427,8 +523,8 @@ export default function FinderPage() {
                 <div className="flex md:hidden items-center justify-center gap-1.5">
                   <button
                     disabled={currentPage === 1}
-                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                    className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
+                    onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+                    className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
                     title="Trang trước"
                   >
                     &larr;
@@ -468,7 +564,7 @@ export default function FinderPage() {
                         return (
                           <button
                             key={`mobile-dots-${idx}`}
-                            onClick={() => setCurrentPage(item.page)}
+                            onClick={() => handlePageChange(item.page)}
                             className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer"
                             title={`Đi tới trang ${item.page}`}
                           >
@@ -479,11 +575,11 @@ export default function FinderPage() {
                       return (
                         <button
                           key={`mobile-page-${item}`}
-                          onClick={() => setCurrentPage(item)}
+                          onClick={() => handlePageChange(item)}
                           className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${
                             currentPage === item
                               ? "bg-orange-600 text-white font-extrabold"
-                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-855 text-slate-600 dark:text-zinc-400"
+                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-850 text-slate-600 dark:text-zinc-400"
                           }`}
                         >
                           {item}
@@ -494,7 +590,7 @@ export default function FinderPage() {
 
                   <button
                     disabled={currentPage === totalPages}
-                    onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                    onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
                     className="w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
                     title="Trang sau"
                   >
@@ -506,8 +602,8 @@ export default function FinderPage() {
                 <div className="hidden md:flex items-center justify-center gap-2">
                   <button
                     disabled={currentPage === 1}
-                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-600 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
+                    onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-600 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
                   >
                     &larr; Trước
                   </button>
@@ -546,7 +642,7 @@ export default function FinderPage() {
                         return (
                           <button
                             key={`desktop-dots-${idx}`}
-                            onClick={() => setCurrentPage(item.page)}
+                            onClick={() => handlePageChange(item.page)}
                             className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer"
                             title={`Đi tới trang ${item.page}`}
                           >
@@ -557,7 +653,7 @@ export default function FinderPage() {
                       return (
                         <button
                           key={`desktop-page-${item}`}
-                          onClick={() => setCurrentPage(item)}
+                          onClick={() => handlePageChange(item)}
                           className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${
                             currentPage === item
                               ? "bg-orange-600 text-white font-extrabold"
@@ -572,8 +668,8 @@ export default function FinderPage() {
 
                   <button
                     disabled={currentPage === totalPages}
-                    onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-600 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
+                    onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
+                    className="px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-600 dark:text-zinc-400 cursor-pointer flex items-center justify-center"
                   >
                     Sau &rarr;
                   </button>
