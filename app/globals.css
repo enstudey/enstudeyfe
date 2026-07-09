@@ -146,8 +146,8 @@ body {
   background-color: rgba(239, 68, 68, 0.15) !important;
 }
 
-/* Tối ưu hóa hình ảnh trong bài viết Markdown để tránh chói mắt ở Dark Mode */
-.dark img {
+/* Tối ưu hóa hình ảnh trong bài viết Markdown để tránh chói mắt ở Dark Mode (ngoại trừ logo thương hiệu) */
+.dark img:not([src*="logo.svg"]) {
   filter: opacity(.8) brightness(.9);
   transition: filter 0.3s ease;
 }
