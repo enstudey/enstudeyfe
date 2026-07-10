@@ -142,19 +142,14 @@ export default function DonateSection() {
               {config.donors.map((donor, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-50 dark:bg-zinc-900/50 border border-slate-200/50 dark:border-zinc-800/80 p-3.5 rounded-2xl shrink-0 w-48 space-y-1.5 snap-start shadow-2xs hover:border-orange-500/20 transition-colors"
+                  className="bg-slate-50 dark:bg-zinc-900/50 border border-slate-200/50 dark:border-zinc-800/80 px-3.5 py-3 rounded-2xl shrink-0 w-48 snap-start shadow-2xs hover:border-orange-500/20 transition-colors flex items-center justify-between"
                 >
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="font-bold text-slate-800 dark:text-zinc-200 truncate pr-1">
-                      {donor.name}
-                    </span>
-                    <span className="text-[10px] font-extrabold px-1.5 py-0.5 bg-orange-100 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 rounded-md shrink-0">
-                      {donor.amount}
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-slate-500 dark:text-zinc-400 italic line-clamp-2 leading-snug">
-                    &ldquo;{donor.message}&rdquo;
-                  </p>
+                  <span className="font-bold text-slate-800 dark:text-zinc-200 truncate pr-1 text-xs">
+                    {donor.name}
+                  </span>
+                  <span className="text-[10px] font-extrabold px-1.5 py-0.5 bg-orange-100 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 rounded-md shrink-0">
+                    {donor.amount}
+                  </span>
                 </div>
               ))}
             </div>

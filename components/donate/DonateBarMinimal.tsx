@@ -5,7 +5,7 @@ import { useDonateUX } from "@/hooks/useDonateUX";
 import { DonateModal } from "./index";
 
 export default function DonateBarMinimal() {
-  const { shouldShow, handleDonateAction, handleCloseAction } = useDonateUX();
+  const { shouldShow, handleCloseAction } = useDonateUX();
   const [isOpen, setIsOpen] = useState(false);
 
   if (!shouldShow) return null;

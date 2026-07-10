@@ -1,7 +1,7 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { DonateSection } from "@/components/donate";
 
 export const metadata: Metadata = {
   title: "Giới thiệu về EnStudey - Nền tảng học tập & hướng nghiệp",
@@ -59,7 +59,7 @@ export default function AboutPage() {
           <section className="mt-8 pt-6 border-t border-slate-200 dark:border-zinc-800 space-y-2">
             <h2 className="text-lg font-bold text-slate-950 dark:text-white">Kết nối với EnStudey</h2>
             <p>
-              Nếu bạn có bất kỳ thắc mắc nào, thấy hệ thống tính sai điểm, hoặc chỉ đơn giản là muốn góp ý để web xịn xò hơn, đừng ngại &quot;ới&quot; chúng mình qua các kênh dưới đây nha:
+              Nếu bạn có bất kỳ thắc mắc nào, thấy hệ thống tính sai điểm, hoặc chỉ đơn giản là muốn góp ý để web hoàn thiện hơn, đừng ngại &quot;ới&quot; chúng mình qua các kênh dưới đây nha:
             </p>
             <ul className="list-disc pl-5 space-y-1">
               <li><strong>Chịu trách nhiệm nội dung:</strong> Nguyễn Đức Tâm</li>
@@ -68,8 +68,19 @@ export default function AboutPage() {
             </ul>
           </section>
 
-          {/* Donate Section */}
-          <DonateSection />
+          {/* Khung link điều hướng Trạm sạc */}
+          <div className="bg-orange-50/30 dark:bg-zinc-900/20 border border-orange-500/10 rounded-2xl p-5 text-center mt-6">
+            <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed mb-2">
+              Để EnStudey có thể duy trì hoạt động lâu dài hoàn toàn miễn phí cho các thế hệ học sinh tiếp theo, bạn có thể ủng hộ tụi mình một ly cà phê muối nha.
+            </p>
+            <Link
+              href="/tram-sac-nang-luong"
+              rel="sponsored nofollow"
+              className="inline-flex items-center justify-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition duration-200"
+            >
+              Ghé thăm Trạm sạc năng lượng EnStudey 🥤✨
+            </Link>
+          </div>
 
           <p className="font-bold text-orange-600 dark:text-orange-500 mt-6">
             Cứ tự nhiên học tập và tra cứu nhé. Chúc bạn một mùa thi rực rỡ và đỗ ngay nguyện vọng 1! ✨

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { DonateModal, useDonateStatus, DonateBarMinimal } from "@/components/donate";
+import { DonateModal, DonateBarMinimal } from "@/components/donate";
 import AffiliateNativeRow from "@/components/affiliate/AffiliateNativeRow";
 
 interface MajorBenchmark {
@@ -50,7 +50,6 @@ interface FinderClientProps {
 export default function FinderClient({ scoresData, initialPage }: FinderClientProps) {
   // Trạng thái modal donate
   const [isDonateOpen, setIsDonateOpen] = useState(false);
-  const { isAvailable } = useDonateStatus();
 
   // Bộ lọc nguyện vọng
   const [searchTerm, setSearchTerm] = useState("");
