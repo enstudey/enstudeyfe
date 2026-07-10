@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
+import AdSenseScript from "@/components/AdSenseScript";
 import CookieBanner from "@/components/cookie-banner";
 import ToastContainer from "@/components/toast/ToastContainer";
 import "./globals.css";
@@ -38,13 +38,8 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <head>
-        {/* Tích hợp Google AdSense Auto Ads bất đồng bộ */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXX"
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
+        {/* Tích hợp Google AdSense Auto Ads có điều kiện lọc trang */}
+        <AdSenseScript />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider

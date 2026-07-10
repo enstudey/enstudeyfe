@@ -19,75 +19,114 @@ export default function TermsOfServicePage() {
       {/* Main Content */}
       <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
         <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">
-          Điều khoản sử dụng dịch vụ – EnStudey
+          Điều khoản sử dụng dịch vụ – Nền tảng EnStudey
         </h1>
         <p className="text-xs text-slate-400 dark:text-zinc-500 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
 
-        <div className="prose dark:prose-invert space-y-6 text-sm text-slate-700 dark:text-zinc-350 leading-relaxed">
+        <div className="prose dark:prose-invert space-y-6 text-sm text-slate-700 dark:text-zinc-350 leading-relaxed text-justify">
           <p>
-            Chào bạn nha! Cảm ơn bạn đã ghé thăm EnStudey – góc nhỏ giúp bạn cập nhật tin tức tuyển sinh và tính điểm đại học một cách tiện lợi và tối ưu.
+            Chào mừng bạn đến với EnStudey (sau đây gọi tắt là &quot;chúng tôi&quot; hoặc &quot;nền tảng&quot;). Trước khi sử dụng các công cụ tính toán và hệ thống tra cứu trên website, xin vui lòng đọc kỹ các Điều khoản sử dụng dịch vụ dưới đây.
           </p>
           <p>
-            Để chúng mình có thể đồng hành cùng nhau lâu dài và giữ cho website luôn hoạt động ổn định, 100% miễn phí, bạn vui lòng dành vài phút đọc kỹ những &quot;luật chơi&quot; nho nhỏ dưới đây nghen. Khi bạn sử dụng các tiện ích trên EnStudey, đồng nghĩa với việc bạn đã vui vẻ đồng ý với các điều khoản này rồi đó!
+            Khi bạn truy cập, lướt web hoặc sử dụng bất kỳ tiện ích nào trên EnStudey, đồng nghĩa với việc bạn đã đọc, hiểu và tự nguyện chấp thuận tuân thủ các quy định và cam kết ràng buộc pháp lý của văn bản này. Nếu bạn không đồng ý với bất kỳ điều khoản nào, xin vui lòng ngừng truy cập hệ thống.
           </p>
 
-          <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">1. Các tiện ích tụi mình cung cấp</h2>
-            <p>Hiện tại ở phiên bản này, EnStudey hoàn toàn miễn phí và cung cấp cho bạn 3 công cụ chính:</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li><strong>Góc Blog/Tin tức:</strong> Cập nhật các bài viết về phương pháp học tập, xu hướng xét tuyển và kiến thức tiếng Anh.</li>
-              <li><strong>Công cụ Tính điểm tốt nghiệp/Đại học:</strong> Giúp bạn tự động cộng điểm các tổ hợp môn và điểm ưu tiên nhanh chóng.</li>
-              <li><strong>Tra cứu tuyển sinh:</strong> Lọc và gợi ý các trường Đại học, ngành học và tổ hợp xét tuyển dựa trên cơ sở dữ liệu điểm chuẩn của các năm trước.</li>
-            </ul>
-          </section>
+          <hr className="border-slate-200 dark:border-zinc-800 my-6" />
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">2. Giới hạn trách nhiệm (Miễn trừ trách nhiệm pháp lý)</h2>
-            <p>Chúng mình luôn nỗ lực hết sức để cập nhật công thức tính điểm và dữ liệu điểm chuẩn từ các nguồn uy tín. Tuy nhiên, bạn lưu ý kĩ giúp chúng mình nha:</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Tất cả kết quả từ công cụ Tính điểm và Tra cứu trường Đại học chỉ mang tính chất <strong>tham khảo và định hướng cá nhân</strong>.</li>
-              <li>Dữ liệu này <strong>không thay thế</strong> cho các thông báo trúng tuyển hay văn bản chính thức từ Bộ Giáo dục và Đào tạo hoặc từ các trường Đại học.</li>
-              <li>EnStudey sẽ không chịu trách nhiệm pháp lý cho bất kỳ quyết định nộp hồ sơ nguyện vọng nào của bạn dựa trên kết quả gợi ý từ công cụ của tụi mình. Hãy luôn kiểm tra lại thông tin trên trang chủ của trường mà bạn muốn nộp hồ sơ nhé!</li>
-            </ul>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">3. Điều khoản về Quảng cáo, Tiếp thị liên kết và Duy trì hệ thống</h2>
-            <p>Để EnStudey có thể duy trì server hoạt động 24/7 và nâng cấp thêm nhiều công cụ hữu ích hơn cho bạn sử dụng hoàn toàn miễn phí, chúng mình có đặt các vị trí quảng cáo từ đối tác Google AdSense và chèn các liên kết tiếp thị Shopee Affiliate giới thiệu tài liệu học tập, hành trang học sinh.</p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Chúng mình cam kết các vị trí quảng cáo và gợi ý tiếp thị luôn được thiết kế gọn gàng, không che khuất bảng tính điểm hay nội dung bạn đang đọc.</li>
-              <li>
-                <strong>Quy chuẩn nội dung và hiển thị quảng bá tiếp thị liên kết (Affiliate Copywriting):</strong>
-                <ul className="list-circle pl-5 space-y-1 mt-1 text-xs text-slate-500 dark:text-zinc-400">
-                  <li><strong>Nhãn nhận diện:</strong> Mọi liên kết tiếp thị liên kết phải được gắn kèm nhãn nhận diện trực quan rõ ràng, sử dụng các cụm từ quy chuẩn: &quot;Gợi ý dành cho bạn&quot;, &quot;Được tài trợ&quot; hoặc &quot;Liên kết tài trợ&quot; mờ và nhỏ.</li>
-                  <li><strong>Ngôn từ trung thực:</strong> Tuyệt đối nghiêm cấm việc sử dụng các từ ngữ khẳng định tối cao mang tính quảng cáo tuyệt đối như &quot;nhất&quot;, &quot;tốt nhất&quot;, &quot;rẻ nhất&quot;, &quot;số 1&quot; trên hệ thống nếu không có tài liệu chứng minh hợp pháp. Thay vào đó, khuyến khích sử dụng các từ ngữ mô tả trải nghiệm cá nhân như &quot;tối ưu&quot;, &quot;phù hợp&quot;, &quot;xu hướng&quot;.</li>
-                  <li><strong>Chuẩn mực ngôn ngữ:</strong> Giữ gìn chính tả tiếng Việt phổ thông, tuyệt đối không sử dụng teencode, từ lóng lệch chuẩn trong các nội dung giới thiệu sản phẩm để đảm bảo tính chuyên nghiệp.</li>
-                </ul>
-              </li>
-              <li><strong>Nghiêm cấm hành vi gian lận:</strong> Mong bạn KHÔNG sử dụng bất kỳ phần mềm, công cụ tự động (bot) nào để bấm (click) liên tục vào quảng cáo hoặc liên kết tiếp thị trên EnStudey nhằm mục đích phá hoại. Nếu hệ thống phát hiện IP có hành vi bất thường, tụi mình buộc lòng phải chặn truy cập của bạn để bảo vệ an toàn cho hệ thống.</li>
-            </ul>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">4. Quyền sở hữu trí tuệ</h2>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Mọi nội dung bài viết, thuật toán tính điểm và giao diện hiển thị trên EnStudey đều thuộc bản quyền của hệ thống.</li>
-              <li>Bạn có thể thoải mái chia sẻ link bài viết hoặc ảnh chụp kết quả tính điểm của bạn cho bạn bè, nhưng vui lòng không dùng các phần mềm tự động để &quot;cào&quot; (scrape) dữ liệu điểm chuẩn của tụi mình về làm web khác nha.</li>
-            </ul>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">5. Cập nhật điều khoản</h2>
+            <h2 className="text-lg font-bold text-slate-950 dark:text-white">1. Các dịch vụ và Tiện ích cung cấp</h2>
             <p>
-              Tụi mình có thể sẽ cập nhật hoặc thay đổi các điều khoản này khi website có thêm tính năng mới. Mọi sự thay đổi sẽ được thông báo ngay trên trang này. Bạn nhớ thỉnh thoảng ghé xem lại nha!
+              Nền tảng EnStudey hoạt động theo mô hình tinh gọn, phân phối tài nguyên tĩnh miễn phí nhằm hỗ trợ học sinh và phụ huynh trong mùa tuyển sinh Đại học, bao gồm:
             </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>
+                <strong>Hệ thống Blog & Kiến thức:</strong> Cập nhật các bài viết chia sẻ phương pháp ôn tập, mẹo phòng thi và kiến thức tiếng Anh học thuật.
+              </li>
+              <li>
+                <strong>Công cụ Tính điểm xét tuyển:</strong> Tự động hóa phép tính tổng điểm tổ hợp môn và điểm ưu tiên đối tượng/khu vực dựa trên công thức quy chuẩn của quy chế tuyển sinh hiện hành.
+              </li>
+              <li>
+                <strong>Tiện ích Tra cứu tuyển sinh:</strong> Gợi ý danh sách trường Đại học, ngành học dựa trên dữ liệu điểm chuẩn của các năm trước.
+              </li>
+            </ul>
           </section>
 
-          <p className="mt-4 pt-4 border-t border-slate-100 dark:border-zinc-800">
-            Nếu bạn có bất kỳ góp ý nào để công cụ tính điểm xịn hơn, đừng ngại gửi email cho chúng mình qua: <strong>contact@enstudey.com</strong>
-          </p>
-          <p className="font-bold text-orange-600 dark:text-orange-500">
-            Chúc bạn sẽ tính toán chiến thuật thật tốt và đậu ngay vào ngôi trường Đại học mơ ước nghen! 🚀
+          <hr className="border-slate-200 dark:border-zinc-800 my-6" />
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-bold text-slate-950 dark:text-white">2. Tuyên bố miễn trừ trách nhiệm pháp lý</h2>
+            <p>
+              Ban quản trị EnStudey cam kết nỗ lực tối đa để tổng hợp dữ liệu điểm chuẩn và xây dựng công thức tính toán từ các nguồn thông tin chính thống. Tuy nhiên, người dùng bắt buộc phải lưu ý các giới hạn trách nhiệm dưới đây:
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>
+                <strong>Tính chất tham khảo:</strong> Toàn bộ kết quả trả về từ công cụ Tính điểm và hệ thống gợi ý nguyện vọng trường Đại học trên EnStudey chỉ mang tính chất tham khảo, định hướng cá nhân và phục vụ mục đích giả lập chiến thuật.
+              </li>
+              <li>
+                <strong>Không thay thế văn bản gốc:</strong> Dữ liệu hiển thị trên website không có giá trị thay thế cho các thông báo trúng tuyển chính thức, quyết định gọi nhập học hoặc văn bản pháp lý từ Bộ Giáo dục và Đào tạo, cũng như từ hội đồng tuyển sinh của các trường Đại học.
+              </li>
+              <li>
+                <strong>Miễn trừ thiệt hại:</strong> EnStudey từ chối chịu bất kỳ trách nhiệm pháp lý nào đối với các thiệt hại, rủi ro hoặc khiếu nại phát sinh từ việc người dùng tự ý sử dụng kết quả gợi ý trên hệ thống để làm căn cứ nộp hồ sơ nguyện vọng thực tế. Người dùng có nghĩa vụ tự đối chiếu thông tin trên trang thông tin chính thức của các trường Đại học trước khi đưa ra quyết định cuối cùng.
+              </li>
+            </ul>
+          </section>
+
+          <hr className="border-slate-200 dark:border-zinc-800 my-6" />
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-bold text-slate-950 dark:text-white">3. Quy định về Quảng cáo, Tiếp thị liên kết và An toàn hệ thống</h2>
+            <p>
+              Để duy trì hạ tầng kỹ thuật vận hành ổn định liên tục và bảo đảm nền tảng luôn mở cửa 100% miễn phí cho cộng đồng, EnStudey tích hợp các giải pháp từ các đối tác thương mại:
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>
+                <strong>Giải pháp quảng cáo trực tuyến:</strong> Hệ thống có hiển thị các biểu ngữ quảng cáo tự động từ đối tác Google AdSense. Các vị trí quảng cáo này được tối ưu kỹ thuật nhằm bảo đảm không che khuất các nút hành động hoặc gây cản trở luồng trải nghiệm học tập của người dùng.
+              </li>
+              <li>
+                <strong>Giới thiệu tiếp thị liên kết:</strong> Hệ thống có tích hợp các đường dẫn giới thiệu sản phẩm, văn phòng phẩm, cẩm nang tài liệu ôn thi dẫn sang sàn thương mại điện tử Shopee thông qua chương trình Shopee Affiliate. Các liên kết tiếp thị này đều được gắn nhãn nhận diện công khai (Gợi ý dành cho bạn/Được tài trợ) theo đúng quy định pháp luật hiện hành.
+              </li>
+              <li>
+                <strong>Nghiêm cấm các hành vi gian lận hệ thống:</strong> Người dùng tuyệt đối không được sử dụng các công cụ tự động, mã độc, script, bot hoặc phần mềm bên thứ ba để click liên tục vào quảng cáo hoặc liên kết tiếp thị nhằm mục đích phá hoại tài khoản của nền tảng. Chúng tôi sử dụng các tầng bảo mật của Cloudflare WAF để tự động theo dõi danh tính IP; mọi hành vi bất thường sẽ bị hệ thống chặn truy cập (Block IP) vĩnh viễn mà không cần thông báo trước.
+              </li>
+            </ul>
+          </section>
+
+          <hr className="border-slate-200 dark:border-zinc-800 my-6" />
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-bold text-slate-950 dark:text-white">4. Quyền sở hữu trí tuệ và Quy định chống cào dữ liệu</h2>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>
+                <strong>Quyền sở hữu:</strong> Toàn bộ giao diện giao diện, bài viết học thuật, cấu trúc mã nguồn tính điểm và cơ sở dữ liệu đóng gói tĩnh hiển thị trên tên miền <code>enstudey.com</code> đều thuộc quyền sở hữu trí tuệ hợp pháp của ban quản trị dự án.
+              </li>
+              <li>
+                <strong>Quy định chia sẻ:</strong> Người dùng được quyền tự do chụp ảnh kết quả tra cứu, chia sẻ hyperlink đường dẫn bài viết cho mục đích học tập phi thương mại.
+              </li>
+              <li>
+                <strong>Nghiêm cấm sao chép tự động:</strong> Tuyệt đối nghiêm cấm mọi hành vi sử dụng công cụ cào dữ liệu (Web Scraper), script tự động để bóc tách, trích xuất hàng loạt file dữ liệu điểm chuẩn tuyển sinh của EnStudey nhằm mục đích tái cấu trúc, xây dựng các hệ thống website đối thủ cạnh tranh thương mại.
+              </li>
+            </ul>
+          </section>
+
+          <hr className="border-slate-200 dark:border-zinc-800 my-6" />
+
+          <section className="space-y-2">
+            <h2 className="text-lg font-bold text-slate-950 dark:text-white">5. Cơ chế cập nhật điều khoản và Thông tin liên hệ</h2>
+            <p>
+              Chúng tôi có quyền sửa đổi, bổ sung các điều khoản dịch vụ này bất kỳ lúc nào để phù hợp với các tính năng công nghệ mới hoặc sự thay đổi của luật pháp trực tuyến. Mọi cập nhật sẽ có hiệu lực ngay khi được xuất bản trên đường dẫn này.
+            </p>
+            <p>
+              Mọi ý kiến đóng góp kỹ thuật, phản hồi lỗi tính toán hoặc báo cáo vi phạm điều khoản, xin vui lòng liên hệ trực tiếp với người chịu trách nhiệm hệ thống:
+            </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li><strong>Đại diện chịu trách nhiệm:</strong> Nguyễn Đức Tâm</li>
+              <li><strong>Địa chỉ:</strong> Tổ 2, Phường Cầu Giấy, Thành phố Hà Nội, Việt Nam</li>
+              <li><strong>Email phản hồi:</strong> contact@enstudey.com</li>
+            </ul>
+          </section>
+
+          <p className="font-bold text-orange-600 dark:text-orange-500 text-center mt-6">
+            EnStudey kính chúc toàn thể các bạn sĩ tử ôn tập hiệu quả, xây dựng chiến thuật nguyện vọng thông minh và đạt kết quả cao nhất trong kỳ thi Đại học sắp tới!
           </p>
         </div>
       </main>
