@@ -16,7 +16,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Cách sắp xếp thứ tự các nguyện vọng đại học thông minh để tránh bị trượt?",
-    a: "Bạn nên sắp xếp nguyện vọng yêu thích nhất lên đầu (Nguyện vọng 1). Hệ thống tuyển sinh sẽ xét tuyển lần lượt từ trên xuống dưới. Nếu bạn đã đỗ ở nguyện vọng trên, các nguyện vọng dưới sẽ tự động bị hủy bỏ. Hãy sử dụng bộ lọc tại trang '/tra-cuu-tuyen-sinh' để phân tích và rải đều các nguyện vọng vào Vùng an toàn (Safe) và Vùng cọ xát (Fight)."
+    a: "Bạn nên sắp xếp nguyện vọng ưu tiên lên đầu (Nguyện vọng 1). Hệ thống tuyển sinh sẽ xét tuyển lần lượt từ trên xuống dưới. Nếu bạn đã đỗ ở nguyện vọng trên, các nguyện vọng dưới sẽ tự động bị hủy bỏ. Hãy sử dụng bộ lọc tại trang '/tra-cuu-tuyen-sinh' để phân tích và rải đều các nguyện vọng vào Vùng an toàn (Safe) và Vùng cọ xát (Fight)."
   },
   {
     q: "Tôi có thể thay đổi nguyện vọng sau khi biết điểm thi không?",

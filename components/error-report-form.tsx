@@ -98,7 +98,7 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-3">Tụi mình cảm ơn nha!</h3>
                 <p className="text-sm text-emerald-700 dark:text-emerald-400 leading-relaxed mb-6">
-                  Cảm ơn bạn đã dành thời gian báo lỗi cho tụi mình nha! 🧡 Sự góp ý của bạn thật sự rất quý và giúp tụi mình cải thiện ứng dụng mỗi ngày. Tụi mình sẽ kiểm tra và khắc phục sớm nhất có thể.
+                  Cảm ơn bạn đã dành thời gian báo lỗi cho tụi mình nha! 🧡 Sự góp ý của bạn thật sự rất quý và giúp tụi mình cải thiện ứng dụng mỗi ngày. Tụi mình sẽ kiểm tra và khắc phục nhanh chóng.
                 </p>
                 <button
                   data-testid="btn-close-success-modal"

@@ -45,7 +45,7 @@ export default function TramSacNangLuongPage() {
               Trang <strong>&quot;Trạm sạc năng lượng&quot;</strong> này ra đời để ghi nhận những sự đóng góp quý báu từ các bạn học sinh và phụ huynh. Một ly cà phê nhỏ 10.000đ hay 20.000đ không chỉ giúp chúng mình duy trì hệ thống hàng tháng, mà còn là nguồn động viên tinh thần to lớn để tụi mình biết rằng sản phẩm này đang mang lại giá trị thực tế cho cộng đồng.
             </p>
             <p>
-              Sự đồng hành của các bạn là minh chứng rõ ràng nhất cho thấy tinh thần học tập tự nguyện và sẻ chia luôn tồn tại. Chúng mình trân trọng mọi sự tiếp sức, dù là nhỏ nhất, để cùng nhau nâng bước cho các thế hệ học sinh tiếp theo tự tin chinh phục giảng đường Đại học.
+              Sự đồng hành của các bạn là minh chứng rõ ràng cho thấy tinh thần học tập tự nguyện và sẻ chia luôn tồn tại. Chúng mình trân trọng mọi sự tiếp sức, dù là nhỏ bé, để cùng nhau nâng bước cho các thế hệ học sinh tiếp theo tự tin chinh phục giảng đường Đại học.
             </p>
           </div>
         </div>

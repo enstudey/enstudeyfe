@@ -77,7 +77,7 @@ export default function CookieBanner() {
 
         {/* Content */}
         <p className="text-sm leading-relaxed text-foreground/90 pr-1">
-          Hello! Việc bạn cho phép EnStudey dùng một xíu Cookie 🍪 chính là cách &quot;tài trợ&quot; tuyệt vời nhất để duy trì nền tảng này 100% miễn phí đó. Xem chi tiết tại{" "}
+          Hello! Việc bạn cho phép EnStudey dùng một xíu Cookie 🍪 chính là cách &quot;tài trợ&quot; tuyệt vời để duy trì nền tảng này 100% miễn phí đó. Xem chi tiết tại{" "}
           <Link 
             href="/privacy-policy" 
             className="underline text-accent hover:opacity-80 font-medium transition-opacity"

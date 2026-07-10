@@ -94,7 +94,7 @@ export default function CertificateConverter({
 
       {certType !== "none" && (
         <div className="text-[11px] text-slate-500 dark:text-zinc-400 font-medium">
-          * Hệ thống tự động áp dụng công thức quy đổi có lợi nhất cho bạn dựa trên đề án riêng của trường đã chọn.
+          * Hệ thống tự động áp dụng công thức quy đổi tối ưu cho bạn dựa trên đề án riêng của trường đã chọn.
         </div>
       )}
     </div>

@@ -126,7 +126,7 @@ export default function TermsOfServicePage() {
           </section>
 
           <p className="font-bold text-orange-600 dark:text-orange-500 text-center mt-6">
-            EnStudey kính chúc toàn thể các bạn sĩ tử ôn tập hiệu quả, xây dựng chiến thuật nguyện vọng thông minh và đạt kết quả cao nhất trong kỳ thi Đại học sắp tới!
+            EnStudey kính chúc toàn thể các bạn sĩ tử ôn tập hiệu quả, xây dựng chiến thuật nguyện vọng thông minh và đạt kết quả cao trong kỳ thi Đại học sắp tới!
           </p>
         </div>
       </main>

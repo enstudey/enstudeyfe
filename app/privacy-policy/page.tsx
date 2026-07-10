@@ -131,7 +131,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <p className="font-bold text-orange-600 dark:text-orange-500 mt-6 text-center">
-            Chúng tôi trân trọng sự đồng hành của bạn. Chúc các bạn sĩ tử có một mùa thi rực rỡ và đạt kết quả tối ưu nhất!
+            Chúng tôi trân trọng sự đồng hành của bạn. Chúc các bạn sĩ tử có một mùa thi rực rỡ và đạt kết quả tối ưu!
           </p>
         </div>
       </main>

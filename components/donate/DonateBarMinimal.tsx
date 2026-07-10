@@ -22,7 +22,7 @@ export default function DonateBarMinimal() {
       >
         <div className="space-y-1">
           <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-            Dự án này được vận hành 0đ bởi 1 lập trình viên duy nhất ☕
+            Dự án này được vận hành 0đ bởi một lập trình viên ☕
           </h4>
           <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
             Gửi tặng tụi mình một ly cà phê để cùng giữ cho công cụ này luôn mở và miễn phí vĩnh viễn cho các thế hệ sĩ tử tiếp theo bạn nhé!
