@@ -72,7 +72,7 @@ export default async function DashboardPage() {
   const googleLoginUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "http://localhost:8080/oauth2/authorization/google";
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans transition-colors duration-200">
+    <div className="min-h-screen bg-[#FAFAFA] bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.04),transparent_65%)] text-foreground font-sans transition-colors duration-200">
       {/* Header */}
       <header className="bg-card border-b border-card-border sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">

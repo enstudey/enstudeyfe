@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function LandingPortalPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col justify-between transition-colors duration-200">
+    <div className="min-h-screen bg-[#FAFAFA] bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.04),transparent_65%)] text-foreground flex flex-col justify-between transition-colors duration-200">
       <Header />
 
       <main className="max-w-5xl mx-auto px-6 py-16 flex-1 flex flex-col justify-center space-y-16 w-full text-center">
