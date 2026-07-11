@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import fs from "fs";
+import path from "path";
 import AdBanner from "@/components/ads/AdBanner";
 import { getPostBySlug, getAllPostsMetadata } from "@/lib/markdown";
+import CheatSheetInteractiveWrapper from "@/components/materials/CheatSheetInteractiveWrapper";
+import AffiliateProductBox from "@/components/materials/AffiliateProductBox";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -115,6 +119,18 @@ export default async function BlogPostDetail({ params }: BlogPostPageProps) {
     }
   };
 
+  // Load glossary JSON on server side to prevent client fetch lag
+  let glossary: Record<string, string> = {};
+  try {
+    const glossaryPath = path.join(process.cwd(), "public", "data", "glossary", `${resolvedParams.slug}.json`);
+    if (fs.existsSync(glossaryPath)) {
+      const fileContent = fs.readFileSync(glossaryPath, "utf8");
+      glossary = JSON.parse(fileContent);
+    }
+  } catch {
+    // Ignore and fallback
+  }
+
   return (
     <>
       <script
@@ -142,11 +158,24 @@ export default async function BlogPostDetail({ params }: BlogPostPageProps) {
           <h1 className="text-3xl font-extrabold mt-2 mb-6 text-slate-955 leading-tight">
             {post.title}
           </h1>
-          <div
-            className="text-base text-slate-700 space-y-4 md-content"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml ?? "" }}
-          />
+          {post.contentType === "cheat-sheet" ? (
+            <CheatSheetInteractiveWrapper topic={resolvedParams.slug} initialGlossary={glossary}>
+              <div
+                className="text-base text-slate-700 space-y-4 md-content"
+                dangerouslySetInnerHTML={{ __html: post.contentHtml ?? "" }}
+              />
+            </CheatSheetInteractiveWrapper>
+          ) : (
+            <div
+              className="text-base text-slate-700 space-y-4 md-content"
+              dangerouslySetInnerHTML={{ __html: post.contentHtml ?? "" }}
+            />
+          )}
         </article>
+
+        {post.affiliateProducts && post.affiliateProducts.length > 0 && (
+          <AffiliateProductBox products={post.affiliateProducts} />
+        )}
 
         {post.faq && post.faq.length > 0 && (
           <section className="mt-12 border-t border-slate-150 pt-8">

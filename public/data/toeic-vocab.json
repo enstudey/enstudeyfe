@@ -1,0 +1,1682 @@
+[
+  {
+    "id": "toeic-600-1",
+    "word": "Abide by",
+    "ipa": "/əˈbaɪd baɪ/",
+    "meaning": "Tuân theo",
+    "description": "Tuân thủ hoặc chấp hành một luật lệ, thỏa thuận đã đề ra."
+  },
+  {
+    "id": "toeic-600-2",
+    "word": "Establishment",
+    "ipa": "/ɪˌstæblɪʃˈmɛnt/",
+    "meaning": "Nhà máy, công ty",
+    "description": "Một tổ chức, cơ sở kinh doanh hoặc quá trình thành lập."
+  },
+  {
+    "id": "toeic-600-3",
+    "word": "Agreement",
+    "ipa": "/əˈɡriːmənt/",
+    "meaning": "Sự thỏa thuận",
+    "description": "Một cam kết, sự đồng thuận hoặc hợp đồng giữa các bên."
+  },
+  {
+    "id": "toeic-600-4",
+    "word": "Assurance",
+    "ipa": "/əˈʃʊərəns/",
+    "meaning": "Sự đảm bảo, chắc chắn",
+    "description": "Lời cam đoan vững chắc nhằm tạo sự tự tin cho đối tác."
+  },
+  {
+    "id": "toeic-600-5",
+    "word": "Cancellation",
+    "ipa": "/ˌkænslˈeɪʃən/",
+    "meaning": "Sự hủy bỏ, bãi bỏ",
+    "description": "Việc chấm dứt một thỏa thuận, hợp đồng hoặc sự kiện đã lên lịch."
+  },
+  {
+    "id": "toeic-600-6",
+    "word": "Determine",
+    "ipa": "/dɪˈtɜːrmɪn/",
+    "meaning": "Xác định, định rõ",
+    "description": "Quyết định hoặc tìm ra chính xác một vấn đề dựa trên thông tin."
+  },
+  {
+    "id": "toeic-600-7",
+    "word": "Engage",
+    "ipa": "/ɪnˈɡeɪdʒ/",
+    "meaning": "Tham gia, tham dự",
+    "description": "Thu hút sự chú ý hoặc trực tiếp tham gia vào một hợp đồng/hoạt động."
+  },
+  {
+    "id": "toeic-600-8",
+    "word": "Establish",
+    "ipa": "/ɪˈstæblɪʃ/",
+    "meaning": "Thành lập",
+    "description": "Thiết lập, tạo ra một cái gì đó vững chắc và lâu dài."
+  },
+  {
+    "id": "toeic-600-9",
+    "word": "Obligate",
+    "ipa": "/ˈɑːblɪɡeɪt/",
+    "meaning": "Bắt buộc, ép buộc",
+    "description": "Bắt buộc ai đó phải làm gì vì trách nhiệm pháp lý hoặc đạo đức."
+  },
+  {
+    "id": "toeic-600-10",
+    "word": "Provision",
+    "ipa": "/prəˈvɪʒn/",
+    "meaning": "Sự quy định, điều khoản",
+    "description": "Một điều kiện hoặc khoản quy định cụ thể được nêu trong hợp đồng."
+  },
+  {
+    "id": "toeic-600-11",
+    "word": "Resolve",
+    "ipa": "/rɪˈzɒlv/",
+    "meaning": "Giải quyết",
+    "description": "Tìm ra giải pháp thỏa đáng cho một vấn đề hoặc sự bất đồng."
+  },
+  {
+    "id": "toeic-600-12",
+    "word": "Specific",
+    "ipa": "/spəˈsɪfɪk/",
+    "meaning": "Cụ thể, chi tiết",
+    "description": "Rõ ràng, rành mạch, không chung chung hoặc mơ hồ."
+  },
+  {
+    "id": "toeic-600-13",
+    "word": "Attract",
+    "ipa": "/əˈtrækt/",
+    "meaning": "Hấp dẫn, lôi cuốn",
+    "description": "Thu hút sự chú ý, quan tâm hoặc sự yêu thích của người khác."
+  },
+  {
+    "id": "toeic-600-14",
+    "word": "Compare",
+    "ipa": "/kəmˈpeə/",
+    "meaning": "So sánh",
+    "description": "Đối chiếu hai hay nhiều vật/người để tìm ra điểm giống và khác biệt."
+  },
+  {
+    "id": "toeic-600-15",
+    "word": "Competition",
+    "ipa": "/ˌkɒmpɪˈtɪʃən/",
+    "meaning": "Sự cạnh tranh",
+    "description": "Tình trạng đua tranh giành khách hàng hoặc thị phần trên thị trường."
+  },
+  {
+    "id": "toeic-600-16",
+    "word": "Consume",
+    "ipa": "/kənˈsjuːm/",
+    "meaning": "Tiêu dùng, sử dụng",
+    "description": "Mua sắm và sử dụng hàng hóa, dịch vụ phục vụ đời sống."
+  },
+  {
+    "id": "toeic-600-17",
+    "word": "Convince",
+    "ipa": "/kənˈvɪns/",
+    "meaning": "Thuyết phục",
+    "description": "Làm cho ai đó tin tưởng hoặc đồng ý thực hiện theo ý mình."
+  },
+  {
+    "id": "toeic-600-18",
+    "word": "Currently",
+    "ipa": "/ˈkʌrəntli/",
+    "meaning": "Hiện thời, hiện nay",
+    "description": "Ở tại thời điểm đang nói đến, ngay lúc này."
+  },
+  {
+    "id": "toeic-600-19",
+    "word": "Fad",
+    "ipa": "/fæd/",
+    "meaning": "Mốt nhất thời",
+    "description": "Một xu hướng được ưa chuộng mạnh mẽ nhưng chỉ tồn tại trong thời gian ngắn."
+  },
+  {
+    "id": "toeic-600-20",
+    "word": "Persuasion",
+    "ipa": "/pəˈsweɪʒən/",
+    "meaning": "Sự thuyết phục",
+    "description": "Hành động hoặc kỹ năng làm người khác thay đổi ý kiến, quan điểm."
+  },
+  {
+    "id": "toeic-600-21",
+    "word": "Productive",
+    "ipa": "/prəˈdʌktɪv/",
+    "meaning": "Năng suất",
+    "description": "Làm việc hiệu quả, tạo ra nhiều thành phẩm hoặc kết quả tốt."
+  },
+  {
+    "id": "toeic-600-22",
+    "word": "Satisfaction",
+    "ipa": "/sætɪsˈfækʃən/",
+    "meaning": "Sự vừa lòng, thỏa mãn",
+    "description": "Cảm giác hài lòng khi đạt được điều mong muốn hoặc nhu cầu được đáp ứng."
+  },
+  {
+    "id": "toeic-600-23",
+    "word": "Characteristic",
+    "ipa": "/ˌkærɪktəˈrɪstɪk/",
+    "meaning": "Đặc tính, đặc trưng",
+    "description": "Nét riêng biệt, phẩm chất tiêu biểu của một người hay sự vật."
+  },
+  {
+    "id": "toeic-600-24",
+    "word": "Consequence",
+    "ipa": "/ˈkɒnsɪkwəns/",
+    "meaning": "Kết quả, hệ quả",
+    "description": "Tác động hoặc hậu quả (thường là tiêu cực) sinh ra từ một hành động trước đó."
+  },
+  {
+    "id": "toeic-600-25",
+    "word": "Consider",
+    "ipa": "/kənˈsɪdə/",
+    "meaning": "Cân nhắc, xem xét",
+    "description": "Suy nghĩ kỹ lưỡng mọi khía cạnh trước khi đưa ra một quyết định."
+  },
+  {
+    "id": "toeic-600-26",
+    "word": "Expiration",
+    "ipa": "/ɛkspaɪəˈreɪʃən/",
+    "meaning": "Sự hết hạn, kết thúc",
+    "description": "Thời điểm mà một văn bản, hợp đồng hay sản phẩm không còn hiệu lực sử dụng."
+  },
+  {
+    "id": "toeic-600-27",
+    "word": "Frequently",
+    "ipa": "/ˈfriːkwəntli/",
+    "meaning": "Thường xuyên",
+    "description": "Sự việc xảy ra lặp đi lặp lại rất nhiều lần trong một khoảng thời gian."
+  },
+  {
+    "id": "toeic-600-28",
+    "word": "Imply",
+    "ipa": "/ɪmˈplaɪ/",
+    "meaning": "Ngụ ý, hàm ý",
+    "description": "Gợi ý hoặc ám chỉ một thông điệp một cách gián tiếp, không nói thẳng ra."
+  },
+  {
+    "id": "toeic-600-29",
+    "word": "Promise",
+    "ipa": "/ˈprɒmɪs/",
+    "meaning": "Hứa hẹn, cam đoan",
+    "description": "Lời đảm bảo rằng một người sẽ thực hiện (hoặc không thực hiện) điều gì đó."
+  },
+  {
+    "id": "toeic-600-30",
+    "word": "Reputation",
+    "ipa": "/rɛpju(ː)ˈteɪʃən/",
+    "meaning": "Danh tiếng",
+    "description": "Đánh giá, góc nhìn chung của cộng đồng về uy tín của một cá nhân hay doanh nghiệp."
+  },
+  {
+    "id": "toeic-600-31",
+    "word": "Address",
+    "ipa": "/əˈdrɛs/",
+    "meaning": "Giải quyết (vấn đề)",
+    "description": "Bắt tay vào xử lý, tập trung giải quyết một khó khăn hay tình huống nào đó."
+  },
+  {
+    "id": "toeic-600-32",
+    "word": "Avoid",
+    "ipa": "/əˈvɔɪd/",
+    "meaning": "Tránh, ngăn chặn",
+    "description": "Tìm cách né tránh hoặc ngăn không cho một sự việc (thường là xấu) xảy ra."
+  },
+  {
+    "id": "toeic-600-33",
+    "word": "Demonstrate",
+    "ipa": "/ˈdɛmənstreɪt/",
+    "meaning": "Chứng minh, biểu lộ",
+    "description": "Đưa ra bằng chứng hoặc làm mẫu để cho người khác thấy rõ một vấn đề."
+  },
+  {
+    "id": "toeic-600-34",
+    "word": "Evaluate",
+    "ipa": "/ɪˈvæljʊeɪt/",
+    "meaning": "Đánh giá",
+    "description": "Xem xét cẩn thận để xác định giá trị, chất lượng hoặc mức độ hiệu quả."
+  },
+  {
+    "id": "toeic-600-35",
+    "word": "Strategy",
+    "ipa": "/ˈstrætɪʤi/",
+    "meaning": "Chiến lược",
+    "description": "Một bản kế hoạch hành động chi tiết được vạch ra để đạt được mục tiêu dài hạn."
+  },
+  {
+    "id": "toeic-600-36",
+    "word": "Accommodate",
+    "ipa": "/əˈkɒmədeɪt/",
+    "meaning": "Đáp ứng, cung cấp chỗ",
+    "description": "Cung cấp chỗ ở hoặc điều chỉnh để phù hợp với nhu cầu của ai đó."
+  },
+  {
+    "id": "toeic-600-37",
+    "word": "Arrangement",
+    "ipa": "/əˈreɪnʤmənt/",
+    "meaning": "Sự sắp xếp, chuẩn bị",
+    "description": "Công tác tổ chức, lên kế hoạch và chuẩn bị các điều kiện cho một sự kiện."
+  },
+  {
+    "id": "toeic-600-38",
+    "word": "Association",
+    "ipa": "/əˌsəʊsɪˈeɪʃ(ə)n/",
+    "meaning": "Hiệp hội, đoàn thể",
+    "description": "Một nhóm hoặc tổ chức gồm những người có chung mục đích, nghề nghiệp."
+  },
+  {
+    "id": "toeic-600-39",
+    "word": "Register",
+    "ipa": "/ˈrɛʤɪstə/",
+    "meaning": "Đăng ký",
+    "description": "Ghi danh chính thức để tham gia vào một hệ thống, sự kiện hoặc khóa học."
+  },
+  {
+    "id": "toeic-600-40",
+    "word": "Session",
+    "ipa": "/ˈsɛʃən/",
+    "meaning": "Phiên, buổi họp",
+    "description": "Một khoảng thời gian cụ thể được dành riêng cho một hoạt động (họp, học tập)."
+  },
+  {
+    "id": "toeic-600-41",
+    "word": "Access",
+    "ipa": "/ˈæksɛs/",
+    "meaning": "Truy cập, đi vào",
+    "description": "Quyền hoặc khả năng được đi vào một nơi, hoặc sử dụng một hệ thống dữ liệu."
+  },
+  {
+    "id": "toeic-600-42",
+    "word": "Compatible",
+    "ipa": "/kəmˈpætəbl/",
+    "meaning": "Tương thích",
+    "description": "Khả năng hoạt động, kết nối trơn tru cùng nhau mà không xảy ra xung đột."
+  },
+  {
+    "id": "toeic-600-43",
+    "word": "Duplicate",
+    "ipa": "/ˈdjuːplɪkɪt/",
+    "meaning": "Tạo bản sao, nhân đôi",
+    "description": "Sao chép chính xác một tài liệu, dữ liệu hoặc đồ vật thành một bản khác."
+  },
+  {
+    "id": "toeic-600-44",
+    "word": "Affordable",
+    "ipa": "/əˈfɔːdəbl/",
+    "meaning": "Giá cả phải chăng",
+    "description": "Mức giá hợp lý, nằm trong khả năng chi trả của đa số khách hàng."
+  },
+  {
+    "id": "toeic-600-45",
+    "word": "Capacity",
+    "ipa": "/kəˈpæsɪti/",
+    "meaning": "Sức chứa, công suất",
+    "description": "Khả năng chứa đựng tối đa hoặc mức độ sản xuất lớn nhất của máy móc."
+  },
+  {
+    "id": "toeic-600-46",
+    "word": "Appreciation",
+    "ipa": "/əˌpriːʃɪˈeɪʃ(ə)n/",
+    "meaning": "Sự đánh giá cao",
+    "description": "Sự công nhận, thấu hiểu và biết ơn về giá trị của một người hoặc sự việc."
+  },
+  {
+    "id": "toeic-600-47",
+    "word": "Outdated",
+    "ipa": "/aʊtˈdeɪtɪd/",
+    "meaning": "Lỗi thời, lạc hậu",
+    "description": "Không còn bắt kịp xu hướng, quá cũ để sử dụng hiệu quả trong hiện tại."
+  },
+  {
+    "id": "toeic-600-48",
+    "word": "Reinforce",
+    "ipa": "/ˌriːɪnˈfɔːs/",
+    "meaning": "Củng cố, tăng cường",
+    "description": "Làm cho một thứ gì đó (ý tưởng, cấu trúc, quy tắc) trở nên vững chắc hơn."
+  },
+  {
+    "id": "toeic-600-49",
+    "word": "Verbally",
+    "ipa": "/ˈvɜːbəli/",
+    "meaning": "Bằng lời nói",
+    "description": "Giao tiếp hoặc truyền đạt thông tin thông qua lời nói thay vì văn bản viết."
+  },
+  {
+    "id": "toeic-600-50",
+    "word": "Abundant",
+    "ipa": "/əˈbʌndənt/",
+    "meaning": "Dồi dào, phong phú",
+    "description": "Có sẵn với số lượng rất lớn, vượt mức nhu cầu cần thiết."
+  },
+  {
+    "id": "toeic-600-51",
+    "word": "Candidate",
+    "ipa": "/ˈkændɪdət/",
+    "meaning": "Ứng viên",
+    "description": "Người chính thức nộp hồ sơ xin việc hoặc tham gia tranh cử một vị trí."
+  },
+  {
+    "id": "toeic-600-52",
+    "word": "Commensurate",
+    "ipa": "/kəˈmɛnʃərɪt/",
+    "meaning": "Tương xứng",
+    "description": "Phù hợp và cân xứng về mặt tỷ lệ, mức độ (thường dùng cho lương thưởng)."
+  },
+  {
+    "id": "toeic-600-53",
+    "word": "Profile",
+    "ipa": "/ˈprəʊfaɪl/",
+    "meaning": "Hồ sơ, tiểu sử",
+    "description": "Bản tóm tắt các thông tin cá nhân, kỹ năng và kinh nghiệm làm việc."
+  },
+  {
+    "id": "toeic-600-54",
+    "word": "Recruit",
+    "ipa": "/rɪˈkruːt/",
+    "meaning": "Tuyển dụng",
+    "description": "Quá trình tìm kiếm, đánh giá và nhận nhân sự mới vào làm việc cho công ty."
+  },
+  {
+    "id": "toeic-600-55",
+    "word": "Background",
+    "ipa": "/ˈbækgraʊnd/",
+    "meaning": "Nền tảng, xuất thân",
+    "description": "Quá trình học tập, đào tạo và kinh nghiệm làm việc trước đây của một người."
+  },
+  {
+    "id": "toeic-600-56",
+    "word": "Confidence",
+    "ipa": "/ˈkɒnfɪdəns/",
+    "meaning": "Sự tự tin",
+    "description": "Trạng thái tin tưởng mạnh mẽ vào khả năng và giá trị của bản thân."
+  },
+  {
+    "id": "toeic-600-57",
+    "word": "Expert",
+    "ipa": "/ˈɛkspɜːt/",
+    "meaning": "Chuyên gia",
+    "description": "Người có kiến thức, kỹ năng sâu rộng và xuất sắc trong một lĩnh vực cụ thể."
+  },
+  {
+    "id": "toeic-600-58",
+    "word": "Hesitant",
+    "ipa": "/ˈhɛzɪtənt/",
+    "meaning": "Do dự, ngập ngừng",
+    "description": "Thái độ chần chừ, không dứt khoát đưa ra quyết định vì lo lắng hoặc e ngại."
+  },
+  {
+    "id": "toeic-600-59",
+    "word": "Weakness",
+    "ipa": "/ˈwiːknɪs/",
+    "meaning": "Điểm yếu",
+    "description": "Những nhược điểm, thiếu sót trong kỹ năng hoặc tính cách của một người."
+  },
+  {
+    "id": "toeic-600-60",
+    "word": "Mentor",
+    "ipa": "/ˈmɛntɔː/",
+    "meaning": "Người cố vấn",
+    "description": "Người đi trước giàu kinh nghiệm trực tiếp hướng dẫn và chỉ bảo cho người mới."
+  },
+  {
+    "id": "toeic-600-61",
+    "word": "Basis",
+    "ipa": "/ˈbeɪsɪs/",
+    "meaning": "Nền tảng",
+    "description": "Nền tảng cơ bản của một vấn đề, thường dùng trong đàm phán lương thưởng."
+  },
+  {
+    "id": "toeic-600-62",
+    "word": "Be aware of",
+    "ipa": "/biː əˈweər ɒv/",
+    "meaning": "Am hiểu, nhận biết, có ý thức",
+    "description": "Có ý thức, am hiểu hoặc nhận biết rõ ràng về một vấn đề, chính sách lợi ích."
+  },
+  {
+    "id": "toeic-600-63",
+    "word": "Benefit",
+    "ipa": "/ˈbɛnɪfɪt/",
+    "meaning": "Lợi ích",
+    "description": "Những lợi ích, phúc lợi mà nhân viên nhận được ngoài mức lương cơ bản."
+  },
+  {
+    "id": "toeic-600-64",
+    "word": "Compensate",
+    "ipa": "/ˈkɒmpɛnseɪt/",
+    "meaning": "Bù đắp",
+    "description": "Sự bù đắp hoặc đền bù xứng đáng cho công sức hoặc một mất mát nào đó."
+  },
+  {
+    "id": "toeic-600-65",
+    "word": "Delicately",
+    "ipa": "/ˈdɛlɪkɪtli/",
+    "meaning": "Một cách khéo léo",
+    "description": "Xử lý hoặc giao tiếp một cách khéo léo, tế nhị, đặc biệt trong thương lượng."
+  },
+  {
+    "id": "toeic-600-66",
+    "word": "Eligible",
+    "ipa": "/ˈɛlɪʤəbl/",
+    "meaning": "Đủ tư cách",
+    "description": "Đủ điều kiện hoặc tư cách để được hưởng một quyền lợi, chế độ cụ thể."
+  },
+  {
+    "id": "toeic-600-67",
+    "word": "Flexible",
+    "ipa": "/ˈflɛksəbl/",
+    "meaning": "Linh động",
+    "description": "Có khả năng thay đổi, linh hoạt trong công việc hoặc giờ giấc."
+  },
+  {
+    "id": "toeic-600-68",
+    "word": "Negotiate",
+    "ipa": "/nɪˈgəʊʃɪeɪt/",
+    "meaning": "Thương lượng",
+    "description": "Quá trình thảo luận, thương lượng để đi đến một thỏa thuận về mức lương."
+  },
+  {
+    "id": "toeic-600-69",
+    "word": "Raise",
+    "ipa": "/reɪz/",
+    "meaning": "Sự tăng lương",
+    "description": "Việc được nâng mức thu nhập, sự tăng lương trong công việc."
+  },
+  {
+    "id": "toeic-600-70",
+    "word": "Retire",
+    "ipa": "/rɪˈtaɪə/",
+    "meaning": "Nghỉ hưu",
+    "description": "Ngừng làm việc do đã đến độ tuổi theo quy định, bắt đầu nhận hưu trí."
+  },
+  {
+    "id": "toeic-600-71",
+    "word": "Vest",
+    "ipa": "/vɛst/",
+    "meaning": "Trao quyền cho",
+    "description": "Giao phó hoặc trao quyền hợp pháp cho ai đó để thực hiện nhiệm vụ."
+  },
+  {
+    "id": "toeic-600-72",
+    "word": "Wage",
+    "ipa": "/weɪʤ/",
+    "meaning": "Tiền lương",
+    "description": "Số tiền lương được trả định kỳ, thường dựa trên số giờ làm việc."
+  },
+  {
+    "id": "toeic-600-73",
+    "word": "Achievement",
+    "ipa": "/əˈʧiːvmənt/",
+    "meaning": "Thành tựu",
+    "description": "Những thành tích, thành tựu to lớn đạt được trong sự nghiệp."
+  },
+  {
+    "id": "toeic-600-74",
+    "word": "Contribute",
+    "ipa": "/kənˈtrɪbju(ː)t/",
+    "meaning": "Đóng góp",
+    "description": "Sự cống hiến, đóng góp công sức vào thành công chung của tổ chức."
+  },
+  {
+    "id": "toeic-600-75",
+    "word": "Dedication",
+    "ipa": "/ˌdɛdɪˈkeɪʃən/",
+    "meaning": "Sự cống hiến",
+    "description": "Sự tận tâm hết mình và cống hiến bền bỉ cho công việc."
+  },
+  {
+    "id": "toeic-600-76",
+    "word": "Look forward To",
+    "ipa": "/lʊk ˈfɔːwəd tuː/",
+    "meaning": "Mong đợi, mong chờ, trông mong",
+    "description": "Cảm giác mong đợi, trông mong một sự kiện, phần thưởng hay cơ hội thăng tiến."
+  },
+  {
+    "id": "toeic-600-77",
+    "word": "Look to",
+    "ipa": "/lʊk tuː/",
+    "meaning": "Tin vào, trông cậy vào",
+    "description": "Đặt niềm tin vào, trông cậy vào sự hướng dẫn hoặc quyết định của ai đó."
+  },
+  {
+    "id": "toeic-600-78",
+    "word": "Loyal",
+    "ipa": "/ˈlɔɪəl/",
+    "meaning": "Trung thành",
+    "description": "Sự trung thành, gắn bó lâu dài với doanh nghiệp hoặc tổ chức."
+  },
+  {
+    "id": "toeic-600-79",
+    "word": "Merit",
+    "ipa": "/ˈmɛrɪt/",
+    "meaning": "Sự xuất sắc",
+    "description": "Sự xuất sắc, phẩm chất xứng đáng được công nhận và khen thưởng."
+  },
+  {
+    "id": "toeic-600-80",
+    "word": "Obvious",
+    "ipa": "/ˈɒbvɪəs/",
+    "meaning": "Rõ ràng",
+    "description": "Thể hiện sự rõ ràng, dễ dàng nhận thấy một kết quả hay sự tiến bộ."
+  },
+  {
+    "id": "toeic-600-81",
+    "word": "Productive",
+    "ipa": "/prəˈdʌktɪv/",
+    "meaning": "Có năng suất",
+    "description": "Làm việc mang lại kết quả cao, tạo ra năng suất vượt trội."
+  },
+  {
+    "id": "toeic-600-82",
+    "word": "Promote",
+    "ipa": "/prəˈməʊt/",
+    "meaning": "Thăng chức",
+    "description": "Được đề bạt, thăng chức lên một vị trí công việc cao hơn."
+  },
+  {
+    "id": "toeic-600-83",
+    "word": "Recognition",
+    "ipa": "/ˌrɛkəgˈnɪʃən/",
+    "meaning": "Sự công nhận",
+    "description": "Sự công nhận, tán thưởng những nỗ lực và thành tích của cá nhân."
+  },
+  {
+    "id": "toeic-600-84",
+    "word": "Value",
+    "ipa": "/ˈvæljuː/",
+    "meaning": "Định giá",
+    "description": "Đánh giá, xác định giá trị năng lực hoặc thành quả đóng góp."
+  },
+  {
+    "id": "toeic-600-85",
+    "word": "Diversify",
+    "ipa": "/daɪˈvɜːsɪfaɪ/",
+    "meaning": "Đa dạng hóa",
+    "description": "Hành động mở rộng sự lựa chọn, đa dạng hóa nguồn cung cấp hàng hóa."
+  },
+  {
+    "id": "toeic-600-86",
+    "word": "Enterprise",
+    "ipa": "/ˈɛntəpraɪz/",
+    "meaning": "Công ty",
+    "description": "Một tổ chức, doanh nghiệp hoặc công ty tham gia vào hoạt động kinh doanh."
+  },
+  {
+    "id": "toeic-600-87",
+    "word": "Everyday",
+    "ipa": "/ˈɛvrɪdeɪ/",
+    "meaning": "Hàng ngày",
+    "description": "Những công việc thường nhật, diễn ra lặp đi lặp lại hàng ngày."
+  },
+  {
+    "id": "toeic-600-88",
+    "word": "Essential",
+    "ipa": "/ɪˈsɛnʃəl/",
+    "meaning": "Thiết yếu",
+    "description": "Cực kỳ quan trọng, là điều kiện thiết yếu cho quá trình vận hành."
+  },
+  {
+    "id": "toeic-600-89",
+    "word": "Function",
+    "ipa": "/ˈfʌŋkʃən/",
+    "meaning": "Hoạt động",
+    "description": "Chức năng hoặc cách thức hoạt động của một hệ thống, bộ phận."
+  },
+  {
+    "id": "toeic-600-90",
+    "word": "Maintain",
+    "ipa": "/meɪnˈteɪn/",
+    "meaning": "Duy trì",
+    "description": "Việc giữ gìn, duy trì tình trạng hoạt động hoặc nguồn cung ứng ổn định."
+  },
+  {
+    "id": "toeic-600-91",
+    "word": "Express",
+    "ipa": "/ɪkˈspres/",
+    "meaning": "Nhanh, hỏa tốc",
+    "description": "Dịch vụ vận chuyển nhanh hoặc hình thức chuyển phát hỏa tốc."
+  },
+  {
+    "id": "toeic-600-92",
+    "word": "Enroll",
+    "ipa": "/ɪnˈrəʊl/",
+    "meaning": "Đăng ký, ghi tên",
+    "description": "Hành động ghi danh vào một khóa học, sự kiện hoặc chương trình."
+  },
+  {
+    "id": "toeic-600-93",
+    "word": "Fold",
+    "ipa": "/foʊld/",
+    "meaning": "Gấp lại",
+    "description": "Hành động gấp nếp tài liệu, thư từ, hoặc bao bì."
+  },
+  {
+    "id": "toeic-600-94",
+    "word": "Handy",
+    "ipa": "/ˈhæn.di/",
+    "meaning": "Thuận tiện",
+    "description": "Mang tính tiện dụng, dễ dàng sử dụng hoặc luôn có sẵn khi cần."
+  },
+  {
+    "id": "toeic-600-95",
+    "word": "Petition",
+    "ipa": "/pəˈtɪʃn/",
+    "meaning": "Kiến nghị",
+    "description": "Văn bản hoặc lời kêu gọi chính thức gửi đến người có thẩm quyền."
+  },
+  {
+    "id": "toeic-600-96",
+    "word": "Abundant",
+    "ipa": "/əˈbʌndənt/",
+    "meaning": "Nhiều, dư thừa",
+    "description": "Số lượng phong phú, dồi dào, vượt mức nhu cầu cần thiết."
+  },
+  {
+    "id": "toeic-600-97",
+    "word": "Accomplishment",
+    "ipa": "/əˈkɑːm.plɪʃ.mənt/",
+    "meaning": "Thành tựu",
+    "description": "Kết quả đáng tự hào đạt được sau một quá trình nỗ lực."
+  },
+  {
+    "id": "toeic-600-98",
+    "word": "Candidate",
+    "ipa": "/ˈkændɪdət/",
+    "meaning": "Ứng viên",
+    "description": "Người nộp đơn tham gia phỏng vấn xin việc hoặc ứng cử."
+  },
+  {
+    "id": "toeic-600-99",
+    "word": "Improper",
+    "ipa": "/ɪmˈprɑː.pɚ/",
+    "meaning": "Không phù hợp",
+    "description": "Sai quy tắc, thiếu chuẩn mực trong công việc hoặc giao tiếp."
+  },
+  {
+    "id": "toeic-600-100",
+    "word": "Income",
+    "ipa": "/ˈɪn.kʌm/",
+    "meaning": "Thu nhập",
+    "description": "Tổng số tiền kiếm được định kỳ từ công việc hoặc đầu tư."
+  },
+  {
+    "id": "toeic-600-101",
+    "word": "Inconvenience",
+    "ipa": "/ˌɪn.kənˈviːn.jəns/",
+    "meaning": "Sự bất tiện",
+    "description": "Tình trạng gây phiền toái, rắc rối hoặc khó khăn cho người khác."
+  },
+  {
+    "id": "toeic-600-102",
+    "word": "Qualification",
+    "ipa": "/kwɑː.lə.fəˈkeɪ.ʃən/",
+    "meaning": "Năng lực, trình độ",
+    "description": "Bằng cấp hoặc kỹ năng chuyên môn chứng minh sự phù hợp với công việc."
+  },
+  {
+    "id": "toeic-600-103",
+    "word": "Time-consuming",
+    "ipa": "/ˈtaɪmkənsuː.mɪŋ/",
+    "meaning": "Tốn thời gian",
+    "description": "Đặc điểm của một nhiệm vụ đòi hỏi rất nhiều thời gian để hoàn thành."
+  },
+  {
+    "id": "toeic-600-104",
+    "word": "Ability",
+    "ipa": "/əˈbɪləti/",
+    "meaning": "Khả năng",
+    "description": "Năng lực thực hiện hoặc giải quyết tốt một công việc nào đó."
+  },
+  {
+    "id": "toeic-600-105",
+    "word": "Constantly",
+    "ipa": "/ˈkɑːn.stənt.li/",
+    "meaning": "Liên tục",
+    "description": "Xảy ra liên miên, không ngừng nghỉ trong một khoảng thời gian."
+  },
+  {
+    "id": "toeic-600-106",
+    "word": "Confidence",
+    "ipa": "/ˈkɑːnfɪdəns/",
+    "meaning": "Sự tự tin",
+    "description": "Trạng thái tin tưởng mạnh mẽ vào khả năng và quyết định của bản thân."
+  },
+  {
+    "id": "toeic-600-107",
+    "word": "Expert",
+    "ipa": "/ˈekspɜːrt/",
+    "meaning": "Chuyên gia",
+    "description": "Người có kiến thức và kỹ năng xuất sắc trong một lĩnh vực cụ thể."
+  },
+  {
+    "id": "toeic-600-108",
+    "word": "Hesitate",
+    "ipa": "/ˈhezɪteɪt/",
+    "meaning": "Lưỡng lự, do dự",
+    "description": "Sự chần chừ, chưa dám quyết định ngay vì e ngại hoặc lo lắng."
+  },
+  {
+    "id": "toeic-600-109",
+    "word": "Inexperienced",
+    "ipa": "/ˌɪn.ɪkˈspɪr.i.ənst/",
+    "meaning": "Thiếu kinh nghiệm",
+    "description": "Trạng thái chưa có nhiều kỹ năng hoặc cọ xát thực tế trong công việc."
+  },
+  {
+    "id": "toeic-600-110",
+    "word": "Intently",
+    "ipa": "/ɪnˈtent.li/",
+    "meaning": "Chăm chú",
+    "description": "Tập trung cao độ sự chú ý vào một công việc hoặc đối tượng nào đó."
+  },
+  {
+    "id": "toeic-600-111",
+    "word": "Intern",
+    "ipa": "/ɪnˈtɝːn/",
+    "meaning": "Thực tập sinh",
+    "description": "Sinh viên hoặc người mới đang làm việc tại doanh nghiệp để lấy kinh nghiệm."
+  },
+  {
+    "id": "toeic-600-112",
+    "word": "Generate",
+    "ipa": "/ˈdʒenəreɪt/",
+    "meaning": "Tạo ra, sản xuất ra",
+    "description": "Sản sinh hoặc tạo ra (thường dùng cho doanh thu, lợi nhuận, ý tưởng)."
+  },
+  {
+    "id": "toeic-600-113",
+    "word": "Knowledge",
+    "ipa": "/ˈnɑː.lɪdʒ/",
+    "meaning": "Kiến thức",
+    "description": "Sự hiểu biết, thông tin và kỹ năng tích lũy được qua học tập."
+  },
+  {
+    "id": "toeic-600-114",
+    "word": "Labor",
+    "ipa": "/'leibə/",
+    "meaning": "Lao động",
+    "description": "Chỉ công việc tay chân hoặc lực lượng lao động nói chung."
+  },
+  {
+    "id": "toeic-600-115",
+    "word": "Lack",
+    "ipa": "/læk/",
+    "meaning": "Sự thiếu hụt",
+    "description": "Tình trạng không có hoặc không có đủ một thứ gì đó cần thiết."
+  },
+  {
+    "id": "toeic-600-116",
+    "word": "Mentor",
+    "ipa": "/ˈmentɔːr/",
+    "meaning": "Cố vấn",
+    "description": "Người đi trước giàu kinh nghiệm trực tiếp hướng dẫn cho người mới."
+  },
+  {
+    "id": "toeic-600-117",
+    "word": "Reject",
+    "ipa": "/rɪˈdʒekt/",
+    "meaning": "Từ chối",
+    "description": "Không chấp nhận một lời đề nghị, đơn xin việc hoặc một sản phẩm lỗi."
+  },
+  {
+    "id": "toeic-600-118",
+    "word": "Update",
+    "ipa": "/ˌʌpˈdeɪt/",
+    "meaning": "Cập nhật",
+    "description": "Cung cấp thông tin mới nhất hoặc nâng cấp lên phiên bản hiện đại hơn."
+  },
+  {
+    "id": "toeic-600-119",
+    "word": "Conduct",
+    "ipa": "/kənˈdʌkt/",
+    "meaning": "Tiến hành",
+    "description": "Tổ chức hoặc thực hiện một hoạt động (như cuộc khảo sát, cuộc họp)."
+  },
+  {
+    "id": "toeic-600-120",
+    "word": "Delicate",
+    "ipa": "/ˈdel.ə.kət/",
+    "meaning": "Tế nhị, khéo léo",
+    "description": "Đòi hỏi sự tinh tế, cẩn trọng trong giao tiếp hoặc xử lý vấn đề."
+  },
+  {
+    "id": "toeic-600-121",
+    "word": "Eligible",
+    "ipa": "/ˈelɪdʒəbl/",
+    "meaning": "Đủ tiêu chuẩn",
+    "description": "Đáp ứng đầy đủ các điều kiện để nhận được quyền lợi hoặc tham gia."
+  },
+  {
+    "id": "toeic-600-122",
+    "word": "Flexibly",
+    "ipa": "/ˈflek.sə.bli/",
+    "meaning": "Một cách linh hoạt",
+    "description": "Có khả năng tùy biến, thay đổi dễ dàng để phù hợp với hoàn cảnh."
+  },
+  {
+    "id": "toeic-600-123",
+    "word": "Motivate",
+    "ipa": "/´mouti¸veit/",
+    "meaning": "Thúc đẩy",
+    "description": "Truyền động lực, khuyến khích ai đó làm việc năng suất và tốt hơn."
+  },
+  {
+    "id": "toeic-600-124",
+    "word": "Obligation",
+    "ipa": "/,ɔbli'geiʃn/",
+    "meaning": "Nghĩa vụ",
+    "description": "Trách nhiệm hoặc bổn phận mang tính bắt buộc phải thực hiện."
+  },
+  {
+    "id": "toeic-600-125",
+    "word": "Obtain",
+    "ipa": "/əb'teɪn/",
+    "meaning": "Đạt được",
+    "description": "Giành được, có được thứ gì đó sau một quá trình cố gắng, nỗ lực."
+  },
+  {
+    "id": "toeic-600-126",
+    "word": "Obviously",
+    "ipa": "/'ɔbviəsli/",
+    "meaning": "Rõ ràng",
+    "description": "Một cách hiển nhiên, ai cũng có thể dễ dàng nhìn thấy và nhận ra."
+  },
+  {
+    "id": "toeic-600-127",
+    "word": "Opportunity",
+    "ipa": "/ɒpərˈtyunɪti/",
+    "meaning": "Cơ hội",
+    "description": "Dịp may, hoàn cảnh thuận lợi để thực hiện hoặc đạt được mục tiêu."
+  },
+  {
+    "id": "toeic-600-128",
+    "word": "Overtime",
+    "ipa": "/´ouvətaim/",
+    "meaning": "Làm thêm giờ",
+    "description": "Khoảng thời gian làm việc vượt quá số giờ hành chính quy định."
+  },
+  {
+    "id": "toeic-600-129",
+    "word": "Permission",
+    "ipa": "/pə'miʃn/",
+    "meaning": "Sự cho phép",
+    "description": "Sự đồng ý chính thức từ cấp trên hoặc người có thẩm quyền để làm một việc."
+  },
+  {
+    "id": "toeic-600-130",
+    "word": "Behavior",
+    "ipa": "/bɪˈheɪ.vjər/",
+    "meaning": "Thái độ, hành vi",
+    "description": "Cách thức cư xử, hoạt động của một cá nhân đối với người xung quanh."
+  },
+  {
+    "id": "toeic-600-131",
+    "word": "Bargain",
+    "ipa": "/ˈbɑːrɡən/",
+    "meaning": "Món hời, mặc cả",
+    "description": "Thỏa thuận mua bán với mức giá rẻ và có lợi hơn mong đợi."
+  },
+  {
+    "id": "toeic-600-132",
+    "word": "Comfort",
+    "ipa": "/ˈkʌmfərt/",
+    "meaning": "Sự thoải mái",
+    "description": "Trạng thái dễ chịu, thư giãn về mặt thể chất hoặc tinh thần."
+  },
+  {
+    "id": "toeic-600-133",
+    "word": "Mandatory",
+    "ipa": "/ˈmændətɔːri/",
+    "meaning": "Bắt buộc",
+    "description": "Phải tuân theo quy định của pháp luật hoặc công ty, không có ngoại lệ."
+  },
+  {
+    "id": "toeic-600-134",
+    "word": "Strictly",
+    "ipa": "/ˈstrɪkt.li/",
+    "meaning": "Nghiêm ngặt",
+    "description": "Một cách chặt chẽ, tuân thủ tuyệt đối quy tắc mà không được sai phạm."
+  },
+  {
+    "id": "toeic-600-135",
+    "word": "Accurately",
+    "ipa": "/ˈæk.jɚ.ət.li/",
+    "meaning": "Chính xác",
+    "description": "Thực hiện một cách đúng đắn, không có sai sót hay sự nhầm lẫn."
+  },
+  {
+    "id": "toeic-600-136",
+    "word": "Cautious",
+    "ipa": "/ˈkɑː.ʃəs/",
+    "meaning": "Thận trọng",
+    "description": "Thái độ cẩn thận để phòng tránh rủi ro hoặc nguy hiểm có thể xảy ra."
+  },
+  {
+    "id": "toeic-600-137",
+    "word": "Fulfill",
+    "ipa": "/fʊlˈfɪl/",
+    "meaning": "Hoàn thành",
+    "description": "Thực hiện trọn vẹn một yêu cầu, một đơn hàng hoặc một nghĩa vụ."
+  },
+  {
+    "id": "toeic-600-138",
+    "word": "Integral",
+    "ipa": "/ˈɪn.t̬ə.ɡrəl/",
+    "meaning": "Không thể thiếu",
+    "description": "Một phần thiết yếu, cực kỳ quan trọng để tạo nên một tổng thể hoàn chỉnh."
+  },
+  {
+    "id": "toeic-600-139",
+    "word": "Immediate",
+    "ipa": "/ɪˈmiː.di.ət/",
+    "meaning": "Ngay lập tức",
+    "description": "Sự việc xảy ra ngay tức thì, trực tiếp và không có sự chậm trễ."
+  },
+  {
+    "id": "toeic-600-140",
+    "word": "Invoice",
+    "ipa": "/ˈɪn.vɔɪs/",
+    "meaning": "Hóa đơn",
+    "description": "Chứng từ yêu cầu thanh toán chi tiết cho hàng hóa hoặc dịch vụ đã cung cấp."
+  },
+  {
+    "id": "toeic-600-141",
+    "word": "Customer",
+    "ipa": "/ˈkʌstəmə/",
+    "meaning": "Khách mua hàng",
+    "description": "Người tiêu dùng hoặc tổ chức mua hàng hóa, dịch vụ."
+  },
+  {
+    "id": "toeic-600-142",
+    "word": "Compile",
+    "ipa": "/kəmˈpaɪl/",
+    "meaning": "Tổng hợp, biên soạn",
+    "description": "Hành động thu thập và tập hợp thông tin từ nhiều nguồn lại với nhau."
+  },
+  {
+    "id": "toeic-600-143",
+    "word": "Charge",
+    "ipa": "/ʧɑːʤ/",
+    "meaning": "Tính phí",
+    "description": "Phí tổn hoặc hành động yêu cầu trả tiền cho một dịch vụ."
+  },
+  {
+    "id": "toeic-600-144",
+    "word": "Dispute",
+    "ipa": "/dɪˈspjuːt/",
+    "meaning": "Tranh cãi",
+    "description": "Tranh luận hoặc nghi ngờ sự chính xác của một sự việc, vấn đề."
+  },
+  {
+    "id": "toeic-600-145",
+    "word": "Discount",
+    "ipa": "/ˈdɪskaʊnt/",
+    "meaning": "Giảm giá",
+    "description": "Sự hạ giá bán so với mức giá niêm yết ban đầu của sản phẩm."
+  },
+  {
+    "id": "toeic-600-146",
+    "word": "Estimate",
+    "ipa": "/ˈɛstɪmɪt/",
+    "meaning": "Ước lượng",
+    "description": "Sự đánh giá hoặc dự tính trước một khoản chi phí, số lượng."
+  },
+  {
+    "id": "toeic-600-147",
+    "word": "Efficient",
+    "ipa": "/ɪˈfɪʃənt/",
+    "meaning": "Hiệu quả",
+    "description": "Làm việc năng suất, đạt kết quả tốt mà không lãng phí thời gian."
+  },
+  {
+    "id": "toeic-600-148",
+    "word": "Impose",
+    "ipa": "/ɪmˈpəʊz/",
+    "meaning": "Bắt buộc, áp đặt",
+    "description": "Bắt buộc ai đó phải chịu một khoản thuế, hình phạt hay quy định."
+  },
+  {
+    "id": "toeic-600-149",
+    "word": "Mistake",
+    "ipa": "/mɪsˈteɪk/",
+    "meaning": "Nhầm lẫn",
+    "description": "Lỗi sai phát sinh trong quá trình tính toán, ghi chép hoặc làm việc."
+  },
+  {
+    "id": "toeic-600-150",
+    "word": "Promptly",
+    "ipa": "/ˈprɒmptli/",
+    "meaning": "Đúng lúc",
+    "description": "Hành động diễn ra mau lẹ, đáp ứng ngay lập tức không chậm trễ."
+  },
+  {
+    "id": "toeic-600-151",
+    "word": "Rectify",
+    "ipa": "/ˈrɛktɪfaɪ/",
+    "meaning": "Sửa chữa",
+    "description": "Thực hiện việc sửa lại một lỗi lầm hay một tình huống cho đúng."
+  },
+  {
+    "id": "toeic-600-152",
+    "word": "Terms",
+    "ipa": "/tɜːmz/",
+    "meaning": "Điều kiện",
+    "description": "Các quy định hoặc điều kiện được ghi rõ ràng trong hợp đồng, hóa đơn."
+  },
+  {
+    "id": "toeic-600-153",
+    "word": "Adjustment",
+    "ipa": "/əˈʤʌstmənt/",
+    "meaning": "Điều chỉnh",
+    "description": "Việc thay đổi hoặc sửa lại thông tin, số lượng hàng hóa cho chính xác."
+  },
+  {
+    "id": "toeic-600-154",
+    "word": "Automatically",
+    "ipa": "/ˌɔːtəˈmætɪkəli/",
+    "meaning": "Tự động",
+    "description": "Máy móc tự hoạt động, vận hành mà không cần sự can thiệp thủ công."
+  },
+  {
+    "id": "toeic-600-155",
+    "word": "Crucial",
+    "ipa": "/ˈkruːʃəl/",
+    "meaning": "Then chốt",
+    "description": "Đặc điểm cực kỳ quan trọng, có tính quyết định đến một vấn đề."
+  },
+  {
+    "id": "toeic-600-156",
+    "word": "Discrepancy",
+    "ipa": "/dɪsˈkrɛpənsi/",
+    "meaning": "Khác biệt",
+    "description": "Sự không nhất quán hoặc sai lệch giữa các số liệu, thông tin kiểm kê."
+  },
+  {
+    "id": "toeic-600-157",
+    "word": "Disturb",
+    "ipa": "/dɪsˈtɜːb/",
+    "meaning": "Làm phiền",
+    "description": "Gây trở ngại hoặc làm gián đoạn đến tiến độ công việc của người khác."
+  },
+  {
+    "id": "toeic-600-158",
+    "word": "Liability",
+    "ipa": "/ˌlaɪəˈbɪlɪti/",
+    "meaning": "Nghĩa vụ, trách nhiệm",
+    "description": "Nghĩa vụ hoặc trách nhiệm phải trả nợ, bồi thường theo luật định."
+  },
+  {
+    "id": "toeic-600-159",
+    "word": "Reflection",
+    "ipa": "/rɪˈflɛkʃən/",
+    "meaning": "Ảnh phản chiếu",
+    "description": "Sự phản ánh tình trạng hiện tại của một vấn đề, sổ sách."
+  },
+  {
+    "id": "toeic-600-160",
+    "word": "Run",
+    "ipa": "/rʌn/",
+    "meaning": "Vận hành, thực hiện",
+    "description": "Quản lý, duy trì hoạt động của một hệ thống, dây chuyền hoặc doanh nghiệp."
+  },
+  {
+    "id": "toeic-600-161",
+    "word": "Scan",
+    "ipa": "/skæn/",
+    "meaning": "Xem lướt qua",
+    "description": "Dùng máy quét mã vạch hoặc xem nhanh qua một tài liệu để kiểm tra."
+  },
+  {
+    "id": "toeic-600-162",
+    "word": "Subtract",
+    "ipa": "/səbˈtrækt/",
+    "meaning": "Trừ đi",
+    "description": "Phép tính trừ hoặc việc loại bỏ một phần số lượng khỏi tổng thể."
+  },
+  {
+    "id": "toeic-600-163",
+    "word": "Tedious",
+    "ipa": "/ˈtiːdiəs/",
+    "meaning": "Tẻ nhạt, chán",
+    "description": "Công việc lặp đi lặp lại thường xuyên gây cảm giác buồn chán, mệt mỏi."
+  },
+  {
+    "id": "toeic-600-164",
+    "word": "Verify",
+    "ipa": "/ˈvɛrɪfaɪ/",
+    "meaning": "Xác thực",
+    "description": "Kiểm tra và xác nhận tính chính xác, sự thật của một thông tin hoặc số liệu."
+  },
+  {
+    "id": "toeic-600-165",
+    "word": "Accept",
+    "ipa": "/əkˈsɛpt/",
+    "meaning": "Chấp nhận",
+    "description": "Đồng ý nhận hoặc phê duyệt một giao dịch, yêu cầu thanh toán."
+  },
+  {
+    "id": "toeic-600-166",
+    "word": "Balance",
+    "ipa": "/ˈbæləns/",
+    "meaning": "Số dư",
+    "description": "Số tiền còn lại trong tài khoản ngân hàng sau khi thực hiện các giao dịch."
+  },
+  {
+    "id": "toeic-600-167",
+    "word": "Borrow",
+    "ipa": "/ˈbɒrəʊ/",
+    "meaning": "Vay",
+    "description": "Lấy tiền hoặc tài sản của người/tổ chức khác và cam kết sẽ trả lại."
+  },
+  {
+    "id": "toeic-600-168",
+    "word": "Cautiously",
+    "ipa": "/ˈkɔːʃəsli/",
+    "meaning": "Thận trọng",
+    "description": "Hành động một cách vô cùng cẩn thận để tránh các rủi ro có thể xảy ra."
+  },
+  {
+    "id": "toeic-600-169",
+    "word": "Deduct",
+    "ipa": "/dɪˈdʌkt/",
+    "meaning": "Khấu trừ",
+    "description": "Trừ đi một khoản tiền (phí, thuế) ra khỏi tổng số tiền gốc."
+  },
+  {
+    "id": "toeic-600-170",
+    "word": "Dividend",
+    "ipa": "/ˈdɪvɪdɛnd/",
+    "meaning": "Cổ tức",
+    "description": "Số tiền lãi được chia cho các cổ đông từ lợi nhuận kinh doanh của công ty."
+  },
+  {
+    "id": "toeic-600-171",
+    "word": "Down payment",
+    "ipa": "/daʊn ˈpeɪmənt/",
+    "meaning": "Tiền đặt cọc",
+    "description": "Khoản tiền trả trước cho người bán khi mua một tài sản có giá trị lớn."
+  },
+  {
+    "id": "toeic-600-172",
+    "word": "Mortgage",
+    "ipa": "/ˈmɔːgɪdʒ/",
+    "meaning": "Thế chấp",
+    "description": "Việc dùng tài sản (nhà, đất) làm vật đảm bảo cho ngân hàng để vay tiền."
+  },
+  {
+    "id": "toeic-600-173",
+    "word": "Restricted",
+    "ipa": "/rɪˈstrɪktɪd/",
+    "meaning": "Hạn chế",
+    "description": "Bị giới hạn quyền truy cập hoặc giới hạn về số lượng, phạm vi sử dụng."
+  },
+  {
+    "id": "toeic-600-174",
+    "word": "Signature",
+    "ipa": "/ˈsɪɡnətʃə/",
+    "meaning": "Chữ ký",
+    "description": "Dấu hiệu viết tay của một người dùng để xác nhận tính pháp lý trên giấy tờ."
+  },
+  {
+    "id": "toeic-600-175",
+    "word": "Take out",
+    "ipa": "/teɪk aʊt/",
+    "meaning": "Đưa ra, lấy ra",
+    "description": "Hành động rút một khoản tiền từ tài khoản ngân hàng để sử dụng."
+  },
+  {
+    "id": "toeic-600-176",
+    "word": "Transaction",
+    "ipa": "/trænˈzækʃən/",
+    "meaning": "Giao dịch",
+    "description": "Quá trình chuyển giao tiền bạc, tài sản hoặc thanh toán giữa các bên."
+  },
+  {
+    "id": "toeic-600-177",
+    "word": "Accounting",
+    "ipa": "/əˈkaʊntɪŋ/",
+    "meaning": "Kế toán",
+    "description": "Hoạt động ghi chép, kiểm tra và lập báo cáo tài chính của doanh nghiệp."
+  },
+  {
+    "id": "toeic-600-178",
+    "word": "Accumulate",
+    "ipa": "/əˈkjuːmjʊleɪt/",
+    "meaning": "Tích trữ",
+    "description": "Quá trình thu thập, gom góp tiền bạc hoặc tài sản tích tụ theo thời gian."
+  },
+  {
+    "id": "toeic-600-179",
+    "word": "Asset",
+    "ipa": "/ˈæsɛt/",
+    "meaning": "Tài sản",
+    "description": "Những vật, của cải có giá trị thuộc sở hữu hợp pháp của cá nhân/doanh nghiệp."
+  },
+  {
+    "id": "toeic-600-180",
+    "word": "Audit",
+    "ipa": "/ˈɔːdɪt/",
+    "meaning": "Kiểm toán",
+    "description": "Việc đánh giá, kiểm tra tính xác thực và độc lập của sổ sách kế toán."
+  },
+  {
+    "id": "toeic-600-181",
+    "word": "Budget",
+    "ipa": "/ˈbʌdʒɪt/",
+    "meaning": "Ngân sách",
+    "description": "Kế hoạch dự kiến tổng các khoản thu và chi trong một khoảng thời gian nhất định."
+  },
+  {
+    "id": "toeic-600-182",
+    "word": "Client",
+    "ipa": "/ˈklaɪənt/",
+    "meaning": "Khách hàng",
+    "description": "Cá nhân hoặc tổ chức sử dụng dịch vụ chuyên nghiệp của một công ty, chuyên gia."
+  },
+  {
+    "id": "toeic-600-183",
+    "word": "Debt",
+    "ipa": "/dɛt/",
+    "meaning": "Món nợ",
+    "description": "Khoản tiền mà một cá nhân hoặc tổ chức đã vay mượn và có nghĩa vụ phải trả."
+  },
+  {
+    "id": "toeic-600-184",
+    "word": "Outstanding",
+    "ipa": "/aʊtˈstændɪŋ/",
+    "meaning": "Nổi bật",
+    "description": "Dùng trong kế toán để chỉ khoản nợ hoặc hóa đơn chưa thanh toán, còn tồn đọng."
+  },
+  {
+    "id": "toeic-600-185",
+    "word": "Profitably",
+    "ipa": "/ˈprɒfɪtəbli/",
+    "meaning": "Sinh lời",
+    "description": "Tình trạng kinh doanh mang lại lợi nhuận tài chính tốt cho nhà đầu tư."
+  },
+  {
+    "id": "toeic-600-186",
+    "word": "Reconcile",
+    "ipa": "/ˈrɛkənsaɪl/",
+    "meaning": "Hòa giải",
+    "description": "Hành động đối chiếu và so sánh các số liệu kế toán để đảm bảo sự chính xác."
+  },
+  {
+    "id": "toeic-600-187",
+    "word": "Turnover",
+    "ipa": "/ˈtɜːrnˌoʊvər/",
+    "meaning": "Doanh số",
+    "description": "Tổng số tiền thu được từ hoạt động bán hàng hóa/dịch vụ trong một kỳ."
+  },
+  {
+    "id": "toeic-600-188",
+    "word": "Attitude",
+    "ipa": "/ˈætɪˌtud/",
+    "meaning": "Thái độ",
+    "description": "Quan điểm, cách nhìn nhận và phản ứng của người tham gia trước một khoản đầu tư."
+  },
+  {
+    "id": "toeic-600-189",
+    "word": "Aggressively",
+    "ipa": "/əˈɡrɛsɪvli/",
+    "meaning": "Tích cực",
+    "description": "Phong cách đầu tư xông xáo, chủ động nắm bắt cơ hội để đạt lợi nhuận cao."
+  },
+  {
+    "id": "toeic-600-190",
+    "word": "Portfolio",
+    "ipa": "/pɔːrtˈfoʊlioʊ/",
+    "meaning": "Danh mục đầu tư",
+    "description": "Tập hợp toàn bộ các tài sản, cổ phiếu, trái phiếu mà một nhà đầu tư sở hữu."
+  },
+  {
+    "id": "toeic-600-191",
+    "word": "Affordable",
+    "ipa": "/əˈfɔːdəbl/",
+    "meaning": "Có đủ khả năng chi trả",
+    "description": "Mức giá hợp lý, nằm trong khả năng thanh toán của khách hàng."
+  },
+  {
+    "id": "toeic-600-192",
+    "word": "Capacity",
+    "ipa": "/kəˈpæsɪti/",
+    "meaning": "Sức chứa, khả năng",
+    "description": "Khả năng chứa đựng tối đa hoặc năng lực làm việc của thiết bị."
+  },
+  {
+    "id": "toeic-600-193",
+    "word": "Durable",
+    "ipa": "/ˈdjʊərəbl/",
+    "meaning": "Bền, lâu bền",
+    "description": "Có khả năng chịu đựng sự hao mòn, sử dụng được trong thời gian dài."
+  },
+  {
+    "id": "toeic-600-194",
+    "word": "Initiative",
+    "ipa": "/ɪˈnɪʃɪətɪv/",
+    "meaning": "Khởi xướng, sáng kiến",
+    "description": "Một ý tưởng mới hoặc bước đi đầu tiên nhằm giải quyết vấn đề."
+  },
+  {
+    "id": "toeic-600-195",
+    "word": "Provider",
+    "ipa": "/prəˈvaɪdə/",
+    "meaning": "Nhà cung cấp",
+    "description": "Tổ chức hoặc cá nhân chuyên cung cấp hàng hóa, dịch vụ cho đối tác."
+  },
+  {
+    "id": "toeic-600-196",
+    "word": "Reduction",
+    "ipa": "/rɪˈdʌkʃən/",
+    "meaning": "Sự giảm, hạ",
+    "description": "Hành động làm giảm bớt số lượng, kích thước hoặc mức giá."
+  },
+  {
+    "id": "toeic-600-197",
+    "word": "Stock",
+    "ipa": "/stɒk/",
+    "meaning": "Kho, hàng dự trữ",
+    "description": "Lượng hàng hóa được lưu trữ sẵn trong kho để chuẩn bị bán."
+  },
+  {
+    "id": "toeic-600-198",
+    "word": "Casually",
+    "ipa": "/ˈkæʒjʊəli/",
+    "meaning": "Bình thường, tự nhiên",
+    "description": "Một cách không trang trọng, ăn mặc hoặc hành xử thoải mái."
+  },
+  {
+    "id": "toeic-600-199",
+    "word": "Outdated",
+    "ipa": "/aʊtˈdeɪtɪd/",
+    "meaning": "Lạc hậu, lỗi thời",
+    "description": "Các quy trình hoặc thiết bị đã quá cũ, không còn phù hợp hiện tại."
+  },
+  {
+    "id": "toeic-600-200",
+    "word": "Reinforce",
+    "ipa": "/ˌriːɪnˈfɔːs/",
+    "meaning": "Tăng cường, củng cố",
+    "description": "Làm cho một quy tắc, hệ thống hoặc cấu trúc trở nên vững chắc hơn."
+  },
+  {
+    "id": "toeic-600-201",
+    "word": "Disk",
+    "ipa": "/dɪsk/",
+    "meaning": "Đĩa (vi tính)",
+    "description": "Một thiết bị hoặc định dạng dùng để lưu trữ dữ liệu điện tử."
+  },
+  {
+    "id": "toeic-600-202",
+    "word": "Facilitate",
+    "ipa": "/fəˈsɪlɪteɪt/",
+    "meaning": "Làm cho thuận tiện",
+    "description": "Hỗ trợ hoặc tạo điều kiện để một quá trình diễn ra dễ dàng hơn."
+  },
+  {
+    "id": "toeic-600-203",
+    "word": "Popularity",
+    "ipa": "/ˌpɒpjʊˈlærɪti/",
+    "meaning": "Tính phổ biến",
+    "description": "Trạng thái được đông đảo mọi người biết đến, ưa chuộng và sử dụng."
+  },
+  {
+    "id": "toeic-600-204",
+    "word": "Revolution",
+    "ipa": "/ˌrɛvəˈluːʃən/",
+    "meaning": "Cuộc cách mạng, đột phá",
+    "description": "Sự thay đổi mang tính bước ngoặt, đặc biệt trong lĩnh vực công nghệ."
+  },
+  {
+    "id": "toeic-600-205",
+    "word": "Software",
+    "ipa": "/ˈsɒftweə/",
+    "meaning": "Phần mềm",
+    "description": "Tập hợp các chương trình và dữ liệu vận hành trên hệ thống máy tính."
+  },
+  {
+    "id": "toeic-600-206",
+    "word": "Envelope",
+    "ipa": "/ˈɛnvəˌloʊp/",
+    "meaning": "Phong bì",
+    "description": "Lớp vỏ bọc bằng giấy dùng để đựng và bảo vệ thư từ, tài liệu."
+  },
+  {
+    "id": "toeic-600-207",
+    "word": "Stamp",
+    "ipa": "/stæmp/",
+    "meaning": "Tem",
+    "description": "Dấu hiệu hoặc mảnh giấy nhỏ dán lên thư để chứng nhận đã trả phí bưu điện."
+  },
+  {
+    "id": "toeic-600-208",
+    "word": "Postage",
+    "ipa": "/ˈpoʊstɪdʒ/",
+    "meaning": "Phí gửi thư",
+    "description": "Khoản cước phí phải trả cho dịch vụ vận chuyển thư từ, bưu kiện."
+  },
+  {
+    "id": "toeic-600-209",
+    "word": "Recipient",
+    "ipa": "/rɪˈsɪpiənt/",
+    "meaning": "Người nhận",
+    "description": "Cá nhân hoặc tổ chức là đích đến của một món hàng hay bức thư."
+  },
+  {
+    "id": "toeic-600-210",
+    "word": "Attachment",
+    "ipa": "/əˈtætʃmənt/",
+    "meaning": "Tệp đính kèm",
+    "description": "Một tệp tài liệu, hình ảnh được đính kèm và gửi cùng với thư điện tử."
+  },
+  {
+    "id": "toeic-600-211",
+    "word": "Adjacent",
+    "ipa": "/əˈdʒeɪsənt/",
+    "meaning": "Liền kề",
+    "description": "Vị trí nằm ngay sát bên cạnh hoặc giáp ranh với một khu vực khác."
+  },
+  {
+    "id": "toeic-600-212",
+    "word": "Collaboration",
+    "ipa": "/kəˌlæbəˈreɪʃən/",
+    "meaning": "Sự hợp tác",
+    "description": "Hành động làm việc chung giữa các cá nhân/phòng ban để đạt mục tiêu."
+  },
+  {
+    "id": "toeic-600-213",
+    "word": "Disruptive",
+    "ipa": "/dɪsˈrʌptɪv/",
+    "meaning": "Gây rối",
+    "description": "Hành vi hoặc yếu tố gây cản trở, gián đoạn sự tập trung trong văn phòng."
+  },
+  {
+    "id": "toeic-600-214",
+    "word": "Concentrate",
+    "ipa": "/ˈkɒnsəntreɪt/",
+    "meaning": "Tập trung",
+    "description": "Dồn toàn bộ sự chú ý và sức lực vào một công việc hoặc nhiệm vụ cụ thể."
+  },
+  {
+    "id": "toeic-600-215",
+    "word": "Agenda",
+    "ipa": "/əˈdʒendə/",
+    "meaning": "Chương trình hội nghị",
+    "description": "Danh sách các nội dung, chủ đề dự kiến sẽ được thảo luận trong cuộc họp."
+  },
+  {
+    "id": "toeic-600-216",
+    "word": "Conclude",
+    "ipa": "/kənˈkluːd/",
+    "meaning": "Kết thúc, kết luận",
+    "description": "Việc chốt lại vấn đề và đưa ra quyết định cuối cùng sau khi họp bàn."
+  },
+  {
+    "id": "toeic-600-217",
+    "word": "Probability",
+    "ipa": "/ˌprɒbəˈbɪlɪti/",
+    "meaning": "Khả năng xảy ra",
+    "description": "Tỉ lệ hoặc mức độ chắc chắn mà một sự kiện nào đó sẽ diễn ra."
+  },
+  {
+    "id": "toeic-600-218",
+    "word": "Progressive",
+    "ipa": "/prəˈgrɛsɪv/",
+    "meaning": "Tiến tới, lũy tiến",
+    "description": "Sự phát triển, tiến bộ không ngừng theo hướng hiện đại và tích cực."
+  },
+  {
+    "id": "toeic-600-219",
+    "word": "Priority",
+    "ipa": "/praɪˈɔrət̮i/",
+    "meaning": "Sự ưu tiên",
+    "description": "Mục tiêu quan trọng nhất cần được tập trung xử lý hoặc giải quyết trước."
+  },
+  {
+    "id": "toeic-600-220",
+    "word": "Rearrange",
+    "ipa": "/ˌriːəˈreɪndʒ/",
+    "meaning": "Sắp xếp lại",
+    "description": "Thay đổi thứ tự, lịch trình hoặc vị trí bố trí khác với ban đầu."
+  },
+  {
+    "id": "toeic-600-221",
+    "word": "Ascertain",
+    "ipa": "/ˌæsəˈteɪn/",
+    "meaning": "Xác minh",
+    "description": "Tìm hiểu, kiểm tra kỹ lưỡng để biết chắc chắn về một sự thật."
+  },
+  {
+    "id": "toeic-600-222",
+    "word": "Logical",
+    "ipa": "/ˈlɒdʒɪkəl/",
+    "meaning": "Hợp lý",
+    "description": "Có tính logic, phù hợp với lý lẽ và dễ dàng được chấp nhận."
+  },
+  {
+    "id": "toeic-600-223",
+    "word": "Supervisor",
+    "ipa": "/ˈsuːpərˌvaɪzər/",
+    "meaning": "Người giám sát",
+    "description": "Quản lý cấp trung chịu trách nhiệm đôn đốc, theo dõi nhân viên cấp dưới."
+  },
+  {
+    "id": "toeic-600-224",
+    "word": "Assume",
+    "ipa": "/əˈsjuːm/",
+    "meaning": "Cho rằng, đảm đương",
+    "description": "Nhận lấy một trách nhiệm hoặc giả định một sự việc là đúng."
+  },
+  {
+    "id": "toeic-600-225",
+    "word": "Systematic",
+    "ipa": "/ˌsɪstɪˈmætɪk/",
+    "meaning": "Có hệ thống",
+    "description": "Được tổ chức chặt chẽ, hoạt động theo một quy trình khoa học, bài bản."
+  },
+  {
+    "id": "toeic-600-226",
+    "word": "Brand",
+    "ipa": "/brænd/",
+    "meaning": "Nhãn hiệu, thương hiệu",
+    "description": "Tên gọi, thiết kế hoặc biểu tượng đặc trưng đại diện cho một sản phẩm."
+  },
+  {
+    "id": "toeic-600-227",
+    "word": "Enhance",
+    "ipa": "/ɪnˈhæns/",
+    "meaning": "Nâng cao",
+    "description": "Tăng cường chất lượng, giá trị hoặc sức hấp dẫn của một sản phẩm."
+  },
+  {
+    "id": "toeic-600-228",
+    "word": "Perceive",
+    "ipa": "/pəˈsiːv/",
+    "meaning": "Nhận thức",
+    "description": "Cách mà khách hàng hoặc người dùng nhìn nhận, đánh giá về dịch vụ."
+  },
+  {
+    "id": "toeic-600-229",
+    "word": "Conform",
+    "ipa": "/kənˈfɔːm/",
+    "meaning": "Tuân thủ",
+    "description": "Hành động làm đúng theo các tiêu chuẩn, quy chuẩn chất lượng đã đề ra."
+  },
+  {
+    "id": "toeic-600-230",
+    "word": "Inspect",
+    "ipa": "/ɪnˈspɛkt/",
+    "meaning": "Kiểm tra, quan sát",
+    "description": "Xem xét một cách cẩn thận, chi tiết để phát hiện ra lỗi hoặc khuyết tật."
+  },
+  {
+    "id": "toeic-600-231",
+    "word": "Appeal",
+    "ipa": "/əˈpiːl/",
+    "meaning": "Sức lôi cuốn",
+    "description": "Khả năng thu hút sự chú ý và làm người khác thích thú của một nhà hàng."
+  },
+  {
+    "id": "toeic-600-232",
+    "word": "Compromise",
+    "ipa": "/ˈkɒmprəmaɪz/",
+    "meaning": "Sự thỏa hiệp",
+    "description": "Chấp nhận nhượng bộ một phần để đi đến sự thống nhất chung."
+  },
+  {
+    "id": "toeic-600-233",
+    "word": "Daringly",
+    "ipa": "/ˈdeərɪŋli/",
+    "meaning": "Táo bạo, dũng cảm",
+    "description": "Sẵn sàng thử nghiệm những trải nghiệm ẩm thực hoặc phong cách mới lạ."
+  },
+  {
+    "id": "toeic-600-234",
+    "word": "Familiar",
+    "ipa": "/fəˈmɪliə/",
+    "meaning": "Quen thuộc",
+    "description": "Cảm giác gần gũi do đã từng tiếp xúc, biết đến hoặc nếm thử nhiều lần."
+  },
+  {
+    "id": "toeic-600-235",
+    "word": "Subjective",
+    "ipa": "/səbˈʤɛktɪv/",
+    "meaning": "Chủ quan",
+    "description": "Phụ thuộc vào quan điểm, sở thích và cảm nhận riêng của từng cá nhân."
+  },
+  {
+    "id": "toeic-600-236",
+    "word": "Suggestion",
+    "ipa": "/səˈʤɛsʧən/",
+    "meaning": "Lời đề nghị, gợi ý",
+    "description": "Đưa ra một ý tưởng hoặc lựa chọn để người khác cân nhắc, xem xét."
+  },
+  {
+    "id": "toeic-600-237",
+    "word": "Excite",
+    "ipa": "/ɪkˈsaɪt/",
+    "meaning": "Kích thích",
+    "description": "Khơi dậy sự hào hứng, tạo ra cảm giác thèm ăn và mong đợi thưởng thức."
+  },
+  {
+    "id": "toeic-600-238",
+    "word": "Flavor",
+    "ipa": "/ˈfleɪvə/",
+    "meaning": "Mùi vị",
+    "description": "Đặc trưng tổng hợp giữa hương thơm và vị ngon của một món ăn/thức uống."
+  },
+  {
+    "id": "toeic-600-239",
+    "word": "Ingredient",
+    "ipa": "/ɪnˈgriːdiənt/",
+    "meaning": "Thành phần",
+    "description": "Các loại thực phẩm, gia vị cơ bản cần thiết để cấu thành nên một món ăn."
+  },
+  {
+    "id": "toeic-600-240",
+    "word": "Patron",
+    "ipa": "/ˈpeɪtrən/",
+    "meaning": "Khách hàng quen",
+    "description": "Khách hàng trung thành, thường xuyên quay lại ủng hộ một nhà hàng, quán ăn."
+  }
+]

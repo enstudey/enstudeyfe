@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { useActiveAdRefresh } from "@/hooks/useActiveAdRefresh";
 
 const MOCK_ADS = [
   {
@@ -30,16 +31,24 @@ const MOCK_ADS = [
   }
 ];
 
-export default function AdBanner() {
+export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?: string }) {
   const [adIndex, setAdIndex] = useState(0);
+  const { refreshTrigger } = useActiveAdRefresh(adSlotId, 45000);
 
   useEffect(() => {
-    // Pick a random mock ad on mount
-    const timer = setTimeout(() => {
+    // Ngẫu nhiên hóa lần đầu tiên trên client-side để tránh Hydration Mismatch
+    setTimeout(() => {
       setAdIndex(Math.floor(Math.random() * MOCK_ADS.length));
     }, 0);
-    return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (refreshTrigger > 0) {
+      setTimeout(() => {
+        setAdIndex(Math.floor(Math.random() * MOCK_ADS.length));
+      }, 0);
+    }
+  }, [refreshTrigger]);
 
   const ad = MOCK_ADS[adIndex];
 

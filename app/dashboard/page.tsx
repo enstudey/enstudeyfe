@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { cookies } from "next/headers";
-import { DonateCardDetailed } from "@/components/donate";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -264,7 +263,6 @@ export default async function DashboardPage() {
             </span>
           </Link>
 
-          <DonateCardDetailed />
         </div>
       </main>
 

@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { DonateModal, useDonateStatus } from "@/components/donate";
 
 interface Major {
   code: string;
@@ -46,19 +45,20 @@ export default function TranscriptResultDashboard({
   setSelectedGroup
 }: Props) {
   const [activeTab, setActiveTab] = useState<"all" | "A" | "B" | "C" | "D" | "X_TH">("all");
-  const [isDonateOpen, setIsDonateOpen] = useState(false);
-  const { isAvailable } = useDonateStatus();
-
   const [recommendations, setRecommendations] = useState<RecommendedMajor[]>([]);
   const [isLoadingRecs, setIsLoadingRecs] = useState(false);
 
   useEffect(() => {
     if (!highestGroup || highestGroup.score < 18.0) {
-      setRecommendations([]);
+      setTimeout(() => {
+        setRecommendations((prev) => (prev.length > 0 ? [] : prev));
+      }, 0);
       return;
     }
 
-    setIsLoadingRecs(true);
+    setTimeout(() => {
+      setIsLoadingRecs(true);
+    }, 0);
     fetch("/data/university_data.json")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to load university database");
@@ -294,26 +294,22 @@ export default function TranscriptResultDashboard({
               })}
             </div>
           ) : (
-            <div className="text-center py-8 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-dashed border-slate-250 dark:border-slate-800 text-xs text-slate-500">
-              Không tìm thấy trường Đại học nào phù hợp với điểm số và tổ hợp môn của bạn. Vui lòng thử lại với tổ hợp khác.
+            <div className="text-center py-8 px-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-dashed border-slate-250 dark:border-slate-800 space-y-4">
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Không tìm thấy trường Đại học nào phù hợp với điểm số và tổ hợp môn của bạn. Vui lòng thử lại với tổ hợp khác.
+              </p>
+              <div className="flex justify-center">
+                <Button asChild variant="outline" className="text-xs font-bold rounded-xl hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 transition duration-200 h-9 px-4">
+                  <Link href="/tra-cuu-tuyen-sinh">
+                    Tra cứu toàn bộ điểm chuẩn &rarr;
+                  </Link>
+                </Button>
+              </div>
             </div>
           )}
         </div>
       )}
 
-      {/* Button Donate */}
-      {isAvailable && (
-        <div className="flex justify-center mb-8">
-          <Button
-            type="button"
-            onClick={() => setIsDonateOpen(true)}
-            variant="secondary"
-            className="px-5 py-5 rounded-xl font-bold uppercase tracking-wider text-violet-700 bg-violet-100 hover:bg-violet-200 transition"
-          >
-            ☕ Tiếp sức cho Admin
-          </Button>
-        </div>
-      )}
 
       <div className="text-[11px] text-slate-400 italic text-center">
         * Kết quả tính điểm chỉ mang tính chất tham khảo và định hướng cá nhân. Vui lòng đối chiếu với đề án tuyển sinh chính thức của các trường Đại học.
@@ -325,7 +321,7 @@ export default function TranscriptResultDashboard({
         </span>
       </div>
 
-      <DonateModal isOpen={isDonateOpen} onClose={() => setIsDonateOpen(false)} />
+
     </div>
   );
 }

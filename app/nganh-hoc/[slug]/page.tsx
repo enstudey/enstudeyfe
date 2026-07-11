@@ -8,7 +8,7 @@ import { getCategoryFallbackImage } from "@/lib/images";
 import TableOfContents from "@/components/TableOfContents";
 import RelatedArticles from "@/components/RelatedArticles";
 import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
-import { DonateCardDetailed } from "@/components/donate";
+
 import type { AffiliateProduct } from "@/types/affiliate";
 import productsData from "@/data/shopee-affiliate-products.json";
 
@@ -176,10 +176,6 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
               dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml ?? "")) }}
             />
 
-            {/* Khung quyên góp chi tiết Mẫu 1 */}
-            <div className="mt-8">
-              <DonateCardDetailed />
-            </div>
 
             {/* End-of-article Ad Slot */}
             <div className="ad-container ad-end w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl mt-8">

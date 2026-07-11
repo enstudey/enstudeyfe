@@ -6,7 +6,7 @@ import Script from "next/script";
 import { FEATURE_FLAGS } from "@/lib/config/features";
 
 const DISABLED_PATHS = [
-  "/gioi-thieu",
+  "/about",
   "/privacy-policy",
   "/terms-of-service",
   "/tram-sac-nang-luong"

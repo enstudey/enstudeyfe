@@ -23,7 +23,6 @@ import {
   calculateAllTranscriptCombinations
 } from "./utils";
 import { useScoreValidation } from "@/hooks/useScoreValidation";
-import { DonateBarMinimal } from "@/components/donate";
 
 const INITIAL_SEMESTER_SCORES: SubjectSemesterScores = {
   grade10_hk1: "",
@@ -564,9 +563,6 @@ export default function CalculatorPage() {
             </>
           )}
 
-          <div className="mt-8">
-            <DonateBarMinimal />
-          </div>
         </div>
       </main>
 

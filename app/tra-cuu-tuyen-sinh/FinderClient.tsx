@@ -4,7 +4,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { DonateModal, DonateBarMinimal } from "@/components/donate";
 import AffiliateNativeRow from "@/components/affiliate/AffiliateNativeRow";
 import { Input } from "@/components/ui/input";
 import {
@@ -56,9 +55,6 @@ interface FinderClientProps {
 }
 
 export default function FinderClient({ scoresData, initialPage }: FinderClientProps) {
-  // Trạng thái modal donate
-  const [isDonateOpen, setIsDonateOpen] = useState(false);
-
   // Bộ lọc nguyện vọng
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGroup, setSelectedGroup] = useState("Tất cả tổ hợp");
@@ -671,15 +667,13 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
             )}
           </div>
 
-          <DonateBarMinimal />
         </div>
       </main>
 
       {/* Footer */}
       <Footer />
 
-      {/* Modal Donate */}
-      <DonateModal isOpen={isDonateOpen} onClose={() => setIsDonateOpen(false)} />
+
     </div>
   );
 }

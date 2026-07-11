@@ -10,7 +10,7 @@ import RelatedArticles from "@/components/RelatedArticles";
 import type { AffiliateProduct } from "@/types/affiliate";
 import productsData from "@/data/shopee-affiliate-products.json";
 import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
-import { DonateCardDetailed } from "@/components/donate";
+
 
 // Helper chèn quảng cáo vào giữa nội dung bài viết (chống CLS)
 function insertInArticleAd(htmlContent: string): string {
@@ -188,10 +188,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
               dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml ?? "")) }}
             />
 
-            {/* Khung quyên góp chi tiết Mẫu 1 */}
-            <div className="mt-8">
-              <DonateCardDetailed />
-            </div>
+
           </article>
 
           {/* Sticky Sidebar */}

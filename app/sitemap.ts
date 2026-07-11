@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://enstudey.com/tinh-diem-tot-nghiep", priority: 0.9 },
     { url: "https://enstudey.com/tra-cuu-tuyen-sinh", priority: 0.8 },
     { url: "https://enstudey.com/nganh-hoc", priority: 0.8 },
-    { url: "https://enstudey.com/gioi-thieu", priority: 0.5 },
+    { url: "https://enstudey.com/about", priority: 0.5 },
     { url: "https://enstudey.com/privacy-policy", priority: 0.3 },
     { url: "https://enstudey.com/terms-of-service", priority: 0.3 },
     ...blogUrls,
