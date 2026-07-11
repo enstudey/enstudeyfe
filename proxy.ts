@@ -6,7 +6,7 @@ const BLOCKED_CONTAINS = [".env", ".aws", ".git", "wp-admin", "wp-includes", ".g
 const BLOCKED_ENDS_WITH = [".sql", ".bak", ".cgi", "nuxt.config.js", "next.config.js"];
 const BLOCKED_STARTS_WITH = ["/data/", "/config/"];
 
-export function proxy(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname.toLowerCase();
 
   // 1. Kiểm tra startsWith
