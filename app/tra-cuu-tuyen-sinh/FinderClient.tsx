@@ -327,7 +327,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               </div>
               <div className="lg:col-span-2 space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Năm tuyển sinh</label>
-                <Select value={selectedYear} onValueChange={setSelectedYear}>
+                <Select value={selectedYear} onValueChange={(val) => setSelectedYear(val || "")}>
                   <SelectTrigger
                     data-testid="select-year"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-left"
@@ -343,7 +343,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               </div>
               <div className="lg:col-span-2 space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Phương thức tuyển sinh</label>
-                <Select value={selectedMethod} onValueChange={setSelectedMethod}>
+                <Select value={selectedMethod} onValueChange={(val) => setSelectedMethod(val || "")}>
                   <SelectTrigger
                     data-testid="select-method"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-left"
@@ -359,7 +359,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               </div>
               <div className="lg:col-span-2 space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Tổ hợp môn</label>
-                <Select value={selectedGroup} onValueChange={setSelectedGroup}>
+                <Select value={selectedGroup} onValueChange={(val) => setSelectedGroup(val || "")}>
                   <SelectTrigger
                     data-testid="select-group"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-left"
