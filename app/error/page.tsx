@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ErrorCode } from "@/types/error-code";
 import ErrorReportForm from "@/components/error-report-form";
+import { Button } from "@/components/ui/button";
 
 function ErrorPageContent() {
   const searchParams = useSearchParams();
@@ -34,25 +35,22 @@ function ErrorPageContent() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 py-24 text-center sm:py-32 lg:px-8">
       <div className="text-center">
-        <p className="text-base font-semibold text-error-text">Thông báo một xíu</p>
+        <p className="text-base font-semibold text-red-600">Thông báo một xíu</p>
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-5xl">{title}</h1>
-        <p className="mt-6 text-base leading-7 text-zinc-500 dark:text-zinc-400 max-w-md mx-auto">
+        <p className="mt-6 text-base leading-7 text-zinc-500 max-w-md mx-auto">
           {message}
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
-          <Link
-            href="/login"
-            className="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground shadow-sm hover:opacity-90 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent cursor-pointer"
-            id="btn-back-to-login"
-          >
-            Đăng nhập lại nè
-          </Link>
-          <Link
-            href="/"
-            className="text-sm font-semibold text-foreground hover:underline p-2"
-          >
-            Về trang chủ nha
-          </Link>
+          <Button asChild size="lg" className="cursor-pointer">
+            <Link href="/login" id="btn-back-to-login">
+              Đăng nhập lại nè
+            </Link>
+          </Button>
+          <Button asChild variant="ghost" className="cursor-pointer">
+            <Link href="/">
+              Về trang chủ nha
+            </Link>
+          </Button>
         </div>
         <ErrorReportForm errorCode={codeParam || "UNKNOWN_ERROR"} errorMessage="Redirected to error page" />
       </div>

@@ -22,16 +22,16 @@ export default function TableOfContents({ contentHtml }: { contentHtml: string }
   if (headings.length === 0) return null;
 
   return (
-    <nav className="p-5 bg-slate-100/60 dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 rounded-2xl mb-6">
-      <p className="text-sm font-bold text-slate-800 dark:text-zinc-200 mb-3">Mục lục bài viết</p>
+    <nav className="p-5 bg-slate-50 border border-slate-200 rounded-2xl mb-6">
+      <p className="text-sm font-bold text-slate-800 mb-3">Mục lục bài viết</p>
       <ul className="space-y-2 text-xs font-medium">
         {headings.map((h, i) => (
           <li
             key={i}
             className={`${
               h.level === 3 
-                ? "pl-4 text-slate-500 dark:text-zinc-400" 
-                : "text-orange-600 dark:text-orange-500 hover:underline"
+                ? "pl-4 text-slate-500" 
+                : "text-violet-600 hover:underline"
             }`}
           >
             <a href={`#${h.id}`} className="hover:underline transition duration-150">

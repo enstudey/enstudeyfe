@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   isOpen: boolean;
@@ -36,12 +37,12 @@ export default function DonateModal({ isOpen, onClose }: Props) {
       <div className="absolute inset-0 cursor-default" onClick={onClose}></div>
 
       {/* Modal Card */}
-      <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-3xl p-6 w-full max-w-sm relative shadow-2xl animate-in fade-in zoom-in-95 duration-200 z-10">
+      <div className="bg-card border border-border rounded-3xl p-6 w-full max-w-sm relative shadow-2xl animate-in fade-in zoom-in-95 duration-200 z-10">
         {/* Nút đóng */}
         <button
           onClick={onClose}
           data-testid="btn-close-modal"
-          className="absolute top-4 right-4 text-slate-400 dark:text-zinc-500 hover:text-slate-600 dark:hover:text-zinc-300 font-bold p-1 cursor-pointer transition-colors"
+          className="absolute top-4 right-4 text-slate-400 hover:text-slate-650 font-bold p-1 cursor-pointer transition-colors"
           aria-label="Đóng hộp thoại"
         >
           ✕
@@ -49,10 +50,10 @@ export default function DonateModal({ isOpen, onClose }: Props) {
 
         {/* Nội dung */}
         <div className="text-center space-y-4">
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+          <h3 className="text-lg font-bold text-slate-900">
             Tiếp sức cho EnStudey ☕🚀
           </h3>
-          <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed px-2">
+          <p className="text-xs text-slate-500 leading-relaxed px-2">
             Nếu công cụ này vừa giúp bạn tiết kiệm thời gian hoặc gỡ rối mùa thi, bạn có thể &quot;tiếp sức&quot; cho mình một ly trà sữa nha!
           </p>
 
@@ -61,7 +62,7 @@ export default function DonateModal({ isOpen, onClose }: Props) {
             href="/qr-donate.webp"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-auto w-48 h-48 border-4 border-orange-500/10 rounded-2xl overflow-hidden shadow-md bg-slate-50 dark:bg-zinc-950 flex items-center justify-center cursor-zoom-in block"
+            className="mx-auto w-48 h-48 border-4 border-violet-500/10 rounded-2xl overflow-hidden shadow-md bg-slate-50 flex items-center justify-center cursor-zoom-in block"
             title="Bấm để phóng to / mở ảnh QR trong tab mới"
           >
             <Image
@@ -79,33 +80,34 @@ export default function DonateModal({ isOpen, onClose }: Props) {
             <Link
               href="/tram-sac-nang-luong"
               onClick={onClose}
-              className="text-xs font-bold text-orange-600 dark:text-orange-400 hover:underline inline-flex items-center gap-1"
+              className="text-xs font-bold text-violet-600 hover:underline inline-flex items-center gap-1"
             >
               🌟 Xem danh sách các Nhà tài trợ thầm lặng tại đây
             </Link>
           </div>
 
           {/* Bank Info Container */}
-          <div className="bg-slate-50 dark:bg-zinc-950/50 p-4 rounded-2xl border border-slate-100 dark:border-zinc-850/80 text-left text-xs space-y-2">
+          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-left text-xs space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-slate-400 dark:text-zinc-500">Ngân hàng</span>
-              <span className="font-bold text-slate-800 dark:text-zinc-200">MBBank</span>
+              <span className="text-slate-400">Ngân hàng</span>
+              <span className="font-bold text-slate-800">MBBank</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-slate-400 dark:text-zinc-500">Chủ tài khoản</span>
-              <span className="font-bold text-slate-800 dark:text-zinc-200">NGUYEN DUC TAM</span>
+              <span className="text-slate-400">Chủ tài khoản</span>
+              <span className="font-bold text-slate-800">NGUYEN DUC TAM</span>
             </div>
-            <div className="flex justify-between items-center gap-2 pt-1 border-t border-slate-100 dark:border-zinc-850/60">
-              <span className="text-slate-400 dark:text-zinc-500">Số tài khoản</span>
+            <div className="flex justify-between items-center gap-2 pt-1 border-t border-slate-100">
+              <span className="text-slate-400">Số tài khoản</span>
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-orange-600 dark:text-orange-500">{accountNo}</span>
-                <button
+                <span className="font-bold text-violet-600">{accountNo}</span>
+                <Button
                   onClick={handleCopy}
                   data-testid="btn-copy-account"
-                  className="px-2.5 py-1 bg-orange-100 dark:bg-orange-950/40 hover:bg-orange-200 dark:hover:bg-orange-900/40 text-orange-700 dark:text-orange-400 font-bold rounded-lg text-[10px] cursor-pointer transition-colors"
+                  variant="secondary"
+                  className="px-2.5 py-1 text-violet-750 bg-violet-100 hover:bg-violet-200 transition font-bold rounded-lg text-[10px] cursor-pointer"
                 >
                   {copied ? "Đã chép ✓" : "Sao chép 📋"}
-                </button>
+                </Button>
               </div>
             </div>
           </div>

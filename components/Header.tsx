@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import ThemeToggle from "@/components/ThemeToggle";
 
 interface HeaderProps {
   isStatic?: boolean;
@@ -90,15 +89,15 @@ export default function Header({ isStatic = false }: HeaderProps) {
     const isActive = pathname.startsWith(path);
     const baseClass = "text-xs font-bold uppercase tracking-wider transition-colors ";
     if (isActive) {
-      return baseClass + "text-slate-950 dark:text-white border-b-2 border-orange-500 pb-1";
+      return baseClass + "text-slate-950 border-b-2 border-violet-600 pb-1";
     }
-    return baseClass + "text-slate-500 hover:text-slate-950 dark:hover:text-white pb-1 border-b-2 border-transparent";
+    return baseClass + "text-slate-500 hover:text-slate-950 pb-1 border-b-2 border-transparent";
   };
 
   let headerClass = "left-0 right-0 w-full transition-all duration-300 ";
   
   if (isStatic) {
-    headerClass += "relative bg-white dark:bg-zinc-900 border-b border-slate-100 dark:border-zinc-800 h-16";
+    headerClass += "relative bg-white border-b border-slate-100 h-16";
   } else {
     headerClass += "fixed top-0 z-50 ";
     
@@ -109,9 +108,9 @@ export default function Header({ isStatic = false }: HeaderProps) {
     }
 
     if (isSticky) {
-      headerClass += "bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-slate-100 dark:border-zinc-800 h-14 shadow-sm";
+      headerClass += "bg-white/90 backdrop-blur-md border-b border-slate-100 h-14 shadow-sm";
     } else {
-      headerClass += "bg-white dark:bg-zinc-900 border-b border-slate-100 dark:border-zinc-800 h-16";
+      headerClass += "bg-white border-b border-slate-100 h-16";
     }
   }
 
@@ -122,7 +121,7 @@ export default function Header({ isStatic = false }: HeaderProps) {
       <header className={headerClass} data-testid="header-container">
         <nav className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2 font-bold text-2xl text-slate-950 dark:text-white tracking-tight" data-testid="link-logo">
+            <Link href="/" className="flex items-center gap-2 font-bold text-2xl text-slate-950 tracking-tight" data-testid="link-logo">
               <Image src="/icon-transparent.png" alt="EnStudey Logo" width={32} height={32} className="w-8 h-8" />
               <span>EnStudey</span>
             </Link>
@@ -142,7 +141,7 @@ export default function Header({ isStatic = false }: HeaderProps) {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <ThemeToggle />
+            {/* ThemeToggle has been removed */}
           </div>
         </nav>
       </header>

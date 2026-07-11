@@ -208,7 +208,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
   );
 
   const getScoreColorClass = (item: FlatBenchmarkItem) => {
-    if (!computedScores || item.score === null) return "text-slate-600 dark:text-zinc-400 font-bold";
+    if (!computedScores || item.score === null) return "text-slate-600 font-bold";
     
     let userScore = 0;
     if (selectedGroup !== "Tất cả tổ hợp") {
@@ -222,19 +222,19 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
       }
     }
 
-    if (userScore === 0) return "text-slate-600 dark:text-zinc-400 font-bold";
+    if (userScore === 0) return "text-slate-600 font-bold";
 
     if (item.score >= userScore - 2 && item.score <= userScore + 2) {
-      return "text-amber-500 dark:text-amber-400 font-extrabold";
+      return "text-amber-500 font-extrabold";
     } else if (item.score < userScore - 2) {
-      return "text-emerald-600 dark:text-emerald-500 font-extrabold";
+      return "text-emerald-600 font-extrabold";
     } else {
-      return "text-rose-600 dark:text-rose-500 font-extrabold";
+      return "text-rose-600 font-extrabold";
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
       {/* Header */}
       <Header />
 
@@ -242,21 +242,21 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
       <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold text-slate-955 dark:text-white tracking-tight">
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
               Hệ thống tra cứu nguyện vọng thông minh 🔍
             </h1>
             <div className="flex items-center gap-3 flex-wrap mt-1">
-              <p className="text-slate-505 dark:text-zinc-400 text-sm">Gợi ý và sắp xếp các nguyện vọng phù hợp với khoảng điểm và tổ hợp của bạn.</p>
+              <p className="text-muted-foreground text-sm">Gợi ý và sắp xếp các nguyện vọng phù hợp với khoảng điểm và tổ hợp của bạn.</p>
             </div>
           </div>
           <div className="flex gap-2 text-[10px] font-bold uppercase tracking-wider">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-zinc-900 rounded-full">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-full">
               <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e]"></span> An toàn
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-zinc-900 rounded-full">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-full">
               <span className="w-2.5 h-2.5 rounded-full bg-[#f59e0b]"></span> Cọ xát
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-zinc-900 rounded-full">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-full">
               <span className="w-2.5 h-2.5 rounded-full bg-[#ef4444]"></span> Rủi ro
             </div>
           </div>
@@ -264,18 +264,18 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
         {computedScores ? (
           <div className="space-y-4">
-            <div className="bg-orange-50/50 dark:bg-zinc-900 border border-orange-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 dark:text-zinc-350 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="bg-violet-50 border border-violet-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <span className="leading-relaxed">
                 Hệ thống đang đối sánh tự động dựa trên điểm số đã tính:{" "}
                 <span className="inline-flex flex-wrap gap-x-2 gap-y-1 mt-1.5 sm:mt-0 sm:ml-1 align-middle">
                   {topThreeScores.map(([group, score]) => (
-                    <span key={group} className="inline-block bg-white dark:bg-zinc-950 px-2 py-0.5 rounded border border-orange-500/10 whitespace-nowrap text-[11px]">
-                      <span className="font-bold text-orange-600 dark:text-orange-400">{group}</span>: {score.toFixed(2)}
+                    <span key={group} className="inline-block bg-white px-2 py-0.5 rounded border border-violet-500/10 whitespace-nowrap text-[11px]">
+                      <span className="font-bold text-violet-600">{group}</span>: {score.toFixed(2)}
                     </span>
                   ))}
                 </span>
               </span>
-              <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-555 hover:underline whitespace-nowrap font-bold flex-shrink-0 self-start sm:self-auto">
+              <Link href="/tinh-diem-tot-nghiep" className="text-violet-600 hover:underline whitespace-nowrap font-bold flex-shrink-0 self-start sm:self-auto">
                 Tính điểm lại &rarr;
               </Link>
             </div>
@@ -283,20 +283,20 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
             {/* Anti-CLS In-feed AdSlot dưới phần điểm tổng */}
             <div 
               key={`infeed-${adKey}`}
-              className="ad-container ad-v-block w-full min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 flex flex-col items-center justify-center p-4 border border-dashed border-slate-200 dark:border-zinc-800 rounded-2xl transition duration-300"
+              className="ad-container ad-v-block w-full min-h-[250px] bg-slate-100/50 flex flex-col items-center justify-center p-4 border border-dashed border-slate-200 rounded-2xl transition duration-300"
               data-testid="ad-infeed-points"
             >
               <div className="text-center space-y-2">
-                <span className="text-[10px] text-slate-400 dark:text-zinc-500 font-bold uppercase tracking-wider block">Liên kết tài trợ</span>
-                <p className="font-bold text-sm text-slate-700 dark:text-zinc-350">Lộ trình học IELTS 7.5+ cấp tốc cho học sinh lớp 12</p>
-                <p className="text-xs text-slate-400 dark:text-zinc-500">Đăng ký ngay hôm nay để nhận học bổng giảm giá 30% học phí tại EnStudey.</p>
+                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Liên kết tài trợ</span>
+                <p className="font-bold text-sm text-slate-700">Lộ trình học IELTS 7.5+ cấp tốc cho học sinh lớp 12</p>
+                <p className="text-xs text-slate-400">Đăng ký ngay hôm nay để nhận học bổng giảm giá 30% học phí tại EnStudey.</p>
               </div>
             </div>
           </div>
         ) : (
-          <div className="bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-4 text-xs font-semibold text-slate-600 dark:text-zinc-400 flex justify-between items-center">
+          <div className="bg-slate-100 border border-slate-200 rounded-2xl p-4 text-xs font-semibold text-slate-650 flex justify-between items-center">
             <span>Bạn chưa tính điểm thi THPT? Tính ngay để xem gợi ý các phân vùng an toàn/rủi ro.</span>
-            <Link href="/tinh-diem-tot-nghiep" className="text-orange-600 dark:text-orange-555 hover:underline">
+            <Link href="/tinh-diem-tot-nghiep" className="text-violet-600 hover:underline">
               Tính điểm thi &rarr;
             </Link>
           </div>
@@ -304,26 +304,26 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
         <div className="space-y-6">
           {/* Bộ lọc ở trên chiếm full-width */}
-          <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-5 space-y-5">
+          <div className="bg-card border border-border rounded-2xl p-5 space-y-5">
             <div className="grid grid-cols-1 lg:grid-cols-10 gap-4">
               <div className="lg:col-span-4 space-y-1.5">
-                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Tìm kiếm trường / ngành</label>
+                <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Tìm kiếm trường / ngành</label>
                 <input
                   type="text"
                   placeholder="Nhập mã trường, tên ngành..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   data-testid="input-search"
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
                 />
               </div>
               <div className="lg:col-span-2 space-y-1.5">
-                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Năm tuyển sinh</label>
+                <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Năm tuyển sinh</label>
                 <select
                   value={selectedYear}
                   onChange={(e) => setSelectedYear(e.target.value)}
                   data-testid="select-year"
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
                 >
                   {YEAR_OPTIONS.map((year) => (
                     <option key={year} value={year}>Năm {year}</option>
@@ -331,12 +331,12 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 </select>
               </div>
               <div className="lg:col-span-2 space-y-1.5">
-                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Phương thức tuyển sinh</label>
+                <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Phương thức tuyển sinh</label>
                 <select
                   value={selectedMethod}
                   onChange={(e) => setSelectedMethod(e.target.value)}
                   data-testid="select-method"
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
                 >
                   {METHOD_OPTIONS.map((method) => (
                     <option key={method.value} value={method.value}>{method.label}</option>
@@ -344,12 +344,12 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 </select>
               </div>
               <div className="lg:col-span-2 space-y-1.5">
-                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">Tổ hợp môn</label>
+                <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Tổ hợp môn</label>
                 <select
                   value={selectedGroup}
                   onChange={(e) => setSelectedGroup(e.target.value)}
                   data-testid="select-group"
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 text-sm font-semibold"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
                 >
                   <option>Tất cả tổ hợp</option>
                   <option>A00</option>
@@ -361,10 +361,10 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 </select>
               </div>
             </div>
-            <div className="space-y-2 pt-4 border-t border-slate-100 dark:border-zinc-800">
-              <div className="flex justify-between text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
+            <div className="space-y-2 pt-4 border-t border-border">
+              <div className="flex justify-between text-[10px] font-bold text-slate-500 tracking-wider uppercase">
                 <span>Khoảng điểm sàn</span>
-                <span className="text-orange-600 dark:text-orange-555">{scoreRange} Điểm</span>
+                <span className="text-violet-600">{scoreRange} Điểm</span>
               </div>
               <input
                 type="range"
@@ -374,7 +374,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 value={scoreRange}
                 onChange={(e) => setScoreRange(parseFloat(e.target.value))}
                 data-testid="input-score-range"
-                className="w-full accent-orange-600 dark:accent-orange-555 cursor-pointer"
+                className="w-full accent-violet-600 cursor-pointer"
               />
             </div>
           </div>
@@ -383,42 +383,42 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
           <div id="search-results-section" className="scroll-mt-20" />
 
           {/* Bảng kết quả ở dưới */}
-          <div className="w-full overflow-hidden border border-slate-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between min-h-[400px]">
+          <div className="w-full overflow-hidden border border-border rounded-2xl bg-white shadow-sm flex flex-col justify-between min-h-[400px]">
             {/* Phiên bản Desktop: Dạng bảng (Table) */}
             <div className="hidden md:block overflow-x-auto">
               <table className="w-full text-left border-collapse text-sm">
                 <thead>
-                  <tr className="bg-slate-50 dark:bg-zinc-955 border-b border-slate-200 dark:border-zinc-800 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
+                  <tr className="bg-slate-50 border-b border-border text-[10px] font-bold uppercase tracking-wider text-slate-500">
                     <th className="px-6 py-4">Mã ngành</th>
                     <th className="px-6 py-4">Tên ngành / Trường</th>
                     <th className="px-6 py-4">Tổ hợp</th>
                     <th className="px-6 py-4 text-right">Điểm chuẩn</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-200 dark:divide-zinc-800">
+                <tbody className="divide-y divide-border">
                   {paginatedResults.length > 0 ? (
                     paginatedResults.map((item, idx) => (
                       <React.Fragment key={`desktop-${item.universityCode}-${item.majorCode}-${item.majorName}`}>
-                        <tr className="group hover:bg-slate-55/50 dark:hover:bg-zinc-850/30 transition duration-200 cursor-pointer">
-                          <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">{item.majorCode}</td>
+                        <tr className="group hover:bg-slate-50 transition duration-200 cursor-pointer">
+                          <td className="px-6 py-4 font-bold text-slate-900">{item.majorCode}</td>
                           <td className="px-6 py-4">
-                            <p className="font-bold text-slate-900 dark:text-white">
+                            <p className="font-bold text-slate-900">
                               {item.majorName}
                               {item.scale === 40 && (
-                                <span className="ml-2 text-[9px] bg-blue-150 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
+                                <span className="ml-2 text-[9px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
                               )}
                             </p>
-                            <p className="text-xs text-slate-400 dark:text-zinc-500 mt-0.5">
+                            <p className="text-xs text-slate-400 mt-0.5">
                               {item.universityName} ({item.universityCode})
                             </p>
                             {item.note && (
-                              <p className="text-[10px] text-orange-600 dark:text-orange-400 italic mt-0.5">{item.note}</p>
+                              <p className="text-[10px] text-violet-600 italic mt-0.5">{item.note}</p>
                             )}
                           </td>
-                          <td className="px-6 py-4 font-bold text-slate-650 dark:text-zinc-400 text-xs">
+                          <td className="px-6 py-4 font-bold text-slate-650 text-xs">
                             <div className="flex flex-wrap gap-1">
                               {item.groups.map((g, gIdx) => (
-                                <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-650 dark:text-zinc-400 rounded text-[10px] font-semibold">
+                                <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 text-slate-650 rounded text-[10px] font-semibold">
                                   {g}
                                 </span>
                               ))}
@@ -437,8 +437,8 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={4} className="text-center py-12 text-slate-400 dark:text-zinc-500 font-semibold">
-                        Không tìm thấy trường nào phù hợp với bộ lọc hiện tại.
+                      <td colSpan={4} className="text-center py-12 text-slate-400 font-semibold">
+                        Không tìm thấy ngành học nào khớp với bộ lọc của bạn 🥺
                       </td>
                     </tr>
                   )}
@@ -446,45 +446,45 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               </table>
             </div>
 
-            {/* Phiên bản Mobile: Dạng danh sách Card (List) */}
-            <div className="block md:hidden divide-y divide-slate-200 dark:divide-zinc-800 bg-white dark:bg-zinc-900">
+            {/* Phiên bản Mobile: Dạng thẻ (Cards list) */}
+            <div className="block md:hidden divide-y divide-border">
               {paginatedResults.length > 0 ? (
                 paginatedResults.map((item, idx) => (
                   <React.Fragment key={`mobile-${item.universityCode}-${item.majorCode}-${item.majorName}`}>
-                    <div className="p-5 flex flex-col gap-3 hover:bg-slate-55/50 dark:hover:bg-zinc-855/30 transition duration-200 cursor-pointer">
+                    <div className="p-5 flex flex-col gap-3 hover:bg-slate-50 transition duration-200 cursor-pointer">
                       <div className="flex justify-between items-start gap-4">
                         <div className="space-y-1">
-                          <h4 className="font-bold text-slate-900 dark:text-white text-sm leading-snug">
+                          <h4 className="font-bold text-slate-900 text-sm leading-snug">
                             {item.majorName}
                             {item.scale === 40 && (
-                              <span className="ml-2 text-[9px] bg-blue-150 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
+                              <span className="ml-2 text-[9px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
                             )}
                           </h4>
-                          <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium">
+                          <p className="text-xs text-slate-500 font-medium">
                             {item.universityName} ({item.universityCode})
                           </p>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <span className="text-[9px] text-slate-400 dark:text-zinc-500 font-bold block uppercase tracking-wider">Điểm chuẩn</span>
+                          <span className="text-[9px] text-slate-400 font-bold block uppercase tracking-wider">Điểm chuẩn</span>
                           <span className={`text-lg block mt-0.5 ${getScoreColorClass(item)}`}>
                             {item.score !== null ? item.score : "-"}
                           </span>
                         </div>
                       </div>
-                      <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-100/50 dark:border-zinc-850/30">
+                      <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-100">
                         <div className="flex flex-wrap gap-1">
                           {item.groups.map((g, gIdx) => (
-                            <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-650 dark:text-zinc-400 rounded text-[10px] font-semibold">
+                            <span key={`${g}-${gIdx}`} className="px-1.5 py-0.5 bg-slate-100 text-slate-650 rounded text-[10px] font-semibold">
                               {g}
                             </span>
                           ))}
                         </div>
-                        <span className="text-[10px] text-slate-400 dark:text-zinc-500 font-semibold">
-                          Mã ngành: <span className="font-bold text-slate-700 dark:text-zinc-300">{item.majorCode}</span>
+                        <span className="text-[10px] text-slate-400 font-semibold">
+                          Mã ngành: <span className="font-bold text-slate-700">{item.majorCode}</span>
                         </span>
                       </div>
                       {item.note && (
-                        <p className="text-[10px] text-orange-600 dark:text-orange-400 italic leading-relaxed bg-orange-50/20 dark:bg-orange-955/10 p-2 rounded-lg border border-orange-500/10 mt-1">{item.note}</p>
+                        <p className="text-[10px] text-violet-600 italic leading-relaxed bg-violet-50 p-2 rounded-lg border border-violet-500/10 mt-1">{item.note}</p>
                       )}
                     </div>
 
@@ -495,25 +495,18 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                   </React.Fragment>
                 ))
               ) : (
-                <div className="text-center py-12 text-slate-400 dark:text-zinc-500 font-semibold text-sm">
-                  Không tìm thấy trường nào phù hợp với bộ lọc hiện tại.
+                <div className="text-center py-12 text-slate-400 font-semibold">
+                  Không tìm thấy ngành học nào khớp với bộ lọc của bạn 🥺
                 </div>
               )}
-            </div>
-
-            {/* Tuyên bố miễn trừ trách nhiệm ở chân bảng kết quả */}
-            <div className="px-6 py-4 bg-slate-50/50 dark:bg-zinc-950/30 border-t border-slate-200 dark:border-zinc-800 text-[11px] text-slate-400 dark:text-zinc-550 italic">
-              * Kết quả tra cứu và gợi ý mức độ an toàn chỉ mang tính chất tham khảo. Thí sinh bắt buộc phải đối chiếu với đề án tuyển sinh chính thức của các trường Đại học trước khi đăng ký nguyện vọng.
-            </div>
-
-            {/* Phân trang thích ứng sử dụng Next.js Link để Googlebot crawl */}
-            {totalPages > 1 && (
-              <div className="p-5 bg-slate-50 dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
+          </div>
+          {totalPages > 1 && (
+            <div className="p-5 bg-slate-50 border-t border-border">
                 {/* Mobile version */}
                 <div className="flex md:hidden items-center justify-center gap-1">
                   <Link
                     href={`/tra-cuu-tuyen-sinh?page=${Math.max(currentPage - 1, 1)}`}
-                    className={`w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0 ${
+                    className={`w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0 ${
                       currentPage === 1 ? "pointer-events-none opacity-40" : ""
                     }`}
                   >
@@ -548,7 +541,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                           <Link
                             key={`mobile-dots-${idx}`}
                             href={`/tra-cuu-tuyen-sinh?page=${item.page}`}
-                            className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer flex-shrink-0 text-center flex items-center justify-center"
+                            className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-violet-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex-shrink-0 text-center flex items-center justify-center"
                           >
                             {item.label}
                           </Link>
@@ -560,8 +553,8 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                           href={`/tra-cuu-tuyen-sinh?page=${item}`}
                           className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer flex-shrink-0 ${
                             currentPage === item
-                              ? "bg-orange-600 text-white font-extrabold"
-                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-55 dark:hover:bg-zinc-850 text-slate-650 dark:text-zinc-400"
+                              ? "bg-violet-600 text-white font-extrabold"
+                              : "border border-slate-200 bg-white hover:bg-slate-50 text-slate-650"
                           }`}
                         >
                           {item}
@@ -572,7 +565,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
                   <Link
                     href={`/tra-cuu-tuyen-sinh?page=${Math.min(currentPage + 1, totalPages)}`}
-                    className={`w-8 h-8 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0 ${
+                    className={`w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0 ${
                       currentPage === totalPages ? "pointer-events-none opacity-40" : ""
                     }`}
                   >
@@ -584,7 +577,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 <div className="hidden md:flex items-center justify-center gap-2">
                   <Link
                     href={`/tra-cuu-tuyen-sinh?page=${Math.max(currentPage - 1, 1)}`}
-                    className={`px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-850 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 dark:text-zinc-400 cursor-pointer flex items-center justify-center ${
+                    className={`px-4 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 cursor-pointer flex items-center justify-center ${
                       currentPage === 1 ? "pointer-events-none opacity-40" : ""
                     }`}
                   >
@@ -626,7 +619,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                           <Link
                             key={`desktop-dots-${idx}`}
                             href={`/tra-cuu-tuyen-sinh?page=${item.page}`}
-                            className="w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition cursor-pointer flex items-center justify-center"
+                            className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-violet-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex items-center justify-center"
                           >
                             {item.label}
                           </Link>
@@ -638,8 +631,8 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                           href={`/tra-cuu-tuyen-sinh?page=${item}`}
                           className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${
                             currentPage === item
-                              ? "bg-orange-600 text-white font-extrabold"
-                              : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-850 text-slate-650 dark:text-zinc-400"
+                              ? "bg-violet-600 text-white font-extrabold"
+                              : "border border-slate-200 bg-white hover:bg-slate-50 text-slate-650"
                           }`}
                         >
                           {item}
@@ -650,7 +643,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
                   <Link
                     href={`/tra-cuu-tuyen-sinh?page=${Math.min(currentPage + 1, totalPages)}`}
-                    className={`px-4 h-8 rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-850 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 dark:text-zinc-400 cursor-pointer flex items-center justify-center ${
+                    className={`px-4 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 cursor-pointer flex items-center justify-center ${
                       currentPage === totalPages ? "pointer-events-none opacity-40" : ""
                     }`}
                   >

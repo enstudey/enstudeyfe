@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { toast } from "@/lib/toast";
+import { Button } from "@/components/ui/button";
 import SubjectScoresInput from "./SubjectScoresInput";
 import CertificateConverter from "./CertificateConverter";
 import AffiliateCertWidget from "@/components/affiliate/AffiliateCertWidget";
@@ -416,24 +417,24 @@ export default function CalculatorPage() {
   const subjectsInTranscriptGroup = TRANSCRIPT_SUBJECT_GROUPS[selectedTranscriptGroup] || [];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
       <Header />
 
       <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-extrabold text-slate-955 dark:text-white tracking-tight">
+          <h1 className="text-3xl font-extrabold tracking-tight text-foreground">
             Công cụ tính điểm xét tuyển Đại học 2026 chính xác
           </h1>
-          <p className="text-slate-500 dark:text-zinc-400 text-sm max-w-lg mx-auto">
+          <p className="text-muted-foreground text-sm max-w-lg mx-auto">
             Hỗ trợ tính điểm thi tốt nghiệp THPT hoặc điểm học bạ 6 học kỳ và đối sánh với điều kiện của các trường Đại học.
           </p>
         </div>
 
-        <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-2xl p-6 md:p-8 shadow-sm space-y-8">
+        <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm space-y-8">
           
           {/* Lựa chọn phương thức tính điểm */}
           <div className="space-y-2">
-            <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase block">
+            <label className="text-[10px] font-bold text-muted-foreground tracking-wider uppercase block">
               Phương thức tính điểm xét tuyển
             </label>
             <div className="grid grid-cols-2 gap-4">
@@ -447,8 +448,8 @@ export default function CalculatorPage() {
                   onClick={() => setCalculationMethod(item.id as "THPT_EXAM" | "TRANSCRIPT")}
                   className={`px-4 py-3 rounded-xl border text-center font-bold text-xs transition duration-150 cursor-pointer ${
                     calculationMethod === item.id
-                      ? "border-orange-500 bg-orange-50 dark:bg-orange-955/20 text-orange-600 dark:text-orange-555 shadow-sm"
-                      : "border-slate-200 dark:border-zinc-855 hover:bg-slate-50 dark:hover:bg-zinc-900 text-slate-650 dark:text-zinc-400"
+                      ? "border-violet-600 bg-violet-50 text-violet-700 shadow-sm"
+                      : "border-slate-200 hover:bg-slate-50 text-slate-650"
                   }`}
                 >
                   {item.name}
@@ -468,7 +469,7 @@ export default function CalculatorPage() {
                 handleScoreBlur={handleScoreBlur}
               />
 
-              <div className="space-y-8 pt-6 border-t border-slate-100 dark:border-zinc-855">
+              <div className="space-y-8 pt-6 border-t border-border">
                 <CertificateConverter
                   certType={certType}
                   setCertType={setCertType}
@@ -488,22 +489,23 @@ export default function CalculatorPage() {
                 />
               </div>
 
-              <div className="pt-6 flex flex-wrap gap-4 items-center justify-center border-t border-slate-100 dark:border-zinc-855">
-                <button
+              <div className="pt-6 flex flex-wrap gap-4 items-center justify-center border-t border-border">
+                <Button
                   onClick={handleReset}
                   data-testid="btn-reset-scores"
-                  className="px-6 py-3.5 border border-slate-200 dark:border-zinc-700 hover:bg-slate-50 dark:hover:bg-zinc-900 text-slate-650 dark:text-zinc-400 font-bold rounded-2xl transition duration-200 text-sm sm:text-base cursor-pointer"
+                  variant="outline"
+                  className="px-6 py-5.5 font-bold rounded-2xl transition duration-200 text-sm sm:text-base"
                 >
                   Xóa nhập lại 🔄
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={handleCalculate}
                   data-testid="btn-calculate-scores"
-                  className="px-8 py-3.5 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-650 text-white font-bold rounded-2xl shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-98 transition duration-200 flex items-center gap-2 text-sm sm:text-base cursor-pointer"
+                  className="px-8 py-5.5 font-bold rounded-2xl shadow-md hover:scale-[1.01] active:scale-98 transition duration-200 flex items-center gap-2 text-sm sm:text-base"
                 >
                   <span>Tính điểm xét tuyển</span>
                   <span className="font-bold">⚡</span>
-                </button>
+                </Button>
               </div>
 
               <ResultDashboard
@@ -532,7 +534,7 @@ export default function CalculatorPage() {
                 setExpandedGroups={setExpandedGroups}
               />
 
-              <div className="space-y-8 pt-6 border-t border-slate-100 dark:border-zinc-850">
+              <div className="space-y-8 pt-6 border-t border-border">
                 <PrioritySelector
                   areaPriority={areaPriority}
                   setAreaPriority={setAreaPriority}

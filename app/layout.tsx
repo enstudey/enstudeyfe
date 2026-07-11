@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import AdSenseScript from "@/components/AdSenseScript";
 import CookieBanner from "@/components/cookie-banner";
 import ToastContainer from "@/components/toast/ToastContainer";
@@ -32,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="vi"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
@@ -41,17 +40,10 @@ export default function RootLayout({
         {/* Tích hợp Google AdSense Auto Ads có điều kiện lọc trang */}
         <AdSenseScript />
       </head>
-      <body className="min-h-full flex flex-col">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <CookieBanner />
-          <ToastContainer />
-        </ThemeProvider>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        {children}
+        <CookieBanner />
+        <ToastContainer />
       </body>
     </html>
   );

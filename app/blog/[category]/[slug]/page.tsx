@@ -125,44 +125,44 @@ export default async function BlogPostDetail({ params }: BlogPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <main className="max-w-3xl mx-auto py-12 px-4 bg-white dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 min-h-screen">
+      <main className="max-w-3xl mx-auto py-12 px-4 bg-white text-slate-900 min-h-screen">
         <div className="mb-6">
           <Link
             href="/blog"
-            className="text-sm text-orange-600 dark:text-orange-500 hover:underline inline-flex items-center gap-1 font-medium"
+            className="text-sm text-violet-600 hover:underline inline-flex items-center gap-1 font-medium"
           >
             &larr; Quay lại Blog
           </Link>
         </div>
 
-        <article className="prose dark:prose-invert leading-relaxed text-slate-750 dark:text-zinc-300">
-          <span className="text-xs font-semibold text-orange-600 dark:text-orange-500 uppercase tracking-wider">
+        <article className="prose leading-relaxed text-slate-700">
+          <span className="text-xs font-semibold text-violet-600 uppercase tracking-wider">
             {getCategoryLabel(post.category)}
           </span>
-          <h1 className="text-3xl font-extrabold mt-2 mb-6 text-slate-950 dark:text-white leading-tight">
+          <h1 className="text-3xl font-extrabold mt-2 mb-6 text-slate-955 leading-tight">
             {post.title}
           </h1>
           <div
-            className="text-base text-slate-700 dark:text-zinc-300 space-y-4 md-content"
+            className="text-base text-slate-700 space-y-4 md-content"
             dangerouslySetInnerHTML={{ __html: post.contentHtml ?? "" }}
           />
         </article>
 
         {post.faq && post.faq.length > 0 && (
-          <section className="mt-12 border-t border-slate-150 dark:border-zinc-800 pt-8">
-            <h2 className="text-xl font-bold text-slate-950 dark:text-white mb-4">Câu hỏi thường gặp</h2>
+          <section className="mt-12 border-t border-slate-150 pt-8">
+            <h2 className="text-xl font-bold text-slate-950 mb-4">Câu hỏi thường gặp</h2>
             <div className="space-y-4">
               {post.faq.map((item, index) => (
-                <div key={index} className="bg-slate-50 dark:bg-zinc-900 p-4 rounded-xl">
-                  <h3 className="font-semibold text-slate-900 dark:text-white">{item.question}</h3>
-                  <p className="mt-2 text-slate-650 dark:text-zinc-400 text-sm">{item.answer}</p>
+                <div key={index} className="bg-slate-50 p-4 rounded-xl">
+                  <h3 className="font-semibold text-slate-900">{item.question}</h3>
+                  <p className="mt-2 text-slate-650 text-sm">{item.answer}</p>
                 </div>
               ))}
             </div>
           </section>
         )}
 
-        <div className="mt-10 min-h-[250px] w-full bg-slate-50 dark:bg-zinc-900 rounded-2xl flex items-center justify-center">
+        <div className="mt-10 min-h-[250px] w-full bg-slate-50 rounded-2xl flex items-center justify-center">
           <AdBanner />
         </div>
       </main>

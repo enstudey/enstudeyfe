@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { cookies } from "next/headers";
-import ThemeToggle from "@/components/ThemeToggle";
 import { DonateCardDetailed } from "@/components/donate";
 import Footer from "@/components/Footer";
 
@@ -77,35 +76,33 @@ export default async function DashboardPage() {
       {/* Header */}
       <header className="bg-card border-b border-card-border sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-orange-600 dark:text-orange-500">
+          <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-violet-600">
             <Image src="/icon-transparent.png" alt="EnStudey Logo" width={28} height={28} className="w-7 h-7" />
             <span>EnStudey</span>
           </Link>
           <div className="flex items-center gap-6">
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium opacity-80">
-              <Link href="/quiz" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Luyện đề</Link>
-              <Link href="/speaking" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Luyện nói AI</Link>
-              <Link href="/mistake-bank" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Sổ tay câu sai</Link>
-              <Link href="/analytics" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Phân tích</Link>
-              <Link href="/blog" className="hover:text-orange-600 dark:hover:text-orange-500 transition">Blog</Link>
+              <Link href="/quiz" className="hover:text-violet-600 transition">Luyện đề</Link>
+              <Link href="/speaking" className="hover:text-violet-600 transition">Luyện nói AI</Link>
+              <Link href="/mistake-bank" className="hover:text-violet-600 transition">Sổ tay câu sai</Link>
+              <Link href="/analytics" className="hover:text-violet-600 transition">Phân tích</Link>
+              <Link href="/blog" className="hover:text-violet-600 transition">Blog</Link>
             </nav>
-
-            <ThemeToggle />
 
             {/* Streak Widget */}
             <div
               className={`flex items-center gap-1.5 border px-3 py-1.5 rounded-full transition ${
                 isGuest
-                  ? "bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 opacity-60 cursor-help"
-                  : "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-900"
+                  ? "bg-slate-100 border-slate-200 opacity-60 cursor-help"
+                  : "bg-violet-50 border-violet-200"
               }`}
               title={isGuest ? "Đăng nhập bằng Google để rèn luyện tích luỹ streak mỗi ngày nha!" : "Chuỗi ngày học liên tiếp"}
             >
               <span className={isGuest ? "grayscale text-lg" : "text-lg"}>🔥</span>
               <span className={`font-bold text-sm ${
                 isGuest
-                  ? "text-slate-500 dark:text-slate-400"
-                  : "text-orange-700 dark:text-orange-400"
+                  ? "text-slate-500"
+                  : "text-violet-600"
               }`}>
                 {isGuest ? "0 ngày" : `${streak.currentStreak} ngày nè`}
               </span>
@@ -115,7 +112,7 @@ export default async function DashboardPage() {
             {isGuest ? (
               <a
                 href={googleLoginUrl}
-                className="text-xs font-bold bg-orange-600 dark:bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 shadow-sm"
+                className="text-xs font-bold bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 shadow-sm"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                   <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114A5.99 5.99 0 0 1 8 12.5a5.99 5.99 0 0 1 5.99-6.014c1.49 0 2.859.549 3.92 1.455l3.224-3.224C19.146 2.88 16.792 2 13.99 2 8.155 2 3.5 6.655 3.5 12.5S8.155 23 13.99 23c5.3 0 9.878-3.727 9.878-10.5 0-.74-.066-1.455-.18-2.215H12.24Z" />
@@ -144,7 +141,7 @@ export default async function DashboardPage() {
         <div className="md:col-span-2 space-y-8">
           {/* Guest CTA Banner */}
           {isGuest && (
-            <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-3xl p-8 shadow-xl relative overflow-hidden">
+            <div className="bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-3xl p-8 shadow-xl relative overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_70%)] pointer-events-none" />
               <div className="relative z-10 space-y-4 max-w-xl">
                 <span className="bg-white/20 text-white text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
@@ -153,31 +150,31 @@ export default async function DashboardPage() {
                 <h2 className="text-2xl font-extrabold leading-tight">
                   Chào bạn mới nha! Cùng bẻ gãy TOEIC & IELTS nào
                 </h2>
-                <p className="text-orange-50/90 text-sm leading-relaxed">
+                <p className="text-violet-50/90 text-sm leading-relaxed">
                   Bạn đang sử dụng hệ thống ở chế độ Khách. Đăng nhập bằng Google chỉ 3s để sở hữu toàn bộ đặc quyền sau:
                 </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium pt-2">
                   <li className="flex items-center gap-2">
-                    <span className="text-orange-200">⚡</span> Lưu tiến độ học tập
+                    <span className="text-violet-200">⚡</span> Lưu tiến độ học tập
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-orange-200">🔥</span> Tích luỹ Streak rèn luyện
+                    <span className="text-violet-200">🔥</span> Tích luỹ Streak rèn luyện
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-orange-200">🏆</span> Leo top Bảng Xếp Hạng
+                    <span className="text-violet-200">🏆</span> Leo top Bảng Xếp Hạng
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-orange-200">💎</span> Tự động lưu Sổ tay câu sai
+                    <span className="text-violet-200">💎</span> Tự động lưu Sổ tay câu sai
                   </li>
                 </ul>
                 <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center">
                   <a
                     href={googleLoginUrl}
-                    className="w-full sm:w-auto text-center font-bold text-sm bg-white text-orange-600 hover:bg-orange-50 px-6 py-3 rounded-2xl shadow-md transition duration-200"
+                    className="w-full sm:w-auto text-center font-bold text-sm bg-white text-violet-600 hover:bg-violet-50 px-6 py-3 rounded-2xl shadow-md transition duration-200"
                   >
                     Đăng nhập Google ngay! 🚀
                   </a>
-                  <span className="text-xs text-orange-100 font-medium hidden sm:inline">
+                  <span className="text-xs text-violet-100 font-medium hidden sm:inline">
                     ⚡ Đồng bộ tức thì, học miễn phí
                   </span>
                 </div>
@@ -189,19 +186,19 @@ export default async function DashboardPage() {
           )}
 
           {/* Hero Widget: Daily Mini-Test */}
-          <div className="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
+          <div className="bg-gradient-to-br from-violet-500 to-purple-600 text-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
             <div className="relative z-10 space-y-4 max-w-lg">
-              <span className="bg-orange-400/30 text-orange-100 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
+              <span className="bg-violet-400/30 text-violet-100 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
                 Hôm nay nè bạn ơi! 🔥
               </span>
               <h2 className="text-3xl font-extrabold">
                 Chào {user ? user.fullName : "bạn"} nha! Hôm nay chúng mình làm tí Mini-test nhỉ? 🔥
               </h2>
-              <p className="text-orange-100/90 text-sm leading-relaxed">
+              <p className="text-violet-100/90 text-sm leading-relaxed">
                 Hoàn thành nhanh 10 câu hỏi rút gọn để giữ lửa Streak đỉnh chóp và củng cố ngữ pháp, từ vựng hôm nay nha.
               </p>
               <div>
-                <Link href="/quiz" className="inline-flex items-center justify-center bg-white text-orange-600 font-bold px-6 py-3 rounded-xl shadow-md hover:bg-orange-50 transition transform hover:-translate-y-0.5">
+                <Link href="/quiz" className="inline-flex items-center justify-center bg-white text-violet-600 font-bold px-6 py-3 rounded-xl shadow-md hover:bg-violet-50 transition transform hover:-translate-y-0.5">
                   Chiến luôn đề này nha! 🎯
                 </Link>
               </div>
@@ -215,7 +212,7 @@ export default async function DashboardPage() {
           <div className="grid gap-6 sm:grid-cols-2">
             <Link href="/speaking" className="bg-card border border-card-border rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left group">
               <span className="text-3xl">🎙️</span>
-              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition">Luyện nói &ldquo;Du kích&rdquo; với AI nha</h3>
+              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-violet-600 transition">Luyện nói &ldquo;Du kích&rdquo; với AI nha</h3>
               <p className="opacity-70 text-sm leading-relaxed">
                 Chúng mình đang lắng nghe bạn nói nè, cứ tự nhiên phản xạ không độ trễ nha.
               </p>
@@ -223,7 +220,7 @@ export default async function DashboardPage() {
 
             <Link href="/mistake-bank" className="bg-card border border-card-border rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left group">
               <span className="text-3xl">💎</span>
-              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-500 transition">Sổ tay &ldquo;gột rửa&rdquo; câu sai 💎</h3>
+              <h3 className="text-lg font-bold mt-4 mb-2 group-hover:text-violet-600 transition">Sổ tay &ldquo;gột rửa&rdquo; câu sai 💎</h3>
               <p className="opacity-70 text-sm leading-relaxed">
                 Kho báu tự động lưu và phân loại chi tiết lỗi sai giúp bạn sửa đổi lỗ hổng kiến thức.
               </p>
@@ -245,13 +242,13 @@ export default async function DashboardPage() {
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                       u.rank === 1 ? "bg-amber-100 text-amber-800" :
                       u.rank === 2 ? "bg-slate-100 text-slate-800" :
-                      "bg-orange-100 text-orange-800"
+                      "bg-violet-100 text-violet-850"
                     }`}>
                       {u.rank}
                     </span>
                     <span className="font-medium text-sm">{u.name}</span>
                   </div>
-                  <span className="text-sm font-bold text-orange-600">{u.streakCount} 🔥</span>
+                  <span className="text-sm font-bold text-violet-600">{u.streakCount} 🔥</span>
                 </div>
               ))}
             </div>
@@ -262,7 +259,7 @@ export default async function DashboardPage() {
             <p className="opacity-70 text-sm leading-relaxed mb-4">
               Xem chi tiết biểu đồ kỹ năng và lịch đóng góp học tập hàng ngày của bạn nè.
             </p>
-            <span className="text-sm font-semibold text-orange-600 dark:text-orange-500 hover:underline">
+            <span className="text-sm font-semibold text-violet-600 hover:underline">
               Xem phân tích ngay &rarr;
             </span>
           </Link>

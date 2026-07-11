@@ -1,4 +1,5 @@
 import React from "react";
+import { Input } from "@/components/ui/input";
 
 interface Props {
   certType: "none" | "ielts" | "toeic";
@@ -19,14 +20,14 @@ export default function CertificateConverter({
 }: Props) {
   return (
     <div className="space-y-5">
-      <h3 className="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-wider border-l-4 border-orange-500 pl-3">
+      <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-violet-600 pl-3">
         2. Quy đổi chứng chỉ tiếng Anh
       </h3>
       
       <div className="space-y-4">
         {/* Nút bấm Card chọn loại chứng chỉ */}
         <div className="space-y-1.5">
-          <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
+          <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
             Loại chứng chỉ ngoại ngữ
           </label>
           <div className="grid grid-cols-3 gap-3">
@@ -44,8 +45,8 @@ export default function CertificateConverter({
                 }}
                 className={`px-4 py-3 rounded-xl border text-center font-bold text-xs transition duration-150 cursor-pointer ${
                   certType === item.id
-                    ? "border-orange-500 bg-orange-50 dark:bg-orange-955/20 text-orange-600 dark:text-orange-500 shadow-sm"
-                    : "border-slate-200 dark:border-zinc-850 hover:bg-slate-50 dark:hover:bg-zinc-900 text-slate-600 dark:text-zinc-400"
+                    ? "border-violet-600 bg-violet-50 text-violet-750 shadow-sm"
+                    : "border-slate-200 hover:bg-slate-50 text-slate-600"
                 }`}
               >
                 {item.name}
@@ -58,14 +59,14 @@ export default function CertificateConverter({
         {certType !== "none" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in">
             <div className="space-y-1">
-              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
+              <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
                 Đề án quy đổi của trường
               </label>
               <select
                 value={conversionTarget}
                 onChange={e => setConversionTarget(e.target.value as "standard" | "neu" | "ftu" | "hust" | "hcmut")}
                 data-testid="select-conversion-target"
-                className="w-full px-3 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 text-sm font-semibold"
+                className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
               >
                 <option value="standard">Quy chuẩn chung của Bộ GD&ĐT</option>
                 <option value="neu">Đại học Kinh tế Quốc dân (NEU)</option>
@@ -75,17 +76,17 @@ export default function CertificateConverter({
               </select>
             </div>
             <div className="space-y-1">
-              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
+              <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
                 Điểm số chứng chỉ đạt được
               </label>
-              <input
+              <Input
                 type="number"
                 step={certType === "ielts" ? "0.5" : "5"}
                 placeholder={certType === "ielts" ? "6.5" : "850"}
                 value={certScore}
                 onChange={e => setCertScore(e.target.value)}
                 data-testid="input-cert-score"
-                className="w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 text-sm font-bold"
+                className="font-bold text-sm h-10"
               />
             </div>
           </div>
@@ -93,7 +94,7 @@ export default function CertificateConverter({
       </div>
 
       {certType !== "none" && (
-        <div className="text-[11px] text-slate-500 dark:text-zinc-400 font-medium">
+        <div className="text-[11px] text-slate-500 font-medium">
           * Hệ thống tự động áp dụng công thức quy đổi tối ưu cho bạn dựa trên đề án riêng của trường đã chọn.
         </div>
       )}

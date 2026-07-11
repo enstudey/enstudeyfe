@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
       {/* Header */}
       <Header />
 
       {/* Main Content */}
       <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
-        <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">
+        <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
           Chính sách bảo mật thông tin – Nền tảng EnStudey
         </h1>
-        <p className="text-xs text-slate-400 dark:text-zinc-500 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
+        <p className="text-xs text-slate-400 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
 
-        <div className="prose dark:prose-invert space-y-6 text-sm text-slate-700 dark:text-zinc-350 leading-relaxed text-justify">
+        <div className="prose space-y-6 text-sm text-slate-700 leading-relaxed text-justify">
           <p>
             Chào mừng bạn đến với EnStudey (sau đây gọi tắt là &quot;chúng tôi&quot; hoặc &quot;nền tảng&quot;). Chúng tôi cam kết bảo vệ quyền riêng tư và an toàn dữ liệu trực tuyến của toàn bộ khách truy cập, đặc biệt là các bạn học sinh và phụ huynh khi sử dụng các công cụ học tập và tra cứu trên hệ thống.
           </p>
@@ -31,10 +31,10 @@ export default function PrivacyPolicyPage() {
             Vì EnStudey hoạt động theo mô hình tinh gọn, ở phiên bản hiện tại, hệ thống hoàn toàn không yêu cầu người dùng phải đăng ký tài khoản, cung cấp họ tên, số điện thoại hay địa chỉ email. Bạn có thể sử dụng toàn bộ tính năng một cách ẩn danh và an toàn.
           </p>
 
-          <hr className="border-slate-200 dark:border-zinc-800 my-6" />
+          <hr className="border-slate-200 my-6" />
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">1. Phạm vi thu thập và Cơ chế xử lý dữ liệu</h2>
+            <h2 className="text-lg font-bold text-slate-900">1. Phạm vi thu thập và Cơ chế xử lý dữ liệu</h2>
             <p>
               Nền tảng EnStudey vận hành các tính năng cốt lõi bao gồm: Đọc bài viết học thuật, Công cụ tính điểm xét tuyển tốt nghiệp/học bạ và Tiện ích tra cứu tuyển sinh Đại học. Cơ chế xử lý dữ liệu được quy định minh bạch như sau:
             </p>
@@ -48,10 +48,10 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <hr className="border-slate-200 dark:border-zinc-800 my-6" />
+          <hr className="border-slate-200 my-6" />
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">2. Cam kết bảo mật và Chia sẻ thông tin từ bên thứ ba</h2>
+            <h2 className="text-lg font-bold text-slate-900">2. Cam kết bảo mật và Chia sẻ thông tin từ bên thứ ba</h2>
             <p>
               Do tính chất vận hành ẩn danh, chúng tôi cam kết bảo vệ tuyệt đối không gian trải nghiệm của người dùng:
             </p>
@@ -62,16 +62,16 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <hr className="border-slate-200 dark:border-zinc-800 my-6" />
+          <hr className="border-slate-200 my-6" />
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">3. Điều khoản về Quảng cáo của bên thứ ba và Tiếp thị liên kết</h2>
+            <h2 className="text-lg font-bold text-slate-900">3. Điều khoản về Quảng cáo của bên thứ ba và Tiếp thị liên kết</h2>
             <p>
               Để duy trì hệ thống máy chủ vận hành liên tục 24/7 và cung cấp dịch vụ hoàn toàn miễn phí cho cộng đồng học sinh, EnStudey tích hợp các giải pháp thương mại hóa từ đối tác chính thức:
             </p>
 
             <div className="space-y-2 mt-2">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white">Đối tác Quảng cáo Google AdSense</h3>
+              <h3 className="text-sm font-bold text-slate-900">Đối tác Quảng cáo Google AdSense</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>
                   Các nhà cung cấp bên thứ ba, bao gồm cả Google, sử dụng cookie để phân phát quảng cáo dựa trên các lượt truy cập trước đó của người dùng vào website EnStudey hoặc các trang web khác trên mạng Internet.
@@ -80,13 +80,13 @@ export default function PrivacyPolicyPage() {
                   Việc Google sử dụng cookie quảng cáo cho phép Google và các đối tác phân phát quảng cáo đến người dùng dựa trên thông tin truy cập một cách phù hợp và tối ưu trải nghiệm trực quan.
                 </li>
                 <li>
-                  Người dùng có thể chủ động tắt tính năng quảng cáo cá nhân hóa bằng cách truy cập vào trang <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-orange-500 hover:underline">Cài đặt quảng cáo của Google</a>.
+                  Người dùng có thể chủ động tắt tính năng quảng cáo cá nhân hóa bằng cách truy cập vào trang <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-violet-600 hover:underline">Cài đặt quảng cáo của Google</a>.
                 </li>
               </ul>
             </div>
 
             <div className="space-y-2 mt-4">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white">Đối tác Tiếp thị liên kết Shopee Affiliate</h3>
+              <h3 className="text-sm font-bold text-slate-900">Đối tác Tiếp thị liên kết Shopee Affiliate</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>
                   Hệ thống có chứa các liên kết giới thiệu sản phẩm giáo dục, cẩm nang luyện đề, văn phòng phẩm và hành trang sinh viên dẫn sang sàn thương mại điện tử Shopee Việt Nam.
@@ -98,10 +98,10 @@ export default function PrivacyPolicyPage() {
             </div>
           </section>
 
-          <hr className="border-slate-200 dark:border-zinc-800 my-6" />
+          <hr className="border-slate-200 my-6" />
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">4. Quyền của chủ thể dữ liệu và Thông tin liên hệ</h2>
+            <h2 className="text-lg font-bold text-slate-900">4. Quyền của chủ thể dữ liệu và Thông tin liên hệ</h2>
             <p>
               Theo quy định tại Nghị định số 13/2023/NĐ-CP của Chính phủ về bảo vệ dữ liệu cá nhân, người dùng (chủ thể dữ liệu) có đầy đủ các quyền hợp pháp đối với dữ liệu của mình trên nền tảng EnStudey, bao gồm:
             </p>
@@ -130,7 +130,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <p className="font-bold text-orange-600 dark:text-orange-500 mt-6 text-center">
+          <p className="font-bold text-violet-600 mt-6 text-center">
             Chúng tôi trân trọng sự đồng hành của bạn. Chúc các bạn sĩ tử có một mùa thi rực rỡ và đạt kết quả tối ưu!
           </p>
         </div>

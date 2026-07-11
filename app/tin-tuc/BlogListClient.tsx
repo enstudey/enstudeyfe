@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 import { PostData } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
 import { getCategoryBySlug } from "@/lib/categories";
@@ -58,21 +59,21 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
       <Header />
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
         <div className="flex justify-between items-end">
           <div>
-            <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">Tin tức học thuật 🚀</h1>
-            <p className="text-slate-500 dark:text-zinc-400 text-sm">Cập nhật lộ trình học tập, cẩm nang ngữ pháp tiếng Anh tuyển sinh.</p>
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Tin tức học thuật 🚀</h1>
+            <p className="text-slate-500 text-sm">Cập nhật lộ trình học tập, cẩm nang ngữ pháp tiếng Anh tuyển sinh.</p>
           </div>
         </div>
 
-        {/* 2. Leaderboard Ad: Ngay dưới tiêu đề trang, trên danh mục lọc */}
-        <div className="ad-container ad-leaderboard w-full min-h-[90px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl py-2 mb-4">
-          <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+        {/* 2. Leaderboard Ad */}
+        <div className="ad-container ad-leaderboard w-full min-h-[90px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl py-2 mb-4">
+          <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
         </div>
 
         {/* Categories filters */}
@@ -91,8 +92,8 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                 onClick={() => handleTabChange(tab.id)}
                 className={`inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer ${
                   selectedTab === tab.id
-                    ? "bg-orange-600 text-white"
-                    : "bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-850"
+                    ? "bg-violet-600 text-white"
+                    : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
                 }`}
               >
                 {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={12} />}
@@ -108,10 +109,8 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {paginatedPosts.map((post, idx) => (
                   <React.Fragment key={post.slug}>
-                    <div className="relative group bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 rounded-2xl overflow-hidden hover:shadow-md transition duration-300 cursor-pointer flex flex-col justify-between">
+                    <div className="relative group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-md transition duration-300 cursor-pointer flex flex-col justify-between">
                       <div className="h-44 overflow-hidden relative">
-
-
                         <Image
                           alt={post.title}
                           fill
@@ -125,26 +124,26 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                           {(() => {
                             const cat = getCategoryBySlug(post.category);
                             return (
-                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-slate-100 dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 rounded-lg text-[10px] font-bold uppercase tracking-wider">
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-slate-100 text-slate-800 rounded-lg text-[10px] font-bold uppercase tracking-wider">
                                 {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={10} />}
                                 {cat ? cat.name : post.category}
                               </span>
                             );
                           })()}
-                          <h2 className="text-base font-bold text-slate-950 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors line-clamp-2">
+                          <h2 className="text-base font-bold text-slate-900 group-hover:text-violet-600 transition-colors line-clamp-2">
                             <Link href={`/tin-tuc/${post.slug}`} className="after:absolute after:inset-0">
                               {post.title}
                             </Link>
                           </h2>
-                          <p className="text-slate-500 dark:text-zinc-400 text-xs line-clamp-2 leading-relaxed">
+                          <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed">
                             {post.description}
                           </p>
                         </div>
                         <div className="flex items-center justify-between pt-2">
-                          <div className="flex items-center gap-2 text-[10px] text-slate-400 dark:text-zinc-500 font-semibold uppercase tracking-wider">
+                          <div className="flex items-center gap-2 text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
                             <span>{post.date}</span>
                           </div>
-                          <span className="text-xs font-bold text-orange-600 dark:text-orange-500 group-hover:underline">
+                          <span className="text-xs font-bold text-violet-600 group-hover:underline">
                             Đọc tiếp &rarr;
                           </span>
                         </div>
@@ -158,9 +157,9 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
                     {(idx === 1 || idx === 3) && idx < paginatedPosts.length - 1 && (
                       <div className="col-span-full py-2">
-                        {/* Khung trống giữ chỗ chống CLS, hiển thị nhãn Quảng cáo mờ */}
-                        <div className="ad-container ad-in-feed w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 rounded-xl flex items-center justify-center">
-                          <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+                        {/* Khung trống giữ chỗ chống CLS */}
+                        <div className="ad-container ad-in-feed w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 rounded-xl flex items-center justify-center">
+                          <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
                         </div>
                       </div>
                     )}
@@ -168,32 +167,34 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 px-6 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl space-y-4">
-                <p className="font-bold text-lg text-slate-900 dark:text-white">Góc tin tức học thuật & cẩm nang tuyển sinh</p>
-                <p className="text-sm text-slate-500 dark:text-zinc-400 max-w-md mx-auto leading-relaxed">
+              <div className="text-center py-12 px-6 bg-card border border-border rounded-2xl space-y-4">
+                <p className="font-bold text-lg text-slate-900">Góc tin tức học thuật & cẩm nang tuyển sinh</p>
+                <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
                   Các bài viết hướng dẫn phương pháp học tập, cẩm nang ngữ pháp TOEIC/IELTS và mẹo thi đang được chuẩn bị và kiểm duyệt nội dung. Quay lại sau bạn nhé!
                 </p>
                 <div className="pt-2">
-                  <Link href="/tinh-diem-tot-nghiep" className="px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition inline-block">
-                    Thử công cụ tính điểm ngay &rarr;
-                  </Link>
+                  <Button asChild size="sm" className="font-bold rounded-xl cursor-pointer">
+                    <Link href="/tinh-diem-tot-nghiep">
+                      Thử công cụ tính điểm ngay &rarr;
+                    </Link>
+                  </Button>
                 </div>
               </div>
             )}
 
-            {/* 3. Bottom Banner (Ngăn cách an toàn với thanh phân trang) */}
+            {/* 3. Bottom Banner */}
             {totalPages > 1 && (
-              <div className="ad-container ad-bottom w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mt-8 mb-6">
-                <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+              <div className="ad-container ad-bottom w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl mt-8 mb-6">
+                <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
               </div>
             )}
 
-            {/* Pagination Controls - Tối ưu hóa SEO & AdSense (Crawlable) */}
+            {/* Pagination Controls */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-1.5 sm:gap-2 pt-6">
                 <Link
                   href={`/tin-tuc?page=${currentPage - 1}`}
-                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
+                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${
                     currentPage === 1 ? "pointer-events-none opacity-50" : ""
                   }`}
                 >
@@ -244,7 +245,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                         <Link
                           key={`dots-${index}`}
                           href={`/tin-tuc?page=${item.page}`}
-                          className="flex items-center justify-center w-8 h-8 text-xs font-bold text-slate-400 dark:text-zinc-500 hover:text-orange-600 dark:hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition"
+                          className="flex items-center justify-center w-8 h-8 text-xs font-bold text-slate-400 hover:text-violet-600 hover:bg-slate-100 rounded-full transition"
                           title={`Đi tới trang ${item.page}`}
                         >
                           {item.label}
@@ -258,8 +259,8 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                         href={`/tin-tuc?page=${item}`}
                         className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-full transition ${
                           currentPage === item
-                            ? "bg-orange-600 text-white"
-                            : "border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800"
+                            ? "bg-violet-600 text-white"
+                            : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
                         }`}
                       >
                         {item}
@@ -270,7 +271,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
                 <Link
                   href={`/tin-tuc?page=${currentPage + 1}`}
-                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-55 dark:hover:bg-zinc-800 transition ${
+                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${
                     currentPage === totalPages ? "pointer-events-none opacity-50" : ""
                   }`}
                 >
@@ -282,8 +283,8 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
           <aside className="hidden lg:block lg:col-span-3">
             <div className="sticky top-24 space-y-6">
               <AffiliateSidebarWidget currentPage={currentPage} />
-              <div className="ad-container ad-sidebar w-full min-h-[500px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl">
-                <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+              <div className="ad-container ad-sidebar w-full min-h-[500px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl">
+                <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
               </div>
             </div>
           </aside>

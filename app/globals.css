@@ -3,18 +3,16 @@
 @import "shadcn/tailwind.css";
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 html {
   scroll-behavior: smooth;
 }
 
-:root { /* bg-slate-50 */ /* text-slate-950 */
+:root {
   --card: oklch(1 0 0);
-  --card-border: #f1f5f9; /* border-slate-100 */
+  --card-border: #f1f5f9;
 
-  --accent: oklch(0.97 0 0); /* bg-orange-600 */
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.938 0.034 306.65); /* violet-100 */
+  --accent-foreground: oklch(0.432 0.232 306.65); /* violet-700 */
 
   --success-bg: #ecfdf5; /* bg-emerald-50 */
   --success-text: #047857; /* text-emerald-700 */
@@ -29,16 +27,16 @@ html {
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.505 0.244 306.65); /* violet-600 */
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.969 0.016 306.65); /* violet-50 */
+  --secondary-foreground: oklch(0.432 0.232 306.65);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: oklch(0.505 0.244 306.65); /* violet-600 */
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -53,43 +51,6 @@ html {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-}
-
-:root.dark {
-  --background: #09090b; /* bg-zinc-950 */
-  --foreground: #f4f4f5; /* text-zinc-100 */
-  --card: #18181b; /* bg-zinc-900 */
-  --card-border: #27272a; /* border-zinc-800 */
-
-  --success-bg: rgba(6, 78, 59, 0.3); /* bg-emerald-950/30 */
-  --success-text: #34d399; /* text-emerald-400 */
-
-  --error-bg: rgba(127, 29, 29, 0.3); /* bg-red-950/30 */
-  --error-text: #f87171; /* text-red-400 */
-}
-
-:root.light {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-border: #f1f5f9;
-  --success-bg: #ecfdf5;
-  --success-text: #047857;
-  --error-bg: #fef2f2;
-  --error-text: #b91c1c;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --background: #09090b;
-    --foreground: #f4f4f5;
-    --card: #18181b;
-    --card-border: #27272a;
-    --success-bg: rgba(6, 78, 59, 0.3);
-    --success-text: #34d399;
-    --error-bg: rgba(127, 29, 29, 0.3);
-    --error-text: #f87171;
-  }
 }
 
 @theme {
@@ -154,36 +115,15 @@ body {
   background-color: rgba(34, 197, 94, 0.08) !important;
   border-left: 4px solid #22c55e !important;
 }
-.dark .safe-zone {
-  background-color: rgba(34, 197, 94, 0.15) !important;
-}
 
 .fight-zone {
   background-color: rgba(245, 158, 11, 0.08) !important;
   border-left: 4px solid #f59e0b !important;
 }
-.dark .fight-zone {
-  background-color: rgba(245, 158, 11, 0.15) !important;
-}
 
 .risk-zone {
   background-color: rgba(239, 68, 68, 0.08) !important;
   border-left: 4px solid #ef4444 !important;
-}
-.dark .risk-zone {
-  background-color: rgba(239, 68, 68, 0.15) !important;
-}
-
-/* Tối ưu hóa hình ảnh trong bài viết Markdown để tránh chói mắt ở Dark Mode (ngoại trừ logo thương hiệu) */
-.dark img:not([src*="icon-transparent.png"]) {
-  filter: opacity(.8) brightness(.9);
-  transition: filter 0.3s ease;
-}
-
-/* Tối ưu hóa độ chói của các quảng cáo banner Google AdSense trong Dark Mode */
-.dark .adsbygoogle {
-  filter: grayscale(10%) brightness(90%);
-  transition: filter 0.3s ease;
 }
 
 /* Hide Scrollbar Utility */
@@ -193,64 +133,6 @@ body {
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-/* Dark Mode Overrides thủ công cho các trang prose và widget affiliate */
-.dark body {
-  background-color: #09090b !important;
-  color: #f4f4f5 !important;
-}
-
-.dark .prose {
-  color: #d4d4d8 !important;
-}
-
-.dark .prose h1,
-.dark .prose h2,
-.dark .prose h3,
-.dark .prose h4,
-.dark .prose strong {
-  color: #ffffff !important;
-}
-
-.dark .prose a {
-  color: #f97316 !important;
-}
-
-.dark .prose li {
-  color: #d4d4d8 !important;
-}
-
-/* Fix màu chữ cho các widget affiliate trong Dark Mode */
-.dark [data-testid="affiliate-sidebar-widget"],
-.dark [data-testid="affiliate-cert-widget"],
-.dark [data-testid="affiliate-box-study"],
-.dark [data-testid="affiliate-infeed-card"] {
-  background-color: #18181b !important;
-  border-color: #27272a !important;
-}
-
-.dark [data-testid="affiliate-sidebar-widget"] h4,
-.dark [data-testid="affiliate-cert-widget"] p,
-.dark [data-testid="affiliate-box-study"] p,
-.dark [data-testid="affiliate-infeed-card"] h2 {
-  color: #ffffff !important;
-}
-
-.dark [data-testid="affiliate-sidebar-widget"] p,
-.dark [data-testid="affiliate-cert-widget"] p:last-child,
-.dark [data-testid="affiliate-box-study"] p:last-child,
-.dark [data-testid="affiliate-infeed-card"] p {
-  color: #a1a1aa !important;
-}
-
-/* Fix màu chữ cho khối affiliate chèn động trong bài viết tin tức */
-.dark .affiliate-text-block {
-  background-color: rgba(24, 24, 27, 0.3) !important;
-  border-color: #27272a !important;
-}
-.dark .affiliate-text-block p {
-  color: #d4d4d8 !important;
 }
 
 /* Bù trừ chiều cao Header cố định khi cuộn tới tiêu đề qua Table of Contents hoặc Anchor Link */
@@ -322,40 +204,6 @@ body {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @layer base {

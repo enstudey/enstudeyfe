@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Giới thiệu về EnStudey - Nền tảng học tập & hướng nghiệp",
@@ -14,18 +15,18 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
       {/* Header */}
       <Header />
 
       {/* Main Content */}
       <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
-        <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">
+        <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
           Về chúng mình – EnStudey: Nền tảng hỗ trợ học tập cá nhân hóa
         </h1>
-        <p className="text-xs text-slate-400 dark:text-zinc-500 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
+        <p className="text-xs text-slate-400 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
 
-        <div className="prose dark:prose-invert space-y-6 text-sm text-slate-700 dark:text-zinc-350 leading-relaxed">
+        <div className="prose space-y-6 text-sm text-slate-700 leading-relaxed">
           <p>
             Hello bạn nha! Chào mừng bạn đã &quot;hạ cánh&quot; tại <strong>EnStudey</strong>! 🚀
           </p>
@@ -34,7 +35,7 @@ export default function AboutPage() {
           </p>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">Ở phiên bản hiện tại, EnStudey mang đến cho bạn những công cụ nào?</h2>
+            <h2 className="text-lg font-bold text-slate-900">Ở phiên bản hiện tại, EnStudey mang đến cho bạn những công cụ nào?</h2>
             <p>Chúng mình tập trung phát triển 3 tiện ích cốt lõi, hoạt động trơn tru và hoàn toàn miễn phí:</p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
@@ -50,14 +51,14 @@ export default function AboutPage() {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">Cam kết của chúng mình</h2>
+            <h2 className="text-lg font-bold text-slate-900">Cam kết của chúng mình</h2>
             <p>
               EnStudey được xây dựng bởi những người trẻ, dành cho những người trẻ. Vì vậy, chúng mình cam kết duy trì nền tảng này <strong>100% miễn phí</strong>. Để làm được điều đó và có chi phí duy trì hệ thống máy chủ, trang web sẽ có hiển thị một số quảng cáo từ đối tác Google AdSense. Tụi mình hứa sẽ luôn sắp xếp các vị trí quảng cáo thật tinh tế để không làm phiền trải nghiệm học tập và tra cứu của bạn nghen!
             </p>
           </section>
 
-          <section className="mt-8 pt-6 border-t border-slate-200 dark:border-zinc-800 space-y-2">
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white">Kết nối với EnStudey</h2>
+          <section className="mt-8 pt-6 border-t border-slate-200 space-y-2">
+            <h2 className="text-lg font-bold text-slate-900">Kết nối với EnStudey</h2>
             <p>
               Nếu bạn có bất kỳ thắc mắc nào, thấy hệ thống tính sai điểm, hoặc chỉ đơn giản là muốn góp ý để web hoàn thiện hơn, đừng ngại &quot;ới&quot; chúng mình qua các kênh dưới đây nha:
             </p>
@@ -69,20 +70,21 @@ export default function AboutPage() {
           </section>
 
           {/* Khung link điều hướng Trạm sạc */}
-          <div className="bg-orange-50/30 dark:bg-zinc-900/20 border border-orange-500/10 rounded-2xl p-5 text-center mt-6">
-            <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed mb-2">
+          <div className="bg-violet-50 border border-violet-500/10 rounded-2xl p-5 text-center mt-6">
+            <p className="text-xs text-slate-600 leading-relaxed mb-2">
               Để EnStudey có thể duy trì hoạt động lâu dài hoàn toàn miễn phí cho các thế hệ học sinh tiếp theo, bạn có thể ủng hộ tụi mình một ly cà phê muối nha.
             </p>
-            <Link
-              href="/tram-sac-nang-luong"
-              rel="sponsored nofollow"
-              className="inline-flex items-center justify-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition duration-200"
-            >
-              Ghé thăm Trạm sạc năng lượng EnStudey 🥤✨
-            </Link>
+            <Button asChild size="sm" className="font-bold rounded-xl cursor-pointer">
+              <Link
+                href="/tram-sac-nang-luong"
+                rel="sponsored nofollow"
+              >
+                Ghé thăm Trạm sạc năng lượng EnStudey 🥤✨
+              </Link>
+            </Button>
           </div>
 
-          <p className="font-bold text-orange-600 dark:text-orange-500 mt-6">
+          <p className="font-bold text-violet-600 mt-6">
             Cứ tự nhiên học tập và tra cứu nhé. Chúc bạn một mùa thi rực rỡ và đỗ ngay nguyện vọng 1! ✨
           </p>
         </div>

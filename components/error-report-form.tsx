@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 interface ErrorReportFormProps {
   errorCode?: string;
@@ -91,22 +92,22 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
           <div className="relative w-full max-w-md transform overflow-hidden rounded-xl bg-card border border-card-border p-6 text-left shadow-2xl transition-all z-10">
             {submitResult === "success" ? (
               <div className="text-center py-4">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30 mb-4">
-                  <svg className="h-6 w-6 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 border border-emerald-500/10 mb-4">
+                  <svg className="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-3">Tụi mình cảm ơn nha!</h3>
-                <p className="text-sm text-emerald-700 dark:text-emerald-400 leading-relaxed mb-6">
-                  Cảm ơn bạn đã dành thời gian báo lỗi cho tụi mình nha! 🧡 Sự góp ý của bạn thật sự rất quý và giúp tụi mình cải thiện ứng dụng mỗi ngày. Tụi mình sẽ kiểm tra và khắc phục nhanh chóng.
+                <p className="text-sm text-emerald-700 leading-relaxed mb-6">
+                  Cảm ơn bạn đã dành thời gian báo lỗi cho tụi mình nha! 💜 Sự góp ý của bạn thật sự rất quý và giúp tụi mình cải thiện ứng dụng mỗi ngày. Tụi mình sẽ kiểm tra và khắc phục nhanh chóng.
                 </p>
-                <button
+                <Button
                   data-testid="btn-close-success-modal"
                   onClick={closeModal}
-                  className="w-full rounded-md bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity cursor-pointer"
+                  className="w-full font-semibold cursor-pointer"
                 >
                   Đóng và tiếp tục học
-                </button>
+                </Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
@@ -123,7 +124,7 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
                   </button>
                 </div>
 
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">
+                <p className="text-xs text-zinc-500 mb-4">
                   Chia sẻ một xíu về hành động bạn vừa làm trước khi gặp lỗi nha...
                 </p>
 
@@ -139,7 +140,7 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
                 />
 
                 <div className="flex justify-between items-center">
-                  <span className="text-xs text-zinc-400 dark:text-zinc-500">
+                  <span className="text-xs text-zinc-400">
                     {description.length}/500 ký tự
                   </span>
                   <div className="flex gap-x-2">
@@ -147,18 +148,18 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
                       data-testid="btn-cancel-report-form"
                       type="button"
                       onClick={closeModal}
-                      className="rounded px-4 py-2 text-sm font-semibold text-foreground hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer"
+                      className="rounded px-4 py-2 text-sm font-semibold text-foreground hover:bg-zinc-100 cursor-pointer"
                     >
                       Hủy
                     </button>
-                    <button
+                    <Button
                       data-testid="btn-submit-error-report"
                       type="submit"
                       disabled={isSubmitting}
-                      className="rounded bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer"
+                      className="font-semibold cursor-pointer"
                     >
                       {isSubmitting ? "Đang gửi..." : "Gửi báo cáo"}
-                    </button>
+                    </Button>
                   </div>
                 </div>
 

@@ -1,3 +1,5 @@
+import { Input } from "@/components/ui/input";
+
 interface Props {
   scores: {
     math: string;
@@ -31,12 +33,12 @@ export default function SubjectScoresInput({
 }: Props) {
   return (
     <div className="space-y-6">
-      <h3 className="text-sm font-bold text-slate-800 dark:text-white uppercase tracking-wider border-l-4 border-orange-500 pl-3">
+      <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-violet-600 pl-3">
         1. Nhập điểm thi THPT quốc gia (Thang điểm 10)
       </h3>
 
       <div className="space-y-4">
-        <span className="text-[10px] font-bold text-slate-400 dark:text-zinc-500 tracking-wider uppercase block">
+        <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase block">
           Môn thi cơ bản
         </span>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
@@ -53,10 +55,10 @@ export default function SubjectScoresInput({
             { id: "informatics", name: "Tin học" }
           ].map(sub => (
             <div key={sub.id} className="space-y-1">
-              <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
+              <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
                 {sub.name}
               </label>
-              <input
+              <Input
                 type="text"
                 placeholder="0.0"
                 value={scores[sub.id as keyof typeof scores]}
@@ -64,10 +66,10 @@ export default function SubjectScoresInput({
                 onBlur={e => handleScoreBlur && handleScoreBlur(sub.id as keyof typeof scores, e.target.value)}
                 id={`input-score-${sub.id}`}
                 data-testid={`input-score-${sub.id}`}
-                className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-base ${
+                className={`font-bold text-base h-10 ${
                   errors[sub.id]
-                    ? "border-red-500 focus:border-red-500 text-red-500"
-                    : "border-slate-200 dark:border-zinc-850 focus:border-orange-500 dark:focus:border-orange-500"
+                    ? "border-red-500 focus-visible:border-red-500 text-red-500"
+                    : "border-slate-200"
                 }`}
               />
               {errors[sub.id] && (
@@ -79,15 +81,15 @@ export default function SubjectScoresInput({
       </div>
 
       <div className="space-y-4 pt-2">
-        <span className="text-[10px] font-bold text-slate-400 dark:text-zinc-500 tracking-wider uppercase block">
+        <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase block">
           Môn tự chọn mới & Ngoại ngữ phụ
         </span>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <div className="space-y-1">
-            <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
+            <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
               Công nghệ Công nghiệp
             </label>
-            <input
+            <Input
               type="text"
               placeholder="0.0"
               value={scores.techIndustrial}
@@ -95,10 +97,10 @@ export default function SubjectScoresInput({
               onBlur={e => handleScoreBlur && handleScoreBlur("techIndustrial", e.target.value)}
               id="input-score-techIndustrial"
               data-testid="input-score-techIndustrial"
-              className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-base ${
+              className={`font-bold text-base h-10 ${
                 errors.techIndustrial
-                  ? "border-red-500 focus:border-red-500 text-red-500"
-                  : "border-slate-200 dark:border-zinc-855 focus:border-orange-500 dark:focus:border-orange-500"
+                  ? "border-red-500 focus-visible:border-red-500 text-red-500"
+                  : "border-slate-200"
               }`}
             />
             {errors.techIndustrial && (
@@ -106,10 +108,10 @@ export default function SubjectScoresInput({
             )}
           </div>
           <div className="space-y-1">
-            <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
+            <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
               Công nghệ Nông nghiệp
             </label>
-            <input
+            <Input
               type="text"
               placeholder="0.0"
               value={scores.techAgricultural}
@@ -117,10 +119,10 @@ export default function SubjectScoresInput({
               onBlur={e => handleScoreBlur && handleScoreBlur("techAgricultural", e.target.value)}
               id="input-score-techAgricultural"
               data-testid="input-score-techAgricultural"
-              className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-base ${
+              className={`font-bold text-base h-10 ${
                 errors.techAgricultural
-                  ? "border-red-500 focus:border-red-500 text-red-500"
-                  : "border-slate-200 dark:border-zinc-855 focus:border-orange-500 dark:focus:border-orange-500"
+                  ? "border-red-500 focus-visible:border-red-500 text-red-500"
+                  : "border-slate-200"
               }`}
             />
             {errors.techAgricultural && (
@@ -128,14 +130,14 @@ export default function SubjectScoresInput({
             )}
           </div>
           <div className="space-y-1">
-            <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
+            <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
               Loại ngoại ngữ khác
             </label>
             <select
               value={otherLanguageType}
               onChange={e => setOtherLanguageType(e.target.value as "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian")}
               data-testid="select-other-lang-type"
-              className="w-full px-3 py-2.5 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-850 rounded-xl focus:outline-none focus:border-orange-500 text-xs font-bold"
+              className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-violet-600 text-xs font-bold"
             >
               <option value="Korean">Tiếng Hàn</option>
               <option value="Chinese">Tiếng Trung</option>
@@ -146,10 +148,10 @@ export default function SubjectScoresInput({
             </select>
           </div>
           <div className="space-y-1">
-            <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 tracking-wider uppercase">
+            <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
               Điểm ngoại ngữ khác
             </label>
-            <input
+            <Input
               type="text"
               placeholder="0.0"
               value={scores.otherLanguage}
@@ -157,10 +159,10 @@ export default function SubjectScoresInput({
               onBlur={e => handleScoreBlur && handleScoreBlur("otherLanguage", e.target.value)}
               id="input-score-otherLanguage"
               data-testid="input-score-otherLanguage"
-              className={`w-full px-3 py-2 bg-slate-50 dark:bg-zinc-950 border rounded-xl focus:outline-none focus:ring-0 transition font-bold text-base ${
+              className={`font-bold text-base h-10 ${
                 errors.otherLanguage
-                  ? "border-red-500 focus:border-red-500 text-red-500"
-                  : "border-slate-200 dark:border-zinc-850 focus:border-orange-500 dark:focus:border-orange-500"
+                  ? "border-red-500 focus-visible:border-red-500 text-red-500"
+                  : "border-slate-200"
               }`}
             />
             {errors.otherLanguage && (

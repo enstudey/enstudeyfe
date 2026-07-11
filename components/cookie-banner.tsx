@@ -59,13 +59,13 @@ export default function CookieBanner() {
       <div className="relative flex flex-col gap-3">
         {/* Header */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-orange-100 dark:bg-orange-950/50 text-orange-600 dark:text-orange-400 text-sm">
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-violet-100 text-violet-600 text-sm">
             🍪
           </div>
           <span className="font-semibold text-foreground text-sm">Cookie & Quyền riêng tư</span>
           <button
             onClick={() => setIsVisible(false)}
-            className="ml-auto p-1.5 rounded-lg text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors cursor-pointer"
+            className="ml-auto p-1.5 rounded-lg text-zinc-400 hover:text-zinc-650 hover:bg-zinc-100 transition-colors cursor-pointer"
             aria-label="Đóng thông báo"
             data-testid="btn-close-cookie-banner"
           >
@@ -80,7 +80,7 @@ export default function CookieBanner() {
           Hello! Việc bạn cho phép EnStudey dùng một xíu Cookie 🍪 chính là cách &quot;tài trợ&quot; tuyệt vời để duy trì nền tảng này 100% miễn phí đó. Xem chi tiết tại{" "}
           <Link 
             href="/privacy-policy" 
-            className="underline text-accent hover:opacity-80 font-medium transition-opacity"
+            className="underline text-violet-600 hover:opacity-80 font-medium transition-opacity"
             data-testid="link-privacy-policy"
           >
             Chính sách bảo mật
@@ -92,7 +92,7 @@ export default function CookieBanner() {
         <div className="flex justify-end mt-1">
           <button
             onClick={handleAccept}
-            className="px-5 py-2 bg-accent text-accent-foreground rounded-xl text-sm font-medium transition hover:opacity-90 active:scale-95 cursor-pointer shadow-sm"
+            className="px-5 py-2 bg-violet-600 text-white rounded-xl text-sm font-medium transition hover:opacity-90 active:scale-95 cursor-pointer shadow-sm"
             data-testid="btn-accept-cookie"
           >
             Duyệt luôn 🎯

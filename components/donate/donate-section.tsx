@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import { useDonateStatus } from "./use-donate-status";
 
 export default function DonateSection() {
@@ -52,53 +53,54 @@ export default function DonateSection() {
 
   return (
     <section
-      className="mt-8 pt-8 border-t border-slate-200 dark:border-zinc-800 space-y-6"
+      className="mt-8 pt-8 border-t border-slate-200 space-y-6"
       data-testid="donate-section"
     >
-      <div className="bg-orange-50/30 dark:bg-zinc-900/20 border border-orange-500/10 rounded-3xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <div className="bg-violet-50/30 border border-violet-500/10 rounded-3xl p-6 flex flex-col md:flex-row gap-6 items-center">
         {/* Thư ngỏ */}
         <div className="flex-1 space-y-3">
-          <h2 className="text-lg font-bold text-slate-950 dark:text-white flex items-center gap-2">
+          <h2 className="text-lg font-bold text-slate-955 flex items-center gap-2">
             Tiếp sức cho EnStudey ☕🚀
           </h2>
-          <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
+          <p className="text-sm text-slate-600 leading-relaxed">
             Toàn bộ tính năng trên EnStudey được xây dựng và duy trì hoàn toàn miễn phí. Nếu công cụ này giúp bạn tiết kiệm thời gian hoặc gỡ rối mùa thi, bạn có thể &quot;tiếp sức&quot; cho mình một ly trà sữa qua mã QR bên cạnh nha! Mọi sự ủng hộ sẽ được nạp thẳng vào quỹ duy trì máy chủ để trang web tiếp tục hoạt động miễn phí cho các thế hệ sau. Cảm ơn bạn rất nhiều! ✨
           </p>
 
           {/* Hộp thông tin chuyển khoản */}
-          <div className="bg-white dark:bg-zinc-900 border border-slate-100 dark:border-zinc-850 p-4 rounded-2xl text-xs space-y-2 max-w-sm shadow-xs">
+          <div className="bg-white border border-slate-100 p-4 rounded-2xl text-xs space-y-2 max-w-sm shadow-xs">
             <div className="flex justify-between items-center">
-              <span className="text-slate-400 dark:text-zinc-500">Ngân hàng</span>
-              <span className="font-bold text-slate-800 dark:text-zinc-200">
+              <span className="text-slate-400">Ngân hàng</span>
+              <span className="font-bold text-slate-800">
                 {config.bank_name}
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-slate-400 dark:text-zinc-500">Chủ tài khoản</span>
-              <span className="font-bold text-slate-800 dark:text-zinc-200">
+              <span className="text-slate-400">Chủ tài khoản</span>
+              <span className="font-bold text-slate-800">
                 {config.account_name}
               </span>
             </div>
-            <div className="flex justify-between items-center gap-2 pt-1 border-t border-slate-100 dark:border-zinc-850/60">
-              <span className="text-slate-400 dark:text-zinc-500">Số tài khoản</span>
+            <div className="flex justify-between items-center gap-2 pt-1 border-t border-slate-100">
+              <span className="text-slate-400">Số tài khoản</span>
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-orange-600 dark:text-orange-500">
+                <span className="font-bold text-violet-600">
                   {config.account_no}
                 </span>
-                <button
+                <Button
                   onClick={handleCopy}
                   data-testid="btn-copy-section"
-                  className="px-2.5 py-1 bg-orange-100 dark:bg-orange-950/40 hover:bg-orange-200 dark:hover:bg-orange-900/40 text-orange-700 dark:text-orange-400 font-bold rounded-lg text-[10px] cursor-pointer transition-colors"
+                  variant="secondary"
+                  className="px-2.5 py-1 text-violet-750 bg-violet-100 hover:bg-violet-200 transition font-bold rounded-lg text-[10px] cursor-pointer"
                 >
                   {copied ? "Đã chép ✓" : "Sao chép 📋"}
-                </button>
+                </Button>
               </div>
             </div>
           </div>
         </div>
 
         {/* Mã QR */}
-        <div className="w-44 h-44 border-4 border-dashed border-orange-500/20 rounded-2xl overflow-hidden shadow-md shrink-0 bg-slate-50 dark:bg-zinc-950 flex items-center justify-center">
+        <div className="w-44 h-44 border-4 border-dashed border-violet-500/20 rounded-2xl overflow-hidden shadow-md shrink-0 bg-slate-50 flex items-center justify-center">
           <Image
             src={config.qr_template_url}
             alt="Mã QR chuyển khoản ủng hộ VietQR"
@@ -113,21 +115,21 @@ export default function DonateSection() {
       {config.donors && config.donors.length > 0 && (
         <div className="space-y-3" data-testid="donor-board">
           <div className="flex justify-between items-center">
-            <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
               Những trạm sạc năng lượng của EnStudey 🔋✨
             </h3>
             {/* 2 nút cuộn trái / phải */}
             <div className="flex gap-1.5">
               <button
                 onClick={() => handleScroll("left")}
-                className="w-7 h-7 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center text-xs hover:bg-slate-100 dark:hover:bg-zinc-800 transition cursor-pointer text-slate-600 dark:text-zinc-400 active:scale-95"
+                className="w-7 h-7 rounded-full border border-slate-200 flex items-center justify-center text-xs hover:bg-slate-100 transition cursor-pointer text-slate-600 active:scale-95"
                 aria-label="Cuộn sang trái"
               >
                 &larr;
               </button>
               <button
                 onClick={() => handleScroll("right")}
-                className="w-7 h-7 rounded-full border border-slate-200 dark:border-zinc-800 flex items-center justify-center text-xs hover:bg-slate-100 dark:hover:bg-zinc-800 transition cursor-pointer text-slate-600 dark:text-zinc-400 active:scale-95"
+                className="w-7 h-7 rounded-full border border-slate-200 flex items-center justify-center text-xs hover:bg-slate-100 transition cursor-pointer text-slate-600 active:scale-95"
                 aria-label="Cuộn sang phải"
               >
                 &rarr;
@@ -142,12 +144,12 @@ export default function DonateSection() {
               {config.donors.map((donor, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-50 dark:bg-zinc-900/50 border border-slate-200/50 dark:border-zinc-800/80 px-3.5 py-3 rounded-2xl shrink-0 w-48 snap-start shadow-2xs hover:border-orange-500/20 transition-colors flex items-center justify-between"
+                  className="bg-slate-50 border border-slate-200/50 px-3.5 py-3 rounded-2xl shrink-0 w-48 snap-start shadow-2xs hover:border-violet-500/20 transition-colors flex items-center justify-between"
                 >
-                  <span className="font-bold text-slate-800 dark:text-zinc-200 truncate pr-1 text-xs">
+                  <span className="font-bold text-slate-800 truncate pr-1 text-xs">
                     {donor.name}
                   </span>
-                  <span className="text-[10px] font-extrabold px-1.5 py-0.5 bg-orange-100 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 rounded-md shrink-0">
+                  <span className="text-[10px] font-extrabold px-1.5 py-0.5 bg-violet-100 text-violet-600 rounded-md shrink-0">
                     {donor.amount}
                   </span>
                 </div>

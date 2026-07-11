@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 const MOCK_ADS = [
   {
@@ -8,8 +9,8 @@ const MOCK_ADS = [
     description: "Nhận giáo trình luyện nói phản xạ 1-1 miễn phí tối ưu cho người bận rộn.",
     cta: "Thử Ngay Lên Trình",
     tag: "Tài trợ",
-    gradient: "from-orange-500/10 via-red-500/5 to-transparent",
-    border: "border-orange-500/20"
+    gradient: "from-violet-500/10 via-violet-500/5 to-transparent",
+    border: "border-violet-500/20"
   },
   {
     title: "Sổ Tay 1000 Từ Vựng TOEIC Cực Dễ",
@@ -44,32 +45,35 @@ export default function AdBanner() {
 
   return (
     <div 
-      className={`w-full min-h-[250px] bg-gradient-to-r ${ad.gradient} bg-white dark:bg-zinc-900 flex flex-col justify-between p-6 my-6 rounded-2xl overflow-hidden border ${ad.border} shadow-sm transition-all duration-300 relative`}
+      className={`w-full min-h-[250px] bg-gradient-to-r ${ad.gradient} bg-white flex flex-col justify-between p-6 my-6 rounded-2xl overflow-hidden border ${ad.border} shadow-sm transition-all duration-300 relative`}
       data-testid="ad-banner"
     >
       <div className="absolute top-3 right-3 flex items-center gap-1">
-        <span className="text-[10px] font-semibold text-slate-400 dark:text-zinc-500 uppercase tracking-widest bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded">
+        <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest bg-slate-100 px-2 py-0.5 rounded">
           {ad.tag}
         </span>
       </div>
 
       <div className="space-y-2 mt-2">
-        <span className="text-xs font-bold text-orange-600 dark:text-orange-500 uppercase tracking-wider">
+        <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">
           Quảng cáo được đề xuất
         </span>
-        <h3 className="text-xl font-extrabold text-slate-900 dark:text-white leading-snug">
+        <h3 className="text-xl font-extrabold text-slate-900 leading-snug">
           {ad.title}
         </h3>
-        <p className="text-slate-650 dark:text-zinc-400 text-sm max-w-xl leading-relaxed">
+        <p className="text-slate-650 text-sm max-w-xl leading-relaxed">
           {ad.description}
         </p>
       </div>
 
-      <div className="pt-4 flex justify-between items-center border-t border-slate-100 dark:border-zinc-800/80">
-        <span className="text-xs text-slate-400 dark:text-zinc-500">enstudey.com/ads</span>
-        <button className="bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition duration-200 cursor-pointer">
+      <div className="pt-4 flex justify-between items-center border-t border-slate-100">
+        <span className="text-xs text-slate-400">enstudey.com/ads</span>
+        <Button
+          size="sm"
+          className="font-bold text-xs rounded-xl shadow transition duration-200 cursor-pointer"
+        >
           {ad.cta}
-        </button>
+        </Button>
       </div>
     </div>
   );

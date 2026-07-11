@@ -14,10 +14,10 @@ import productsData from "@/data/shopee-affiliate-products.json";
 
 function insertInArticleAd(htmlContent: string): string {
   const adBlockHtml = `
-    <div class="ad-container ad-in-article my-8 w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl" contenteditable="false">
+    <div class="ad-container ad-in-article my-8 w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl" contenteditable="false">
       <div class="text-center">
-        <span class="text-[9px] uppercase tracking-wider text-slate-400 dark:text-zinc-550 select-none font-bold block mb-1">Liên kết tài trợ</span>
-        <p class="text-xs font-bold text-slate-700 dark:text-zinc-350">Lộ trình học IELTS 7.5+ cấp tốc cho học sinh lớp 12</p>
+        <span class="text-[9px] uppercase tracking-wider text-slate-400 select-none font-bold block mb-1">Liên kết tài trợ</span>
+        <p class="text-xs font-bold text-slate-700">Lộ trình học IELTS 7.5+ cấp tốc cho học sinh lớp 12</p>
       </div>
     </div>
   `;
@@ -48,11 +48,11 @@ function insertAffiliateTextLink(htmlContent: string): string {
   if (!affiliateProduct) return htmlContent;
 
   const affiliateHtml = `
-    <div class="affiliate-text-block my-6 p-4 bg-slate-100/40 dark:bg-zinc-900/30 border border-slate-200/50 dark:border-zinc-800 rounded-xl" contenteditable="false">
-      <span class="text-[10px] uppercase tracking-wider text-orange-600 dark:text-orange-500 font-bold block mb-1">Gợi ý dành cho bạn</span>
-      <p class="text-sm text-slate-700 dark:text-zinc-350 m-0 leading-relaxed">
+    <div class="affiliate-text-block my-6 p-4 bg-slate-100 border border-slate-200/50 rounded-xl" contenteditable="false">
+      <span class="text-[10px] uppercase tracking-wider text-violet-600 font-bold block mb-1">Gợi ý dành cho bạn</span>
+      <p class="text-sm text-slate-700 m-0 leading-relaxed">
         Bạn có thể tham khảo thêm tài liệu trong cuốn 
-        <a href="/go/${affiliateProduct.slug}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-orange-600 dark:text-orange-500 hover:underline font-bold">${affiliateProduct.title}</a> 
+        <a href="/go/${affiliateProduct.slug}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-violet-600 hover:underline font-bold">${affiliateProduct.title}</a> 
         để học tập và định hướng nghề nghiệp tốt hơn.
       </p>
     </div>
@@ -94,14 +94,14 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
+      <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
         <Header />
         <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-6 text-center">
-          <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white leading-tight">
+          <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
             Ngành học không tồn tại rồi bạn ơi 🥺
           </h1>
           <p className="text-slate-500">Hình như bài viết review ngành học bạn yêu cầu hiện không có trên hệ thống.</p>
-          <Link href="/nganh-hoc" className="text-sm text-orange-600 dark:text-orange-500 hover:underline font-semibold">
+          <Link href="/nganh-hoc" className="text-sm text-violet-600 hover:underline font-semibold">
             &larr; Quay lại danh sách ngành học
           </Link>
         </main>
@@ -127,7 +127,7 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
   } : null;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
       {faqSchema && (
         <script
           type="application/ld+json"
@@ -138,20 +138,20 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
 
       <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
         <div>
-          <Link href="/nganh-hoc" className="text-sm text-orange-600 dark:text-orange-500 hover:underline inline-flex items-center gap-1 font-semibold">
+          <Link href="/nganh-hoc" className="text-sm text-violet-600 hover:underline inline-flex items-center gap-1 font-semibold">
             &larr; Quay lại danh sách ngành học
           </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
-          <article className="lg:col-span-7 prose dark:prose-invert leading-relaxed text-slate-750 dark:text-zinc-300">
-            <span className="text-xs font-bold text-orange-600 dark:text-orange-500 uppercase tracking-wider">
+          <article className="lg:col-span-7 prose leading-relaxed text-slate-700">
+            <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">
               #NGANH-HOC
             </span>
-            <h1 className="text-3xl font-extrabold mt-2 mb-4 text-slate-950 dark:text-white leading-tight">
+            <h1 className="text-3xl font-extrabold mt-2 mb-4 text-slate-900 leading-tight">
               {post.title}
             </h1>
-            <p className="text-xs text-slate-400 dark:text-zinc-500 mb-6">{post.date}</p>
+            <p className="text-xs text-slate-400 mb-6">{post.date}</p>
 
             <div className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden mb-6">
               <Image
@@ -166,13 +166,13 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
 
             <TableOfContents contentHtml={post.contentHtml ?? ""} />
 
-            {/* Under-title Ad Slot chống CLS */}
-            <div className="ad-container ad-under-title w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mb-6">
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+            {/* Under-title Ad Slot */}
+            <div className="ad-container ad-under-title w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl mb-6">
+              <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
             </div>
 
             <div
-              className="text-base text-slate-700 dark:text-zinc-350 space-y-4 article-content"
+              className="text-base text-slate-700 space-y-4 article-content"
               dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml ?? "")) }}
             />
 
@@ -181,9 +181,9 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
               <DonateCardDetailed />
             </div>
 
-            {/* End-of-article Ad Slot chống CLS */}
-            <div className="ad-container ad-end w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-xl mt-8">
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold">Quảng cáo</span>
+            {/* End-of-article Ad Slot */}
+            <div className="ad-container ad-end w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl mt-8">
+              <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
             </div>
 
             <RelatedArticles posts={relatedPosts} />
@@ -193,11 +193,11 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
           <aside className="hidden lg:block lg:col-span-3">
             <div className="sticky top-24 space-y-6">
               <AffiliateSidebarWidget seed={post.slug} />
-              {/* Khung quảng cáo dọc chống CLS */}
-              <div className="w-full min-h-[600px] bg-slate-100/50 dark:bg-zinc-900/50 border border-dashed border-slate-200 dark:border-zinc-800 flex items-center justify-center rounded-2xl">
+              {/* Khung quảng cáo dọc */}
+              <div className="w-full min-h-[600px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-2xl">
                 <div className="text-center">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-zinc-500 select-none font-semibold block mb-2">Liên kết tài trợ</span>
-                  <div className="w-[160px] h-[500px] bg-slate-200/50 dark:bg-zinc-800/50 mx-auto rounded-lg flex items-center justify-center">
+                  <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold block mb-2">Liên kết tài trợ</span>
+                  <div className="w-[160px] h-[500px] bg-slate-200/50 mx-auto rounded-lg flex items-center justify-center">
                     <span className="text-xs text-slate-400">Quảng cáo</span>
                   </div>
                 </div>

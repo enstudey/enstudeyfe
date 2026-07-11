@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-
 const FAQ_ITEMS = [
   {
     q: "Làm thế nào để tính điểm xét tuyển đại học chính xác?",
@@ -32,15 +31,15 @@ export default function FAQPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 flex flex-col justify-between transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
       {/* Header */}
       <Header />
 
       {/* Main Content */}
       <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-extrabold text-slate-950 dark:text-white tracking-tight">Hỏi đáp thường gặp về chọn ngành & chọn trường 💬</h1>
-          <p className="text-slate-500 dark:text-zinc-400 text-sm">
+          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Hỏi đáp thường gặp về chọn ngành & chọn trường 💬</h1>
+          <p className="text-slate-500 text-sm">
             Giải đáp toàn bộ thắc mắc phổ biến của thí sinh lớp 12 về quy chế tuyển sinh đại học.
           </p>
         </div>
@@ -49,15 +48,15 @@ export default function FAQPage() {
           {FAQ_ITEMS.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white dark:bg-zinc-900 border border-slate-150 dark:border-zinc-800 rounded-2xl p-5 hover:shadow-sm transition cursor-pointer"
+              className="bg-white border border-slate-150 rounded-2xl p-5 hover:shadow-sm transition cursor-pointer"
               onClick={() => toggleFAQ(idx)}
             >
               <div className="flex justify-between items-center gap-4">
-                <h3 className="font-bold text-slate-900 dark:text-white text-base leading-snug">{item.q}</h3>
+                <h3 className="font-bold text-slate-900 text-base leading-snug">{item.q}</h3>
                 <span className="text-xl text-slate-400">{openIndex === idx ? "−" : "+"}</span>
               </div>
               {openIndex === idx && (
-                <div className="mt-4 pt-4 border-t border-slate-100 dark:border-zinc-800 text-sm text-slate-650 dark:text-zinc-400 leading-relaxed">
+                <div className="mt-4 pt-4 border-t border-slate-100 text-sm text-slate-650 leading-relaxed">
                   {item.a}
                 </div>
               )}
