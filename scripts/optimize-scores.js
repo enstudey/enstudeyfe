@@ -5,7 +5,7 @@ const path = require('path');
 const SCORES_DIR = path.join(__dirname, '../data/scores');
 const FILE_JSON_2025 = path.join(SCORES_DIR, 'diem_chuan.json');
 const FILE_CSV_2024 = path.join(SCORES_DIR, 'data_diem_chuan_cleaned.txt');
-const FILE_OUTPUT = path.join(__dirname, '../public/data/diem_chuan_optimized.json');
+const FILE_OUTPUT = path.join(__dirname, '../data/diem_chuan_optimized.json');
 
 // Hàm chuẩn hóa chuỗi để so khớp
 function normalizeString(str) {

@@ -18,7 +18,7 @@ export default async function FinderPage({ searchParams }: PageProps) {
   const initialPage = typeof pageParam === "string" ? parseInt(pageParam, 10) : 1;
 
   // Đọc file JSON đồng bộ trên server (RSC-First)
-  const dataPath = path.join(process.cwd(), "public", "data", "diem_chuan_optimized.json");
+  const dataPath = path.join(process.cwd(), "data", "diem_chuan_optimized.json");
   const fileContents = fs.readFileSync(dataPath, "utf8");
   const scoresData = JSON.parse(fileContents);
 
