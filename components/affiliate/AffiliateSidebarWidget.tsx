@@ -68,8 +68,7 @@ export default function AffiliateSidebarWidget({ currentPage, seed }: Props) {
 
       <Button
         asChild
-        size="sm"
-        className="w-full py-5 font-bold rounded-xl transition duration-200 text-center block cursor-pointer shadow-xs"
+        className="w-full h-11 font-bold rounded-xl transition duration-200 cursor-pointer shadow-xs"
       >
         <a
           href={`/go/${product.slug}`}

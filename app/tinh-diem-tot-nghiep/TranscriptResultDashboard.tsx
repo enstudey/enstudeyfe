@@ -1,9 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { DonateModal, useDonateStatus } from "@/components/donate";
+
+interface Major {
+  code: string;
+  name: string;
+  groups: string[];
+  scores: Record<string, Record<string, number>>;
+  scale?: number;
+  note?: string;
+}
+
+interface University {
+  name: string;
+  majors: Major[];
+}
+
+type UniversityData = Record<string, University>;
+
+interface RecommendedMajor {
+  uniCode: string;
+  uniName: string;
+  majorCode: string;
+  majorName: string;
+  benchmark: number;
+  year: string;
+  diff: number;
+  groups: string[];
+}
 
 interface Props {
   computedScores: Record<string, number> | null;
@@ -21,6 +48,73 @@ export default function TranscriptResultDashboard({
   const [activeTab, setActiveTab] = useState<"all" | "A" | "B" | "C" | "D" | "X_TH">("all");
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const { isAvailable } = useDonateStatus();
+
+  const [recommendations, setRecommendations] = useState<RecommendedMajor[]>([]);
+  const [isLoadingRecs, setIsLoadingRecs] = useState(false);
+
+  useEffect(() => {
+    if (!highestGroup || highestGroup.score < 18.0) {
+      setRecommendations([]);
+      return;
+    }
+
+    setIsLoadingRecs(true);
+    fetch("/data/university_data.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to load university database");
+        return res.json();
+      })
+      .then((data: UniversityData) => {
+        const method = "HOC_BA";
+        const threshold = -2.0;
+
+        const getMatches = (t: number) => {
+          const list: RecommendedMajor[] = [];
+          for (const [uniCode, uni] of Object.entries(data)) {
+            for (const major of uni.majors) {
+              if (major.scale && major.scale !== 30) continue;
+              if (!major.groups.includes(highestGroup.name)) continue;
+
+              const scores = major.scores?.[method];
+              if (!scores) continue;
+
+              const year = scores["2025"] ? "2025" : (scores["2024"] ? "2024" : null);
+              if (!year) continue;
+
+              const benchmark = scores[year];
+              const diff = highestGroup.score - benchmark;
+              if (diff >= t) {
+                list.push({
+                  uniCode,
+                  uniName: uni.name,
+                  majorCode: major.code,
+                  majorName: major.name,
+                  benchmark,
+                  year,
+                  diff,
+                  groups: major.groups,
+                });
+              }
+            }
+          }
+          return list;
+        };
+
+        let matched = getMatches(threshold);
+        if (matched.length < 8) {
+          matched = getMatches(-4.0);
+        }
+
+        matched.sort((a, b) => Math.abs(a.diff) - Math.abs(b.diff));
+        setRecommendations(matched.slice(0, 15));
+      })
+      .catch((err) => {
+        console.error("Error loading university data:", err);
+      })
+      .finally(() => {
+        setIsLoadingRecs(false);
+      });
+  }, [highestGroup]);
 
   if (!computedScores || !highestGroup) return null;
 
@@ -116,6 +210,96 @@ export default function TranscriptResultDashboard({
           </div>
         )}
       </div>
+
+      {highestGroup.score >= 18.0 && (
+        <div className="space-y-4 pt-6 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex items-center justify-between">
+            <div>
+              <h4 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                🎓 Gợi ý trường Đại học phù hợp (Xét Học Bạ)
+                {recommendations.length > 0 && (
+                  <span className="text-xs px-2.5 py-0.5 bg-violet-100 text-violet-700 rounded-full font-bold">
+                    {recommendations.length} trường
+                  </span>
+                )}
+              </h4>
+              <p className="text-xs text-slate-500 mt-1">
+                Dựa trên tổ hợp cao nhất {highestGroup.name} ({highestGroup.score.toFixed(2)} điểm học bạ) và điểm chuẩn xét học bạ năm 2025/2024.
+              </p>
+            </div>
+          </div>
+
+          {isLoadingRecs ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="animate-pulse bg-slate-50 border border-slate-150 rounded-2xl p-5 h-44 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <div className="h-4 bg-slate-200 rounded w-3/4"></div>
+                    <div className="h-3 bg-slate-200 rounded w-1/2"></div>
+                  </div>
+                  <div className="h-8 bg-slate-200 rounded w-full"></div>
+                </div>
+              ))}
+            </div>
+          ) : recommendations.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {recommendations.map((rec) => {
+                const isSafe = rec.diff >= 0;
+                return (
+                  <div
+                    key={`${rec.uniCode}-${rec.majorCode}`}
+                    className="group relative bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg hover:border-violet-500/30 transition-all duration-300 transform hover:-translate-y-1"
+                  >
+                    <div className="space-y-2">
+                      <div className="flex items-start justify-between gap-2">
+                        <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md uppercase">
+                          {rec.uniCode}
+                        </span>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
+                          isSafe 
+                            ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400" 
+                            : "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400"
+                        }`}>
+                          {isSafe ? `An toàn (+${rec.diff.toFixed(2)})` : `Thử thách (${rec.diff.toFixed(2)})`}
+                        </span>
+                      </div>
+                      
+                      <h5 className="font-extrabold text-sm text-slate-950 dark:text-white line-clamp-1 group-hover:text-violet-600 transition-colors">
+                        {rec.uniName}
+                      </h5>
+                      
+                      <div className="space-y-1">
+                        <p className="text-xs font-bold text-slate-700 dark:text-slate-300 line-clamp-1">
+                          {rec.majorName}
+                        </p>
+                        <p className="text-[11px] text-slate-400">
+                          Mã ngành: {rec.majorCode}
+                        </p>
+                      </div>
+
+                      <div className="text-xs font-semibold text-slate-600 dark:text-slate-400 pt-1">
+                        Điểm chuẩn {rec.year}: <span className="font-extrabold text-violet-600 dark:text-violet-400">{rec.benchmark.toFixed(2)}</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-slate-50 dark:border-slate-900">
+                      <Button asChild variant="outline" className="w-full text-xs font-bold rounded-xl h-9 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 transition duration-200">
+                        <Link href={`/tra-cuu-tuyen-sinh?score=${highestGroup.score.toFixed(2)}&block=${highestGroup.name}`}>
+                          Xem chi tiết xét tuyển &rarr;
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="text-center py-8 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-dashed border-slate-250 dark:border-slate-800 text-xs text-slate-500">
+              Không tìm thấy trường Đại học nào phù hợp với điểm số và tổ hợp môn của bạn. Vui lòng thử lại với tổ hợp khác.
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Button Donate */}
       {isAvailable && (
