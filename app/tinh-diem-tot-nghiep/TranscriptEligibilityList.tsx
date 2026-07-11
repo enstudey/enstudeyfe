@@ -3,6 +3,13 @@
 import React, { useState, useMemo } from "react";
 import transcriptData from "@/data/universities-transcript.json";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface UniversityItem {
   universityCode: string;
@@ -150,32 +157,38 @@ export default function TranscriptEligibilityList({
           <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase block">
             Hạnh kiểm cấp THPT
           </label>
-          <select
-            value={userConduct}
-            onChange={e => setUserConduct(e.target.value as "TOT" | "KHA" | "TRUNG_BINH")}
-            data-testid="select-user-conduct"
-            className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 font-bold text-xs"
-          >
-            <option value="TOT">Tốt</option>
-            <option value="KHA">Khá</option>
-            <option value="TRUNG_BINH">Trung bình</option>
-          </select>
+          <Select value={userConduct} onValueChange={(val) => setUserConduct(val as "TOT" | "KHA" | "TRUNG_BINH")}>
+            <SelectTrigger
+              data-testid="select-user-conduct"
+              className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl font-bold text-xs text-left"
+            >
+              <SelectValue placeholder="Chọn hạnh kiểm" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="TOT">Tốt</SelectItem>
+              <SelectItem value="KHA">Khá</SelectItem>
+              <SelectItem value="TRUNG_BINH">Trung bình</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         <div className="space-y-1">
           <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase block">
             Loại hình trường THPT học tập
           </label>
-          <select
-            value={userSchoolType}
-            onChange={e => setUserSchoolType(e.target.value as "ALL" | "HIGH_SCHOOL_FOR_GIFTED")}
-            data-testid="select-user-school-type"
-            className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 font-bold text-xs"
-          >
-            {SCHOOL_TYPES.map(t => (
-              <option key={t.key} value={t.key}>{t.name}</option>
-            ))}
-          </select>
+          <Select value={userSchoolType} onValueChange={(val) => setUserSchoolType(val as "ALL" | "HIGH_SCHOOL_FOR_GIFTED")}>
+            <SelectTrigger
+              data-testid="select-user-school-type"
+              className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl font-bold text-xs text-left"
+            >
+              <SelectValue placeholder="Chọn loại trường" />
+            </SelectTrigger>
+            <SelectContent>
+              {SCHOOL_TYPES.map(t => (
+                <SelectItem key={t.key} value={t.key}>{t.name}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <div className="space-y-1">

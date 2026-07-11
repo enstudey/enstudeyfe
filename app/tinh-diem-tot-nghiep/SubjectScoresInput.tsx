@@ -1,4 +1,11 @@
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Props {
   scores: {
@@ -133,19 +140,22 @@ export default function SubjectScoresInput({
             <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
               Loại ngoại ngữ khác
             </label>
-            <select
-              value={otherLanguageType}
-              onChange={e => setOtherLanguageType(e.target.value as "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian")}
-              data-testid="select-other-lang-type"
-              className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-violet-600 text-xs font-bold"
-            >
-              <option value="Korean">Tiếng Hàn</option>
-              <option value="Chinese">Tiếng Trung</option>
-              <option value="Japanese">Tiếng Nhật</option>
-              <option value="French">Tiếng Pháp</option>
-              <option value="German">Tiếng Đức</option>
-              <option value="Russian">Tiếng Nga</option>
-            </select>
+            <Select value={otherLanguageType} onValueChange={(val) => setOtherLanguageType(val as "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian")}>
+              <SelectTrigger
+                data-testid="select-other-lang-type"
+                className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg text-xs font-bold text-left"
+              >
+                <SelectValue placeholder="Chọn ngoại ngữ" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Korean">Tiếng Hàn</SelectItem>
+                <SelectItem value="Chinese">Tiếng Trung</SelectItem>
+                <SelectItem value="Japanese">Tiếng Nhật</SelectItem>
+                <SelectItem value="French">Tiếng Pháp</SelectItem>
+                <SelectItem value="German">Tiếng Đức</SelectItem>
+                <SelectItem value="Russian">Tiếng Nga</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
           <div className="space-y-1">
             <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">

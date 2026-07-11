@@ -6,6 +6,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { DonateModal, DonateBarMinimal } from "@/components/donate";
 import AffiliateNativeRow from "@/components/affiliate/AffiliateNativeRow";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface MajorBenchmark {
   code: string;
@@ -308,7 +316,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
             <div className="grid grid-cols-1 lg:grid-cols-10 gap-4">
               <div className="lg:col-span-4 space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Tìm kiếm trường / ngành</label>
-                <input
+                <Input
                   type="text"
                   placeholder="Nhập mã trường, tên ngành..."
                   value={searchTerm}
@@ -319,46 +327,55 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               </div>
               <div className="lg:col-span-2 space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Năm tuyển sinh</label>
-                <select
-                  value={selectedYear}
-                  onChange={(e) => setSelectedYear(e.target.value)}
-                  data-testid="select-year"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
-                >
-                  {YEAR_OPTIONS.map((year) => (
-                    <option key={year} value={year}>Năm {year}</option>
-                  ))}
-                </select>
+                <Select value={selectedYear} onValueChange={setSelectedYear}>
+                  <SelectTrigger
+                    data-testid="select-year"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-left"
+                  >
+                    <SelectValue placeholder="Năm tuyển sinh" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {YEAR_OPTIONS.map((year) => (
+                      <SelectItem key={year} value={year}>Năm {year}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <div className="lg:col-span-2 space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Phương thức tuyển sinh</label>
-                <select
-                  value={selectedMethod}
-                  onChange={(e) => setSelectedMethod(e.target.value)}
-                  data-testid="select-method"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
-                >
-                  {METHOD_OPTIONS.map((method) => (
-                    <option key={method.value} value={method.value}>{method.label}</option>
-                  ))}
-                </select>
+                <Select value={selectedMethod} onValueChange={setSelectedMethod}>
+                  <SelectTrigger
+                    data-testid="select-method"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-left"
+                  >
+                    <SelectValue placeholder="Phương thức" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {METHOD_OPTIONS.map((method) => (
+                      <SelectItem key={method.value} value={method.value}>{method.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <div className="lg:col-span-2 space-y-1.5">
                 <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">Tổ hợp môn</label>
-                <select
-                  value={selectedGroup}
-                  onChange={(e) => setSelectedGroup(e.target.value)}
-                  data-testid="select-group"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
-                >
-                  <option>Tất cả tổ hợp</option>
-                  <option>A00</option>
-                  <option>A01</option>
-                  <option>B00</option>
-                  <option>C00</option>
-                  <option>D01</option>
-                  <option>D07</option>
-                </select>
+                <Select value={selectedGroup} onValueChange={setSelectedGroup}>
+                  <SelectTrigger
+                    data-testid="select-group"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-left"
+                  >
+                    <SelectValue placeholder="Tổ hợp" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Tất cả tổ hợp">Tất cả tổ hợp</SelectItem>
+                    <SelectItem value="A00">A00</SelectItem>
+                    <SelectItem value="A01">A01</SelectItem>
+                    <SelectItem value="B00">B00</SelectItem>
+                    <SelectItem value="C00">C00</SelectItem>
+                    <SelectItem value="D01">D01</SelectItem>
+                    <SelectItem value="D07">D07</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
             <div className="space-y-2 pt-4 border-t border-border">

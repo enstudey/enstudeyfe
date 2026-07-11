@@ -5,6 +5,8 @@ import CookieBanner from "@/components/cookie-banner";
 import ToastContainer from "@/components/toast/ToastContainer";
 import "./globals.css";
 
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -41,7 +43,9 @@ export default function RootLayout({
         <AdSenseScript />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        {children}
+        <TooltipProvider>
+          {children}
+        </TooltipProvider>
         <CookieBanner />
         <ToastContainer />
       </body>

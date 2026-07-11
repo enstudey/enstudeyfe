@@ -1,5 +1,12 @@
 import React from "react";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Props {
   certType: "none" | "ielts" | "toeic";
@@ -62,18 +69,21 @@ export default function CertificateConverter({
               <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">
                 Đề án quy đổi của trường
               </label>
-              <select
-                value={conversionTarget}
-                onChange={e => setConversionTarget(e.target.value as "standard" | "neu" | "ftu" | "hust" | "hcmut")}
-                data-testid="select-conversion-target"
-                className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
-              >
-                <option value="standard">Quy chuẩn chung của Bộ GD&ĐT</option>
-                <option value="neu">Đại học Kinh tế Quốc dân (NEU)</option>
-                <option value="ftu">Trường Đại học Ngoại thương (FTU)</option>
-                <option value="hust">Đại học Bách khoa Hà Nội (HUST)</option>
-                <option value="hcmut">Đại học Bách khoa TPHCM (HCMUT)</option>
-              </select>
+              <Select value={conversionTarget} onValueChange={(val) => setConversionTarget(val as "standard" | "neu" | "ftu" | "hust" | "hcmut")}>
+                <SelectTrigger
+                  data-testid="select-conversion-target"
+                  className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl font-bold text-xs text-left"
+                >
+                  <SelectValue placeholder="Chọn đề án quy đổi" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="standard">Quy chuẩn chung của Bộ GD&ĐT</SelectItem>
+                  <SelectItem value="neu">Đại học Kinh tế Quốc dân (NEU)</SelectItem>
+                  <SelectItem value="ftu">Trường Đại học Ngoại thương (FTU)</SelectItem>
+                  <SelectItem value="hust">Đại học Bách khoa Hà Nội (HUST)</SelectItem>
+                  <SelectItem value="hcmut">Đại học Bách khoa TPHCM (HCMUT)</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <div className="space-y-1">
               <label className="text-[10px] font-bold text-slate-500 tracking-wider uppercase">

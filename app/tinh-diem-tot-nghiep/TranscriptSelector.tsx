@@ -4,6 +4,13 @@ import React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   TRANSCRIPT_SUBJECTS,
   TranscriptSubjectKey,
   SubjectSemesterScores
@@ -105,19 +112,25 @@ export default function TranscriptSelector({
               <label className="text-xs font-bold text-slate-500">
                 Loại ngoại ngữ:
               </label>
-              <select
+              <Select
                 value={otherLanguageType}
-                onChange={e => setOtherLanguageType(e.target.value as "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian")}
-                data-testid="select-transcript-other-lang"
-                className="px-2.5 py-1 bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-violet-600 text-[11px] font-bold"
+                onValueChange={(val) => setOtherLanguageType(val as "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian")}
               >
-                <option value="Korean">Tiếng Hàn</option>
-                <option value="Chinese">Tiếng Trung</option>
-                <option value="Japanese">Tiếng Nhật</option>
-                <option value="French">Tiếng Pháp</option>
-                <option value="German">Tiếng Đức</option>
-                <option value="Russian">Tiếng Nga</option>
-              </select>
+                <SelectTrigger
+                  data-testid="select-transcript-other-lang"
+                  className="px-2.5 py-1 bg-white border border-slate-200 rounded-lg text-[11px] font-bold h-7 w-28"
+                >
+                  <SelectValue placeholder="Chọn tiếng" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Korean">Tiếng Hàn</SelectItem>
+                  <SelectItem value="Chinese">Tiếng Trung</SelectItem>
+                  <SelectItem value="Japanese">Tiếng Nhật</SelectItem>
+                  <SelectItem value="French">Tiếng Pháp</SelectItem>
+                  <SelectItem value="German">Tiếng Đức</SelectItem>
+                  <SelectItem value="Russian">Tiếng Nga</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           )}
         </div>
