@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import affiliateLinks from "@/affiliate-links.json";
+import affiliateLinks from "@/data/affiliate-links.json";
 
 export async function GET(
   request: NextRequest,
