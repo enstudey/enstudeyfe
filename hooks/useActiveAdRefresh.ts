@@ -61,9 +61,10 @@ export function useActiveAdRefresh(adSlotId: string, intervalMs: number = 45000)
           };
         }
         const anyWindow = window as unknown as GPTWindow;
-        if (anyWindow.googletag && anyWindow.googletag.pubads) {
-          anyWindow.googletag.cmd.push(() => {
-            anyWindow.googletag.pubads().refresh();
+        const gTag = anyWindow.googletag;
+        if (gTag && gTag.pubads) {
+          gTag.cmd.push(() => {
+            gTag.pubads().refresh();
           });
         }
       }

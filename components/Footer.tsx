@@ -24,6 +24,9 @@ export default function Footer() {
               <Link href="/gioi-thieu" className="hover:text-slate-950 transition">
                 Giới thiệu
               </Link>
+              <Link href="/flashcards" className="hover:text-slate-950 transition">
+                Flashcard ôn tập
+              </Link>
               <Link href="/terms-of-service" className="hover:text-slate-950 transition">
                 Điều khoản dịch vụ
               </Link>

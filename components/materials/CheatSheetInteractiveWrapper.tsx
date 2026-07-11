@@ -93,13 +93,13 @@ export default function CheatSheetInteractiveWrapper({
       if (target && target.classList.contains("glossary-term")) {
         const rawTerm = target.getAttribute("data-term") || target.textContent || "";
         const termKey = rawTerm.trim().toLowerCase();
-        
+
         // Lookup in local dictionary
         const definition = glossary[termKey] || "Đang tải giải nghĩa...";
-        
+
         const rect = target.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
-        
+
         setTooltip({
           term: rawTerm,
           definition,
@@ -260,12 +260,12 @@ function InteractiveQuiz({
       {selected && showExplanation && (
         <div className="space-y-2 mt-4 animate-in fade-in duration-200">
           {selected === correct ? (
-            <div className="flex items-center gap-2 text-xs font-extrabold text-emerald-600">
-              <span>🎉 Rất chính xác! Bạn đã chọn đúng.</span>
+            <div className="flex items-center gap-2 text-xs font-semibold text-emerald-600">
+              <span>🎉 Đỉnh quá bạn ơi! Đáp án này chuẩn rồi nè.</span>
             </div>
           ) : (
-            <div className="flex items-center gap-2 text-xs font-extrabold text-amber-600">
-              <span>🤔 Chưa chính xác! Hãy xem lời giải thích bên dưới để ôn tập nhé.</span>
+            <div className="flex items-center gap-2 text-xs font-semibold text-amber-600">
+              <span>✨ Tiếc một xíu nghen... Đọc lời giải chi tiết bên dưới để không bị &quot;bẫy&quot; lần sau nha!</span>
             </div>
           )}
           <div className="text-xs text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-100">

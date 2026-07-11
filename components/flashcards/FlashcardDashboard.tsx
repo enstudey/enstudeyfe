@@ -22,12 +22,14 @@ interface CardProgress {
 
 export default function FlashcardDashboard() {
   const [progress, setProgress] = useState<Record<string, CardProgress>>({});
+  const [allVocab, setAllVocab] = useState<Flashcard[]>([]);
   const [todayQueue, setTodayQueue] = useState<Flashcard[]>([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [streak, setStreak] = useState(0);
   const [xp, setXp] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [showAll, setShowAll] = useState(false);
 
   // 1. Load data from toeic-vocab.json & localStorage progress on mount
   useEffect(() => {
@@ -37,6 +39,7 @@ export default function FlashcardDashboard() {
         const vocabRes = await fetch("/data/toeic-vocab.json");
         if (vocabRes.ok) {
           const vocabData = await vocabRes.json();
+          setAllVocab(vocabData);
 
           // Load progress
           const savedProgress = localStorage.getItem("toeic_flashcards_progress");
@@ -209,8 +212,29 @@ export default function FlashcardDashboard() {
         </div>
       </div>
 
-      {/* 3D Flashcard Container */}
-      {currentCard ? (
+      {/* Show All Vocabulary Panel */}
+      {showAll ? (
+        <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-6 rounded-3xl space-y-4 shadow-md">
+          <div className="flex justify-between items-center pb-2 border-b border-slate-100 dark:border-slate-900">
+            <h3 className="font-bold text-slate-900 dark:text-white">Danh sách từ vựng ({allVocab.length})</h3>
+            <Button size="sm" variant="outline" className="cursor-pointer hover:bg-slate-105 transition-all" onClick={() => setShowAll(false)}>
+              Quay lại ôn tập
+            </Button>
+          </div>
+          <div className="max-h-[400px] overflow-y-auto space-y-3 pr-2 scrollbar-thin">
+            {allVocab.map((vocab) => (
+              <div key={vocab.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-xl space-y-1 text-left">
+                <div className="flex justify-between items-center">
+                  <span className="font-extrabold text-slate-900 dark:text-white">{vocab.word}</span>
+                  <span className="text-xs font-mono text-slate-400">{vocab.ipa}</span>
+                </div>
+                <p className="text-xs font-bold text-violet-600">{vocab.meaning}</p>
+                <p className="text-xs text-slate-500">{vocab.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : currentCard ? (
         <div className="relative w-full aspect-[4/3] min-h-[280px] perspective">
           <div
             className={`w-full h-full duration-500 transform-style-3d relative cursor-pointer ${
@@ -231,7 +255,7 @@ export default function FlashcardDashboard() {
                   {currentCard.ipa}
                 </p>
               </div>
-              <Button size="sm" className="font-extrabold text-xs rounded-xl shadow cursor-pointer">
+              <Button size="sm" className="font-extrabold text-xs rounded-xl shadow cursor-pointer hover:scale-105 transition-all">
                 Lật xem nghĩa &rarr;
               </Button>
             </div>
@@ -286,6 +310,11 @@ export default function FlashcardDashboard() {
           <p className="text-xs text-slate-500 leading-relaxed max-w-sm mx-auto">
             Hệ thống lặp lại ngắt quãng sẽ tự động tính toán thời điểm thích hợp nhất để nhắc bạn ôn tập lại các thẻ này trong tương lai. Hãy quay lại vào ngày mai nhé!
           </p>
+          <div className="pt-2">
+            <Button size="sm" variant="outline" className="cursor-pointer hover:bg-slate-105 transition-all" onClick={() => setShowAll(true)}>
+              Xem tất cả từ vựng
+            </Button>
+          </div>
         </div>
       )}
 

@@ -4,6 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { Dialog, DialogTrigger, DialogPortal, DialogTitle } from "@/components/ui/dialog";
+import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
+import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
   isStatic?: boolean;
@@ -44,45 +47,45 @@ export default function Header({ isStatic = false }: HeaderProps) {
   }, [pathname]);
 
   useEffect(() => {
-    if (isStatic) return;
+    if (!isStatic) {
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+        // 1. Xác định trạng thái Sticky (co lại, mờ kính)
+        if (currentScrollY >= 50) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
 
-      // 1. Xác định trạng thái Sticky (co lại, mờ kính)
-      if (currentScrollY >= 50) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
+        // 2. Xác định trạng thái ẩn/hiện (Smart Sticky)
+        if (currentScrollY < 50) {
+          setIsVisible(true);
+        } else if (currentScrollY > lastScrollY.current) {
+          // Cuộn xuống -> ẩn
+          setIsVisible(false);
+        } else if (lastScrollY.current - currentScrollY > scrollThreshold) {
+          // Cuộn lên vượt ngưỡng -> hiện
+          setIsVisible(true);
+        }
 
-      // 2. Xác định trạng thái ẩn/hiện (Smart Sticky)
-      if (currentScrollY < 50) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY.current) {
-        // Cuộn xuống -> ẩn
-        setIsVisible(false);
-      } else if (lastScrollY.current - currentScrollY > scrollThreshold) {
-        // Cuộn lên vượt ngưỡng -> hiện
-        setIsVisible(true);
-      }
+        lastScrollY.current = currentScrollY;
+      };
 
-      lastScrollY.current = currentScrollY;
-    };
+      let ticking = false;
+      const scrollListener = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
 
-    let ticking = false;
-    const scrollListener = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", scrollListener, { passive: true });
-    return () => window.removeEventListener("scroll", scrollListener);
+      window.addEventListener("scroll", scrollListener, { passive: true });
+      return () => window.removeEventListener("scroll", scrollListener);
+    }
   }, [isStatic]);
 
   const getLinkClass = (path: string) => {
@@ -129,6 +132,9 @@ export default function Header({ isStatic = false }: HeaderProps) {
               <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news">
                 Tin tức học thuật
               </Link>
+              <Link href="/flashcards" className={getLinkClass("/flashcards")} data-testid="link-flashcards">
+                Flashcard
+              </Link>
               <Link href="/tinh-diem-tot-nghiep" className={getLinkClass("/tinh-diem-tot-nghiep")} data-testid="link-calc">
                 Công cụ tính điểm
               </Link>
@@ -142,6 +148,44 @@ export default function Header({ isStatic = false }: HeaderProps) {
           </div>
           <div className="flex items-center gap-4">
             {/* ThemeToggle has been removed */}
+            <div className="md:hidden flex items-center">
+              <Dialog>
+                <DialogTrigger className="p-2 -mr-2 text-slate-500 hover:text-slate-900 cursor-pointer" aria-label="Mở menu">
+                  <Menu className="w-6 h-6" />
+                </DialogTrigger>
+              <DialogPortal>
+                {/* Backdrop mờ nền */}
+                <DialogPrimitive.Backdrop className="fixed inset-0 z-50 bg-black/10 duration-150 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0" />
+                {/* Popup trượt từ phải sang (Drawer) */}
+                <DialogPrimitive.Popup className="fixed inset-y-0 right-0 z-50 h-full w-3/4 max-w-xs border-l bg-white p-6 shadow-lg duration-150 flex flex-col justify-start outline-none data-open:animate-in data-open:slide-in-from-right data-closed:animate-out data-closed:slide-out-to-right">
+                  <DialogTitle className="sr-only">Menu chính</DialogTitle>
+                  <div className="flex justify-between items-center pb-4 border-b border-slate-100">
+                    <span className="font-bold text-slate-800 text-sm">Danh mục</span>
+                    <DialogPrimitive.Close render={<button className="p-2 -mr-2 text-slate-500 hover:text-slate-900 cursor-pointer" aria-label="Đóng menu" />}>
+                      <X className="w-5 h-5" />
+                    </DialogPrimitive.Close>
+                  </div>
+                  <div className="flex flex-col gap-6 pt-6">
+                    <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news-mobile">
+                      Tin tức học thuật
+                    </Link>
+                    <Link href="/flashcards" className={getLinkClass("/flashcards")} data-testid="link-flashcards-mobile">
+                      Flashcard
+                    </Link>
+                    <Link href="/tinh-diem-tot-nghiep" className={getLinkClass("/tinh-diem-tot-nghiep")} data-testid="link-calc-mobile">
+                      Công cụ tính điểm
+                    </Link>
+                    <Link href="/tra-cuu-tuyen-sinh" className={getLinkClass("/tra-cuu-tuyen-sinh")} data-testid="link-univ-mobile">
+                      Tra cứu trường đại học
+                    </Link>
+                    <Link href="/tram-sac-nang-luong" className={getLinkClass("/tram-sac-nang-luong")} data-testid="link-donors-mobile">
+                      Trạm sạc 🥤
+                    </Link>
+                  </div>
+                </DialogPrimitive.Popup>
+              </DialogPortal>
+              </Dialog>
+            </div>
           </div>
         </nav>
       </header>

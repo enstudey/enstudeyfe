@@ -48,8 +48,8 @@ marked.use({
           };
         }
       },
-      renderer(token: { text: string }) {
-        return `<span class="glossary-term cursor-help border-b border-dashed border-violet-500 bg-violet-50/50 px-1 font-semibold text-violet-750" data-term="${token.text}">${token.text}</span>`;
+      renderer(token: any) {
+        return `<span class="glossary-term cursor-help border-b border-dashed border-violet-500 bg-violet-50/50 px-1 font-semibold text-violet-750" data-term="${token.text || ""}">${token.text || ""}</span>`;
       },
     },
   ],
@@ -142,7 +142,7 @@ export const getPostBySlug = cache((
         let correct = "";
         let explanation = "";
 
-        lines.forEach((line) => {
+        lines.forEach((line: string) => {
           const trimmed = line.trim();
           if (trimmed.startsWith("question:")) {
             question = trimmed.replace("question:", "").trim();
