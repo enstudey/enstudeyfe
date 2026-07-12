@@ -55,8 +55,8 @@ function insertAffiliateTextLink(htmlContent: string): string {
     <div class="affiliate-text-block my-6 p-4 bg-slate-100 border border-slate-200/50 rounded-xl" contenteditable="false">
       <span class="text-[10px] uppercase tracking-wider text-violet-600 font-bold block mb-1">Gợi ý dành cho bạn</span>
       <p class="text-sm text-slate-700 m-0 leading-relaxed">
-        Bạn có thể tham khảo thêm tài liệu trong cuốn 
-        <a href="/go/${affiliateProduct.slug}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-violet-600 hover:underline font-bold">${affiliateProduct.title}</a> 
+         Bạn có thể tham khảo thêm tài liệu trong cuốn 
+        <a href="/redirect?url=${encodeURIComponent(`/go/${affiliateProduct.slug}`)}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-violet-600 hover:underline font-bold">${affiliateProduct.title}</a> 
         để ôn luyện hiệu quả hơn.
       </p>
     </div>

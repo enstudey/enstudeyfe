@@ -16,18 +16,22 @@ interface AffiliateConfig {
   campaignId: string;
   contentTag?: string;
   saleSeason?: string;
+  sub4?: string;
+  sub5?: string;
 }
 
 /**
  * Tạo link tiếp thị liên kết ACCESSTRADE deep link từ URL gốc.
- * Pattern học từ gocdadep/lib/affiliate.ts.
+ * Pattern học từ gocdadep/lib/affiliate.ts và chuẩn hóa theo link mẫu.
  */
 export function generateStandardATLink({
   rawProductUrl,
   articleId,
   campaignId,
-  contentTag = "general",
-  saleSeason = "2026",
+  contentTag,
+  saleSeason = "july-2026",
+  sub4 = "oneatweb",
+  sub5,
 }: AffiliateConfig): string {
   if (!rawProductUrl) return "";
   const cId = CAMPAIGN_IDS[campaignId];
@@ -40,11 +44,25 @@ export function generateStandardATLink({
       : Buffer.from(rawProductUrl).toString("base64");
 
   const encodedUrlEnc = encodeURIComponent(base64Url);
-  const dynamicSub    = encodeURIComponent(articleId);
   const utmSource     = encodeURIComponent("enstudey.com");
   const utmMedium     = encodeURIComponent("affiliate");
   const utmCampaign   = encodeURIComponent(saleSeason);
-  const utmContent    = encodeURIComponent(contentTag);
 
-  return `https://fast.accesstrade.com.vn/deep_link/v5/${PUBLISHER_ID}/${cId}?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}&utm_content=${utmContent}&sub4=${dynamicSub}&url_enc=${encodedUrlEnc}`;
+  let url = `https://fast.accesstrade.com.vn/deep_link/v5/${PUBLISHER_ID}/${cId}?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}`;
+
+  if (contentTag) {
+    url += `&utm_content=${encodeURIComponent(contentTag)}`;
+  }
+
+  // Luôn đảm bảo sub4 ghi nhận nguồn chính xác
+  url += `&sub4=${encodeURIComponent(sub4)}`;
+
+  // Sử dụng sub5 để lưu vết slug bài viết/sản phẩm động (nếu có)
+  const trackingSub5 = sub5 || articleId;
+  if (trackingSub5) {
+    url += `&sub5=${encodeURIComponent(trackingSub5)}`;
+  }
+
+  url += `&url_enc=${encodedUrlEnc}`;
+  return url;
 }

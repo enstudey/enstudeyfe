@@ -29,7 +29,7 @@ export default function AffiliateNativeRow({ rowIndex, currentPage, isCard = fal
     return (
       <div className="hover:bg-slate-50 transition duration-200">
         <a
-          href={`/go/${product.slug}`}
+          href={`/redirect?url=${encodeURIComponent(`/go/${product.slug}`)}`}
           target="_blank"
           rel="noopener noreferrer nofollow sponsored"
           className="flex items-center justify-between gap-3 px-5 py-5 group"
@@ -64,7 +64,7 @@ export default function AffiliateNativeRow({ rowIndex, currentPage, isCard = fal
     <tr className="bg-slate-50/10 hover:bg-slate-50 transition duration-200">
       <td className="p-0" colSpan={4}>
         <a
-          href={`/go/${product.slug}`}
+          href={`/redirect?url=${encodeURIComponent(`/go/${product.slug}`)}`}
           target="_blank"
           rel="noopener noreferrer nofollow sponsored"
           className="flex items-center justify-between gap-3 px-6 py-4 group"
