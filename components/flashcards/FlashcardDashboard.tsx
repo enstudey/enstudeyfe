@@ -1,69 +1,62 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import AdBanner from "@/components/ads/AdBanner";
-
-interface Flashcard {
-  id: string;
-  word: string;
-  ipa: string;
-  meaning: string;
-  description: string;
-}
-
-interface CardProgress {
-  cardId: string;
-  interval: number;
-  repetition: number;
-  efactor: number;
-  nextReviewDate: string; // ISO string
-}
+import BentoGrid from "./BentoGrid";
+import FlashcardSession from "./FlashcardSession";
+import {
+  Flashcard,
+  CardProgress,
+  getTopicStatusList,
+  groupVocabByTopic
+} from "@/lib/flashcards-helper";
 
 export default function FlashcardDashboard() {
+  const [examType, setExamType] = useState<"TOEIC" | "IELTS">(() => {
+    if (typeof window !== "undefined") {
+      const savedExam = localStorage.getItem("flashcard_exam_type");
+      if (savedExam === "TOEIC" || savedExam === "IELTS") {
+        return savedExam;
+      }
+    }
+    return "TOEIC";
+  });
+  const [view, setView] = useState<"grid" | "session">("grid");
+  const [activeTopicId, setActiveTopicId] = useState<string>("");
+
   const [progress, setProgress] = useState<Record<string, CardProgress>>({});
   const [allVocab, setAllVocab] = useState<Flashcard[]>([]);
-  const [todayQueue, setTodayQueue] = useState<Flashcard[]>([]);
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
   const [streak, setStreak] = useState(0);
   const [xp, setXp] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [showAll, setShowAll] = useState(false);
 
-  // 1. Load data from toeic-vocab.json & localStorage progress on mount
+  // 1. Chỉ gọi API nạp dữ liệu khi examType thay đổi
   useEffect(() => {
     const initData = async () => {
+      setIsLoading(true);
       try {
-        // Load vocab list
-        const vocabRes = await fetch("/english-data/toeic-vocab.json");
+        localStorage.setItem("flashcard_exam_type", examType);
+
+        // Load file JSON tĩnh tương ứng
+        const jsonFile = examType === "TOEIC" ? "toeic-vocab.json" : "ielts-vocab.json";
+        const vocabRes = await fetch(`/english-data/${jsonFile}`);
+        
         if (vocabRes.ok) {
           const vocabData = await vocabRes.json();
           setAllVocab(vocabData);
 
-          // Load progress
-          const savedProgress = localStorage.getItem("toeic_flashcards_progress");
+          const progressKey = examType === "TOEIC" ? "toeic_flashcards_progress" : "ielts_flashcards_progress_v2";
+          const savedProgress = localStorage.getItem(progressKey);
           const progressMap: Record<string, CardProgress> = savedProgress
             ? JSON.parse(savedProgress)
             : {};
           setProgress(progressMap);
 
-          // Load streak & XP
+          // Load streak & XP chung
           const savedStreak = localStorage.getItem("user_progress_streak");
           setStreak(savedStreak ? parseInt(savedStreak, 10) : 0);
           const savedXp = localStorage.getItem("user_progress_xp");
           setXp(savedXp ? parseInt(savedXp, 10) : 0);
-
-          // Build queue for today
-          const nowStr = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
-          const queue = vocabData.filter((card: Flashcard) => {
-            const cardProg = progressMap[card.id];
-            if (!cardProg) return true; // New card, learn today
-            const reviewDateStr = cardProg.nextReviewDate.split("T")[0];
-            return reviewDateStr <= nowStr; // Review due today or overdue
-          });
-
-          setTodayQueue(queue);
         }
       } catch (err) {
         console.error("Failed to load flashcard data", err);
@@ -72,24 +65,27 @@ export default function FlashcardDashboard() {
       }
     };
     initData();
-  }, []);
+  }, [examType]);
 
-  // 2. SM-2 Algorithm computation and saving
-  const handleRating = async (q: number) => {
-    if (todayQueue.length === 0) return;
+  const handleSwitchExam = (type: "TOEIC" | "IELTS") => {
+    setExamType(type);
+    setView("grid");
+  };
 
-    const currentCard = todayQueue[currentCardIndex];
-    const prevProgress = progress[currentCard.id] || {
-      cardId: currentCard.id,
+  // 2. Xử lý Rating SM-2 và Ghost Timer
+  const handleRating = (cardId: string, q: number, durationMs: number) => {
+    const prevProgress = progress[cardId] || {
+      cardId,
       interval: 0,
       repetition: 0,
       efactor: 2.5,
       nextReviewDate: new Date().toISOString(),
+      lastReviewedAt: new Date().toISOString()
     };
 
-    let { interval, repetition, efactor } = prevProgress;
+    let { interval, repetition, efactor, ghostDurationMs } = prevProgress;
 
-    // SM-2 formulas
+    // SM-2 Algorithm
     if (q >= 3) {
       if (repetition === 0) {
         interval = 1;
@@ -99,43 +95,51 @@ export default function FlashcardDashboard() {
         interval = Math.round(interval * efactor);
       }
       repetition += 1;
+
+      // Cập nhật kỷ lục Ghost Timer (chỉ khi phản xạ tốt và rating >= 3)
+      if (durationMs >= 500 && durationMs <= 30000) {
+        if (!ghostDurationMs || durationMs < ghostDurationMs) {
+          ghostDurationMs = durationMs;
+        }
+      }
     } else {
       repetition = 0;
       interval = 1;
     }
 
-    // Update Ease Factor
+    // Ease Factor
     efactor = efactor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
     if (efactor < 1.3) efactor = 1.3;
 
-    // Calculate next review date
     const nextReview = new Date();
     nextReview.setDate(nextReview.getDate() + interval);
-    const nextReviewDate = nextReview.toISOString();
 
     const updatedCardProgress: CardProgress = {
-      cardId: currentCard.id,
+      cardId,
       interval,
       repetition,
       efactor,
-      nextReviewDate,
+      nextReviewDate: nextReview.toISOString(),
+      lastReviewedAt: new Date().toISOString(),
+      ghostDurationMs
     };
 
     const newProgress = {
       ...progress,
-      [currentCard.id]: updatedCardProgress,
+      [cardId]: updatedCardProgress
     };
 
-    // Save to state & storage
     setProgress(newProgress);
-    localStorage.setItem("toeic_flashcards_progress", JSON.stringify(newProgress));
+    
+    const progressKey = examType === "TOEIC" ? "toeic_flashcards_progress" : "ielts_flashcards_progress_v2";
+    localStorage.setItem(progressKey, JSON.stringify(newProgress));
 
     // Award XP
     const newXp = xp + 10;
     setXp(newXp);
     localStorage.setItem("user_progress_xp", newXp.toString());
 
-    // Update streak (if >= 10 reviews and not updated today)
+    // Update Streak (giới hạn 1 lần cộng mỗi ngày theo timezone hệ thống)
     const todayStr = new Date().toISOString().split("T")[0];
     const lastStreakUpdate = localStorage.getItem("last_streak_update_date");
     if (lastStreakUpdate !== todayStr) {
@@ -145,182 +149,110 @@ export default function FlashcardDashboard() {
       localStorage.setItem("last_streak_update_date", todayStr);
     }
 
-    // Background synchronization mock (API sync)
+    // Background API Sync (Mock fallback)
     try {
       fetch("/api/v1/user-progress/flashcards", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          cardId: currentCard.id,
+          cardId,
           rating: q,
           interval,
           repetition,
           efactor,
-          lastReviewedAt: new Date().toISOString(),
-        }),
-      }).catch((e) => console.warn("Background API sync failed (offline fallback active)", e));
+          lastReviewedAt: new Date().toISOString()
+        })
+      }).catch((e) => console.warn("Background API sync failed (offline mode active)", e));
     } catch {
-      // Ignore sync exceptions since it runs in background
+      // Bỏ qua lỗi kết nối ngầm
     }
-
-    // Advance queue
-    setIsFlipped(false);
-    // Delay slightly to allow flip animation to return to front
-    setTimeout(() => {
-      const nextQueue = todayQueue.filter((_, idx) => idx !== currentCardIndex);
-      setTodayQueue(nextQueue);
-      if (currentCardIndex >= nextQueue.length && nextQueue.length > 0) {
-        setCurrentCardIndex(0);
-      }
-    }, 200);
   };
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-violet-650"></div>
-        <p className="text-sm text-slate-500 mt-4 font-semibold">Đang tải thẻ học từ vựng...</p>
+      <div className="flex flex-col items-center justify-center min-h-[350px]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-violet-650"></div>
+        <p className="text-xs text-slate-500 mt-3 font-semibold">Đang nạp dữ liệu từ vựng...</p>
       </div>
     );
   }
 
-  const currentCard = todayQueue[currentCardIndex];
+  // Phân tích dữ liệu để hiển thị Bento Grid
+  const groupedVocab = groupVocabByTopic(allVocab);
+  const topicList = getTopicStatusList(groupedVocab, progress);
 
   return (
-    <div className="w-full max-w-xl mx-auto space-y-6">
-      {/* Status Bar */}
-      <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-5 rounded-2xl flex justify-between items-center shadow-sm">
-        <div className="space-y-1">
-          <h2 className="text-sm font-bold text-slate-500 uppercase tracking-wider">
-            Ôn tập hàng ngày
-          </h2>
-          <p className="text-xl font-extrabold text-slate-900 dark:text-white">
-            {todayQueue.length > 0
-              ? `Còn lại ${todayQueue.length} từ`
-              : "Hoàn thành mục tiêu hôm nay! 🎉"}
-          </p>
-        </div>
-        <div className="flex gap-4">
-          <div className="text-center">
-            <span className="block text-[10px] uppercase font-bold text-slate-400">Streak</span>
-            <span className="text-base font-extrabold text-violet-650">🔥 {streak} ngày</span>
+    <div className="w-full space-y-6">
+      {/* 1. Header Widget (Streak / XP / Tab Selector) */}
+      {view === "grid" && (
+        <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4 shadow-sm">
+          {/* Tabs switch */}
+          <div className="flex bg-slate-100 dark:bg-slate-900 p-1 rounded-xl w-full sm:w-auto">
+            <button
+              onClick={() => handleSwitchExam("TOEIC")}
+              className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                examType === "TOEIC"
+                  ? "bg-white dark:bg-slate-800 text-violet-750 dark:text-violet-400 shadow-sm"
+                  : "text-slate-500 hover:text-slate-700"
+              }`}
+            >
+              TOEIC 600 từ
+            </button>
+            <button
+              onClick={() => handleSwitchExam("IELTS")}
+              className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                examType === "IELTS"
+                  ? "bg-white dark:bg-slate-800 text-violet-750 dark:text-violet-400 shadow-sm"
+                  : "text-slate-500 hover:text-slate-700"
+              }`}
+            >
+              IELTS Cốt lõi
+            </button>
           </div>
-          <div className="text-center">
-            <span className="block text-[10px] uppercase font-bold text-slate-400">Kinh nghiệm</span>
-            <span className="text-base font-extrabold text-emerald-600">✨ {xp} XP</span>
-          </div>
-        </div>
-      </div>
 
-      {/* Show All Vocabulary Panel */}
-      {showAll ? (
-        <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-6 rounded-3xl space-y-4 shadow-md">
-          <div className="flex justify-between items-center pb-2 border-b border-slate-100 dark:border-slate-900">
-            <h3 className="font-bold text-slate-900 dark:text-white">Danh sách từ vựng ({allVocab.length})</h3>
-            <Button size="sm" variant="outline" className="cursor-pointer hover:bg-slate-105 transition-all" onClick={() => setShowAll(false)}>
-              Quay lại ôn tập
-            </Button>
-          </div>
-          <div className="max-h-[400px] overflow-y-auto space-y-3 pr-2 scrollbar-thin">
-            {allVocab.map((vocab) => (
-              <div key={vocab.id} className="p-3 bg-slate-50 dark:bg-slate-900 rounded-xl space-y-1 text-left">
-                <div className="flex justify-between items-center">
-                  <span className="font-extrabold text-slate-900 dark:text-white">{vocab.word}</span>
-                  <span className="text-xs font-mono text-slate-400">{vocab.ipa}</span>
-                </div>
-                <p className="text-xs font-bold text-violet-600">{vocab.meaning}</p>
-                <p className="text-xs text-slate-500">{vocab.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : currentCard ? (
-        <div className="relative w-full aspect-[4/3] min-h-[280px] perspective">
-          <div
-            className={`w-full h-full duration-500 transform-style-3d relative cursor-pointer ${
-              isFlipped ? "rotate-y-180" : ""
-            }`}
-            onClick={() => setIsFlipped(!isFlipped)}
-          >
-            {/* Front Card Face */}
-            <div className="absolute inset-0 backface-hidden bg-white dark:bg-slate-950 border border-slate-250 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between items-center shadow-lg">
-              <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 rounded uppercase tracking-wider">
-                Từ vựng TOEIC
-              </span>
-              <div className="text-center space-y-2">
-                <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                  {currentCard.word}
-                </h3>
-                <p className="text-sm font-medium text-slate-400 font-mono">
-                  {currentCard.ipa}
-                </p>
-              </div>
-              <Button size="sm" className="font-extrabold text-xs rounded-xl shadow cursor-pointer hover:scale-105 transition-all">
-                Lật xem nghĩa &rarr;
-              </Button>
+          {/* Stats */}
+          <div className="flex gap-6 w-full sm:w-auto justify-end sm:justify-start px-2">
+            <div className="text-center">
+              <span className="block text-[9px] uppercase font-bold text-slate-400 tracking-wider">Streak</span>
+              <span className="text-sm font-extrabold text-violet-650">🔥 {streak} ngày</span>
             </div>
-
-            {/* Back Card Face */}
-            <div className="absolute inset-0 backface-hidden rotate-y-180 bg-white dark:bg-slate-950 border border-slate-250 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between items-center shadow-lg">
-              <span className="text-[10px] font-bold px-2 py-0.5 bg-violet-100 text-violet-750 rounded uppercase tracking-wider">
-                Giải nghĩa
-              </span>
-              <div className="text-center space-y-3 px-4">
-                <h4 className="text-xl font-extrabold text-violet-700 dark:text-violet-400">
-                  {currentCard.meaning}
-                </h4>
-                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
-                  {currentCard.description}
-                </p>
-              </div>
-
-              {/* SM-2 quality ratings (Khó / TB / Dễ) */}
-              <div 
-                className="flex gap-2 w-full pt-4 border-t border-slate-100 dark:border-slate-900"
-                onClick={(e) => e.stopPropagation()} // Chống click event lật ngược thẻ lại
-              >
-                <button
-                  onClick={() => handleRating(2)}
-                  className="flex-1 py-2 px-3 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer"
-                >
-                  Khó
-                </button>
-                <button
-                  onClick={() => handleRating(4)}
-                  className="flex-1 py-2 px-3 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer"
-                >
-                  Trung bình
-                </button>
-                <button
-                  onClick={() => handleRating(5)}
-                  className="flex-1 py-2 px-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer"
-                >
-                  Dễ
-                </button>
-              </div>
+            <div className="text-center">
+              <span className="block text-[9px] uppercase font-bold text-slate-400 tracking-wider">Kinh nghiệm</span>
+              <span className="text-sm font-extrabold text-emerald-600">✨ {xp} XP</span>
             </div>
-          </div>
-        </div>
-      ) : (
-        <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-8 rounded-3xl text-center space-y-4 shadow-md">
-          <div className="text-4xl">🌟</div>
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-            Tuyệt vời! Mục tiêu ôn tập hôm nay đã đạt được
-          </h3>
-          <p className="text-xs text-slate-500 leading-relaxed max-w-sm mx-auto">
-            Hệ thống lặp lại ngắt quãng sẽ tự động tính toán thời điểm thích hợp nhất để nhắc bạn ôn tập lại các thẻ này trong tương lai. Hãy quay lại vào ngày mai nhé!
-          </p>
-          <div className="pt-2">
-            <Button size="sm" variant="outline" className="cursor-pointer hover:bg-slate-105 transition-all" onClick={() => setShowAll(true)}>
-              Xem tất cả từ vựng
-            </Button>
           </div>
         </div>
       )}
 
-      {/* Ad Refresh Container beneath Flashcard */}
-      <div className="pt-2">
-        <AdBanner adSlotId="flashcard-ad-refresh" />
+      {/* 2. Main Content Display */}
+      {view === "grid" ? (
+        <div className="space-y-4">
+          <div className="flex justify-between items-center px-1">
+            <h2 className="text-sm font-extrabold text-slate-800 dark:text-white uppercase tracking-wider">
+              Bản đồ chủ đề ({topicList.length})
+            </h2>
+          </div>
+          <BentoGrid
+            topics={topicList}
+            onSelectTopic={(topicId) => {
+              setActiveTopicId(topicId);
+              setView("session");
+            }}
+          />
+        </div>
+      ) : (
+        <FlashcardSession
+          topicId={activeTopicId}
+          cards={groupedVocab[activeTopicId] || []}
+          progressMap={progress}
+          onRating={handleRating}
+          onBackToDashboard={() => setView("grid")}
+        />
+      )}
+
+      {/* 3. Bottom Banner Anti CLS */}
+      <div className="pt-4">
+        <AdBanner adSlotId="flashcard-bento-bottom" />
       </div>
     </div>
   );

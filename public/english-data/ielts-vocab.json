@@ -1,0 +1,272 @@
+[
+  {
+    "id": "ielts-1",
+    "word": "Curriculum",
+    "ipa": "/kəˈrɪkjələm/",
+    "meaning": "Chương trình giảng dạy",
+    "description": "Toàn bộ các môn học được dạy tại một trường học hoặc trường đại học.",
+    "topic": "Education",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-2",
+    "word": "Pedagogy",
+    "ipa": "/ˈpedəɡɒdʒi/",
+    "meaning": "Phương pháp giáo dục",
+    "description": "Phương pháp và thực hành giảng dạy, đặc biệt là một môn học hoặc khái niệm lý thuyết.",
+    "topic": "Education",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-3",
+    "word": "Acquire",
+    "ipa": "/əˈkwaɪə(r)//",
+    "meaning": "Tích lũy, đạt được",
+    "description": "Có được kiến thức, kỹ năng thông qua nỗ lực hoặc học hỏi.",
+    "topic": "Education",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-4",
+    "word": "Cognitive",
+    "ipa": "/ˈkɒɡnətɪv/",
+    "meaning": "Thuộc về nhận thức",
+    "description": "Liên quan đến các quá trình tư duy, ghi nhớ và học tập.",
+    "topic": "Education",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-5",
+    "word": "Literacy",
+    "ipa": "/ˈlɪtərəsi/",
+    "meaning": "Sự biết chữ",
+    "description": "Khả năng đọc và viết thành thạo.",
+    "topic": "Education",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-6",
+    "word": "Academic",
+    "ipa": "/ˌækəˈdemɪk/",
+    "meaning": "Thuộc học thuật",
+    "description": "Liên quan đến học tập ở trường học, đặc biệt là giáo dục đại học.",
+    "topic": "Education",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-7",
+    "word": "Biodiversity",
+    "ipa": "/ˌbaɪəʊdaɪˈvɜːsəti/",
+    "meaning": "Đa dạng sinh học",
+    "description": "Sự phong phú của các loài sinh vật sống trong một hệ sinh thái nhất định.",
+    "topic": "Environment",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-8",
+    "word": "Conservation",
+    "ipa": "/ˌkɒnsəˈveɪʃn/",
+    "meaning": "Sự bảo tồn",
+    "description": "Hành động bảo vệ thiên nhiên, động vật hoang dã khỏi bị phá hủy hoặc lãng phí.",
+    "topic": "Environment",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-9",
+    "word": "Deforestation",
+    "ipa": "/ˌdiːˌfɒrɪˈsteɪʃn/",
+    "meaning": "Nạn phá rừng",
+    "description": "Hành động chặt phá rừng quy mô lớn vì mục đích nông nghiệp hoặc thương mại.",
+    "topic": "Environment",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-10",
+    "word": "Ecosystem",
+    "ipa": "/ˈiːkəʊsɪstəm/",
+    "meaning": "Hệ sinh thái",
+    "description": "Một cộng đồng sinh vật sống tương tác với môi trường không sống của chúng.",
+    "topic": "Environment",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-11",
+    "word": "Sustainability",
+    "ipa": "/səˌsteɪnəˈbɪləti/",
+    "meaning": "Sự phát triển bền vững",
+    "description": "Khả năng duy trì hoặc bảo tồn tài nguyên cho tương lai mà không gây hại cho môi trường.",
+    "topic": "Environment",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-12",
+    "word": "Pollutant",
+    "ipa": "/pəˈluːtənt/",
+    "meaning": "Chất gây ô nhiễm",
+    "description": "Chất làm bẩn nước, không khí hoặc đất đai.",
+    "topic": "Environment",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-13",
+    "word": "Innovation",
+    "ipa": "/ˌɪnəˈveɪʃn/",
+    "meaning": "Sự đổi mới, sáng tạo",
+    "description": "Việc đưa ra những phương pháp, ý tưởng hoặc sản phẩm mới hữu ích.",
+    "topic": "Technology",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-14",
+    "word": "Automation",
+    "ipa": "/ˌɔːtəˈmeɪʃn/",
+    "meaning": "Sự tự động hóa",
+    "description": "Việc sử dụng máy móc, công nghệ để thực hiện công việc thay cho con người.",
+    "topic": "Technology",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-15",
+    "word": "Cybersecurity",
+    "ipa": "/ˈsaɪbəsecurəti/",
+    "meaning": "An ninh mạng",
+    "description": "Các biện pháp bảo vệ hệ thống máy tính và dữ liệu khỏi các cuộc tấn công số.",
+    "topic": "Technology",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-16",
+    "word": "Obsolete",
+    "ipa": "/ˈɒbsəliːt/",
+    "meaning": "Lỗi thời",
+    "description": "Không còn được sử dụng vì đã có công nghệ mới tốt hơn thay thế.",
+    "topic": "Technology",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-17",
+    "word": "Artificial",
+    "ipa": "/ˌɑːtɪˈfɪʃl/",
+    "meaning": "Nhân tạo",
+    "description": "Được tạo ra bởi con người, không phải do tự nhiên sinh ra.",
+    "topic": "Technology",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-18",
+    "word": "Revolutionize",
+    "ipa": "/ˌrevəˈluːʃənaɪz/",
+    "meaning": "Cách mạng hóa",
+    "description": "Làm thay đổi hoàn toàn cách thức hoạt động hoặc suy nghĩ về một lĩnh vực.",
+    "topic": "Technology",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-19",
+    "word": "Well-being",
+    "ipa": "/ˈwel biːɪŋ/",
+    "meaning": "Trạng thái khỏe mạnh, hạnh phúc",
+    "description": "Trải nghiệm về sức khỏe, hạnh phúc và sự thịnh vượng toàn diện.",
+    "topic": "Health",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-20",
+    "word": "Nutritious",
+    "ipa": "/njuˈtrɪʃəs/",
+    "meaning": "Giàu dinh dưỡng",
+    "description": "Chứa nhiều chất có lợi cho sức khỏe và giúp cơ thể phát triển.",
+    "topic": "Health",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-21",
+    "word": "Sedentary",
+    "ipa": "/ˈsedntri/",
+    "meaning": "Ít vận động",
+    "description": "Lối sống ngồi nhiều, lười hoạt động thể chất.",
+    "topic": "Health",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-22",
+    "word": "Epidemic",
+    "ipa": "/ˌepɪˈdemɪk/",
+    "meaning": "Dịch bệnh",
+    "description": "Sự bùng phát nhanh chóng của một căn bệnh truyền nhiễm trong cộng đồng.",
+    "topic": "Health",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-23",
+    "word": "Therapy",
+    "ipa": "/ˈθerəpi/",
+    "meaning": "Liệu pháp điều trị",
+    "description": "Quá trình điều trị bệnh tật về thể chất hoặc tinh thần.",
+    "topic": "Health",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-24",
+    "word": "Immunity",
+    "ipa": "/ɪˈmjuːnəti/",
+    "meaning": "Sức đề kháng, miễn dịch",
+    "description": "Khả năng của cơ thể chống lại các mầm bệnh hoặc nhiễm trùng.",
+    "topic": "Health",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-25",
+    "word": "Itinerary",
+    "ipa": "/aɪˈtɪnərəri/",
+    "meaning": "Lộ trình chuyến đi",
+    "description": "Bản kế hoạch chi tiết về lịch trình và các điểm đến của một hành trình.",
+    "topic": "Travel",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-26",
+    "word": "Ecotourism",
+    "ipa": "/ˈiːkəʊtʊərɪzəm/",
+    "meaning": "Du lịch sinh thái",
+    "description": "Hình thức du lịch có trách nhiệm với môi trường tại các khu bảo tồn thiên nhiên.",
+    "topic": "Travel",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-27",
+    "word": "Destination",
+    "ipa": "/ˌdestɪˈneɪʃn/",
+    "meaning": "Điểm đến",
+    "description": "Nơi mà ai đó hoặc cái gì đó đang hướng tới hoặc được gửi đến.",
+    "topic": "Travel",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-28",
+    "word": "Picturesque",
+    "ipa": "/ˌpɪktʃəˈresk/",
+    "meaning": "Đẹp như tranh vẽ",
+    "description": "Có cảnh sắc vô cùng thu hút, đẹp mắt và tự nhiên.",
+    "topic": "Travel",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-29",
+    "word": "Hospitality",
+    "ipa": "/ˌhɒspɪˈtæləti/",
+    "meaning": "Lòng hiếu khách",
+    "description": "Sự chào đón thân thiện và chu đáo dành cho khách khứa hoặc người lạ.",
+    "topic": "Travel",
+    "exam": "IELTS"
+  },
+  {
+    "id": "ielts-30",
+    "word": "Excursion",
+    "ipa": "/ɪkˈskɜːʃn/",
+    "meaning": "Chuyến dã ngoại ngắn",
+    "description": "Một chuyến đi tham quan ngắn ngày, thường là giải trí hoặc học tập.",
+    "topic": "Travel",
+    "exam": "IELTS"
+  }
+]
