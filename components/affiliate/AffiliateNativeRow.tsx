@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import type { AffiliateProduct } from "@/types/affiliate";
-import productsData from "@/data/shopee-affiliate-products.json";
+import productsData from "@/data/affiliate-products.json";
 
 interface Props {
   rowIndex: number;
@@ -27,12 +27,12 @@ export default function AffiliateNativeRow({ rowIndex, currentPage, isCard = fal
 
   if (isCard) {
     return (
-      <div className="bg-card border-b border-border">
+      <div className="hover:bg-slate-50 transition duration-200">
         <a
           href={`/go/${product.slug}`}
           target="_blank"
           rel="noopener noreferrer nofollow sponsored"
-          className="flex items-center justify-between gap-3 px-5 py-4 hover:bg-slate-50 transition duration-200 group"
+          className="flex items-center justify-between gap-3 px-5 py-5 group"
           data-testid={`affiliate-native-card-${rowIndex}`}
         >
           <div className="flex items-center gap-3">
@@ -61,13 +61,13 @@ export default function AffiliateNativeRow({ rowIndex, currentPage, isCard = fal
   }
 
   return (
-    <tr className="bg-slate-50/20">
+    <tr className="bg-slate-50/10 hover:bg-slate-50 transition duration-200">
       <td className="p-0" colSpan={4}>
         <a
           href={`/go/${product.slug}`}
           target="_blank"
           rel="noopener noreferrer nofollow sponsored"
-          className="flex items-center justify-between gap-3 px-6 py-4 hover:bg-slate-50 transition duration-200 group"
+          className="flex items-center justify-between gap-3 px-6 py-4 group"
           data-testid={`affiliate-native-row-${rowIndex}`}
         >
           <div className="flex items-center gap-3">

@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import type { AffiliateProduct } from "@/types/affiliate";
-import productsData from "@/data/shopee-affiliate-products.json";
+import productsData from "@/data/affiliate-products.json";
+import { trackAffiliateClick } from "@/components/analytics/GA4Provider";
 
 export default function AffiliateBox() {
   let product: AffiliateProduct | null = null;
@@ -16,6 +17,18 @@ export default function AffiliateBox() {
   }
 
   if (!product) return null;
+
+  const redirectUrl = `/redirect?url=${encodeURIComponent(`/go/${product.slug}`)}`;
+
+  const handleClick = () => {
+    if (!product) return;
+    trackAffiliateClick({
+      productId: product.id,
+      productName: product.title,
+      sourcePage: "speaking-affiliate-box",
+      subId: `enstudey_${product.slug}`,
+    });
+  };
 
   return (
     <div
@@ -49,13 +62,15 @@ export default function AffiliateBox() {
         data-testid="affiliate-box-cta"
       >
         <a
-          href={`/go/${product.slug}`}
+          href={redirectUrl}
           target="_blank"
           rel="noopener noreferrer nofollow sponsored"
+          onClick={handleClick}
         >
-          Xem trên Shopee
+          {product.ctaLabel || "Xem chi tiết"}
         </a>
       </Button>
     </div>
   );
 }
+

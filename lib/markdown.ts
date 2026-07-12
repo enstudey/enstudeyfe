@@ -48,8 +48,9 @@ marked.use({
           };
         }
       },
-      renderer(token: any) {
-        return `<span class="glossary-term cursor-help border-b border-dashed border-violet-500 bg-violet-50/50 px-1 font-semibold text-violet-750" data-term="${token.text || ""}">${token.text || ""}</span>`;
+      renderer(token) {
+        const text = (token as { text?: string }).text ?? "";
+        return `<span class="glossary-term cursor-help border-b border-dashed border-violet-500 bg-violet-50/50 px-1 font-semibold text-violet-750" data-term="${text}">${text}</span>`;
       },
     },
   ],

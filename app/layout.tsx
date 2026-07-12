@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import AdSenseScript from "@/components/AdSenseScript";
+import GA4Provider from "@/components/analytics/GA4Provider";
 import CookieBanner from "@/components/cookie-banner";
 import ToastContainer from "@/components/toast/ToastContainer";
 import "./globals.css";
@@ -68,6 +69,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <GA4Provider />
         <TooltipProvider>
           {children}
         </TooltipProvider>
@@ -77,5 +79,6 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 

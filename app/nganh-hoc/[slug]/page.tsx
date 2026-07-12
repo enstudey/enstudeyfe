@@ -10,7 +10,7 @@ import RelatedArticles from "@/components/RelatedArticles";
 import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
 
 import type { AffiliateProduct } from "@/types/affiliate";
-import productsData from "@/data/shopee-affiliate-products.json";
+import productsData from "@/data/affiliate-products.json";
 
 function insertInArticleAd(htmlContent: string): string {
   const adBlockHtml = `

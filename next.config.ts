@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "salt.tikicdn.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   async redirects() {

@@ -36,7 +36,7 @@ export default function FlashcardDashboard() {
     const initData = async () => {
       try {
         // Load vocab list
-        const vocabRes = await fetch("/data/toeic-vocab.json");
+        const vocabRes = await fetch("/english-data/toeic-vocab.json");
         if (vocabRes.ok) {
           const vocabData = await vocabRes.json();
           setAllVocab(vocabData);

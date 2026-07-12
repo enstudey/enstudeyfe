@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { trackAffiliateClick } from "@/components/analytics/GA4Provider";
 
 interface MajorBenchmark {
   code: string;
@@ -284,17 +285,53 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               </Link>
             </div>
             
-            {/* Anti-CLS In-feed AdSlot dưới phần điểm tổng */}
+            {/* Anti-CLS In-feed AdSlot dưới phần điểm tổng - Sử dụng Banner ELSA Speak Affiliate */}
             <div 
               key={`infeed-${adKey}`}
-              className="ad-container ad-v-block w-full min-h-[250px] bg-slate-100/50 flex flex-col items-center justify-center p-4 border border-dashed border-slate-200 rounded-2xl transition duration-300"
+              className="w-full min-h-[160px] md:min-h-[180px] rounded-2xl overflow-hidden shadow-xs border border-slate-200/60"
               data-testid="ad-infeed-points"
             >
-              <div className="text-center space-y-2">
-                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Liên kết tài trợ</span>
-                <p className="font-bold text-sm text-slate-700">Lộ trình học IELTS 7.5+ cấp tốc cho học sinh lớp 12</p>
-                <p className="text-xs text-slate-400">Đăng ký ngay hôm nay để nhận học bổng giảm giá 30% học phí tại EnStudey.</p>
-              </div>
+              <Link 
+                href="/go/elsaspeak" 
+                target="_blank" 
+                rel="noopener noreferrer nofollow sponsored"
+                onClick={() => {
+                  trackAffiliateClick({
+                    productId: "elsa-speak",
+                    productName: "ELSA Speak App",
+                    sourcePage: "tra-cuu-tuyen-sinh-ad",
+                    subId: "enstudey_tuyen_sinh_elsa"
+                  });
+                }}
+                className="block w-full group relative aspect-[8/3] md:aspect-[3/1]"
+                style={{
+                  backgroundImage: "url('/images/affiliate/elsa.webp')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center center",
+                  minHeight: "180px"
+                }}
+              >
+                {/* Overlay màu tối nhẹ ở nửa bên trái để chữ dễ đọc */}
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-900/40 to-transparent z-1" />
+                
+                {/* Text đè lên phía bên trái */}
+                <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 md:w-1/2 flex flex-col justify-center p-6 z-10 text-white space-y-1.5 md:space-y-2">
+                  <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-violet-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
+                    Đối tác tuyển sinh
+                  </span>
+                  <h3 className="font-extrabold text-sm md:text-lg leading-snug">
+                    Luyện Phát Âm Chuẩn Cùng Trợ Lý AI ELSA Speak!
+                  </h3>
+                  <p className="text-[10px] md:text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                    Lộ trình cá nhân hóa giúp nâng band Speaking cấp tốc để xét tuyển thẳng Đại học. Nhận ngay học bổng ưu đãi 30% khi đăng ký hôm nay.
+                  </p>
+                  <div className="pt-1">
+                    <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-violet-600 group-hover:bg-violet-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
+                      Tìm hiểu ngay &rarr;
+                    </span>
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         ) : (

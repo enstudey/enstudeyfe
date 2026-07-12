@@ -8,7 +8,7 @@ import { getCategoryFallbackImage } from "@/lib/images";
 import TableOfContents from "@/components/TableOfContents";
 import RelatedArticles from "@/components/RelatedArticles";
 import type { AffiliateProduct } from "@/types/affiliate";
-import productsData from "@/data/shopee-affiliate-products.json";
+import productsData from "@/data/affiliate-products.json";
 import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
 
 

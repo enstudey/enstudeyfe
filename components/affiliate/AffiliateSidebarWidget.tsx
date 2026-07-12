@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import type { AffiliateProduct } from "@/types/affiliate";
-import productsData from "@/data/shopee-affiliate-products.json";
+import productsData from "@/data/affiliate-products.json";
+import { trackAffiliateClick } from "@/components/analytics/GA4Provider";
 
 interface Props {
   currentPage?: number;
@@ -27,7 +28,7 @@ export default function AffiliateSidebarWidget({ currentPage, seed }: Props) {
       const index = Math.abs(hash) % products.length;
       product = products[index] ?? null;
     } else {
-      product = products.find(p => p.category === "collection") ?? null;
+      product = products[0] ?? null;
     }
   } catch (error) {
     console.error("Error loading affiliate sidebar product:", error);
@@ -35,6 +36,18 @@ export default function AffiliateSidebarWidget({ currentPage, seed }: Props) {
   }
 
   if (!product) return null;
+
+  const redirectUrl = `/redirect?url=${encodeURIComponent(`/go/${product.slug}`)}`;
+
+  const handleClick = () => {
+    if (!product) return;
+    trackAffiliateClick({
+      productId: product.id,
+      productName: product.title,
+      sourcePage: "sidebar-affiliate-widget",
+      subId: `enstudey_${product.slug}`,
+    });
+  };
 
   return (
     <div
@@ -71,13 +84,15 @@ export default function AffiliateSidebarWidget({ currentPage, seed }: Props) {
         className="w-full h-11 font-bold rounded-xl transition duration-200 cursor-pointer shadow-xs"
       >
         <a
-          href={`/go/${product.slug}`}
+          href={redirectUrl}
           target="_blank"
           rel="noopener noreferrer nofollow sponsored"
+          onClick={handleClick}
         >
-          {product.ctaLabel || "Xem trên Shopee"}
+          {product.ctaLabel || "Xem thêm"}
         </a>
       </Button>
     </div>
   );
 }
+

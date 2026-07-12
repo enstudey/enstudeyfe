@@ -12,6 +12,7 @@ import { getCategoryBySlug } from "@/lib/categories";
 import CategoryIcon from "@/components/category-icon";
 import AffiliateInFeedCard from "@/components/affiliate/AffiliateInFeedCard";
 import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
+import { trackAffiliateClick } from "@/components/analytics/GA4Provider";
 
 interface BlogListClientProps {
   posts: PostData[];
@@ -71,9 +72,49 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
           </div>
         </div>
 
-        {/* 2. Leaderboard Ad */}
-        <div className="ad-container ad-leaderboard w-full min-h-[90px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl py-2 mb-4">
-          <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
+        {/* 2. Leaderboard Ad - Đã tích hợp ELSA Speak Banner */}
+        <div className="w-full min-h-[160px] md:min-h-[180px] rounded-2xl overflow-hidden shadow-xs border border-slate-200/60 mb-4">
+          <Link 
+            href="/go/elsaspeak" 
+            target="_blank" 
+            rel="noopener noreferrer nofollow sponsored"
+            onClick={() => {
+              trackAffiliateClick({
+                productId: "elsa-speak",
+                productName: "ELSA Speak App",
+                sourcePage: "tin-tuc-leaderboard",
+                subId: "enstudey_tin_tuc_elsa"
+              });
+            }}
+            className="block w-full group relative aspect-[8/3] md:aspect-[3/1]"
+            style={{
+              backgroundImage: "url('/images/affiliate/elsa.webp')",
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+              minHeight: "180px"
+            }}
+          >
+            {/* Overlay màu tối nhẹ ở nửa bên trái để chữ dễ đọc */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-900/40 to-transparent z-1" />
+            
+            {/* Text đè lên phía bên trái */}
+            <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 md:w-1/2 flex flex-col justify-center p-6 z-10 text-white space-y-1.5 md:space-y-2">
+              <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-violet-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
+                Đối tác học thuật
+              </span>
+              <h3 className="font-extrabold text-sm md:text-lg leading-snug">
+                Luyện Nói Tiếng Anh Điêu Luyện Cùng Trợ Lý AI ELSA!
+              </h3>
+              <p className="text-[10px] md:text-xs text-slate-350 line-clamp-2 leading-relaxed">
+                Đánh giá phát âm chính xác đến từng âm tiết nhờ công nghệ AI nhận diện giọng nói độc quyền. Nhận ưu đãi độc quyền 30% tại đây.
+              </p>
+              <div className="pt-1">
+                <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-violet-600 group-hover:bg-violet-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
+                  Tìm hiểu thêm &rarr;
+                </span>
+              </div>
+            </div>
+          </Link>
         </div>
 
         {/* Categories filters */}

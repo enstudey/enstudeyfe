@@ -38,7 +38,7 @@ export default function CheatSheetInteractiveWrapper({
 
     const fetchGlossary = async () => {
       try {
-        const response = await fetch(`/data/glossary/${topic}.json`);
+        const response = await fetch(`/english-data/glossary/${topic}.json`);
         if (response.ok) {
           const data = await response.json();
           const mapped: Record<string, string> = {};

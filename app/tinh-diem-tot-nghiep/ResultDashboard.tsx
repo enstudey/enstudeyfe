@@ -61,7 +61,7 @@ export default function ResultDashboard({
     setTimeout(() => {
       setIsLoadingRecs(true);
     }, 0);
-    fetch("/data/university_data.json")
+    fetch("/university-scores-data/university_data.json")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to load university database");
         return res.json();

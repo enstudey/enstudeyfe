@@ -1,26 +1,116 @@
 [
   {
+    "source": "/go/sach-ielts",
+    "destination": "https://tiki.vn/combo-2-cuon-hackers-ielts-hackers-ielts-listening-hackers-ielts-reading-p54143527.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
+    "source": "/go/sach-ielts-speaking",
+    "destination": "https://tiki.vn/sach-hackers-ielts-speaking-p216090588.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
     "source": "/go/sach-toeic",
-    "destination": "https://shopee.vn"
+    "destination": "https://tiki.vn/sach-barron-s-essential-words-for-the-toeic-tai-ban-p12107394.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
   },
   {
-    "source": "/go/sach-ielts-cam-12",
-    "destination": "https://shopee.vn"
+    "source": "/go/luyen-toeic-reading",
+    "destination": "https://tiki.vn/sach-ybm-toeic-reading-1000-vol-1-tai-ban-2022-p200938532.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
   },
   {
-    "source": "/go/sach-ets-toeic-2026",
-    "destination": "https://shopee.vn"
+    "source": "/go/sach-ielts-writing",
+    "destination": "https://tiki.vn/sach-collins-grammar-for-ielts-kem-cd-hoac-file-mp3-tai-ban-p468447.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
   },
   {
-    "source": "/go/hanh-trang-2026",
-    "destination": "https://shopee.vn"
+    "source": "/go/cambridge-ielts-18",
+    "destination": "https://tiki.vn/cambridge-ielts-18-academic-p272396045.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
   },
   {
-    "source": "/go/balo-laptop",
-    "destination": "https://shopee.vn"
+    "source": "/go/new-economy-toeic-lc",
+    "destination": "https://tiki.vn/sach-new-economy-toeic-lc-1000-kem-file-mp3-p3840809.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
   },
   {
-    "source": "/go/den-ban-led",
-    "destination": "https://shopee.vn"
+    "source": "/go/new-economy-toeic-rc",
+    "destination": "https://tiki.vn/sach-new-economy-toeic-rc-1000-p3840807.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
+    "source": "/go/quat-vinbuy-tich-dien",
+    "destination": "https://tiki.vn/quat-cam-tay-cao-cap-vinbuy-tich-dien-tien-loi-kem-cap-sac-va-pin-co-tang-chan-de-tich-hop-gia-do-dien-thoai-3-che-do-gio-sieu-mat-sieu-ben-hang-chinh-hang-vinbuy-p95052954.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
+    "source": "/go/binh-elmich-480ml",
+    "destination": "https://tiki.vn/binh-giu-nhiet-inox-304-elmich-el-8013ol-dung-tich-480ml-p120552065.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
+    "source": "/go/den-ban-hoc-led",
+    "destination": "https://tiki.vn/den-ban-hoc-led-doc-sach-lam-viec-hoc-tap-bao-ve-mat-chong-can-2-truc-den-chieu-sang-gap-gon-tien-loi-p193433927.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
+    "source": "/go/den-ban-cam-bien",
+    "destination": "https://tiki.vn/den-de-ban-chieu-sang-da-huong-he-so-hoan-mau-cao-anh-sang-diu-nhe-khong-gay-hai-mat-nut-dieu-khien-truc-quan-de-su-dung-co-che-do-hen-gio-tat-den-p271395413.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
+    "source": "/go/cap-tai-lieu-deli",
+    "destination": "https://tiki.vn/cap-dung-tai-lieu-5-ngan-8-ngan-trong-suot-a4-deli-file-dung-tai-lieu-ho-so-tui-ho-so-van-phong-file-luu-tru-da-nang-trong-suot-phi-hanh-gia-co-nhan-dan-dinh-kem-p267178807.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
+    "source": "/go/cap-tai-lieu-8ngan",
+    "destination": "https://tiki.vn/cap-dung-tai-lieu-a4-deli-8-ngan-phan-trang-file-luu-tru-tai-lieu-linfini-xanh-duong-trang-72456-p105614601.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
+    "source": "/go/but-bi-hoc-sinh",
+    "destination": "https://tiki.vn/combo-tui-20-cay-but-bi-thu-cho-be-nhieu-mau-sac-ngo-nghinh-xinh-xan-dang-yeu-cho-be-lua-chon-p276798552.html",
+    "platform": "tiki",
+    "campaignId": "tiki"
+  },
+  {
+    "source": "/go/elsaspeak",
+    "destination": "https://vn.elsaspeak.com/affiliates-vnaff_no/?ref=4036/Accesstrade",
+    "platform": "elsaspeak",
+    "campaignId": "elsaspeak"
+  },
+  {
+    "source": "/go/unica",
+    "destination": "https://unica.vn/",
+    "platform": "unica",
+    "campaignId": "unica"
+  },
+  {
+    "source": "/go/gitiho",
+    "destination": "https://gitiho.com/",
+    "platform": "gitiho",
+    "campaignId": "gitiho"
+  },
+  {
+    "source": "/go/ila",
+    "destination": "https://ila.edu.vn/tieng-anh-cho-be/",
+    "platform": "ila",
+    "campaignId": "ila"
   }
 ]

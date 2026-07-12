@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import type { AffiliateProduct } from "@/types/affiliate";
-import productsData from "@/data/shopee-affiliate-products.json";
+import productsData from "@/data/affiliate-products.json";
+import { trackAffiliateClick } from "@/components/analytics/GA4Provider";
 
 interface Props {
   certType: "none" | "ielts" | "toeic";
@@ -23,6 +24,18 @@ export default function AffiliateCertWidget({ certType, certScore }: Props) {
   }
 
   if (!product) return null;
+
+  const redirectUrl = `/redirect?url=${encodeURIComponent(`/go/${product.slug}`)}`;
+
+  const handleClick = () => {
+    if (!product) return;
+    trackAffiliateClick({
+      productId: product.id,
+      productName: product.title,
+      sourcePage: "cert-affiliate-widget",
+      subId: `enstudey_${product.slug}`,
+    });
+  };
 
   const microCopy = certType === "ielts"
     ? "Muốn đổi IELTS thành điểm 10 đại học? Tham khảo bộ tài liệu này."
@@ -59,13 +72,15 @@ export default function AffiliateCertWidget({ certType, certScore }: Props) {
         className="flex-shrink-0 font-bold text-xs rounded-xl transition duration-200 whitespace-nowrap cursor-pointer shadow-xs"
       >
         <a
-          href={`/go/${product.slug}`}
+          href={redirectUrl}
           target="_blank"
           rel="noopener noreferrer nofollow sponsored"
+          onClick={handleClick}
         >
-          Xem trên Shopee
+          {product.ctaLabel || "Xem chi tiết"}
         </a>
       </Button>
     </div>
   );
 }
+
