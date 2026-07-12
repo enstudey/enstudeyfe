@@ -24,6 +24,10 @@ export const metadata: Metadata = {
     icon: "/favicon-cropped.png",
     apple: "/favicon-cropped.png",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -41,6 +45,27 @@ export default function RootLayout({
       <head>
         {/* Tích hợp Google AdSense Auto Ads có điều kiện lọc trang */}
         <AdSenseScript />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const appEnv = "${process.env.NEXT_PUBLIC_APP_ENV || 'production'}";
+                  const isDebug = appEnv === "debug" || (window.localStorage && window.localStorage.getItem("debug") === "true");
+                  if (!isDebug) {
+                    const noop = function() {};
+                    console.log = noop;
+                    console.warn = noop;
+                    console.error = noop;
+                    console.info = noop;
+                    console.debug = noop;
+                    console.trace = noop;
+                  }
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <TooltipProvider>
