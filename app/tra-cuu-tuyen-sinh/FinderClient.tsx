@@ -75,11 +75,9 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
   // Cuộn mượt lên đầu danh sách bài viết khi chuyển trang
   useEffect(() => {
-    const section = document.getElementById("search-results-section");
-    if (section && currentPage !== initialPage) {
-      const yOffset = -80; // Bù trừ chiều cao Header cố định
-      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
+    if (currentPage !== initialPage) {
+      const section = document.getElementById("search-results-section");
+      section?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [currentPage, initialPage]);
 
@@ -363,6 +361,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 <Select value={selectedYear} onValueChange={(val) => setSelectedYear(val || "")}>
                   <SelectTrigger
                     data-testid="select-year"
+                    aria-label="Chọn năm tuyển sinh"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-left"
                   >
                     <SelectValue placeholder="Năm tuyển sinh" />
@@ -379,6 +378,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 <Select value={selectedMethod} onValueChange={(val) => setSelectedMethod(val || "")}>
                   <SelectTrigger
                     data-testid="select-method"
+                    aria-label="Chọn phương thức tuyển sinh"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-left"
                   >
                     <SelectValue placeholder="Phương thức" />
@@ -395,6 +395,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 <Select value={selectedGroup} onValueChange={(val) => setSelectedGroup(val || "")}>
                   <SelectTrigger
                     data-testid="select-group"
+                    aria-label="Chọn tổ hợp môn"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-left"
                   >
                     <SelectValue placeholder="Tổ hợp" />
@@ -413,10 +414,11 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
             </div>
             <div className="space-y-2 pt-4 border-t border-border">
               <div className="flex justify-between text-[10px] font-bold text-slate-500 tracking-wider uppercase">
-                <span>Khoảng điểm sàn</span>
+                <label htmlFor="score-range-input">Khoảng điểm sàn</label>
                 <span className="text-violet-600">{scoreRange} Điểm</span>
               </div>
               <input
+                id="score-range-input"
                 type="range"
                 min="10"
                 max="40"
@@ -458,7 +460,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                                 <span className="ml-2 text-[9px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
                               )}
                             </p>
-                            <p className="text-xs text-slate-400 mt-0.5">
+                            <p className="text-xs text-slate-500 mt-0.5">
                               {item.universityName} ({item.universityCode})
                             </p>
                             {item.note && (
@@ -504,18 +506,18 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                     <div className="p-5 flex flex-col gap-3 hover:bg-slate-50 transition duration-200 cursor-pointer">
                       <div className="flex justify-between items-start gap-4">
                         <div className="space-y-1">
-                          <h4 className="font-bold text-slate-900 text-sm leading-snug">
+                          <h2 className="font-bold text-slate-900 text-sm leading-snug">
                             {item.majorName}
                             {item.scale === 40 && (
                               <span className="ml-2 text-[9px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
                             )}
-                          </h4>
+                          </h2>
                           <p className="text-xs text-slate-500 font-medium">
                             {item.universityName} ({item.universityCode})
                           </p>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <span className="text-[9px] text-slate-400 font-bold block uppercase tracking-wider">Điểm chuẩn</span>
+                          <span className="text-[9px] text-slate-500 font-bold block uppercase tracking-wider">Điểm chuẩn</span>
                           <span className={`text-lg block mt-0.5 ${getScoreColorClass(item)}`}>
                             {item.score !== null ? item.score : "-"}
                           </span>
@@ -529,7 +531,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                             </span>
                           ))}
                         </div>
-                        <span className="text-[10px] text-slate-400 font-semibold">
+                        <span className="text-[10px] text-slate-500 font-semibold">
                           Mã ngành: <span className="font-bold text-slate-700">{item.majorCode}</span>
                         </span>
                       </div>
