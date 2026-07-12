@@ -40,7 +40,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-6 border-t border-slate-200 text-center">
-          <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
+          <p className="text-[10px] text-slate-600 font-semibold uppercase tracking-wider">
             © 2026 EnStudey. Tất cả các quyền được bảo lưu.
           </p>
         </div>

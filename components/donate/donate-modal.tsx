@@ -89,15 +89,15 @@ export default function DonateModal({ isOpen, onClose }: Props) {
           {/* Bank Info Container */}
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-left text-xs space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-slate-400">Ngân hàng</span>
+              <span className="text-slate-600">Ngân hàng</span>
               <span className="font-bold text-slate-800">MBBank</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-slate-400">Chủ tài khoản</span>
+              <span className="text-slate-600">Chủ tài khoản</span>
               <span className="font-bold text-slate-800">NGUYEN DUC TAM</span>
             </div>
             <div className="flex justify-between items-center gap-2 pt-1 border-t border-slate-100">
-              <span className="text-slate-400">Số tài khoản</span>
+              <span className="text-slate-600">Số tài khoản</span>
               <div className="flex items-center gap-1.5">
                 <span className="font-bold text-violet-600">{accountNo}</span>
                 <Button

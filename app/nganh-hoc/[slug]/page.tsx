@@ -151,7 +151,7 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
             <h1 className="text-3xl font-extrabold mt-2 mb-4 text-slate-900 leading-tight">
               {post.title}
             </h1>
-            <p className="text-xs text-slate-400 mb-6">{post.date}</p>
+            <p className="text-xs text-slate-600 mb-6">{post.date}</p>
 
             <div className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden mb-6">
               <Image
@@ -168,7 +168,7 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
 
             {/* Under-title Ad Slot */}
             <div className="ad-container ad-under-title w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl mb-6">
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
+              <span className="text-[10px] uppercase tracking-wider text-slate-600 select-none font-semibold">Quảng cáo</span>
             </div>
 
             <div
@@ -179,7 +179,7 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
 
             {/* End-of-article Ad Slot */}
             <div className="ad-container ad-end w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl mt-8">
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
+              <span className="text-[10px] uppercase tracking-wider text-slate-600 select-none font-semibold">Quảng cáo</span>
             </div>
 
             <RelatedArticles posts={relatedPosts} />
@@ -192,9 +192,9 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
               {/* Khung quảng cáo dọc */}
               <div className="w-full min-h-[600px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-2xl">
                 <div className="text-center">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold block mb-2">Liên kết tài trợ</span>
+                  <span className="text-[10px] uppercase tracking-wider text-slate-600 select-none font-semibold block mb-2">Liên kết tài trợ</span>
                   <div className="w-[160px] h-[500px] bg-slate-200/50 mx-auto rounded-lg flex items-center justify-center">
-                    <span className="text-xs text-slate-400">Quảng cáo</span>
+                    <span className="text-xs text-slate-650">Quảng cáo</span>
                   </div>
                 </div>
               </div>

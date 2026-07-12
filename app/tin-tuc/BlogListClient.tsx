@@ -158,6 +158,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                           sizes="(max-width: 768px) 100vw, 400px"
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                           src={post.image || getCategoryFallbackImage(post.category)}
+                          priority={idx === 0}
                         />
                       </div>
                       <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
@@ -181,7 +182,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                           </p>
                         </div>
                         <div className="flex items-center justify-between pt-2">
-                          <div className="flex items-center gap-2 text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
+                          <div className="flex items-center gap-2 text-[10px] text-slate-600 font-semibold uppercase tracking-wider">
                             <span>{post.date}</span>
                           </div>
                           <span className="text-xs font-bold text-violet-600 group-hover:underline">
@@ -200,7 +201,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                       <div className="col-span-full py-2">
                         {/* Khung trống giữ chỗ chống CLS */}
                         <div className="ad-container ad-in-feed w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 rounded-xl flex items-center justify-center">
-                          <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
+                          <span className="text-[10px] uppercase tracking-wider text-slate-600 select-none font-semibold">Quảng cáo</span>
                         </div>
                       </div>
                     )}
@@ -226,7 +227,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
             {/* 3. Bottom Banner */}
             {totalPages > 1 && (
               <div className="ad-container ad-bottom w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl mt-8 mb-6">
-                <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
+                <span className="text-[10px] uppercase tracking-wider text-slate-600 select-none font-semibold">Quảng cáo</span>
               </div>
             )}
 
@@ -325,7 +326,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
             <div className="sticky top-24 space-y-6">
               <AffiliateSidebarWidget currentPage={currentPage} />
               <div className="ad-container ad-sidebar w-full min-h-[500px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl">
-                <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
+                <span className="text-[10px] uppercase tracking-wider text-slate-600 select-none font-semibold">Quảng cáo</span>
               </div>
             </div>
           </aside>

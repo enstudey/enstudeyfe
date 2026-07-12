@@ -59,7 +59,7 @@ export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?
   if (!isMounted) {
     return (
       <div 
-        className="w-full min-h-[250px] bg-slate-50 animate-pulse rounded-2xl border border-slate-200"
+        className="w-full min-h-[250px] bg-slate-50 animate-pulse rounded-2xl border border-slate-200 my-6"
         data-testid="ad-banner-placeholder"
       />
     );
@@ -73,7 +73,7 @@ export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?
       data-testid="ad-banner"
     >
       <div className="absolute top-3 right-3 flex items-center gap-1">
-        <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest bg-slate-100 px-2 py-0.5 rounded">
+        <span className="text-[10px] font-semibold text-slate-600 uppercase tracking-widest bg-slate-100 px-2 py-0.5 rounded">
           {ad.tag}
         </span>
       </div>
@@ -91,7 +91,7 @@ export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?
       </div>
 
       <div className="pt-4 flex justify-between items-center border-t border-slate-100">
-        <span className="text-xs text-slate-400">enstudey.com/ads</span>
+        <span className="text-xs text-slate-600">enstudey.com/ads</span>
         <Button
           size="sm"
           className="font-bold text-xs rounded-xl shadow transition duration-200 cursor-pointer"

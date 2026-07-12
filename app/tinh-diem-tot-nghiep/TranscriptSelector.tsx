@@ -118,6 +118,7 @@ export default function TranscriptSelector({
               >
                 <SelectTrigger
                   data-testid="select-transcript-other-lang"
+                  aria-label="Chọn loại ngoại ngữ học bạ"
                   className="px-2.5 py-1 bg-white border border-slate-200 rounded-lg text-[11px] font-bold h-7 w-28"
                 >
                   <SelectValue placeholder="Chọn tiếng" />
@@ -171,9 +172,9 @@ export default function TranscriptSelector({
     <div className="space-y-6">
       <div className="space-y-4 pt-2">
         <div className="border-l-4 border-violet-600 pl-3">
-          <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider">
+          <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider">
             1. Nhập điểm học bạ 6 học kỳ (Thang điểm 10)
-          </h3>
+          </h2>
           <p className="text-[11px] text-slate-500 mt-1 italic font-medium">
             * Mẹo gõ nhanh: Chỉ cần gõ liền số (ví dụ gõ 85 tự ra 8.5, gõ 775 tự ra 7.75) mà không cần gõ dấu chấm.
           </p>
@@ -201,7 +202,7 @@ export default function TranscriptSelector({
                     )}
                   </span>
                   {group.id !== "required" && (
-                    <span className="text-slate-400 font-extrabold text-xs transition duration-200">
+                    <span className="text-slate-600 font-extrabold text-xs transition duration-200">
                       {isExpanded ? "▲ Thu gọn" : "▼ Mở rộng"}
                     </span>
                   )}

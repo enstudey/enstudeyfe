@@ -27,9 +27,9 @@ export default function CertificateConverter({
 }: Props) {
   return (
     <div className="space-y-5">
-      <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-violet-600 pl-3">
+      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-violet-600 pl-3">
         2. Quy đổi chứng chỉ tiếng Anh
-      </h3>
+      </h2>
       
       <div className="space-y-4">
         {/* Nút bấm Card chọn loại chứng chỉ */}
@@ -72,6 +72,7 @@ export default function CertificateConverter({
               <Select value={conversionTarget} onValueChange={(val) => setConversionTarget(val as "standard" | "neu" | "ftu" | "hust" | "hcmut")}>
                 <SelectTrigger
                   data-testid="select-conversion-target"
+                  aria-label="Chọn đề án quy đổi"
                   className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl font-bold text-xs text-left"
                 >
                   <SelectValue placeholder="Chọn đề án quy đổi" />

@@ -40,12 +40,12 @@ export default function SubjectScoresInput({
 }: Props) {
   return (
     <div className="space-y-6">
-      <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-violet-600 pl-3">
+      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-violet-600 pl-3">
         1. Nhập điểm thi THPT quốc gia (Thang điểm 10)
-      </h3>
+      </h2>
 
       <div className="space-y-4">
-        <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase block">
+        <span className="text-[10px] font-bold text-slate-600 tracking-wider uppercase block">
           Môn thi cơ bản
         </span>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
@@ -88,7 +88,7 @@ export default function SubjectScoresInput({
       </div>
 
       <div className="space-y-4 pt-2">
-        <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase block">
+        <span className="text-[10px] font-bold text-slate-600 tracking-wider uppercase block">
           Môn tự chọn mới & Ngoại ngữ phụ
         </span>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -143,6 +143,7 @@ export default function SubjectScoresInput({
             <Select value={otherLanguageType} onValueChange={(val) => setOtherLanguageType(val as "Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian")}>
               <SelectTrigger
                 data-testid="select-other-lang-type"
+                aria-label="Chọn loại ngoại ngữ khác"
                 className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg text-xs font-bold text-left"
               >
                 <SelectValue placeholder="Chọn ngoại ngữ" />
