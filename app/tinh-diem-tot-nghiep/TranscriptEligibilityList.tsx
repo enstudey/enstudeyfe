@@ -162,7 +162,9 @@ export default function TranscriptEligibilityList({
               data-testid="select-user-conduct"
               className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl font-bold text-xs text-left"
             >
-              <SelectValue placeholder="Chọn hạnh kiểm" />
+              <SelectValue placeholder="Chọn hạnh kiểm">
+                {userConduct === "TOT" ? "Tốt" : userConduct === "KHA" ? "Khá" : "Trung bình"}
+              </SelectValue>
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="TOT">Tốt</SelectItem>
@@ -181,7 +183,9 @@ export default function TranscriptEligibilityList({
               data-testid="select-user-school-type"
               className="w-full h-10 px-3 bg-white border border-slate-200 rounded-xl font-bold text-xs text-left"
             >
-              <SelectValue placeholder="Chọn loại trường" />
+              <SelectValue placeholder="Chọn loại trường">
+                {userSchoolType === "HIGH_SCHOOL_FOR_GIFTED" ? "Trường chuyên / Trọng điểm" : "Trường THPT thường"}
+              </SelectValue>
             </SelectTrigger>
             <SelectContent>
               {SCHOOL_TYPES.map(t => (

@@ -309,19 +309,28 @@ export default function CalculatorPage() {
   // Tính điểm học bạ (toàn bộ tổ hợp)
   const handleCalculateTranscript = () => {
     const newErrors: Record<string, string> = {};
+    const formattedSemesterScores = JSON.parse(JSON.stringify(semesterScores)) as Record<TranscriptSubjectKey, SubjectSemesterScores>;
     let hasAnyScore = false;
 
     Object.entries(semesterScores).forEach(([subKey, semObj]) => {
-      Object.entries(semObj).forEach(([semKey, val]) => {
-        if (val !== "") {
-          hasAnyScore = true;
-          const isRequired = subKey === "math" || subKey === "literature" || subKey === "english";
-          const res = validateScore(val, "subject", isRequired);
+      const hasSomeScore = Object.values(semObj).some(val => val !== "");
+      if (hasSomeScore) {
+        hasAnyScore = true;
+        Object.entries(semObj).forEach(([semKey, val]) => {
+          let valStr = val as string;
+          if (/^\d+$/.test(valStr)) {
+            valStr = formatInputScore(valStr);
+            formattedSemesterScores[subKey as TranscriptSubjectKey][semKey as keyof SubjectSemesterScores] = valStr;
+          }
+
+          const res = validateScore(valStr, "subject", true);
           if (!res.isValid) {
             newErrors[`${subKey}_${semKey}`] = res.error;
+          } else {
+            formattedSemesterScores[subKey as TranscriptSubjectKey][semKey as keyof SubjectSemesterScores] = res.cleanedVal;
           }
-        }
-      });
+        });
+      }
     });
 
     if (!hasAnyScore) {
@@ -331,7 +340,8 @@ export default function CalculatorPage() {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      toast.error("Vui lòng kiểm tra lại điểm số.");
+      setSemesterScores(formattedSemesterScores);
+      toast.error("Vui lòng kiểm tra lại các điểm số đã nhập.");
 
       // Tìm môn đầu tiên bị lỗi, tự động mở rộng accordion và cuộn tới ô input đó
       const firstErrKey = Object.keys(newErrors)[0]; // Định dạng: "physics_grade10_hk1"
@@ -362,7 +372,7 @@ export default function CalculatorPage() {
     }
 
     const { results, highestGroup: bestGroup, subjectAvgs } = calculateAllTranscriptCombinations(
-      semesterScores,
+      formattedSemesterScores,
       transcriptOtherLanguageType,
       areaPriority,
       objectPriority
@@ -373,6 +383,7 @@ export default function CalculatorPage() {
       return;
     }
 
+    setSemesterScores(formattedSemesterScores);
     setComputedTranscriptData({
       results,
       highestGroup: bestGroup,
@@ -384,7 +395,7 @@ export default function CalculatorPage() {
       setSelectedTranscriptGroup(bestGroup.name);
     }
 
-    localStorage.setItem("user_transcript_scores", JSON.stringify(semesterScores));
+    localStorage.setItem("user_transcript_scores", JSON.stringify(formattedSemesterScores));
     localStorage.setItem("user_transcript_group", bestGroup ? bestGroup.name : "A00");
 
     setTimeout(() => {

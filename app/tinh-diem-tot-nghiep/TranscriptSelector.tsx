@@ -150,8 +150,8 @@ export default function TranscriptSelector({
                   value={semesterScores[subKey]?.[sem.key] || ""}
                   onChange={e => handleScoreChange(subKey, sem.key, e.target.value)}
                   onBlur={e => handleScoreBlur && handleScoreBlur(subKey, sem.key, e.target.value)}
-                  id={`input-transcript-${subKey}-${sem.key}`}
-                  data-testid={`input-transcript-${subKey}-${sem.key}`}
+                  id={`input-transcript-${subKey}_${sem.key}`}
+                  data-testid={`input-transcript-${subKey}_${sem.key}`}
                   className={`font-bold text-sm h-10 ${isErr
                     ? "border-red-500 focus-visible:border-red-500 text-red-500"
                     : "border-slate-200"

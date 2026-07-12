@@ -108,7 +108,7 @@ export default function ResultDashboard({
         }
 
         matched.sort((a, b) => Math.abs(a.diff) - Math.abs(b.diff));
-        setRecommendations(matched.slice(0, 15));
+        setRecommendations(matched.slice(0, 6));
       })
       .catch((err) => {
         console.error("Error loading university data:", err);
@@ -218,56 +218,66 @@ export default function ResultDashboard({
               ))}
             </div>
           ) : recommendations.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {recommendations.map((rec) => {
-                const isSafe = rec.diff >= 0;
-                return (
-                  <div
-                    key={`${rec.uniCode}-${rec.majorCode}`}
-                    className="group relative bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg hover:border-violet-500/30 transition-all duration-300 transform hover:-translate-y-1"
-                  >
-                    <div className="space-y-2">
-                      <div className="flex items-start justify-between gap-2">
-                        <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md uppercase">
-                          {rec.uniCode}
-                        </span>
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
-                          isSafe 
-                            ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400" 
-                            : "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400"
-                        }`}>
-                          {isSafe ? `An toàn (+${rec.diff.toFixed(2)})` : `Thử thách (${rec.diff.toFixed(2)})`}
-                        </span>
-                      </div>
-                      
-                      <h5 className="font-extrabold text-sm text-slate-950 dark:text-white line-clamp-1 group-hover:text-violet-600 transition-colors">
-                        {rec.uniName}
-                      </h5>
-                      
-                      <div className="space-y-1">
-                        <p className="text-xs font-bold text-slate-700 dark:text-slate-300 line-clamp-1">
-                          {rec.majorName}
-                        </p>
-                        <p className="text-[11px] text-slate-400">
-                          Mã ngành: {rec.majorCode}
-                        </p>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {recommendations.map((rec, idx) => {
+                  const isSafe = rec.diff >= 0;
+                  return (
+                    <div
+                      key={`${rec.uniCode}-${rec.majorCode}-${idx}`}
+                      className="group relative bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg hover:border-violet-500/30 transition-all duration-300 transform hover:-translate-y-1"
+                    >
+                      <div className="space-y-2">
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-md uppercase">
+                            {rec.uniCode}
+                          </span>
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
+                            isSafe 
+                              ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400" 
+                              : "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400"
+                          }`}>
+                            {isSafe ? `An toàn (+${rec.diff.toFixed(2)})` : `Thử thách (${rec.diff.toFixed(2)})`}
+                          </span>
+                        </div>
+                        
+                        <h5 className="font-extrabold text-sm text-slate-950 dark:text-white line-clamp-1 group-hover:text-violet-600 transition-colors">
+                          {rec.uniName}
+                        </h5>
+                        
+                        <div className="space-y-1">
+                          <p className="text-xs font-bold text-slate-700 dark:text-slate-300 line-clamp-1">
+                            {rec.majorName}
+                          </p>
+                          <p className="text-[11px] text-slate-400">
+                            Mã ngành: {rec.majorCode}
+                          </p>
+                        </div>
+
+                        <div className="text-xs font-semibold text-slate-600 dark:text-slate-400 pt-1">
+                          Điểm chuẩn {rec.year}: <span className="font-extrabold text-violet-600 dark:text-violet-400">{rec.benchmark.toFixed(2)}</span>
+                        </div>
                       </div>
 
-                      <div className="text-xs font-semibold text-slate-600 dark:text-slate-400 pt-1">
-                        Điểm chuẩn {rec.year}: <span className="font-extrabold text-violet-600 dark:text-violet-400">{rec.benchmark.toFixed(2)}</span>
+                      <div className="mt-4 pt-3 border-t border-slate-50 dark:border-slate-900">
+                        <Button asChild variant="outline" className="w-full text-xs font-bold rounded-xl h-9 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 transition duration-200">
+                          <Link href={`/tra-cuu-tuyen-sinh?score=${highestGroup.score.toFixed(2)}&block=${highestGroup.name}`}>
+                            Xem chi tiết xét tuyển &rarr;
+                          </Link>
+                        </Button>
                       </div>
                     </div>
-
-                    <div className="mt-4 pt-3 border-t border-slate-50 dark:border-slate-900">
-                      <Button asChild variant="outline" className="w-full text-xs font-bold rounded-xl h-9 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 transition duration-200">
-                        <Link href={`/tra-cuu-tuyen-sinh?score=${highestGroup.score.toFixed(2)}&block=${highestGroup.name}`}>
-                          Xem chi tiết xét tuyển &rarr;
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+              
+              <div className="flex justify-center pt-2">
+                <Button asChild className="font-bold text-xs rounded-xl shadow-md transition duration-200 h-10 px-6 cursor-pointer">
+                  <Link href={`/tra-cuu-tuyen-sinh?score=${highestGroup.score.toFixed(2)}&block=${highestGroup.name}`}>
+                    Xem toàn bộ trường phù hợp &rarr;
+                  </Link>
+                </Button>
+              </div>
             </div>
           ) : (
             <div className="text-center py-8 px-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-dashed border-slate-250 dark:border-slate-800 space-y-4">

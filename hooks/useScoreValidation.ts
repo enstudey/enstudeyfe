@@ -12,14 +12,31 @@ export function useScoreValidation() {
     let cleaned = val.replace(/,/g, ".");
     // Chỉ giữ lại các chữ số và tối đa một dấu chấm
     cleaned = cleaned.replace(/[^0-9.]/g, "");
+    
     const parts = cleaned.split(".");
     if (parts.length > 2) {
       cleaned = parts[0] + "." + parts.slice(1).join("");
     }
-    // Giới hạn chỉ cho phép nhập tối đa 2 chữ số thập phân
+    
     if (cleaned.includes(".")) {
       const dotIndex = cleaned.indexOf(".");
-      cleaned = cleaned.substring(0, dotIndex + 3);
+      const beforeDot = cleaned.substring(0, dotIndex);
+      const afterDot = cleaned.substring(dotIndex + 1);
+      
+      // Phần trước dấu chấm tối đa là 2 ký tự (cho điểm 10)
+      let finalBefore = beforeDot.substring(0, 2);
+      if (parseInt(finalBefore, 10) > 10) {
+        finalBefore = finalBefore.substring(0, 1);
+      }
+      
+      // Phần sau dấu chấm tối đa là 2 ký tự
+      const finalAfter = afterDot.substring(0, 2);
+      cleaned = finalBefore + "." + finalAfter;
+    } else {
+      // Nếu không có dấu chấm, chỉ cho phép tối đa 3 chữ số (ví dụ 775 -> 7.75)
+      if (cleaned.length > 3) {
+        cleaned = cleaned.substring(0, 3);
+      }
     }
     return cleaned;
   };
