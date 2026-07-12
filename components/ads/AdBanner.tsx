@@ -32,23 +32,38 @@ const MOCK_ADS = [
 ];
 
 export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?: string }) {
+  const [isMounted, setIsMounted] = useState(false);
   const [adIndex, setAdIndex] = useState(0);
   const { refreshTrigger } = useActiveAdRefresh(adSlotId, 45000);
 
   useEffect(() => {
-    // Ngẫu nhiên hóa lần đầu tiên trên client-side để tránh Hydration Mismatch
-    setTimeout(() => {
+    // Sử dụng setTimeout để chuyển tác vụ cập nhật state sang luồng bất đồng bộ (async event loop task),
+    // giải quyết triệt để lỗi react-hooks/set-state-in-effect của React.
+    const timer = setTimeout(() => {
+      setIsMounted(true);
       setAdIndex(Math.floor(Math.random() * MOCK_ADS.length));
     }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
+  // Thay đổi index khi refreshTrigger tăng (chỉ chạy khi đã mount)
   useEffect(() => {
     if (refreshTrigger > 0) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setAdIndex(Math.floor(Math.random() * MOCK_ADS.length));
       }, 0);
+      return () => clearTimeout(timer);
     }
   }, [refreshTrigger]);
+
+  if (!isMounted) {
+    return (
+      <div 
+        className="w-full min-h-[250px] bg-slate-50 animate-pulse rounded-2xl border border-slate-200"
+        data-testid="ad-banner-placeholder"
+      />
+    );
+  }
 
   const ad = MOCK_ADS[adIndex];
 

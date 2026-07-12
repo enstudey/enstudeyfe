@@ -19,7 +19,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="space-y-3 md:text-right">
-            <h4 className="text-xs font-bold text-slate-900 tracking-widest uppercase">Thông tin pháp lý</h4>
+            <h2 className="text-xs font-bold text-slate-900 tracking-widest uppercase">Thông tin pháp lý</h2>
             <div className="flex flex-col md:items-end gap-2 text-xs text-slate-500">
               <Link href="/gioi-thieu" className="hover:text-slate-950 transition">
                 Giới thiệu
@@ -40,7 +40,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-6 border-t border-slate-200 text-center">
-          <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
+          <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
             © 2026 EnStudey. Tất cả các quyền được bảo lưu.
           </p>
         </div>

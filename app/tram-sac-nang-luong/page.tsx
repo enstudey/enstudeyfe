@@ -56,9 +56,9 @@ export default function TramSacNangLuongPage() {
           {/* Cột trái: Bảng vinh danh nhà tài trợ */}
           <div className="lg:col-span-8 bg-card border border-border rounded-3xl p-6 md:p-8 shadow-xs space-y-6 h-full">
             <div className="space-y-1">
-              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 Góc Tri Ân Những Người Bạn Đồng Hành 🔋✨
-              </h3>
+              </h2>
               <p className="text-xs text-slate-500">Danh sách những người bạn đã đồng lòng tiếp sức cho EnStudey duy trì hệ thống:</p>
             </div>
 
@@ -131,15 +131,15 @@ export default function TramSacNangLuongPage() {
             {/* Thông tin chuyển khoản */}
             <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-left text-xs space-y-2 w-full">
               <div className="flex justify-between items-center">
-                <span className="text-slate-400">Ngân hàng</span>
+                <span className="text-slate-500">Ngân hàng</span>
                 <span className="font-bold text-slate-800">{bank_name}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-400">Chủ tài khoản</span>
+                <span className="text-slate-500">Chủ tài khoản</span>
                 <span className="font-bold text-slate-800">{account_name}</span>
               </div>
               <div className="flex justify-between items-center gap-2 pt-1 border-t border-slate-100">
-                <span className="text-slate-400">Số tài khoản</span>
+                <span className="text-slate-500">Số tài khoản</span>
                 <span className="font-bold text-violet-600">{account_no}</span>
               </div>
             </div>

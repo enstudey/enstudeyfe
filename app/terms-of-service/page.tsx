@@ -22,7 +22,7 @@ export default function TermsOfServicePage() {
         <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
           Điều khoản dịch vụ EnStudey
         </h1>
-        <p className="text-xs text-slate-400 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
+        <p className="text-xs text-slate-500 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
 
         <div className="prose space-y-6 text-sm text-slate-700 leading-relaxed text-justify">
           <p>
