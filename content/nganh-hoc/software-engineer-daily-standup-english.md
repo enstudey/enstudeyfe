@@ -57,13 +57,13 @@ Nếu công việc của bạn bị nghẽn bởi yếu tố bên ngoài (chờ 
 
 | Bạn muốn nói (Tiếng Việt tự nhiên) | Câu tiếng Anh không nên dùng | Câu tiếng Anh chuẩn chuyên nghiệp nên dùng |
 | :--- | :--- | :--- |
-| Hôm qua mình sửa xong mấy cái lỗi vặt trên giao diện rồi nha. | *Yesterday I fixed some small UI errors.* | `Yesterday, I resolved several minor UI bugs on the dashboard.` |
-| Hôm nay mình sẽ code cái màn hình đăng nhập của học sinh nhé. | *Today I will code the student login screen.* | `Today, I will implement the student login interface.` |
-| Mình đang phải đợi bên backend gửi tài liệu API mới làm tiếp được. | *I am waiting for backend to write API docs.* | `I am currently blocked, pending the updated API documentation from the backend team.` |
+| Hôm qua mình sửa xong mấy cái lỗi vặt trên giao diện rồi nha. | *Yesterday I fixed some small UI errors.* | **Yesterday, I resolved several minor UI bugs on the dashboard.** |
+| Hôm nay mình sẽ code cái màn hình đăng nhập của học sinh nhé. | *Today I will code the student login screen.* | **Today, I will implement the student login interface.** |
+| Mình đang phải đợi bên backend gửi tài liệu API mới làm tiếp được. | *I am waiting for backend to write API docs.* | **I am currently blocked, pending the updated API documentation from the backend team.** |
 
 ## Điều đáng nhớ
 
 - Buổi họp Daily Standup chỉ kéo dài dưới 15 phút; phần báo cáo của mỗi cá nhân nên gói gọn dưới 2 phút.
 - Bám sát công thức 3 câu trả lời: Việc đã làm (quá khứ đơn), Việc sẽ làm (dự định), và Trở ngại (blockers).
-- Sử dụng các động từ hành động mạnh mẽ chuyên ngành như `resolve`, `implement`, `integrate` thay vì dùng từ `do` hay `fix` chung chung.
+- Sử dụng các động từ hành động mạnh mẽ chuyên ngành như **resolve**, **implement**, **integrate** thay vì dùng từ **do** hay **fix** chung chung.
 - Luôn chỉ ra blocker rõ ràng ngay trong buổi họp để cả đội ngũ có hướng hỗ trợ kịp thời, tránh giấu lỗi làm trễ tiến độ sprint.
