@@ -6,6 +6,18 @@ import FinderClient from "./FinderClient";
 export const metadata: Metadata = {
   title: "Hệ thống tra cứu nguyện vọng thông minh 2026 - EnStudey",
   description: "Gợi ý các trường Đại học, ngành học và phân tích tổ hợp môn xét tuyển tối ưu theo khoảng điểm thi tốt nghiệp THPT.",
+  openGraph: {
+    title: "Hệ thống tra cứu nguyện vọng thông minh 2026 - EnStudey",
+    description: "Gợi ý các trường Đại học, ngành học và phân tích tổ hợp môn xét tuyển tối ưu theo khoảng điểm thi tốt nghiệp THPT.",
+    images: [
+      {
+        url: "/icon-transparent.png",
+        width: 512,
+        height: 512,
+        alt: "EnStudey Hướng nghiệp",
+      },
+    ],
+  },
 };
 
 interface PageProps {

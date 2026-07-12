@@ -29,6 +29,18 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  openGraph: {
+    title: "EnStudey - Nền tảng học tập cá nhân hóa",
+    description: "Chinh phục TOEIC & IELTS thông minh cùng trợ lý AI",
+    images: [
+      {
+        url: "/icon-transparent.png",
+        width: 512,
+        height: 512,
+        alt: "EnStudey logo",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
