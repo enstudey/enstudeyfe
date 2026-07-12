@@ -74,7 +74,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
         {/* 2. Leaderboard Ad - Đã tích hợp ELSA Speak Banner */}
         <div className="w-full min-h-[160px] md:min-h-[180px] rounded-2xl overflow-hidden shadow-xs border border-slate-200/60 mb-4">
-          <Link 
+          <a 
             href={`/redirect?url=${encodeURIComponent("/go/elsaspeak")}`} 
             target="_blank" 
             rel="noopener noreferrer nofollow sponsored"
@@ -114,7 +114,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                 </span>
               </div>
             </div>
-          </Link>
+          </a>
         </div>
 
         {/* Categories filters */}
