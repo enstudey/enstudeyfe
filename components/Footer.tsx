@@ -68,7 +68,7 @@ export default function Footer() {
           {/* Badge Version trực quan */}
           <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-50 border border-slate-200/60 text-[9px] font-bold text-slate-600">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Version v1.2.0</span>
+            <span>Version v1.2.1</span>
           </div>
         </div>
       </div>

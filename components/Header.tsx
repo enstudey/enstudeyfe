@@ -135,6 +135,9 @@ export default function Header({ isStatic = false }: HeaderProps) {
               <Link href="/flashcards" className={getLinkClass("/flashcards")} data-testid="link-flashcards">
                 Flashcard
               </Link>
+              <Link href="/so-tay" className={getLinkClass("/so-tay")} data-testid="link-so-tay">
+                Sổ tay
+              </Link>
               <Link href="/tinh-diem-tot-nghiep" className={getLinkClass("/tinh-diem-tot-nghiep")} data-testid="link-calc">
                 Công cụ tính điểm
               </Link>
@@ -171,6 +174,9 @@ export default function Header({ isStatic = false }: HeaderProps) {
                     </Link>
                     <Link href="/flashcards" className={getLinkClass("/flashcards")} data-testid="link-flashcards-mobile">
                       Flashcard
+                    </Link>
+                    <Link href="/so-tay" className={getLinkClass("/so-tay")} data-testid="link-so-tay-mobile">
+                      Sổ tay
                     </Link>
                     <Link href="/tinh-diem-tot-nghiep" className={getLinkClass("/tinh-diem-tot-nghiep")} data-testid="link-calc-mobile">
                       Công cụ tính điểm

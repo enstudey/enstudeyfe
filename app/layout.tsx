@@ -19,6 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
   title: "EnStudey - Nền tảng học tập cá nhân hóa",
   description: "Chinh phục TOEIC & IELTS thông minh cùng trợ lý AI",
   icons: {

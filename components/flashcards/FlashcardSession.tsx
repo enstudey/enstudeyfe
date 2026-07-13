@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Flashcard, CardProgress } from "@/lib/flashcards-helper";
 import SpeechButton from "@/components/ui/speech-button";
+import BookmarkButton from "@/components/ui/bookmark-button";
 
 interface FlashcardSessionProps {
   topicId: string;
@@ -176,12 +177,20 @@ export default function FlashcardSession({
                 <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                   {currentCard.word}
                 </h3>
-                <SpeechButton
-                  key={currentCard.id}
-                  text={currentCard.word}
-                  id={currentCard.id}
-                  testId="btn-speak-word"
-                />
+                <div className="flex items-center gap-1.5">
+                  <SpeechButton
+                    key={currentCard.id}
+                    text={currentCard.word}
+                    id={currentCard.id}
+                    testId="btn-speak-word"
+                  />
+                  <BookmarkButton
+                    id={currentCard.id}
+                    word={currentCard.word}
+                    meaning={currentCard.meaning}
+                    ipa={currentCard.ipa}
+                  />
+                </div>
               </div>
               <p className="text-sm font-medium text-slate-400 font-mono">
                 {currentCard.ipa}
@@ -209,13 +218,22 @@ export default function FlashcardSession({
             <div className="text-center space-y-3 px-4 flex-1 flex flex-col justify-center">
               <div className="flex items-center justify-center gap-2 text-xs text-slate-400 font-medium font-mono">
                 <span>{currentCard.word}</span>
-                <SpeechButton
-                  key={`${currentCard.id}-back`}
-                  text={currentCard.word}
-                  id={currentCard.id}
-                  size="sm"
-                  testId="btn-speak-word-back"
-                />
+                <div className="flex items-center gap-1">
+                  <SpeechButton
+                    key={`${currentCard.id}-back`}
+                    text={currentCard.word}
+                    id={currentCard.id}
+                    size="sm"
+                    testId="btn-speak-word-back"
+                  />
+                  <BookmarkButton
+                    id={currentCard.id}
+                    word={currentCard.word}
+                    meaning={currentCard.meaning}
+                    ipa={currentCard.ipa}
+                    className="scale-90"
+                  />
+                </div>
               </div>
               <h4 className="text-lg font-extrabold text-violet-700 dark:text-violet-400">
                 {currentCard.meaning}

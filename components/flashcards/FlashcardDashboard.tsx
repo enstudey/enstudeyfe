@@ -10,6 +10,7 @@ import {
   getTopicStatusList,
   groupVocabByTopic
 } from "@/lib/flashcards-helper";
+import { updateStreakAndXp } from "@/lib/streak-helper";
 
 export default function FlashcardDashboard() {
   const [examType, setExamType] = useState<"TOEIC" | "IELTS">(() => {
@@ -134,20 +135,10 @@ export default function FlashcardDashboard() {
     const progressKey = examType === "TOEIC" ? "toeic_flashcards_progress" : "ielts_flashcards_progress_v2";
     localStorage.setItem(progressKey, JSON.stringify(newProgress));
 
-    // Award XP
-    const newXp = xp + 10;
+    // Award XP & Update Streak
+    const { currentStreak, xp: newXp } = updateStreakAndXp(10);
     setXp(newXp);
-    localStorage.setItem("user_progress_xp", newXp.toString());
-
-    // Update Streak (giới hạn 1 lần cộng mỗi ngày theo timezone hệ thống)
-    const todayStr = new Date().toISOString().split("T")[0];
-    const lastStreakUpdate = localStorage.getItem("last_streak_update_date");
-    if (lastStreakUpdate !== todayStr) {
-      const currentStreak = streak + 1;
-      setStreak(currentStreak);
-      localStorage.setItem("user_progress_streak", currentStreak.toString());
-      localStorage.setItem("last_streak_update_date", todayStr);
-    }
+    setStreak(currentStreak);
 
     // Background API Sync (Mock fallback)
     try {
