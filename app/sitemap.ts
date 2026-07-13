@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://enstudey.com/tra-cuu-tuyen-sinh", priority: 0.8 },
     { url: "https://enstudey.com/nganh-hoc", priority: 0.8 },
     { url: "https://enstudey.com/so-tay", priority: 0.8 },
+    { url: "https://enstudey.com/hoc-tieng-anh-qua-bai-hat", priority: 0.8 },
+    { url: "https://enstudey.com/hoc-tieng-anh-qua-bai-hat/perfect", priority: 0.7 },
     { url: "https://enstudey.com/about", priority: 0.5 },
     { url: "https://enstudey.com/privacy-policy", priority: 0.3 },
     { url: "https://enstudey.com/terms-of-service", priority: 0.3 },

@@ -1,0 +1,70 @@
+{
+  "songId": "perfect-ed",
+  "title": "Perfect",
+  "artist": "Ed Sheeran",
+  "youtubeVideoId": "2Vv-BfVoq4g",
+  "difficulty": "B1",
+  "lyricsLines": [
+    { "time": 0.0, "text": "[Music Intro]", "translation": "[Nhạc dạo đầu]" },
+    { "time": 3.0, "text": "I found a love for me", "translation": "Anh đã tìm thấy một tình yêu dành riêng cho mình" },
+    { "time": 9.5, "text": "Darling, just dive right in and follow my lead", "translation": "Người hỡi, hãy đắm chìm vào và đi theo anh" },
+    { "time": 17.5, "text": "Well, I found a girl, beautiful and sweet", "translation": "À, anh đã tìm thấy một cô gái, thật xinh đẹp và ngọt ngào" },
+    { "time": 25.5, "text": "Oh, I never knew you were the someone waiting for me", "translation": "Ồ, anh chưa bao giờ biết rằng em chính là người đang chờ đợi anh" },
+    { "time": 33.5, "text": "'Cause we were just kids when we fell in love", "translation": "Vì chúng ta chỉ là những đứa trẻ khi mới yêu nhau" },
+    { "time": 39.5, "text": "Not knowing what it was", "translation": "Chẳng hề hay biết thế nào là yêu" },
+    { "time": 43.5, "text": "I will not give you up this time", "translation": "Lần này anh sẽ quyết không buông xuôi và từ bỏ em" },
+    { "time": 51.5, "text": "But darling, just kiss me slow", "translation": "Nhưng người yêu hỡi, hãy hôn anh thật chậm" },
+    { "time": 56.5, "text": "Your heart is all I own", "translation": "Trái tim em là tất cả những gì anh có" },
+    { "time": 60.5, "text": "And in your eyes, you're holding mine", "translation": "Và trong ánh mắt em, em đang giữ chặt trái tim anh" },
+    { "time": 66.5, "text": "Baby, I'm dancing in the dark", "translation": "Em yêu ơi, anh đang khiêu vũ dưới bóng đêm mịt mù" },
+    { "time": 73.0, "text": "With you between my arms", "translation": "Với em trong vòng tay ấm áp của anh" },
+    { "time": 77.0, "text": "Barefoot on the grass", "translation": "Chân trần nhảy nhót trên thảm cỏ xanh" },
+    { "time": 81.0, "text": "Listening to our favorite song", "translation": "Lắng nghe giai điệu bài hát yêu thích của đôi ta" },
+    { "time": 85.5, "text": "When you said you looked a mess", "translation": "Khi em nói trông mình thật luộm thuộm làm sao" },
+    { "time": 89.5, "text": "I whispered underneath my breath", "translation": "Anh đã thì thầm thật khẽ" },
+    { "time": 93.0, "text": "But you heard it", "translation": "Nhưng em vẫn nghe thấy" },
+    { "time": 95.5, "text": "Darling, you look perfect tonight", "translation": "Người hỡi, đêm nay trông em thật hoàn hảo" }
+  ],
+  "vocabulary": [
+    {
+      "word": "dive",
+      "time": 9.5,
+      "meaning": "đắm chìm vào, bắt đầu một cách nhiệt tình",
+      "type": "verb",
+      "ipa": "/daɪv/",
+      "example": "Darling, just dive right in."
+    },
+    {
+      "word": "follow my lead",
+      "time": 9.5,
+      "meaning": "đi theo hướng dẫn/sự dẫn dắt của tôi",
+      "type": "idiom/phrase",
+      "ipa": "/ˈfɒl.əʊ maɪ liːd/",
+      "example": "Just follow my lead on the dance floor."
+    },
+    {
+      "word": "whisper",
+      "time": 89.5,
+      "meaning": "thì thầm, nói nhỏ",
+      "type": "verb",
+      "ipa": "/ˈwɪs.pər/",
+      "example": "He whispered a secret in her ear."
+    },
+    {
+      "word": "underneath my breath",
+      "time": 89.5,
+      "meaning": "nói thì thầm khẽ khàng, nói lí nhí",
+      "type": "phrase",
+      "ipa": "/ˌʌn.dəˈniːθ maɪ breθ/",
+      "example": "She mumbled something underneath her breath."
+    },
+    {
+      "word": "perfect",
+      "time": 95.5,
+      "meaning": "hoàn hảo, không tì vết",
+      "type": "adjective",
+      "ipa": "/ˈpɜː.fekt/",
+      "example": "You look perfect in that dress."
+    }
+  ]
+}
