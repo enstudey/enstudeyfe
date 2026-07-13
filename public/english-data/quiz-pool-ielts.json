@@ -1,0 +1,137 @@
+[
+  {
+    "id": "q-ielts-001",
+    "questionText": "The rapid expansion of cities often leads to the ______ of natural habitats.",
+    "options": ["destruction", "destroying", "destructiveness", "destroyed"],
+    "correctIndex": 0,
+    "explanation": "Sau mạo từ 'the' và giới từ 'of' cần một danh từ để tạo thành cụm danh từ. 'destruction' là danh từ (sự phá hủy).",
+    "part": "Vocabulary",
+    "topic": "Environment"
+  },
+  {
+    "id": "q-ielts-002",
+    "questionText": "Some experts argue that financial incentives are ______ to encourage recycling.",
+    "options": ["insufficient", "insufficiency", "insufficiently", "suffice"],
+    "correctIndex": 0,
+    "explanation": "Đứng sau động từ liên kết (linking verb) 'are' cần một tính từ. 'insufficient' (chưa đủ/thiếu hụt) là tính từ.",
+    "part": "Grammar",
+    "topic": "Environment"
+  },
+  {
+    "id": "q-ielts-003",
+    "questionText": "The study suggests that children ______ read for pleasure achieve higher academic results.",
+    "options": ["who", "which", "whom", "whose"],
+    "correctIndex": 0,
+    "explanation": "Đại từ quan hệ 'who' thay thế cho danh từ chỉ người 'children' đóng vai trò chủ ngữ trong mệnh đề quan hệ.",
+    "part": "Grammar",
+    "topic": "Education"
+  },
+  {
+    "id": "q-ielts-004",
+    "questionText": "Many countries are transitioning to renewable energy sources ______ mitigate climate change.",
+    "options": ["in order to", "so that", "because of", "with a view to"],
+    "correctIndex": 0,
+    "explanation": "'in order to' đi kèm động từ nguyên mẫu 'mitigate' để chỉ mục đích. 'with a view to' phải đi kèm V-ing.",
+    "part": "Grammar",
+    "topic": "Environment"
+  },
+  {
+    "id": "q-ielts-005",
+    "questionText": "Governments should allocate more funds to public transport, ______ reducing traffic congestion.",
+    "options": ["thereby", "nevertheless", "whereas", "nonetheless"],
+    "correctIndex": 0,
+    "explanation": "Trạng từ liên kết 'thereby' + V-ing mang nghĩa là bằng cách ấy/do đó.",
+    "part": "Cohesion",
+    "topic": "Transportation"
+  },
+  {
+    "id": "q-ielts-006",
+    "questionText": "The influx of foreign investment has had a profound ______ on the country's economy.",
+    "options": ["impact", "affect", "effective", "impacting"],
+    "correctIndex": 0,
+    "explanation": "Cấu trúc 'have a/an profound impact on sth' (có tác động sâu sắc lên cái gì). 'affect' là động từ, 'impact' vừa là danh từ vừa là động từ.",
+    "part": "Vocabulary",
+    "topic": "Economics"
+  },
+  {
+    "id": "q-ielts-007",
+    "questionText": "Had the government implemented the policy earlier, the economic crisis ______ avoided.",
+    "options": ["might have been", "would be", "could be", "has been"],
+    "correctIndex": 0,
+    "explanation": "Cấu trúc đảo ngữ câu điều kiện loại 3 (Had + S + V3/ed, S + would/might/could + have + V3/ed).",
+    "part": "Grammar",
+    "topic": "Economics"
+  },
+  {
+    "id": "q-ielts-008",
+    "questionText": "Universities should not only impart academic knowledge ______ foster practical skills.",
+    "options": ["but also", "yet also", "and too", "as well as"],
+    "correctIndex": 0,
+    "explanation": "Cấu trúc song hành tương hỗ 'not only ... but also ...' (không những ... mà còn ...).",
+    "part": "Cohesion",
+    "topic": "Education"
+  },
+  {
+    "id": "q-ielts-009",
+    "questionText": "The internet has enabled people to communicate ______ of geographical barriers.",
+    "options": ["regardless", "despite", "although", "concerning"],
+    "correctIndex": 0,
+    "explanation": "Cụm giới từ 'regardless of' nghĩa là bất chấp/không phân biệt.",
+    "part": "Prepositions",
+    "topic": "Technology"
+  },
+  {
+    "id": "q-ielts-010",
+    "questionText": "The consumption of processed foods has risen ______ over the last decade.",
+    "options": ["significantly", "significant", "significance", "signifying"],
+    "correctIndex": 0,
+    "explanation": "Chỗ trống cần một trạng từ để bổ nghĩa cho động từ 'has risen'. 'significantly' (một cách đáng kể) là trạng từ.",
+    "part": "Vocabulary",
+    "topic": "Health"
+  },
+  {
+    "id": "q-ielts-011",
+    "questionText": "Advancements in artificial intelligence are ______ to reshape the job market.",
+    "options": ["poised", "poising", "poise", "poises"],
+    "correctIndex": 0,
+    "explanation": "Cụm từ 'be poised to do sth' nghĩa là ở tư thế sẵn sàng/quyết tâm làm gì hoặc có khả năng cao sẽ xảy ra.",
+    "part": "Vocabulary",
+    "topic": "Technology"
+  },
+  {
+    "id": "q-ielts-012",
+    "questionText": "Online learning provides students with the flexibility to study ______ their own pace.",
+    "options": ["at", "in", "on", "with"],
+    "correctIndex": 0,
+    "explanation": "Cấu trúc cố định 'at one's own pace' (theo tốc độ của riêng ai đó).",
+    "part": "Prepositions",
+    "topic": "Education"
+  },
+  {
+    "id": "q-ielts-013",
+    "questionText": "Despite ______ extensive research, scientists have yet to find a cure for the virus.",
+    "options": ["conducting", "conducted", "conduct", "conducts"],
+    "correctIndex": 0,
+    "explanation": "Sau giới từ 'despite' cần danh động từ 'conducting' hoặc cụm danh từ.",
+    "part": "Grammar",
+    "topic": "Health"
+  },
+  {
+    "id": "q-ielts-014",
+    "questionText": "The overuse of chemical fertilizers can ______ damage the fertility of the soil.",
+    "options": ["permanently", "permanent", "permanence", "permanencies"],
+    "correctIndex": 0,
+    "explanation": "Chỗ trống cần trạng từ bổ nghĩa cho động từ 'damage'. 'permanently' (vĩnh viễn) là trạng từ.",
+    "part": "Vocabulary",
+    "topic": "Environment"
+  },
+  {
+    "id": "q-ielts-015",
+    "questionText": "It is crucial that governments ______ measures to protect endangered species.",
+    "options": ["adopt", "adopts", "adopting", "adopted"],
+    "correctIndex": 0,
+    "explanation": "Cấu trúc giả định thức với tính từ 'crucial' (It is crucial that S + V-bare). Do đó động từ là 'adopt'.",
+    "part": "Grammar",
+    "topic": "Environment"
+  }
+]

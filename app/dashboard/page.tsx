@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cookies } from "next/headers";
 import Footer from "@/components/Footer";
+import DailyQuizWidget from "@/components/quiz/DailyQuizWidget";
 
 export const metadata: Metadata = {
   title: "Dashboard - EnStudey",
@@ -185,27 +186,7 @@ export default async function DashboardPage() {
           )}
 
           {/* Hero Widget: Daily Mini-Test */}
-          <div className="bg-gradient-to-br from-violet-500 to-purple-600 text-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
-            <div className="relative z-10 space-y-4 max-w-lg">
-              <span className="bg-violet-400/30 text-violet-100 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
-                Hôm nay nè bạn ơi! 🔥
-              </span>
-              <h2 className="text-3xl font-extrabold">
-                Chào {user ? user.fullName : "bạn"} nha! Hôm nay chúng mình làm tí Mini-test nhỉ? 🔥
-              </h2>
-              <p className="text-violet-100/90 text-sm leading-relaxed">
-                Hoàn thành nhanh 10 câu hỏi rút gọn để giữ lửa Streak đỉnh chóp và củng cố ngữ pháp, từ vựng hôm nay nha.
-              </p>
-              <div>
-                <Link href="/quiz" className="inline-flex items-center justify-center bg-white text-violet-600 font-bold px-6 py-3 rounded-xl shadow-md hover:bg-violet-50 transition transform hover:-translate-y-0.5">
-                  Chiến luôn đề này nha! 🎯
-                </Link>
-              </div>
-            </div>
-            <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none text-9xl select-none font-bold">
-              10Q
-            </div>
-          </div>
+          <DailyQuizWidget userFullName={user?.fullName} />
 
           {/* Quick Access Grid */}
           <div className="grid gap-6 sm:grid-cols-2">

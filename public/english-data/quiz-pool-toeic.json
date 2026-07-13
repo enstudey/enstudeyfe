@@ -1,0 +1,137 @@
+[
+  {
+    "id": "q-toeic-001",
+    "questionText": "The seminar on marketing strategy was ______ postponed due to a schedule conflict.",
+    "options": ["temporary", "temporarily", "temporarily status", "temporary time"],
+    "correctIndex": 1,
+    "explanation": "Trạng từ 'temporarily' bổ nghĩa cho động từ phân từ hai 'postponed'.",
+    "part": "Part 5",
+    "topic": "Grammar"
+  },
+  {
+    "id": "q-toeic-002",
+    "questionText": "All employees are required to obtain written ______ from their supervisors before taking time off.",
+    "options": ["approving", "approve", "approval", "approved"],
+    "correctIndex": 2,
+    "explanation": "Chỗ trống cần một danh từ đứng sau tính từ 'written'. 'approval' là danh từ (sự chấp thuận).",
+    "part": "Part 5",
+    "topic": "Vocabulary"
+  },
+  {
+    "id": "q-toeic-003",
+    "questionText": "Ms. Lopez will lead the negotiation team ______ she has extensive experience in contract law.",
+    "options": ["because", "although", "despite", "therefore"],
+    "correctIndex": 0,
+    "explanation": "Liên từ 'because' nối hai mệnh đề chỉ nguyên nhân - kết quả. Các phương án khác không hợp nghĩa hoặc không đi kèm mệnh đề.",
+    "part": "Part 5",
+    "topic": "Conjunctions"
+  },
+  {
+    "id": "q-toeic-004",
+    "questionText": "The new software program ______ to increase productivity among the design team.",
+    "options": ["expecting", "is expected", "expectedly", "expects"],
+    "correctIndex": 1,
+    "explanation": "Câu cần động từ chính ở thể bị động 'is expected' (được kỳ vọng là sẽ làm gì).",
+    "part": "Part 5",
+    "topic": "Tenses"
+  },
+  {
+    "id": "q-toeic-005",
+    "questionText": "The budget proposal must be submitted ______ Friday afternoon at the latest.",
+    "options": ["by", "on", "at", "until"],
+    "correctIndex": 0,
+    "explanation": "Giới từ 'by' được dùng để chỉ một mốc thời gian hạn chót (trước hoặc vào lúc).",
+    "part": "Part 5",
+    "topic": "Prepositions"
+  },
+  {
+    "id": "q-toeic-006",
+    "questionText": "The manager praised the sales associates for their ______ customer service during the holidays.",
+    "options": ["exception", "except", "exceptional", "exceptionally"],
+    "correctIndex": 2,
+    "explanation": "Chỗ trống cần một tính từ bổ nghĩa cho danh từ 'customer service'. 'exceptional' (xuất sắc/đặc biệt) là tính từ.",
+    "part": "Part 5",
+    "topic": "Vocabulary"
+  },
+  {
+    "id": "q-toeic-007",
+    "questionText": "If the delivery ______ by tomorrow, we will have to contact the supplier.",
+    "options": ["does not arrive", "will not arrive", "is not arriving", "has not arrived"],
+    "correctIndex": 0,
+    "explanation": "Trong câu điều kiện loại 1, mệnh đề điều kiện (If-clause) chia ở thì hiện tại đơn.",
+    "part": "Part 5",
+    "topic": "Tenses"
+  },
+  {
+    "id": "q-toeic-008",
+    "questionText": "The marketing department has launched a campaign to promote our ______ line of organic products.",
+    "options": ["newest", "newly", "newness", "news"],
+    "correctIndex": 0,
+    "explanation": "Chỗ trống cần một tính từ/tính từ so sánh nhất để bổ nghĩa cho danh từ 'line'. 'newest' là phù hợp nhất.",
+    "part": "Part 5",
+    "topic": "Grammar"
+  },
+  {
+    "id": "q-toeic-009",
+    "questionText": "Mr. Chen decided to hire an assistant because his workload had become ______ heavy.",
+    "options": ["extreme", "extremes", "extremely", "extremity"],
+    "correctIndex": 2,
+    "explanation": "Chỗ trống cần một trạng từ chỉ mức độ bổ nghĩa cho tính từ 'heavy'. 'extremely' (cực kỳ) là trạng từ.",
+    "part": "Part 5",
+    "topic": "Grammar"
+  },
+  {
+    "id": "q-toeic-010",
+    "questionText": "Please review the safety guidelines ______ entering the laboratory area.",
+    "options": ["before", "during", "while", "until"],
+    "correctIndex": 0,
+    "explanation": "Giới từ 'before' đi kèm danh động từ 'entering' thể hiện hành động xem hướng dẫn trước khi vào phòng thí nghiệm.",
+    "part": "Part 5",
+    "topic": "Prepositions"
+  },
+  {
+    "id": "q-toeic-011",
+    "questionText": "The company decided to relocate its headquarters to ______ a larger talent pool.",
+    "options": ["attract", "attraction", "attractive", "attractively"],
+    "correctIndex": 0,
+    "explanation": "Cấu trúc chỉ mục đích 'to + V-bare'. Ở đây 'attract' (thu hút) là động từ nguyên mẫu.",
+    "part": "Part 5",
+    "topic": "Business"
+  },
+  {
+    "id": "q-toeic-012",
+    "questionText": "The conference room is equipped with ______ technology for video conferencing.",
+    "options": ["state-of-the-art", "obsolete", "fashionable", "traditional"],
+    "correctIndex": 0,
+    "explanation": "Tính từ ghép 'state-of-the-art' nghĩa là hiện đại nhất/tối tân, phù hợp với ngữ cảnh thiết bị hội nghị trực tuyến.",
+    "part": "Part 5",
+    "topic": "Business"
+  },
+  {
+    "id": "q-toeic-013",
+    "questionText": "Customers are encouraged to leave feedback so that we can ______ our services.",
+    "options": ["improve", "improvement", "improving", "improved"],
+    "correctIndex": 0,
+    "explanation": "Đằng sau động từ khuyết thiếu 'can' cần một động từ nguyên mẫu không 'to'. 'improve' là phù hợp.",
+    "part": "Part 5",
+    "topic": "Business"
+  },
+  {
+    "id": "q-toeic-014",
+    "questionText": "All visitors must report to the reception desk ______ obtaining a security badge.",
+    "options": ["upon", "between", "among", "through"],
+    "correctIndex": 0,
+    "explanation": "Giới từ 'upon' + V-ing mang nghĩa là ngay sau khi/khi làm việc gì đó.",
+    "part": "Part 5",
+    "topic": "Prepositions"
+  },
+  {
+    "id": "q-toeic-015",
+    "questionText": "The project was completed on time ______ the unexpected technical difficulties.",
+    "options": ["despite", "although", "however", "even though"],
+    "correctIndex": 0,
+    "explanation": "'despite' đi kèm cụm danh từ 'the unexpected technical difficulties' để chỉ sự nhượng bộ.",
+    "part": "Part 5",
+    "topic": "Conjunctions"
+  }
+]
