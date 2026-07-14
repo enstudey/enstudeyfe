@@ -23,6 +23,20 @@ interface QuizSessionData {
 
 export default function QuizContainer({ isGuest, googleLoginUrl }: QuizContainerProps) {
   const [stage, setStage] = useState<"select" | "quiz" | "result">("select");
+
+  const updateStage = (newStage: "select" | "quiz" | "result") => {
+    setStage(newStage);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (newStage === "select") {
+        url.searchParams.delete("stage");
+      } else {
+        url.searchParams.set("stage", newStage);
+      }
+      window.history.pushState(null, "", url.toString());
+      window.dispatchEvent(new Event("popstate"));
+    }
+  };
   const [examType, setExamType] = useState<"TOEIC" | "IELTS">("TOEIC");
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [answers, setAnswers] = useState<Record<string, number>>({});
@@ -56,7 +70,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl }: QuizContainer
       setExamType(session.examType);
       setQuestions(restoredQuestions);
       setAnswers(session.answers || {});
-      setStage("quiz");
+      updateStage("quiz");
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Không thể khôi phục phiên làm bài dở dang.";
       console.error(err);
@@ -148,7 +162,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl }: QuizContainer
 
       setQuestions(selected);
       setAnswers({});
-      setStage("quiz");
+      updateStage("quiz");
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Đã xảy ra lỗi không xác định.";
       console.error(err);
@@ -162,7 +176,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl }: QuizContainer
   const handleCompleteQuiz = (finalAnswers: Record<string, number>, seconds: number) => {
     setAnswers(finalAnswers);
     setElapsedSeconds(seconds);
-    setStage("result");
+    updateStage("result");
 
     // Tính toán số câu đúng và thu thập chủ đề yếu
     let correctCount = 0;
@@ -320,7 +334,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl }: QuizContainer
           answers={answers}
           elapsedSeconds={elapsedSeconds}
           examType={examType}
-          onRetry={() => setStage("select")}
+          onRetry={() => updateStage("select")}
         />
       )}
     </div>
