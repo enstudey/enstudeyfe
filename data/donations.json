@@ -5,16 +5,28 @@
   "qr_template_url": "/qr-donate.webp",
   "donors": [
     {
+      "name": "Trương Hoàng L***",
+      "amount": "3.600.000đ"
+    },
+    {
       "name": "Nguyễn Minh T***",
       "amount": "20.000đ"
     },
     {
-      "name": "Lê Trọng T***",
+      "name": "Nguyễn Lan P****",
       "amount": "50.000đ"
     },
     {
       "name": "Trần Linh C***",
       "amount": "10.000đ"
+    },
+    {
+      "name": "Đoàn P**",
+      "amount": "10.000đ"
+    },
+    {
+      "name": "Nguyễn Quang N***",
+      "amount": "40.000đ"
     },
     {
       "name": "Phạm Minh H***",
@@ -37,20 +49,12 @@
       "amount": "40.000đ"
     },
     {
-      "name": "Hoàng Yến N***",
-      "amount": "25.000đ"
-    },
-    {
-      "name": "Đỗ Minh K***",
-      "amount": "19.000đ"
-    },
-    {
-      "name": "Trịnh Khánh H***",
-      "amount": "30.000đ"
-    },
-    {
-      "name": "Bùi Tiến D***",
+      "name": "Đoàn Quang V***",
       "amount": "20.000đ"
+    },
+    {
+      "name": "Nguyễn Quang H**",
+      "amount": "33.000đ"
     }
   ]
 }
