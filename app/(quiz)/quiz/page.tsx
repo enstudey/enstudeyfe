@@ -15,7 +15,7 @@ export default async function QuizPage() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA] bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.03),transparent_60%)]">
-      <QuizContainer isGuest={isGuest} googleLoginUrl={googleLoginUrl} />
+      <QuizContainer isGuest={isGuest} googleLoginUrl={googleLoginUrl} token={token} />
     </main>
   );
 }

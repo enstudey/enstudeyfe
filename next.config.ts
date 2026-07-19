@@ -30,11 +30,6 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: "/mistake-bank",
-        destination: "/",
-        permanent: false,
-      },
-      {
         source: "/login",
         destination: "/",
         permanent: false,

@@ -7,10 +7,12 @@ import { QuizQuestion, getRandomQuiz } from "@/lib/quiz-helper";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, AlertCircle, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { submitQuizProgress } from "@/lib/api/quiz";
 
 interface QuizContainerProps {
   isGuest: boolean;
   googleLoginUrl: string;
+  token?: string;
 }
 
 interface QuizSessionData {
@@ -21,7 +23,7 @@ interface QuizSessionData {
   quizIds: string[];
 }
 
-export default function QuizContainer({ isGuest, googleLoginUrl }: QuizContainerProps) {
+export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizContainerProps) {
   const [stage, setStage] = useState<"select" | "quiz" | "result">("select");
   const [examType, setExamType] = useState<"TOEIC" | "IELTS">("TOEIC");
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
@@ -203,6 +205,37 @@ export default function QuizContainer({ isGuest, googleLoginUrl }: QuizContainer
     const scoreData = { score: correctCount, examType, date: todayStr };
     localStorage.setItem("daily_quiz_last_score", JSON.stringify(scoreData));
     setLastScoreInfo(scoreData);
+
+    // 4. Đồng bộ lên Backend nếu không phải khách và có token
+    if (!isGuest && token) {
+      const rawResults = questions.map((q) => {
+        const selectedIndex = finalAnswers[q.id];
+        const isAnswered = selectedIndex !== undefined && selectedIndex !== null;
+        const optionLetter = isAnswered ? ["A", "B", "C", "D"][selectedIndex] : "A";
+        return {
+          questionId: parseInt(q.id, 10),
+          userAnswer: optionLetter,
+          isCorrect: selectedIndex === q.correctIndex
+        };
+      });
+
+      submitQuizProgress(token, {
+        userId: "",
+        testType: examType,
+        score: correctCount,
+        totalQuestions: questions.length,
+        rawResults: JSON.stringify(rawResults)
+      })
+      .then(() => {
+        console.log("Successfully synced quiz progress to server.");
+        localStorage.removeItem("daily_quiz_session"); // Xóa session dở dang sau khi nộp thành công
+      })
+      .catch(err => {
+        console.error("Failed to sync quiz progress to server via API helper", err);
+      });
+    } else {
+      localStorage.removeItem("daily_quiz_session"); // Xóa session dở dang ở chế độ khách
+    }
   };
 
   return (

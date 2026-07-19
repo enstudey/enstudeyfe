@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
+import MistakeBankDashboard from "@/components/mistake-bank/MistakeBankDashboard";
 
 export const metadata: Metadata = {
   title: "Sổ tay câu sai - EnStudey",
@@ -15,11 +16,10 @@ export default async function MistakeBankPage() {
   const googleLoginUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "http://localhost:8080/oauth2/authorization/google";
 
   return (
-    <main className="max-w-4xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-extrabold mb-6">Sổ tay câu sai (Mistake Bank)</h1>
-      <p className="text-slate-650 mb-8">
-        Hệ thống tự động lưu trữ các câu trả lời sai của bạn trong quá trình làm Quiz để giúp bạn ôn tập dễ dàng.
-      </p>
+    <main className="max-w-6xl mx-auto py-12 px-4">
+      <h1 className="text-3xl font-extrabold mb-6 text-slate-900 flex items-center gap-2">
+        <span>📖</span> Sổ tay câu sai (Mistake Bank)
+      </h1>
 
       {isGuest ? (
         <div className="bg-white border border-violet-500/20 rounded-3xl p-12 text-center max-w-xl mx-auto shadow-xl space-y-6">
@@ -45,10 +45,7 @@ export default async function MistakeBankPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-card border border-border rounded-2xl p-8 text-center text-slate-400">
-          <span className="text-4xl block mb-2">🎉</span>
-          <p className="text-sm font-medium">Tuyệt vời! Bạn không có câu sai nào cần ôn tập.</p>
-        </div>
+        <MistakeBankDashboard token={token} />
       )}
 
       <div className="mt-8 text-center">
