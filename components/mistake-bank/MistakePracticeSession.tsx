@@ -7,17 +7,16 @@ import {
   Check, 
   ChevronRight, 
   Award, 
-  AlertCircle, 
   BookOpen, 
   WifiOff 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
-  PracticeQuestion, 
   startPractice as apiStartPractice, 
   fetchMistakes as apiFetchMistakes, 
   submitPractice as apiSubmitPractice 
 } from "@/lib/api/mistake-bank";
+import { useQuery, useMutation } from "@tanstack/react-query";
 
 interface MistakePracticeSessionProps {
   token: string;
@@ -25,13 +24,6 @@ interface MistakePracticeSessionProps {
 }
 
 export default function MistakePracticeSession({ token, onClose }: MistakePracticeSessionProps) {
-  const [practiceSessionId, setPracticeSessionId] = useState<string>("");
-  const [questions, setQuestions] = useState<PracticeQuestion[]>([]);
-  
-  // Trạng thái phiên học
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  
   // Trạng thái làm bài
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
@@ -39,50 +31,46 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState<number | null>(null);
   const [explanation, setExplanation] = useState<string>("");
   
-  const [answersDetails, setAnswersDetails] = useState<Record<number, { correctIndex: number; explanation: string }>>({});
-  
   // Trạng thái nộp bài
   const [scoreInfo, setScoreInfo] = useState<{ score: number; total: number } | null>(null);
-  const [submitting, setSubmitting] = useState<boolean>(false);
   const [isOffline, setIsOffline] = useState<boolean>(false);
 
-  // 1. Tải đề ôn tập từ Backend
-  const startSession = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      // Gọi song song hai API để lấy đề ôn tập và đáp án giải thích chi tiết thông qua API helper
+  // 1. Tải đề ôn tập từ Backend bằng useQuery
+  const {
+    data: startData,
+    isLoading: loading,
+    error: queryError
+  } = useQuery({
+    queryKey: ["practice-session", token],
+    queryFn: async () => {
       const [startJson, listJson] = await Promise.all([
         apiStartPractice(token),
         apiFetchMistakes(token, { page: 0, size: 1000 })
       ]);
-      
-      if (!startJson.data || !startJson.data.questions || startJson.data.questions.length === 0) {
-        throw new Error("Không còn câu hỏi sai nào trong bộ nhớ cần ôn tập lúc này!");
-      }
-      
-      setPracticeSessionId(startJson.data.practiceSessionId);
-      setQuestions(startJson.data.questions);
-      
-      // Xây dựng map tra cứu đáp án và giải thích trong bộ nhớ
-      const detailsMap: Record<number, { correctIndex: number; explanation: string }> = {};
-      (listJson.data || []).forEach((q: any) => {
+      return { startJson, listJson };
+    },
+    refetchOnWindowFocus: false,
+    staleTime: 0,
+    gcTime: 0
+  });
+
+  const error = queryError instanceof Error ? queryError.message : null;
+  const questions = startData?.startJson?.data?.questions || [];
+  const practiceSessionId = startData?.startJson?.data?.practiceSessionId || "";
+
+  // Xây dựng map tra cứu đáp án và giải thích trong bộ nhớ
+  const answersDetails = React.useMemo(() => {
+    const detailsMap: Record<number, { correctIndex: number; explanation: string }> = {};
+    if (startData?.listJson?.data) {
+      startData.listJson.data.forEach((q) => {
         detailsMap[q.questionId] = {
           correctIndex: q.correctIndex,
           explanation: q.explanation || "Không có giải thích chi tiết."
         };
       });
-      setAnswersDetails(detailsMap);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Đã xảy ra lỗi hệ thống.");
-    } finally {
-      setLoading(false);
     }
-  }, [token]);
-
-  useEffect(() => {
-    startSession();
-  }, [startSession]);
+    return detailsMap;
+  }, [startData]);
 
   // 2. Kiểm tra đáp án cho câu hiện tại (In-memory O(1) lookup)
   const handleSelectOption = (optionIdx: number) => {
@@ -147,43 +135,42 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
     return () => window.removeEventListener("online", handleOnline);
   }, [syncOfflineSubmissions]);
 
-  // 5. Nộp bài lên Backend
-  const submitPracticeResults = async () => {
-    setSubmitting(true);
-    
+  // 5. Nộp bài lên Backend bằng useMutation
+  const submitMutation = useMutation({
+    mutationFn: (payload: { practiceSessionId: string; answers: { questionId: number; selectedIndex: number }[] }) => 
+      apiSubmitPractice(token, payload.practiceSessionId, payload.answers),
+    onSuccess: (json) => {
+      setScoreInfo({
+        score: json.data.score,
+        total: json.data.total
+      });
+    },
+    onError: (err, variables) => {
+      console.warn("Submit failed. Running offline protection mode...", err);
+      // Lưu offline
+      localStorage.setItem("offline_practice_submit", JSON.stringify({
+        savedToken: token,
+        payload: variables
+      }));
+      setIsOffline(true);
+      
+      setScoreInfo({
+        score: 0, 
+        total: questions.length
+      });
+    }
+  });
+
+  const submitPracticeResults = () => {
     const formattedAnswers = Object.entries(selectedAnswers).map(([qId, sIdx]) => ({
       questionId: parseInt(qId, 10),
       selectedIndex: sIdx
     }));
     
-    const payload = {
+    submitMutation.mutate({
       practiceSessionId,
       answers: formattedAnswers
-    };
-
-    try {
-      const json = await apiSubmitPractice(token, practiceSessionId, formattedAnswers);
-      setScoreInfo({
-        score: json.data.score,
-        total: json.data.total
-      });
-    } catch (err) {
-      console.warn("Submit failed. Running offline protection mode...", err);
-      // Lưu offline
-      localStorage.setItem("offline_practice_submit", JSON.stringify({
-        savedToken: token,
-        payload
-      }));
-      setIsOffline(true);
-      
-      // Tính toán điểm tạm thời hiển thị cho người dùng
-      setScoreInfo({
-        score: 0, 
-        total: questions.length
-      });
-    } finally {
-      setSubmitting(false);
-    }
+    });
   };
 
   if (loading) {

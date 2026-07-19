@@ -9,7 +9,7 @@ export interface QuizProgressPayload {
 }
 
 export function submitQuizProgress(token: string, payload: QuizProgressPayload) {
-  return apiFetch<{ data: any }>(
+  return apiFetch<{ data: unknown }>(
     "/api/v1/quizzes/progress",
     {
       method: "POST",

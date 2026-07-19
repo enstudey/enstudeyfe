@@ -7,6 +7,7 @@ import ToastContainer from "@/components/toast/ToastContainer";
 import "./globals.css";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
+import QueryProvider from "@/components/providers/QueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,9 +84,11 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <GA4Provider />
-        <TooltipProvider>
-          {children}
-        </TooltipProvider>
+        <QueryProvider>
+          <TooltipProvider>
+            {children}
+          </TooltipProvider>
+        </QueryProvider>
         <CookieBanner />
         <ToastContainer />
       </body>

@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { 
-  BookOpen, 
   Trash2, 
   Play, 
   ChevronLeft, 
@@ -12,11 +11,11 @@ import {
   Bookmark, 
   Calendar, 
   Flame,
-  CheckCircle2,
-  HelpCircle
+  CheckCircle2
 } from "lucide-react";
 import MistakePracticeSession from "./MistakePracticeSession";
-import { MistakeBankItem, fetchMistakes as apiFetchMistakes, deleteMistake as apiDeleteMistake } from "@/lib/api/mistake-bank";
+import { fetchMistakes as apiFetchMistakes, deleteMistake as apiDeleteMistake } from "@/lib/api/mistake-bank";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface MistakeBankDashboardProps {
   token: string;
@@ -29,61 +28,46 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
   const [page, setPage] = useState<number>(0);
   const [size] = useState<number>(10);
   
-  // Dữ liệu & Trạng thái UI
-  const [items, setItems] = useState<MistakeBankItem[]>([]);
-  const [totalItems, setTotalItems] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  
   // Trạng thái làm bài ôn tập
   const [isPracticing, setIsPracticing] = useState<boolean>(false);
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
-  // Lấy danh sách câu sai từ Backend
-  const fetchMistakes = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const json = await apiFetchMistakes(token, {
-        page,
-        size,
-        status,
-        category
-      });
-      setItems(json.data || []);
-      if (json.meta) {
-        setTotalItems(json.meta.total);
-      }
-    } catch (err) {
-      console.error("Error fetching mistakes:", err);
-      setError(err instanceof Error ? err.message : "Đã xảy ra lỗi hệ thống.");
-    } finally {
-      setLoading(false);
+  const queryClient = useQueryClient();
+
+  // Lấy danh sách câu sai từ Backend bằng useQuery
+  const {
+    data,
+    isLoading: loading,
+    error: queryError
+  } = useQuery({
+    queryKey: ["mistakes", token, page, size, status, category],
+    queryFn: () => apiFetchMistakes(token, { page, size, status, category }),
+  });
+
+  const error = queryError instanceof Error ? queryError.message : null;
+  const items = data?.data || [];
+  const totalItems = data?.meta?.total || 0;
+  const totalPages = Math.ceil(totalItems / size);
+
+  // Xóa câu sai khỏi sổ tay bằng useMutation
+  const deleteMutation = useMutation({
+    mutationFn: (id: number) => apiDeleteMistake(token, id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["mistakes"] });
+      setExpandedId(null);
+    },
+    onError: (err) => {
+      alert(err instanceof Error ? err.message : "Xóa câu hỏi thất bại.");
     }
-  }, [token, page, size, status, category]);
+  });
 
-  useEffect(() => {
-    fetchMistakes();
-  }, [fetchMistakes]);
-
-  // Xóa câu sai khỏi sổ tay
-  const handleDelete = async (id: number, e: React.MouseEvent) => {
+  const handleDelete = (id: number, e: React.MouseEvent) => {
     e.stopPropagation();
     if (!confirm("Bạn có chắc chắn muốn xóa câu hỏi này khỏi sổ tay câu sai?")) {
       return;
     }
-    
-    try {
-      await apiDeleteMistake(token, id);
-      // Reload danh sách
-      fetchMistakes();
-      setExpandedId(null);
-    } catch (err) {
-      alert(err instanceof Error ? err.message : "Xóa câu hỏi thất bại.");
-    }
+    deleteMutation.mutate(id);
   };
-
-  const totalPages = Math.ceil(totalItems / size);
 
   if (isPracticing) {
     return (
@@ -91,7 +75,7 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
         token={token} 
         onClose={() => {
           setIsPracticing(false);
-          fetchMistakes();
+          queryClient.invalidateQueries({ queryKey: ["mistakes"] });
         }} 
       />
     );
