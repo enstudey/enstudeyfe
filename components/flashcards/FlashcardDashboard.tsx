@@ -11,8 +11,14 @@ import {
   groupVocabByTopic
 } from "@/lib/flashcards-helper";
 import { updateStreakAndXp } from "@/lib/streak-helper";
+import { fetchFlashcardProgress, evaluateFlashcard } from "@/lib/api/flashcard";
 
-export default function FlashcardDashboard() {
+interface FlashcardDashboardProps {
+  token?: string;
+  isGuest?: boolean;
+}
+
+export default function FlashcardDashboard({ token, isGuest = true }: FlashcardDashboardProps) {
   const [examType, setExamType] = useState<"TOEIC" | "IELTS">(() => {
     if (typeof window !== "undefined") {
       const savedExam = localStorage.getItem("flashcard_exam_type");
@@ -47,10 +53,36 @@ export default function FlashcardDashboard() {
           setAllVocab(vocabData);
 
           const progressKey = examType === "TOEIC" ? "toeic_flashcards_progress" : "ielts_flashcards_progress_v2";
-          const savedProgress = localStorage.getItem(progressKey);
-          const progressMap: Record<string, CardProgress> = savedProgress
-            ? JSON.parse(savedProgress)
-            : {};
+          
+          let progressMap: Record<string, CardProgress> = {};
+
+          if (!isGuest && token) {
+            try {
+              const res = await fetchFlashcardProgress(token);
+              const apiProgress = res.data || [];
+              apiProgress.forEach((item) => {
+                progressMap[item.wordId] = {
+                  cardId: item.wordId,
+                  interval: item.interval,
+                  repetition: item.repetition,
+                  efactor: item.efactor,
+                  nextReviewDate: item.nextReviewDate,
+                  lastReviewedAt: item.lastReviewedAt || new Date().toISOString()
+                };
+              });
+              // Cache vào localStorage
+              localStorage.setItem(progressKey, JSON.stringify(progressMap));
+            } catch (err) {
+              console.warn("Failed to fetch progress from server, using offline cache", err);
+              const savedProgress = localStorage.getItem(progressKey);
+              progressMap = savedProgress ? JSON.parse(savedProgress) : {};
+            }
+          } else {
+            // Guest mode
+            const savedProgress = localStorage.getItem(progressKey);
+            progressMap = savedProgress ? JSON.parse(savedProgress) : {};
+          }
+
           setProgress(progressMap);
 
           // Load streak & XP chung
@@ -66,15 +98,68 @@ export default function FlashcardDashboard() {
       }
     };
     initData();
-  }, [examType]);
+  }, [examType, token, isGuest]);
+
+  // 2. Logic đồng bộ offline khi có mạng trở lại
+  useEffect(() => {
+    if (isGuest || !token) return;
+
+    const syncOfflineEvaluations = async () => {
+      const queueStr = localStorage.getItem("offline_flashcard_evaluations");
+      if (!queueStr) return;
+      try {
+        const queue = JSON.parse(queueStr);
+        if (queue.length === 0) return;
+
+        console.log(`Syncing ${queue.length} offline evaluations to server...`);
+        for (const item of queue) {
+          await evaluateFlashcard(token, item.cardId, item.rating);
+        }
+
+        localStorage.removeItem("offline_flashcard_evaluations");
+        console.log("Offline sync completed successfully!");
+
+        // Refresh lại dữ liệu từ Server
+        const progressKey = examType === "TOEIC" ? "toeic_flashcards_progress" : "ielts_flashcards_progress_v2";
+        const res = await fetchFlashcardProgress(token);
+        const apiProgress = res.data || [];
+        const progressMap: Record<string, CardProgress> = {};
+        apiProgress.forEach((item) => {
+          progressMap[item.wordId] = {
+            cardId: item.wordId,
+            interval: item.interval,
+            repetition: item.repetition,
+            efactor: item.efactor,
+            nextReviewDate: item.nextReviewDate,
+            lastReviewedAt: item.lastReviewedAt || new Date().toISOString()
+          };
+        });
+        setProgress(progressMap);
+        localStorage.setItem(progressKey, JSON.stringify(progressMap));
+      } catch (e) {
+        console.warn("Offline sync attempt failed", e);
+      }
+    };
+
+    const handleOnline = () => {
+      syncOfflineEvaluations();
+    };
+
+    window.addEventListener("online", handleOnline);
+    if (navigator.onLine) {
+      syncOfflineEvaluations();
+    }
+
+    return () => window.removeEventListener("online", handleOnline);
+  }, [token, isGuest, examType]);
 
   const handleSwitchExam = (type: "TOEIC" | "IELTS") => {
     setExamType(type);
     setView("grid");
   };
 
-  // 2. Xử lý Rating SM-2 và Ghost Timer
-  const handleRating = (cardId: string, q: number, durationMs: number) => {
+  // 3. Xử lý Rating SM-2 và Ghost Timer
+  const handleRating = async (cardId: string, q: number, durationMs: number) => {
     const prevProgress = progress[cardId] || {
       cardId,
       interval: 0,
@@ -86,91 +171,140 @@ export default function FlashcardDashboard() {
 
     let { interval, repetition, efactor, ghostDurationMs } = prevProgress;
 
-    // SM-2 Algorithm
-    if (q >= 3) {
-      if (repetition === 0) {
-        interval = 1;
-      } else if (repetition === 1) {
-        interval = 6;
-      } else {
-        interval = Math.round(interval * efactor);
+    // Cập nhật kỷ lục Ghost Timer (chỉ khi phản xạ tốt và rating >= 3)
+    if (q >= 3 && durationMs >= 500 && durationMs <= 30000) {
+      if (!ghostDurationMs || durationMs < ghostDurationMs) {
+        ghostDurationMs = durationMs;
       }
-      repetition += 1;
-
-      // Cập nhật kỷ lục Ghost Timer (chỉ khi phản xạ tốt và rating >= 3)
-      if (durationMs >= 500 && durationMs <= 30000) {
-        if (!ghostDurationMs || durationMs < ghostDurationMs) {
-          ghostDurationMs = durationMs;
-        }
-      }
-    } else {
-      repetition = 0;
-      interval = 1;
     }
 
-    // Ease Factor
-    efactor = efactor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
-    if (efactor < 1.3) efactor = 1.3;
-
-    const nextReview = new Date();
-    nextReview.setDate(nextReview.getDate() + interval);
-
-    const updatedCardProgress: CardProgress = {
-      cardId,
-      interval,
-      repetition,
-      efactor,
-      nextReviewDate: nextReview.toISOString(),
-      lastReviewedAt: new Date().toISOString(),
-      ghostDurationMs
-    };
-
-    const newProgress = {
-      ...progress,
-      [cardId]: updatedCardProgress
-    };
-
-    setProgress(newProgress);
-    
+    let updatedCardProgress: CardProgress;
     const progressKey = examType === "TOEIC" ? "toeic_flashcards_progress" : "ielts_flashcards_progress_v2";
-    localStorage.setItem(progressKey, JSON.stringify(newProgress));
+
+    if (!isGuest && token) {
+      try {
+        const response = await evaluateFlashcard(token, cardId, q);
+        const data = response.data;
+
+        updatedCardProgress = {
+          cardId,
+          interval: data.intervalDays,
+          repetition: q >= 3 ? repetition + 1 : 0,
+          efactor: data.easinessFactor,
+          nextReviewDate: data.nextReviewDate,
+          lastReviewedAt: new Date().toISOString(),
+          ghostDurationMs
+        };
+
+        const newProgress = {
+          ...progress,
+          [cardId]: updatedCardProgress
+        };
+        setProgress(newProgress);
+        localStorage.setItem(progressKey, JSON.stringify(newProgress));
+      } catch (err) {
+        console.warn("Sync evaluate to server failed, saving to offline queue", err);
+        // Fallback tự tính toán ở Client khi offline
+        if (q >= 3) {
+          if (repetition === 0) {
+            interval = 1;
+          } else if (repetition === 1) {
+            interval = 6;
+          } else {
+            interval = Math.round(interval * efactor);
+          }
+          repetition += 1;
+        } else {
+          repetition = 0;
+          interval = 1;
+        }
+
+        efactor = efactor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
+        if (efactor < 1.3) efactor = 1.3;
+
+        const nextReview = new Date();
+        nextReview.setDate(nextReview.getDate() + interval);
+
+        updatedCardProgress = {
+          cardId,
+          interval,
+          repetition,
+          efactor,
+          nextReviewDate: nextReview.toISOString(),
+          lastReviewedAt: new Date().toISOString(),
+          ghostDurationMs
+        };
+
+        const newProgress = {
+          ...progress,
+          [cardId]: updatedCardProgress
+        };
+        setProgress(newProgress);
+        localStorage.setItem(progressKey, JSON.stringify(newProgress));
+
+        // Lưu vào hàng đợi offline
+        const offlineQueue = JSON.parse(localStorage.getItem("offline_flashcard_evaluations") || "[]");
+        offlineQueue.push({ cardId, rating: q, timestamp: Date.now() });
+        localStorage.setItem("offline_flashcard_evaluations", JSON.stringify(offlineQueue));
+      }
+    } else {
+      // Guest mode: hoàn toàn offline
+      if (q >= 3) {
+        if (repetition === 0) {
+          interval = 1;
+        } else if (repetition === 1) {
+          interval = 6;
+        } else {
+          interval = Math.round(interval * efactor);
+        }
+        repetition += 1;
+      } else {
+        repetition = 0;
+        interval = 1;
+      }
+
+      efactor = efactor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
+      if (efactor < 1.3) efactor = 1.3;
+
+      const nextReview = new Date();
+      nextReview.setDate(nextReview.getDate() + interval);
+
+      updatedCardProgress = {
+        cardId,
+        interval,
+        repetition,
+        efactor,
+        nextReviewDate: nextReview.toISOString(),
+        lastReviewedAt: new Date().toISOString(),
+        ghostDurationMs
+      };
+
+      const newProgress = {
+        ...progress,
+        [cardId]: updatedCardProgress
+      };
+      setProgress(newProgress);
+      localStorage.setItem(progressKey, JSON.stringify(newProgress));
+    }
 
     // Award XP & Update Streak
     const { currentStreak, xp: newXp } = updateStreakAndXp(10);
     setXp(newXp);
     setStreak(currentStreak);
-
-    // Background API Sync (Mock fallback)
-    try {
-      fetch("/api/v1/user-progress/flashcards", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          cardId,
-          rating: q,
-          interval,
-          repetition,
-          efactor,
-          lastReviewedAt: new Date().toISOString()
-        })
-      }).catch((e) => console.warn("Background API sync failed (offline mode active)", e));
-    } catch {
-      // Bỏ qua lỗi kết nối ngầm
-    }
   };
-
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[350px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-violet-650"></div>
-        <p className="text-xs text-slate-500 mt-3 font-semibold">Đang nạp dữ liệu từ vựng...</p>
-      </div>
-    );
-  }
 
   // Phân tích dữ liệu để hiển thị Bento Grid
   const groupedVocab = groupVocabByTopic(allVocab);
   const topicList = getTopicStatusList(groupedVocab, progress);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[350px]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-violet-600"></div>
+        <p className="text-xs text-slate-500 mt-3 font-semibold">Đang nạp dữ liệu từ vựng...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full space-y-6">

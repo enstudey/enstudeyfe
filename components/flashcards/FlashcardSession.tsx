@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Flashcard, CardProgress } from "@/lib/flashcards-helper";
 import SpeechButton from "@/components/ui/speech-button";
@@ -41,7 +41,7 @@ export default function FlashcardSession({
   // Ref to tracking container height
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Chỉ trigger animation của Ghost Timer mượt mà khi đổi thẻ
+  // 1. Chỉ trigger animation của Ghost Timer mượt mà khi đổi thẻ
   useEffect(() => {
     if (queue.length > 0 && !isFlipped) {
       const timer = setTimeout(() => {
@@ -50,6 +50,51 @@ export default function FlashcardSession({
       return () => clearTimeout(timer);
     }
   }, [currentIndex, queue, isFlipped]);
+
+  // Lật thẻ
+  const handleFlip = useCallback(() => {
+    if (!isFlipped) {
+      const duration = Date.now() - startTime;
+      setFlipDuration(duration);
+    }
+    setIsFlipped((prev) => !prev);
+  }, [isFlipped, startTime]);
+
+  // 2. Keyboard listeners cho Space, ArrowLeft, ArrowRight
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        document.activeElement?.tagName === "INPUT" ||
+        document.activeElement?.tagName === "TEXTAREA"
+      ) {
+        return;
+      }
+
+      if (e.code === "Space") {
+        e.preventDefault();
+        handleFlip();
+      } else if (e.code === "ArrowLeft") {
+        e.preventDefault();
+        setIsFlipped(false);
+        setStartGhostAnim(false);
+        setFlipDuration(null);
+        setStartTime(Date.now());
+        setCurrentIndex((prev) => (prev > 0 ? prev - 1 : queue.length - 1));
+      } else if (e.code === "ArrowRight") {
+        e.preventDefault();
+        setIsFlipped(false);
+        setStartGhostAnim(false);
+        setFlipDuration(null);
+        setStartTime(Date.now());
+        setCurrentIndex((prev) => (prev < queue.length - 1 ? prev + 1 : 0));
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleFlip, queue.length]);
 
   if (queue.length === 0) {
     return (
@@ -78,15 +123,6 @@ export default function FlashcardSession({
   const cardProg = progressMap[currentCard.id];
   const hasGhost = cardProg && cardProg.repetition >= 1 && cardProg.ghostDurationMs;
   const ghostDuration = cardProg?.ghostDurationMs || 0;
-
-  // Lật thẻ
-  const handleFlip = () => {
-    if (!isFlipped) {
-      const duration = Date.now() - startTime;
-      setFlipDuration(duration);
-    }
-    setIsFlipped(!isFlipped);
-  };
 
   // Submit Rating
   const handleRateClick = (rating: number) => {
@@ -243,26 +279,26 @@ export default function FlashcardSession({
               </p>
             </div>
 
-            {/* Ratings Actions */}
+            {/* Ratings Actions (Giữ nguyên 3 nút: Khó - 2, Trung bình - 4, Dễ - 5) */}
             <div
               className="flex gap-2 w-full pt-4 border-t border-slate-100 dark:border-slate-900"
               onClick={(e) => e.stopPropagation()} // Stop click lật ngược
             >
               <button
                 onClick={() => handleRateClick(2)}
-                className="flex-1 py-2 px-3 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/20 dark:hover:bg-rose-950/30 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-900 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer"
+                className="flex-1 py-2 px-3 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/20 dark:hover:bg-rose-950/30 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-900 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer animate-fadeIn"
               >
                 Khó
               </button>
               <button
                 onClick={() => handleRateClick(4)}
-                className="flex-1 py-2 px-3 bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/20 dark:hover:bg-amber-950/30 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer"
+                className="flex-1 py-2 px-3 bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/20 dark:hover:bg-amber-950/30 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer animate-fadeIn"
               >
                 Trung bình
               </button>
               <button
                 onClick={() => handleRateClick(5)}
-                className="flex-1 py-2 px-3 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer"
+                className="flex-1 py-2 px-3 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer animate-fadeIn"
               >
                 Dễ
               </button>

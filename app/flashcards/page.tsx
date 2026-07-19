@@ -1,5 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
+import { cookies } from "next/headers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FlashcardDashboard from "@/components/flashcards/FlashcardDashboard";
@@ -13,7 +14,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FlashcardsPage() {
+export default async function FlashcardsPage() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
+  const isGuest = !token;
+
   return (
     <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
       <Header />
@@ -31,7 +36,7 @@ export default function FlashcardsPage() {
           </p>
         </div>
 
-        <FlashcardDashboard />
+        <FlashcardDashboard token={token} isGuest={isGuest} />
       </main>
 
       <Footer />
