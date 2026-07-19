@@ -4,17 +4,13 @@ import Image from "next/image";
 import { cookies } from "next/headers";
 import Footer from "@/components/Footer";
 import DailyQuizWidget from "@/components/quiz/DailyQuizWidget";
+import UserProfileDropdown from "@/components/UserProfileDropdown";
+import { getStreakLeaderboard, LeaderboardResponse } from "@/lib/api/streak";
 
 export const metadata: Metadata = {
   title: "Dashboard - EnStudey",
   description: "Trang chủ học tập cá nhân hóa của bạn tại EnStudey.",
 };
-
-const MOCK_LEADERBOARD = [
-  { rank: 1, name: "Thành Đạt", streakCount: 42 },
-  { rank: 2, name: "Khánh Linh", streakCount: 38 },
-  { rank: 3, name: "Minh Tuấn", streakCount: 35 },
-];
 
 interface UserDto {
   id: string;
@@ -22,6 +18,8 @@ interface UserDto {
   fullName: string;
   avatarUrl: string;
   role: string;
+  isAnonymous: boolean;
+  avatarColor: string | null;
 }
 
 interface UserStreakDto {
@@ -36,11 +34,12 @@ export default async function DashboardPage() {
 
   let user: UserDto | null = null;
   let streak: UserStreakDto = { currentStreak: 0, longestStreak: 0, lastActivityDate: null };
+  let leaderboardData: LeaderboardResponse = { topUsers: [], currentUserRank: null };
   let isGuest = !token;
 
   if (token) {
     try {
-      const [userRes, streakRes] = await Promise.all([
+      const [userRes, streakRes, leaderboardRes] = await Promise.all([
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
           next: { revalidate: 0 }
@@ -48,6 +47,10 @@ export default async function DashboardPage() {
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me/streak`, {
           headers: { Authorization: `Bearer ${token}` },
           next: { revalidate: 0 }
+        }),
+        getStreakLeaderboard(token, 20).catch(err => {
+          console.error("Failed to fetch leaderboard", err);
+          return { data: { topUsers: [], currentUserRank: null } };
         })
       ]);
 
@@ -55,7 +58,6 @@ export default async function DashboardPage() {
         const userData = await userRes.json();
         user = userData.data as UserDto;
       } else if (userRes.status === 401) {
-        // Token expired or invalid
         isGuest = true;
       }
 
@@ -63,9 +65,22 @@ export default async function DashboardPage() {
         const streakData = await streakRes.json();
         streak = streakData.data as UserStreakDto;
       }
+
+      if (leaderboardRes && leaderboardRes.data) {
+        leaderboardData = leaderboardRes.data;
+      }
     } catch (error) {
       console.error("Failed to fetch dashboard data, fallback to guest mode", error);
       isGuest = true;
+    }
+  } else {
+    try {
+      const leaderboardRes = await getStreakLeaderboard(undefined, 20);
+      if (leaderboardRes && leaderboardRes.data) {
+        leaderboardData = leaderboardRes.data;
+      }
+    } catch (error) {
+      console.error("Failed to fetch public leaderboard", error);
     }
   }
 
@@ -120,16 +135,8 @@ export default async function DashboardPage() {
                 Đăng nhập
               </a>
             ) : (
-              user && user.avatarUrl && (
-                <div className="relative w-9 h-9 rounded-full overflow-hidden border border-card-border">
-                  <Image
-                    src={user.avatarUrl}
-                    alt={user.fullName}
-                    fill
-                    sizes="36px"
-                    className="object-cover"
-                  />
-                </div>
+              user && token && (
+                <UserProfileDropdown user={user} token={token} />
               )
             )}
           </div>
@@ -210,29 +217,118 @@ export default async function DashboardPage() {
 
         {/* Right Column */}
         <div className="space-y-8">
-          <div className="bg-card border border-card-border rounded-2xl p-6 shadow-sm">
+          <div className="bg-card border border-card-border rounded-2xl p-6 shadow-sm min-h-[300px]">
             <h3 className="text-lg font-bold mb-4 flex items-center justify-between">
               <span>Bảng Xếp Hạng</span>
-              <span className="text-xs font-semibold opacity-50">Streak tuần</span>
+              <span className="text-xs font-semibold opacity-50">Chuỗi ngày (Streak)</span>
             </h3>
-            <div className="space-y-3">
-              {MOCK_LEADERBOARD.map((u) => (
-                <div key={u.rank} className="flex items-center justify-between py-2 border-b border-card-border/50 last:border-0">
-                  <div className="flex items-center gap-3">
-                    <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                      u.rank === 1 ? "bg-amber-100 text-amber-800" :
-                      u.rank === 2 ? "bg-slate-100 text-slate-800" :
-                      "bg-violet-100 text-violet-850"
-                    }`}>
-                      {u.rank}
-                    </span>
-                    <span className="font-medium text-sm">{u.name}</span>
-                  </div>
-                  <span className="text-sm font-bold text-violet-600">{u.streakCount} 🔥</span>
-                </div>
-              ))}
+            <div className="space-y-2">
+              {leaderboardData.topUsers.length === 0 ? (
+                <p className="text-xs text-slate-400 py-6 text-center">Chưa có dữ liệu xếp hạng.</p>
+              ) : (
+                <>
+                  {leaderboardData.topUsers.map((u) => {
+                    const isCurrent = u.isCurrentUser;
+                    return (
+                      <div
+                        key={u.rank}
+                        className={`flex items-center justify-between py-2 px-2.5 rounded-xl transition ${
+                          isCurrent
+                            ? "bg-violet-50/70 border border-violet-100 font-bold"
+                            : "hover:bg-slate-50/50"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
+                            u.rank === 1 ? "bg-amber-100 text-amber-800" :
+                            u.rank === 2 ? "bg-slate-100 text-slate-800" :
+                            isCurrent ? "bg-violet-600 text-white" : "bg-slate-100 text-slate-650"
+                          }`}>
+                            {u.rank}
+                          </span>
+                          {u.avatarColor ? (
+                            <div
+                              className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white uppercase select-none shrink-0"
+                              style={{ backgroundColor: u.avatarColor }}
+                            >
+                              {u.nickname.charAt(0).toUpperCase()}
+                            </div>
+                          ) : (
+                            <div className="w-7 h-7 rounded-full flex items-center justify-center bg-violet-100 text-violet-750 text-xs font-bold uppercase select-none shrink-0">
+                              {u.nickname.charAt(0).toUpperCase()}
+                            </div>
+                          )}
+                          <span className="text-xs text-slate-800 truncate max-w-[110px]">{u.nickname}</span>
+                        </div>
+                        <span className="text-xs font-bold text-violet-600 shrink-0">{u.currentStreak} 🔥</span>
+                      </div>
+                    );
+                  })}
+
+                  {leaderboardData.currentUserRank && leaderboardData.currentUserRank.surroundingUsers.length > 0 && (
+                    <>
+                      <div className="flex justify-center py-1.5 select-none" aria-hidden="true">
+                        <span className="text-slate-400 text-xs font-bold tracking-widest">•••</span>
+                      </div>
+                      {leaderboardData.currentUserRank.surroundingUsers.map((u) => {
+                        const isCurrent = u.isCurrentUser;
+                        return (
+                          <div
+                            key={`surround-${u.rank}`}
+                            className={`flex items-center justify-between py-2 px-2.5 rounded-xl transition ${
+                              isCurrent
+                                ? "bg-violet-50/70 border border-violet-100 font-bold"
+                                : "hover:bg-slate-50/50"
+                            }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
+                                isCurrent ? "bg-violet-600 text-white" : "bg-slate-100 text-slate-650"
+                              }`}>
+                                {u.rank}
+                              </span>
+                              {u.avatarColor ? (
+                                <div
+                                  className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white uppercase select-none shrink-0"
+                                  style={{ backgroundColor: u.avatarColor }}
+                                >
+                                  {u.nickname.charAt(0).toUpperCase()}
+                                </div>
+                              ) : (
+                                <div className="w-7 h-7 rounded-full flex items-center justify-center bg-violet-100 text-violet-750 text-xs font-bold uppercase select-none shrink-0">
+                                  {u.nickname.charAt(0).toUpperCase()}
+                                </div>
+                              )}
+                              <span className="text-xs text-slate-800 truncate max-w-[110px]">{u.nickname}</span>
+                            </div>
+                            <span className="text-xs font-bold text-violet-600 shrink-0">{u.currentStreak} 🔥</span>
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
+
+
+                  {isGuest && (
+                    <div className="mt-4 pt-4 border-t border-card-border/50 text-center space-y-3 relative overflow-hidden rounded-2xl bg-slate-50/50 p-4 border border-dashed border-slate-200">
+                      <p className="text-xs text-slate-500 font-medium leading-relaxed px-2">
+                        Bạn đang đứng thứ mấy? Đăng nhập bằng Google để kích hoạt ngọn lửa Streak và ghi danh lên bảng vàng liền nè! 🚀
+                      </p>
+                      <div>
+                        <a
+                          href={googleLoginUrl}
+                          className="inline-flex text-[11px] font-bold bg-violet-600 hover:bg-violet-700 text-white px-4 py-2.5 rounded-xl transition duration-200 shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+                        >
+                          Đăng nhập nhanh trong 2 giây
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
             </div>
           </div>
+
 
           <Link href="/analytics" className="block bg-card border border-card-border rounded-2xl p-6 shadow-sm hover:shadow-md transition text-left">
             <h3 className="text-lg font-bold mb-2">Hiệu năng học tập</h3>

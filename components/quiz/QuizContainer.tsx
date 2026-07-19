@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { GraduationCap, AlertCircle, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { getDailyQuizStatus, getDailyQuizQuestions, submitDailyQuiz } from "@/lib/api/quiz";
+import { recordStreakActivity } from "@/lib/api/streak";
+
 
 interface QuizContainerProps {
   isGuest: boolean;
@@ -151,6 +153,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
             options: q.options,
             correctIndex: -1, // Sẽ được chấm điểm ở Server
             explanation: "",
+            part: "",
             topic: ""
           }));
         } else {
@@ -237,7 +240,14 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
         if (resSubmit && resSubmit.data) {
           const result = resSubmit.data;
 
+          try {
+            await recordStreakActivity(token, "DAILY_QUIZ", sessionId || "client-session-id");
+          } catch (streakErr) {
+            console.error("Failed to record streak activity", streakErr);
+          }
+
           // Cập nhật đáp án đúng và giải thích từ Server trả về vào questions state
+
           const evaluatedQuestions = questions.map((q) => {
             const serverResult = result.results.find((r) => r.questionId.toString() === q.id);
             return {

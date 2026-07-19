@@ -19,27 +19,8 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     const defaultRedirects = [
-      {
-        source: "/dashboard",
-        destination: "/",
-        permanent: false,
-      },
-      {
-        source: "/speaking",
-        destination: "/",
-        permanent: false,
-      },
-      {
-        source: "/login",
-        destination: "/",
-        permanent: false,
-      },
-      {
-        source: "/oauth2/:path*",
-        destination: "/",
-        permanent: false,
-      },
       // Redirects cho các bài blog cũ sang category mới
+
       {
         source: "/blog/spaced-repetition-hoc-tu-vung",
         destination: "/blog/skills/spaced-repetition-hoc-tu-vung",
