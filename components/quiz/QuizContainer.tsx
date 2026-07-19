@@ -7,7 +7,7 @@ import { QuizQuestion, getRandomQuiz } from "@/lib/quiz-helper";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, AlertCircle, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { submitQuizProgress } from "@/lib/api/quiz";
+import { getDailyQuizStatus, getDailyQuizQuestions, submitDailyQuiz } from "@/lib/api/quiz";
 
 interface QuizContainerProps {
   isGuest: boolean;
@@ -71,11 +71,31 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
 
   // Kiểm tra trạng thái hoàn thành hôm nay và khôi phục session dở dang khi mount
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const todayStr = new Date().toLocaleDateString("en-CA"); // Định dạng YYYY-MM-DD
+    let active = true;
+
+    async function checkStatus() {
+      if (!isGuest && token) {
+        try {
+          const res = await getDailyQuizStatus(token);
+          if (active && res && res.data) {
+            if (res.data.completedToday) {
+              setIsCompletedToday(true);
+              setLastScoreInfo({
+                score: res.data.score ?? 0,
+                examType: "Mini-Test"
+              });
+              return;
+            }
+          }
+        } catch (e) {
+          console.error("Failed to check daily quiz completion status from server", e);
+        }
+      }
+
+      // Fallback client-only
+      const todayStr = new Date().toLocaleDateString("en-CA");
       const completedDate = localStorage.getItem("daily_quiz_completed_date");
-      
-      if (completedDate === todayStr) {
+      if (completedDate === todayStr && active) {
         setIsCompletedToday(true);
         const lastScore = localStorage.getItem("daily_quiz_last_score");
         if (lastScore) {
@@ -86,13 +106,16 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
           }
         }
       }
+    }
+
+    const timer = setTimeout(() => {
+      checkStatus();
 
       // Kiểm tra session dở dang
       const saved = localStorage.getItem("daily_quiz_session");
-      if (saved) {
+      if (saved && active) {
         try {
           const parsed = JSON.parse(saved);
-          // Nếu session chưa quá hạn 15 phút
           if (parsed.examType && parsed.quizIds && parsed.quizIds.length > 0 && Date.now() - parsed.startTime < 900000) {
             restoreSession(parsed);
           }
@@ -101,8 +124,12 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
         }
       }
     }, 0);
-    return () => clearTimeout(timer);
-  }, [restoreSession]);
+
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [restoreSession, isGuest, token]);
 
   // Bắt đầu bài quiz mới
   const handleStartQuiz = async (type: "TOEIC" | "IELTS") => {
@@ -111,25 +138,45 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
     setExamType(type);
     
     try {
-      const res = await fetch(`/english-data/quiz-pool-${type.toLowerCase()}.json`);
-      if (!res.ok) {
-        throw new Error("Không tải được danh sách câu hỏi. Vui lòng thử lại sau.");
-      }
-      const pool: QuizQuestion[] = await res.json();
-      
-      // Đọc các chủ đề yếu từ localStorage
-      let weakTopics: string[] = [];
-      const savedWeak = localStorage.getItem("quiz_weak_topics");
-      if (savedWeak) {
-        try {
-          weakTopics = JSON.parse(savedWeak);
-        } catch (e) {
-          console.error("Failed to parse weak topics", e);
+      let selected: QuizQuestion[] = [];
+      let sessionId = "";
+
+      if (!isGuest && token) {
+        const res = await getDailyQuizQuestions(type, token);
+        if (res && res.data && res.data.questions) {
+          sessionId = res.data.sessionId;
+          selected = res.data.questions.map((q) => ({
+            id: q.id.toString(),
+            questionText: q.questionText,
+            options: q.options,
+            correctIndex: -1, // Sẽ được chấm điểm ở Server
+            explanation: "",
+            topic: ""
+          }));
+        } else {
+          throw new Error("Không tải được đề thi từ máy chủ.");
         }
+      } else {
+        // Fallback Khách vãng lai tải đề tĩnh
+        const res = await fetch(`/english-data/quiz-pool-${type.toLowerCase()}.json`);
+        if (!res.ok) {
+          throw new Error("Không tải được danh sách câu hỏi. Vui lòng thử lại sau.");
+        }
+        const pool: QuizQuestion[] = await res.json();
+        
+        let weakTopics: string[] = [];
+        const savedWeak = localStorage.getItem("quiz_weak_topics");
+        if (savedWeak) {
+          try {
+            weakTopics = JSON.parse(savedWeak);
+          } catch (e) {
+            console.error("Failed to parse weak topics", e);
+          }
+        }
+
+        selected = getRandomQuiz(pool, weakTopics);
       }
 
-      // Bốc 10 câu ngẫu nhiên adaptive
-      const selected = getRandomQuiz(pool, weakTopics);
       if (selected.length === 0) {
         throw new Error("Danh sách câu hỏi trống.");
       }
@@ -145,6 +192,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
           currentIndex: 0,
           startTime: Date.now(),
           quizIds,
+          sessionId
         })
       );
 
@@ -161,80 +209,99 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
   };
 
   // Hoàn thành bài quiz
-  const handleCompleteQuiz = (finalAnswers: Record<string, number>, seconds: number) => {
+  const handleCompleteQuiz = async (finalAnswers: Record<string, number>, seconds: number) => {
     setAnswers(finalAnswers);
     setElapsedSeconds(seconds);
-    setStage("result");
+    setLoading(true);
+    setErrorMsg(null);
 
-    // Tính toán số câu đúng và thu thập chủ đề yếu
-    let correctCount = 0;
-    const failedTopics: string[] = [];
+    try {
+      if (!isGuest && token) {
+        // Đọc session dở dang để lấy sessionId
+        const savedSession = localStorage.getItem("daily_quiz_session");
+        const parsedSession = savedSession ? JSON.parse(savedSession) : null;
+        const sessionId = parsedSession ? parsedSession.sessionId : "";
 
-    questions.forEach((q) => {
-      const isCorrect = finalAnswers[q.id] === q.correctIndex;
-      if (isCorrect) {
-        correctCount++;
-      } else {
-        failedTopics.push(q.topic);
-      }
-    });
-
-    // 1. Cập nhật weak topics vào localStorage
-    if (failedTopics.length > 0) {
-      let currentWeak: string[] = [];
-      const savedWeak = localStorage.getItem("quiz_weak_topics");
-      if (savedWeak) {
-        try {
-          currentWeak = JSON.parse(savedWeak);
-        } catch {
-          // Xử lý lỗi parse âm thầm
-        }
-      }
-      
-      // Trộn thêm các topic làm sai mới vào, loại bỏ trùng lặp
-      const updatedWeak = Array.from(new Set([...currentWeak, ...failedTopics])).slice(0, 10);
-      localStorage.setItem("quiz_weak_topics", JSON.stringify(updatedWeak));
-    }
-
-    // 2. Đánh dấu ngày hoàn thành hôm nay (để chặn spam và duy trì streak)
-    const todayStr = new Date().toLocaleDateString("en-CA");
-    localStorage.setItem("daily_quiz_completed_date", todayStr);
-    setIsCompletedToday(true);
-
-    // 3. Lưu điểm số làm bài gần nhất của hôm nay
-    const scoreData = { score: correctCount, examType, date: todayStr };
-    localStorage.setItem("daily_quiz_last_score", JSON.stringify(scoreData));
-    setLastScoreInfo(scoreData);
-
-    // 4. Đồng bộ lên Backend nếu không phải khách và có token
-    if (!isGuest && token) {
-      const rawResults = questions.map((q) => {
-        const selectedIndex = finalAnswers[q.id];
-        const isAnswered = selectedIndex !== undefined && selectedIndex !== null;
-        const optionLetter = isAnswered ? ["A", "B", "C", "D"][selectedIndex] : "A";
-        return {
+        // Chuẩn bị payload nộp bài
+        const answersPayload = questions.map((q) => ({
           questionId: parseInt(q.id, 10),
-          userAnswer: optionLetter,
-          isCorrect: selectedIndex === q.correctIndex
-        };
-      });
+          selectedIndex: finalAnswers[q.id] !== undefined ? finalAnswers[q.id] : -1
+        }));
 
-      submitQuizProgress(token, {
-        userId: "",
-        testType: examType,
-        score: correctCount,
-        totalQuestions: questions.length,
-        rawResults: JSON.stringify(rawResults)
-      })
-      .then(() => {
-        console.log("Successfully synced quiz progress to server.");
-        localStorage.removeItem("daily_quiz_session"); // Xóa session dở dang sau khi nộp thành công
-      })
-      .catch(err => {
-        console.error("Failed to sync quiz progress to server via API helper", err);
-      });
-    } else {
-      localStorage.removeItem("daily_quiz_session"); // Xóa session dở dang ở chế độ khách
+        const submitPayload = {
+          sessionId: sessionId || "client-session-id",
+          answers: answersPayload
+        };
+
+        const resSubmit = await submitDailyQuiz(submitPayload, token);
+        if (resSubmit && resSubmit.data) {
+          const result = resSubmit.data;
+
+          // Cập nhật đáp án đúng và giải thích từ Server trả về vào questions state
+          const evaluatedQuestions = questions.map((q) => {
+            const serverResult = result.results.find((r) => r.questionId.toString() === q.id);
+            return {
+              ...q,
+              correctIndex: serverResult ? serverResult.correctAnswerIndex : -1,
+              explanation: serverResult ? serverResult.explanation : "Không có giải thích từ máy chủ."
+            };
+          });
+
+          setQuestions(evaluatedQuestions);
+          setIsCompletedToday(true);
+          setLastScoreInfo({
+            score: result.score,
+            examType: "Mini-Test"
+          });
+          localStorage.removeItem("daily_quiz_session");
+        } else {
+          throw new Error("Không nhận được kết quả chấm điểm từ máy chủ.");
+        }
+      } else {
+        // Chế độ khách vãng lai (client-only)
+        let correctCount = 0;
+        const failedTopics: string[] = [];
+
+        questions.forEach((q) => {
+          const isCorrect = finalAnswers[q.id] === q.correctIndex;
+          if (isCorrect) {
+            correctCount++;
+          } else {
+            failedTopics.push(q.topic);
+          }
+        });
+
+        if (failedTopics.length > 0) {
+          let currentWeak: string[] = [];
+          const savedWeak = localStorage.getItem("quiz_weak_topics");
+          if (savedWeak) {
+            try {
+              currentWeak = JSON.parse(savedWeak);
+            } catch {
+              // Parse error ignored silenty
+            }
+          }
+          const updatedWeak = Array.from(new Set([...currentWeak, ...failedTopics])).slice(0, 10);
+          localStorage.setItem("quiz_weak_topics", JSON.stringify(updatedWeak));
+        }
+
+        const todayStr = new Date().toLocaleDateString("en-CA");
+        localStorage.setItem("daily_quiz_completed_date", todayStr);
+        setIsCompletedToday(true);
+
+        const scoreData = { score: correctCount, examType, date: todayStr };
+        localStorage.setItem("daily_quiz_last_score", JSON.stringify(scoreData));
+        setLastScoreInfo(scoreData);
+        localStorage.removeItem("daily_quiz_session");
+      }
+
+      setStage("result");
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Đã xảy ra lỗi khi nộp bài.";
+      console.error(err);
+      setErrorMsg(errorMessage);
+    } finally {
+      setLoading(false);
     }
   };
 

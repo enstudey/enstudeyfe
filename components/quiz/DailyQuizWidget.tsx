@@ -3,23 +3,44 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Sparkles, Trophy, BookOpen } from "lucide-react";
+import { getDailyQuizStatus } from "@/lib/api/quiz";
 
 interface DailyQuizWidgetProps {
   userFullName?: string;
+  token?: string;
 }
 
-export default function DailyQuizWidget({ userFullName = "bạn" }: DailyQuizWidgetProps) {
+export default function DailyQuizWidget({ userFullName = "bạn", token }: DailyQuizWidgetProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [isCompletedToday, setIsCompletedToday] = useState(false);
   const [scoreInfo, setScoreInfo] = useState<{ score: number; examType: string } | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsMounted(true);
+    let active = true;
+
+    async function checkStatus() {
+      if (token) {
+        try {
+          const res = await getDailyQuizStatus(token);
+          if (active && res && res.data) {
+            if (res.data.completedToday) {
+              setIsCompletedToday(true);
+              setScoreInfo({
+                score: res.data.score ?? 0,
+                examType: "Mini-Test"
+              });
+              return;
+            }
+          }
+        } catch (e) {
+          console.error("Failed to fetch daily quiz status from server", e);
+        }
+      }
+
+      // Fallback đọc từ localStorage nếu không có token hoặc API lỗi
       const todayStr = new Date().toLocaleDateString("en-CA");
       const completedDate = localStorage.getItem("daily_quiz_completed_date");
-
-      if (completedDate === todayStr) {
+      if (completedDate === todayStr && active) {
         setIsCompletedToday(true);
         const lastScore = localStorage.getItem("daily_quiz_last_score");
         if (lastScore) {
@@ -30,9 +51,18 @@ export default function DailyQuizWidget({ userFullName = "bạn" }: DailyQuizWid
           }
         }
       }
+    }
+
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+      checkStatus();
     }, 0);
-    return () => clearTimeout(timer);
-  }, []);
+
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [token]);
 
   // SSR Fallback (trước khi mount) hoặc khi chưa làm bài
   if (!isMounted || !isCompletedToday) {

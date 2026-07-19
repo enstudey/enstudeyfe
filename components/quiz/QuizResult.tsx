@@ -3,7 +3,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { QuizQuestion } from "@/lib/quiz-helper";
-import { Award, BookOpen, AlertTriangle, CheckCircle, RefreshCw, Home } from "lucide-react";
+import { Award, BookOpen, AlertTriangle, CheckCircle, RefreshCw, Home, Share2 } from "lucide-react";
 import Link from "next/link";
 
 interface QuizResultProps {
@@ -31,7 +31,30 @@ export default function QuizResult({ questions, answers, elapsedSeconds, examTyp
 
   const minutes = Math.floor(elapsedSeconds / 60);
   const seconds = elapsedSeconds % 60;
-  const scorePercent = Math.round((correctCount / totalQuestions) * 100);
+  const scorePercent = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+
+  const handleShare = () => {
+    const shareText = `Hôm nay tôi đã vượt qua thử thách Daily Mini-Test trên EnStudey với kết quả xuất sắc ${correctCount}/${totalQuestions} câu đúng! 🎯 Hãy cùng luyện tập tiếng Anh du kích mỗi ngày cùng tôi tại:`;
+    const shareUrl = typeof window !== "undefined" ? window.location.origin : "https://enstudey.vn";
+
+    if (navigator.share) {
+      navigator.share({
+        title: "Kết quả Daily Quiz - EnStudey",
+        text: shareText,
+        url: shareUrl
+      })
+      .then(() => console.log("Successful share"))
+      .catch((error) => console.log("Error sharing", error));
+    } else {
+      navigator.clipboard.writeText(`${shareText} ${shareUrl}`)
+        .then(() => {
+          alert("Đã sao chép liên kết và kết quả học tập vào Clipboard! Hãy chia sẻ cho bạn bè nhé. 🚀");
+        })
+        .catch((err) => {
+          console.error("Failed to copy text: ", err);
+        });
+    }
+  };
 
   // Nhận xét dựa trên điểm số
   let ratingText = "Cố gắng hơn nữa ở lần sau nha! 💪";
@@ -78,6 +101,13 @@ export default function QuizResult({ questions, answers, elapsedSeconds, examTyp
         >
           <RefreshCw className="w-4 h-4" />
           Làm đề khác
+        </Button>
+        <Button
+          onClick={handleShare}
+          className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl flex items-center gap-2 py-5 px-6 shadow-md cursor-pointer"
+        >
+          <Share2 className="w-4 h-4" />
+          Chia sẻ kết quả
         </Button>
         <Link href="/dashboard" className="w-full sm:w-auto">
           <Button className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-xl flex items-center gap-2 py-5 px-6 shadow-md cursor-pointer">

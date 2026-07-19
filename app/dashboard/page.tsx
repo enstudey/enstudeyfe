@@ -186,7 +186,7 @@ export default async function DashboardPage() {
           )}
 
           {/* Hero Widget: Daily Mini-Test */}
-          <DailyQuizWidget userFullName={user?.fullName} />
+          <DailyQuizWidget userFullName={user?.fullName} token={token} />
 
           {/* Quick Access Grid */}
           <div className="grid gap-6 sm:grid-cols-2">
