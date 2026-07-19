@@ -252,6 +252,29 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
           </Button>
         </div>
       </div>
+
+      {/* Gamification Grammar Swipe card */}
+      <div className="max-w-3xl mx-auto bg-gradient-to-r from-violet-600 to-indigo-600 rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md relative overflow-hidden">
+        <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-y-6 translate-x-6">
+          <Sparkles className="w-64 h-64" />
+        </div>
+        <div className="space-y-3 text-center md:text-left flex-1">
+          <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+            Game học tập thú vị
+          </div>
+          <h2 className="text-xl md:text-2xl font-black tracking-tight">Grammar Swipe (Vuốt Ngữ Pháp)</h2>
+          <p className="text-white/80 text-xs md:text-sm max-w-md leading-relaxed font-medium">
+            Luyện phản xạ nhận diện lỗi ngữ pháp tức thì bằng thao tác vuốt thẻ Tinder-style Đúng/Sai cực kỳ gây nghiện. Luyện nhanh 15 câu, tích lũy XP và làm chủ Sổ tay câu sai.
+          </p>
+        </div>
+        <Button
+          onClick={() => router.push("/practice/grammar-swipe")}
+          className="w-full md:w-auto bg-white text-violet-600 hover:bg-slate-100 font-bold py-6 px-8 rounded-2xl cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] transition"
+        >
+          <span>Trải nghiệm ngay</span>
+          <ArrowRight className="w-4 h-4 shrink-0" />
+        </Button>
+      </div>
     </main>
   );
 }
