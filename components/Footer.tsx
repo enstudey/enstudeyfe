@@ -65,11 +65,12 @@ export default function Footer() {
             © 2026 EnStudey. All rights reserved.
           </p>
           
-          {/* Badge Version trực quan */}
+           {/* Badge Version trực quan */}
           <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-50 border border-slate-200/60 text-[9px] font-bold text-slate-600">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Version v1.2.2</span>
+            <span>Version v2.0</span>
           </div>
+
         </div>
       </div>
     </footer>
