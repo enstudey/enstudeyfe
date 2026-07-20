@@ -26,9 +26,12 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   const [saveStatus, setSaveStatus] = useState<"saved" | "saving" | "error">("saved");
   const [isOffline, setIsOffline] = useState(typeof window !== "undefined" ? !navigator.onLine : false);
 
+  const currentQuestion = questions[currentIndex];
+
   // Bộ đếm thời gian
   const targetEndTimeRef = useRef<number>(0);
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const isSubmittingRef = useRef<boolean>(false);
 
   // Phục vụ chặn tua âm thanh
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -54,6 +57,8 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   }, []);
 
   const handleAutoSubmit = useCallback(async () => {
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
     setSubmitting(true);
     try {
       await submitExam(sessionId, token);
@@ -169,14 +174,22 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
     audioRef.current.play().catch((e) => console.log("Audio play interrupted", e));
   };
 
-  // Tự động phát khi chuyển câu hỏi
+  // Tự động phát khi chuyển câu hỏi & dọn dẹp bộ nhớ ngắt âm thanh khi unmount/đổi câu
   useEffect(() => {
-    if (audioRef.current) {
+    const currentAudio = audioRef.current;
+    if (currentAudio && currentQuestion?.audioUrl) {
       lastAudioTimeRef.current = 0;
-      audioRef.current.load();
-      audioRef.current.play().catch((e) => console.log("Audio autoplay check", e));
+      currentAudio.load();
+      currentAudio.play().catch((e) => console.log("Audio autoplay check", e));
     }
-  }, [currentIndex]);
+
+    return () => {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+    };
+  }, [currentIndex, currentQuestion?.audioUrl]);
 
   // Auto-save đáp án
   const handleSelectAnswer = async (questionId: number, optionIndex: number) => {
@@ -208,11 +221,12 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
 
   // Nộp bài thi
   const handleSubmit = async () => {
-    if (submitting) return;
+    if (submitting || isSubmittingRef.current) return;
     
     const confirmSubmit = window.confirm("Bạn có chắc chắn muốn nộp bài thi thử? Bạn không thể sửa đáp án sau khi nộp.");
     if (!confirmSubmit) return;
 
+    isSubmittingRef.current = true;
     setSubmitting(true);
     setErrorMsg(null);
 
@@ -221,6 +235,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
       localStorage.setItem(`pending_submit_${sessionId}`, JSON.stringify({ sessionId, answers }));
       alert("Đã lưu bài làm tạm thời do sự cố mất mạng. Hệ thống sẽ tự động nộp bài khi có kết nối mạng trở lại.");
       setSubmitting(false);
+      isSubmittingRef.current = false;
       return;
     }
 
@@ -232,6 +247,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
       console.error("Failed to submit exam", err);
       setErrorMsg("Nộp bài thi thất bại. Vui lòng kiểm tra lại kết nối mạng.");
       setSubmitting(false);
+      isSubmittingRef.current = false;
       startCountdown();
     }
   };
@@ -263,7 +279,6 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
     );
   }
 
-  const currentQuestion = questions[currentIndex];
   const remainingSeconds = Math.max(0, durationSeconds - elapsedSeconds);
   const minutes = Math.floor(remainingSeconds / 60);
   const seconds = remainingSeconds % 60;
