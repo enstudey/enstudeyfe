@@ -315,5 +315,4 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
       </div>
     </div>
   );
-  );
 }

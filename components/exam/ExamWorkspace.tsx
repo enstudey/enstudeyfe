@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { resumeExam, saveExamAnswer, submitExam } from "@/lib/api/exam";
 import { ExamQuestion } from "@/types/exam";
 import { Button } from "@/components/ui/button";
-import { AlertCircle, Clock, Flag, WifiOff, Volume2, ArrowLeft, ArrowRight, Send } from "lucide-react";
+import { AlertCircle, Clock, Flag, Volume2, ArrowLeft, ArrowRight, Send } from "lucide-react";
 
 interface ExamWorkspaceProps {
   sessionId: string;
@@ -328,7 +328,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
               : "bg-sky-50 border border-sky-100/50 text-sky-700"
           }`}>
             <Clock className="w-4 h-4 shrink-0" />
-            <span data-testid="timer-countdown" className="font-mono font-black">
+            <span data-testid="timer-countdown" className="exam-timer font-mono font-black">
               {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
             </span>
           </div>
@@ -380,7 +380,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
               <span className="inline-flex items-center bg-sky-50 text-sky-600 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider mb-4">
                 📖 Đoạn văn đọc hiểu
               </span>
-              <div className="prose prose-sm max-w-none text-slate-800 text-sm leading-relaxed whitespace-pre-wrap font-medium">
+              <div className="exam-passage whitespace-pre-wrap font-medium select-text">
                 {currentQuestion.passage}
               </div>
             </div>
