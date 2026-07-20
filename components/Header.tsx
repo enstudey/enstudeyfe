@@ -129,6 +129,9 @@ export default function Header({ isStatic = false }: HeaderProps) {
               <span>EnStudey</span>
             </Link>
             <div className="hidden md:flex gap-6">
+              <Link href="/roadmap" className={getLinkClass("/roadmap")} data-testid="link-roadmap">
+                Lộ trình
+              </Link>
               <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news">
                 Tin tức học thuật
               </Link>
@@ -172,6 +175,9 @@ export default function Header({ isStatic = false }: HeaderProps) {
                     </DialogPrimitive.Close>
                   </div>
                   <div className="flex flex-col gap-6 pt-6">
+                    <Link href="/roadmap" className={getLinkClass("/roadmap")} data-testid="link-roadmap-mobile">
+                      Lộ trình
+                    </Link>
                     <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news-mobile">
                       Tin tức học thuật
                     </Link>
