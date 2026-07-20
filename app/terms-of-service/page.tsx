@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Điều khoản dịch vụ - EnStudey",
@@ -13,18 +11,13 @@ export const metadata: Metadata = {
 
 export default function TermsOfServicePage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-      {/* Header */}
-      <Header />
-
-      {/* Main Content */}
-      <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
+    <main className="py-12 w-full space-y-6 flex-grow">
         <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
           Điều khoản dịch vụ EnStudey
         </h1>
         <p className="text-xs text-slate-500 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
 
-        <div className="prose space-y-6 text-sm text-slate-700 leading-relaxed text-justify">
+        <div className="prose max-w-none space-y-6 text-sm text-slate-700 leading-relaxed text-justify">
           <p>
             Chào mừng bạn đến với <strong>EnStudey</strong> tại địa chỉ <a href="https://enstudey.com" className="underline font-semibold text-sky-600">enstudey.com</a>. Bằng việc truy cập, tham khảo tin tức hoặc sử dụng bất kỳ tiện ích tính toán nào trên trang web của chúng tôi, bạn đồng ý tuân thủ toàn bộ các điều khoản và quy định sử dụng dịch vụ dưới đây.
           </p>
@@ -98,10 +91,6 @@ export default function TermsOfServicePage() {
             EnStudey kính chúc toàn thể các bạn sĩ tử ôn tập hiệu quả, xây dựng chiến thuật nguyện vọng thông minh và đạt kết quả cao trong kỳ thi Đại học sắp tới!
           </p>
         </div>
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </main>
   );
 }

@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import AffiliateNativeRow from "@/components/affiliate/AffiliateNativeRow";
 import { Input } from "@/components/ui/input";
 import {
@@ -237,12 +235,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-      {/* Header */}
-      <Header />
-
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
+    <main className="py-12 flex-grow w-full space-y-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -702,11 +695,5 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
         </div>
       </main>
-
-      {/* Footer */}
-      <Footer />
-
-
-    </div>
   );
 }

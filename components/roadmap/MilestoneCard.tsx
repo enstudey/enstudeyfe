@@ -35,17 +35,17 @@ export function MilestoneCard({ milestone }: MilestoneCardProps) {
 
   return (
     <div
-      className={`rounded-2xl border transition-all p-6 ${
+      className={`rounded-card border transition-all p-6 ${
         isCompleted
           ? "bg-emerald-50/30 border-emerald-200 dark:bg-emerald-950/10 dark:border-emerald-900/40"
           : isLocked
           ? "bg-zinc-50 border-zinc-200 dark:bg-zinc-900/50 dark:border-zinc-800 opacity-70"
-          : "bg-white border-blue-200 dark:bg-zinc-900 dark:border-blue-900/50 shadow-md ring-2 ring-blue-500/20"
+          : "bg-white border-sky-100 dark:bg-zinc-900 dark:border-sky-950 shadow-md ring-2 ring-primary/10"
       }`}
     >
       <div className="flex items-start justify-between gap-4 mb-3">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-primary">
             Chặng {milestone.order}
           </span>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-white mt-0.5">
@@ -100,10 +100,10 @@ export function MilestoneCard({ milestone }: MilestoneCardProps) {
               {!isLocked && (
                 <Link
                   href={task.targetUrl || "#"}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap ${
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-btn transition-colors whitespace-nowrap ${
                     task.isCompleted
                       ? "bg-zinc-200 text-zinc-700 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-300"
-                      : "bg-blue-600 text-white hover:bg-blue-700"
+                      : "bg-primary text-white hover:bg-sky-600"
                   }`}
                 >
                   {task.isCompleted ? "Ôn Lại" : "Làm Ngay"}

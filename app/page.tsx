@@ -1,10 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { cookies } from "next/headers";
-import Footer from "@/components/Footer";
 import DailyQuizWidget from "@/components/quiz/DailyQuizWidget";
-import UserProfileDropdown from "@/components/UserProfileDropdown";
 import ExamLibraryShelf from "@/components/exam/ExamLibraryShelf";
 import { getStreakLeaderboard, LeaderboardResponse } from "@/lib/api/streak";
 
@@ -23,29 +20,18 @@ interface UserDto {
   avatarColor: string | null;
 }
 
-interface UserStreakDto {
-  currentStreak: number;
-  longestStreak: number;
-  lastActivityDate: string | null;
-}
-
 export default async function DashboardPage() {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
 
   let user: UserDto | null = null;
-  let streak: UserStreakDto = { currentStreak: 0, longestStreak: 0, lastActivityDate: null };
   let leaderboardData: LeaderboardResponse = { topUsers: [], currentUserRank: null };
   let isGuest = !token;
 
   if (token) {
     try {
-      const [userRes, streakRes, leaderboardRes] = await Promise.all([
+      const [userRes, leaderboardRes] = await Promise.all([
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`, {
-          headers: { Authorization: `Bearer ${token}` },
-          next: { revalidate: 0 }
-        }),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me/streak`, {
           headers: { Authorization: `Bearer ${token}` },
           next: { revalidate: 0 }
         }),
@@ -60,11 +46,6 @@ export default async function DashboardPage() {
         user = userData.data as UserDto;
       } else if (userRes.status === 401) {
         isGuest = true;
-      }
-
-      if (streakRes.ok) {
-        const streakData = await streakRes.json();
-        streak = streakData.data as UserStreakDto;
       }
 
       if (leaderboardRes && leaderboardRes.data) {
@@ -88,71 +69,7 @@ export default async function DashboardPage() {
   const googleLoginUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "http://localhost:8080/oauth2/authorization/google";
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans transition-colors duration-200">
-      {/* Header */}
-      <header className="bg-[#0F172A] border-b border-slate-800 sticky top-0 z-50 text-white">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-white">
-            <Image src="/icon-transparent.png" alt="EnStudey Logo" width={28} height={28} className="w-7 h-7" />
-            <span className="font-light tracking-tight">en<span className="font-semibold text-sky-400">Studey</span></span>
-          </Link>
-          
-          {/* Mode Switch (TOEIC / IELTS) */}
-          <div className="hidden sm:flex bg-slate-800 rounded-xl p-0.5 text-[10px] font-bold border border-slate-700">
-            <button className="bg-sky-500 text-white px-2.5 py-1 rounded-lg">TOEIC Mode</button>
-            <button className="text-slate-400 hover:text-white px-2.5 py-1">IELTS Mode</button>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium opacity-85">
-              <Link href="/exam" className="hover:text-sky-400 transition">Thi thử</Link>
-              <Link href="/speaking" className="hover:text-sky-400 transition">Luyện nói AI</Link>
-              <Link href="/mistake-bank" className="hover:text-sky-400 transition">Sổ tay câu sai</Link>
-              <Link href="/analytics" className="hover:text-sky-400 transition">Phân tích</Link>
-              <Link href="/blog" className="hover:text-sky-400 transition">Blog</Link>
-            </nav>
-
-            {/* Streak Widget */}
-            <div
-              className={`flex items-center gap-1.5 border px-3 py-1.5 rounded-full transition ${
-                isGuest
-                  ? "bg-slate-800 border-slate-700 opacity-60 cursor-help"
-                  : "bg-sky-500/10 border-sky-500/20"
-              }`}
-              title={isGuest ? "Đăng nhập bằng Google để rèn luyện tích luỹ streak mỗi ngày nha!" : "Chuỗi ngày học liên tiếp"}
-            >
-              <span className={isGuest ? "grayscale text-lg" : "text-lg"}>🔥</span>
-              <span className={`font-bold text-xs ${
-                isGuest
-                  ? "text-slate-400"
-                  : "text-sky-400"
-              }`}>
-                {isGuest ? "0 ngày" : `${streak.currentStreak} ngày nè`}
-              </span>
-            </div>
-
-            {/* User Profile / Login */}
-            {isGuest ? (
-              <a
-                href={googleLoginUrl}
-                className="text-xs font-bold bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 shadow-sm"
-              >
-                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114A5.99 5.99 0 0 1 8 12.5a5.99 5.99 0 0 1 5.99-6.014c1.49 0 2.859.549 3.92 1.455l3.224-3.224C19.146 2.88 16.792 2 13.99 2 8.155 2 3.5 6.655 3.5 12.5S8.155 23 13.99 23c5.3 0 9.878-3.727 9.878-10.5 0-.74-.066-1.455-.18-2.215H12.24Z" />
-                </svg>
-                Đăng nhập
-              </a>
-            ) : (
-              user && token && (
-                <UserProfileDropdown user={user} token={token} />
-              )
-            )}
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content (Bento Grid 12 Columns) */}
-      <main className="max-w-6xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-12">
+    <main className="py-10 grid gap-8 md:grid-cols-12 flex-grow w-full">
         {/* Left Area (8 Columns) */}
         <div className="md:col-span-7 lg:col-span-8 space-y-8">
           {/* Guest CTA Banner */}
@@ -377,8 +294,5 @@ export default async function DashboardPage() {
           </Link>
         </div>
       </main>
-
-      <Footer />
-    </div>
   );
 }

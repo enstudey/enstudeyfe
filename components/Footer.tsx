@@ -82,11 +82,11 @@ export default function Footer() {
           <p className="text-[10px] text-slate-500 font-semibold tracking-wider">
             © 2026 EnStudey. All rights reserved.
           </p>
-          
+
           {/* Badge Version trực quan */}
           <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-[9px] font-bold text-slate-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Version v2.0 - Core Exam Engine</span>
+            <span>Version 2.0</span>
           </div>
         </div>
       </div>

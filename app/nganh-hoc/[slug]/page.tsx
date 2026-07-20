@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { getAllPosts, getRelatedPosts } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
 import TableOfContents from "@/components/TableOfContents";
@@ -94,19 +92,15 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-        <Header />
-        <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-6 text-center">
-          <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
-            Ngành học không tồn tại rồi bạn ơi 🥺
-          </h1>
-          <p className="text-slate-500">Hình như bài viết review ngành học bạn yêu cầu hiện không có trên hệ thống.</p>
-          <Link href="/nganh-hoc" className="text-sm text-sky-600 hover:underline font-semibold">
-            &larr; Quay lại danh sách ngành học
-          </Link>
-        </main>
-        <Footer />
-      </div>
+      <main className="max-w-3xl mx-auto py-12 w-full flex-grow space-y-6 text-center">
+        <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
+          Ngành học không tồn tại rồi bạn ơi 🥺
+        </h1>
+        <p className="text-slate-500">Hình như bài viết review ngành học bạn yêu cầu hiện không có trên hệ thống.</p>
+        <Link href="/nganh-hoc" className="text-sm text-sky-600 hover:underline font-semibold">
+          &larr; Quay lại danh sách ngành học
+        </Link>
+      </main>
     );
   }
 
@@ -127,16 +121,15 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
   } : null;
 
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
+    <>
       {faqSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      <Header />
 
-      <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
+      <main className="py-12 flex-grow w-full space-y-6">
         <div>
           <Link href="/nganh-hoc" className="text-sm text-sky-600 hover:underline inline-flex items-center gap-1 font-semibold">
             &larr; Quay lại danh sách ngành học
@@ -202,8 +195,6 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
           </aside>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

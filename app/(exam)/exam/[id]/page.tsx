@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import { cookies } from "next/headers";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import StartExamCard from "@/components/exam/StartExamCard";
 import { getExamDetail } from "@/lib/api/exam";
 import { ChevronLeft } from "lucide-react";
@@ -45,10 +43,7 @@ export default async function ExamPreparePage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.04),transparent_65%)] text-foreground flex flex-col justify-between">
-      <Header />
-
-      <main className="max-w-5xl mx-auto px-6 py-12 flex-1 w-full flex flex-col justify-center space-y-6">
+    <main className="py-12 flex-grow w-full flex flex-col justify-center space-y-6">
         {/* Back Link */}
         <div className="w-full max-w-xl mx-auto">
           <Link
@@ -77,8 +72,5 @@ export default async function ExamPreparePage({ params }: PageProps) {
           />
         )}
       </main>
-
-      <Footer />
-    </div>
   );
 }

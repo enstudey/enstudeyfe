@@ -5,18 +5,79 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
+import UserProfileDropdown from "./UserProfileDropdown";
+
+interface UserDto {
+  id: string;
+  email: string;
+  fullName: string;
+  avatarUrl: string;
+  role: string;
+  isAnonymous: boolean;
+  avatarColor: string | null;
+}
+
+interface UserStreakDto {
+  currentStreak: number;
+  longestStreak: number;
+  lastActivityDate: string | null;
+}
 
 interface HeaderProps {
   isStatic?: boolean;
+  token?: string;
 }
 
-export default function Header({ isStatic = false }: HeaderProps) {
+export default function Header({ isStatic = false, token }: HeaderProps) {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [isSticky, setIsSticky] = useState(false);
   const lastScrollY = useRef(0);
   const scrollThreshold = 15; // Ngưỡng cuộn lên tối thiểu (px) để tránh giật lag
   const prevPathname = useRef(pathname);
+
+  const [user, setUser] = useState<UserDto | null>(null);
+  const [streak, setStreak] = useState<UserStreakDto | null>(null);
+  const [isGuest, setIsGuest] = useState(true);
+
+  const googleLoginUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "http://localhost:8080/oauth2/authorization/google";
+
+  useEffect(() => {
+    if (token) {
+      const fetchData = async () => {
+        try {
+          const headers = { Authorization: `Bearer ${token}` };
+          const [userRes, streakRes] = await Promise.all([
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`, { headers }),
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me/streak`, { headers })
+          ]);
+          
+          if (userRes.ok) {
+            const userData = await userRes.json();
+            setUser(userData.data as UserDto);
+            setIsGuest(false);
+          } else if (userRes.status === 401) {
+            setIsGuest(true);
+          }
+
+          if (streakRes.ok) {
+            const streakData = await streakRes.json();
+            setStreak(streakData.data as UserStreakDto);
+          }
+        } catch (e) {
+          console.error("Failed to fetch user data in header client-side", e);
+          setIsGuest(true);
+        }
+      };
+      fetchData();
+    } else {
+      Promise.resolve().then(() => {
+        setIsGuest(true);
+        setUser(null);
+        setStreak(null);
+      });
+    }
+  }, [token]);
 
   useEffect(() => {
     // Xác định xem đây có phải là chuyển đổi giữa các bài viết chi tiết tin tức (Related Articles click)
@@ -170,7 +231,39 @@ export default function Header({ isStatic = false }: HeaderProps) {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            {/* ThemeToggle has been removed */}
+            {/* Streak Widget */}
+            <div
+              className={`flex items-center gap-1.5 border px-3 py-1.5 rounded-full transition ${
+                isGuest
+                  ? "bg-slate-800 border-slate-700 opacity-60 cursor-help"
+                  : "bg-sky-500/10 border-sky-500/20"
+              }`}
+              title={isGuest ? "Đăng nhập bằng Google để rèn luyện tích luỹ streak mỗi ngày nha!" : "Chuỗi ngày học liên tiếp"}
+            >
+              <span className={isGuest ? "grayscale text-lg" : "text-lg"}>🔥</span>
+              <span className={`font-bold text-xs ${
+                isGuest
+                  ? "text-slate-400"
+                  : "text-sky-400"
+              }`}>
+                {isGuest ? "0 ngày" : `${streak?.currentStreak || 0} ngày`}
+              </span>
+            </div>
+
+            {/* User Profile / Login */}
+            {isGuest ? (
+              <a
+                href={googleLoginUrl}
+                className="text-xs font-bold bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 shadow-sm"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.115-5.136 4.115-3.414 0-6.146-2.73-6.146-6.146 0-3.414 2.732-6.146 6.146-6.146 1.488 0 2.842.533 3.916 1.408l3.116-3.115C19.123 2.13 16.035 1.05 12.24 1.05 6.07 1.05 1.05 6.07 1.05 12.24s5.02 11.19 11.19 11.19c5.8 0 10.66-4.08 10.66-10.66 0-.665-.06-1.305-.165-1.925H12.24z"/>
+                </svg>
+                <span>Đăng nhập</span>
+              </a>
+            ) : (
+              user && token && <UserProfileDropdown user={user} token={token} />
+            )}
           </div>
         </nav>
       </header>

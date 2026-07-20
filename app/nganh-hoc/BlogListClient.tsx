@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { PostData } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
 import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
@@ -38,10 +36,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
   const paginatedPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-      <Header />
-
-      <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
+    <main className="py-12 flex-grow w-full space-y-8">
         <div>
           <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Review Ngành học & Hướng nghiệp 🎓</h1>
           <p className="text-slate-500 text-sm mt-1">
@@ -146,8 +141,5 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
           </aside>
         </div>
       </main>
-
-      <Footer />
-    </div>
   );
 }

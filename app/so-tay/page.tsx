@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import SoTayClient from "./so-tay-client";
 
 export const metadata: Metadata = {
@@ -10,10 +8,6 @@ export const metadata: Metadata = {
 
 export default function SoTayPage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-      <Header />
-      <SoTayClient />
-      <Footer />
-    </div>
+    <SoTayClient />
   );
 }

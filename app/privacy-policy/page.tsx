@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Chính sách bảo mật - EnStudey",
@@ -12,18 +10,13 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-      {/* Header */}
-      <Header />
-
-      {/* Main Content */}
-      <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
+    <main className="py-12 w-full space-y-6 flex-grow">
         <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
           Chính sách bảo mật thông tin – Nền tảng EnStudey
         </h1>
         <p className="text-xs text-slate-600 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
 
-        <div className="prose space-y-6 text-sm text-slate-700 leading-relaxed text-justify">
+        <div className="prose max-w-none space-y-6 text-sm text-slate-700 leading-relaxed text-justify">
           <p>
             Chào mừng bạn đến với EnStudey (sau đây gọi tắt là &quot;chúng tôi&quot; hoặc &quot;nền tảng&quot;). Chúng tôi cam kết bảo vệ quyền riêng tư và an toàn dữ liệu trực tuyến của toàn bộ khách truy cập, đặc biệt là các bạn học sinh và phụ huynh khi sử dụng các công cụ học tập và tra cứu trên hệ thống.
           </p>
@@ -134,10 +127,6 @@ export default function PrivacyPolicyPage() {
             Chúng tôi trân trọng sự đồng hành của bạn. Chúc các bạn sĩ tử có một mùa thi rực rỡ và đạt kết quả tối ưu!
           </p>
         </div>
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </main>
   );
 }

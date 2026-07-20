@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -15,18 +13,13 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-      {/* Header */}
-      <Header />
-
-      {/* Main Content */}
-      <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
+    <main className="py-12 w-full space-y-6 flex-grow">
         <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
           Về chúng mình – EnStudey: Nền tảng hỗ trợ học tập cá nhân hóa
         </h1>
         <p className="text-xs text-slate-600 font-semibold">Cập nhật lần cuối: Ngày 05 tháng 07 năm 2026</p>
 
-        <div className="prose space-y-6 text-sm text-slate-700 leading-relaxed">
+        <div className="prose max-w-none space-y-6 text-sm text-slate-700 leading-relaxed">
           <p>
             Hello bạn nha! Chào mừng bạn đã &quot;hạ cánh&quot; tại <strong>EnStudey</strong>! 🚀
           </p>
@@ -88,10 +81,6 @@ export default function AboutPage() {
             Cứ tự nhiên học tập và tra cứu nhé. Chúc bạn một mùa thi rực rỡ và đỗ ngay nguyện vọng 1! ✨
           </p>
         </div>
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </main>
   );
 }

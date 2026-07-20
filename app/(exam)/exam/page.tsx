@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { cookies } from "next/headers";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { getExams } from "@/lib/api/exam";
 import { Exam } from "@/types/exam";
 import { Button } from "@/components/ui/button";
@@ -29,10 +27,7 @@ export default async function ExamsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.04),transparent_65%)] text-foreground flex flex-col justify-between">
-      <Header />
-
-      <main className="max-w-5xl mx-auto px-6 py-12 flex-1 w-full space-y-10">
+    <main className="py-12 flex-grow w-full space-y-10">
         {/* Header Section */}
         <div className="space-y-4 text-center md:text-left">
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground flex items-center justify-center md:justify-start gap-3">
@@ -101,8 +96,5 @@ export default async function ExamsPage() {
           </div>
         )}
       </main>
-
-      <Footer />
-    </div>
   );
 }

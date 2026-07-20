@@ -67,7 +67,7 @@ export function SurveyForm({ roadmaps }: SurveyFormProps) {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6 md:p-10 shadow-lg">
+    <div className="max-w-3xl mx-auto bg-white dark:bg-zinc-900 rounded-card border border-border p-6 md:p-10 shadow-lg">
       <div className="text-center mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-2">
           Khảo Sát Khởi Đầu Lộ Trình Học Tập
@@ -83,10 +83,10 @@ export function SurveyForm({ roadmaps }: SurveyFormProps) {
             key={item.key}
             type="button"
             onClick={() => setSelectedAudience(item.key)}
-            className={`flex items-start gap-4 p-5 rounded-2xl border text-left transition-all ${
+            className={`flex items-start gap-4 p-5 rounded-card border text-left transition-all ${
               selectedAudience === item.key
-                ? "bg-blue-50/50 border-blue-500 dark:bg-blue-950/20 dark:border-blue-500 ring-2 ring-blue-500/20"
-                : "bg-white border-zinc-200 hover:border-zinc-300 dark:bg-zinc-800/40 dark:border-zinc-700/60"
+                ? "bg-sky-50/30 border-primary dark:bg-sky-950/20 dark:border-primary ring-2 ring-primary/10"
+                : "bg-white border-border hover:border-zinc-300 dark:bg-zinc-800/40 dark:border-zinc-700/60"
             }`}
           >
             <span className="text-3xl">{item.icon}</span>
@@ -107,7 +107,7 @@ export function SurveyForm({ roadmaps }: SurveyFormProps) {
           type="button"
           disabled={isSubmitting}
           onClick={handleSelect}
-          className="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-md transition-all disabled:opacity-50"
+          className="px-8 py-3.5 bg-primary hover:bg-sky-600 text-white font-semibold rounded-btn shadow-md transition-all disabled:opacity-50"
         >
           {isSubmitting ? "Đang Khởi Tạo Lộ Trình..." : "Kích Hoạt Lộ Trình Ngay →"}
         </button>

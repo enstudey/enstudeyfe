@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { toast } from "@/lib/toast";
 import { Button } from "@/components/ui/button";
 import SubjectScoresInput from "./SubjectScoresInput";
@@ -427,10 +425,7 @@ export default function CalculatorPage() {
   const subjectsInTranscriptGroup = TRANSCRIPT_SUBJECT_GROUPS[selectedTranscriptGroup] || [];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-      <Header />
-
-      <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
+    <main className="py-12 w-full space-y-8 flex-grow">
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-extrabold tracking-tight text-foreground">
             Công cụ tính điểm xét tuyển Đại học 2026 chính xác
@@ -575,8 +570,5 @@ export default function CalculatorPage() {
 
         </div>
       </main>
-
-      <Footer />
-    </div>
   );
 }

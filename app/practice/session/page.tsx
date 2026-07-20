@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import PracticeSession from "@/components/practice/PracticeSession";
 import { AlertCircle } from "lucide-react";
 import Link from "next/link";
@@ -39,7 +37,6 @@ export default async function PracticeSessionPage({ searchParams }: SessionPageP
   if (!isValidExamType || !isValidMode || isNaN(limit)) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-black text-foreground flex flex-col justify-between transition-colors duration-200">
-        <Header />
         <main className="max-w-md mx-auto px-6 py-16 flex-1 flex flex-col justify-center space-y-6 text-center">
           <AlertCircle className="w-12 h-12 text-rose-600 mx-auto" />
           <h1 className="text-xl font-extrabold text-slate-900 dark:text-white">Lỗi tham số cấu hình</h1>
@@ -50,25 +47,20 @@ export default async function PracticeSessionPage({ searchParams }: SessionPageP
             Quay lại trang cấu hình &rarr;
           </Link>
         </main>
-        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-black text-foreground flex flex-col justify-between transition-colors duration-200">
-      <Header />
-      <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full">
-        <PracticeSession
-          token={token}
-          examType={examType}
-          part={part}
-          difficulty={difficulty}
-          limit={limit}
-          mode={mode}
-        />
-      </main>
-      <Footer />
-    </div>
+    <main className="py-12 flex-grow w-full">
+      <PracticeSession
+        token={token}
+        examType={examType}
+        part={part}
+        difficulty={difficulty}
+        limit={limit}
+        mode={mode}
+      />
+    </main>
   );
 }

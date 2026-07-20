@@ -44,6 +44,9 @@ html {
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.75rem;
+  --radius-card: 0.75rem;
+  --radius-btn: 0.5rem;
+  --radius-overlay: 1rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -73,6 +76,12 @@ html {
   --color-feedback-correct: #10b981;
   --color-feedback-incorrect: #f43f5e;
   --color-feedback-pending: #f59e0b;
+
+  /* Custom shadows and radius mapping */
+  --shadow-xs: var(--shadow-sm);
+  --radius-card: var(--radius-card);
+  --radius-btn: var(--radius-btn);
+  --radius-overlay: var(--radius-overlay);
 }
 
 body {

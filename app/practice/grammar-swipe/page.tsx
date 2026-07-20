@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import { cookies } from "next/headers";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import GrammarSwipeContainer from "@/components/practice/GrammarSwipeContainer";
 
 export const metadata: Metadata = {
@@ -18,16 +16,12 @@ export default async function GrammarSwipePage() {
     "http://localhost:8080/oauth2/authorization/google";
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-black text-foreground flex flex-col justify-between transition-colors duration-200">
-      <Header />
-      <main className="flex-1 flex flex-col bg-[#FAFAFA] dark:bg-black bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.03),transparent_60%)]">
-        <GrammarSwipeContainer 
-          isGuest={isGuest} 
-          googleLoginUrl={googleLoginUrl} 
-          token={token} 
-        />
-      </main>
-      <Footer />
-    </div>
+    <main className="flex-grow flex flex-col bg-[#FAFAFA] dark:bg-black bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.03),transparent_60%)]">
+      <GrammarSwipeContainer 
+        isGuest={isGuest} 
+        googleLoginUrl={googleLoginUrl} 
+        token={token} 
+      />
+    </main>
   );
 }

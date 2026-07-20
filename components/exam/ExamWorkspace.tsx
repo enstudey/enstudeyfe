@@ -25,6 +25,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [saveStatus, setSaveStatus] = useState<"saved" | "saving" | "error">("saved");
   const [activeTab, setActiveTab] = useState<"passage" | "question">("question");
+  const [isOffline, setIsOffline] = useState(false);
 
   const currentQuestion = questions[currentIndex];
 

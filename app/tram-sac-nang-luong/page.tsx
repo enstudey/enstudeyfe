@@ -1,8 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
 import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import donationsData from "@/data/donations.json";
 
 export const metadata: Metadata = {
@@ -18,10 +16,7 @@ export default function TramSacNangLuongPage() {
   const { donors, bank_name, account_name, account_no, qr_template_url } = donationsData;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col transition-colors duration-200">
-      <Header />
-
-      <main className="flex-1 max-w-6xl mx-auto px-6 pt-12 pb-0 w-full space-y-10">
+    <main className="flex-grow pt-12 pb-0 w-full space-y-10">
 
         {/* 1. Phần đầu trang */}
         <div className="bg-card border border-border rounded-3xl p-6 md:p-10 shadow-xs space-y-6">
@@ -153,8 +148,5 @@ export default function TramSacNangLuongPage() {
         </div>
 
       </main>
-
-      <Footer />
-    </div>
   );
 }

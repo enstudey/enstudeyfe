@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const FAQ_ITEMS = [
   {
@@ -31,12 +29,7 @@ export default function FAQPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-      {/* Header */}
-      <Header />
-
-      {/* Main Content */}
-      <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
+    <main className="py-12 w-full space-y-8 flex-grow">
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Hỏi đáp thường gặp về chọn ngành & chọn trường 💬</h1>
           <p className="text-slate-500 text-sm">
@@ -68,10 +61,6 @@ export default function FAQPage() {
         <div className="ad-container ad-v-block w-full">
           {/* AdSlot */}
         </div>
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </main>
   );
 }

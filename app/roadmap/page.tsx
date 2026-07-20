@@ -16,14 +16,14 @@ export default async function RoadmapPage() {
   const roadmap = await getCurrentRoadmap(token);
 
   return (
-    <main className="max-w-4xl mx-auto py-8 px-4 md:py-12">
+    <main className="py-12 flex-grow w-full">
       {roadmap ? (
         <>
           <RoadmapHeader roadmap={roadmap} />
           <RoadmapTimeline milestones={roadmap.milestones || []} />
         </>
       ) : (
-        <div className="text-center py-16 bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 p-8 shadow-lg max-w-xl mx-auto">
+        <div className="text-center py-16 bg-white dark:bg-zinc-900 rounded-card border border-border p-8 shadow-lg max-w-xl mx-auto">
           <div className="text-5xl mb-4">🗺️</div>
           <h1 className="text-2xl font-bold text-zinc-900 dark:text-white mb-2">
             Chưa Chọn Lộ Trình Học Tập
@@ -33,7 +33,7 @@ export default async function RoadmapPage() {
           </p>
           <Link
             href="/roadmap/survey"
-            className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm rounded-xl shadow-md transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 bg-primary hover:bg-sky-600 text-white font-semibold text-sm rounded-btn shadow-md transition-colors"
           >
             Bắt Đầu Khảo Sát Ngay →
           </Link>

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google";
+import { headers, cookies } from "next/headers";
 import AdSenseScript from "@/components/AdSenseScript";
 import GA4Provider from "@/components/analytics/GA4Provider";
 import CookieBanner from "@/components/cookie-banner";
 import ToastContainer from "@/components/toast/ToastContainer";
 import BottomTabBar from "@/components/BottomTabBar";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -47,11 +50,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
+  const pathname = headersList.get("x-pathname") || "";
+  const isIsolated =
+    pathname.startsWith("/quiz") ||
+    pathname.startsWith("/login") ||
+    pathname.includes("/exam/session/");
   return (
     <html
       lang="vi"
@@ -88,7 +99,15 @@ export default function RootLayout({
         <GA4Provider />
         <QueryProvider>
           <TooltipProvider>
-            {children}
+            {!isIsolated && <Header token={token} />}
+            {isIsolated ? (
+              children
+            ) : (
+              <div className="w-full max-w-6xl mx-auto px-6 flex-grow flex flex-col">
+                {children}
+              </div>
+            )}
+            {!isIsolated && <Footer />}
           </TooltipProvider>
         </QueryProvider>
         <CookieBanner />

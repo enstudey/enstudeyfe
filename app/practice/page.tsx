@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import PracticeSelectionClient from "./practice-selection-client";
 
 export const metadata: Metadata = {
@@ -18,10 +16,6 @@ export default async function PracticePage() {
     "http://localhost:8080/oauth2/authorization/google";
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-black text-foreground flex flex-col justify-between transition-colors duration-200">
-      <Header />
-      <PracticeSelectionClient isGuest={isGuest} googleLoginUrl={googleLoginUrl} />
-      <Footer />
-    </div>
+    <PracticeSelectionClient isGuest={isGuest} googleLoginUrl={googleLoginUrl} />
   );
 }

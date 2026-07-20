@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { getAllPosts, getRelatedPosts } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
 import TableOfContents from "@/components/TableOfContents";
@@ -10,7 +8,6 @@ import RelatedArticles from "@/components/RelatedArticles";
 import type { AffiliateProduct } from "@/types/affiliate";
 import productsData from "@/data/affiliate-products.json";
 import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
-
 
 // Helper chèn quảng cáo vào giữa nội dung bài viết (chống CLS)
 function insertInArticleAd(htmlContent: string): string {
@@ -101,20 +98,15 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
-        <Header />
-
-        <main className="max-w-3xl mx-auto px-6 py-12 flex-1 w-full space-y-6 text-center">
-          <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
-            Bài viết không tồn tại rồi bạn ơi 🥺
-          </h1>
-          <p className="text-slate-500">Hình như bài viết bạn yêu cầu hiện không có trên hệ thống hoặc đã được di chuyển đi nơi khác.</p>
-          <Link href="/tin-tuc" className="text-sm text-sky-600 hover:underline font-semibold">
-            &larr; Quay lại danh sách tin tức
-          </Link>
-        </main>
-        <Footer />
-      </div>
+      <main className="max-w-3xl mx-auto py-12 w-full flex-grow space-y-6 text-center">
+        <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
+          Bài viết không tồn tại rồi bạn ơi 🥺
+        </h1>
+        <p className="text-slate-500">Hình như bài viết bạn yêu cầu hiện không có trên hệ thống hoặc đã được di chuyển đi nơi khác.</p>
+        <Link href="/tin-tuc" className="text-sm text-sky-600 hover:underline font-semibold">
+          &larr; Quay lại danh sách tin tức
+        </Link>
+      </main>
     );
   }
 
@@ -135,18 +127,16 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
   } : null;
 
   return (
-    <div className="min-h-screen bg-slate-50 text-foreground flex flex-col justify-between transition-colors duration-200">
+    <>
       {faqSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-      {/* Header */}
-      <Header />
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
+      <main className="py-12 flex-grow w-full space-y-6">
         <div>
           <Link href="/tin-tuc" className="text-sm text-sky-600 hover:underline inline-flex items-center gap-1 font-semibold">
             &larr; Quay lại danh sách tin tức
@@ -154,7 +144,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
-          <article className="lg:col-span-7 prose leading-relaxed text-slate-700">
+          <article className="lg:col-span-7 prose max-w-none leading-relaxed text-slate-700">
             <span className="text-xs font-bold text-sky-600 uppercase tracking-wider">
               #{post.category.toUpperCase()}
             </span>
@@ -188,7 +178,19 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
               dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml ?? "")) }}
             />
 
-
+            {/* CTA Mini-Test */}
+            <div className="mt-8 p-6 bg-sky-50 border border-sky-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left not-prose">
+              <div className="space-y-1">
+                <h4 className="text-sm font-bold text-slate-950">Thực hành ngay với Mini-Test hôm nay</h4>
+                <p className="text-xs text-slate-500 font-medium">Rèn luyện lý thuyết vừa đọc để nhớ lâu hơn nhé.</p>
+              </div>
+              <Link
+                href="/tinh-diem-tot-nghiep"
+                className="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-xl transition duration-200 whitespace-nowrap"
+              >
+                Làm Test liền &rarr;
+              </Link>
+            </div>
           </article>
 
           {/* Sticky Sidebar */}
@@ -215,24 +217,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
 
         {/* Bài viết liên quan */}
         <RelatedArticles posts={relatedPosts} />
-
-        {/* CTA Mini-Test */}
-        {/* <div className="mt-8 p-6 bg-sky-50 border border-sky-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="space-y-1">
-            <h4 className="text-sm font-bold text-slate-950">Thực hành ngay với Mini-Test hôm nay</h4>
-            <p className="text-xs text-slate-500 font-medium">Rèn luyện lý thuyết vừa đọc để nhớ lâu hơn nhé.</p>
-          </div>
-          <Link
-            href="/tinh-diem-tot-nghiep"
-            className="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-xl transition duration-200 whitespace-nowrap"
-          >
-            Làm Test liền &rarr;
-          </Link>
-        </div> */}
       </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </>
   );
 }
