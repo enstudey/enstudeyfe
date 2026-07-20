@@ -55,27 +55,27 @@ const SUBJECT_GROUPS: {
   name: string;
   subjects: TranscriptSubjectKey[];
 }[] = [
-  {
-    id: "required",
-    name: "Nhóm môn bắt buộc",
-    subjects: ["math", "literature", "english"]
-  },
-  {
-    id: "natural",
-    name: "Tổ hợp Khoa học Tự nhiên",
-    subjects: ["physics", "chemistry", "biology"]
-  },
-  {
-    id: "social",
-    name: "Tổ hợp Khoa học Xã hội",
-    subjects: ["history", "geography", "gdktpl"]
-  },
-  {
-    id: "other",
-    name: "Môn Công nghệ & Ngoại ngữ phụ",
-    subjects: ["informatics", "techIndustrial", "techAgricultural", "otherLanguage"]
-  }
-];
+    {
+      id: "required",
+      name: "Nhóm môn bắt buộc",
+      subjects: ["math", "literature", "english"]
+    },
+    {
+      id: "natural",
+      name: "Tổ hợp Khoa học Tự nhiên",
+      subjects: ["physics", "chemistry", "biology"]
+    },
+    {
+      id: "social",
+      name: "Tổ hợp Khoa học Xã hội",
+      subjects: ["history", "geography", "gdktpl"]
+    },
+    {
+      id: "other",
+      name: "Môn Công nghệ & Ngoại ngữ phụ",
+      subjects: ["informatics", "techIndustrial", "techAgricultural", "otherLanguage"]
+    }
+  ];
 
 export default function TranscriptSelector({
   semesterScores,
@@ -171,7 +171,7 @@ export default function TranscriptSelector({
   return (
     <div className="space-y-6">
       <div className="space-y-4 pt-2">
-        <div className="border-l-4 border-violet-600 pl-3">
+        <div className="border-l-4 border-sky-600 pl-3">
           <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider">
             1. Nhập điểm học bạ 6 học kỳ (Thang điểm 10)
           </h2>
@@ -189,14 +189,13 @@ export default function TranscriptSelector({
                 <button
                   type="button"
                   onClick={() => toggleGroup(group.id)}
-                  className={`w-full px-5 py-4 flex items-center justify-between text-left transition ${
-                    group.id !== "required" ? "hover:bg-slate-50 cursor-pointer" : ""
-                  }`}
+                  className={`w-full px-5 py-4 flex items-center justify-between text-left transition ${group.id !== "required" ? "hover:bg-slate-50 cursor-pointer" : ""
+                    }`}
                 >
                   <span className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-2">
                     {group.name}
                     {group.id === "required" && (
-                      <span className="px-2 py-0.5 bg-violet-100 text-violet-750 text-[9px] font-bold rounded-full normal-case">
+                      <span className="px-2 py-0.5 bg-sky-100 text-sky-750 text-[9px] font-bold rounded-full normal-case">
                         Bắt buộc
                       </span>
                     )}

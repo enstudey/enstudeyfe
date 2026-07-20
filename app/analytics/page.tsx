@@ -39,8 +39,8 @@ export default async function AnalyticsPage() {
           </div>
 
           {/* CTA Box overlay */}
-          <div className="relative z-10 bg-white/90 dark:bg-slate-900/90 border border-violet-500/20 text-slate-900 dark:text-slate-100 rounded-3xl p-8 max-w-md text-center shadow-2xl space-y-6 backdrop-blur-md">
-            <div className="w-16 h-16 bg-violet-50 dark:bg-violet-950/40 text-violet-600 dark:text-violet-400 rounded-full flex items-center justify-center text-3xl mx-auto border border-violet-500/20">
+          <div className="relative z-10 bg-white/90 dark:bg-slate-900/90 border border-sky-500/20 text-slate-900 dark:text-slate-100 rounded-3xl p-8 max-w-md text-center shadow-2xl space-y-6 backdrop-blur-md">
+            <div className="w-16 h-16 bg-sky-50 dark:bg-sky-950/40 text-sky-600 dark:text-sky-400 rounded-full flex items-center justify-center text-3xl mx-auto border border-sky-500/20">
               📊
             </div>
             <div className="space-y-2">
@@ -53,7 +53,7 @@ export default async function AnalyticsPage() {
               <Button
                 asChild
                 size="lg"
-                className="font-bold text-xs bg-gradient-to-r from-violet-600 to-purple-600 text-white px-6 py-5 rounded-2xl shadow-lg hover:shadow-violet-600/20 active:scale-[0.98] transition-all duration-300 cursor-pointer"
+                className="font-bold text-xs bg-gradient-to-r from-sky-500 to-sky-655 text-white px-6 py-5 rounded-2xl shadow-lg hover:shadow-sky-500/20 active:scale-[0.98] transition-all duration-300 cursor-pointer"
               >
                 <a href={googleLoginUrl}>Đăng nhập Google ngay! ⚡</a>
               </Button>
@@ -66,8 +66,8 @@ export default async function AnalyticsPage() {
 
       <div className="text-center mt-10">
         <Link
-          href="/dashboard"
-          className="text-sm font-semibold text-violet-600 dark:text-violet-400 hover:underline"
+          href="/"
+          className="text-sm font-semibold text-slate-500 hover:text-slate-800"
         >
           &larr; Quay lại Dashboard
         </Link>

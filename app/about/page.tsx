@@ -70,7 +70,7 @@ export default function AboutPage() {
           </section>
 
           {/* Khung link điều hướng Trạm sạc */}
-          <div className="bg-violet-50 border border-violet-500/10 rounded-2xl p-5 text-center mt-6">
+          <div className="bg-sky-50 border border-sky-500/10 rounded-2xl p-5 text-center mt-6">
             <p className="text-xs text-slate-600 leading-relaxed mb-2">
               Để EnStudey có thể duy trì hoạt động lâu dài hoàn toàn miễn phí cho các thế hệ học sinh tiếp theo, bạn có thể ủng hộ tụi mình một ly cà phê muối nha.
             </p>
@@ -84,7 +84,7 @@ export default function AboutPage() {
             </Button>
           </div>
 
-          <p className="font-bold text-violet-600 mt-6">
+          <p className="font-bold text-sky-600 mt-6">
             Cứ tự nhiên học tập và tra cứu nhé. Chúc bạn một mùa thi rực rỡ và đỗ ngay nguyện vọng 1! ✨
           </p>
         </div>

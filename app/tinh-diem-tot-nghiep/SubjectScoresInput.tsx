@@ -40,7 +40,7 @@ export default function SubjectScoresInput({
 }: Props) {
   return (
     <div className="space-y-6">
-      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-violet-600 pl-3">
+      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-sky-600 pl-3">
         1. Nhập điểm thi THPT quốc gia (Thang điểm 10)
       </h2>
 
@@ -73,11 +73,10 @@ export default function SubjectScoresInput({
                 onBlur={e => handleScoreBlur && handleScoreBlur(sub.id as keyof typeof scores, e.target.value)}
                 id={`input-score-${sub.id}`}
                 data-testid={`input-score-${sub.id}`}
-                className={`font-bold text-base h-10 ${
-                  errors[sub.id]
+                className={`font-bold text-base h-10 ${errors[sub.id]
                     ? "border-red-500 focus-visible:border-red-500 text-red-500"
                     : "border-slate-200"
-                }`}
+                  }`}
               />
               {errors[sub.id] && (
                 <p className="text-red-500 text-[10px] font-semibold mt-1">{errors[sub.id]}</p>
@@ -104,11 +103,10 @@ export default function SubjectScoresInput({
               onBlur={e => handleScoreBlur && handleScoreBlur("techIndustrial", e.target.value)}
               id="input-score-techIndustrial"
               data-testid="input-score-techIndustrial"
-              className={`font-bold text-base h-10 ${
-                errors.techIndustrial
+              className={`font-bold text-base h-10 ${errors.techIndustrial
                   ? "border-red-500 focus-visible:border-red-500 text-red-500"
                   : "border-slate-200"
-              }`}
+                }`}
             />
             {errors.techIndustrial && (
               <p className="text-red-500 text-[10px] font-semibold mt-1">{errors.techIndustrial}</p>
@@ -126,11 +124,10 @@ export default function SubjectScoresInput({
               onBlur={e => handleScoreBlur && handleScoreBlur("techAgricultural", e.target.value)}
               id="input-score-techAgricultural"
               data-testid="input-score-techAgricultural"
-              className={`font-bold text-base h-10 ${
-                errors.techAgricultural
+              className={`font-bold text-base h-10 ${errors.techAgricultural
                   ? "border-red-500 focus-visible:border-red-500 text-red-500"
                   : "border-slate-200"
-              }`}
+                }`}
             />
             {errors.techAgricultural && (
               <p className="text-red-500 text-[10px] font-semibold mt-1">{errors.techAgricultural}</p>
@@ -170,11 +167,10 @@ export default function SubjectScoresInput({
               onBlur={e => handleScoreBlur && handleScoreBlur("otherLanguage", e.target.value)}
               id="input-score-otherLanguage"
               data-testid="input-score-otherLanguage"
-              className={`font-bold text-base h-10 ${
-                errors.otherLanguage
+              className={`font-bold text-base h-10 ${errors.otherLanguage
                   ? "border-red-500 focus-visible:border-red-500 text-red-500"
                   : "border-slate-200"
-              }`}
+                }`}
             />
             {errors.otherLanguage && (
               <p className="text-red-500 text-[10px] font-semibold mt-1">{errors.otherLanguage}</p>

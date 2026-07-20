@@ -29,7 +29,7 @@ export default function PracticeResult({
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
       {/* 1. Điểm số tổng quan */}
       <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-8 text-center max-w-xl mx-auto shadow-sm space-y-6">
-        <div className="w-20 h-20 mx-auto rounded-full bg-violet-50 dark:bg-violet-950/30 flex items-center justify-center text-violet-600 dark:text-violet-400 font-extrabold text-2xl shadow-inner animate-bounce">
+        <div className="w-20 h-20 mx-auto rounded-full bg-sky-50 dark:bg-sky-950/30 flex items-center justify-center text-sky-600 dark:text-sky-400 font-extrabold text-2xl shadow-inner animate-bounce font-mono">
           {score}%
         </div>
         <div className="space-y-2">
@@ -44,7 +44,7 @@ export default function PracticeResult({
 
         {/* Thông báo Mistake Bank */}
         {!isGuest ? (
-          <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/50 rounded-2xl p-4 flex items-start gap-2.5 text-left text-xs text-emerald-800 dark:text-emerald-350">
+          <div className="bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/50 rounded-2xl p-4 flex items-start gap-2.5 text-left text-xs text-emerald-800 dark:text-emerald-350">
             <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400 mt-0.5" />
             <span>Các câu hỏi làm sai đã được đồng bộ tự động vào <strong>Mistake Bank</strong> để ôn tập trong tương lai.</span>
           </div>
@@ -66,18 +66,18 @@ export default function PracticeResult({
           </Button>
           <Button
             asChild
-            className="bg-violet-600 hover:bg-violet-700 text-white rounded-xl text-xs font-bold py-2.5 px-4 cursor-pointer shadow flex items-center gap-1.5"
+            className="bg-[#0F172A] hover:bg-slate-800 text-white rounded-xl text-xs font-bold py-2.5 px-4 cursor-pointer shadow flex items-center gap-1.5"
           >
-            <Link href="/dashboard">
+            <Link href="/">
               <Home className="w-3.5 h-3.5 shrink-0" />
-              Dashboard
+              Trang Chủ
             </Link>
           </Button>
         </div>
       </div>
 
       {/* Placeholder quảng cáo chống Layout Shift (CLS = 0) */}
-      <div 
+      <div
         className="w-full max-w-2xl mx-auto bg-slate-100 dark:bg-slate-900/40 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 flex items-center justify-center text-[10px] text-slate-400 font-bold tracking-wider min-h-[250px]"
         data-testid="ad-container-result"
       >
@@ -110,14 +110,14 @@ export default function PracticeResult({
                     <p className="font-extrabold text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
                       {q.questionText}
                     </p>
-                    
+
                     {/* Trình phát âm thanh nếu có */}
                     {q.audioUrl && (
                       <div className="pt-1">
-                        <audio 
-                          src={q.audioUrl} 
-                          controls 
-                          controlsList="nodownload" 
+                        <audio
+                          src={q.audioUrl}
+                          controls
+                          controlsList="nodownload"
                           className="w-full max-w-md h-8 text-xs bg-slate-50 dark:bg-slate-900 rounded-lg"
                         />
                       </div>
@@ -141,9 +141,9 @@ export default function PracticeResult({
 
                       let buttonClass = "bg-transparent border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-350";
                       if (isRightOption) {
-                        buttonClass = "bg-emerald-50 border-emerald-400 text-emerald-800 dark:bg-emerald-950/20 dark:border-emerald-900 dark:text-emerald-400 font-bold";
+                        buttonClass = "bg-emerald-50/30 border-emerald-200 text-emerald-850 font-bold";
                       } else if (isUserSelected) {
-                        buttonClass = "bg-rose-50 border-rose-400 text-rose-800 dark:bg-rose-950/20 dark:border-rose-900 dark:text-rose-400 font-bold";
+                        buttonClass = "bg-rose-50/50 border-rose-200 text-rose-850 font-bold";
                       }
 
                       return (
@@ -161,7 +161,7 @@ export default function PracticeResult({
 
                 {/* Lời giải giải thích */}
                 <div className="pl-7 pt-3 border-t border-slate-100 dark:border-slate-900 space-y-1.5">
-                  <span className="text-[10px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest block">
+                  <span className="text-[10px] font-bold text-sky-500 dark:text-sky-400 uppercase tracking-widest block">
                     Lời giải chi tiết:
                   </span>
                   <p className="text-xs text-slate-650 dark:text-slate-350 leading-relaxed font-medium">

@@ -22,9 +22,9 @@ export default function BlogListPage() {
           Tất cả
         </Link>
         {CATEGORIES.map((cat) => (
-          <Link 
+          <Link
             key={cat.slug}
-            href={`/blog/category/${cat.slug}`} 
+            href={`/blog/category/${cat.slug}`}
             className="inline-flex items-center gap-1.5 text-sm font-semibold bg-slate-100 text-slate-800 px-4 py-2 rounded-full hover:bg-slate-200 transition"
           >
             <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={14} />
@@ -38,20 +38,20 @@ export default function BlogListPage() {
           const cat = getCategoryBySlug(post.category);
           return (
             <React.Fragment key={post.slug}>
-              <div className="border border-slate-150 bg-slate-50/50 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-violet-500/30 transition duration-300">
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 uppercase tracking-wider">
+              <div className="border border-slate-150 bg-slate-50/50 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-sky-500/30 transition duration-300">
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-600 uppercase tracking-wider">
                   {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={12} />}
                   {cat ? cat.name : post.category}
                 </span>
                 <h2 className="text-xl font-bold mt-2 mb-3 text-slate-950">
-                  <Link href={`/blog/${post.category}/${post.slug}`} className="hover:text-violet-600 transition duration-200">
+                  <Link href={`/blog/${post.category}/${post.slug}`} className="hover:text-sky-600 transition duration-200">
                     {post.title}
                   </Link>
                 </h2>
                 <p className="text-slate-650 text-sm leading-relaxed mb-4">
                   {post.description}
                 </p>
-                <Link href={`/blog/${post.category}/${post.slug}`} className="text-sm text-violet-600 font-medium hover:underline inline-flex items-center gap-1">
+                <Link href={`/blog/${post.category}/${post.slug}`} className="text-sm text-sky-600 font-medium hover:underline inline-flex items-center gap-1">
                   Đọc tiếp &rarr;
                 </Link>
               </div>

@@ -25,7 +25,7 @@ export default async function FlashcardsPage() {
 
       <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
         <div className="text-center space-y-2">
-          <span className="text-xs font-bold text-violet-600 uppercase tracking-widest block">
+          <span className="text-xs font-bold text-sky-600 uppercase tracking-widest block">
             Ghi nhớ dài hạn 🧠⚡
           </span>
           <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">

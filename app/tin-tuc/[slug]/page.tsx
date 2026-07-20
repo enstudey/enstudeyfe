@@ -53,10 +53,10 @@ function insertAffiliateTextLink(htmlContent: string): string {
 
   const affiliateHtml = `
     <div class="affiliate-text-block my-6 p-4 bg-slate-100 border border-slate-200/50 rounded-xl" contenteditable="false">
-      <span class="text-[10px] uppercase tracking-wider text-violet-600 font-bold block mb-1">Gợi ý dành cho bạn</span>
+      <span class="text-[10px] uppercase tracking-wider text-sky-600 font-bold block mb-1">Gợi ý dành cho bạn</span>
       <p class="text-sm text-slate-700 m-0 leading-relaxed">
          Bạn có thể tham khảo thêm tài liệu trong cuốn 
-        <a href="/redirect?url=${encodeURIComponent(`/go/${affiliateProduct.slug}`)}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-violet-600 hover:underline font-bold">${affiliateProduct.title}</a> 
+        <a href="/redirect?url=${encodeURIComponent(`/go/${affiliateProduct.slug}`)}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-sky-600 hover:underline font-bold">${affiliateProduct.title}</a> 
         để ôn luyện hiệu quả hơn.
       </p>
     </div>
@@ -109,7 +109,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             Bài viết không tồn tại rồi bạn ơi 🥺
           </h1>
           <p className="text-slate-500">Hình như bài viết bạn yêu cầu hiện không có trên hệ thống hoặc đã được di chuyển đi nơi khác.</p>
-          <Link href="/tin-tuc" className="text-sm text-violet-600 hover:underline font-semibold">
+          <Link href="/tin-tuc" className="text-sm text-sky-600 hover:underline font-semibold">
             &larr; Quay lại danh sách tin tức
           </Link>
         </main>
@@ -148,14 +148,14 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
         <div>
-          <Link href="/tin-tuc" className="text-sm text-violet-600 hover:underline inline-flex items-center gap-1 font-semibold">
+          <Link href="/tin-tuc" className="text-sm text-sky-600 hover:underline inline-flex items-center gap-1 font-semibold">
             &larr; Quay lại danh sách tin tức
           </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
           <article className="lg:col-span-7 prose leading-relaxed text-slate-700">
-            <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">
+            <span className="text-xs font-bold text-sky-600 uppercase tracking-wider">
               #{post.category.toUpperCase()}
             </span>
             <h1 className="text-3xl font-extrabold mt-2 mb-4 text-slate-900 leading-tight">
@@ -217,14 +217,14 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
         <RelatedArticles posts={relatedPosts} />
 
         {/* CTA Mini-Test */}
-        {/* <div className="mt-8 p-6 bg-violet-50 border border-violet-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        {/* <div className="mt-8 p-6 bg-sky-50 border border-sky-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="space-y-1">
             <h4 className="text-sm font-bold text-slate-950">Thực hành ngay với Mini-Test hôm nay</h4>
             <p className="text-xs text-slate-500 font-medium">Rèn luyện lý thuyết vừa đọc để nhớ lâu hơn nhé.</p>
           </div>
           <Link
             href="/tinh-diem-tot-nghiep"
-            className="px-5 py-2.5 bg-violet-600 hover:bg-violet-700 text-white text-xs font-bold rounded-xl transition duration-200 whitespace-nowrap"
+            className="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-xl transition duration-200 whitespace-nowrap"
           >
             Làm Test liền &rarr;
           </Link>

@@ -4,9 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Dialog, DialogTrigger, DialogPortal, DialogTitle } from "@/components/ui/dialog";
-import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
-import { Menu, X } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 interface HeaderProps {
   isStatic?: boolean;
@@ -92,15 +90,15 @@ export default function Header({ isStatic = false }: HeaderProps) {
     const isActive = pathname.startsWith(path);
     const baseClass = "text-xs font-bold uppercase tracking-wider transition-colors ";
     if (isActive) {
-      return baseClass + "text-slate-950 border-b-2 border-violet-600 pb-1";
+      return baseClass + "text-white border-b-2 border-sky-500 pb-1";
     }
-    return baseClass + "text-slate-500 hover:text-slate-950 pb-1 border-b-2 border-transparent";
+    return baseClass + "text-slate-400 hover:text-white pb-1 border-b-2 border-transparent";
   };
 
   let headerClass = "left-0 right-0 w-full transition-all duration-300 ";
   
   if (isStatic) {
-    headerClass += "relative bg-white border-b border-slate-100 h-16";
+    headerClass += "relative bg-[#0F172A] border-b border-slate-800 h-16 text-white";
   } else {
     headerClass += "fixed top-0 z-50 ";
     
@@ -111,9 +109,9 @@ export default function Header({ isStatic = false }: HeaderProps) {
     }
 
     if (isSticky) {
-      headerClass += "bg-white/90 backdrop-blur-md border-b border-slate-100 h-14 shadow-sm";
+      headerClass += "bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-800 h-14 shadow-md text-white";
     } else {
-      headerClass += "bg-white border-b border-slate-100 h-16";
+      headerClass += "bg-[#0F172A] border-b border-slate-800 h-16 text-white";
     }
   }
 
@@ -124,86 +122,55 @@ export default function Header({ isStatic = false }: HeaderProps) {
       <header className={headerClass} data-testid="header-container">
         <nav className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2 font-bold text-2xl text-slate-950 tracking-tight" data-testid="link-logo">
+            <Link href="/" className="flex items-center gap-2 font-bold text-2xl text-white tracking-tight" data-testid="link-logo">
               <Image src="/icon-transparent.png" alt="EnStudey Logo" width={32} height={32} className="w-8 h-8" />
-              <span>EnStudey</span>
+              <span className="font-light tracking-tight text-white">en<span className="font-semibold text-sky-400">Studey</span></span>
             </Link>
-            <div className="hidden md:flex gap-6">
-              <Link href="/roadmap" className={getLinkClass("/roadmap")} data-testid="link-roadmap">
-                Lộ trình
-              </Link>
-              <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news">
-                Tin tức học thuật
-              </Link>
-              <Link href="/flashcards" className={getLinkClass("/flashcards")} data-testid="link-flashcards">
-                Flashcard
-              </Link>
-              <Link href="/practice" className={getLinkClass("/practice")} data-testid="link-practice">
-                Luyện tập
-              </Link>
-              <Link href="/so-tay" className={getLinkClass("/so-tay")} data-testid="link-so-tay">
-                Sổ tay
-              </Link>
-              <Link href="/tinh-diem-tot-nghiep" className={getLinkClass("/tinh-diem-tot-nghiep")} data-testid="link-calc">
-                Công cụ tính điểm
-              </Link>
-              <Link href="/tra-cuu-tuyen-sinh" className={getLinkClass("/tra-cuu-tuyen-sinh")} data-testid="link-univ">
-                Tra cứu trường đại học
-              </Link>
-              <Link href="/tram-sac-nang-luong" className={getLinkClass("/tram-sac-nang-luong")} data-testid="link-donors">
-                Trạm sạc 🥤
+            
+            {/* Mode Switch (TOEIC / IELTS) */}
+            <div className="hidden sm:flex bg-slate-800 rounded-xl p-0.5 text-[10px] font-bold border border-slate-700">
+              <button className="bg-sky-500 text-white px-2.5 py-1 rounded-lg">TOEIC Mode</button>
+              <button className="text-slate-400 hover:text-white px-2.5 py-1">IELTS Mode</button>
+            </div>
+
+            <div className="hidden md:flex gap-6 items-center">
+              {/* Dropdown Luyện Đề */}
+              <div className="relative group py-2">
+                <button className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors duration-200">
+                  <span>Luyện đề</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
+                </button>
+                <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl p-2 w-48 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <Link href="/exam" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🏛️ Thi thử đầy đủ</Link>
+                  <Link href="/" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">⚡ Mini-test hàng ngày</Link>
+                  <Link href="/speaking" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🎙️ Luyện nói AI</Link>
+                  <Link href="/flashcards" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗂️ Flashcard</Link>
+                </div>
+              </div>
+
+              {/* Dropdown Khám Phá */}
+              <div className="relative group py-2">
+                <button className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors duration-200">
+                  <span>Khám phá</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
+                </button>
+                <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl p-2 w-52 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <Link href="/analytics" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📊 Phân tích học tập</Link>
+                  <Link href="/roadmap" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗺️ Lộ trình</Link>
+                  <Link href="/tin-tuc" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📰 Tin tức học thuật</Link>
+                  <Link href="/tinh-diem-tot-nghiep" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🧮 Tính điểm tốt nghiệp</Link>
+                  <Link href="/tra-cuu-tuyen-sinh" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🎓 Tra cứu tuyển sinh</Link>
+                  <Link href="/tram-sac-nang-luong" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🥤 Trạm sạc</Link>
+                </div>
+              </div>
+
+              <Link href="/mistake-bank" className={getLinkClass("/mistake-bank")} data-testid="link-mistake-bank">
+                Sổ câu sai
               </Link>
             </div>
           </div>
           <div className="flex items-center gap-4">
             {/* ThemeToggle has been removed */}
-            <div className="md:hidden flex items-center">
-              <Dialog>
-                <DialogTrigger className="p-2 -mr-2 text-slate-500 hover:text-slate-900 cursor-pointer" aria-label="Mở menu">
-                  <Menu className="w-6 h-6" />
-                </DialogTrigger>
-              <DialogPortal>
-                {/* Backdrop mờ nền */}
-                <DialogPrimitive.Backdrop className="fixed inset-0 z-50 bg-black/10 duration-150 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0" />
-                {/* Popup trượt từ phải sang (Drawer) */}
-                <DialogPrimitive.Popup className="fixed inset-y-0 right-0 z-50 h-full w-3/4 max-w-xs border-l bg-white p-6 shadow-lg duration-150 flex flex-col justify-start outline-none data-open:animate-in data-open:slide-in-from-right data-closed:animate-out data-closed:slide-out-to-right">
-                  <DialogTitle className="sr-only">Menu chính</DialogTitle>
-                  <div className="flex justify-between items-center pb-4 border-b border-slate-100">
-                    <span className="font-bold text-slate-800 text-sm">Danh mục</span>
-                    <DialogPrimitive.Close render={<button className="p-2 -mr-2 text-slate-500 hover:text-slate-900 cursor-pointer" aria-label="Đóng menu" />}>
-                      <X className="w-5 h-5" />
-                    </DialogPrimitive.Close>
-                  </div>
-                  <div className="flex flex-col gap-6 pt-6">
-                    <Link href="/roadmap" className={getLinkClass("/roadmap")} data-testid="link-roadmap-mobile">
-                      Lộ trình
-                    </Link>
-                    <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news-mobile">
-                      Tin tức học thuật
-                    </Link>
-                    <Link href="/flashcards" className={getLinkClass("/flashcards")} data-testid="link-flashcards-mobile">
-                      Flashcard
-                    </Link>
-                    <Link href="/practice" className={getLinkClass("/practice")} data-testid="link-practice-mobile">
-                      Luyện tập
-                    </Link>
-                    <Link href="/so-tay" className={getLinkClass("/so-tay")} data-testid="link-so-tay-mobile">
-                      Sổ tay
-                    </Link>
-                    <Link href="/tinh-diem-tot-nghiep" className={getLinkClass("/tinh-diem-tot-nghiep")} data-testid="link-calc-mobile">
-                      Công cụ tính điểm
-                    </Link>
-                    <Link href="/tra-cuu-tuyen-sinh" className={getLinkClass("/tra-cuu-tuyen-sinh")} data-testid="link-univ-mobile">
-                      Tra cứu trường đại học
-                    </Link>
-                    <Link href="/tram-sac-nang-luong" className={getLinkClass("/tram-sac-nang-luong")} data-testid="link-donors-mobile">
-                      Trạm sạc 🥤
-                    </Link>
-                  </div>
-                </DialogPrimitive.Popup>
-              </DialogPortal>
-              </Dialog>
-            </div>
           </div>
         </nav>
       </header>

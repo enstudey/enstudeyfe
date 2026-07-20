@@ -80,7 +80,7 @@ export default function PrivacyPolicyPage() {
                   Việc Google sử dụng cookie quảng cáo cho phép Google và các đối tác phân phát quảng cáo đến người dùng dựa trên thông tin truy cập một cách phù hợp và tối ưu trải nghiệm trực quan.
                 </li>
                 <li>
-                  Người dùng có thể chủ động tắt tính năng quảng cáo cá nhân hóa bằng cách truy cập vào trang <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-violet-600 hover:underline">Cài đặt quảng cáo của Google</a>.
+                  Người dùng có thể chủ động tắt tính năng quảng cáo cá nhân hóa bằng cách truy cập vào trang <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-sky-600 hover:underline">Cài đặt quảng cáo của Google</a>.
                 </li>
               </ul>
             </div>
@@ -130,7 +130,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <p className="font-bold text-violet-600 mt-6 text-center">
+          <p className="font-bold text-sky-600 mt-6 text-center">
             Chúng tôi trân trọng sự đồng hành của bạn. Chúc các bạn sĩ tử có một mùa thi rực rỡ và đạt kết quả tối ưu!
           </p>
         </div>

@@ -93,7 +93,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
         if (stored) {
           const parsed = JSON.parse(stored);
           setComputedScores(parsed);
-          
+
           // Tính điểm tốt nghiệp cao nhất và set làm scoreRange ban đầu (max + 1)
           const validScores = Object.values(parsed).filter((s): s is number => typeof s === "number");
           if (validScores.length > 0) {
@@ -128,7 +128,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
   // Thực hiện chuyển đổi và lọc dữ liệu đa chiều bằng useMemo để tối ưu hóa hiệu năng
   const filteredResults = useMemo(() => {
     if (!scoresData) return [];
-    
+
     const flatList: FlatBenchmarkItem[] = [];
 
     Object.entries(scoresData).forEach(([uniCode, uniData]) => {
@@ -212,7 +212,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
   const getScoreColorClass = (item: FlatBenchmarkItem) => {
     if (!computedScores || item.score === null) return "text-slate-600 font-bold";
-    
+
     let userScore = 0;
     if (selectedGroup !== "Tất cả tổ hợp") {
       userScore = computedScores[selectedGroup] || 0;
@@ -267,31 +267,31 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
         {computedScores ? (
           <div className="space-y-4">
-            <div className="bg-violet-50 border border-violet-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="bg-sky-50 border border-sky-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <span className="leading-relaxed">
                 Hệ thống đang đối sánh tự động dựa trên điểm số đã tính:{" "}
                 <span className="inline-flex flex-wrap gap-x-2 gap-y-1 mt-1.5 sm:mt-0 sm:ml-1 align-middle">
                   {topThreeScores.map(([group, score]) => (
-                    <span key={group} className="inline-block bg-white px-2 py-0.5 rounded border border-violet-500/10 whitespace-nowrap text-[11px]">
-                      <span className="font-bold text-violet-600">{group}</span>: {score.toFixed(2)}
+                    <span key={group} className="inline-block bg-white px-2 py-0.5 rounded border border-sky-500/10 whitespace-nowrap text-[11px]">
+                      <span className="font-bold text-sky-600">{group}</span>: {score.toFixed(2)}
                     </span>
                   ))}
                 </span>
               </span>
-              <Link href="/tinh-diem-tot-nghiep" className="text-violet-600 hover:underline whitespace-nowrap font-bold flex-shrink-0 self-start sm:self-auto">
+              <Link href="/tinh-diem-tot-nghiep" className="text-sky-600 hover:underline whitespace-nowrap font-bold flex-shrink-0 self-start sm:self-auto">
                 Tính điểm lại &rarr;
               </Link>
             </div>
-            
+
             {/* Anti-CLS In-feed AdSlot dưới phần điểm tổng - Sử dụng Banner ELSA Speak Affiliate */}
-            <div 
+            <div
               key={`infeed-${adKey}`}
               className="w-full min-h-[160px] md:min-h-[180px] rounded-2xl overflow-hidden shadow-xs border border-slate-200/60"
               data-testid="ad-infeed-points"
             >
-              <Link 
-                href="/go/elsaspeak" 
-                target="_blank" 
+              <Link
+                href="/go/elsaspeak"
+                target="_blank"
                 rel="noopener noreferrer nofollow sponsored"
                 onClick={() => {
                   trackAffiliateClick({
@@ -311,10 +311,10 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               >
                 {/* Overlay màu tối nhẹ ở nửa bên trái để chữ dễ đọc */}
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-900/40 to-transparent z-1" />
-                
+
                 {/* Text đè lên phía bên trái */}
                 <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 md:w-1/2 flex flex-col justify-center p-6 z-10 text-white space-y-1.5 md:space-y-2">
-                  <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-violet-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
+                  <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-sky-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
                     Đối tác tuyển sinh
                   </span>
                   <h3 className="font-extrabold text-sm md:text-lg leading-snug">
@@ -324,7 +324,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                     Lộ trình cá nhân hóa giúp nâng band Speaking cấp tốc để xét tuyển thẳng Đại học. Nhận ngay học bổng ưu đãi 30% khi đăng ký hôm nay.
                   </p>
                   <div className="pt-1">
-                    <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-violet-600 group-hover:bg-violet-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
+                    <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-sky-600 group-hover:bg-sky-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
                       Tìm hiểu ngay &rarr;
                     </span>
                   </div>
@@ -335,7 +335,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
         ) : (
           <div className="bg-slate-100 border border-slate-200 rounded-2xl p-4 text-xs font-semibold text-slate-650 flex justify-between items-center">
             <span>Bạn chưa tính điểm thi THPT? Tính ngay để xem gợi ý các phân vùng an toàn/rủi ro.</span>
-            <Link href="/tinh-diem-tot-nghiep" className="text-violet-600 hover:underline">
+            <Link href="/tinh-diem-tot-nghiep" className="text-sky-600 hover:underline">
               Tính điểm thi &rarr;
             </Link>
           </div>
@@ -353,7 +353,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   data-testid="input-search"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-violet-600 text-sm font-semibold"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-600 text-sm font-semibold"
                 />
               </div>
               <div className="lg:col-span-2 space-y-1.5">
@@ -415,7 +415,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
             <div className="space-y-2 pt-4 border-t border-border">
               <div className="flex justify-between text-[10px] font-bold text-slate-500 tracking-wider uppercase">
                 <label htmlFor="score-range-input">Khoảng điểm sàn</label>
-                <span className="text-violet-600">{scoreRange} Điểm</span>
+                <span className="text-sky-600">{scoreRange} Điểm</span>
               </div>
               <input
                 id="score-range-input"
@@ -426,7 +426,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 value={scoreRange}
                 onChange={(e) => setScoreRange(parseFloat(e.target.value))}
                 data-testid="input-score-range"
-                className="w-full accent-violet-600 cursor-pointer"
+                className="w-full accent-sky-600 cursor-pointer"
               />
             </div>
           </div>
@@ -464,7 +464,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                               {item.universityName} ({item.universityCode})
                             </p>
                             {item.note && (
-                              <p className="text-[10px] text-violet-600 italic mt-0.5">{item.note}</p>
+                              <p className="text-[10px] text-sky-600 italic mt-0.5">{item.note}</p>
                             )}
                           </td>
                           <td className="px-6 py-4 font-bold text-slate-650 text-xs">
@@ -480,7 +480,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                             {item.score !== null ? item.score : "-"}
                           </td>
                         </tr>
-                        
+
                         {/* Native Ads xen kẽ sau mỗi 5 kết quả trên desktop */}
                         {(idx + 1) % 5 === 0 && paginatedResults.length >= 5 && (
                           <AffiliateNativeRow rowIndex={idx} currentPage={currentPage} />
@@ -536,7 +536,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                         </span>
                       </div>
                       {item.note && (
-                        <p className="text-[10px] text-violet-600 italic leading-relaxed bg-violet-50 p-2 rounded-lg border border-violet-500/10 mt-1">{item.note}</p>
+                        <p className="text-[10px] text-sky-600 italic leading-relaxed bg-sky-50 p-2 rounded-lg border border-sky-500/10 mt-1">{item.note}</p>
                       )}
                     </div>
 
@@ -551,16 +551,15 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                   Không tìm thấy ngành học nào khớp với bộ lọc của bạn 🥺
                 </div>
               )}
-          </div>
-          {totalPages > 1 && (
-            <div className="p-5 bg-slate-50 border-t border-border">
+            </div>
+            {totalPages > 1 && (
+              <div className="p-5 bg-slate-50 border-t border-border">
                 {/* Mobile version */}
                 <div className="flex md:hidden items-center justify-center gap-1">
                   <Link
                     href={`/tra-cuu-tuyen-sinh?page=${Math.max(currentPage - 1, 1)}`}
-                    className={`w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0 ${
-                      currentPage === 1 ? "pointer-events-none opacity-40" : ""
-                    }`}
+                    className={`w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0 ${currentPage === 1 ? "pointer-events-none opacity-40" : ""
+                      }`}
                   >
                     &larr;
                   </Link>
@@ -593,7 +592,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                           <Link
                             key={`mobile-dots-${idx}`}
                             href={`/tra-cuu-tuyen-sinh?page=${item.page}`}
-                            className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-violet-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex-shrink-0 text-center flex items-center justify-center"
+                            className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-sky-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex-shrink-0 text-center flex items-center justify-center"
                           >
                             {item.label}
                           </Link>
@@ -603,11 +602,10 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                         <Link
                           key={`mobile-page-${item}`}
                           href={`/tra-cuu-tuyen-sinh?page=${item}`}
-                          className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer flex-shrink-0 ${
-                            currentPage === item
-                              ? "bg-violet-600 text-white font-extrabold"
+                          className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer flex-shrink-0 ${currentPage === item
+                              ? "bg-sky-600 text-white font-extrabold"
                               : "border border-slate-200 bg-white hover:bg-slate-50 text-slate-650"
-                          }`}
+                            }`}
                         >
                           {item}
                         </Link>
@@ -617,9 +615,8 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
                   <Link
                     href={`/tra-cuu-tuyen-sinh?page=${Math.min(currentPage + 1, totalPages)}`}
-                    className={`w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0 ${
-                      currentPage === totalPages ? "pointer-events-none opacity-40" : ""
-                    }`}
+                    className={`w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer flex-shrink-0 ${currentPage === totalPages ? "pointer-events-none opacity-40" : ""
+                      }`}
                   >
                     &rarr;
                   </Link>
@@ -629,9 +626,8 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 <div className="hidden md:flex items-center justify-center gap-2">
                   <Link
                     href={`/tra-cuu-tuyen-sinh?page=${Math.max(currentPage - 1, 1)}`}
-                    className={`px-4 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 cursor-pointer flex items-center justify-center ${
-                      currentPage === 1 ? "pointer-events-none opacity-40" : ""
-                    }`}
+                    className={`px-4 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 cursor-pointer flex items-center justify-center ${currentPage === 1 ? "pointer-events-none opacity-40" : ""
+                      }`}
                   >
                     &larr; Trước
                   </Link>
@@ -671,7 +667,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                           <Link
                             key={`desktop-dots-${idx}`}
                             href={`/tra-cuu-tuyen-sinh?page=${item.page}`}
-                            className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-violet-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex items-center justify-center"
+                            className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-sky-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex items-center justify-center"
                           >
                             {item.label}
                           </Link>
@@ -681,11 +677,10 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                         <Link
                           key={`desktop-page-${item}`}
                           href={`/tra-cuu-tuyen-sinh?page=${item}`}
-                          className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${
-                            currentPage === item
-                              ? "bg-violet-600 text-white font-extrabold"
+                          className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${currentPage === item
+                              ? "bg-sky-600 text-white font-extrabold"
                               : "border border-slate-200 bg-white hover:bg-slate-50 text-slate-650"
-                          }`}
+                            }`}
                         >
                           {item}
                         </Link>
@@ -695,9 +690,8 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
                   <Link
                     href={`/tra-cuu-tuyen-sinh?page=${Math.min(currentPage + 1, totalPages)}`}
-                    className={`px-4 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 cursor-pointer flex items-center justify-center ${
-                      currentPage === totalPages ? "pointer-events-none opacity-40" : ""
-                    }`}
+                    className={`px-4 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition text-xs font-bold text-slate-650 cursor-pointer flex items-center justify-center ${currentPage === totalPages ? "pointer-events-none opacity-40" : ""
+                      }`}
                   >
                     Sau &rarr;
                   </Link>

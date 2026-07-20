@@ -301,21 +301,21 @@ export default function PracticeSession({
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[350px] space-y-4">
-        <div className="w-12 h-12 border-4 border-violet-600 border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-muted-foreground text-sm font-medium">Đang tải cấu trúc câu hỏi...</p>
+        <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-slate-500 text-sm font-medium">Đang tải cấu trúc câu hỏi...</p>
       </div>
     );
   }
 
   if (errorMsg && questions.length === 0) {
     return (
-      <div className="max-w-md mx-auto bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900 rounded-3xl p-8 space-y-6 text-center shadow-sm">
-        <AlertCircle className="w-12 h-12 text-red-600 mx-auto" />
+      <div className="max-w-md mx-auto bg-rose-50 dark:bg-red-950/20 border border-rose-200 dark:border-red-900 rounded-3xl p-8 space-y-6 text-center shadow-sm">
+        <AlertCircle className="w-12 h-12 text-rose-600 mx-auto" />
         <div className="space-y-2">
-          <h2 className="text-lg font-extrabold text-red-800 dark:text-red-300">Không tìm thấy câu hỏi</h2>
-          <p className="text-xs text-red-650 dark:text-red-400 leading-relaxed">{errorMsg}</p>
+          <h2 className="text-lg font-extrabold text-rose-800 dark:text-red-300">Không tìm thấy câu hỏi</h2>
+          <p className="text-xs text-rose-650 dark:text-red-400 leading-relaxed">{errorMsg}</p>
         </div>
-        <Button onClick={loadData} className="w-full bg-red-600 hover:bg-red-700 text-white rounded-xl py-3 font-bold text-xs cursor-pointer shadow">
+        <Button onClick={loadData} className="w-full bg-rose-600 hover:bg-rose-700 text-white rounded-xl py-3 font-bold text-xs cursor-pointer shadow">
           Thử tải lại
         </Button>
       </div>
@@ -355,7 +355,7 @@ export default function PracticeSession({
       )}
 
       {/* Progress Bar & Timer */}
-      <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-4 rounded-2xl shadow-sm flex items-center justify-between gap-4">
+      <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-4 rounded-2xl shadow-xs flex items-center justify-between gap-4">
         {/* Progress */}
         <div className="flex-1 space-y-1.5">
           <div className="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider">
@@ -364,7 +364,7 @@ export default function PracticeSession({
           </div>
           <div className="w-full bg-slate-100 dark:bg-slate-900 h-2 rounded-full overflow-hidden">
             <div 
-              className="bg-violet-600 h-full transition-all duration-300"
+              className="bg-sky-500 h-full transition-all duration-300"
               style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
             />
           </div>
@@ -372,18 +372,16 @@ export default function PracticeSession({
 
         {/* Timer */}
         <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 px-3.5 py-2 rounded-xl" data-testid="timer-countdown">
-          <Clock className="w-4 h-4 text-violet-600 shrink-0" />
+          <Clock className="w-4 h-4 text-sky-500 shrink-0" />
           <span className="font-mono text-xs font-bold text-slate-700 dark:text-slate-350">
             {mode === "TEST" ? formatTime(timeLeft) : formatTime(elapsedSeconds)}
           </span>
         </div>
       </div>
-
-      {/* Question Card */}
       <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
         <div className="space-y-4">
           <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500 font-extrabold uppercase tracking-wider">
-            <BookOpen className="w-4 h-4 text-violet-600 shrink-0" />
+            <BookOpen className="w-4 h-4 text-sky-500 shrink-0" />
             <span>Câu hỏi {currentIndex + 1} • {part} ({examType})</span>
           </div>
 
@@ -395,7 +393,7 @@ export default function PracticeSession({
         {/* Audio Player dành cho Listening Parts */}
         {currentQuestion.audioUrl ? (
           <div className="bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 rounded-2xl flex flex-col sm:flex-row items-center gap-3">
-            <Volume2 className="w-5 h-5 text-violet-600 shrink-0" />
+            <Volume2 className="w-5 h-5 text-sky-500 shrink-0" />
             <audio
               ref={audioRef}
               src={currentQuestion.audioUrl}
@@ -450,16 +448,16 @@ export default function PracticeSession({
               if (showExpl) {
                 if (isCorrectAnswer) {
                   // Đáp án đúng hiển thị màu xanh
-                  optClass = "bg-emerald-50 border-emerald-500 text-emerald-800 dark:bg-emerald-950/20 dark:border-emerald-900 dark:text-emerald-400 font-bold pointer-events-none";
+                  optClass = "bg-emerald-50/30 border-emerald-200 text-emerald-800 dark:bg-emerald-950/20 dark:border-emerald-900 dark:text-emerald-400 font-bold pointer-events-none";
                 } else if (isSelected) {
                   // Người dùng chọn sai hiển thị màu đỏ
-                  optClass = "bg-rose-50 border-rose-500 text-rose-800 dark:bg-rose-950/20 dark:border-rose-900 dark:text-rose-400 font-bold pointer-events-none";
+                  optClass = "bg-rose-50/50 border-rose-200 text-rose-850 dark:bg-rose-950/20 dark:border-rose-900 dark:text-rose-400 font-bold pointer-events-none";
                 } else {
-                  optClass = "border-slate-100 dark:border-slate-900 text-slate-400 dark:text-slate-600 pointer-events-none";
+                  optClass = "border-slate-100 dark:border-slate-900 text-slate-400 dark:text-slate-650 pointer-events-none";
                 }
               } else if (isSelected) {
                 // Đang chọn trong chế độ test (chưa nộp)
-                optClass = "bg-violet-60/5 border-violet-500 text-violet-750 dark:text-violet-400 font-bold";
+                optClass = "bg-sky-50 border-sky-500 text-sky-955 font-bold";
               }
 
               return (
@@ -469,7 +467,7 @@ export default function PracticeSession({
                   className={`w-full py-4 px-5 rounded-2xl border text-left transition flex items-center gap-3 text-xs md:text-sm cursor-pointer ${optClass}`}
                 >
                   <span className={`w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
-                    isSelected ? "bg-violet-600 text-white" : "bg-slate-100 dark:bg-slate-850 text-slate-500"
+                    isSelected ? "bg-sky-500 text-white shadow-xs" : "bg-slate-100 dark:bg-slate-850 text-slate-500"
                   }`}>
                     {alphabet[optIdx]}
                   </span>
@@ -489,8 +487,8 @@ export default function PracticeSession({
 
         {/* Lời giải giải thích cho PRACTICE mode */}
         {showExplanation[currentQuestion.id] && (
-          <div className="bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 p-5 rounded-2xl space-y-2 animate-in fade-in slide-in-from-top-1">
-            <span className="text-[10px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest block">
+          <div className="bg-sky-50/20 border border-sky-100/50 p-5 rounded-2xl space-y-2 animate-in fade-in slide-in-from-top-1">
+            <span className="text-[10px] font-bold text-sky-655 dark:text-sky-400 uppercase tracking-widest block">
               Lời giải chi tiết:
             </span>
             <p className="text-xs text-slate-650 dark:text-slate-350 leading-relaxed font-medium">
@@ -519,7 +517,7 @@ export default function PracticeSession({
           {mode === "PRACTICE" && showExplanation[currentQuestion.id] && !isLastQuestion && (
             <Button
               onClick={handleNext}
-              className="bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold py-3 px-6 text-xs cursor-pointer shadow flex items-center gap-1.5"
+              className="bg-sky-500 hover:bg-sky-600 text-white rounded-xl font-bold py-3 px-6 text-xs cursor-pointer shadow flex items-center gap-1.5"
             >
               <span>Câu tiếp theo</span>
               <ChevronRight className="w-4 h-4 shrink-0" />
@@ -530,7 +528,7 @@ export default function PracticeSession({
             <Button
               onClick={handleNext}
               disabled={!isQuestionAnswered}
-              className="bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold py-3 px-6 text-xs cursor-pointer shadow flex items-center gap-1.5 disabled:opacity-55"
+              className="bg-sky-500 hover:bg-sky-600 text-white rounded-xl font-bold py-3 px-6 text-xs cursor-pointer shadow flex items-center gap-1.5 disabled:opacity-55"
             >
               <span>Câu tiếp theo</span>
               <ChevronRight className="w-4 h-4 shrink-0" />
@@ -543,7 +541,7 @@ export default function PracticeSession({
               onClick={() => handleSubmit()}
               disabled={submitting}
               data-testid="btn-submit-quiz"
-              className="bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-extrabold py-3.5 px-8 text-xs cursor-pointer shadow-md flex items-center gap-1.5 disabled:opacity-50"
+              className="bg-[#0F172A] hover:bg-slate-800 text-white rounded-xl font-extrabold py-3.5 px-8 text-xs cursor-pointer shadow-md flex items-center gap-1.5 disabled:opacity-50"
             >
               {submitting ? "Đang chấm điểm..." : "Nộp bài"}
             </Button>

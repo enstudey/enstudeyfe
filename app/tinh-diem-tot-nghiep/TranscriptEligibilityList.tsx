@@ -148,7 +148,7 @@ export default function TranscriptEligibilityList({
 
   return (
     <div className="space-y-6 pt-6 border-t border-slate-100">
-      <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-violet-600 pl-3">
+      <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-sky-600 pl-3">
         3. Khai báo thông tin phụ và Đối sánh điều kiện tuyển sinh các trường
       </h3>
 
@@ -231,11 +231,10 @@ export default function TranscriptEligibilityList({
             <div
               key={`${item.universityCode}-${item.majorCode}-${idx}`}
               data-testid={`transcript-univ-card-${item.universityCode}-${item.majorCode}`}
-              className={`p-4 border rounded-2xl space-y-2 transition duration-200 ${
-                item.eligible
+              className={`p-4 border rounded-2xl space-y-2 transition duration-200 ${item.eligible
                   ? "bg-emerald-50/30 border-emerald-500/20"
                   : "bg-red-50/30 border-red-500/20"
-              }`}
+                }`}
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
@@ -252,13 +251,12 @@ export default function TranscriptEligibilityList({
                 <div className="flex items-center gap-3">
                   <div className="text-right">
                     <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Điểm chuẩn học bạ</span>
-                    <span className="text-sm font-extrabold text-violet-600">{item.benchmark.toFixed(2)}</span>
+                    <span className="text-sm font-extrabold text-sky-600">{item.benchmark.toFixed(2)}</span>
                   </div>
-                  <span className={`px-3 py-1 text-[10px] font-bold uppercase rounded-full tracking-wider ${
-                    item.eligible
+                  <span className={`px-3 py-1 text-[10px] font-bold uppercase rounded-full tracking-wider ${item.eligible
                       ? "bg-emerald-100 text-emerald-800"
                       : "bg-red-100 text-red-800"
-                  }`}>
+                    }`}>
                     {item.eligible ? "Đủ điều kiện" : "Không đủ"}
                   </span>
                 </div>

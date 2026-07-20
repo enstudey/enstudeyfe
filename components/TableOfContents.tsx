@@ -10,7 +10,7 @@ export default function TableOfContents({ contentHtml }: { contentHtml: string }
   const headings: HeadingItem[] = [];
   const regex = /<h([23])\s+id="([^"]+)"[^>]*>(.*?)<\/h\1>/g;
   let match;
-  
+
   // Trích xuất các tiêu đề H2, H3 đã được gắn ID
   while ((match = regex.exec(contentHtml)) !== null) {
     const level = parseInt(match[1], 10);
@@ -28,11 +28,10 @@ export default function TableOfContents({ contentHtml }: { contentHtml: string }
         {headings.map((h, i) => (
           <li
             key={i}
-            className={`${
-              h.level === 3 
-                ? "pl-4 text-slate-500" 
-                : "text-violet-600 hover:underline"
-            }`}
+            className={`${h.level === 3
+                ? "pl-4 text-slate-500"
+                : "text-sky-600 hover:underline"
+              }`}
           >
             <a href={`#${h.id}`} className="hover:underline transition duration-150">
               {h.text}

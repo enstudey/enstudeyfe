@@ -19,8 +19,8 @@ export default function RelatedArticles({ posts }: RelatedArticlesProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {posts.map((post, idx) => (
           <React.Fragment key={post.slug}>
-            <Link 
-              href={`/tin-tuc/${post.slug}`} 
+            <Link
+              href={`/tin-tuc/${post.slug}`}
               scroll={false}
               className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:shadow-md transition duration-300 flex flex-col h-full"
             >
@@ -44,7 +44,7 @@ export default function RelatedArticles({ posts }: RelatedArticlesProps) {
                       </span>
                     );
                   })()}
-                  <h4 className="text-sm font-bold text-foreground group-hover:text-violet-600 transition-colors line-clamp-2">
+                  <h4 className="text-sm font-bold text-foreground group-hover:text-sky-600 transition-colors line-clamp-2">
                     {post.title}
                   </h4>
                 </div>

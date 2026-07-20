@@ -176,7 +176,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   if (loading) {
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-xl mx-auto shadow-sm flex flex-col items-center justify-center min-h-[350px] space-y-4">
-        <div className="w-12 h-12 border-4 border-violet-650 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
         <p className="text-sm font-semibold text-slate-500">Đang chuẩn bị đề ôn tập câu sai...</p>
       </div>
     );
@@ -185,7 +185,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   if (error) {
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-xl mx-auto shadow-sm space-y-6">
-        <div className="w-16 h-16 bg-red-50 text-red-600 rounded-full flex items-center justify-center text-3xl mx-auto">
+        <div className="w-16 h-16 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center text-3xl mx-auto">
           ⚠️
         </div>
         <div className="space-y-2">
@@ -194,7 +194,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
             {error}
           </p>
         </div>
-        <Button onClick={onClose} className="bg-violet-650 hover:bg-violet-700 text-white font-bold px-6 rounded-xl cursor-pointer">
+        <Button onClick={onClose} className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 rounded-xl cursor-pointer">
           Quay lại Sổ tay
         </Button>
       </div>
@@ -205,8 +205,8 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   if (scoreInfo) {
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-8 max-w-xl mx-auto shadow-xl text-center space-y-6 animate-fadeIn">
-        <div className="mx-auto w-20 h-20 rounded-full bg-violet-50 flex items-center justify-center">
-          <Award className="w-10 h-10 text-violet-600" />
+        <div className="mx-auto w-20 h-20 rounded-full bg-sky-50 flex items-center justify-center">
+          <Award className="w-10 h-10 text-sky-500" />
         </div>
 
         {isOffline ? (
@@ -226,7 +226,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
               Bạn đã hoàn thành lượt ôn tập này. Hệ thống đã cập nhật độ thành thạo và streak tương ứng.
             </p>
             <div className="pt-4">
-              <span className="text-5xl font-black text-violet-600">{scoreInfo.score}</span>
+              <span className="text-5xl font-black text-sky-500 font-mono">{scoreInfo.score}</span>
               <span className="text-xl font-bold text-slate-400"> / {scoreInfo.total} câu đúng</span>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
         <Button 
           data-testid="btn-submit-quiz"
           onClick={onClose} 
-          className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 rounded-xl cursor-pointer"
+          className="w-full bg-[#0F172A] hover:bg-slate-800 text-white font-bold py-4 rounded-xl cursor-pointer"
         >
           Quay lại Dashboard Sổ tay
         </Button>
@@ -250,7 +250,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {/* Top Navigation */}
       <div className="flex justify-between items-center pb-4 border-b border-slate-100">
         <div className="space-y-1">
-          <span className="text-[10px] font-black text-violet-600 uppercase tracking-wider">Phiên ôn tập câu sai</span>
+          <span className="text-[10px] font-black text-sky-600 uppercase tracking-wider">Phiên ôn tập câu sai</span>
           <h3 className="text-sm font-bold text-slate-800">
             Câu hỏi {currentIndex + 1} / {questions.length}
           </h3>
@@ -266,7 +266,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {/* Tiến độ chạy (Progress Bar) */}
       <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
         <div 
-          className="bg-violet-600 h-full transition-all duration-300"
+          className="bg-sky-500 h-full transition-all duration-300"
           style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
         />
       </div>
@@ -274,7 +274,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {/* Nội dung câu hỏi */}
       <div className="space-y-4">
         <div className="flex items-start gap-2 text-slate-800">
-          <HelpCircle className="w-5 h-5 text-violet-600 mt-1 shrink-0" />
+          <HelpCircle className="w-5 h-5 text-sky-500 mt-1 shrink-0" />
           <p className="font-semibold text-sm sm:text-base leading-relaxed">
             {currentQuestion.questionText}
           </p>
@@ -296,22 +296,22 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
                 disabled={isAnswered}
                 className={`p-4 rounded-2xl border text-xs sm:text-sm font-semibold flex items-center justify-between text-left transition ${
                   isCorrectOption
-                    ? "bg-emerald-50 text-emerald-800 border-emerald-300 shadow-sm"
+                    ? "bg-emerald-50/30 text-emerald-800 border-emerald-250 shadow-xs"
                     : isWrongChoice
-                    ? "bg-red-50 text-red-800 border-red-300 shadow-sm"
+                    ? "bg-rose-50/50 text-rose-800 border-rose-250 shadow-xs"
                     : isSelected
-                    ? "bg-violet-50 text-violet-800 border-violet-300 shadow-sm"
+                    ? "bg-sky-50 text-sky-800 border-sky-300 shadow-xs"
                     : "bg-white text-slate-700 hover:bg-slate-50 border-slate-200"
                 } ${isAnswered ? "cursor-default" : "cursor-pointer hover:scale-[1.01] active:scale-[0.99]"}`}
               >
                 <div className="flex items-center gap-3">
                   <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                     isCorrectOption 
-                      ? "bg-emerald-600 text-white" 
+                      ? "bg-emerald-500 text-white" 
                       : isWrongChoice
-                      ? "bg-red-600 text-white"
+                      ? "bg-rose-500 text-white"
                       : isSelected
-                      ? "bg-violet-600 text-white"
+                      ? "bg-sky-500 text-white"
                       : "bg-slate-100 text-slate-500"
                   }`}>
                     {["A", "B", "C", "D"][idx]}
@@ -320,7 +320,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
                 </div>
 
                 {isCorrectOption && <Check className="w-4 h-4 text-emerald-600 shrink-0" />}
-                {isWrongChoice && <X className="w-4 h-4 text-red-600 shrink-0" />}
+                {isWrongChoice && <X className="w-4 h-4 text-rose-600 shrink-0" />}
               </button>
             );
           })}
@@ -329,12 +329,12 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
 
       {/* Hiển thị Giải thích câu hỏi sau khi chọn */}
       {isAnswered && explanation && (
-        <div className="bg-violet-50 border border-violet-100 rounded-2xl p-4 text-xs sm:text-sm space-y-2 animate-slideDown">
-          <div className="font-bold text-violet-850 flex items-center gap-1.5">
+        <div className="bg-sky-50/20 border border-sky-100/50 rounded-2xl p-4 text-xs sm:text-sm space-y-2 animate-slideDown">
+          <div className="font-bold text-sky-850 flex items-center gap-1.5">
             <BookOpen className="w-4 h-4" />
             Giải thích đáp án:
           </div>
-          <p className="text-slate-700 leading-relaxed font-medium">
+          <p className="text-slate-600 leading-relaxed font-medium">
             {explanation}
           </p>
         </div>
@@ -344,7 +344,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {isAnswered && (
         <Button
           onClick={handleNext}
-          className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow hover:shadow-lg transition active:scale-[0.98]"
+          className="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow hover:shadow-lg transition active:scale-[0.98]"
         >
           {currentIndex < questions.length - 1 ? "Câu tiếp theo" : "Nộp bài và hoàn thành"}
           <ChevronRight className="w-4 h-4" />

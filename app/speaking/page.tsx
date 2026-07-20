@@ -26,7 +26,7 @@ export default async function SpeakingPage() {
           <span className="text-lg">⚠️</span>
           <div>
             Bạn đang luyện nói ở mode ẩn danh. Cuộc hội thoại và đánh giá phát âm từ AI sẽ không được lưu lại.{" "}
-            <a href={googleLoginUrl} className="underline font-bold text-violet-600 hover:text-violet-750 transition">
+            <a href={googleLoginUrl} className="underline font-bold text-sky-655 hover:text-sky-700 transition">
               Đăng nhập ngay
             </a>{" "}
             để lưu trữ lịch sử học tập nhé!
@@ -34,21 +34,21 @@ export default async function SpeakingPage() {
         </div>
       )}
 
-      <div className="bg-card border border-border rounded-2xl p-10 max-w-md mx-auto shadow-sm">
-        <div className="w-20 h-20 bg-violet-50 text-violet-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+      <div className="bg-white border border-slate-100 rounded-2xl p-10 max-w-md mx-auto shadow-xs">
+        <div className="w-20 h-20 bg-sky-50 text-sky-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
           🎙️
         </div>
         <h2 className="text-xl font-bold mb-2">Bắt đầu hội thoại</h2>
-        <p className="text-sm text-muted-foreground mb-6">
+        <p className="text-sm text-slate-500 mb-6 leading-relaxed">
           AI sẽ đưa ra chủ đề và bắt đầu hội thoại với bạn trong vòng 5 phút.
         </p>
-        <Button className="font-bold w-full py-5 rounded-xl shadow-md">
+        <Button className="font-bold w-full py-5 rounded-xl shadow-md cursor-pointer">
           Kết nối Micro & Bắt đầu
         </Button>
       </div>
 
       <div className="mt-8">
-        <Link href="/dashboard" className="text-sm text-violet-600 hover:underline">
+        <Link href="/" className="text-sm text-slate-500 hover:text-slate-800">
           &larr; Quay lại Dashboard
         </Link>
       </div>

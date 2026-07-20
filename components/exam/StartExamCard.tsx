@@ -48,7 +48,7 @@ export default function StartExamCard({
             durationSeconds: res.data.durationSeconds
           })
         );
-        router.push(`/exams/session/${res.data.sessionExamId}`);
+        router.push(`/exam/session/${res.data.sessionExamId}`);
       } else {
         throw new Error("Không nhận được mã phiên thi hợp lệ từ máy chủ.");
       }
@@ -63,7 +63,7 @@ export default function StartExamCard({
     <div className="bg-card border border-border shadow-sm rounded-3xl p-6 md:p-8 space-y-6 w-full max-w-xl mx-auto">
       {/* Title */}
       <div className="space-y-2 text-center">
-        <div className="inline-flex items-center justify-center p-3 bg-violet-50 rounded-2xl text-violet-600">
+        <div className="inline-flex items-center justify-center p-3 bg-sky-50 rounded-2xl text-sky-600">
           <Sparkles className="w-6 h-6 animate-pulse" />
         </div>
         <h2 className="text-xl md:text-2xl font-black text-foreground">{title}</h2>

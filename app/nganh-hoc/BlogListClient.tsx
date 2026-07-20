@@ -73,10 +73,10 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                   </div>
                   <div className="p-5 flex-1 flex flex-col justify-between">
                     <div className="space-y-2">
-                      <span className="text-[10px] font-extrabold text-violet-600 uppercase tracking-widest">
+                      <span className="text-[10px] font-extrabold text-sky-600 uppercase tracking-widest">
                         Ngành học
                       </span>
-                      <h3 className="font-extrabold text-slate-900 text-base leading-snug hover:text-violet-600 transition">
+                      <h3 className="font-extrabold text-slate-900 text-base leading-snug hover:text-sky-600 transition">
                         <Link href={`/nganh-hoc/${post.slug}`}>{post.title}</Link>
                       </h3>
                       <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
@@ -85,7 +85,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                     </div>
                     <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-4 text-[11px] text-slate-400 font-semibold">
                       <span>{post.date}</span>
-                      <Link href={`/nganh-hoc/${post.slug}`} className="text-violet-600 hover:underline">
+                      <Link href={`/nganh-hoc/${post.slug}`} className="text-sky-600 hover:underline">
                         Đọc chi tiết &rarr;
                       </Link>
                     </div>
@@ -99,9 +99,8 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
               <div className="flex justify-center items-center gap-2 pt-6 border-t border-slate-200">
                 <Link
                   href={`/nganh-hoc?page=${currentPage - 1}`}
-                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${
-                    currentPage === 1 ? "pointer-events-none opacity-50" : ""
-                  }`}
+                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${currentPage === 1 ? "pointer-events-none opacity-50" : ""
+                    }`}
                 >
                   &larr;&nbsp;<span className="hidden sm:inline">Trước</span>
                 </Link>
@@ -115,11 +114,10 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                     <Link
                       key={item}
                       href={`/nganh-hoc?page=${item}`}
-                      className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-full transition ${
-                        currentPage === item
-                          ? "bg-violet-600 text-white"
+                      className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-full transition ${currentPage === item
+                          ? "bg-sky-600 text-white"
                           : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-55"
-                      }`}
+                        }`}
                     >
                       {item}
                     </Link>
@@ -128,9 +126,8 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
                 <Link
                   href={`/nganh-hoc?page=${currentPage + 1}`}
-                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${
-                    currentPage === totalPages ? "pointer-events-none opacity-50" : ""
-                  }`}
+                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${currentPage === totalPages ? "pointer-events-none opacity-50" : ""
+                    }`}
                 >
                   <span className="hidden sm:inline">Sau&nbsp;</span>&rarr;
                 </Link>

@@ -10,8 +10,8 @@ const MOCK_ADS = [
     description: "Nhận giáo trình luyện nói phản xạ 1-1 miễn phí tối ưu cho người bận rộn.",
     cta: "Thử Ngay Lên Trình",
     tag: "Tài trợ",
-    gradient: "from-violet-500/10 via-violet-500/5 to-transparent",
-    border: "border-violet-500/20"
+    gradient: "from-sky-500/10 via-sky-500/5 to-transparent",
+    border: "border-sky-500/20"
   },
   {
     title: "Sổ Tay 1000 Từ Vựng TOEIC Cực Dễ",
@@ -58,7 +58,7 @@ export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?
 
   if (!isMounted) {
     return (
-      <div 
+      <div
         className="w-full min-h-[250px] bg-slate-50 animate-pulse rounded-2xl border border-slate-200 my-6"
         data-testid="ad-banner-placeholder"
       />
@@ -68,7 +68,7 @@ export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?
   const ad = MOCK_ADS[adIndex];
 
   return (
-    <div 
+    <div
       className={`w-full min-h-[250px] bg-gradient-to-r ${ad.gradient} bg-white flex flex-col justify-between p-6 my-6 rounded-2xl overflow-hidden border ${ad.border} shadow-sm transition-all duration-300 relative`}
       data-testid="ad-banner"
     >
@@ -79,7 +79,7 @@ export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?
       </div>
 
       <div className="space-y-2 mt-2">
-        <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">
+        <span className="text-xs font-bold text-sky-600 uppercase tracking-wider">
           Quảng cáo được đề xuất
         </span>
         <h3 className="text-xl font-extrabold text-slate-900 leading-snug">

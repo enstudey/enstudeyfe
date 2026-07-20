@@ -4,6 +4,7 @@ import AdSenseScript from "@/components/AdSenseScript";
 import GA4Provider from "@/components/analytics/GA4Provider";
 import CookieBanner from "@/components/cookie-banner";
 import ToastContainer from "@/components/toast/ToastContainer";
+import BottomTabBar from "@/components/BottomTabBar";
 import "./globals.css";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -82,7 +83,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-background text-foreground pb-16 md:pb-0">
         <GA4Provider />
         <QueryProvider>
           <TooltipProvider>
@@ -91,6 +92,7 @@ export default function RootLayout({
         </QueryProvider>
         <CookieBanner />
         <ToastContainer />
+        <BottomTabBar />
       </body>
     </html>
   );

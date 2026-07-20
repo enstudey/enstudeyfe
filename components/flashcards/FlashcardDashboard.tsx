@@ -300,7 +300,7 @@ export default function FlashcardDashboard({ token, isGuest = true }: FlashcardD
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[350px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-violet-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sky-500"></div>
         <p className="text-xs text-slate-500 mt-3 font-semibold">Đang nạp dữ liệu từ vựng...</p>
       </div>
     );
@@ -317,7 +317,7 @@ export default function FlashcardDashboard({ token, isGuest = true }: FlashcardD
               onClick={() => handleSwitchExam("TOEIC")}
               className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 examType === "TOEIC"
-                  ? "bg-white dark:bg-slate-800 text-violet-750 dark:text-violet-400 shadow-sm"
+                  ? "bg-white dark:bg-slate-800 text-sky-655 dark:text-sky-400 shadow-sm"
                   : "text-slate-500 hover:text-slate-700"
               }`}
             >
@@ -327,7 +327,7 @@ export default function FlashcardDashboard({ token, isGuest = true }: FlashcardD
               onClick={() => handleSwitchExam("IELTS")}
               className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 examType === "IELTS"
-                  ? "bg-white dark:bg-slate-800 text-violet-750 dark:text-violet-400 shadow-sm"
+                  ? "bg-white dark:bg-slate-800 text-sky-655 dark:text-sky-400 shadow-sm"
                   : "text-slate-500 hover:text-slate-700"
               }`}
             >
@@ -339,11 +339,11 @@ export default function FlashcardDashboard({ token, isGuest = true }: FlashcardD
           <div className="flex gap-6 w-full sm:w-auto justify-end sm:justify-start px-2">
             <div className="text-center">
               <span className="block text-[9px] uppercase font-bold text-slate-400 tracking-wider">Streak</span>
-              <span className="text-sm font-extrabold text-violet-650">🔥 {streak} ngày</span>
+              <span className="text-sm font-extrabold text-sky-500">🔥 {streak} ngày</span>
             </div>
             <div className="text-center">
               <span className="block text-[9px] uppercase font-bold text-slate-400 tracking-wider">Kinh nghiệm</span>
-              <span className="text-sm font-extrabold text-emerald-600">✨ {xp} XP</span>
+              <span className="text-sm font-extrabold text-emerald-600 font-mono">✨ {xp} XP</span>
             </div>
           </div>
         </div>

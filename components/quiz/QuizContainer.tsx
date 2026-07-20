@@ -333,17 +333,17 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
 
       {loading ? (
         <div className="flex flex-col items-center justify-center min-h-[350px] space-y-4">
-          <div className="w-12 h-12 border-4 border-violet-600 border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-muted-foreground text-sm font-medium">Đang chuẩn bị học liệu...</p>
+          <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-slate-500 text-sm font-medium">Đang chuẩn bị học liệu...</p>
         </div>
       ) : stage === "select" ? (
         <div className="space-y-8">
           <div className="space-y-4">
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight flex items-center justify-center gap-2">
-              <GraduationCap className="w-9 h-9 text-violet-600" />
+              <GraduationCap className="w-9 h-9 text-sky-500" />
               Daily Mini-Test 10 Câu
             </h1>
-            <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            <p className="text-slate-500 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
               Duy trì thói quen học tiếng Anh mỗi ngày cùng đề kiểm tra nhanh. Đề thi sẽ tự động ưu tiên các chủ đề bạn làm chưa tốt!
             </p>
           </div>
@@ -354,7 +354,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
               <span className="text-lg">⚠️</span>
               <div>
                 Bạn đang làm bài ở chế độ ẩn danh. Để tích lũy Streak hàng ngày và lưu sổ tay câu sai vĩnh viễn, hãy{" "}
-                <a href={googleLoginUrl} className="underline font-bold text-violet-600 hover:text-violet-700 transition">
+                <a href={googleLoginUrl} className="underline font-bold text-sky-600 hover:text-sky-700 transition">
                   Đăng nhập Google ngay
                 </a>!
               </div>
@@ -380,7 +380,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
             {/* TOEIC Option Card */}
             <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition text-left flex flex-col justify-between space-y-6">
               <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-violet-50 flex items-center justify-center font-bold text-violet-600 text-lg">
+                <div className="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center font-bold text-sky-655 text-lg">
                   T
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">TOEIC Mini-Test</h3>
@@ -390,7 +390,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
               </div>
               <Button
                 onClick={() => handleStartQuiz("TOEIC")}
-                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 rounded-xl shadow cursor-pointer"
+                className="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 rounded-xl shadow cursor-pointer"
               >
                 Làm đề TOEIC
               </Button>
@@ -409,7 +409,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
               </div>
               <Button
                 onClick={() => handleStartQuiz("IELTS")}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow cursor-pointer"
+                className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 rounded-xl shadow cursor-pointer"
               >
                 Làm đề IELTS
               </Button>
@@ -417,7 +417,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
           </div>
 
           <div className="pt-6">
-            <Link href="/dashboard" className="text-sm text-violet-600 hover:underline inline-flex items-center gap-1">
+            <Link href="/" className="text-sm text-slate-500 hover:text-slate-800 inline-flex items-center gap-1">
               &larr; Quay lại Dashboard
             </Link>
           </div>

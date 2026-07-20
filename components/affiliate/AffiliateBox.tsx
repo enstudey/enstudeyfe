@@ -32,7 +32,7 @@ export default function AffiliateBox() {
 
   return (
     <div
-      className="w-full bg-violet-50/40 border border-violet-500/10 rounded-2xl p-4 flex items-center gap-4 mb-6"
+      className="w-full bg-sky-50/40 border border-sky-500/10 rounded-2xl p-4 flex items-center gap-4 mb-6"
       data-testid="affiliate-box-study"
     >
       <div className="flex-shrink-0 relative">
@@ -45,7 +45,7 @@ export default function AffiliateBox() {
         />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-[10px] font-bold text-violet-600 uppercase tracking-wider mb-0.5">
+        <p className="text-[10px] font-bold text-sky-600 uppercase tracking-wider mb-0.5">
           Gợi ý dành cho bạn
         </p>
         <p className="font-bold text-sm text-slate-900 leading-snug truncate">

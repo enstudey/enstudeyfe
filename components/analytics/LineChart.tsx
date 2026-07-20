@@ -99,14 +99,14 @@ export const LineChart: React.FC<LineChartProps> = ({
         {pointsCoords.length > 1 ? (
           <polyline
             points={pointsString}
-            className="fill-none stroke-violet-600 dark:stroke-violet-400 stroke-[3] stroke-linecap-round stroke-linejoin-round"
+            className="fill-none stroke-sky-600 dark:stroke-sky-400 stroke-[3] stroke-linecap-round stroke-linejoin-round"
           />
         ) : (
           <circle
             cx={pointsCoords[0].x}
             cy={pointsCoords[0].y}
             r="6"
-            className="fill-violet-600 stroke-white"
+            className="fill-sky-600 stroke-white"
           />
         )}
 
@@ -117,7 +117,7 @@ export const LineChart: React.FC<LineChartProps> = ({
               cx={p.x}
               cy={p.y}
               r="5"
-              className="fill-violet-600 stroke-white dark:stroke-slate-900 stroke-[2] cursor-pointer hover:r-7 transition-all"
+              className="fill-sky-600 stroke-white dark:stroke-slate-900 stroke-[2] cursor-pointer hover:r-7 transition-all"
               onMouseEnter={() => setHoveredPoint(p.item)}
               onMouseLeave={() => setHoveredPoint(null)}
             />
@@ -138,7 +138,7 @@ export const LineChart: React.FC<LineChartProps> = ({
       {/* Hover Tooltip Overlay */}
       {hoveredPoint && (
         <div className="absolute top-2 right-2 bg-slate-900/90 text-white text-xs px-3 py-2 rounded-xl shadow-lg backdrop-blur-sm border border-slate-700 animate-in fade-in">
-          <div className="font-bold text-violet-300">{hoveredPoint.title}</div>
+          <div className="font-bold text-sky-300">{hoveredPoint.title}</div>
           <div className="text-slate-300">
             Ngày: {hoveredPoint.date} | Điểm: <span className="font-bold text-amber-400">{hoveredPoint.score}</span>
           </div>

@@ -145,14 +145,14 @@ export default async function BlogPostDetail({ params }: BlogPostPageProps) {
         <div className="mb-6">
           <Link
             href="/blog"
-            className="text-sm text-violet-600 hover:underline inline-flex items-center gap-1 font-medium"
+            className="text-sm text-sky-600 hover:underline inline-flex items-center gap-1 font-medium"
           >
             &larr; Quay lại Blog
           </Link>
         </div>
 
         <article className="prose leading-relaxed text-slate-700">
-          <span className="text-xs font-semibold text-violet-600 uppercase tracking-wider">
+          <span className="text-xs font-semibold text-sky-600 uppercase tracking-wider">
             {getCategoryLabel(post.category)}
           </span>
           <h1 className="text-3xl font-extrabold mt-2 mb-6 text-slate-955 leading-tight">

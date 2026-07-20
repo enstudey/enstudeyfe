@@ -84,19 +84,19 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Khung Header Banner & Quick Action */}
-      <div className="bg-gradient-to-r from-violet-650 to-indigo-650 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row justify-between items-center gap-6">
+      <div className="bg-[#0F172A] border border-slate-800 rounded-3xl p-6 sm:p-8 text-white shadow-sm flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="space-y-2 text-center md:text-left">
-          <h2 className="text-2xl sm:text-3xl font-extrabold flex items-center justify-center md:justify-start gap-2">
-            <Sparkles className="w-8 h-8 text-yellow-300" />
+          <h2 className="text-xl sm:text-2xl font-extrabold flex items-center justify-center md:justify-start gap-2">
+            <Sparkles className="w-6 h-6 text-sky-400" />
             Luyện Tập Gột Rửa Sai Lầm
           </h2>
-          <p className="text-violet-100 text-sm max-w-xl">
+          <p className="text-slate-400 text-xs max-w-xl leading-relaxed">
             Tự động lưu và bốc ngẫu nhiên tối đa 10 câu hỏi bạn đã làm sai để tiến hành ôn luyện, gia tăng chuỗi trả lời đúng để đánh dấu thành thạo!
           </p>
         </div>
         <button
           onClick={() => setIsPracticing(true)}
-          className="bg-yellow-450 hover:bg-yellow-500 text-slate-900 font-bold px-8 py-4 rounded-2xl shadow-lg flex items-center gap-2 hover:scale-[1.03] active:scale-[0.98] transition cursor-pointer text-sm shrink-0"
+          className="bg-sky-500 hover:bg-sky-600 text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-sky-500/20 flex items-center gap-2 hover:scale-[1.03] active:scale-[0.98] transition cursor-pointer text-xs shrink-0"
         >
           <Play className="w-4 h-4 fill-current" />
           Bắt đầu Ôn tập ngay
@@ -104,9 +104,9 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
       </div>
 
       {/* Thanh Điều Hướng Bộ Lọc */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between shadow-sm">
+      <div className="bg-white border border-slate-100 rounded-2xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between shadow-xs">
         <div className="flex flex-wrap gap-2 items-center">
-          <span className="text-xs font-bold text-slate-400 flex items-center gap-1 uppercase mr-2">
+          <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1 uppercase mr-2">
             <Filter className="w-3.5 h-3.5" /> Trạng thái:
           </span>
           {["ALL", "UNSEEN", "REVIEWED", "MASTERED"].map((st) => (
@@ -118,8 +118,8 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
               }}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
                 status === st
-                  ? "bg-violet-600 text-white shadow-sm"
-                  : "bg-slate-50 hover:bg-slate-100 text-slate-650"
+                  ? "bg-slate-900 text-white shadow-xs"
+                  : "bg-slate-50 hover:bg-slate-100 text-slate-500"
               }`}
             >
               {st === "ALL" ? "Tất cả" : st === "UNSEEN" ? "Chưa ôn" : st === "REVIEWED" ? "Đang ôn" : "Thành thạo 💎"}
@@ -128,7 +128,7 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
         </div>
 
         <div className="flex flex-wrap gap-2 items-center">
-          <span className="text-xs font-bold text-slate-400 flex items-center gap-1 uppercase mr-2">
+          <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1 uppercase mr-2">
             <Bookmark className="w-3.5 h-3.5" /> Loại câu:
           </span>
           {["ALL", "GRAMMAR", "VOCABULARY", "READING"].map((cat) => (
@@ -140,8 +140,8 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
               }}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
                 category === cat
-                  ? "bg-indigo-600 text-white shadow-sm"
-                  : "bg-slate-50 hover:bg-slate-100 text-slate-650"
+                  ? "bg-sky-500 text-white shadow-xs"
+                  : "bg-slate-50 hover:bg-slate-100 text-slate-500"
               }`}
             >
               {cat === "ALL" ? "Tất cả" : cat}
@@ -152,15 +152,14 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
 
       {/* Hiển thị lỗi */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-750 p-4 rounded-xl text-sm font-medium">
-          ⚠️ {error}
+        <div className="bg-rose-50 border border-rose-200 text-rose-700 px-4 py-2.5 rounded-xl text-xs font-semibold">
+          {error}
         </div>
       )}
 
-      {/* Loader */}
       {loading ? (
         <div className="flex flex-col items-center justify-center min-h-[250px] space-y-3">
-          <div className="w-10 h-10 border-4 border-violet-650 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
           <span className="text-xs font-semibold text-slate-400">Đang đồng bộ sổ tay câu sai...</span>
         </div>
       ) : items.length === 0 ? (
@@ -199,12 +198,12 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
                 <div 
                   key={item.id}
                   onClick={() => setExpandedId(isExpanded ? null : item.id)}
-                  className={`bg-white border rounded-2xl p-5 shadow-sm transition hover:shadow cursor-pointer text-left space-y-4 overflow-hidden border-l-4 ${
+                  className={`bg-white border rounded-2xl p-5 shadow-xs transition hover:shadow-sm cursor-pointer text-left space-y-4 overflow-hidden border-l-4 ${
                     item.status === "MASTERED" 
-                      ? "border-l-emerald-500 border-slate-200" 
+                      ? "border-l-emerald-450 border-slate-200" 
                       : item.status === "REVIEWED" 
-                      ? "border-l-yellow-500 border-slate-200" 
-                      : "border-l-red-500 border-slate-200"
+                      ? "border-l-amber-450 border-slate-200" 
+                      : "border-l-rose-450 border-slate-200"
                   }`}
                 >
                   <div className="flex justify-between items-start gap-4">
@@ -213,10 +212,10 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
                         {/* Tag trạng thái */}
                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                           item.status === "MASTERED" 
-                            ? "bg-emerald-50 text-emerald-700 border border-emerald-100" 
+                            ? "bg-emerald-50/50 text-emerald-700 border border-emerald-100" 
                             : item.status === "REVIEWED"
-                            ? "bg-yellow-50 text-yellow-800 border border-yellow-100"
-                            : "bg-red-50 text-red-700 border border-red-100"
+                            ? "bg-amber-50/50 text-amber-800 border border-amber-100"
+                            : "bg-rose-50/50 text-rose-700 border border-rose-100"
                         }`}>
                           {item.status === "MASTERED" ? "Thành thạo" : item.status === "REVIEWED" ? "Đang ôn tập" : "Chưa làm"}
                         </span>
@@ -234,14 +233,14 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
                           Lần sai: {item.mistakeCount}
                         </span>
                       </div>
-                      <h4 className="font-semibold text-slate-800 text-sm sm:text-base leading-relaxed pr-6">
+                      <h4 className="font-semibold text-slate-800 text-sm leading-relaxed pr-6">
                         {item.questionText}
                       </h4>
                     </div>
                     
                     <button
                       onClick={(e) => handleDelete(item.id, e)}
-                      className="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition cursor-pointer"
+                      className="text-slate-400 hover:text-rose-600 p-2 rounded-xl hover:bg-rose-50/50 transition cursor-pointer"
                       title="Xóa khỏi sổ tay"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -259,12 +258,12 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
                               key={oIdx}
                               className={`p-3 rounded-xl text-xs font-semibold flex items-center gap-2 border ${
                                 isCorrect 
-                                  ? "bg-emerald-50 text-emerald-800 border-emerald-200" 
-                                  : "bg-slate-50 text-slate-600 border-slate-100"
+                                  ? "bg-emerald-50/30 text-emerald-800 border-emerald-100" 
+                                  : "bg-slate-50/50 text-slate-600 border-slate-100"
                               }`}
                             >
                               <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
-                                isCorrect ? "bg-emerald-600 text-white" : "bg-slate-200 text-slate-500"
+                                isCorrect ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-500"
                               }`}>
                                 {["A", "B", "C", "D"][oIdx]}
                               </span>
@@ -275,17 +274,17 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
                       </div>
 
                       {item.explanation && (
-                        <div className="bg-violet-50 border border-violet-100 rounded-xl p-4 text-xs space-y-1">
-                          <div className="font-bold text-violet-850 flex items-center gap-1">
+                        <div className="bg-sky-50/20 border border-sky-100/50 rounded-xl p-4 text-xs space-y-1">
+                          <div className="font-bold text-sky-850 flex items-center gap-1">
                             <CheckCircle2 className="w-3.5 h-3.5" /> Giải thích chi tiết:
                           </div>
-                          <p className="text-slate-700 leading-relaxed font-medium">
+                          <p className="text-slate-600 leading-relaxed font-medium">
                             {item.explanation}
                           </p>
                         </div>
                       )}
 
-                      <div className="text-[10px] font-bold text-slate-400 flex items-center gap-1.5 justify-end">
+                      <div className="text-[10px] font-bold text-slate-400 flex items-center gap-1.5 justify-end font-mono">
                         <Calendar className="w-3.5 h-3.5" />
                         Lần sai cuối: {formattedDate}
                       </div>

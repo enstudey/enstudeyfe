@@ -62,7 +62,7 @@ export default function DonateModal({ isOpen, onClose }: Props) {
             href="/qr-donate.webp"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-auto w-48 h-48 border-4 border-violet-500/10 rounded-2xl overflow-hidden shadow-md bg-slate-50 flex items-center justify-center cursor-zoom-in block"
+            className="mx-auto w-48 h-48 border-4 border-sky-500/10 rounded-2xl overflow-hidden shadow-md bg-slate-50 flex items-center justify-center cursor-zoom-in block"
             title="Bấm để phóng to / mở ảnh QR trong tab mới"
           >
             <Image
@@ -80,7 +80,7 @@ export default function DonateModal({ isOpen, onClose }: Props) {
             <Link
               href="/tram-sac-nang-luong"
               onClick={onClose}
-              className="text-xs font-bold text-violet-600 hover:underline inline-flex items-center gap-1"
+              className="text-xs font-bold text-sky-600 hover:underline inline-flex items-center gap-1"
             >
               🌟 Xem danh sách các Nhà tài trợ thầm lặng tại đây
             </Link>
@@ -99,12 +99,12 @@ export default function DonateModal({ isOpen, onClose }: Props) {
             <div className="flex justify-between items-center gap-2 pt-1 border-t border-slate-100">
               <span className="text-slate-600">Số tài khoản</span>
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-violet-600">{accountNo}</span>
+                <span className="font-bold text-sky-600">{accountNo}</span>
                 <Button
                   onClick={handleCopy}
                   data-testid="btn-copy-account"
                   variant="secondary"
-                  className="px-2.5 py-1 text-violet-750 bg-violet-100 hover:bg-violet-200 transition font-bold rounded-lg text-[10px] cursor-pointer"
+                  className="px-2.5 py-1 text-sky-750 bg-sky-100 hover:bg-sky-200 transition font-bold rounded-lg text-[10px] cursor-pointer"
                 >
                   {copied ? "Đã chép ✓" : "Sao chép 📋"}
                 </Button>

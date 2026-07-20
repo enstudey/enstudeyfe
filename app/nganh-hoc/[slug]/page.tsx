@@ -49,10 +49,10 @@ function insertAffiliateTextLink(htmlContent: string): string {
 
   const affiliateHtml = `
     <div class="affiliate-text-block my-6 p-4 bg-slate-100 border border-slate-200/50 rounded-xl" contenteditable="false">
-      <span class="text-[10px] uppercase tracking-wider text-violet-600 font-bold block mb-1">Gợi ý dành cho bạn</span>
+      <span class="text-[10px] uppercase tracking-wider text-sky-600 font-bold block mb-1">Gợi ý dành cho bạn</span>
       <p class="text-sm text-slate-700 m-0 leading-relaxed">
         Bạn có thể tham khảo thêm tài liệu trong cuốn 
-        <a href="/redirect?url=${encodeURIComponent(`/go/${affiliateProduct.slug}`)}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-violet-600 hover:underline font-bold">${affiliateProduct.title}</a> 
+        <a href="/redirect?url=${encodeURIComponent(`/go/${affiliateProduct.slug}`)}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-sky-600 hover:underline font-bold">${affiliateProduct.title}</a> 
         để học tập và định hướng nghề nghiệp tốt hơn.
       </p>
     </div>
@@ -101,7 +101,7 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
             Ngành học không tồn tại rồi bạn ơi 🥺
           </h1>
           <p className="text-slate-500">Hình như bài viết review ngành học bạn yêu cầu hiện không có trên hệ thống.</p>
-          <Link href="/nganh-hoc" className="text-sm text-violet-600 hover:underline font-semibold">
+          <Link href="/nganh-hoc" className="text-sm text-sky-600 hover:underline font-semibold">
             &larr; Quay lại danh sách ngành học
           </Link>
         </main>
@@ -138,14 +138,14 @@ export default async function NganhHocDetailPage({ params }: { params: Promise<{
 
       <main className="max-w-6xl mx-auto px-6 py-12 flex-1 w-full space-y-6">
         <div>
-          <Link href="/nganh-hoc" className="text-sm text-violet-600 hover:underline inline-flex items-center gap-1 font-semibold">
+          <Link href="/nganh-hoc" className="text-sm text-sky-600 hover:underline inline-flex items-center gap-1 font-semibold">
             &larr; Quay lại danh sách ngành học
           </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
           <article className="lg:col-span-7 prose leading-relaxed text-slate-700">
-            <span className="text-xs font-bold text-violet-600 uppercase tracking-wider">
+            <span className="text-xs font-bold text-sky-600 uppercase tracking-wider">
               #NGANH-HOC
             </span>
             <h1 className="text-3xl font-extrabold mt-2 mb-4 text-slate-900 leading-tight">

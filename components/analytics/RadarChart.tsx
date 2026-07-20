@@ -88,7 +88,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({ skills }) => {
           <polygon
             points={polygonPoints}
             fill="url(#radarGradient)"
-            className="stroke-violet-500 stroke-[2.5] transition-all duration-500 ease-out"
+            className="stroke-sky-500 stroke-[2.5] transition-all duration-500 ease-out"
           />
 
           {/* Data Dots & Axis Labels */}
@@ -103,7 +103,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({ skills }) => {
                   cx={x}
                   cy={y}
                   r="5"
-                  className="fill-violet-600 stroke-white dark:stroke-slate-900 stroke-[2] cursor-pointer hover:r-7 transition-all"
+                  className="fill-sky-600 stroke-white dark:stroke-slate-900 stroke-[2] cursor-pointer hover:r-7 transition-all"
                   onMouseEnter={() => setHoveredSkill(skill)}
                   onMouseLeave={() => setHoveredSkill(null)}
                 />
@@ -135,9 +135,9 @@ export const RadarChart: React.FC<RadarChartProps> = ({ skills }) => {
         {chartSkills.map((s, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 dark:bg-violet-950/40 border border-violet-200 dark:border-violet-800 text-xs font-medium text-violet-700 dark:text-violet-300"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs font-medium text-sky-700 dark:text-sky-300"
           >
-            <span className="w-2 h-2 rounded-full bg-violet-500" />
+            <span className="w-2 h-2 rounded-full bg-sky-500" />
             <span>{s.name}:</span>
             <span className="font-bold">{s.score}%</span>
           </div>

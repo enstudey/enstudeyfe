@@ -157,8 +157,8 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
   if (!isInitialized || questions.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[300px] space-y-4">
-        <div className="w-12 h-12 border-4 border-violet-600 border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-muted-foreground text-sm font-medium">Đang chuẩn bị đề thi...</p>
+        <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-slate-500 text-sm font-medium">Đang chuẩn bị đề thi...</p>
       </div>
     );
   }
@@ -174,28 +174,28 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
       {/* Cột trái & giữa: Nội dung câu hỏi */}
       <div className="lg:col-span-2 space-y-6">
         {/* Progress Bar & Header */}
-        <div className="bg-card border border-card-border p-5 rounded-2xl shadow-sm space-y-3">
+        <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-xs space-y-3">
           <div className="flex justify-between items-center text-sm font-bold text-slate-700">
             <span>Câu hỏi {currentIndex + 1} trên {questions.length}</span>
-            <span className="text-violet-600 bg-violet-50 px-2.5 py-1 rounded-full text-xs uppercase tracking-wider">
+            <span className="text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full text-xs uppercase tracking-wider font-mono">
               {examType} • {currentQuestion.part}
             </span>
           </div>
           <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
             <div
-              className="bg-gradient-to-r from-violet-500 to-purple-600 h-full transition-all duration-350"
+              className="bg-gradient-to-r from-sky-400 to-sky-655 h-full transition-all duration-300"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
         </div>
 
         {/* Card câu hỏi */}
-        <div className="bg-card border border-card-border p-6 sm:p-8 rounded-3xl shadow-sm space-y-6">
+        <div className="bg-white border border-slate-100 p-6 sm:p-8 rounded-3xl shadow-xs space-y-6">
           <div className="space-y-4">
-            <span className="text-xs font-bold text-violet-600 uppercase tracking-widest bg-violet-50 px-3 py-1 rounded-full">
+            <span className="text-xs font-bold text-sky-600 uppercase tracking-widest bg-sky-50 px-3 py-1 rounded-full">
               Topic: {currentQuestion.topic}
             </span>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed pt-2">
+            <h3 className="text-base sm:text-lg font-bold text-slate-800 leading-relaxed pt-2">
               {currentQuestion.questionText}
             </h3>
           </div>
@@ -210,16 +210,16 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
                 <button
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border text-sm font-medium transition duration-205 flex items-center gap-4 cursor-pointer ${
+                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border text-xs font-medium transition duration-150 flex items-center gap-4 cursor-pointer ${
                     isSelected
-                      ? "bg-violet-50 border-violet-500 text-violet-950 shadow-sm"
-                      : "bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:border-slate-300"
+                      ? "bg-sky-50 border-sky-500 text-sky-950 shadow-xs font-bold"
+                      : "bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:border-slate-350"
                   }`}
                 >
                   <span
-                    className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs transition duration-200 ${
+                    className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs transition duration-150 ${
                       isSelected
-                        ? "bg-violet-600 text-white"
+                        ? "bg-sky-500 text-white"
                         : "bg-slate-100 text-slate-500"
                     }`}
                   >
@@ -246,7 +246,7 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
             {currentIndex < questions.length - 1 ? (
               <Button
                 onClick={handleNext}
-                className="bg-violet-600 hover:bg-violet-700 text-white rounded-xl flex items-center gap-1.5 font-bold cursor-pointer"
+                className="bg-sky-500 hover:bg-sky-600 text-white rounded-xl flex items-center gap-1.5 font-bold cursor-pointer"
               >
                 Câu sau
                 <ArrowRight className="w-4 h-4" />
@@ -255,7 +255,7 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
               <Button
                 onClick={handleSubmit}
                 data-testid="btn-submit-quiz"
-                className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-xl flex items-center gap-1.5 font-bold shadow-md cursor-pointer"
+                className="bg-slate-900 hover:bg-slate-800 text-white rounded-xl flex items-center gap-1.5 font-bold shadow-md cursor-pointer"
               >
                 <CheckSquare className="w-4 h-4" />
                 Nộp bài thi
@@ -268,26 +268,26 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
       {/* Cột phải: Bảng điều khiển, Timer, Ads */}
       <div className="space-y-6">
         {/* Widget Timer & Nộp nhanh */}
-        <div className="bg-card border border-card-border p-6 rounded-2xl shadow-sm space-y-4">
+        <div className="bg-white border border-slate-100 p-6 rounded-2xl shadow-xs space-y-4">
           <div className="flex justify-between items-center">
-            <span className="text-sm font-semibold opacity-70">Thời gian làm bài</span>
+            <span className="text-xs font-semibold opacity-70">Thời gian làm bài</span>
             <div
               data-testid="timer-countdown"
-              className={`flex items-center gap-1.5 font-bold text-lg px-3 py-1 rounded-full ${
+              className={`flex items-center gap-1.5 font-bold text-sm px-3 py-1 rounded-full font-mono ${
                 isTimeCritical
-                  ? "bg-red-50 text-red-650 animate-pulse"
-                  : "bg-violet-50 text-violet-600"
+                  ? "bg-rose-50 text-rose-650 animate-pulse border border-rose-100"
+                  : "bg-sky-50 text-sky-600 border border-sky-100"
               }`}
             >
               <Timer className="w-4 h-4" />
-              <span>
+              <span className="font-mono">
                 {minutes.toString().padStart(2, "0")}:{seconds.toString().padStart(2, "0")}
               </span>
             </div>
           </div>
 
           <div className="pt-2">
-            <div className="text-xs font-semibold opacity-50 mb-3">Bảng tiến trình câu hỏi</div>
+            <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-3">Bảng tiến trình câu hỏi</div>
             <div className="grid grid-cols-5 gap-2">
               {questions.map((q, idx) => {
                 const isAnswered = answers[q.id] !== undefined;
@@ -297,15 +297,15 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
                   <button
                     key={q.id}
                     onClick={() => handleJumpToQuestion(idx)}
-                    className={`w-10 h-10 rounded-xl font-bold text-sm flex items-center justify-center border transition cursor-pointer ${
+                    className={`w-10 h-10 rounded-xl font-bold text-xs flex items-center justify-center border transition cursor-pointer ${
                       isCurrent
-                        ? "border-violet-600 bg-violet-50 text-violet-600 ring-2 ring-violet-500/20"
+                        ? "border-sky-500 bg-sky-50 text-sky-600 ring-2 ring-sky-500/20"
                         : isAnswered
-                        ? "bg-violet-600 border-violet-600 text-white"
+                        ? "bg-sky-500 border-sky-500 text-white shadow-xs"
                         : "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
                     }`}
                   >
-                    {idx + 1}
+                    <span className="font-mono">{idx + 1}</span>
                   </button>
                 );
               })}
@@ -315,7 +315,7 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
           <Button
             onClick={handleSubmit}
             data-testid="btn-submit-quiz"
-            className="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3.5 rounded-xl mt-2 flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full bg-[#0F172A] hover:bg-slate-800 text-white font-bold py-3 rounded-xl mt-2 flex items-center justify-center gap-2 cursor-pointer text-xs"
           >
             <Award className="w-4 h-4" />
             Nộp bài

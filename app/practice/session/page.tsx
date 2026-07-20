@@ -35,7 +35,7 @@ export default async function PracticeSessionPage({ searchParams }: SessionPageP
   // Validate các tham số đầu vào sơ bộ
   const isValidExamType = ["TOEIC", "IELTS"].includes(examType.toUpperCase());
   const isValidMode = ["PRACTICE", "TEST"].includes(mode);
-  
+
   if (!isValidExamType || !isValidMode || isNaN(limit)) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-black text-foreground flex flex-col justify-between transition-colors duration-200">
@@ -46,7 +46,7 @@ export default async function PracticeSessionPage({ searchParams }: SessionPageP
           <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
             Các tham số truyền vào phiên học không hợp lệ. Vui lòng quay lại màn hình cấu hình.
           </p>
-          <Link href="/practice" className="text-xs text-violet-600 hover:underline font-bold">
+          <Link href="/practice" className="text-xs text-sky-600 hover:underline font-bold">
             Quay lại trang cấu hình &rarr;
           </Link>
         </main>

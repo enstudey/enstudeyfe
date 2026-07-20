@@ -52,8 +52,8 @@ export default async function ExamPreparePage({ params }: PageProps) {
         {/* Back Link */}
         <div className="w-full max-w-xl mx-auto">
           <Link
-            href="/exams"
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-violet-600 transition"
+            href="/exam"
+            className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-sky-600 transition"
           >
             <ChevronLeft className="w-4 h-4" />
             <span>Quay lại danh sách đề thi</span>
@@ -63,7 +63,7 @@ export default async function ExamPreparePage({ params }: PageProps) {
         {errorMsg || !exam ? (
           <div className="bg-card border border-border p-8 rounded-3xl text-center shadow-sm max-w-xl mx-auto w-full space-y-4">
             <p className="text-red-600 text-sm font-semibold">{errorMsg || "Không tìm thấy đề thi."}</p>
-            <Link href="/exams" className="text-violet-600 hover:underline text-xs font-bold block">
+            <Link href="/exam" className="text-sky-600 hover:underline text-xs font-bold block">
               Quay lại danh sách đề thi &rarr;
             </Link>
           </div>

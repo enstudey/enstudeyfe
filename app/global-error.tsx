@@ -27,7 +27,7 @@ export default function GlobalError({
             <Button
               onClick={() => reset()}
               size="lg"
-              className="rounded-md bg-violet-600 text-white hover:bg-violet-700 shadow-sm cursor-pointer"
+              className="rounded-md bg-sky-600 text-white hover:bg-sky-700 shadow-sm cursor-pointer"
             >
               Tải lại trang nha
             </Button>

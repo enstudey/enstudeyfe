@@ -297,7 +297,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
   if (isSubmitting) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] gap-3">
-        <RefreshCw className="w-10 h-10 text-violet-600 animate-spin" />
+        <RefreshCw className="w-10 h-10 text-sky-500 animate-spin" />
         <p className="text-slate-500 font-bold text-sm">Đang nộp bài và tính điểm...</p>
       </div>
     );
@@ -306,7 +306,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
   if (loading) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] gap-3">
-        <RefreshCw className="w-10 h-10 text-violet-600 animate-spin" />
+        <RefreshCw className="w-10 h-10 text-sky-500 animate-spin" />
         <p className="text-slate-500 font-bold text-sm">Đang tải danh sách câu hỏi...</p>
       </div>
     );
@@ -318,7 +318,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
         <AlertCircle className="w-12 h-12 text-red-500 mx-auto" />
         <h3 className="text-lg font-bold text-slate-900 dark:text-white">Đã xảy ra lỗi</h3>
         <p className="text-slate-500 text-sm">{error}</p>
-        <Button onClick={loadQuestions} className="w-full bg-violet-600 hover:bg-violet-700 cursor-pointer">
+        <Button onClick={loadQuestions} className="w-full bg-sky-500 hover:bg-sky-600 cursor-pointer">
           Thử lại
         </Button>
       </div>
@@ -331,8 +331,8 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
     return (
       <div className="max-w-md mx-auto px-6 py-12 space-y-8 text-center">
         <div className="space-y-3">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900/50 mb-2">
-            <Sparkles className="w-8 h-8 text-violet-600 dark:text-violet-400 animate-bounce" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sky-50 dark:bg-sky-950/30 border border-sky-100 dark:border-sky-900/50 mb-2">
+            <Sparkles className="w-8 h-8 text-sky-500 dark:text-sky-400 animate-bounce" />
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Hoàn Thành Phiên Chơi!</h2>
           <p className="text-slate-500 text-sm">Báo cáo kết quả phiên vuốt ngữ pháp của bạn</p>
@@ -340,25 +340,25 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
 
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-5 rounded-2xl">
-            <div className="text-2xl font-extrabold text-violet-600 dark:text-violet-400">
+            <div className="text-2xl font-extrabold text-sky-500 dark:text-sky-400 font-mono">
               {submitResult.score}/{submitResult.total}
             </div>
             <div className="text-xs text-slate-400 font-bold mt-1">ĐÚNG HOÀN TOÀN</div>
           </div>
           <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-5 rounded-2xl">
-            <div className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">
+            <div className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono">
               +{submitResult.xpEarned} XP
             </div>
             <div className="text-xs text-slate-400 font-bold mt-1">XP TÍCH LŨY</div>
           </div>
           <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-5 rounded-2xl">
-            <div className="text-2xl font-extrabold text-slate-900 dark:text-white">
+            <div className="text-2xl font-extrabold text-slate-900 dark:text-white font-mono">
               {accuracy}%
             </div>
             <div className="text-xs text-slate-400 font-bold mt-1">ĐỘ CHÍNH XÁC</div>
           </div>
           <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-5 rounded-2xl">
-            <div className="text-2xl font-extrabold text-amber-600 dark:text-amber-400">
+            <div className="text-2xl font-extrabold text-amber-600 dark:text-amber-400 font-mono">
               {submitResult.mistakesSavedCount}
             </div>
             <div className="text-xs text-slate-400 font-bold mt-1">CÂU SAI ĐỒNG BỘ</div>
@@ -368,7 +368,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
         {isGuest && (
           <div className="bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-300 rounded-xl p-4 text-xs text-left">
             Đăng nhập tài khoản để tích lũy XP bền vững và tự động lưu các câu làm sai vào Sổ tay câu sai (Mistake Bank).
-            <a href={googleLoginUrl} className="block font-bold text-violet-600 dark:text-violet-400 hover:underline mt-2">
+            <a href={googleLoginUrl} className="block font-bold text-sky-655 dark:text-sky-400 hover:underline mt-2">
               Đăng nhập Google ngay &rarr;
             </a>
           </div>
@@ -377,14 +377,14 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
         <div className="flex gap-3">
           <Button 
             onClick={loadQuestions} 
-            className="flex-1 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-xl py-3 cursor-pointer"
+            className="flex-1 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl py-3 cursor-pointer text-xs"
           >
             Chơi lượt tiếp theo
           </Button>
           <Button 
             variant="outline" 
             onClick={() => window.location.href = "/practice"} 
-            className="flex-1 font-bold border-slate-200 dark:border-slate-800 rounded-xl py-3 cursor-pointer"
+            className="flex-1 font-bold border-slate-200 dark:border-slate-800 rounded-xl py-3 cursor-pointer text-xs"
           >
             Về trang chủ
           </Button>
@@ -426,7 +426,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
       {/* Progress Bar */}
       <div className="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
         <div 
-          className="bg-violet-600 h-full transition-all duration-350"
+          className="bg-sky-500 h-full transition-all duration-350"
           style={{ width: `${((currentIndex) / questions.length) * 100}%` }}
         />
       </div>
@@ -446,7 +446,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
             onTouchEnd={handleDragEnd}
             className={`w-full max-w-sm bg-white dark:bg-slate-950 border-2 rounded-3xl shadow-lg p-6 md:p-8 flex flex-col justify-between items-center text-center cursor-grab active:cursor-grabbing transition-transform duration-300 relative overflow-hidden ${
               isWordSelectionMode 
-                ? "border-violet-400 dark:border-violet-900" 
+                ? "border-sky-400 dark:border-sky-900" 
                 : dragOffset.x > 30 
                   ? "border-emerald-400 dark:border-emerald-900 bg-emerald-50/5 dark:bg-emerald-950/5" 
                   : dragOffset.x < -30 
@@ -470,7 +470,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
             {isWordSelectionMode ? (
               <div className="w-full flex-1 flex flex-col justify-center space-y-6">
                 <div className="space-y-1">
-                  <span className="text-violet-600 dark:text-violet-400 text-[10px] font-bold uppercase tracking-widest">
+                  <span className="text-sky-655 dark:text-sky-400 text-[10px] font-bold uppercase tracking-widest">
                     Chế độ phát hiện lỗi
                   </span>
                   <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 leading-relaxed">
@@ -513,7 +513,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
 
                 {clickedWordIndex !== null && (
                   <div className="bg-slate-50 dark:bg-slate-900/50 border border-slate-150 dark:border-slate-850 p-4 rounded-xl text-left text-xs text-slate-600 dark:text-slate-400 space-y-1.5 animate-fadeIn">
-                    <div className="flex items-center gap-1.5 text-violet-600 dark:text-violet-400 font-bold uppercase tracking-wider">
+                    <div className="flex items-center gap-1.5 text-sky-600 dark:text-sky-400 font-bold uppercase tracking-wider">
                       <Info className="w-3.5 h-3.5" />
                       <span>Giải thích lỗi sai</span>
                     </div>

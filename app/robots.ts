@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/dashboard/", "/login/", "/oauth2/"],
+        disallow: ["/api/", "/login/", "/oauth2/"],
       },
     ],
     sitemap: "https://enstudey.com/sitemap.xml",

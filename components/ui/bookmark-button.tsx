@@ -35,11 +35,10 @@ export default function BookmarkButton({
     <button
       type="button"
       onClick={handleToggle}
-      className={`p-1.5 rounded-lg transition-all duration-200 cursor-pointer ${
-        active
-          ? "text-violet-600 bg-violet-50 dark:bg-violet-950/40 dark:text-violet-400"
+      className={`p-1.5 rounded-lg transition-all duration-200 cursor-pointer ${active
+          ? "text-sky-600 bg-sky-50 dark:bg-sky-950/40 dark:text-sky-400"
           : "text-slate-450 hover:text-slate-700 hover:bg-slate-50 dark:text-slate-450 dark:hover:text-slate-350 dark:hover:bg-slate-900"
-      } ${className}`}
+        } ${className}`}
       title={active ? "Xóa khỏi Sổ tay" : "Lưu vào Sổ tay"}
     >
       <svg

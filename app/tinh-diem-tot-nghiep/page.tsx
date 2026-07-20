@@ -66,7 +66,7 @@ export default function CalculatorPage() {
     };
   });
 
-  const [otherLanguageType, setOtherLanguageType] = useState<"Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian" >("Korean");
+  const [otherLanguageType, setOtherLanguageType] = useState<"Korean" | "Chinese" | "Japanese" | "French" | "German" | "Russian">("Korean");
   const [certType, setCertType] = useState<"none" | "ielts" | "toeic">("none");
   const [certScore, setCertScore] = useState("");
   const [conversionTarget, setConversionTarget] = useState<"standard" | "neu" | "ftu" | "hust" | "hcmut">("standard");
@@ -74,7 +74,7 @@ export default function CalculatorPage() {
   const [objectPriority, setObjectPriority] = useState<"none" | "UT1" | "UT2">("none");
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  
+
   // KHÔNG tự động hiển thị kết quả cũ khi tải trang (Đặt mặc định là null để bắt tính toán lại)
   const [computedScores, setComputedScores] = useState<Record<string, number> | null>(null);
 
@@ -84,7 +84,7 @@ export default function CalculatorPage() {
 
   // State phương thức 200 (Xét học bạ)
   const [selectedTranscriptGroup, setSelectedTranscriptGroup] = useState<string>("A00");
-  
+
   const [semesterScores, setSemesterScores] = useState<Record<TranscriptSubjectKey, SubjectSemesterScores>>(() => {
     const keys = Object.keys(TRANSCRIPT_SUBJECTS) as TranscriptSubjectKey[];
     const init = {} as Record<TranscriptSubjectKey, SubjectSemesterScores>;
@@ -142,7 +142,7 @@ export default function CalculatorPage() {
     if (/^\d+$/.test(val)) {
       formattedVal = formatInputScore(val);
     }
-    
+
     const res = validateScore(formattedVal, "subject", false);
     const newScores = { ...scores, [subject]: res.cleanedVal };
     setScores(newScores);
@@ -242,7 +242,7 @@ export default function CalculatorPage() {
   // Tính điểm thi tốt nghiệp THPT
   const handleCalculate = () => {
     const newErrors: Record<string, string> = {};
-    
+
     Object.entries(scores).forEach(([subj, val]) => {
       const valStr = val as string;
       const isRequired = subj === "math" || subj === "literature";
@@ -255,7 +255,7 @@ export default function CalculatorPage() {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       toast.error("Vui lòng kiểm tra lại các điểm số đã nhập.");
-      
+
       // Tìm ô lỗi đầu tiên và cuộn màn hình tới
       const firstErrKey = Object.keys(newErrors)[0];
       if (firstErrKey) {
@@ -294,7 +294,7 @@ export default function CalculatorPage() {
 
     setComputedScores(results);
     setHighestGroup(bestGroup);
-    
+
     localStorage.setItem("user_raw_scores", JSON.stringify(scores));
     localStorage.setItem("user_scores", JSON.stringify(results));
 
@@ -347,7 +347,7 @@ export default function CalculatorPage() {
       const firstErrKey = Object.keys(newErrors)[0]; // Định dạng: "physics_grade10_hk1"
       if (firstErrKey) {
         const [subKey] = firstErrKey.split("_");
-        
+
         let groupId = "required";
         if (["physics", "chemistry", "biology"].includes(subKey)) {
           groupId = "natural";
@@ -441,7 +441,7 @@ export default function CalculatorPage() {
         </div>
 
         <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm space-y-8">
-          
+
           {/* Lựa chọn phương thức tính điểm */}
           <div className="space-y-2">
             <label className="text-[10px] font-bold text-muted-foreground tracking-wider uppercase block">
@@ -456,18 +456,17 @@ export default function CalculatorPage() {
                   key={item.id}
                   type="button"
                   onClick={() => setCalculationMethod(item.id as "THPT_EXAM" | "TRANSCRIPT")}
-                  className={`px-4 py-3 rounded-xl border text-center font-bold text-xs transition duration-150 cursor-pointer ${
-                    calculationMethod === item.id
-                      ? "border-violet-600 bg-violet-50 text-violet-700 shadow-sm"
+                  className={`px-4 py-3 rounded-xl border text-center font-bold text-xs transition duration-150 cursor-pointer ${calculationMethod === item.id
+                      ? "border-sky-600 bg-sky-50 text-sky-700 shadow-sm"
                       : "border-slate-200 hover:bg-slate-50 text-slate-650"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </button>
               ))}
             </div>
           </div>
-          
+
           {calculationMethod === "THPT_EXAM" ? (
             <>
               <SubjectScoresInput

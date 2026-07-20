@@ -74,9 +74,9 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
         {/* 2. Leaderboard Ad - Đã tích hợp ELSA Speak Banner */}
         <div className="w-full min-h-[160px] md:min-h-[180px] rounded-2xl overflow-hidden shadow-xs border border-slate-200/60 mb-4">
-          <a 
-            href={`/redirect?url=${encodeURIComponent("/go/elsaspeak")}`} 
-            target="_blank" 
+          <a
+            href={`/redirect?url=${encodeURIComponent("/go/elsaspeak")}`}
+            target="_blank"
             rel="noopener noreferrer nofollow sponsored"
             onClick={() => {
               trackAffiliateClick({
@@ -96,10 +96,10 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
           >
             {/* Overlay màu tối nhẹ ở nửa bên trái để chữ dễ đọc */}
             <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-900/40 to-transparent z-1" />
-            
+
             {/* Text đè lên phía bên trái */}
             <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 md:w-1/2 flex flex-col justify-center p-6 z-10 text-white space-y-1.5 md:space-y-2">
-              <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-violet-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
+              <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-sky-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
                 Đối tác học thuật
               </span>
               <h3 className="font-extrabold text-sm md:text-lg leading-snug">
@@ -109,7 +109,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                 Đánh giá phát âm chính xác đến từng âm tiết nhờ công nghệ AI nhận diện giọng nói độc quyền. Nhận ưu đãi độc quyền 30% tại đây.
               </p>
               <div className="pt-1">
-                <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-violet-600 group-hover:bg-violet-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
+                <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-sky-600 group-hover:bg-sky-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
                   Tìm hiểu thêm &rarr;
                 </span>
               </div>
@@ -131,11 +131,10 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer ${
-                  selectedTab === tab.id
-                    ? "bg-violet-600 text-white"
+                className={`inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer ${selectedTab === tab.id
+                    ? "bg-sky-600 text-white"
                     : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
-                }`}
+                  }`}
               >
                 {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={12} />}
                 {tab.label}
@@ -172,7 +171,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                               </span>
                             );
                           })()}
-                          <h2 className="text-base font-bold text-slate-900 group-hover:text-violet-600 transition-colors line-clamp-2">
+                          <h2 className="text-base font-bold text-slate-900 group-hover:text-sky-600 transition-colors line-clamp-2">
                             <Link href={`/tin-tuc/${post.slug}`} className="after:absolute after:inset-0">
                               {post.title}
                             </Link>
@@ -185,7 +184,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                           <div className="flex items-center gap-2 text-[10px] text-slate-600 font-semibold uppercase tracking-wider">
                             <span>{post.date}</span>
                           </div>
-                          <span className="text-xs font-bold text-violet-600 group-hover:underline">
+                          <span className="text-xs font-bold text-sky-600 group-hover:underline">
                             Đọc tiếp &rarr;
                           </span>
                         </div>
@@ -236,13 +235,12 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
               <div className="flex items-center justify-center gap-1.5 sm:gap-2 pt-6">
                 <Link
                   href={`/tin-tuc?page=${currentPage - 1}`}
-                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${
-                    currentPage === 1 ? "pointer-events-none opacity-50" : ""
-                  }`}
+                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${currentPage === 1 ? "pointer-events-none opacity-50" : ""
+                    }`}
                 >
                   &larr;<span className="hidden sm:inline">&nbsp;Trước</span>
                 </Link>
-                
+
                 {(() => {
                   const range: (number | { label: string; page: number })[] = [];
                   const leftBoundary = Math.max(currentPage - 1, 1);
@@ -287,7 +285,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                         <Link
                           key={`dots-${index}`}
                           href={`/tin-tuc?page=${item.page}`}
-                          className="flex items-center justify-center w-8 h-8 text-xs font-bold text-slate-400 hover:text-violet-600 hover:bg-slate-100 rounded-full transition"
+                          className="flex items-center justify-center w-8 h-8 text-xs font-bold text-slate-400 hover:text-sky-600 hover:bg-slate-100 rounded-full transition"
                           title={`Đi tới trang ${item.page}`}
                         >
                           {item.label}
@@ -299,11 +297,10 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                       <Link
                         key={item}
                         href={`/tin-tuc?page=${item}`}
-                        className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-full transition ${
-                          currentPage === item
-                            ? "bg-violet-600 text-white"
+                        className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-full transition ${currentPage === item
+                            ? "bg-sky-600 text-white"
                             : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
-                        }`}
+                          }`}
                       >
                         {item}
                       </Link>
@@ -313,9 +310,8 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
                 <Link
                   href={`/tin-tuc?page=${currentPage + 1}`}
-                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${
-                    currentPage === totalPages ? "pointer-events-none opacity-50" : ""
-                  }`}
+                  className={`px-3 py-2 text-xs font-bold rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition ${currentPage === totalPages ? "pointer-events-none opacity-50" : ""
+                    }`}
                 >
                   <span className="hidden sm:inline">Sau&nbsp;</span>&rarr;
                 </Link>

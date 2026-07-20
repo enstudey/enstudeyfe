@@ -50,7 +50,7 @@ marked.use({
       },
       renderer(token) {
         const text = (token as { text?: string }).text ?? "";
-        return `<span class="glossary-term cursor-help border-b border-dashed border-violet-500 bg-violet-50/50 px-1 font-semibold text-violet-750" data-term="${text}">${text}</span>`;
+        return `<span class="glossary-term cursor-help border-b border-dashed border-sky-500 bg-sky-50/50 px-1 font-semibold text-sky-750" data-term="${text}">${text}</span>`;
       },
     },
   ],
@@ -100,7 +100,7 @@ function injectHeadingIds(html: string): string {
 function injectInFeedAds(html: string): string {
   const parts = html.split(/(?=<h2)/);
   if (parts.length <= 3) return html;
-  
+
   let newHtml = "";
   let h2Count = 0;
   for (let i = 0; i < parts.length; i++) {
@@ -132,7 +132,7 @@ export const getPostBySlug = cache((
     }
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
-    
+
     let contentHtml = "";
     if (options.includeContent !== false) {
       // Thay thế block :::answer trước khi parse
@@ -160,7 +160,7 @@ export const getPostBySlug = cache((
         });
 
         if (question && optionsList.length > 0 && correct && explanation) {
-          return `<div class="interactive-quiz-block my-6 p-5 bg-violet-50/50 border border-violet-100 rounded-2xl" 
+          return `<div class="interactive-quiz-block my-6 p-5 bg-sky-50/50 border border-sky-100 rounded-2xl" 
             data-question="${encodeURIComponent(question)}"
             data-options="${encodeURIComponent(JSON.stringify(optionsList))}"
             data-correct="${encodeURIComponent(correct)}"
@@ -170,8 +170,8 @@ export const getPostBySlug = cache((
 
         const htmlBody = marked(body.trim()) as string;
         return `<div class="interactive-answer my-4" data-testid="interactive-answer">
-          <button class="toggle-answer-btn px-3 py-1.5 bg-violet-100 hover:bg-violet-200 text-violet-700 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer">Xem đáp án</button>
-          <div class="answer-content hidden border-l-2 border-violet-500 pl-4 py-2 my-2 bg-slate-50 dark:bg-slate-900 rounded-r-xl">${htmlBody}</div>
+          <button class="toggle-answer-btn px-3 py-1.5 bg-sky-100 hover:bg-sky-200 text-sky-700 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer">Xem đáp án</button>
+          <div class="answer-content hidden border-l-2 border-sky-500 pl-4 py-2 my-2 bg-slate-50 dark:bg-slate-900 rounded-r-xl">${htmlBody}</div>
         </div>`;
       });
 

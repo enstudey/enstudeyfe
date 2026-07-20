@@ -24,7 +24,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [saveStatus, setSaveStatus] = useState<"saved" | "saving" | "error">("saved");
-  const [isOffline, setIsOffline] = useState(typeof window !== "undefined" ? !navigator.onLine : false);
+  const [activeTab, setActiveTab] = useState<"passage" | "question">("question");
 
   const currentQuestion = questions[currentIndex];
 
@@ -62,11 +62,11 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
     setSubmitting(true);
     try {
       await submitExam(sessionId, token);
-      router.push(`/exams/result/${sessionId}`);
+      router.push(`/exam/result/${sessionId}`);
     } catch (e) {
       console.error("Failed to auto submit on timeout", e);
       localStorage.setItem(`pending_submit_${sessionId}`, JSON.stringify({ sessionId, answers: answersRef.current }));
-      router.push(`/exams`);
+      router.push(`/exam`);
     }
   }, [sessionId, token, router]);
 
@@ -90,7 +90,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
         setSubmitting(true);
         await submitExam(sessionId, token);
         localStorage.removeItem(`pending_submit_${sessionId}`);
-        router.push(`/exams/result/${sessionId}`);
+        router.push(`/exam/result/${sessionId}`);
       } catch (e) {
         console.error("Failed to sync pending submission", e);
       } finally {
@@ -242,7 +242,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
     try {
       stopCountdown();
       await submitExam(sessionId, token);
-      router.push(`/exams/result/${sessionId}`);
+      router.push(`/exam/result/${sessionId}`);
     } catch (err) {
       console.error("Failed to submit exam", err);
       setErrorMsg("Nộp bài thi thất bại. Vui lòng kiểm tra lại kết nối mạng.");
@@ -253,71 +253,82 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   };
 
 
+  const remainingSeconds = Math.max(0, durationSeconds - elapsedSeconds);
+  const minutes = Math.floor(remainingSeconds / 60);
+  const seconds = remainingSeconds % 60;
+  const isTimeUrgent = remainingSeconds <= 300; // < 5 mins
+
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
-        <div className="text-center space-y-3">
-          <div className="w-10 h-10 border-4 border-violet-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="text-xs text-muted-foreground font-medium">Đang tải đề thi...</p>
-        </div>
+      <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center gap-4">
+        <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin" />
+        <p className="text-slate-500 text-sm font-medium">Đang tải phòng thi giả lập, chờ xíu nhé...</p>
       </div>
     );
   }
 
   if (errorMsg && questions.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA] px-6">
-        <div className="bg-card border border-border rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-sm">
-          <AlertCircle className="w-12 h-12 text-red-500 mx-auto" />
-          <h2 className="text-lg font-bold text-foreground">Không thể tiếp tục thi</h2>
-          <p className="text-xs text-muted-foreground leading-relaxed">{errorMsg}</p>
-          <Button onClick={() => router.push("/exams")} className="w-full rounded-2xl py-5 font-bold">
-            Quay lại danh sách đề
-          </Button>
-        </div>
+      <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-6 text-center gap-4">
+        <AlertCircle className="w-16 h-16 text-rose-500" />
+        <h2 className="text-xl font-bold text-slate-800">Không thể tiếp tục thi thử</h2>
+        <p className="text-slate-500 text-sm max-w-md leading-relaxed">{errorMsg}</p>
+        <Button onClick={() => router.push("/exam")} className="bg-slate-900 hover:bg-slate-800 text-white rounded-xl">
+          Quay lại kho đề
+        </Button>
       </div>
     );
   }
 
-  const remainingSeconds = Math.max(0, durationSeconds - elapsedSeconds);
-  const minutes = Math.floor(remainingSeconds / 60);
-  const seconds = remainingSeconds % 60;
-
-  const isReading = currentQuestion?.part?.toLowerCase()?.includes("part 5") ||
-                    currentQuestion?.part?.toLowerCase()?.includes("part 6") ||
-                    currentQuestion?.part?.toLowerCase()?.includes("part 7");
+  const isReading = currentQuestion?.part?.toLowerCase()?.includes("part 5") || 
+                    currentQuestion?.part?.toLowerCase()?.includes("part 6") || 
+                    currentQuestion?.part?.toLowerCase()?.includes("part 7") ||
+                    currentQuestion?.part?.toLowerCase()?.includes("reading");
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#FAFAFA] text-foreground">
-      {/* Top Banner Control Panel */}
-      <header className="sticky top-0 bg-white border-b border-border shadow-sm px-6 py-4 flex items-center justify-between z-40 select-none">
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0F172A] select-none h-screen overflow-hidden">
+      {/* Top Fixed Header */}
+      <header className="h-14 bg-white border-b border-slate-100 flex justify-between px-6 items-center shrink-0 z-10 select-none">
         <div className="flex items-center gap-4">
-          <h1 className="text-sm md:text-base font-extrabold text-foreground hidden sm:block">
-            Luyện thi thử trọn vẹn
-          </h1>
-          {isOffline && (
-            <span className="bg-red-50 text-red-600 border border-red-100 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
-              <WifiOff className="w-3.5 h-3.5" />
-              Mất mạng
-            </span>
-          )}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.push("/exam")}
+            className="rounded-xl hover:bg-slate-50 gap-1 font-bold text-xs"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Thoát</span>
+          </Button>
+          <span className="h-4 w-px bg-slate-200" />
+          <span className="text-xs font-bold text-slate-700 hidden sm:inline truncate max-w-[200px]">
+            ETS Simulation Desk
+          </span>
+        </div>
+
+        {/* Sync status */}
+        <div className="hidden md:flex items-center gap-2 select-none">
           {saveStatus === "saving" && (
-            <span className="text-[10px] text-muted-foreground animate-pulse font-medium">
-              Đang tự động lưu...
+            <span className="text-[10px] text-slate-400 animate-pulse font-medium">
+              Đang tự động lưu bài...
             </span>
           )}
           {saveStatus === "saved" && (
-            <span className="text-[10px] text-emerald-600 font-medium">
+            <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               Đã lưu bài làm
             </span>
           )}
         </div>
 
-        {/* Timer Countdown Panel */}
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2 bg-violet-50 border border-violet-100/50 px-4 py-2 rounded-2xl text-violet-700 font-bold text-sm shadow-inner">
-            <Clock className="w-4 h-4 text-violet-600 shrink-0" />
-            <span data-testid="timer-countdown">
+        {/* Timer & Submit CTA */}
+        <div className="flex items-center gap-4">
+          <div className={`flex items-center gap-2 px-4 py-1.5 rounded-xl font-bold text-sm shadow-inner transition-colors duration-300 font-mono ${
+            isTimeUrgent 
+              ? "bg-rose-50 border border-rose-100 text-rose-600 animate-pulse" 
+              : "bg-sky-50 border border-sky-100/50 text-sky-700"
+          }`}>
+            <Clock className="w-4 h-4 shrink-0" />
+            <span data-testid="timer-countdown" className="font-mono font-black">
               {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
             </span>
           </div>
@@ -326,7 +337,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
             onClick={handleSubmit}
             disabled={submitting}
             data-testid="btn-submit-quiz"
-            className="rounded-2xl font-bold bg-violet-600 hover:bg-violet-700 shadow-sm gap-1.5 px-5"
+            className="rounded-xl font-bold bg-[#0F172A] hover:bg-slate-800 text-white shadow-sm gap-1.5 px-5 h-9"
           >
             <Send className="w-3.5 h-3.5" />
             <span>Nộp bài</span>
@@ -334,165 +345,200 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
         </div>
       </header>
 
-      {/* Main Workspace Body */}
-      <main className="flex-1 flex flex-col md:flex-row overflow-hidden w-full max-w-[1400px] mx-auto px-4 py-6 gap-6">
+      {/* Tab Switcher for Mobile context */}
+      {isReading && currentQuestion?.passage && (
+        <div className="flex border-b border-slate-100 bg-white md:hidden shrink-0">
+          <button
+            onClick={() => setActiveTab("passage")}
+            className={`flex-1 py-3 text-xs font-bold border-b-2 transition-colors ${
+              activeTab === "passage" ? "border-sky-500 text-sky-650" : "border-transparent text-slate-500"
+            }`}
+          >
+            📖 Đoạn văn đọc hiểu
+          </button>
+          <button
+            onClick={() => setActiveTab("question")}
+            className={`flex-1 py-3 text-xs font-bold border-b-2 transition-colors ${
+              activeTab === "question" ? "border-sky-500 text-sky-655" : "border-transparent text-slate-500"
+            }`}
+          >
+            ✏️ Câu hỏi & Đáp án
+          </button>
+        </div>
+      )}
+
+      {/* Main Workspace Body (Split Screen) */}
+      <main className="flex-1 overflow-hidden grid md:grid-cols-12 w-full max-w-[1500px] mx-auto px-4 py-6 gap-6">
         
-        {/* Left Column: Passage Section (for Reading) */}
-        {isReading && currentQuestion?.passage ? (
-          <div className="flex-1 bg-white border border-border rounded-3xl p-6 shadow-sm overflow-y-auto md:max-h-[75vh] select-text">
-            <div className="inline-flex items-center gap-1.5 bg-violet-50 border border-violet-100 px-3 py-1 rounded-full text-[10px] font-bold text-violet-600 uppercase tracking-wider mb-4">
-              <span>Đoạn văn đọc hiểu</span>
-            </div>
-            <div className="prose prose-sm max-w-none text-foreground text-sm leading-relaxed whitespace-pre-wrap font-medium">
-              {currentQuestion.passage}
-            </div>
-          </div>
-        ) : null}
-
-        {/* Middle Column: Current Question Content */}
-        <div className="flex-[1.5] flex flex-col bg-white border border-border rounded-3xl p-6 shadow-sm justify-between gap-6 overflow-y-auto md:max-h-[75vh]">
-          <div className="space-y-6">
-            
-            {/* Header info */}
-            <div className="flex items-center justify-between border-b border-border pb-4 select-none">
-              <span className="bg-violet-50 text-violet-600 border border-violet-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
-                {currentQuestion.part} - Câu {currentQuestion.order}
+        {/* Nửa bên Trái: Ngữ cảnh bài thi */}
+        <div className={`md:col-span-7 h-full overflow-y-auto pr-2 space-y-6 ${
+          isReading && currentQuestion?.passage && activeTab !== "passage" ? "hidden md:block" : "block"
+        }`}>
+          {/* Passage Section */}
+          {isReading && currentQuestion?.passage ? (
+            <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm select-text">
+              <span className="inline-flex items-center bg-sky-50 text-sky-600 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider mb-4">
+                📖 Đoạn văn đọc hiểu
               </span>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => handleToggleFlag(currentIndex)}
-                className={`rounded-xl gap-1 text-xs font-bold ${
-                  flags[currentIndex] ? "bg-amber-50 text-amber-600 border border-amber-100" : "text-muted-foreground"
-                }`}
-              >
-                <Flag className={`w-4 h-4 ${flags[currentIndex] ? "fill-current text-amber-500" : ""}`} />
-                <span>Xem lại</span>
-              </Button>
-            </div>
-
-            {/* Audio Panel for Listening */}
-            {!isReading && currentQuestion?.audioUrl && (
-              <div className="bg-violet-50 border border-violet-100/50 rounded-2xl p-4 flex items-center gap-4 select-none">
-                <div className="p-2.5 bg-violet-600 rounded-xl text-white">
-                  <Volume2 className="w-5 h-5 shrink-0" />
-                </div>
-                <div className="flex-1 space-y-1">
-                  <p className="text-xs font-bold text-violet-800">Trình phát Audio Listening</p>
-                  <p className="text-[10px] text-violet-600 font-medium">Tự động phát, không cho phép tua hoặc tạm dừng</p>
-                  <audio
-                    ref={audioRef}
-                    src={currentQuestion.audioUrl}
-                    onTimeUpdate={handleAudioTimeUpdate}
-                    onPause={handleAudioPause}
-                    autoPlay
-                    controls={false}
-                    className="hidden"
-                  />
-                </div>
+              <div className="prose prose-sm max-w-none text-slate-800 text-sm leading-relaxed whitespace-pre-wrap font-medium">
+                {currentQuestion.passage}
               </div>
-            )}
-
-            {/* Question Image */}
-            {currentQuestion?.imageUrl && (
-              <div className="w-full flex justify-center py-2 select-none">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={currentQuestion.imageUrl}
-                  alt={`Minh họa câu hỏi ${currentQuestion.order}`}
-                  className="max-h-[220px] object-contain rounded-2xl border border-border shadow-sm"
+            </div>
+          ) : (
+            /* Playlist Audio block for Listening (Audio Guard) */
+            !isReading && currentQuestion?.audioUrl && (
+              <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col items-center justify-center text-center space-y-6 select-none min-h-[300px]">
+                <div className="w-24 h-24 rounded-full bg-slate-50 flex items-center justify-center border border-dashed border-slate-300 relative">
+                  <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-600 animate-pulse">
+                    <Volume2 className="w-8 h-8" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-extrabold text-sm text-slate-800">Trình phát Audio Listening Guard</h4>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Tự động phát • Không được tua / tạm dừng</p>
+                </div>
+                <audio
+                  ref={audioRef}
+                  src={currentQuestion.audioUrl}
+                  onTimeUpdate={handleAudioTimeUpdate}
+                  onPause={handleAudioPause}
+                  autoPlay
+                  controls={false}
+                  className="hidden"
                 />
               </div>
-            )}
+            )
+          )}
+        </div>
 
-            {/* Question Text */}
-            <p className="text-base font-extrabold leading-relaxed text-foreground select-text">
-              {currentQuestion.questionText}
-            </p>
+        {/* Nửa bên Phải: Answer options & Navigation Grid */}
+        <div className={`md:col-span-5 h-full overflow-y-auto pl-2 flex flex-col gap-6 ${
+          isReading && currentQuestion?.passage && activeTab !== "question" ? "hidden md:flex" : "flex"
+        }`}>
+          {/* Answer Panel Card */}
+          <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between gap-6 shrink-0">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-4 select-none">
+                <span className="bg-sky-50 text-sky-600 border border-sky-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
+                  {currentQuestion?.part || "TEST"} - Câu {currentQuestion?.order || currentIndex + 1}
+                </span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => handleToggleFlag(currentIndex)}
+                  className={`rounded-xl gap-1 text-xs font-bold ${
+                    flags[currentIndex] ? "bg-amber-50 text-amber-600 border border-amber-100" : "text-slate-400 hover:text-slate-655"
+                  }`}
+                >
+                  <Flag className={`w-4 h-4 ${flags[currentIndex] ? "fill-current text-amber-500" : ""}`} />
+                  <span>Cứu xét</span>
+                </Button>
+              </div>
 
-            {/* Answer Options list */}
-            <div className="grid grid-cols-1 gap-3 pt-2">
-              {currentQuestion.options.map((option, idx) => {
-                const isSelected = answers[currentQuestion.id.toString()] === idx;
-                const letter = ["A", "B", "C", "D"][idx];
-                return (
-                  <button
-                    key={idx}
-                    onClick={() => handleSelectAnswer(currentQuestion.id, idx)}
-                    className={`flex items-center text-left gap-4 p-4 rounded-2xl border text-sm font-bold transition duration-200 cursor-pointer ${
-                      isSelected
-                        ? "bg-violet-600 text-white border-violet-600 shadow-md shadow-violet-100"
-                        : "bg-white text-foreground border-border hover:bg-slate-50 hover:border-violet-500/20"
-                    }`}
-                  >
-                    <span
-                      className={`w-6 h-6 flex items-center justify-center rounded-xl text-xs font-black shrink-0 ${
-                        isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
+              {/* Question Image if any */}
+              {currentQuestion?.imageUrl && (
+                <div className="w-full flex justify-center py-2 select-none">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={currentQuestion.imageUrl}
+                    alt={`Minh họa câu hỏi ${currentQuestion.order}`}
+                    className="max-h-[180px] object-contain rounded-2xl border border-slate-100"
+                  />
+                </div>
+              )}
+
+              {/* Question Text */}
+              <p className="text-sm font-extrabold leading-relaxed text-slate-800 select-text">
+                {currentQuestion?.questionText}
+              </p>
+
+              {/* Answer options A-B-C-D grid */}
+              <div className="grid grid-cols-1 gap-3">
+                {currentQuestion?.options?.map((option, idx) => {
+                  const isSelected = answers[currentQuestion.id.toString()] === idx;
+                  const letter = ["A", "B", "C", "D"][idx];
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => handleSelectAnswer(currentQuestion.id, idx)}
+                      className={`flex items-center text-left gap-4 p-4 rounded-2xl border text-xs font-bold transition-all duration-150 cursor-pointer ${
+                        isSelected
+                          ? "bg-sky-500 text-white border-sky-500 shadow-md shadow-sky-100"
+                          : "bg-white text-slate-800 border-slate-100 hover:bg-slate-50 hover:border-sky-500/20"
                       }`}
                     >
-                      {letter}
-                    </span>
-                    <span className="flex-1">{option}</span>
-                  </button>
-                );
-              })}
+                      <span className={`w-7 h-7 flex items-center justify-center rounded-full text-xs font-black shrink-0 ${
+                        isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
+                      }`}>
+                        {letter}
+                      </span>
+                      <span className="flex-1">{option}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Prev/Next buttons */}
+            <div className="flex items-center justify-between border-t border-slate-100 pt-4 select-none">
+              <Button
+                variant="outline"
+                disabled={currentIndex === 0}
+                onClick={() => setCurrentIndex((prev) => prev - 1)}
+                className="rounded-xl font-bold gap-1 text-xs px-4"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Câu trước</span>
+              </Button>
+              <Button
+                variant="outline"
+                disabled={currentIndex === questions.length - 1}
+                onClick={() => setCurrentIndex((prev) => prev + 1)}
+                className="rounded-xl font-bold gap-1 text-xs px-4"
+              >
+                <span>Câu tiếp</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
             </div>
           </div>
 
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-between border-t border-border pt-4 select-none">
-            <Button
-              variant="outline"
-              disabled={currentIndex === 0}
-              onClick={() => setCurrentIndex((prev) => prev - 1)}
-              className="rounded-xl font-bold gap-1 text-xs px-4"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Câu trước</span>
-            </Button>
-            <Button
-              variant="outline"
-              disabled={currentIndex === questions.length - 1}
-              onClick={() => setCurrentIndex((prev) => prev + 1)}
-              className="rounded-xl font-bold gap-1 text-xs px-4"
-            >
-              <span>Câu tiếp</span>
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-
-        {/* Right Column: Fast Navigation Grid Board */}
-        <div className="flex-1 bg-white border border-border rounded-3xl p-5 shadow-sm overflow-y-auto md:max-h-[75vh] select-none flex flex-col justify-between gap-4">
-          <div className="space-y-4">
-            <h3 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
+          {/* Navigation Grid Board */}
+          <div className="bg-white border border-slate-100 rounded-3xl p-5 shadow-sm select-none flex-1 overflow-y-auto">
+            <h3 className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider mb-4">
               Bảng đáp án nhanh
             </h3>
             
-            <div className="grid grid-cols-5 xs:grid-cols-6 sm:grid-cols-8 md:grid-cols-5 lg:grid-cols-6 gap-2">
+            <div className="grid grid-cols-6 xs:grid-cols-8 sm:grid-cols-10 md:grid-cols-6 lg:grid-cols-7 gap-2">
               {questions.map((q, idx) => {
                 const questionIdStr = q.id.toString();
                 const isAnswered = answers[questionIdStr] !== undefined;
                 const isCurrent = currentIndex === idx;
                 const isFlagged = flags[idx];
 
+                let gridBtnClass = "relative w-9 h-9 flex items-center justify-center text-xs font-bold rounded-xl border transition-all duration-150 cursor-pointer ";
+                
+                if (isCurrent) {
+                  gridBtnClass += "bg-sky-500 text-white border-sky-500 shadow-md";
+                } else if (isFlagged) {
+                  gridBtnClass += "bg-amber-50 text-amber-800 border-amber-400";
+                } else if (isAnswered) {
+                  gridBtnClass += "bg-sky-50 text-sky-700 border-sky-100";
+                } else {
+                  gridBtnClass += "bg-white text-slate-400 border-slate-100 hover:bg-slate-50";
+                }
+
                 return (
                   <button
                     key={q.id}
-                    onClick={() => setCurrentIndex(idx)}
-                    className={`relative w-10 h-10 flex items-center justify-center text-xs font-bold rounded-xl border transition duration-200 cursor-pointer ${
-                      isCurrent
-                        ? "bg-violet-600 text-white border-violet-600 shadow-md"
-                        : isAnswered
-                        ? "bg-violet-50 text-violet-700 border-violet-200"
-                        : "bg-white text-muted-foreground border-border hover:bg-slate-50"
-                    }`}
+                    onClick={() => {
+                      setCurrentIndex(idx);
+                      setActiveTab("question");
+                    }}
+                    className={gridBtnClass}
                   >
-                    <span>{idx + 1}</span>
+                    <span className="font-mono">{idx + 1}</span>
                     {isFlagged && (
-                      <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-amber-500 rounded-bl-md border-t border-r border-white flex items-center justify-center">
-                        <Flag className="w-1.5 h-1.5 text-white fill-current" />
-                      </span>
+                      <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-500 rounded-full border border-white" />
                     )}
                   </button>
                 );

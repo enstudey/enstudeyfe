@@ -20,7 +20,21 @@ const nextConfig: NextConfig = {
   async redirects() {
     const defaultRedirects = [
       // Redirects cho các bài blog cũ sang category mới
-
+      {
+        source: "/dashboard",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/exams",
+        destination: "/exam",
+        permanent: true,
+      },
+      {
+        source: "/exams/:path*",
+        destination: "/exam/:path*",
+        permanent: true,
+      },
       {
         source: "/blog/spaced-repetition-hoc-tu-vung",
         destination: "/blog/skills/spaced-repetition-hoc-tu-vung",

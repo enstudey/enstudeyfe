@@ -79,12 +79,12 @@ export const AnalyticsDashboard: React.FC = () => {
         </div>
 
         {/* Tab Buttons */}
-        <div className="flex rounded-2xl bg-slate-100 dark:bg-slate-900 p-1.5 border border-slate-200 dark:border-slate-800">
+        <div className="flex rounded-2xl bg-slate-100 dark:bg-slate-900 p-1.5 border border-slate-200 dark:border-slate-880">
           <button
             onClick={() => handleExamTypeChange(EXAM_TYPES.TOEIC)}
             className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
               examType === EXAM_TYPES.TOEIC
-                ? "bg-white dark:bg-slate-800 text-violet-600 dark:text-violet-400 shadow-sm"
+                ? "bg-white dark:bg-slate-800 text-sky-655 dark:text-sky-400 shadow-sm"
                 : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
             }`}
           >
@@ -94,7 +94,7 @@ export const AnalyticsDashboard: React.FC = () => {
             onClick={() => handleExamTypeChange(EXAM_TYPES.IELTS)}
             className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
               examType === EXAM_TYPES.IELTS
-                ? "bg-white dark:bg-slate-800 text-purple-600 dark:text-purple-400 shadow-sm"
+                ? "bg-white dark:bg-slate-800 text-emerald-650 dark:text-emerald-400 shadow-sm"
                 : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
             }`}
           >

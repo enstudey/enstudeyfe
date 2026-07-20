@@ -66,61 +66,126 @@ export default function DailyQuizWidget({ userFullName = "bạn", token }: Daily
 
   // SSR Fallback (trước khi mount) hoặc khi chưa làm bài
   if (!isMounted || !isCompletedToday) {
+    const radius = 36;
+    const strokeWidth = 8;
+    const circumference = 2 * Math.PI * radius; // 226.19
+    const offset = circumference; // 0% progress
+
     return (
-      <div className="bg-gradient-to-br from-violet-500 to-purple-600 text-white rounded-3xl p-8 shadow-lg relative overflow-hidden transition-all duration-300">
-        <div className="relative z-10 space-y-4 max-w-lg">
-          <span className="inline-flex items-center gap-1 bg-violet-400/30 text-violet-105 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
+      <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300">
+        <div className="flex-1 space-y-4 text-left">
+          <span className="inline-flex items-center gap-1 bg-sky-50 text-sky-600 text-[10px] px-2.5 py-1 rounded-full font-extrabold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" /> Hôm nay nè bạn ơi! 🔥
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Chào {userFullName} nha! Hôm nay chúng mình làm tí Mini-test nhỉ? 🔥
+          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+            Mục tiêu giữ Streak hôm nay cùng {userFullName} 🎯
           </h2>
-          <p className="text-violet-100/90 text-sm leading-relaxed">
-            Hoàn thành nhanh 10 câu hỏi rút gọn để giữ lửa Streak đỉnh chóp và củng cố ngữ pháp, từ vựng hôm nay nha.
+          <p className="text-slate-500 text-xs leading-relaxed max-w-md">
+            Hoàn thành nhanh 10 câu hỏi rút gọn để tích luỹ ngọn lửa thói quen luyện tập hàng ngày nhé.
           </p>
-          <div className="pt-2">
-            <Link
-              href="/quiz"
-              className="inline-flex items-center justify-center bg-white text-violet-600 font-bold px-6 py-3.5 rounded-xl shadow-md hover:bg-violet-50 transition transform hover:-translate-y-0.5"
-            >
-              Chiến luôn đề này nha! 🎯
-            </Link>
-          </div>
         </div>
-        <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none text-9xl select-none font-bold">
-          10Q
+        
+        {/* Progress Ring & CTA Button Wrapper */}
+        <div className="flex flex-col sm:flex-row items-center gap-6">
+          {/* Progress Ring SVG */}
+          <div className="relative w-24 h-24 flex items-center justify-center shrink-0">
+            <svg className="w-full h-full transform -rotate-90">
+              <circle
+                cx="48"
+                cy="48"
+                r={radius}
+                className="stroke-slate-100"
+                strokeWidth={strokeWidth}
+                fill="transparent"
+              />
+              <circle
+                cx="48"
+                cy="48"
+                r={radius}
+                className="stroke-sky-500 transition-all duration-1000 ease-out"
+                strokeWidth={strokeWidth}
+                fill="transparent"
+                strokeDasharray={circumference}
+                strokeDashoffset={offset}
+                strokeLinecap="round"
+              />
+            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span className="font-mono text-lg font-black text-slate-800">0/10</span>
+              <span className="text-[8px] text-slate-400 font-extrabold uppercase">Câu đúng</span>
+            </div>
+          </div>
+
+          <Link
+            href="/quiz"
+            className="w-full sm:w-auto text-center h-14 px-8 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl transition duration-150 flex items-center justify-center gap-1.5 shadow-lg shadow-sky-500/20 text-sm hover:scale-[1.02] active:scale-[0.98]"
+          >
+            Luyện Ngay (5 Phút) ⚡
+          </Link>
         </div>
       </div>
     );
   }
 
   // Khi đã hoàn thành bài thi trong ngày
+  const radius = 36;
+  const strokeWidth = 8;
+  const circumference = 2 * Math.PI * radius; // 226.19
+  const score = scoreInfo?.score ?? 0;
+  const progressRatio = score / 10;
+  const offset = circumference - progressRatio * circumference;
+
   return (
-    <div className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-3xl p-8 shadow-lg relative overflow-hidden transition-all duration-300">
-      <div className="relative z-10 space-y-4 max-w-lg">
-        <span className="inline-flex items-center gap-1 bg-emerald-450/30 text-emerald-100 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
+    <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300">
+      <div className="flex-1 space-y-4 text-left">
+        <span className="inline-flex items-center gap-1 bg-emerald-50 text-emerald-600 text-[10px] px-2.5 py-1 rounded-full font-extrabold uppercase tracking-wider">
           <Trophy className="w-3.5 h-3.5" /> Đã hoàn thành thử thách! 🌟
         </span>
-        <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+        <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
           Tuyệt vời quá {userFullName} ơi! 🎉
         </h2>
-        <p className="text-emerald-50/90 text-sm leading-relaxed">
-          Bạn đã hoàn thành xuất sắc bài kiểm tra hàng ngày loại đề{" "}
-          <strong className="text-white font-bold">{scoreInfo?.examType || "TOEIC"}</strong> với kết quả{" "}
-          <strong className="text-white font-black text-lg">{scoreInfo?.score ?? 0}/10</strong> câu đúng. Giữ vững ngọn lửa Streak cho các ngày tiếp theo nhé!
+        <p className="text-slate-500 text-xs leading-relaxed max-w-md">
+          Bạn đã rèn luyện xong đề <strong className="text-slate-800 font-bold">{scoreInfo?.examType || "Mini-Test"}</strong> với thành tích <strong className="text-emerald-500 font-black text-sm">{score}/10</strong> câu chính xác.
         </p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Link
-            href="/quiz"
-            className="inline-flex items-center justify-center bg-emerald-50/20 text-white border border-emerald-400/40 hover:bg-emerald-50/30 font-bold px-5 py-3 rounded-xl transition"
-          >
-            <BookOpen className="w-4 h-4 mr-2" />
-            Luyện tập thêm 🎯
-          </Link>
-        </div>
       </div>
-      <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none text-9xl select-none font-bold">
-        DONE
+
+      <div className="flex flex-col sm:flex-row items-center gap-6">
+        {/* Progress Ring SVG */}
+        <div className="relative w-24 h-24 flex items-center justify-center shrink-0">
+          <svg className="w-full h-full transform -rotate-90">
+            <circle
+              cx="48"
+              cy="48"
+              r={radius}
+              className="stroke-slate-100"
+              strokeWidth={strokeWidth}
+              fill="transparent"
+            />
+            <circle
+              cx="48"
+              cy="48"
+              r={radius}
+              className="stroke-emerald-500 transition-all duration-1000 ease-out"
+              strokeWidth={strokeWidth}
+              fill="transparent"
+              strokeDasharray={circumference}
+              strokeDashoffset={offset}
+              strokeLinecap="round"
+            />
+          </svg>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <span className="font-mono text-lg font-black text-emerald-600">{score}/10</span>
+            <span className="text-[8px] text-slate-400 font-extrabold uppercase">Câu đúng</span>
+          </div>
+        </div>
+
+        <Link
+          href="/quiz"
+          className="w-full sm:w-auto text-center h-14 px-6 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition duration-150 flex items-center justify-center gap-1.5 text-sm"
+        >
+          <BookOpen className="w-4 h-4" />
+          Luyện tập thêm 🎯
+        </Link>
       </div>
     </div>
   );
