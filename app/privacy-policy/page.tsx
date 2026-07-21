@@ -80,13 +80,13 @@ export default function PrivacyPolicyPage() {
             </div>
 
             <div className="space-y-2 mt-4">
-              <h3 className="text-sm font-bold text-slate-900">Đối tác Tiếp thị liên kết Shopee Affiliate</h3>
+              <h3 className="text-sm font-bold text-slate-900">Đối tác Tiếp thị liên kết Tiki Affiliate</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>
-                  Hệ thống có chứa các liên kết giới thiệu sản phẩm giáo dục, cẩm nang luyện đề, văn phòng phẩm và hành trang sinh viên dẫn sang sàn thương mại điện tử Shopee Việt Nam.
+                  Hệ thống có chứa các liên kết giới thiệu sản phẩm giáo dục, cẩm nang luyện đề, văn phòng phẩm và hành trang sinh viên dẫn sang sàn thương mại điện tử Tiki Việt Nam.
                 </li>
                 <li>
-                  Khi người dùng click vào các liên kết này, Shopee sẽ sử dụng cookie theo dõi ẩn danh để ghi nhận nguồn giới thiệu theo quy định của chương trình Tiếp thị liên kết. Hoạt động này hoàn toàn không làm phát sinh thêm bất kỳ chi phí mua sắm nào cho người dùng cuối.
+                  Khi người dùng click vào các liên kết này, Tiki sẽ sử dụng cookie theo dõi ẩn danh để ghi nhận nguồn giới thiệu theo quy định của chương trình Tiếp thị liên kết. Hoạt động này hoàn toàn không làm phát sinh thêm bất kỳ chi phí mua sắm nào cho người dùng cuối.
                 </li>
               </ul>
             </div>

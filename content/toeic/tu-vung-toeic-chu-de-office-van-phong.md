@@ -9,15 +9,15 @@ tags:
   - "chủ đề office"
   - "tiếng anh công sở"
 affiliateProducts:
-  - title: "Sách Hacker TOEIC Listening (Bản Cứng)"
-    imageUrl: "/logo.svg"
-    shopeeUrl: "https://shopee.vn/hacker-toeic-lc"
-    priceRange: "150.000đ - 180.000đ"
+  - title: "Sách Barron's Essential Words For The TOEIC"
+    imageUrl: "https://salt.tikicdn.com/cache/280x280/ts/product/ff/f0/65/ea6e27bff744a83399ea4cadea7dd5d3.jpg"
+    tikiUrl: "https://tiki.vn/sach-barron-s-essential-words-for-the-toeic-tai-ban-p12107394.html"
+    priceRange: "110.000đ - 130.000đ"
     badge: "Bán chạy"
-  - title: "Sách Hack Não 1500 Từ Tiếng Anh"
-    imageUrl: "/logo.svg"
-    shopeeUrl: "https://shopee.vn/hack-nao-1500"
-    priceRange: "250.000đ - 290.000đ"
+  - title: "Sách New Economy TOEIC LC 1000"
+    imageUrl: "https://salt.tikicdn.com/cache/280x280/ts/product/56/df/59/ea7a05e73a88a4ff49d00656ab61669f.jpg"
+    tikiUrl: "https://tiki.vn/sach-new-economy-toeic-lc-1000-kem-file-mp3-p3840809.html"
+    priceRange: "120.000đ - 150.000đ"
     badge: "Đề xuất"
 ---
 

@@ -1,13 +1,7 @@
 const PUBLISHER_ID = process.env.ACCESSTRADE_PUBLISHER_ID ?? "PLACEHOLDER_PUBLISHER_ID";
 
 export const CAMPAIGN_IDS: Record<string, string> = {
-  shopee: process.env.ACCESSTRADE_CAMPAIGN_SHOPEE ?? "PLACEHOLDER_SHOPEE_ID",
-  lazada: process.env.ACCESSTRADE_CAMPAIGN_LAZADA ?? "PLACEHOLDER_LAZADA_ID",
   tiki:   process.env.ACCESSTRADE_CAMPAIGN_TIKI   ?? "PLACEHOLDER_TIKI_ID",
-  elsaspeak: process.env.ACCESSTRADE_CAMPAIGN_ELSASPEAK ?? "PLACEHOLDER_ELSASPEAK_ID",
-  unica:     process.env.ACCESSTRADE_CAMPAIGN_UNICA     ?? "PLACEHOLDER_UNICA_ID",
-  gitiho:    process.env.ACCESSTRADE_CAMPAIGN_GITIHO    ?? "PLACEHOLDER_GITIHO_ID",
-  ila:       process.env.ACCESSTRADE_CAMPAIGN_ILA       ?? "PLACEHOLDER_ILA_ID",
 } as const;
 
 interface AffiliateConfig {

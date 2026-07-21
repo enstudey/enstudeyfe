@@ -52,7 +52,7 @@ export default function TermsOfServicePage() {
           <section className="space-y-2">
             <h2 className="text-lg font-bold text-slate-900">3. Quy định về Quảng cáo, Tiếp thị liên kết và An toàn hệ thống</h2>
             <p>
-              Để duy trì chi phí vận hành máy chủ lưu trữ dữ liệu lớn, EnStudey tích hợp dịch vụ quảng cáo tự động Google AdSense và các liên kết tiếp thị Shopee Affiliate (gợi ý sách ôn tập, dụng cụ học tập). Chúng tôi cam kết các quảng cáo này không chứa mã độc, không thu thập thông tin nhận dạng cá nhân nhạy cảm của bạn và được phân bổ hợp lý để giữ nguyên tính thẩm mỹ của giao diện.
+              Để duy trì chi phí vận hành máy chủ lưu trữ dữ liệu lớn, EnStudey tích hợp dịch vụ quảng cáo tự động Google AdSense và các liên kết tiếp thị Tiki Affiliate (gợi ý sách ôn tập, dụng cụ học tập). Chúng tôi cam kết các quảng cáo này không chứa mã độc, không thu thập thông tin nhận dạng cá nhân nhạy cảm của bạn và được phân bổ hợp lý để giữ nguyên tính thẩm mỹ của giao diện.
             </p>
             <p>
               Bằng việc sử dụng trang web, bạn đồng ý với việc hiển thị các nội dung tài trợ và liên kết tiếp thị này.

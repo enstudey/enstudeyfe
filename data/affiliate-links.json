@@ -88,29 +88,5 @@
     "destination": "https://tiki.vn/combo-tui-20-cay-but-bi-thu-cho-be-nhieu-mau-sac-ngo-nghinh-xinh-xan-dang-yeu-cho-be-lua-chon-p276798552.html",
     "platform": "tiki",
     "campaignId": "tiki"
-  },
-  {
-    "source": "/go/elsaspeak",
-    "destination": "https://vn.elsaspeak.com/affiliates-vnaff_no/?ref=4036/Accesstrade",
-    "platform": "elsaspeak",
-    "campaignId": "elsaspeak"
-  },
-  {
-    "source": "/go/unica",
-    "destination": "https://unica.vn/",
-    "platform": "unica",
-    "campaignId": "unica"
-  },
-  {
-    "source": "/go/gitiho",
-    "destination": "https://gitiho.com/",
-    "platform": "gitiho",
-    "campaignId": "gitiho"
-  },
-  {
-    "source": "/go/ila",
-    "destination": "https://ila.edu.vn/tieng-anh-cho-be/",
-    "platform": "ila",
-    "campaignId": "ila"
   }
 ]

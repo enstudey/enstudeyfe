@@ -65,12 +65,12 @@ export default function AffiliateProductBox({ products }: AffiliateProductBoxPro
 
             <div className="mt-4">
               <a
-                href={product.shopeeUrl}
+                href={product.tikiUrl}
                 target="_blank"
                 rel="sponsored nofollow noopener noreferrer"
-                className="w-full inline-flex items-center justify-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-extrabold rounded-xl transition duration-200 shadow-sm"
+                className="w-full inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold rounded-xl transition duration-200 shadow-sm"
               >
-                Mua trên Shopee &rarr;
+                Mua trên Tiki &rarr;
               </a>
             </div>
           </div>

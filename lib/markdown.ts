@@ -9,7 +9,7 @@ const CONTENT_DIRECTORY = path.join(process.cwd(), "content");
 export interface AffiliateProduct {
   title: string;
   imageUrl: string;
-  shopeeUrl: string;
+  tikiUrl: string;
   priceRange: string;
   badge?: string;
 }

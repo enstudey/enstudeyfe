@@ -2,6 +2,7 @@
 
 import { RoadmapMilestone } from "@/types/roadmap";
 import { MilestoneCard } from "./MilestoneCard";
+import AdSenseSlot from "@/components/ads/AdSenseSlot";
 
 interface RoadmapTimelineProps {
   milestones: RoadmapMilestone[];
@@ -19,16 +20,12 @@ export function RoadmapTimeline({ milestones }: RoadmapTimelineProps) {
   return (
     <div className="relative space-y-8">
       {milestones.map((milestone, index) => (
-        <div key={milestone.milestoneId} className="relative">
+        <div key={milestone.milestoneId || `milestone-${index}`} className="relative">
           <MilestoneCard milestone={milestone} />
 
-          {/* Interleaved AdSense Placeholder (Fixed height for Zero CLS) */}
+          {/* Interleaved AdSense (Fixed height for Zero CLS) */}
           {index === 0 && (
-            <div className="mt-8 p-4 bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-2xl min-h-[90px] flex items-center justify-center text-center">
-              <span className="text-xs text-zinc-400 font-medium tracking-wide uppercase">
-                Quảng cáo — Được tài trợ
-              </span>
-            </div>
+            <AdSenseSlot slotId="roadmap-timeline-slot-id" minHeight="90px" className="mt-8" />
           )}
         </div>
       ))}

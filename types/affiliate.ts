@@ -1,5 +1,5 @@
 export type AffiliateCategory = "study" | "dorm" | "collection";
-export type AffiliatePlatform = "shopee" | "lazada" | "tiki" | "amazon" | "elsaspeak" | "unica" | "gitiho" | "ila";
+export type AffiliatePlatform = "tiki";
 
 export interface AffiliateProduct {
   id: string;

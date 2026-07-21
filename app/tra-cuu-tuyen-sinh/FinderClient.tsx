@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import AffiliateNativeRow from "@/components/affiliate/AffiliateNativeRow";
+import TikiAffiliateWidget from "@/components/affiliate/TikiAffiliateWidget";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -283,22 +284,24 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
             data-testid="ad-infeed-points"
           >
             <Link
-              href="/go/elsaspeak"
+              href="/go/sach-ielts"
               target="_blank"
               rel="noopener noreferrer nofollow sponsored"
               onClick={() => {
                 trackAffiliateClick({
-                  productId: "elsa-speak",
-                  productName: "ELSA Speak App",
+                  productId: "tiki-hackers-ielts-combo",
+                  productName: "Combo Sách Hackers IELTS",
                   sourcePage: "tra-cuu-tuyen-sinh-ad",
-                  subId: "enstudey_tuyen_sinh_elsa"
+                  subId: "enstudey_tuyen_sinh_tiki"
                 });
               }}
               className="block w-full group relative aspect-[8/3] md:aspect-[3/1]"
               style={{
-                backgroundImage: "url('/images/affiliate/elsa.webp')",
-                backgroundSize: "cover",
-                backgroundPosition: "center center",
+                backgroundImage: "url('https://salt.tikicdn.com/cache/280x280/ts/product/f7/4e/19/d8f6afba640800d54e3feb17a2a8e494.JPG')",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right 10% center",
+                backgroundColor: "#1e3a8a",
                 minHeight: "180px"
               }}
             >
@@ -308,17 +311,17 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               {/* Text đè lên phía bên trái */}
               <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 md:w-1/2 flex flex-col justify-center p-6 z-10 text-white space-y-1.5 md:space-y-2">
                 <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-blue-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
-                  Đối tác tuyển sinh
+                  Tài liệu đề xuất
                 </span>
                 <h3 className="font-extrabold text-sm md:text-lg leading-snug">
-                  Luyện Phát Âm Chuẩn Cùng Trợ Lý AI ELSA Speak!
+                  Combo 2 Cuốn Hackers IELTS: Listening + Reading
                 </h3>
                 <p className="text-[10px] md:text-xs text-slate-300 line-clamp-2 leading-relaxed">
-                  Lộ trình cá nhân hóa giúp nâng band Speaking cấp tốc để xét tuyển thẳng Đại học. Nhận ngay học bổng ưu đãi 30% khi đăng ký hôm nay.
+                  Bộ đôi luyện thi IELTS toàn diện cực kỳ nổi tiếng từ Viện Ngôn Ngữ Hackers – chuẩn bị tốt nhất cho kỳ thi đầu vào đại học của bạn.
                 </p>
                 <div className="pt-1">
                   <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-blue-600 group-hover:bg-blue-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
-                    Tìm hiểu ngay &rarr;
+                    Mua trên Tiki &rarr;
                   </span>
                 </div>
               </div>
@@ -691,6 +694,40 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               </div>
             </div>
           )}
+        </div>
+
+        {/* Hành trang tân sinh viên Widget (Tiki Affiliate) */}
+        <div className="space-y-4 pt-8 border-t border-slate-100 dark:border-zinc-800">
+          <div>
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              🎒 Hành trang tân sinh viên nhập học
+            </h4>
+            <p className="text-xs text-slate-500 mt-1">
+              Gợi ý các trang thiết bị và học cụ cần thiết chuẩn bị bước vào giảng đường Đại học, cam kết chính hãng Tiki Trading 100%.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <TikiAffiliateWidget
+              productId="tiki-den-ban-hoc-led"
+              title="Đèn Bàn Học LED 2 Trục Gấp Gọn Bảo Vệ Mắt"
+              priceRange="150.000đ - 180.000đ"
+              description="Chiếu sáng đa hướng, ánh sáng dịu nhẹ, gấp gọn tiện lợi bảo vệ mắt tối đa khi học tập ban đêm."
+              imageUrl="https://salt.tikicdn.com/cache/280x280/ts/product/92/fd/21/5a6f3eb98eb02e0a55591a61eb9d50ee.jpg"
+              rawProductUrl="https://tiki.vn/den-ban-hoc-led-doc-sach-lam-viec-hoc-tap-bao-ve-mat-chong-can-2-truc-den-chieu-sang-gap-gon-tien-loi-p193433927.html"
+              trackingPage="tuyen-sinh-gear"
+              badge="Hot Sale"
+            />
+            <TikiAffiliateWidget
+              productId="tiki-cap-tai-lieu-8ngan"
+              title="Cặp Đựng Tài Liệu A4 Deli 8 Ngăn Phân Trang"
+              priceRange="45.000đ - 55.000đ"
+              description="File nhựa lưu trữ tài liệu học tập, hồ sơ tân sinh viên khoa học và gọn gàng."
+              imageUrl="https://salt.tikicdn.com/cache/280x280/ts/product/f6/61/79/fa57ca9782171761ca3e1ebd4945f6b4.jpg"
+              rawProductUrl="https://tiki.vn/cap-dung-tai-lieu-a4-deli-8-ngan-phan-trang-file-luu-tru-tai-lieu-linfini-xanh-duong-trang-72456-p105614601.html"
+              trackingPage="tuyen-sinh-gear"
+              badge="Bán chạy"
+            />
+          </div>
         </div>
 
       </div>

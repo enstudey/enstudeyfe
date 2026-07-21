@@ -1,8 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import type { AffiliateProduct } from "@/types/affiliate";
 import productsData from "@/data/affiliate-products.json";
+import AdSenseSlot from "@/components/ads/AdSenseSlot";
 
 interface Props {
   rowIndex: number;
@@ -22,8 +21,25 @@ export default function AffiliateNativeRow({ rowIndex, currentPage, isCard = fal
   if (dormProducts.length === 0) return null;
 
   // Tính chỉ số dòng toàn cục để đổi sản phẩm khác nhau trên từng trang phân trang
-  const globalIndex = (currentPage - 1) + rowIndex;
+  const globalIndex = (currentPage - 1) * 5 + rowIndex; // Đảm bảo index tăng dần
   const product = dormProducts[globalIndex % dormProducts.length];
+
+  if (globalIndex % 2 === 0) {
+    if (isCard) {
+      return (
+        <div className="p-4 border-b border-border bg-slate-50/50">
+          <AdSenseSlot slotId="search-list-mobile-ad" minHeight="90px" format="horizontal" />
+        </div>
+      );
+    }
+    return (
+      <tr className="bg-slate-50/10 hover:bg-slate-50 transition duration-200">
+        <td className="px-6 py-4" colSpan={4}>
+          <AdSenseSlot slotId="search-list-desktop-ad" minHeight="90px" format="horizontal" />
+        </td>
+      </tr>
+    );
+  }
 
   if (isCard) {
     return (

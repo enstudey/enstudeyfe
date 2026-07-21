@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Lora, Geist_Mono } from "next/font/google";
 import { headers, cookies } from "next/headers";
+import Script from "next/script";
 import AdSenseScript from "@/components/AdSenseScript";
 import GA4Provider from "@/components/analytics/GA4Provider";
 import CookieBanner from "@/components/cookie-banner";
@@ -77,10 +78,14 @@ export default async function RootLayout({
     >
       <head>
         <meta name="tikiaff-domain-verification" content="e5c63657b4f07e7902f7c15c088fd738dd1de8588b6ad035c495f17b35d59f4f" />
+      </head>
+      <body className="min-h-full flex flex-col bg-background text-foreground pb-16 md:pb-0">
         {/* Tích hợp Google AdSense Auto Ads có điều kiện lọc trang */}
         <AdSenseScript />
-        <script
+        <Script
+          id="schema-ld-json"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -96,7 +101,9 @@ export default async function RootLayout({
             })
           }}
         />
-        <script
+        <Script
+          id="console-debug-filter"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -117,8 +124,6 @@ export default async function RootLayout({
             `
           }}
         />
-      </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground pb-16 md:pb-0">
         <GA4Provider />
         <QueryProvider>
           <TooltipProvider>

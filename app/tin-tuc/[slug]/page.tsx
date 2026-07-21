@@ -8,12 +8,23 @@ import RelatedArticles from "@/components/RelatedArticles";
 import type { AffiliateProduct } from "@/types/affiliate";
 import productsData from "@/data/affiliate-products.json";
 import AffiliateSidebarWidget from "@/components/affiliate/AffiliateSidebarWidget";
+import AdSenseSlot from "@/components/ads/AdSenseSlot";
+import ArticleAdTrigger from "@/components/ads/ArticleAdTrigger";
 
 // Helper chèn quảng cáo vào giữa nội dung bài viết (chống CLS)
 function insertInArticleAd(htmlContent: string): string {
+  const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || "ca-pub-XXXXXXXXXXXXXX";
+  const slotId = "in-article-slot-id";
+
   const adBlockHtml = `
-    <div class="ad-container ad-in-article my-8 w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl" contenteditable="false">
-      <span class="text-[10px] uppercase tracking-wider text-slate-500 select-none font-semibold block text-center py-6 w-full">Quảng cáo</span>
+    <div class="ad-container ad-in-article my-8 w-full min-h-[90px] sm:min-h-[250px] bg-slate-50/50 dark:bg-zinc-900/30 border border-dashed border-slate-200/50 dark:border-zinc-800/40 rounded-2xl flex items-center justify-center relative" contenteditable="false">
+      <span class="absolute top-2 right-2 text-[8px] uppercase tracking-wider text-slate-400 font-semibold select-none z-0">Liên kết tài trợ</span>
+      <ins class="adsbygoogle w-full h-full z-10"
+           style="display:block"
+           data-ad-client="${pubId}"
+           data-ad-slot="${slotId}"
+           data-ad-format="fluid"
+           data-ad-layout-key="-gw-3+1f-3d+2z"></ins>
     </div>
   `;
 
@@ -169,14 +180,13 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             <TableOfContents contentHtml={post.contentHtml ?? ""} />
 
             {/* Under-title Ad: Dưới tiêu đề bài viết */}
-            <div className="ad-container ad-under-title w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl mb-6">
-              <span className="text-[10px] uppercase tracking-wider text-slate-500 select-none font-semibold">Quảng cáo</span>
-            </div>
+            <AdSenseSlot slotId="under-title-slot-id" minHeight="250px" className="mb-6" />
 
             <div
               className="text-base text-slate-700 space-y-4 article-content"
               dangerouslySetInnerHTML={{ __html: insertAffiliateTextLink(insertInArticleAd(post.contentHtml ?? "")) }}
             />
+            <ArticleAdTrigger triggerKey={post.slug} />
 
             {/* CTA Mini-Test */}
             <div className="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left not-prose">
@@ -198,22 +208,13 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
             <div className="sticky top-24 space-y-6">
               <AffiliateSidebarWidget seed={post.slug} />
               {/* Khung quảng cáo dọc chống CLS */}
-              <div className="w-full min-h-[600px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-2xl">
-                <div className="text-center">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-500 select-none font-semibold block mb-2">Liên kết tài trợ</span>
-                  <div className="w-[160px] h-[500px] bg-slate-200/50 mx-auto rounded-lg flex items-center justify-center">
-                    <span className="text-xs text-slate-500">Quảng cáo</span>
-                  </div>
-                </div>
-              </div>
+              <AdSenseSlot slotId="sidebar-vertical-slot-id" format="vertical" minHeight="600px" />
             </div>
           </aside>
         </div>
 
         {/* End-of-article Ad: Cuối bài viết */}
-        <div className="ad-container ad-end w-full min-h-[90px] sm:min-h-[250px] bg-slate-50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl mt-8">
-          <span className="text-[10px] uppercase tracking-wider text-slate-500 select-none font-semibold">Quảng cáo</span>
-        </div>
+        <AdSenseSlot slotId="end-article-slot-id" minHeight="250px" className="mt-8" />
 
         {/* Bài viết liên quan */}
         <RelatedArticles posts={relatedPosts} />

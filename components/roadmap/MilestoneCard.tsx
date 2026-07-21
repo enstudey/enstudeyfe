@@ -66,9 +66,9 @@ export function MilestoneCard({ milestone }: MilestoneCardProps) {
         {milestone.tasks.length === 0 ? (
           <p className="text-xs text-zinc-400 italic">Chưa có nhiệm vụ chi tiết.</p>
         ) : (
-          milestone.tasks.map((task) => (
+          milestone.tasks.map((task, idx) => (
             <div
-              key={task.taskId}
+              key={task.taskId || `task-${idx}-${task.description}`}
               className={`flex items-center justify-between p-3.5 rounded-xl border text-sm transition-colors ${task.isCompleted
                   ? "bg-emerald-50 border-emerald-200 dark:bg-emerald-950/20 dark:border-emerald-900/30"
                   : "bg-zinc-50 border-zinc-200 dark:bg-zinc-800/40 dark:border-zinc-700/50"

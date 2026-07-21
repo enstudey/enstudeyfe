@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { cookies } from "next/headers";
-import { Button } from "@/components/ui/button";
+import StartSpeakingButton from "@/components/speech/StartSpeakingButton";
+import AdSenseSlot from "@/components/ads/AdSenseSlot";
 
 export const metadata: Metadata = {
   title: "Luyện nói với AI - EnStudey",
@@ -34,21 +35,27 @@ export default async function SpeakingPage() {
         </div>
       )}
 
-      <div className="bg-white border border-slate-100 rounded-2xl p-10 max-w-md mx-auto shadow-xs">
-        <div className="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
-          🎙️
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-4xl mx-auto items-start text-center lg:text-left">
+        {/* Khung chính */}
+        <div className="lg:col-span-8 bg-white dark:bg-zinc-900 border border-slate-100 dark:border-zinc-800 rounded-3xl p-8 shadow-xs text-center">
+          <div className="w-20 h-20 bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+            🎙️
+          </div>
+          <h2 className="text-xl font-bold mb-2">Bắt đầu hội thoại</h2>
+          <p className="text-sm text-slate-500 dark:text-zinc-400 mb-6 leading-relaxed">
+            Trợ lý AI sẽ đưa ra chủ đề và bắt đầu hội thoại với bạn trong vòng 5 phút.
+          </p>
+          <StartSpeakingButton />
         </div>
-        <h2 className="text-xl font-bold mb-2">Bắt đầu hội thoại</h2>
-        <p className="text-sm text-slate-500 mb-6 leading-relaxed">
-          AI sẽ đưa ra chủ đề và bắt đầu hội thoại với bạn trong vòng 5 phút.
-        </p>
-        <Button className="font-bold w-full py-5 rounded-xl shadow-md cursor-pointer">
-          Kết nối Micro & Bắt đầu
-        </Button>
+
+        {/* Khung quảng cáo AdSense dọc */}
+        <div className="lg:col-span-4 w-full">
+          <AdSenseSlot slotId="speaking-sidebar-slot-id" format="vertical" minHeight="280px" />
+        </div>
       </div>
 
-      <div className="mt-8">
-        <Link href="/" className="text-sm text-slate-500 hover:text-slate-800">
+      <div className="mt-8 text-center">
+        <Link href="/" className="text-sm text-slate-500 hover:text-slate-800 dark:text-zinc-400 dark:hover:text-zinc-200">
           &larr; Quay lại Dashboard
         </Link>
       </div>

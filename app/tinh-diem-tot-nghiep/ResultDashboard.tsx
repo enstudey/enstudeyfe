@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import AffiliateBox from "@/components/affiliate/AffiliateBox";
+import AdSenseSlot from "@/components/ads/AdSenseSlot";
+import TikiAffiliateWidget from "@/components/affiliate/TikiAffiliateWidget";
 
 interface Major {
   code: string;
@@ -144,6 +146,19 @@ export default function ResultDashboard({
           </Link>
         </Button>
       </div>
+
+      {highestGroup.score >= 24.0 && (
+        <TikiAffiliateWidget
+          productId="tiki-casio-calculator"
+          title="Máy tính khoa học CASIO FX-880BTG - Hàng chính hãng"
+          priceRange="780.000đ - 850.000đ"
+          description="Công cụ đắc lực hỗ trợ phòng thi THPT Quốc gia với nhiều tính năng vượt trội, chuẩn chính hãng Tiki Trading 100%."
+          imageUrl="https://salt.tikicdn.com/cache/280x280/ts/product/f4/18/76/1947ab5d18d41ff175d7cd426c117b4c.jpg"
+          rawProductUrl="https://tiki.vn/may-tinh-khoa-hoc-casio-fx-880btg-pink-hang-chinh-hang-p211116260.html"
+          trackingPage="tinh-diem-tot-nghiep-high-score"
+          badge="Đề xuất thi"
+        />
+      )}
 
       <div className="flex flex-wrap gap-1.5 border-b border-slate-200 pb-3 text-xs font-bold">
         {[
@@ -302,11 +317,7 @@ export default function ResultDashboard({
 
       <AffiliateBox />
 
-      <div className="ad-container ad-v-block w-full min-h-[250px] bg-slate-100/50 border border-dashed border-slate-200 flex items-center justify-center rounded-xl my-6">
-        <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">
-          Liên kết tài trợ
-        </span>
-      </div>
+      <AdSenseSlot slotId="calculator-result-slot-id" minHeight="250px" className="my-6" />
 
 
     </div>
