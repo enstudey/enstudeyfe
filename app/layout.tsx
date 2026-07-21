@@ -31,8 +31,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
-  title: "EnStudey - Nền tảng học tập cá nhân hóa",
-  description: "Chinh phục TOEIC & IELTS thông minh cùng trợ lý AI",
+  title: "EnStudey - Luyện đề thi thử TOEIC & IELTS online miễn phí",
+  description: "Hệ thống luyện đề thi thử TOEIC & IELTS online miễn phí có chấm điểm chi tiết, thống kê năng lực thích ứng và trợ lý AI giải thích đáp án thông minh.",
   icons: {
     icon: "/favicon-cropped.png",
     apple: "/favicon-cropped.png",
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "EnStudey - Nền tảng học tập cá nhân hóa",
-    description: "Chinh phục TOEIC & IELTS thông minh cùng trợ lý AI",
+    title: "EnStudey - Luyện đề thi thử TOEIC & IELTS online miễn phí",
+    description: "Hệ thống luyện đề thi thử TOEIC & IELTS online miễn phí có chấm điểm chi tiết, thống kê năng lực thích ứng và trợ lý AI giải thích đáp án thông minh.",
     images: [
       {
         url: "/icon-transparent.png",
@@ -78,6 +78,23 @@ export default async function RootLayout({
       <head>
         {/* Tích hợp Google AdSense Auto Ads có điều kiện lọc trang */}
         <AdSenseScript />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "EnStudey",
+              "alternateName": "EnStudey - Hệ thống luyện đề thi thử TOEIC & IELTS thích ứng",
+              "url": "https://enstudey.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://enstudey.com/tra-cuu-tuyen-sinh?search={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
