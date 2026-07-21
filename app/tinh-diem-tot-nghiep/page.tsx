@@ -426,149 +426,149 @@ export default function CalculatorPage() {
 
   return (
     <main className="py-12 w-full space-y-8 flex-grow">
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl font-extrabold tracking-tight text-foreground">
-            Công cụ tính điểm xét tuyển Đại học 2026 chính xác
-          </h1>
-          <p className="text-muted-foreground text-sm max-w-lg mx-auto">
-            Hỗ trợ tính điểm thi tốt nghiệp THPT hoặc điểm học bạ 6 học kỳ và đối sánh với điều kiện của các trường Đại học.
-          </p>
-        </div>
+      <div className="text-center space-y-2">
+        <h1 className="text-3xl font-extrabold tracking-tight text-foreground">
+          Công cụ tính điểm xét tuyển Đại học 2026 chính xác
+        </h1>
+        <p className="text-muted-foreground text-sm max-w-lg mx-auto">
+          Hỗ trợ tính điểm thi tốt nghiệp THPT hoặc điểm học bạ 6 học kỳ và đối sánh với điều kiện của các trường Đại học.
+        </p>
+      </div>
 
-        <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm space-y-8">
+      <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm space-y-8">
 
-          {/* Lựa chọn phương thức tính điểm */}
-          <div className="space-y-2">
-            <label className="text-[10px] font-bold text-muted-foreground tracking-wider uppercase block">
-              Phương thức tính điểm xét tuyển
-            </label>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { id: "THPT_EXAM", name: "Điểm thi tốt nghiệp THPT" },
-                { id: "TRANSCRIPT", name: "Điểm học bạ THPT" }
-              ].map(item => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setCalculationMethod(item.id as "THPT_EXAM" | "TRANSCRIPT")}
-                  className={`px-4 py-3 rounded-xl border text-center font-bold text-xs transition duration-150 cursor-pointer ${calculationMethod === item.id
-                      ? "border-sky-600 bg-sky-50 text-sky-700 shadow-sm"
-                      : "border-slate-200 hover:bg-slate-50 text-slate-650"
-                    }`}
-                >
-                  {item.name}
-                </button>
-              ))}
-            </div>
+        {/* Lựa chọn phương thức tính điểm */}
+        <div className="space-y-2">
+          <label className="text-[10px] font-bold text-muted-foreground tracking-wider uppercase block">
+            Phương thức tính điểm xét tuyển
+          </label>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { id: "THPT_EXAM", name: "Điểm thi tốt nghiệp THPT" },
+              { id: "TRANSCRIPT", name: "Điểm học bạ THPT" }
+            ].map(item => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setCalculationMethod(item.id as "THPT_EXAM" | "TRANSCRIPT")}
+                className={`px-4 py-3 rounded-xl border text-center font-bold text-xs transition duration-150 cursor-pointer ${calculationMethod === item.id
+                  ? "border-blue-600 bg-blue-50 text-blue-700 shadow-sm"
+                  : "border-slate-200 hover:bg-slate-50 text-slate-650"
+                  }`}
+              >
+                {item.name}
+              </button>
+            ))}
           </div>
-
-          {calculationMethod === "THPT_EXAM" ? (
-            <>
-              <SubjectScoresInput
-                scores={scores}
-                errors={errors}
-                otherLanguageType={otherLanguageType}
-                setOtherLanguageType={setOtherLanguageType}
-                handleScoreChange={handleScoreChange}
-                handleScoreBlur={handleScoreBlur}
-              />
-
-              <div className="space-y-8 pt-6 border-t border-border">
-                <CertificateConverter
-                  certType={certType}
-                  setCertType={setCertType}
-                  certScore={certScore}
-                  setCertScore={setCertScore}
-                  conversionTarget={conversionTarget}
-                  setConversionTarget={setConversionTarget}
-                />
-
-                <AffiliateCertWidget certType={certType} certScore={certScore} />
-
-                <PrioritySelector
-                  areaPriority={areaPriority}
-                  setAreaPriority={setAreaPriority}
-                  objectPriority={objectPriority}
-                  setObjectPriority={setObjectPriority}
-                />
-              </div>
-
-              <div className="pt-6 flex flex-wrap gap-4 items-center justify-center border-t border-border">
-                <Button
-                  onClick={handleReset}
-                  data-testid="btn-reset-scores"
-                  variant="outline"
-                  className="px-6 py-5.5 font-bold rounded-2xl transition duration-200 text-sm sm:text-base"
-                >
-                  Xóa nhập lại 🔄
-                </Button>
-                <Button
-                  onClick={handleCalculate}
-                  data-testid="btn-calculate-scores"
-                  className="px-8 py-5.5 font-bold rounded-2xl shadow-md hover:scale-[1.01] active:scale-98 transition duration-200 flex items-center gap-2 text-sm sm:text-base"
-                >
-                  <span>Tính điểm xét tuyển</span>
-                  <span className="font-bold">⚡</span>
-                </Button>
-              </div>
-
-              <ResultDashboard
-                computedScores={computedScores}
-                highestGroup={highestGroup}
-                appliedEquivNote={appliedEquivNote}
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-                visibleScores={visibleScores}
-              />
-            </>
-          ) : (
-            <>
-              <TranscriptSelector
-                selectedGroup={selectedTranscriptGroup}
-                setSelectedGroup={setSelectedTranscriptGroup}
-                semesterScores={semesterScores}
-                errors={errors}
-                handleScoreChange={handleTranscriptScoreChange}
-                handleScoreBlur={handleTranscriptScoreBlur}
-                onCalculate={handleCalculateTranscript}
-                onReset={handleReset}
-                otherLanguageType={transcriptOtherLanguageType}
-                setOtherLanguageType={setTranscriptOtherLanguageType}
-                expandedGroups={expandedGroups}
-                setExpandedGroups={setExpandedGroups}
-              />
-
-              <div className="space-y-8 pt-6 border-t border-border">
-                <PrioritySelector
-                  areaPriority={areaPriority}
-                  setAreaPriority={setAreaPriority}
-                  objectPriority={objectPriority}
-                  setObjectPriority={setObjectPriority}
-                />
-              </div>
-
-              {isTranscriptCalculated && computedTranscriptData && (
-                <>
-                  <TranscriptResultDashboard
-                    computedScores={computedTranscriptData.results}
-                    highestGroup={computedTranscriptData.highestGroup}
-                    selectedGroup={selectedTranscriptGroup}
-                    setSelectedGroup={setSelectedTranscriptGroup}
-                  />
-
-                  <TranscriptEligibilityList
-                    selectedGroup={selectedTranscriptGroup}
-                    userScore={computedTranscriptData.results[selectedTranscriptGroup] || 0}
-                    gpaSum={subjectsInTranscriptGroup.reduce((sum, sub) => sum + (computedTranscriptData.subjectAvgs[sub] || 0), 0)}
-                    thptScores={{}}
-                    subjects={subjectsInTranscriptGroup}
-                  />
-                </>
-              )}
-            </>
-          )}
-
         </div>
-      </main>
+
+        {calculationMethod === "THPT_EXAM" ? (
+          <>
+            <SubjectScoresInput
+              scores={scores}
+              errors={errors}
+              otherLanguageType={otherLanguageType}
+              setOtherLanguageType={setOtherLanguageType}
+              handleScoreChange={handleScoreChange}
+              handleScoreBlur={handleScoreBlur}
+            />
+
+            <div className="space-y-8 pt-6 border-t border-border">
+              <CertificateConverter
+                certType={certType}
+                setCertType={setCertType}
+                certScore={certScore}
+                setCertScore={setCertScore}
+                conversionTarget={conversionTarget}
+                setConversionTarget={setConversionTarget}
+              />
+
+              <AffiliateCertWidget certType={certType} certScore={certScore} />
+
+              <PrioritySelector
+                areaPriority={areaPriority}
+                setAreaPriority={setAreaPriority}
+                objectPriority={objectPriority}
+                setObjectPriority={setObjectPriority}
+              />
+            </div>
+
+            <div className="pt-6 flex flex-wrap gap-4 items-center justify-center border-t border-border">
+              <Button
+                onClick={handleReset}
+                data-testid="btn-reset-scores"
+                variant="outline"
+                className="px-6 py-5.5 font-bold rounded-2xl transition duration-200 text-sm sm:text-base"
+              >
+                Xóa nhập lại 🔄
+              </Button>
+              <Button
+                onClick={handleCalculate}
+                data-testid="btn-calculate-scores"
+                className="px-8 py-5.5 font-bold rounded-2xl shadow-md hover:scale-[1.01] active:scale-98 transition duration-200 flex items-center gap-2 text-sm sm:text-base"
+              >
+                <span>Tính điểm xét tuyển</span>
+                <span className="font-bold">⚡</span>
+              </Button>
+            </div>
+
+            <ResultDashboard
+              computedScores={computedScores}
+              highestGroup={highestGroup}
+              appliedEquivNote={appliedEquivNote}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              visibleScores={visibleScores}
+            />
+          </>
+        ) : (
+          <>
+            <TranscriptSelector
+              selectedGroup={selectedTranscriptGroup}
+              setSelectedGroup={setSelectedTranscriptGroup}
+              semesterScores={semesterScores}
+              errors={errors}
+              handleScoreChange={handleTranscriptScoreChange}
+              handleScoreBlur={handleTranscriptScoreBlur}
+              onCalculate={handleCalculateTranscript}
+              onReset={handleReset}
+              otherLanguageType={transcriptOtherLanguageType}
+              setOtherLanguageType={setTranscriptOtherLanguageType}
+              expandedGroups={expandedGroups}
+              setExpandedGroups={setExpandedGroups}
+            />
+
+            <div className="space-y-8 pt-6 border-t border-border">
+              <PrioritySelector
+                areaPriority={areaPriority}
+                setAreaPriority={setAreaPriority}
+                objectPriority={objectPriority}
+                setObjectPriority={setObjectPriority}
+              />
+            </div>
+
+            {isTranscriptCalculated && computedTranscriptData && (
+              <>
+                <TranscriptResultDashboard
+                  computedScores={computedTranscriptData.results}
+                  highestGroup={computedTranscriptData.highestGroup}
+                  selectedGroup={selectedTranscriptGroup}
+                  setSelectedGroup={setSelectedTranscriptGroup}
+                />
+
+                <TranscriptEligibilityList
+                  selectedGroup={selectedTranscriptGroup}
+                  userScore={computedTranscriptData.results[selectedTranscriptGroup] || 0}
+                  gpaSum={subjectsInTranscriptGroup.reduce((sum, sub) => sum + (computedTranscriptData.subjectAvgs[sub] || 0), 0)}
+                  thptScores={{}}
+                  subjects={subjectsInTranscriptGroup}
+                />
+              </>
+            )}
+          </>
+        )}
+
+      </div>
+    </main>
   );
 }

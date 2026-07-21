@@ -40,7 +40,7 @@ export default function PracticeSession({
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showExplanation, setShowExplanation] = useState<Record<number, boolean>>({});
-  
+
   // Timer: TEST mode đếm ngược, PRACTICE mode đếm xuôi
   const [timeLeft, setTimeLeft] = useState<number>(limit * 120); // 2 phút/câu cho TEST mode
   const [elapsedSeconds, setElapsedSeconds] = useState<number>(0);
@@ -48,7 +48,7 @@ export default function PracticeSession({
   const [loading, setLoading] = useState<boolean>(true);
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  
+
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [correctCount, setCorrectCount] = useState<number>(0);
@@ -260,7 +260,7 @@ export default function PracticeSession({
   // Chọn đáp án
   const handleSelectOption = (optIdx: number) => {
     if (showExplanation[currentQuestion.id]) return; // Đã chốt câu hỏi ôn luyện thì khóa chọn lại
-    
+
     const newAnswers = { ...answers, [currentQuestion.id]: optIdx };
     setAnswers(newAnswers);
 
@@ -301,7 +301,7 @@ export default function PracticeSession({
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[350px] space-y-4">
-        <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         <p className="text-slate-500 text-sm font-medium">Đang tải cấu trúc câu hỏi...</p>
       </div>
     );
@@ -363,8 +363,8 @@ export default function PracticeSession({
             <span>{currentIndex + 1} / {questions.length} câu</span>
           </div>
           <div className="w-full bg-slate-100 dark:bg-slate-900 h-2 rounded-full overflow-hidden">
-            <div 
-              className="bg-sky-500 h-full transition-all duration-300"
+            <div
+              className="bg-blue-500 h-full transition-all duration-300"
               style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
             />
           </div>
@@ -372,7 +372,7 @@ export default function PracticeSession({
 
         {/* Timer */}
         <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 px-3.5 py-2 rounded-xl" data-testid="timer-countdown">
-          <Clock className="w-4 h-4 text-sky-500 shrink-0" />
+          <Clock className="w-4 h-4 text-blue-500 shrink-0" />
           <span className="font-mono text-xs font-bold text-slate-700 dark:text-slate-350">
             {mode === "TEST" ? formatTime(timeLeft) : formatTime(elapsedSeconds)}
           </span>
@@ -381,7 +381,7 @@ export default function PracticeSession({
       <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
         <div className="space-y-4">
           <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500 font-extrabold uppercase tracking-wider">
-            <BookOpen className="w-4 h-4 text-sky-500 shrink-0" />
+            <BookOpen className="w-4 h-4 text-blue-500 shrink-0" />
             <span>Câu hỏi {currentIndex + 1} • {part} ({examType})</span>
           </div>
 
@@ -393,7 +393,7 @@ export default function PracticeSession({
         {/* Audio Player dành cho Listening Parts */}
         {currentQuestion.audioUrl ? (
           <div className="bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 rounded-2xl flex flex-col sm:flex-row items-center gap-3">
-            <Volume2 className="w-5 h-5 text-sky-500 shrink-0" />
+            <Volume2 className="w-5 h-5 text-blue-500 shrink-0" />
             <audio
               ref={audioRef}
               src={currentQuestion.audioUrl}
@@ -457,7 +457,7 @@ export default function PracticeSession({
                 }
               } else if (isSelected) {
                 // Đang chọn trong chế độ test (chưa nộp)
-                optClass = "bg-sky-50 border-sky-500 text-sky-955 font-bold";
+                optClass = "bg-blue-50 border-blue-500 text-blue-955 font-bold";
               }
 
               return (
@@ -466,9 +466,8 @@ export default function PracticeSession({
                   onClick={() => handleSelectOption(optIdx)}
                   className={`w-full py-4 px-5 rounded-2xl border text-left transition flex items-center gap-3 text-xs md:text-sm cursor-pointer ${optClass}`}
                 >
-                  <span className={`w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
-                    isSelected ? "bg-sky-500 text-white shadow-xs" : "bg-slate-100 dark:bg-slate-850 text-slate-500"
-                  }`}>
+                  <span className={`w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${isSelected ? "bg-blue-500 text-white shadow-xs" : "bg-slate-100 dark:bg-slate-850 text-slate-500"
+                    }`}>
                     {alphabet[optIdx]}
                   </span>
                   <span className="flex-1">{opt}</span>
@@ -487,8 +486,8 @@ export default function PracticeSession({
 
         {/* Lời giải giải thích cho PRACTICE mode */}
         {showExplanation[currentQuestion.id] && (
-          <div className="bg-sky-50/20 border border-sky-100/50 p-5 rounded-2xl space-y-2 animate-in fade-in slide-in-from-top-1">
-            <span className="text-[10px] font-bold text-sky-655 dark:text-sky-400 uppercase tracking-widest block">
+          <div className="bg-blue-50/20 border border-blue-100/50 p-5 rounded-2xl space-y-2 animate-in fade-in slide-in-from-top-1">
+            <span className="text-[10px] font-bold text-blue-655 dark:text-blue-400 uppercase tracking-widest block">
               Lời giải chi tiết:
             </span>
             <p className="text-xs text-slate-650 dark:text-slate-350 leading-relaxed font-medium">
@@ -517,7 +516,7 @@ export default function PracticeSession({
           {mode === "PRACTICE" && showExplanation[currentQuestion.id] && !isLastQuestion && (
             <Button
               onClick={handleNext}
-              className="bg-sky-500 hover:bg-sky-600 text-white rounded-xl font-bold py-3 px-6 text-xs cursor-pointer shadow flex items-center gap-1.5"
+              className="bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-bold py-3 px-6 text-xs cursor-pointer shadow flex items-center gap-1.5"
             >
               <span>Câu tiếp theo</span>
               <ChevronRight className="w-4 h-4 shrink-0" />
@@ -528,7 +527,7 @@ export default function PracticeSession({
             <Button
               onClick={handleNext}
               disabled={!isQuestionAnswered}
-              className="bg-sky-500 hover:bg-sky-600 text-white rounded-xl font-bold py-3 px-6 text-xs cursor-pointer shadow flex items-center gap-1.5 disabled:opacity-55"
+              className="bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-bold py-3 px-6 text-xs cursor-pointer shadow flex items-center gap-1.5 disabled:opacity-55"
             >
               <span>Câu tiếp theo</span>
               <ChevronRight className="w-4 h-4 shrink-0" />

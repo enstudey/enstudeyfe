@@ -38,20 +38,20 @@ export default function BlogListPage() {
           const cat = getCategoryBySlug(post.category);
           return (
             <React.Fragment key={post.slug}>
-              <div className="border border-slate-150 bg-slate-50/50 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-sky-500/30 transition duration-300">
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-600 uppercase tracking-wider">
+              <div className="border border-slate-150 bg-slate-50/50 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-blue-500/30 transition duration-300">
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 uppercase tracking-wider">
                   {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={12} />}
                   {cat ? cat.name : post.category}
                 </span>
                 <h2 className="text-xl font-bold mt-2 mb-3 text-slate-950">
-                  <Link href={`/blog/${post.category}/${post.slug}`} className="hover:text-sky-600 transition duration-200">
+                  <Link href={`/blog/${post.category}/${post.slug}`} className="hover:text-blue-600 transition duration-200">
                     {post.title}
                   </Link>
                 </h2>
                 <p className="text-slate-650 text-sm leading-relaxed mb-4">
                   {post.description}
                 </p>
-                <Link href={`/blog/${post.category}/${post.slug}`} className="text-sm text-sky-600 font-medium hover:underline inline-flex items-center gap-1">
+                <Link href={`/blog/${post.category}/${post.slug}`} className="text-sm text-blue-600 font-medium hover:underline inline-flex items-center gap-1">
                   Đọc tiếp &rarr;
                 </Link>
               </div>

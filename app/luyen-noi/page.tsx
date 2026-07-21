@@ -26,7 +26,7 @@ export default async function SpeakingPage() {
           <span className="text-lg">⚠️</span>
           <div>
             Bạn đang luyện nói ở mode ẩn danh. Cuộc hội thoại và đánh giá phát âm từ AI sẽ không được lưu lại.{" "}
-            <a href={googleLoginUrl} className="underline font-bold text-sky-655 hover:text-sky-700 transition">
+            <a href={googleLoginUrl} className="underline font-bold text-blue-655 hover:text-blue-700 transition">
               Đăng nhập ngay
             </a>{" "}
             để lưu trữ lịch sử học tập nhé!
@@ -35,7 +35,7 @@ export default async function SpeakingPage() {
       )}
 
       <div className="bg-white border border-slate-100 rounded-2xl p-10 max-w-md mx-auto shadow-xs">
-        <div className="w-20 h-20 bg-sky-50 text-sky-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+        <div className="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
           🎙️
         </div>
         <h2 className="text-xl font-bold mb-2">Bắt đầu hội thoại</h2>

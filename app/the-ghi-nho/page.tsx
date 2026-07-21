@@ -20,7 +20,7 @@ export default async function FlashcardsPage() {
   return (
     <main className="py-12 w-full space-y-8 flex-grow">
       <div className="text-center space-y-2">
-        <span className="text-xs font-bold text-sky-600 uppercase tracking-widest block">
+        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
           Ghi nhớ dài hạn 🧠⚡
         </span>
         <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">

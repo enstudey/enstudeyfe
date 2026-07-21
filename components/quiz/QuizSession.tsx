@@ -29,13 +29,13 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
   // Khai báo handleSubmit trước khi dùng trong useEffect
   const handleSubmit = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-    
+
     // Xóa session làm bài khi nộp
     localStorage.removeItem("daily_quiz_session");
 
     // Tính thời gian đã làm bài thực tế (tối đa 900 giây)
     const elapsedSeconds = Math.min(900, Math.floor((Date.now() - startTime) / 1000));
-    
+
     onComplete(answersRef.current, elapsedSeconds);
   }, [startTime, onComplete]);
 
@@ -157,7 +157,7 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
   if (!isInitialized || questions.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[300px] space-y-4">
-        <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         <p className="text-slate-500 text-sm font-medium">Đang chuẩn bị đề thi...</p>
       </div>
     );
@@ -177,13 +177,13 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
         <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-xs space-y-3">
           <div className="flex justify-between items-center text-sm font-bold text-slate-700">
             <span>Câu hỏi {currentIndex + 1} trên {questions.length}</span>
-            <span className="text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full text-xs uppercase tracking-wider font-mono">
+            <span className="text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full text-xs uppercase tracking-wider font-mono">
               {examType} • {currentQuestion.part}
             </span>
           </div>
           <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
             <div
-              className="bg-gradient-to-r from-sky-400 to-sky-655 h-full transition-all duration-300"
+              className="bg-gradient-to-r from-blue-400 to-blue-655 h-full transition-all duration-300"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
@@ -192,7 +192,7 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
         {/* Card câu hỏi */}
         <div className="bg-white border border-slate-100 p-6 sm:p-8 rounded-3xl shadow-xs space-y-6">
           <div className="space-y-4">
-            <span className="text-xs font-bold text-sky-600 uppercase tracking-widest bg-sky-50 px-3 py-1 rounded-full">
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">
               Topic: {currentQuestion.topic}
             </span>
             <h3 className="text-base sm:text-lg font-bold text-slate-800 leading-relaxed pt-2">
@@ -210,18 +210,16 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
                 <button
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border text-xs font-medium transition duration-150 flex items-center gap-4 cursor-pointer ${
-                    isSelected
-                      ? "bg-sky-50 border-sky-500 text-sky-950 shadow-xs font-bold"
+                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border text-xs font-medium transition duration-150 flex items-center gap-4 cursor-pointer ${isSelected
+                      ? "bg-blue-50 border-blue-500 text-blue-950 shadow-xs font-bold"
                       : "bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:border-slate-350"
-                  }`}
+                    }`}
                 >
                   <span
-                    className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs transition duration-150 ${
-                      isSelected
-                        ? "bg-sky-500 text-white"
+                    className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs transition duration-150 ${isSelected
+                        ? "bg-blue-500 text-white"
                         : "bg-slate-100 text-slate-500"
-                    }`}
+                      }`}
                   >
                     {optionLetter}
                   </span>
@@ -246,7 +244,7 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
             {currentIndex < questions.length - 1 ? (
               <Button
                 onClick={handleNext}
-                className="bg-sky-500 hover:bg-sky-600 text-white rounded-xl flex items-center gap-1.5 font-bold cursor-pointer"
+                className="bg-blue-500 hover:bg-blue-600 text-white rounded-xl flex items-center gap-1.5 font-bold cursor-pointer"
               >
                 Câu sau
                 <ArrowRight className="w-4 h-4" />
@@ -273,11 +271,10 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
             <span className="text-xs font-semibold opacity-70">Thời gian làm bài</span>
             <div
               data-testid="timer-countdown"
-              className={`flex items-center gap-1.5 font-bold text-sm px-3 py-1 rounded-full font-mono ${
-                isTimeCritical
+              className={`flex items-center gap-1.5 font-bold text-sm px-3 py-1 rounded-full font-mono ${isTimeCritical
                   ? "bg-rose-50 text-rose-650 animate-pulse border border-rose-100"
-                  : "bg-sky-50 text-sky-600 border border-sky-100"
-              }`}
+                  : "bg-blue-50 text-blue-600 border border-blue-100"
+                }`}
             >
               <Timer className="w-4 h-4" />
               <span className="font-mono">
@@ -297,13 +294,12 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
                   <button
                     key={q.id}
                     onClick={() => handleJumpToQuestion(idx)}
-                    className={`w-10 h-10 rounded-xl font-bold text-xs flex items-center justify-center border transition cursor-pointer ${
-                      isCurrent
-                        ? "border-sky-500 bg-sky-50 text-sky-600 ring-2 ring-sky-500/20"
+                    className={`w-10 h-10 rounded-xl font-bold text-xs flex items-center justify-center border transition cursor-pointer ${isCurrent
+                        ? "border-blue-500 bg-blue-50 text-blue-600 ring-2 ring-blue-500/20"
                         : isAnswered
-                        ? "bg-sky-500 border-sky-500 text-white shadow-xs"
-                        : "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
-                    }`}
+                          ? "bg-blue-500 border-blue-500 text-white shadow-xs"
+                          : "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
+                      }`}
                   >
                     <span className="font-mono">{idx + 1}</span>
                   </button>

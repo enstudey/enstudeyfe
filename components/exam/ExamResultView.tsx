@@ -48,7 +48,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
         <div className="text-center space-y-3">
-          <div className="w-10 h-10 border-4 border-sky-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
           <p className="text-xs text-muted-foreground font-medium">Đang tải và phân tích kết quả...</p>
         </div>
       </div>
@@ -86,7 +86,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
       {/* Back Link */}
       <Link
         href="/exam"
-        className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-sky-500 transition"
+        className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-primary transition"
       >
         <ChevronLeft className="w-4 h-4" />
         <span>Quay lại danh sách đề thi</span>
@@ -95,7 +95,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
       {/* Summary Score Panel */}
       <div className="bg-white border border-slate-100 shadow-xs rounded-2xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
         <div className="text-center md:text-left space-y-2">
-          <div className="inline-flex items-center gap-1 bg-sky-50 text-sky-600 border border-sky-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
+          <div className="inline-flex items-center gap-1 bg-blue-50 text-primary border border-blue-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
             Kết quả thi thử
           </div>
           <h2 className="text-xl font-black text-slate-900">Hoàn Thành Bài Thi!</h2>
@@ -109,7 +109,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
             Điểm số quy đổi
           </span>
-          <span className="text-4xl font-black text-sky-500 tracking-tight font-mono">
+          <span className="text-4xl font-black text-primary tracking-tight font-mono">
             {result.score}
           </span>
           <span className="text-[9px] text-slate-400 uppercase font-bold">
@@ -127,7 +127,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
             </p>
           </div>
           <div className="bg-slate-50 border border-slate-100/50 p-4 rounded-2xl text-center space-y-1">
-            <Clock className="w-5 h-5 text-sky-500 mx-auto shrink-0" />
+            <Clock className="w-5 h-5 text-primary mx-auto shrink-0" />
             <p className="text-[9px] font-bold text-slate-400 uppercase">Thời gian làm</p>
             <p className="text-sm font-black text-slate-700">
               {Math.floor(result.completedDurationSeconds / 60)} phút
@@ -142,7 +142,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
         <div className="lg:col-span-8 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
             <h3 className="text-base font-bold text-slate-800 flex items-center gap-2">
-              <BarChart3 className="w-5 h-5 text-sky-500" />
+              <BarChart3 className="w-5 h-5 text-primary" />
               <span>Chi Tiết Từng Câu Hỏi</span>
             </h3>
 
@@ -270,9 +270,9 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
 
                       {/* Detailed Explanation + Affiliate box */}
                       {r.explanation && (
-                        <div className="bg-sky-50/30 border border-sky-100/50 rounded-2xl p-4 space-y-3.5 select-text">
+                        <div className="bg-blue-50/30 border border-blue-100/50 rounded-2xl p-4 space-y-3.5 select-text">
                           <div>
-                            <p className="text-xs font-black text-sky-800">Lời giải chi tiết:</p>
+                            <p className="text-xs font-black text-primary">Lời giải chi tiết:</p>
                             <p className="text-xs text-slate-700 leading-relaxed font-medium mt-1">
                               {r.explanation}
                             </p>
@@ -290,7 +290,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
                                href="https://shopee.vn"
                                target="_blank"
                                rel="noopener noreferrer"
-                               className="bg-sky-500 hover:bg-sky-600 text-white font-bold text-[9px] px-3 py-1.5 rounded-lg transition shrink-0"
+                               className="bg-primary hover:bg-blue-700 text-white font-bold text-[9px] px-3 py-1.5 rounded-lg transition shrink-0"
                              >
                                Mua ngay
                              </a>

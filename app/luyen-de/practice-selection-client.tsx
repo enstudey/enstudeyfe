@@ -62,7 +62,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
     <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full space-y-10">
       {/* Header Info */}
       <div className="text-center space-y-3">
-        <div className="inline-flex items-center gap-1.5 bg-sky-50 dark:bg-sky-950/30 border border-sky-200/50 px-4 py-1.5 rounded-full text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest">
+        <div className="inline-flex items-center gap-1.5 bg-blue-50 dark:bg-blue-950/30 border border-blue-200/50 px-4 py-1.5 rounded-full text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
           <Sparkles className="w-3.5 h-3.5 shrink-0 animate-pulse" />
           <span>Luyện tập tập trung - Nâng cao phản xạ</span>
         </div>
@@ -80,7 +80,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
           <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
           <div>
             Bạn đang sử dụng hệ thống với tư cách khách vãng lai. Lịch sử luyện tập sẽ chỉ được lưu tạm tại trình duyệt và <strong>không đồng bộ sang Mistake Bank</strong>. Để lưu vết tiến độ bền vững, hãy{" "}
-            <a href={googleLoginUrl} className="underline font-bold text-sky-600 dark:text-sky-400 hover:opacity-90">
+            <a href={googleLoginUrl} className="underline font-bold text-blue-600 dark:text-blue-400 hover:opacity-90">
               Đăng nhập Google ngay
             </a>.
           </div>
@@ -97,8 +97,8 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
             <button
               onClick={() => handleExamTypeChange("TOEIC")}
               className={`py-4 px-6 rounded-2xl border text-center transition font-bold text-sm cursor-pointer ${examType === "TOEIC"
-                  ? "bg-sky-55/10 border-sky-600 text-sky-650 dark:bg-sky-950/20 dark:text-sky-400"
-                  : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-500 hover:border-slate-300"
+                ? "bg-blue-55/10 border-blue-600 text-blue-650 dark:bg-blue-950/20 dark:text-blue-400"
+                : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-500 hover:border-slate-300"
                 }`}
             >
               TOEIC Reading / Listening
@@ -106,8 +106,8 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
             <button
               onClick={() => handleExamTypeChange("IELTS")}
               className={`py-4 px-6 rounded-2xl border text-center transition font-bold text-sm cursor-pointer ${examType === "IELTS"
-                  ? "bg-emerald-55/10 border-emerald-600 text-emerald-650 dark:bg-emerald-950/20 dark:text-emerald-400"
-                  : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-500 hover:border-emerald-300"
+                ? "bg-emerald-55/10 border-emerald-600 text-emerald-650 dark:bg-emerald-950/20 dark:text-emerald-400"
+                : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-500 hover:border-emerald-300"
                 }`}
             >
               IELTS Academic Prep
@@ -126,14 +126,14 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
                 key={p.value}
                 onClick={() => setSelectedPart(p.value)}
                 className={`py-3 px-4 rounded-xl border text-left transition flex items-center justify-between text-xs cursor-pointer ${selectedPart === p.value
-                    ? "bg-sky-50/50 dark:bg-sky-950/10 border-sky-500 text-sky-750 dark:text-sky-400 font-bold"
-                    : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-650 dark:text-slate-350 hover:bg-slate-50 dark:hover:bg-slate-900/50"
+                  ? "bg-blue-50/50 dark:bg-blue-950/10 border-blue-500 text-blue-750 dark:text-blue-400 font-bold"
+                  : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-650 dark:text-slate-350 hover:bg-slate-50 dark:hover:bg-slate-900/50"
                   }`}
               >
                 <span>{p.label}</span>
                 <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${p.type === "Listening"
-                    ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
-                    : "bg-amber-50 text-amber-600 dark:bg-amber-950/30 dark:text-amber-400"
+                  ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
+                  : "bg-amber-50 text-amber-600 dark:bg-amber-950/30 dark:text-amber-400"
                   }`}>
                   {p.type === "Listening" ? "Nghe" : "Đọc"}
                 </span>
@@ -155,8 +155,8 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
                   key={diff}
                   onClick={() => setDifficulty(diff)}
                   className={`flex-1 py-2.5 px-3 rounded-xl border text-xs font-bold transition text-center cursor-pointer ${difficulty === diff
-                      ? "bg-slate-900 text-white border-slate-900 dark:bg-slate-100 dark:text-slate-950 dark:border-slate-150"
-                      : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
+                    ? "bg-slate-900 text-white border-slate-900 dark:bg-slate-100 dark:text-slate-950 dark:border-slate-150"
+                    : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
                     }`}
                 >
                   {diff === "EASY" ? "Dễ" : diff === "MEDIUM" ? "Trung bình" : "Khó"}
@@ -176,8 +176,8 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
                   key={num}
                   onClick={() => setLimit(num)}
                   className={`flex-1 py-2.5 px-3 rounded-xl border text-xs font-bold transition text-center cursor-pointer ${limit === num
-                      ? "bg-slate-900 text-white border-slate-900 dark:bg-slate-100 dark:text-slate-950 dark:border-slate-150"
-                      : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
+                    ? "bg-slate-900 text-white border-slate-900 dark:bg-slate-100 dark:text-slate-950 dark:border-slate-150"
+                    : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
                     }`}
                 >
                   {num} câu
@@ -197,8 +197,8 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
             <button
               onClick={() => setMode("PRACTICE")}
               className={`p-4 rounded-2xl border text-left transition flex flex-col justify-between cursor-pointer space-y-2 ${mode === "PRACTICE"
-                  ? "bg-sky-50/30 border-sky-500 text-sky-750 dark:text-sky-400"
-                  : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
+                ? "bg-blue-50/30 border-blue-500 text-blue-750 dark:text-blue-400"
+                : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
                 }`}
             >
               <div className="flex items-center gap-1.5">
@@ -214,8 +214,8 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
             <button
               onClick={() => setMode("TEST")}
               className={`p-4 rounded-2xl border text-left transition flex flex-col justify-between cursor-pointer space-y-2 ${mode === "TEST"
-                  ? "bg-sky-50/30 border-sky-500 text-sky-750 dark:text-sky-400"
-                  : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
+                ? "bg-blue-50/30 border-blue-500 text-blue-750 dark:text-blue-400"
+                : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
                 }`}
             >
               <div className="flex items-center gap-1.5">
@@ -237,7 +237,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
           <Button
             onClick={handleStart}
             size="lg"
-            className="w-full sm:w-auto bg-sky-600 hover:bg-sky-700 text-white font-bold py-6 px-8 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow-md hover:scale-[1.01] transition"
+            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow-md hover:scale-[1.01] transition"
           >
             <span>Bắt đầu phiên học</span>
             <ArrowRight className="w-4 h-4 shrink-0" />
@@ -246,7 +246,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
       </div>
 
       {/* Gamification Grammar Swipe card */}
-      <div className="max-w-3xl mx-auto bg-gradient-to-r from-sky-600 to-indigo-600 rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md relative overflow-hidden">
+      <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md relative overflow-hidden">
         <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-y-6 translate-x-6">
           <Sparkles className="w-64 h-64" />
         </div>
@@ -261,7 +261,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
         </div>
         <Button
           onClick={() => router.push("/luyen-de/luyen-ngu-phap")}
-          className="w-full md:w-auto bg-white text-sky-600 hover:bg-slate-100 font-bold py-6 px-8 rounded-2xl cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] transition"
+          className="w-full md:w-auto bg-white text-blue-600 hover:bg-slate-100 font-bold py-6 px-8 rounded-2xl cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] transition"
         >
           <span>Trải nghiệm ngay</span>
           <ArrowRight className="w-4 h-4 shrink-0" />

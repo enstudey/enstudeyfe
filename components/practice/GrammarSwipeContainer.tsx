@@ -1,21 +1,21 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { 
-  Check, 
-  X, 
-  Info, 
-  Sparkles, 
-  RefreshCw, 
-  AlertCircle, 
+import {
+  Check,
+  X,
+  Info,
+  Sparkles,
+  RefreshCw,
+  AlertCircle,
   ArrowLeft
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { 
-  GrammarSwipeQuestion, 
-  GrammarSwipeSubmitRequest, 
-  getGrammarSwipeQuestions, 
-  submitGrammarSwipe 
+import {
+  GrammarSwipeQuestion,
+  GrammarSwipeSubmitRequest,
+  getGrammarSwipeQuestions,
+  submitGrammarSwipe
 } from "@/lib/api/grammar-swipe";
 
 interface GrammarSwipeContainerProps {
@@ -190,7 +190,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
       };
       const nextLogs = [...answersLog, newLog];
       setAnswersLog(nextLogs);
-      
+
       setIsAnimating(true);
       setSwipeDirection(direction);
       setTimeout(() => moveToNext(nextLogs), 600);
@@ -208,7 +208,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
         };
         const nextLogs = [...answersLog, newLog];
         setAnswersLog(nextLogs);
-        
+
         setIsAnimating(true);
         setSwipeDirection(direction);
         setTimeout(() => moveToNext(nextLogs), 600);
@@ -227,8 +227,8 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
 
     // Chuẩn hóa từ để so sánh
     const cleanWord = word.replace(/[.,/#!$%^&*;:{}=\-_`~()?]/g, "").trim().toLowerCase();
-    const cleanErrorWord = currentQuestion.errorWord 
-      ? currentQuestion.errorWord.replace(/[.,/#!$%^&*;:{}=\-_`~()?]/g, "").trim().toLowerCase() 
+    const cleanErrorWord = currentQuestion.errorWord
+      ? currentQuestion.errorWord.replace(/[.,/#!$%^&*;:{}=\-_`~()?]/g, "").trim().toLowerCase()
       : "";
 
     // So sánh từ được click và từ lỗi thực tế
@@ -267,7 +267,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
 
   const handleDragEnd = () => {
     if (!dragStart) return;
-    
+
     const threshold = 120; // Khoảng cách tối thiểu để kích hoạt vuốt
     if (dragOffset.x > threshold) {
       handleAnswer("RIGHT");
@@ -297,7 +297,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
   if (isSubmitting) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] gap-3">
-        <RefreshCw className="w-10 h-10 text-sky-500 animate-spin" />
+        <RefreshCw className="w-10 h-10 text-blue-500 animate-spin" />
         <p className="text-slate-500 font-bold text-sm">Đang nộp bài và tính điểm...</p>
       </div>
     );
@@ -306,7 +306,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
   if (loading) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] gap-3">
-        <RefreshCw className="w-10 h-10 text-sky-500 animate-spin" />
+        <RefreshCw className="w-10 h-10 text-blue-500 animate-spin" />
         <p className="text-slate-500 font-bold text-sm">Đang tải danh sách câu hỏi...</p>
       </div>
     );
@@ -318,7 +318,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
         <AlertCircle className="w-12 h-12 text-red-500 mx-auto" />
         <h3 className="text-lg font-bold text-slate-900 dark:text-white">Đã xảy ra lỗi</h3>
         <p className="text-slate-500 text-sm">{error}</p>
-        <Button onClick={loadQuestions} className="w-full bg-sky-500 hover:bg-sky-600 cursor-pointer">
+        <Button onClick={loadQuestions} className="w-full bg-blue-500 hover:bg-blue-600 cursor-pointer">
           Thử lại
         </Button>
       </div>
@@ -331,8 +331,8 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
     return (
       <div className="max-w-md mx-auto px-6 py-12 space-y-8 text-center">
         <div className="space-y-3">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sky-50 dark:bg-sky-950/30 border border-sky-100 dark:border-sky-900/50 mb-2">
-            <Sparkles className="w-8 h-8 text-sky-500 dark:text-sky-400 animate-bounce" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 mb-2">
+            <Sparkles className="w-8 h-8 text-blue-500 dark:text-blue-400 animate-bounce" />
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Hoàn Thành Phiên Chơi!</h2>
           <p className="text-slate-500 text-sm">Báo cáo kết quả phiên vuốt ngữ pháp của bạn</p>
@@ -340,7 +340,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
 
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-5 rounded-2xl">
-            <div className="text-2xl font-extrabold text-sky-500 dark:text-sky-400 font-mono">
+            <div className="text-2xl font-extrabold text-blue-500 dark:text-blue-400 font-mono">
               {submitResult.score}/{submitResult.total}
             </div>
             <div className="text-xs text-slate-400 font-bold mt-1">ĐÚNG HOÀN TOÀN</div>
@@ -368,22 +368,22 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
         {isGuest && (
           <div className="bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-300 rounded-xl p-4 text-xs text-left">
             Đăng nhập tài khoản để tích lũy XP bền vững và tự động lưu các câu làm sai vào Sổ tay câu sai (Mistake Bank).
-            <a href={googleLoginUrl} className="block font-bold text-sky-655 dark:text-sky-400 hover:underline mt-2">
+            <a href={googleLoginUrl} className="block font-bold text-blue-655 dark:text-blue-400 hover:underline mt-2">
               Đăng nhập Google ngay &rarr;
             </a>
           </div>
         )}
 
         <div className="flex gap-3">
-          <Button 
-            onClick={loadQuestions} 
-            className="flex-1 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl py-3 cursor-pointer text-xs"
+          <Button
+            onClick={loadQuestions}
+            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl py-3 cursor-pointer text-xs"
           >
             Chơi lượt tiếp theo
           </Button>
-          <Button 
-            variant="outline" 
-            onClick={() => window.location.href = "/luyen-de"} 
+          <Button
+            variant="outline"
+            onClick={() => window.location.href = "/luyen-de"}
             className="flex-1 font-bold border-slate-200 dark:border-slate-800 rounded-xl py-3 cursor-pointer text-xs"
           >
             Về trang chủ
@@ -411,7 +411,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
 
   return (
     <div className="max-w-xl mx-auto px-6 py-12 flex flex-col flex-1 justify-between min-h-[80vh] space-y-8 select-none">
-      
+
       {/* Top Navigation */}
       <div className="flex items-center justify-between">
         <Link href="/luyen-de" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-white transition">
@@ -425,8 +425,8 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
 
       {/* Progress Bar */}
       <div className="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-        <div 
-          className="bg-sky-500 h-full transition-all duration-350"
+        <div
+          className="bg-blue-500 h-full transition-all duration-350"
           style={{ width: `${((currentIndex) / questions.length) * 100}%` }}
         />
       </div>
@@ -434,7 +434,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
       {/* Main Tinder Card Container */}
       <div className="flex-1 flex items-center justify-center py-6 min-h-[360px]">
         {currentQuestion && (
-          <div 
+          <div
             ref={containerRef}
             style={cardStyle}
             onMouseDown={(e) => handleDragStart(e.clientX, e.clientY)}
@@ -444,15 +444,14 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
             onTouchStart={(e) => handleDragStart(e.touches[0].clientX, e.touches[0].clientY)}
             onTouchMove={(e) => dragStart && handleDragMove(e.touches[0].clientX, e.touches[0].clientY)}
             onTouchEnd={handleDragEnd}
-            className={`w-full max-w-sm bg-white dark:bg-slate-950 border-2 rounded-3xl shadow-lg p-6 md:p-8 flex flex-col justify-between items-center text-center cursor-grab active:cursor-grabbing transition-transform duration-300 relative overflow-hidden ${
-              isWordSelectionMode 
-                ? "border-sky-400 dark:border-sky-900" 
-                : dragOffset.x > 30 
-                  ? "border-emerald-400 dark:border-emerald-900 bg-emerald-50/5 dark:bg-emerald-950/5" 
-                  : dragOffset.x < -30 
-                    ? "border-red-400 dark:border-red-900 bg-red-50/5 dark:bg-red-950/5" 
+            className={`w-full max-w-sm bg-white dark:bg-slate-950 border-2 rounded-3xl shadow-lg p-6 md:p-8 flex flex-col justify-between items-center text-center cursor-grab active:cursor-grabbing transition-transform duration-300 relative overflow-hidden ${isWordSelectionMode
+                ? "border-blue-400 dark:border-blue-900"
+                : dragOffset.x > 30
+                  ? "border-emerald-400 dark:border-emerald-900 bg-emerald-50/5 dark:bg-emerald-950/5"
+                  : dragOffset.x < -30
+                    ? "border-red-400 dark:border-red-900 bg-red-50/5 dark:bg-red-950/5"
                     : "border-slate-200 dark:border-slate-850"
-            }`}
+              }`}
           >
             {/* Visual indicator on card overlay */}
             {dragOffset.x > 50 && !isWordSelectionMode && (
@@ -470,26 +469,26 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
             {isWordSelectionMode ? (
               <div className="w-full flex-1 flex flex-col justify-center space-y-6">
                 <div className="space-y-1">
-                  <span className="text-sky-655 dark:text-sky-400 text-[10px] font-bold uppercase tracking-widest">
+                  <span className="text-blue-655 dark:text-blue-400 text-[10px] font-bold uppercase tracking-widest">
                     Chế độ phát hiện lỗi
                   </span>
                   <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 leading-relaxed">
                     Click trực tiếp vào từ viết sai ngữ pháp:
                   </h3>
                 </div>
-                
+
                 <div className="flex flex-wrap justify-center gap-x-2 gap-y-3 font-medium text-base md:text-lg leading-relaxed max-w-xs mx-auto">
                   {currentQuestion.questionText.split(" ").map((word, idx) => {
                     const isClicked = clickedWordIndex === idx;
-                    
+
                     // Logic màu sắc hiển thị sau khi click chọn từ
                     let btnColor = "bg-slate-50 border-slate-200 text-slate-800 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-350 hover:bg-slate-100";
                     if (clickedWordIndex !== null) {
                       const cleanWord = word.replace(/[.,/#!$%^&*;:{}=\-_`~()?]/g, "").trim().toLowerCase();
-                      const cleanErrorWord = currentQuestion.errorWord 
-                        ? currentQuestion.errorWord.replace(/[.,/#!$%^&*;:{}=\-_`~()?]/g, "").trim().toLowerCase() 
+                      const cleanErrorWord = currentQuestion.errorWord
+                        ? currentQuestion.errorWord.replace(/[.,/#!$%^&*;:{}=\-_`~()?]/g, "").trim().toLowerCase()
                         : "";
-                      
+
                       const isWordCorrect = cleanWord === cleanErrorWord || idx === currentQuestion.errorPosition;
                       if (isWordCorrect) {
                         btnColor = "bg-emerald-500 border-emerald-600 text-white dark:bg-emerald-600 dark:border-emerald-700";
@@ -513,7 +512,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
 
                 {clickedWordIndex !== null && (
                   <div className="bg-slate-50 dark:bg-slate-900/50 border border-slate-150 dark:border-slate-850 p-4 rounded-xl text-left text-xs text-slate-600 dark:text-slate-400 space-y-1.5 animate-fadeIn">
-                    <div className="flex items-center gap-1.5 text-sky-600 dark:text-sky-400 font-bold uppercase tracking-wider">
+                    <div className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider">
                       <Info className="w-3.5 h-3.5" />
                       <span>Giải thích lỗi sai</span>
                     </div>
@@ -547,7 +546,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
       {/* Control Buttons (cho máy tính không cảm ứng) */}
       {!isWordSelectionMode && (
         <div className="flex justify-center items-center gap-6">
-          <button 
+          <button
             disabled={isAnimating}
             onClick={() => handleAnswer("LEFT")}
             className="w-14 h-14 rounded-full bg-white dark:bg-slate-950 border-2 border-red-100 dark:border-red-950 text-red-500 shadow-md flex items-center justify-center hover:bg-red-50 dark:hover:bg-red-950/20 active:scale-95 transition cursor-pointer"
@@ -557,7 +556,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
           <div className="text-slate-400 dark:text-slate-600 hidden md:block text-xs font-semibold">
             Dùng phím tắt <span className="px-1.5 py-0.5 border rounded bg-slate-50 dark:bg-slate-900">&larr;</span> <span className="px-1.5 py-0.5 border rounded bg-slate-50 dark:bg-slate-900">&rarr;</span>
           </div>
-          <button 
+          <button
             disabled={isAnimating}
             onClick={() => handleAnswer("RIGHT")}
             className="w-14 h-14 rounded-full bg-white dark:bg-slate-950 border-2 border-emerald-100 dark:border-emerald-950 text-emerald-500 shadow-md flex items-center justify-center hover:bg-emerald-50 dark:hover:bg-emerald-950/20 active:scale-95 transition cursor-pointer"

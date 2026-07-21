@@ -56,7 +56,7 @@ export default function AffiliateInFeedCard({ currentPage, rowIndex }: Props) {
       </div>
       <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
         <div className="space-y-2">
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-sky-50 text-sky-600 rounded-lg text-[10px] font-bold uppercase tracking-wider">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-blue-50 text-blue-600 rounded-lg text-[10px] font-bold uppercase tracking-wider">
             Gợi ý dành cho bạn
           </span>
           <h2 className="text-base font-bold text-foreground leading-snug line-clamp-1">
@@ -74,7 +74,7 @@ export default function AffiliateInFeedCard({ currentPage, rowIndex }: Props) {
             href={redirectUrl}
             target="_blank"
             rel="noopener noreferrer nofollow sponsored"
-            className="text-xs font-bold text-sky-600 group-hover:underline"
+            className="text-xs font-bold text-blue-600 group-hover:underline"
             onClick={handleClick}
           >
             {product.ctaLabel || "Tìm hiểu thêm"} &rarr;

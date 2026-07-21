@@ -14,14 +14,14 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-slate-50 text-foreground flex items-center justify-center p-4 relative overflow-hidden font-sans">
       {/* Decorative Background Gradients */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-sky-600/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-md bg-card border border-border rounded-3xl p-8 shadow-2xl relative z-10 text-center space-y-8">
         <div className="space-y-2 flex flex-col items-center">
-          <Link href="/" className="inline-flex items-center gap-2 text-3xl font-extrabold text-foreground hover:text-sky-600 transition-colors tracking-tight">
+          <Link href="/" className="inline-flex items-center gap-2 text-3xl font-extrabold text-foreground hover:text-blue-600 transition-colors tracking-tight">
             <Image src="/icon-transparent.png" alt="EnStudey Logo" width={36} height={36} className="w-9 h-9" />
-            <span className="bg-gradient-to-r from-sky-600 to-sky-500 text-transparent bg-clip-text">EnStudey</span>
+            <span className="bg-gradient-to-r from-blue-600 to-blue-500 text-transparent bg-clip-text">EnStudey</span>
           </Link>
           <p className="text-muted-foreground text-sm">Chinh phục TOEIC & IELTS thông minh cùng trợ lý AI</p>
         </div>

@@ -84,8 +84,8 @@ export default function SpeechButton({
       data-testid={testId}
       onClick={handleSpeak}
       className={`transition duration-200 cursor-pointer ${sizeClasses[size]} ${isSpeaking
-          ? "bg-sky-100 text-sky-750 dark:bg-sky-950 dark:text-sky-300 animate-pulse"
-          : "bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-800 dark:bg-slate-900 dark:hover:bg-slate-850 dark:text-slate-400"
+        ? "bg-blue-100 text-blue-750 dark:bg-blue-950 dark:text-blue-300 animate-pulse"
+        : "bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-800 dark:bg-slate-900 dark:hover:bg-slate-850 dark:text-slate-400"
         } ${className}`}
       title="Phát âm từ vựng (Bấm lần 2 để đọc chậm)"
     >

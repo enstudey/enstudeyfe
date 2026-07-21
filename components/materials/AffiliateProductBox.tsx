@@ -33,7 +33,7 @@ export default function AffiliateProductBox({ products }: AffiliateProductBoxPro
         {displayedProducts.map((product, idx) => (
           <div
             key={idx}
-            className="snap-align-start shrink-0 w-[220px] md:w-auto bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl p-4 flex flex-col justify-between hover:shadow-md hover:border-sky-500/25 transition-all duration-300"
+            className="snap-align-start shrink-0 w-[220px] md:w-auto bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl p-4 flex flex-col justify-between hover:shadow-md hover:border-blue-500/25 transition-all duration-300"
           >
             <div className="space-y-3">
               {/* Ảnh sản phẩm với size cố định chống CLS */}
@@ -47,7 +47,7 @@ export default function AffiliateProductBox({ products }: AffiliateProductBoxPro
                   className="object-contain"
                 />
                 {product.badge && (
-                  <span className="absolute top-1.5 left-1.5 text-[9px] font-bold px-1.5 py-0.5 bg-sky-600 text-white rounded uppercase tracking-wider">
+                  <span className="absolute top-1.5 left-1.5 text-[9px] font-bold px-1.5 py-0.5 bg-blue-600 text-white rounded uppercase tracking-wider">
                     {product.badge}
                   </span>
                 )}
@@ -57,7 +57,7 @@ export default function AffiliateProductBox({ products }: AffiliateProductBoxPro
                 <h4 className="text-xs font-extrabold text-slate-900 dark:text-white line-clamp-2 h-8 leading-snug">
                   {product.title}
                 </h4>
-                <p className="text-[11px] font-semibold text-sky-600 dark:text-sky-400">
+                <p className="text-[11px] font-semibold text-blue-600 dark:text-blue-400">
                   {product.priceRange}
                 </p>
               </div>

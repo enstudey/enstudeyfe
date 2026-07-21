@@ -63,7 +63,7 @@ export default function UserProfileDropdown({ user, token }: UserProfileDropdown
       {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-9 h-9 rounded-full overflow-hidden border border-slate-200 cursor-pointer hover:ring-2 hover:ring-sky-500 transition-all duration-200 flex items-center justify-center focus:outline-none"
+        className="relative w-9 h-9 rounded-full overflow-hidden border border-slate-200 cursor-pointer hover:ring-2 hover:ring-blue-500 transition-all duration-200 flex items-center justify-center focus:outline-none"
       >
         {isAnon ? (
           <div
@@ -107,7 +107,7 @@ export default function UserProfileDropdown({ user, token }: UserProfileDropdown
             {/* Toggle Switch */}
             <button
               onClick={handleToggle}
-              className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${isAnon ? "bg-sky-600" : "bg-slate-200"
+              className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${isAnon ? "bg-blue-600" : "bg-slate-200"
                 }`}
               data-testid="toggle-anonymous-mode"
               aria-label="Toggle anonymous mode"

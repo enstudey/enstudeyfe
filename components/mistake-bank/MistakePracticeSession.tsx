@@ -1,21 +1,21 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { 
-  X, 
-  HelpCircle, 
-  Check, 
-  ChevronRight, 
-  Award, 
-  BookOpen, 
+import {
+  X,
+  HelpCircle,
+  Check,
+  ChevronRight,
+  Award,
+  BookOpen,
   WifiOff,
   AlertTriangle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { 
-  startPractice as apiStartPractice, 
-  fetchMistakes as apiFetchMistakes, 
-  submitPractice as apiSubmitPractice 
+import {
+  startPractice as apiStartPractice,
+  fetchMistakes as apiFetchMistakes,
+  submitPractice as apiSubmitPractice
 } from "@/lib/api/mistake-bank";
 import { useQuery, useMutation } from "@tanstack/react-query";
 
@@ -31,7 +31,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState<number | null>(null);
   const [explanation, setExplanation] = useState<string>("");
-  
+
   // Trạng thái nộp bài
   const [scoreInfo, setScoreInfo] = useState<{ score: number; total: number } | null>(null);
   const [isOffline, setIsOffline] = useState<boolean>(false);
@@ -76,13 +76,13 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   // 2. Kiểm tra đáp án cho câu hiện tại (In-memory O(1) lookup)
   const handleSelectOption = (optionIdx: number) => {
     if (isAnswered) return; // Chỉ được chọn 1 lần
-    
+
     const currentQuestion = questions[currentIndex];
     setSelectedAnswers(prev => ({
       ...prev,
       [currentQuestion.id]: optionIdx
     }));
-    
+
     const details = answersDetails[currentQuestion.id];
     if (details) {
       setCorrectAnswerIndex(details.correctIndex);
@@ -91,7 +91,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       setCorrectAnswerIndex(0);
       setExplanation("Không có giải thích chi tiết.");
     }
-    
+
     setIsAnswered(true);
   };
 
@@ -100,7 +100,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
     setIsAnswered(false);
     setCorrectAnswerIndex(null);
     setExplanation("");
-    
+
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(prev => prev + 1);
     } else {
@@ -113,11 +113,11 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   const syncOfflineSubmissions = useCallback(async () => {
     const saved = localStorage.getItem("offline_practice_submit");
     if (!saved) return;
-    
+
     try {
       const { savedToken, payload } = JSON.parse(saved);
       await apiSubmitPractice(savedToken, payload.practiceSessionId, payload.answers);
-      
+
       console.log("Successfully synced offline practice submit.");
       localStorage.removeItem("offline_practice_submit");
       setIsOffline(false);
@@ -131,14 +131,14 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
     const handleOnline = () => {
       syncOfflineSubmissions();
     };
-    
+
     window.addEventListener("online", handleOnline);
     return () => window.removeEventListener("online", handleOnline);
   }, [syncOfflineSubmissions]);
 
   // 5. Nộp bài lên Backend bằng useMutation
   const submitMutation = useMutation({
-    mutationFn: (payload: { practiceSessionId: string; answers: { questionId: number; selectedIndex: number }[] }) => 
+    mutationFn: (payload: { practiceSessionId: string; answers: { questionId: number; selectedIndex: number }[] }) =>
       apiSubmitPractice(token, payload.practiceSessionId, payload.answers),
     onSuccess: (json) => {
       setScoreInfo({
@@ -154,9 +154,9 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
         payload: variables
       }));
       setIsOffline(true);
-      
+
       setScoreInfo({
-        score: 0, 
+        score: 0,
         total: questions.length
       });
     }
@@ -167,7 +167,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       questionId: parseInt(qId, 10),
       selectedIndex: sIdx
     }));
-    
+
     submitMutation.mutate({
       practiceSessionId,
       answers: formattedAnswers
@@ -177,7 +177,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   if (loading) {
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-xl mx-auto shadow-sm flex flex-col items-center justify-center min-h-[350px] space-y-4">
-        <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         <p className="text-sm font-semibold text-slate-500">Đang chuẩn bị đề ôn tập câu sai...</p>
       </div>
     );
@@ -206,8 +206,8 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   if (scoreInfo) {
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-8 max-w-xl mx-auto shadow-xl text-center space-y-6 animate-fadeIn">
-        <div className="mx-auto w-20 h-20 rounded-full bg-sky-50 flex items-center justify-center">
-          <Award className="w-10 h-10 text-sky-500" />
+        <div className="mx-auto w-20 h-20 rounded-full bg-blue-50 flex items-center justify-center">
+          <Award className="w-10 h-10 text-blue-500" />
         </div>
 
         {isOffline ? (
@@ -227,15 +227,15 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
               Bạn đã hoàn thành lượt ôn tập này. Hệ thống đã cập nhật độ thành thạo và streak tương ứng.
             </p>
             <div className="pt-4">
-              <span className="text-5xl font-black text-sky-500 font-mono">{scoreInfo.score}</span>
+              <span className="text-5xl font-black text-blue-500 font-mono">{scoreInfo.score}</span>
               <span className="text-xl font-bold text-slate-400"> / {scoreInfo.total} câu đúng</span>
             </div>
           </div>
         )}
 
-        <Button 
+        <Button
           data-testid="btn-submit-quiz"
-          onClick={onClose} 
+          onClick={onClose}
           className="w-full bg-[#0F172A] hover:bg-slate-800 text-white font-bold py-4 rounded-xl cursor-pointer"
         >
           Quay lại Dashboard Sổ tay
@@ -251,12 +251,12 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {/* Top Navigation */}
       <div className="flex justify-between items-center pb-4 border-b border-slate-100">
         <div className="space-y-1">
-          <span className="text-[10px] font-black text-sky-600 uppercase tracking-wider">Phiên ôn tập câu sai</span>
+          <span className="text-[10px] font-black text-blue-600 uppercase tracking-wider">Phiên ôn tập câu sai</span>
           <h3 className="text-sm font-bold text-slate-800">
             Câu hỏi {currentIndex + 1} / {questions.length}
           </h3>
         </div>
-        <button 
+        <button
           onClick={onClose}
           className="text-slate-400 hover:text-slate-650 p-2 rounded-xl hover:bg-slate-50 transition cursor-pointer"
         >
@@ -266,8 +266,8 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
 
       {/* Tiến độ chạy (Progress Bar) */}
       <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-        <div 
-          className="bg-sky-500 h-full transition-all duration-300"
+        <div
+          className="bg-blue-500 h-full transition-all duration-300"
           style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
         />
       </div>
@@ -275,7 +275,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {/* Nội dung câu hỏi */}
       <div className="space-y-4">
         <div className="flex items-start gap-2 text-slate-800">
-          <HelpCircle className="w-5 h-5 text-sky-500 mt-1 shrink-0" />
+          <HelpCircle className="w-5 h-5 text-blue-500 mt-1 shrink-0" />
           <p className="font-semibold text-sm sm:text-base leading-relaxed">
             {currentQuestion.questionText}
           </p>
@@ -295,26 +295,24 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
                 key={idx}
                 onClick={() => handleSelectOption(idx)}
                 disabled={isAnswered}
-                className={`p-4 rounded-2xl border text-xs sm:text-sm font-semibold flex items-center justify-between text-left transition ${
-                  isCorrectOption
+                className={`p-4 rounded-2xl border text-xs sm:text-sm font-semibold flex items-center justify-between text-left transition ${isCorrectOption
                     ? "bg-emerald-50/30 text-emerald-800 border-emerald-250 shadow-xs"
                     : isWrongChoice
-                    ? "bg-rose-50/50 text-rose-800 border-rose-250 shadow-xs"
-                    : isSelected
-                    ? "bg-sky-50 text-sky-800 border-sky-300 shadow-xs"
-                    : "bg-white text-slate-700 hover:bg-slate-50 border-slate-200"
-                } ${isAnswered ? "cursor-default" : "cursor-pointer hover:scale-[1.01] active:scale-[0.99]"}`}
+                      ? "bg-rose-50/50 text-rose-800 border-rose-250 shadow-xs"
+                      : isSelected
+                        ? "bg-blue-50 text-blue-800 border-blue-300 shadow-xs"
+                        : "bg-white text-slate-700 hover:bg-slate-50 border-slate-200"
+                  } ${isAnswered ? "cursor-default" : "cursor-pointer hover:scale-[1.01] active:scale-[0.99]"}`}
               >
                 <div className="flex items-center gap-3">
-                  <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                    isCorrectOption 
-                      ? "bg-emerald-500 text-white" 
+                  <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${isCorrectOption
+                      ? "bg-emerald-500 text-white"
                       : isWrongChoice
-                      ? "bg-rose-500 text-white"
-                      : isSelected
-                      ? "bg-sky-500 text-white"
-                      : "bg-slate-100 text-slate-500"
-                  }`}>
+                        ? "bg-rose-500 text-white"
+                        : isSelected
+                          ? "bg-blue-500 text-white"
+                          : "bg-slate-100 text-slate-500"
+                    }`}>
                     {["A", "B", "C", "D"][idx]}
                   </span>
                   <span>{opt}</span>
@@ -330,8 +328,8 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
 
       {/* Hiển thị Giải thích câu hỏi sau khi chọn */}
       {isAnswered && explanation && (
-        <div className="bg-sky-50/20 border border-sky-100/50 rounded-2xl p-4 text-xs sm:text-sm space-y-2 animate-slideDown">
-          <div className="font-bold text-sky-850 flex items-center gap-1.5">
+        <div className="bg-blue-50/20 border border-blue-100/50 rounded-2xl p-4 text-xs sm:text-sm space-y-2 animate-slideDown">
+          <div className="font-bold text-blue-850 flex items-center gap-1.5">
             <BookOpen className="w-4 h-4" />
             Giải thích đáp án:
           </div>
@@ -345,7 +343,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {isAnswered && (
         <Button
           onClick={handleNext}
-          className="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow hover:shadow-lg transition active:scale-[0.98]"
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow hover:shadow-lg transition active:scale-[0.98]"
         >
           {currentIndex < questions.length - 1 ? "Câu tiếp theo" : "Nộp bài và hoàn thành"}
           <ChevronRight className="w-4 h-4" />

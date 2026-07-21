@@ -73,7 +73,7 @@ export default function SoTayClient() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
       <div className="text-center space-y-2">
-        <span className="text-xs font-bold text-sky-600 uppercase tracking-widest block">
+        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
           Kho lưu trữ từ vựng cá nhân 📖✨
         </span>
         <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -92,7 +92,7 @@ export default function SoTayClient() {
             placeholder="Tìm kiếm từ hoặc nghĩa..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-3 py-1.5 text-xs border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:ring-1 focus:ring-sky-500 bg-transparent"
+            className="w-full px-3 py-1.5 text-xs border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-500 bg-transparent"
           />
         </div>
 
@@ -108,7 +108,7 @@ export default function SoTayClient() {
           </label>
           <button
             onClick={handleExport}
-            className="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-xl transition duration-200 cursor-pointer text-center flex items-center justify-center shadow"
+            className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition duration-200 cursor-pointer text-center flex items-center justify-center shadow"
           >
             Xuất JSON
           </button>

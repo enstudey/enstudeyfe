@@ -33,7 +33,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  
+
   // Trạng thái đã làm quiz hôm nay chưa
   const [isCompletedToday, setIsCompletedToday] = useState(false);
   const [lastScoreInfo, setLastScoreInfo] = useState<{ score: number; examType: string } | null>(null);
@@ -45,9 +45,9 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
     try {
       const res = await fetch(`/english-data/quiz-pool-${session.examType.toLowerCase()}.json`);
       if (!res.ok) throw new Error("Không tải được danh sách câu hỏi.");
-      
+
       const pool: QuizQuestion[] = await res.json();
-      
+
       // Lọc và sắp xếp các câu hỏi đúng theo thứ tự quizIds trong session
       const restoredQuestions = session.quizIds
         .map((id: string) => pool.find((q) => q.id === id))
@@ -138,7 +138,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
     setLoading(true);
     setErrorMsg(null);
     setExamType(type);
-    
+
     try {
       let selected: QuizQuestion[] = [];
       let sessionId = "";
@@ -166,7 +166,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
           throw new Error("Không tải được danh sách câu hỏi. Vui lòng thử lại sau.");
         }
         const pool: QuizQuestion[] = await res.json();
-        
+
         let weakTopics: string[] = [];
         const savedWeak = localStorage.getItem("quiz_weak_topics");
         if (savedWeak) {
@@ -185,7 +185,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
       }
 
       const quizIds = selected.map((q) => q.id);
-      
+
       // Khởi tạo session lưu trữ dở dang
       localStorage.setItem(
         "daily_quiz_session",
@@ -333,14 +333,14 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
 
       {loading ? (
         <div className="flex flex-col items-center justify-center min-h-[350px] space-y-4">
-          <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-slate-500 text-sm font-medium">Đang chuẩn bị học liệu...</p>
         </div>
       ) : stage === "select" ? (
         <div className="space-y-8">
           <div className="space-y-4">
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight flex items-center justify-center gap-2">
-              <GraduationCap className="w-9 h-9 text-sky-500" />
+              <GraduationCap className="w-9 h-9 text-blue-500" />
               Daily Mini-Test 10 Câu
             </h1>
             <p className="text-slate-500 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
@@ -354,7 +354,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
               <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
                 Bạn đang làm bài ở chế độ ẩn danh. Để tích lũy Streak hàng ngày và lưu sổ tay câu sai vĩnh viễn, hãy{" "}
-                <a href={googleLoginUrl} className="underline font-bold text-sky-600 hover:text-sky-700 transition">
+                <a href={googleLoginUrl} className="underline font-bold text-blue-600 hover:text-blue-700 transition">
                   Đăng nhập Google ngay
                 </a>!
               </div>
@@ -380,7 +380,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
             {/* TOEIC Option Card */}
             <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition text-left flex flex-col justify-between space-y-6">
               <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center font-bold text-sky-655 text-lg">
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center font-bold text-blue-655 text-lg">
                   T
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">TOEIC Mini-Test</h3>
@@ -390,7 +390,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
               </div>
               <Button
                 onClick={() => handleStartQuiz("TOEIC")}
-                className="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 rounded-xl shadow cursor-pointer"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-xl shadow cursor-pointer"
               >
                 Làm đề TOEIC
               </Button>

@@ -160,7 +160,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   const handleAudioTimeUpdate = () => {
     if (!audioRef.current) return;
     const audio = audioRef.current;
-    
+
     // Nếu tua nhanh quá 1.5s hoặc tua ngược quá 0.5s, kéo về mốc cũ
     if (audio.currentTime > lastAudioTimeRef.current + 1.5 || audio.currentTime < lastAudioTimeRef.current - 0.5) {
       audio.currentTime = lastAudioTimeRef.current;
@@ -223,7 +223,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   // Nộp bài thi
   const handleSubmit = async () => {
     if (submitting || isSubmittingRef.current) return;
-    
+
     const confirmSubmit = window.confirm("Bạn có chắc chắn muốn nộp bài thi thử? Bạn không thể sửa đáp án sau khi nộp.");
     if (!confirmSubmit) return;
 
@@ -262,7 +262,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   if (loading) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center gap-4">
-        <div className="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
         <p className="text-slate-500 text-sm font-medium">Đang tải phòng thi giả lập, chờ xíu nhé...</p>
       </div>
     );
@@ -281,10 +281,10 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
     );
   }
 
-  const isReading = currentQuestion?.part?.toLowerCase()?.includes("part 5") || 
-                    currentQuestion?.part?.toLowerCase()?.includes("part 6") || 
-                    currentQuestion?.part?.toLowerCase()?.includes("part 7") ||
-                    currentQuestion?.part?.toLowerCase()?.includes("reading");
+  const isReading = currentQuestion?.part?.toLowerCase()?.includes("part 5") ||
+    currentQuestion?.part?.toLowerCase()?.includes("part 6") ||
+    currentQuestion?.part?.toLowerCase()?.includes("part 7") ||
+    currentQuestion?.part?.toLowerCase()?.includes("reading");
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0F172A] select-none h-screen overflow-hidden">
@@ -323,11 +323,10 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
 
         {/* Timer & Submit CTA */}
         <div className="flex items-center gap-4">
-          <div className={`flex items-center gap-2 px-3 py-0.5 rounded-xl shadow-inner transition-colors duration-300 font-mono ${
-            isTimeUrgent 
-              ? "bg-rose-50 border border-rose-100 text-rose-600 animate-pulse" 
-              : "bg-sky-50 border border-sky-100/50 text-sky-700"
-          }`}>
+          <div className={`flex items-center gap-2 px-3 py-0.5 rounded-xl shadow-inner transition-colors duration-300 font-mono ${isTimeUrgent
+              ? "bg-rose-50 border border-rose-100 text-rose-600 animate-pulse"
+              : "bg-blue-50 border border-blue-100/50 text-blue-700"
+            }`}>
             <Clock className="w-5 h-5 shrink-0" />
             <span data-testid="timer-countdown" className="exam-timer font-mono text-3xl md:text-4xl font-extrabold leading-none">
               {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
@@ -351,17 +350,15 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
         <div className="flex border-b border-slate-100 bg-white md:hidden shrink-0">
           <button
             onClick={() => setActiveTab("passage")}
-            className={`flex-1 py-3 text-xs font-bold border-b-2 transition-colors ${
-              activeTab === "passage" ? "border-sky-500 text-sky-650" : "border-transparent text-slate-500"
-            }`}
+            className={`flex-1 py-3 text-xs font-bold border-b-2 transition-colors ${activeTab === "passage" ? "border-primary text-primary" : "border-transparent text-slate-500"
+              }`}
           >
             📖 Đoạn văn đọc hiểu
           </button>
           <button
             onClick={() => setActiveTab("question")}
-            className={`flex-1 py-3 text-xs font-bold border-b-2 transition-colors ${
-              activeTab === "question" ? "border-sky-500 text-sky-655" : "border-transparent text-slate-500"
-            }`}
+            className={`flex-1 py-3 text-xs font-bold border-b-2 transition-colors ${activeTab === "question" ? "border-primary text-primary" : "border-transparent text-slate-500"
+              }`}
           >
             ✏️ Câu hỏi & Đáp án
           </button>
@@ -370,15 +367,14 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
 
       {/* Main Workspace Body (Split Screen) */}
       <main className="flex-1 overflow-hidden grid md:grid-cols-12 w-full max-w-[1500px] mx-auto px-4 py-6 gap-6">
-        
+
         {/* Nửa bên Trái: Ngữ cảnh bài thi */}
-        <div className={`md:col-span-7 h-full overflow-y-auto pr-2 space-y-6 ${
-          isReading && currentQuestion?.passage && activeTab !== "passage" ? "hidden md:block" : "block"
-        }`}>
+        <div className={`md:col-span-7 h-full overflow-y-auto pr-2 space-y-6 ${isReading && currentQuestion?.passage && activeTab !== "passage" ? "hidden md:block" : "block"
+          }`}>
           {/* Passage Section */}
           {isReading && currentQuestion?.passage ? (
             <div className="bg-white border border-slate-100 rounded-sm p-6 shadow-sm select-text">
-              <span className="inline-flex items-center bg-sky-50 text-sky-600 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider mb-4">
+              <span className="inline-flex items-center bg-blue-50 text-primary text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider mb-4">
                 📖 Đoạn văn đọc hiểu
               </span>
               <div className="exam-passage whitespace-pre-wrap font-medium select-text">
@@ -390,7 +386,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
             !isReading && currentQuestion?.audioUrl && (
               <div className="bg-white border border-slate-100 rounded-sm p-8 shadow-sm flex flex-col items-center justify-center text-center space-y-6 select-none min-h-[300px]">
                 <div className="w-24 h-24 rounded-full bg-slate-50 flex items-center justify-center border border-dashed border-slate-300 relative">
-                  <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-600 animate-pulse">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary animate-pulse">
                     <Volume2 className="w-8 h-8" />
                   </div>
                 </div>
@@ -413,23 +409,21 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
         </div>
 
         {/* Nửa bên Phải: Answer options & Navigation Grid */}
-        <div className={`md:col-span-5 h-full overflow-y-auto pl-2 flex flex-col gap-6 ${
-          isReading && currentQuestion?.passage && activeTab !== "question" ? "hidden md:flex" : "flex"
-        }`}>
+        <div className={`md:col-span-5 h-full overflow-y-auto pl-2 flex flex-col gap-6 ${isReading && currentQuestion?.passage && activeTab !== "question" ? "hidden md:flex" : "flex"
+          }`}>
           {/* Answer Panel Card */}
           <div className="bg-white border border-slate-100 rounded-sm p-6 shadow-sm flex flex-col justify-between gap-6 shrink-0">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-slate-100 pb-4 select-none">
-                <span className="bg-sky-50 text-sky-600 border border-sky-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
+                <span className="bg-blue-50 text-primary border border-blue-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
                   {currentQuestion?.part || "TEST"} - Câu {currentQuestion?.order || currentIndex + 1}
                 </span>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => handleToggleFlag(currentIndex)}
-                  className={`rounded-md gap-1 text-xs font-bold ${
-                    flags[currentIndex] ? "bg-amber-50 text-amber-600 border border-amber-100" : "text-slate-400 hover:text-slate-655"
-                  }`}
+                  className={`rounded-md gap-1 text-xs font-bold ${flags[currentIndex] ? "bg-amber-50 text-amber-600 border border-amber-100" : "text-slate-400 hover:text-slate-655"
+                    }`}
                 >
                   <Flag className={`w-4 h-4 ${flags[currentIndex] ? "fill-current text-amber-500" : ""}`} />
                   <span>Cứu xét</span>
@@ -462,15 +456,13 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                     <button
                       key={idx}
                       onClick={() => handleSelectAnswer(currentQuestion.id, idx)}
-                      className={`flex items-center text-left gap-4 p-4 md:p-5 rounded-md border text-[17px] md:text-[18px] font-medium transition-all duration-150 cursor-pointer ${
-                        isSelected
-                          ? "bg-sky-500 text-white border-sky-500 shadow-md shadow-sky-100"
-                          : "bg-white text-slate-800 border-slate-100 hover:bg-slate-50 hover:border-sky-500/20"
-                      }`}
+                      className={`flex items-center text-left gap-4 p-4 md:p-5 rounded-md border text-[17px] md:text-[18px] font-medium transition-all duration-150 cursor-pointer ${isSelected
+                          ? "bg-primary text-white border-primary shadow-md shadow-blue-100"
+                          : "bg-white text-slate-800 border-slate-100 hover:bg-slate-50 hover:border-primary/20"
+                        }`}
                     >
-                      <span className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full text-[15px] md:text-base font-black shrink-0 ${
-                        isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
-                      }`}>
+                      <span className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full text-[15px] md:text-base font-black shrink-0 ${isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
+                        }`}>
                         {letter}
                       </span>
                       <span className="flex-1">{option}</span>
@@ -508,7 +500,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
             <h3 className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider mb-4">
               Bảng đáp án nhanh
             </h3>
-            
+
             <div className="grid grid-cols-6 xs:grid-cols-8 sm:grid-cols-10 md:grid-cols-6 lg:grid-cols-7 gap-2">
               {questions.map((q, idx) => {
                 const questionIdStr = q.id.toString();
@@ -517,13 +509,13 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                 const isFlagged = flags[idx];
 
                 let gridBtnClass = "relative w-9 h-9 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-150 cursor-pointer ";
-                
+
                 if (isCurrent) {
-                  gridBtnClass += "bg-sky-500 text-white border-sky-500 shadow-md";
+                  gridBtnClass += "bg-primary text-white border-primary shadow-md";
                 } else if (isFlagged) {
                   gridBtnClass += "bg-amber-50 text-amber-800 border-amber-400";
                 } else if (isAnswered) {
-                  gridBtnClass += "bg-sky-50 text-sky-700 border-sky-100";
+                  gridBtnClass += "bg-blue-50 text-primary border-blue-100";
                 } else {
                   gridBtnClass += "bg-white text-slate-400 border-slate-100 hover:bg-slate-50";
                 }

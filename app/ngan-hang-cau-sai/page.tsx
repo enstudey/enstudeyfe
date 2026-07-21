@@ -22,8 +22,8 @@ export default async function MistakeBankPage() {
       </h1>
 
       {isGuest ? (
-        <div className="bg-white border border-sky-500/20 rounded-3xl p-12 text-center max-w-xl mx-auto shadow-xl space-y-6">
-          <div className="w-20 h-20 bg-sky-50 border border-sky-500/10 text-sky-600 rounded-full flex items-center justify-center text-4xl mx-auto animate-pulse">
+        <div className="bg-white border border-blue-500/20 rounded-3xl p-12 text-center max-w-xl mx-auto shadow-xl space-y-6">
+          <div className="w-20 h-20 bg-blue-50 border border-blue-500/10 text-blue-600 rounded-full flex items-center justify-center text-4xl mx-auto animate-pulse">
             🔒
           </div>
           <div className="space-y-2">
@@ -36,7 +36,7 @@ export default async function MistakeBankPage() {
             <Button
               asChild
               size="lg"
-              className="font-bold text-sm bg-gradient-to-r from-sky-500 to-sky-655 text-white px-8 py-6 rounded-2xl shadow-lg hover:shadow-sky-500/20 active:scale-[0.98] transition-all duration-300 cursor-pointer"
+              className="font-bold text-sm bg-gradient-to-r from-blue-500 to-blue-655 text-white px-8 py-6 rounded-2xl shadow-lg hover:shadow-blue-500/20 active:scale-[0.98] transition-all duration-300 cursor-pointer"
             >
               <a href={googleLoginUrl}>
                 Đăng nhập bằng Google ngay! 🚀

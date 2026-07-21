@@ -6,12 +6,11 @@ import { Home, BookOpen, Layers, Mic, User } from "lucide-react";
 
 export default function BottomTabBar() {
   const pathname = usePathname();
-  
+
   const getTabClass = (path: string) => {
     const isActive = pathname === path || (path !== "/" && pathname.startsWith(path));
-    return `flex flex-col items-center gap-1 py-2 text-[10px] font-bold transition-colors ${
-      isActive ? "text-sky-500" : "text-slate-400 hover:text-slate-600"
-    }`;
+    return `flex flex-col items-center gap-1 py-2 text-[10px] font-bold transition-colors ${isActive ? "text-blue-500" : "text-slate-400 hover:text-slate-600"
+      }`;
   };
 
   return (

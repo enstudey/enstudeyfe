@@ -10,8 +10,8 @@ const MOCK_ADS = [
     description: "Nhận giáo trình luyện nói phản xạ 1-1 miễn phí tối ưu cho người bận rộn.",
     cta: "Thử Ngay Lên Trình",
     tag: "Tài trợ",
-    gradient: "from-sky-500/10 via-sky-500/5 to-transparent",
-    border: "border-sky-500/20"
+    gradient: "from-blue-500/10 via-blue-500/5 to-transparent",
+    border: "border-blue-500/20"
   },
   {
     title: "Sổ Tay 1000 Từ Vựng TOEIC Cực Dễ",
@@ -89,7 +89,7 @@ export default function AdBanner({
       </div>
 
       <div className="space-y-2 mt-2">
-        <span className="text-xs font-bold text-sky-600 uppercase tracking-wider">
+        <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
           Quảng cáo được đề xuất
         </span>
         <h3 className="text-xl font-extrabold text-slate-900 leading-snug line-clamp-2">

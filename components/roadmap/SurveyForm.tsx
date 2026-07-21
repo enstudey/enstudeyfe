@@ -25,7 +25,7 @@ export function SurveyForm({ roadmaps }: SurveyFormProps) {
       key: "SINH_VIEN",
       title: "Sinh Viên (TOEIC 500+ / 750+)",
       desc: "Luyện thi chứng chỉ đáp ứng chuẩn đầu ra đại học và nâng cao phản xạ.",
-      icon: <GraduationCap className="w-8 h-8 text-sky-500 shrink-0" />
+      icon: <GraduationCap className="w-8 h-8 text-blue-500 shrink-0" />
     },
     {
       key: "NGUOI_DI_LAM",
@@ -84,11 +84,10 @@ export function SurveyForm({ roadmaps }: SurveyFormProps) {
             key={item.key}
             type="button"
             onClick={() => setSelectedAudience(item.key)}
-            className={`flex items-start gap-4 p-5 rounded-card border text-left transition-all ${
-              selectedAudience === item.key
-                ? "bg-sky-50/30 border-primary dark:bg-sky-950/20 dark:border-primary ring-2 ring-primary/10"
+            className={`flex items-start gap-4 p-5 rounded-card border text-left transition-all ${selectedAudience === item.key
+                ? "bg-blue-50/30 border-primary dark:bg-blue-950/20 dark:border-primary ring-2 ring-primary/10"
                 : "bg-white border-border hover:border-zinc-300 dark:bg-zinc-800/40 dark:border-zinc-700/60"
-            }`}
+              }`}
           >
             <div className="p-1 bg-slate-50 dark:bg-zinc-800 rounded-xl">
               {item.icon}
@@ -110,7 +109,7 @@ export function SurveyForm({ roadmaps }: SurveyFormProps) {
           type="button"
           disabled={isSubmitting}
           onClick={handleSelect}
-          className="px-8 py-3.5 bg-primary hover:bg-sky-600 text-white font-semibold rounded-btn shadow-md transition-all disabled:opacity-50"
+          className="px-8 py-3.5 bg-primary hover:bg-blue-600 text-white font-semibold rounded-btn shadow-md transition-all disabled:opacity-50"
         >
           {isSubmitting ? "Đang Khởi Tạo Lộ Trình..." : "Kích Hoạt Lộ Trình Ngay →"}
         </button>

@@ -29,7 +29,7 @@ export default function PracticeResult({
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
       {/* 1. Điểm số tổng quan */}
       <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-8 text-center max-w-xl mx-auto shadow-sm space-y-6">
-        <div className="w-20 h-20 mx-auto rounded-full bg-sky-50 dark:bg-sky-950/30 flex items-center justify-center text-sky-600 dark:text-sky-400 font-extrabold text-2xl shadow-inner animate-bounce font-mono">
+        <div className="w-20 h-20 mx-auto rounded-full bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center text-blue-600 dark:text-blue-400 font-extrabold text-2xl shadow-inner animate-bounce font-mono">
           {score}%
         </div>
         <div className="space-y-2">
@@ -161,7 +161,7 @@ export default function PracticeResult({
 
                 {/* Lời giải giải thích */}
                 <div className="pl-7 pt-3 border-t border-slate-100 dark:border-slate-900 space-y-1.5">
-                  <span className="text-[10px] font-bold text-sky-500 dark:text-sky-400 uppercase tracking-widest block">
+                  <span className="text-[10px] font-bold text-blue-500 dark:text-blue-400 uppercase tracking-widest block">
                     Lời giải chi tiết:
                   </span>
                   <p className="text-xs text-slate-650 dark:text-slate-350 leading-relaxed font-medium">

@@ -158,8 +158,8 @@ export default function ResultDashboard({
             key={tab.id}
             onClick={() => setActiveTab(tab.id as "all" | "A" | "B" | "C" | "D" | "X_TH")}
             className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${activeTab === tab.id
-                ? "bg-sky-500 text-white shadow-xs"
-                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+              ? "bg-blue-500 text-white shadow-xs"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
               }`}
           >
             {tab.name}
@@ -175,7 +175,7 @@ export default function ResultDashboard({
               className="p-4 border border-slate-200 rounded-xl bg-slate-50/50 flex flex-col items-center justify-center gap-1"
             >
               <span className="font-bold text-xs text-slate-500">{grp}</span>
-              <span className="font-extrabold text-lg text-sky-600 font-mono">
+              <span className="font-extrabold text-lg text-blue-600 font-mono">
                 {val.toFixed(2)}
               </span>
             </div>
@@ -194,7 +194,7 @@ export default function ResultDashboard({
               <h4 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 🎓 Gợi ý trường Đại học phù hợp
                 {recommendations.length > 0 && (
-                  <span className="text-xs px-2.5 py-0.5 bg-sky-100 text-sky-700 rounded-full font-bold">
+                  <span className="text-xs px-2.5 py-0.5 bg-blue-100 text-blue-700 rounded-full font-bold">
                     {recommendations.length} trường
                   </span>
                 )}
@@ -225,7 +225,7 @@ export default function ResultDashboard({
                   return (
                     <div
                       key={`${rec.uniCode}-${rec.majorCode}-${idx}`}
-                      className="group relative bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg hover:border-sky-500/30 transition-all duration-300 transform hover:-translate-y-1"
+                      className="group relative bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg hover:border-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"
                     >
                       <div className="space-y-2">
                         <div className="flex items-start justify-between gap-2">
@@ -233,14 +233,14 @@ export default function ResultDashboard({
                             {rec.uniCode}
                           </span>
                           <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${isSafe
-                              ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400"
-                              : "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400"
+                            ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400"
+                            : "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400"
                             }`}>
                             {isSafe ? `An toàn (+${rec.diff.toFixed(2)})` : `Thử thách (${rec.diff.toFixed(2)})`}
                           </span>
                         </div>
 
-                        <h5 className="font-extrabold text-sm text-slate-950 dark:text-white line-clamp-1 group-hover:text-sky-600 transition-colors">
+                        <h5 className="font-extrabold text-sm text-slate-950 dark:text-white line-clamp-1 group-hover:text-blue-600 transition-colors">
                           {rec.uniName}
                         </h5>
 
@@ -254,12 +254,12 @@ export default function ResultDashboard({
                         </div>
 
                         <div className="text-xs font-semibold text-slate-600 dark:text-slate-400 pt-1">
-                          Điểm chuẩn {rec.year}: <span className="font-extrabold text-sky-600 dark:text-sky-400">{rec.benchmark.toFixed(2)}</span>
+                          Điểm chuẩn {rec.year}: <span className="font-extrabold text-blue-600 dark:text-blue-400">{rec.benchmark.toFixed(2)}</span>
                         </div>
                       </div>
 
                       <div className="mt-4 pt-3 border-t border-slate-50 dark:border-slate-900">
-                        <Button asChild variant="outline" className="w-full text-xs font-bold rounded-xl h-9 hover:bg-sky-600 hover:text-white dark:hover:bg-sky-600 transition duration-200">
+                        <Button asChild variant="outline" className="w-full text-xs font-bold rounded-xl h-9 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition duration-200">
                           <Link href={`/tra-cuu-tuyen-sinh?score=${highestGroup.score.toFixed(2)}&block=${highestGroup.name}`}>
                             Xem chi tiết xét tuyển &rarr;
                           </Link>
@@ -284,7 +284,7 @@ export default function ResultDashboard({
                 Không tìm thấy trường Đại học nào phù hợp với điểm số và tổ hợp môn của bạn. Vui lòng thử lại với tổ hợp khác.
               </p>
               <div className="flex justify-center">
-                <Button asChild variant="outline" className="text-xs font-bold rounded-xl hover:bg-sky-600 hover:text-white dark:hover:bg-sky-600 transition duration-200 h-9 px-4">
+                <Button asChild variant="outline" className="text-xs font-bold rounded-xl hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition duration-200 h-9 px-4">
                   <Link href="/tra-cuu-tuyen-sinh">
                     Tra cứu toàn bộ điểm chuẩn &rarr;
                   </Link>

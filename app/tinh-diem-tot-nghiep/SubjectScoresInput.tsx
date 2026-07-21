@@ -40,7 +40,7 @@ export default function SubjectScoresInput({
 }: Props) {
   return (
     <div className="space-y-6">
-      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-sky-600 pl-3">
+      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-blue-600 pl-3">
         1. Nhập điểm thi THPT quốc gia (Thang điểm 10)
       </h2>
 
@@ -74,8 +74,8 @@ export default function SubjectScoresInput({
                 id={`input-score-${sub.id}`}
                 data-testid={`input-score-${sub.id}`}
                 className={`font-bold text-base h-10 ${errors[sub.id]
-                    ? "border-red-500 focus-visible:border-red-500 text-red-500"
-                    : "border-slate-200"
+                  ? "border-red-500 focus-visible:border-red-500 text-red-500"
+                  : "border-slate-200"
                   }`}
               />
               {errors[sub.id] && (
@@ -104,8 +104,8 @@ export default function SubjectScoresInput({
               id="input-score-techIndustrial"
               data-testid="input-score-techIndustrial"
               className={`font-bold text-base h-10 ${errors.techIndustrial
-                  ? "border-red-500 focus-visible:border-red-500 text-red-500"
-                  : "border-slate-200"
+                ? "border-red-500 focus-visible:border-red-500 text-red-500"
+                : "border-slate-200"
                 }`}
             />
             {errors.techIndustrial && (
@@ -125,8 +125,8 @@ export default function SubjectScoresInput({
               id="input-score-techAgricultural"
               data-testid="input-score-techAgricultural"
               className={`font-bold text-base h-10 ${errors.techAgricultural
-                  ? "border-red-500 focus-visible:border-red-500 text-red-500"
-                  : "border-slate-200"
+                ? "border-red-500 focus-visible:border-red-500 text-red-500"
+                : "border-slate-200"
                 }`}
             />
             {errors.techAgricultural && (
@@ -168,8 +168,8 @@ export default function SubjectScoresInput({
               id="input-score-otherLanguage"
               data-testid="input-score-otherLanguage"
               className={`font-bold text-base h-10 ${errors.otherLanguage
-                  ? "border-red-500 focus-visible:border-red-500 text-red-500"
-                  : "border-slate-200"
+                ? "border-red-500 focus-visible:border-red-500 text-red-500"
+                : "border-slate-200"
                 }`}
             />
             {errors.otherLanguage && (

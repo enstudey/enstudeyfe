@@ -35,13 +35,12 @@ export function MilestoneCard({ milestone }: MilestoneCardProps) {
 
   return (
     <div
-      className={`rounded-card border transition-all p-6 ${
-        isCompleted
+      className={`rounded-card border transition-all p-6 ${isCompleted
           ? "bg-emerald-50/30 border-emerald-200 dark:bg-emerald-950/10 dark:border-emerald-900/40"
           : isLocked
-          ? "bg-zinc-50 border-zinc-200 dark:bg-zinc-900/50 dark:border-zinc-800 opacity-70"
-          : "bg-white border-sky-100 dark:bg-zinc-900 dark:border-sky-950 shadow-md ring-2 ring-primary/10"
-      }`}
+            ? "bg-zinc-50 border-zinc-200 dark:bg-zinc-900/50 dark:border-zinc-800 opacity-70"
+            : "bg-white border-blue-100 dark:bg-zinc-900 dark:border-blue-950 shadow-md ring-2 ring-primary/10"
+        }`}
     >
       <div className="flex items-start justify-between gap-4 mb-3">
         <div>
@@ -70,19 +69,17 @@ export function MilestoneCard({ milestone }: MilestoneCardProps) {
           milestone.tasks.map((task) => (
             <div
               key={task.taskId}
-              className={`flex items-center justify-between p-3.5 rounded-xl border text-sm transition-colors ${
-                task.isCompleted
+              className={`flex items-center justify-between p-3.5 rounded-xl border text-sm transition-colors ${task.isCompleted
                   ? "bg-emerald-50 border-emerald-200 dark:bg-emerald-950/20 dark:border-emerald-900/30"
                   : "bg-zinc-50 border-zinc-200 dark:bg-zinc-800/40 dark:border-zinc-700/50"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-3">
                 <div
-                  className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
-                    task.isCompleted
+                  className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${task.isCompleted
                       ? "bg-emerald-500 text-white"
                       : "bg-zinc-200 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-400"
-                  }`}
+                    }`}
                 >
                   {task.isCompleted ? "✓" : "•"}
                 </div>
@@ -100,11 +97,10 @@ export function MilestoneCard({ milestone }: MilestoneCardProps) {
               {!isLocked && (
                 <Link
                   href={task.targetUrl || "#"}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-btn transition-colors whitespace-nowrap ${
-                    task.isCompleted
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-btn transition-colors whitespace-nowrap ${task.isCompleted
                       ? "bg-zinc-200 text-zinc-700 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-300"
-                      : "bg-primary text-white hover:bg-sky-600"
-                  }`}
+                      : "bg-primary text-white hover:bg-blue-600"
+                    }`}
                 >
                   {task.isCompleted ? "Ôn Lại" : "Làm Ngay"}
                 </Link>

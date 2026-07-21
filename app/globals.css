@@ -12,33 +12,33 @@ html {
   --card: oklch(1 0 0);
   --card-border: #e2e8f0;
 
-  --accent: #f0f9ff; /* sky-50 */
-  --accent-foreground: #0369a1; /* sky-700 */
+  --accent: #fef3c7; /* amber-100 */
+  --accent-foreground: #d97706; /* amber-700 */
 
-  --success-bg: #ecfdf5;
-  --success-text: #10b981;
+  --success-bg: #f0fdf4; /* green-50 */
+  --success-text: #16a34a; /* green-600 */
 
-  --error-bg: #fff1f2;
-  --error-text: #f43f5e;
+  --error-bg: #fef2f2; /* red-50 */
+  --error-text: #dc2626; /* red-600 */
 
   --font-sans: var(--font-inter-sans);
   --font-serif: var(--font-lora-serif);
   --font-mono: var(--font-geist-mono);
-  --background: #f8fafc;
+  --background: #ffffff;
   --foreground: #0f172a;
   --card-foreground: #0f172a;
   --popover: oklch(1 0 0);
   --popover-foreground: #0f172a;
-  --primary: #0ea5e9;
+  --primary: #2563eb; /* Blue 600 */
   --primary-foreground: #ffffff;
-  --secondary: #f0f9ff;
-  --secondary-foreground: #0369a1;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #475569;
   --muted: #f8fafc;
   --muted-foreground: #64748b;
-  --destructive: #f43f5e;
+  --destructive: #dc2626;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #0ea5e9;
+  --ring: #2563eb;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -72,11 +72,11 @@ html {
   --color-error-text: var(--color-error-text);
   
   --color-brand-navy: #0f172a;
-  --color-brand-cyan: #0ea5e9;
+  --color-brand-cyan: #2563eb; /* Map sang Blue 600 */
   --color-brand-canvas: #f8fafc;
   --color-brand-muted: #64748b;
-  --color-feedback-correct: #10b981;
-  --color-feedback-incorrect: #f43f5e;
+  --color-feedback-correct: #16a34a;
+  --color-feedback-incorrect: #dc2626;
   --color-feedback-pending: #f59e0b;
 
   /* Custom shadows and radius mapping */
@@ -90,15 +90,9 @@ html {
 body {
   background-color: var(--background);
   font-family: var(--font-sans);
-  font-size: 1.0625rem; /* 17px chuẩn trên Mobile */
-  line-height: 1.65;
+  font-size: 1rem; /* 16px chuẩn */
+  line-height: 1.6;
   color: #0f172a; /* Slate 900 */
-}
-
-@media (min-width: 768px) {
-  body {
-    font-size: 1.125rem; /* 18px chuẩn trên Laptop */
-  }
 }
 
 /* Anti-CLS AdSense Container System */
@@ -247,6 +241,38 @@ body {
   }
   html {
     @apply font-sans;
+  }
+  h1 {
+    font-size: 2.25rem; /* 36px mobile */
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 1.875rem; /* 30px mobile */
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 1.5rem; /* 24px mobile */
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem; /* 48px desktop */
+    }
+    h2 {
+      font-size: 2.5rem; /* 40px desktop */
+    }
+    h3 {
+      font-size: 2rem; /* 32px desktop */
+    }
+    h4 {
+      font-size: 1.5rem; /* 24px desktop */
+    }
+    h5 {
+      font-size: 1.25rem; /* 20px desktop */
+    }
   }
   .es-card {
     border-radius: var(--radius-card);

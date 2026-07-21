@@ -27,7 +27,7 @@ export default function CertificateConverter({
 }: Props) {
   return (
     <div className="space-y-5">
-      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-sky-600 pl-3">
+      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-blue-600 pl-3">
         2. Quy đổi chứng chỉ tiếng Anh
       </h2>
 
@@ -51,8 +51,8 @@ export default function CertificateConverter({
                   setCertScore("");
                 }}
                 className={`px-4 py-3 rounded-xl border text-center font-bold text-xs transition duration-150 cursor-pointer ${certType === item.id
-                    ? "border-sky-600 bg-sky-50 text-sky-750 shadow-sm"
-                    : "border-slate-200 hover:bg-slate-50 text-slate-600"
+                  ? "border-blue-600 bg-blue-50 text-blue-750 shadow-sm"
+                  : "border-slate-200 hover:bg-slate-50 text-slate-600"
                   }`}
               >
                 {item.name}

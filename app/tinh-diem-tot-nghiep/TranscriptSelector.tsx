@@ -171,7 +171,7 @@ export default function TranscriptSelector({
   return (
     <div className="space-y-6">
       <div className="space-y-4 pt-2">
-        <div className="border-l-4 border-sky-600 pl-3">
+        <div className="border-l-4 border-blue-600 pl-3">
           <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider">
             1. Nhập điểm học bạ 6 học kỳ (Thang điểm 10)
           </h2>
@@ -195,7 +195,7 @@ export default function TranscriptSelector({
                   <span className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-2">
                     {group.name}
                     {group.id === "required" && (
-                      <span className="px-2 py-0.5 bg-sky-100 text-sky-750 text-[9px] font-bold rounded-full normal-case">
+                      <span className="px-2 py-0.5 bg-blue-100 text-blue-750 text-[9px] font-bold rounded-full normal-case">
                         Bắt buộc
                       </span>
                     )}

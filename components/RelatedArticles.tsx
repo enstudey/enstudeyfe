@@ -44,7 +44,7 @@ export default function RelatedArticles({ posts }: RelatedArticlesProps) {
                       </span>
                     );
                   })()}
-                  <h4 className="text-sm font-bold text-foreground group-hover:text-sky-600 transition-colors line-clamp-2">
+                  <h4 className="text-sm font-bold text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
                     {post.title}
                   </h4>
                 </div>

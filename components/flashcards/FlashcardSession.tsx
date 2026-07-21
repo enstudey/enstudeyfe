@@ -133,7 +133,7 @@ export default function FlashcardSession({
     setStartGhostAnim(false);
     setFlipDuration(null);
     setStartTime(Date.now());
-    
+
     // Đợi hiệu ứng lật hoàn thành rồi mới chuyển thẻ
     setTimeout(() => {
       const nextQueue = queue.filter((_, idx) => idx !== currentIndex);
@@ -148,7 +148,7 @@ export default function FlashcardSession({
   const getGhostFeedback = () => {
     if (!flipDuration || !ghostDuration) return null;
     const diff = (flipDuration - ghostDuration) / 1000;
-    
+
     if (diff < 0) {
       return (
         <span className="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded">
@@ -177,16 +177,15 @@ export default function FlashcardSession({
           &larr; Thoát
         </Button>
         <span className="text-xs font-extrabold text-slate-400">
-          Chủ đề: <span className="text-sky-600 dark:text-sky-400">{topicId}</span> ({queue.length} từ còn lại)
+          Chủ đề: <span className="text-blue-600 dark:text-blue-400">{topicId}</span> ({queue.length} từ còn lại)
         </span>
       </div>
 
       {/* Card Wrapper */}
       <div className="relative w-full aspect-[4/3] min-h-[280px] perspective select-none">
         <div
-          className={`w-full h-full duration-500 transform-style-3d relative cursor-pointer ${
-            isFlipped ? "rotate-y-180" : ""
-          }`}
+          className={`w-full h-full duration-500 transform-style-3d relative cursor-pointer ${isFlipped ? "rotate-y-180" : ""
+            }`}
           onClick={handleFlip}
         >
           {/* FRONT FACE */}
@@ -195,7 +194,7 @@ export default function FlashcardSession({
             {hasGhost && !isFlipped && (
               <div className="absolute top-0 left-0 w-full h-1 bg-slate-100 dark:bg-slate-900">
                 <div
-                  className={`h-full bg-sky-400/40 transition-all ease-linear`}
+                  className={`h-full bg-blue-400/40 transition-all ease-linear`}
                   style={{
                     width: startGhostAnim ? "100%" : "0%",
                     transitionDuration: startGhostAnim ? `${ghostDuration}ms` : "0ms",
@@ -245,7 +244,7 @@ export default function FlashcardSession({
           {/* BACK FACE */}
           <div className="absolute inset-0 backface-hidden rotate-y-180 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-8 flex flex-col justify-between items-center shadow-md">
             <div className="w-full flex justify-between items-center pb-2 border-b border-slate-100 dark:border-slate-900">
-              <span className="text-[9px] font-bold px-2 py-0.5 bg-sky-100 text-sky-750 dark:bg-sky-950 dark:text-sky-300 rounded uppercase tracking-wider">
+              <span className="text-[9px] font-bold px-2 py-0.5 bg-blue-100 text-blue-750 dark:bg-blue-950 dark:text-blue-300 rounded uppercase tracking-wider">
                 Giải nghĩa
               </span>
               {getGhostFeedback()}
@@ -271,7 +270,7 @@ export default function FlashcardSession({
                   />
                 </div>
               </div>
-              <h4 className="text-lg font-extrabold text-sky-700 dark:text-sky-400">
+              <h4 className="text-lg font-extrabold text-blue-700 dark:text-blue-400">
                 {currentCard.meaning}
               </h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
