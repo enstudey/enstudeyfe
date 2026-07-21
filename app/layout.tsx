@@ -3,7 +3,7 @@ import { Inter, Lora, Geist_Mono } from "next/font/google";
 import { headers, cookies } from "next/headers";
 import Script from "next/script";
 import AdSenseScript from "@/components/AdSenseScript";
-import GA4Provider from "@/components/analytics/GA4Provider";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import CookieBanner from "@/components/cookie-banner";
 import ToastContainer from "@/components/toast/ToastContainer";
 import BottomTabBar from "@/components/BottomTabBar";
@@ -78,26 +78,8 @@ export default async function RootLayout({
     >
       <head>
         <meta name="tikiaff-domain-verification" content="e5c63657b4f07e7902f7c15c088fd738dd1de8588b6ad035c495f17b35d59f4f" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-P7B6L2WW');`
-          }}
-        />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground pb-16 md:pb-0">
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-P7B6L2WW"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
         {/* Tích hợp Google AdSense Auto Ads có điều kiện lọc trang */}
         <AdSenseScript />
         <Script
@@ -142,7 +124,6 @@ export default async function RootLayout({
             `
           }}
         />
-        <GA4Provider />
         <QueryProvider>
           <TooltipProvider>
             {!isIsolated && <Header token={token} />}
@@ -159,6 +140,7 @@ export default async function RootLayout({
         <CookieBanner />
         <ToastContainer />
         {!isIsolated && <BottomTabBar />}
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXX"} />
       </body>
     </html>
   );

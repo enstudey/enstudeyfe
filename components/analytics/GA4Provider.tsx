@@ -1,8 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Script from "next/script";
-
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export function trackAffiliateClick(params: {
@@ -21,30 +18,7 @@ export function trackAffiliateClick(params: {
 }
 
 export default function GA4Provider() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const handle = requestAnimationFrame(() => setMounted(true));
-    return () => cancelAnimationFrame(handle);
-  }, []);
-
-  if (!mounted || !GA_ID) return null;
-  return (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="ga4-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_ID}', { send_page_view: true });
-        `}
-      </Script>
-    </>
-  );
+  return null;
 }
 
 declare global {
