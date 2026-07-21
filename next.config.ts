@@ -50,6 +50,66 @@ const nextConfig: NextConfig = {
         destination: "/blog/skills/cach-phan-bo-thoi-gian-reading-ielts",
         permanent: true,
       },
+      {
+        source: "/chinh-sach-bao-mat",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/dieu-khoan-dich-vu",
+        destination: "/terms-of-service",
+        permanent: true,
+      },
+      {
+        source: "/gioi-thieu",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/speaking",
+        destination: "/luyen-noi",
+        permanent: true,
+      },
+      {
+        source: "/flashcards",
+        destination: "/the-ghi-nho",
+        permanent: true,
+      },
+      {
+        source: "/analytics",
+        destination: "/thong-ke",
+        permanent: true,
+      },
+      {
+        source: "/roadmap",
+        destination: "/lo-trinh",
+        permanent: true,
+      },
+      {
+        source: "/roadmap/survey",
+        destination: "/lo-trinh/khao-sat",
+        permanent: true,
+      },
+      {
+        source: "/mistake-bank",
+        destination: "/ngan-hang-cau-sai",
+        permanent: true,
+      },
+      {
+        source: "/practice",
+        destination: "/luyen-de",
+        permanent: true,
+      },
+      {
+        source: "/practice/grammar-swipe",
+        destination: "/luyen-de/luyen-ngu-phap",
+        permanent: true,
+      },
+      {
+        source: "/practice/session",
+        destination: "/luyen-de/lam-bai",
+        permanent: true,
+      },
     ];
 
     return defaultRedirects;

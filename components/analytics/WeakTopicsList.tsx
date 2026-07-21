@@ -63,7 +63,7 @@ export const WeakTopicsList: React.FC<WeakTopicsListProps> = ({ weakTopics }) =>
             </div>
 
             <Link
-              href="/practice"
+              href="/luyen-de"
               className="inline-flex items-center justify-center gap-1 text-xs font-bold text-rose-600 hover:text-rose-700 dark:text-rose-400 dark:hover:text-rose-300 hover:underline"
             >
               Luyện tập ngay &rarr;

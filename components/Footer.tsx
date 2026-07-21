@@ -29,10 +29,10 @@ export default function Footer() {
               <Link href="/" className="hover:text-white transition font-medium">
                 ⚡ Mini-test hàng ngày
               </Link>
-              <Link href="/speaking" className="hover:text-white transition font-medium">
+              <Link href="/luyen-noi" className="hover:text-white transition font-medium">
                 🎙️ Luyện nói AI
               </Link>
-              <Link href="/flashcards" className="hover:text-white transition font-medium">
+              <Link href="/the-ghi-nho" className="hover:text-white transition font-medium">
                 🗂️ Flashcard từ vựng
               </Link>
             </div>
@@ -51,7 +51,7 @@ export default function Footer() {
               <Link href="/tra-cuu-tuyen-sinh" className="hover:text-white transition font-medium">
                 Tra cứu trường Đại học
               </Link>
-              <Link href="/roadmap" className="hover:text-white transition font-medium">
+              <Link href="/lo-trinh" className="hover:text-white transition font-medium">
                 Lộ trình học tập
               </Link>
             </div>

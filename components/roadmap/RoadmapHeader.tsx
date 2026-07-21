@@ -44,7 +44,7 @@ export function RoadmapHeader({ roadmap }: RoadmapHeaderProps) {
         </div>
 
         <Link
-          href="/roadmap/survey"
+          href="/lo-trinh/khao-sat"
           className="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-xl text-zinc-700 bg-zinc-100 hover:bg-zinc-200 dark:text-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 transition-colors whitespace-nowrap"
         >
           Đổi Lộ Trình

@@ -32,7 +32,7 @@ export default async function RoadmapPage() {
             Bạn chưa kích hoạt bản đồ học tập cá nhân hóa nào. Hãy thực hiện khảo sát nhanh 1 phút để chọn mục tiêu điểm số và trình độ xuất phát!
           </p>
           <Link
-            href="/roadmap/survey"
+            href="/lo-trinh/khao-sat"
             className="inline-flex items-center justify-center px-6 py-3 bg-primary hover:bg-sky-600 text-white font-semibold text-sm rounded-btn shadow-md transition-colors"
           >
             Bắt Đầu Khảo Sát Ngay →

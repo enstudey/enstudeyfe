@@ -54,7 +54,7 @@ export function SurveyForm({ roadmaps }: SurveyFormProps) {
       });
 
       if (res.ok) {
-        router.push("/roadmap");
+        router.push("/lo-trinh");
         router.refresh();
       } else {
         alert("Không thể thiết lập lộ trình. Vui lòng thử lại sau.");

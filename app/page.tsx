@@ -150,7 +150,7 @@ export default async function DashboardPage() {
 
           {/* Quick Access Grid */}
           <div className="grid gap-6 sm:grid-cols-2">
-            <Link href="/speaking" className="bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition text-left group">
+            <Link href="/luyen-noi" className="bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition text-left group">
               <span className="text-3xl">🎙️</span>
               <h3 className="text-base font-bold mt-4 mb-2 group-hover:text-sky-500 transition">Luyện nói &ldquo;Du kích&rdquo; với AI nha</h3>
               <p className="text-slate-500 text-xs leading-relaxed">
@@ -158,7 +158,7 @@ export default async function DashboardPage() {
               </p>
             </Link>
 
-            <Link href="/mistake-bank" className="bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition text-left group">
+            <Link href="/ngan-hang-cau-sai" className="bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition text-left group">
               <span className="text-3xl">💎</span>
               <h3 className="text-base font-bold mt-4 mb-2 group-hover:text-sky-500 transition">Sổ tay &ldquo;gột rửa&rdquo; câu sai 💎</h3>
               <p className="text-slate-500 text-xs leading-relaxed">
@@ -283,7 +283,7 @@ export default async function DashboardPage() {
           </div>
 
           {/* Radar Chart (Diagnostics Widget Mock Placeholder or Link) */}
-          <Link href="/analytics" className="block bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition text-left">
+          <Link href="/thong-ke" className="block bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition text-left">
             <h3 className="text-sm font-bold mb-2 text-slate-800">Chẩn đoán Năng lực</h3>
             <p className="text-slate-500 text-xs leading-relaxed mb-4">
               Xem biểu đồ Radar phân tích kỹ năng và đánh giá các phần yếu nhất để cải thiện kịp thời.

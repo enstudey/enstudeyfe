@@ -204,8 +204,8 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
                 <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl p-2 w-48 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                   <Link href="/exam" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🏛️ Thi thử đầy đủ</Link>
                   <Link href="/" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">⚡ Mini-test hàng ngày</Link>
-                  <Link href="/speaking" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🎙️ Luyện nói AI</Link>
-                  <Link href="/flashcards" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗂️ Flashcard</Link>
+                  <Link href="/luyen-noi" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🎙️ Luyện nói AI</Link>
+                  <Link href="/the-ghi-nho" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗂️ Flashcard</Link>
                 </div>
               </div>
 
@@ -216,8 +216,8 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
                   <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
                 </button>
                 <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl p-2 w-52 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <Link href="/analytics" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📊 Phân tích học tập</Link>
-                  <Link href="/roadmap" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗺️ Lộ trình</Link>
+                  <Link href="/thong-ke" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📊 Phân tích học tập</Link>
+                  <Link href="/lo-trinh" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗺️ Lộ trình</Link>
                   <Link href="/tin-tuc" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📰 Tin tức học thuật</Link>
                   <Link href="/tinh-diem-tot-nghiep" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🧮 Tính điểm tốt nghiệp</Link>
                   <Link href="/tra-cuu-tuyen-sinh" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🎓 Tra cứu tuyển sinh</Link>
@@ -225,7 +225,7 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
                 </div>
               </div>
 
-              <Link href="/mistake-bank" className={getLinkClass("/mistake-bank")} data-testid="link-mistake-bank">
+              <Link href="/ngan-hang-cau-sai" className={getLinkClass("/ngan-hang-cau-sai")} data-testid="link-mistake-bank">
                 Sổ câu sai
               </Link>
             </div>

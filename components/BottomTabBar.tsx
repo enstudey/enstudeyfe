@@ -24,7 +24,7 @@ export default function BottomTabBar() {
         <Award className="w-5 h-5" />
         <span>Thi thử</span>
       </Link>
-      <Link href="/mistake-bank" className={getTabClass("/mistake-bank")}>
+      <Link href="/ngan-hang-cau-sai" className={getTabClass("/ngan-hang-cau-sai")}>
         <BookOpen className="w-5 h-5" />
         <span>Sổ câu sai</span>
       </Link>

@@ -53,7 +53,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
       limit: limit.toString(),
       mode
     });
-    router.push(`/practice/session?${query.toString()}`);
+    router.push(`/luyen-de/lam-bai?${query.toString()}`);
   };
 
   const currentParts = examType === "TOEIC" ? toeicParts : ieltsParts;
@@ -260,7 +260,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
           </p>
         </div>
         <Button
-          onClick={() => router.push("/practice/grammar-swipe")}
+          onClick={() => router.push("/luyen-de/luyen-ngu-phap")}
           className="w-full md:w-auto bg-white text-sky-600 hover:bg-slate-100 font-bold py-6 px-8 rounded-2xl cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] transition"
         >
           <span>Trải nghiệm ngay</span>

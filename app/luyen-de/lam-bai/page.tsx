@@ -43,7 +43,7 @@ export default async function PracticeSessionPage({ searchParams }: SessionPageP
           <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
             Các tham số truyền vào phiên học không hợp lệ. Vui lòng quay lại màn hình cấu hình.
           </p>
-          <Link href="/practice" className="text-xs text-sky-600 hover:underline font-bold">
+          <Link href="/luyen-de" className="text-xs text-sky-600 hover:underline font-bold">
             Quay lại trang cấu hình &rarr;
           </Link>
         </main>

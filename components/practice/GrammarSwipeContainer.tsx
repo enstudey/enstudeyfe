@@ -383,7 +383,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
           </Button>
           <Button 
             variant="outline" 
-            onClick={() => window.location.href = "/practice"} 
+            onClick={() => window.location.href = "/luyen-de"} 
             className="flex-1 font-bold border-slate-200 dark:border-slate-800 rounded-xl py-3 cursor-pointer text-xs"
           >
             Về trang chủ
@@ -414,7 +414,7 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
       
       {/* Top Navigation */}
       <div className="flex items-center justify-between">
-        <Link href="/practice" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-white transition">
+        <Link href="/luyen-de" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-white transition">
           <ArrowLeft className="w-4 h-4" />
           <span>Thoát phòng chơi</span>
         </Link>
