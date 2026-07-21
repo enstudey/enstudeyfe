@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import SubjectScoresInput from "./SubjectScoresInput";
 import CertificateConverter from "./CertificateConverter";
 import AffiliateCertWidget from "@/components/affiliate/AffiliateCertWidget";
+import FreshmanAffiliateCard from "@/components/affiliate/FreshmanAffiliateCard";
 import PrioritySelector from "./PrioritySelector";
 import ResultDashboard from "./ResultDashboard";
 import TranscriptSelector from "./TranscriptSelector";
@@ -520,6 +521,8 @@ export default function CalculatorPage() {
               setActiveTab={setActiveTab}
               visibleScores={visibleScores}
             />
+
+            {computedScores && <FreshmanAffiliateCard />}
           </>
         ) : (
           <>

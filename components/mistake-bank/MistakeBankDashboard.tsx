@@ -14,6 +14,7 @@ import {
   CheckCircle2
 } from "lucide-react";
 import MistakePracticeSession from "./MistakePracticeSession";
+import MistakeBankAffiliateCard from "@/components/affiliate/MistakeBankAffiliateCard";
 import { fetchMistakes as apiFetchMistakes, deleteMistake as apiDeleteMistake } from "@/lib/api/mistake-bank";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -277,6 +278,8 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
                           </p>
                         </div>
                       )}
+
+                      <MistakeBankAffiliateCard tag={category !== "ALL" ? category : undefined} />
 
                       <div className="text-[10px] font-bold text-slate-400 flex items-center gap-1.5 justify-end font-mono">
                         <Calendar className="w-3.5 h-3.5" />

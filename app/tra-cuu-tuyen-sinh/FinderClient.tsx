@@ -284,20 +284,20 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
             data-testid="ad-infeed-points"
           >
             <Link
-              href="/go/sach-ielts"
+              href="/go/cambridge-ielts-13-academic-with-answers-savina"
               target="_blank"
               rel="noopener noreferrer nofollow sponsored"
               onClick={() => {
                 trackAffiliateClick({
-                  productId: "tiki-hackers-ielts-combo",
-                  productName: "Combo Sách Hackers IELTS",
+                  productId: "tiki-cambridge-ielts-13-academic-with-answers-savina",
+                  productName: "Cambridge IELTS 13 Academic",
                   sourcePage: "tra-cuu-tuyen-sinh-ad",
                   subId: "enstudey_tuyen_sinh_tiki"
                 });
               }}
               className="block w-full group relative aspect-[8/3] md:aspect-[3/1]"
               style={{
-                backgroundImage: "url('https://salt.tikicdn.com/cache/280x280/ts/product/f7/4e/19/d8f6afba640800d54e3feb17a2a8e494.JPG')",
+                backgroundImage: "url('https://salt.tikicdn.com/cache/280x280/ts/product/d7/2b/84/a28946e87392a5a6c9f5e5cf9f39ed86.jpg')",
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "right 10% center",
@@ -314,10 +314,10 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                   Tài liệu đề xuất
                 </span>
                 <h3 className="font-extrabold text-sm md:text-lg leading-snug">
-                  Combo 2 Cuốn Hackers IELTS: Listening + Reading
+                  Cambridge IELTS 13 Academic With Answers
                 </h3>
                 <p className="text-[10px] md:text-xs text-slate-300 line-clamp-2 leading-relaxed">
-                  Bộ đôi luyện thi IELTS toàn diện cực kỳ nổi tiếng từ Viện Ngôn Ngữ Hackers – chuẩn bị tốt nhất cho kỳ thi đầu vào đại học của bạn.
+                  Tài liệu luyện thi thử IELTS Academic mới nhất, chuẩn bị tốt nhất cho kỳ thi IELTS của bạn.
                 </p>
                 <div className="pt-1">
                   <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-blue-600 group-hover:bg-blue-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">

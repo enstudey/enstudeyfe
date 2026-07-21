@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { submitExam } from "@/lib/api/exam";
 import { ExamSubmitResponse } from "@/types/exam";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, CheckCircle, XCircle, AlertCircle, Clock, BarChart3, BookOpen } from "lucide-react";
+import { ChevronLeft, CheckCircle, XCircle, AlertCircle, Clock, BarChart3 } from "lucide-react";
 import Link from "next/link";
 import AdBanner from "@/components/ads/AdBanner";
 import AffiliateInFeedCard from "@/components/affiliate/AffiliateInFeedCard";
+import ResultPageAffiliateBox from "@/components/affiliate/ResultPageAffiliateBox";
+import MistakeBankAffiliateCard from "@/components/affiliate/MistakeBankAffiliateCard";
 
 interface ExamResultViewProps {
   sessionId: string;
@@ -135,6 +137,9 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
           </div>
         </div>
       </div>
+
+      {/* Hành trang bứt phá Band điểm */}
+      <ResultPageAffiliateBox testType="exam" score={result.score} />
 
       {/* Detail Results Section in 70 / 30 layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -277,24 +282,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
                               {r.explanation}
                             </p>
                           </div>
-                           {/* Bẫy chuyển đổi Affiliate */}
-                           <div className="bg-white border border-slate-100 rounded-xl p-3 flex items-center justify-between gap-4">
-                             <div className="flex items-center gap-2.5">
-                               <BookOpen className="w-5 h-5 text-slate-500 shrink-0" />
-                               <div>
-                                 <h4 className="text-[10px] font-bold text-slate-800">Cẩm nang ôn luyện thi ETS 2026</h4>
-                                 <p className="text-[9px] text-slate-400 leading-none">Combo giải đề chi tiết cùng phương pháp Linearthinking</p>
-                               </div>
-                             </div>
-                             <a
-                               href="https://shopee.vn"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               className="bg-primary hover:bg-blue-700 text-white font-bold text-[9px] px-3 py-1.5 rounded-lg transition shrink-0"
-                             >
-                               Mua ngay
-                             </a>
-                           </div>
+                           <MistakeBankAffiliateCard tag="toeic" className="mt-2" />
                         </div>
                       )}
                     </div>

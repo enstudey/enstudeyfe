@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Flashcard, CardProgress } from "@/lib/flashcards-helper";
 import SpeechButton from "@/components/ui/speech-button";
 import BookmarkButton from "@/components/ui/bookmark-button";
+import ResultPageAffiliateBox from "@/components/affiliate/ResultPageAffiliateBox";
 
 interface FlashcardSessionProps {
   topicId: string;
@@ -106,6 +107,9 @@ export default function FlashcardSession({
         <p className="text-xs text-slate-500 leading-relaxed max-w-sm mx-auto">
           Thuật toán Spaced Repetition sẽ tự động phân bổ lịch ôn tập tiếp theo. Hãy quay lại sau nhé!
         </p>
+
+        <ResultPageAffiliateBox testType="flashcard" />
+
         <div className="pt-2">
           <Button
             size="sm"

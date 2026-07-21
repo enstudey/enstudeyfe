@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import DailyQuizWidget from "@/components/quiz/DailyQuizWidget";
 import ExamLibraryShelf from "@/components/exam/ExamLibraryShelf";
+import StarterPackWidget from "@/components/affiliate/StarterPackWidget";
 import { getStreakLeaderboard, LeaderboardResponse } from "@/lib/api/streak";
 
 export const metadata: Metadata = {
@@ -292,6 +293,9 @@ export default async function DashboardPage() {
             Phân tích học tập ngay &rarr;
           </span>
         </Link>
+
+        {/* Bento Widget Starter Pack */}
+        <StarterPackWidget />
       </div>
     </main>
   );

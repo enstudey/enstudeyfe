@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from "next/image";
 import { FEATURE_FLAGS } from "@/lib/config/features";
 import { generateStandardATLink } from "@/lib/affiliate";
 import { trackAffiliateClick } from "@/components/analytics/GA4Provider";
