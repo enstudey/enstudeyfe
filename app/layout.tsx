@@ -76,6 +76,7 @@ export default async function RootLayout({
       data-scroll-behavior="smooth"
     >
       <head>
+        <meta name="tikiaff-domain-verification" content="e5c63657b4f07e7902f7c15c088fd738dd1de8588b6ad035c495f17b35d59f4f" />
         {/* Tích hợp Google AdSense Auto Ads có điều kiện lọc trang */}
         <AdSenseScript />
         <script
