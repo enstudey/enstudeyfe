@@ -13,7 +13,6 @@ import { recordStreakActivity } from "@/lib/api/streak";
 
 interface QuizContainerProps {
   isGuest: boolean;
-  googleLoginUrl: string;
   token?: string;
 }
 
@@ -25,7 +24,7 @@ interface QuizSessionData {
   quizIds: string[];
 }
 
-export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizContainerProps) {
+export default function QuizContainer({ isGuest, token }: QuizContainerProps) {
   const [stage, setStage] = useState<"select" | "quiz" | "result">("select");
   const [examType, setExamType] = useState<"TOEIC" | "IELTS">("TOEIC");
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
@@ -354,9 +353,9 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
               <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
                 Bạn đang làm bài ở chế độ ẩn danh. Để tích lũy Streak hàng ngày và lưu sổ tay câu sai vĩnh viễn, hãy{" "}
-                <a href={googleLoginUrl} className="underline font-bold text-blue-600 hover:text-blue-700 transition">
-                  Đăng nhập Google ngay
-                </a>!
+                <Link href="/login" className="underline font-bold text-blue-600 hover:text-blue-700 transition">
+                  Đăng nhập ngay
+                </Link>!
               </div>
             </div>
           )}

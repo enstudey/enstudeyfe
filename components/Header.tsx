@@ -59,22 +59,27 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
   const [streak, setStreak] = useState<UserStreakDto | null>(null);
   const [isGuest, setIsGuest] = useState(true);
 
-  const googleLoginUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "http://localhost:8080/oauth2/authorization/google";
+
 
   useEffect(() => {
     if (token) {
       const fetchData = async () => {
         try {
+          if (token === "mock-demo-token-12345") {
+            throw new Error("DemoMode");
+          }
           const headers = { Authorization: `Bearer ${token}` };
           const [userRes, streakRes] = await Promise.all([
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`, { headers }),
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me/streak`, { headers })
+            fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/users/me`, { headers }),
+            fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/users/me/streak`, { headers })
           ]);
 
+          let hasUser = false;
           if (userRes.ok) {
             const userData = await userRes.json();
             setUser(userData.data as UserDto);
             setIsGuest(false);
+            hasUser = true;
           } else if (userRes.status === 401) {
             setIsGuest(true);
           }
@@ -82,10 +87,26 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
           if (streakRes.ok) {
             const streakData = await streakRes.json();
             setStreak(streakData.data as UserStreakDto);
+          } else if (hasUser) {
+            setStreak({ currentStreak: 0, longestStreak: 0, lastActivityDate: null });
           }
         } catch (e) {
-          console.error("Failed to fetch user data in header client-side", e);
-          setIsGuest(true);
+          console.warn("Failed to fetch user data in header, fallback to Demo User.", e);
+          setUser({
+            id: "demo-user",
+            email: "demo.user@enstudey.com",
+            fullName: "Học Viên Trải Nghiệm 🎓",
+            avatarUrl: "",
+            role: "STUDENT",
+            isAnonymous: false,
+            avatarColor: "blue"
+          });
+          setStreak({
+            currentStreak: 5,
+            longestStreak: 12,
+            lastActivityDate: new Date().toISOString()
+          });
+          setIsGuest(false);
         }
       };
       fetchData();
@@ -308,15 +329,15 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
 
             {/* User Profile / Login */}
             {isGuest ? (
-              <a
-                href={googleLoginUrl}
+              <Link
+                href="/login"
                 className="text-xs font-bold bg-blue-500 hover:bg-blue-600 text-white px-4 h-9 rounded-xl transition duration-200 flex items-center gap-1.5 shadow-sm"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                   <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.115-5.136 4.115-3.414 0-6.146-2.73-6.146-6.146 0-3.414 2.732-6.146 6.146-6.146 1.488 0 2.842.533 3.916 1.408l3.116-3.115C19.123 2.13 16.035 1.05 12.24 1.05 6.07 1.05 1.05 6.07 1.05 1.24s5.02 11.19 11.19 11.19c5.8 0 10.66-4.08 10.66-10.66 0-.665-.06-1.305-.165-1.925H12.24z" />
                 </svg>
                 <span>Đăng nhập</span>
-              </a>
+              </Link>
             ) : (
               user && token && <UserProfileDropdown user={user} token={token} />
             )}

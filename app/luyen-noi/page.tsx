@@ -13,8 +13,6 @@ export default async function SpeakingPage() {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
   const isGuest = !token;
-  const googleLoginUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "http://localhost:8080/oauth2/authorization/google";
-
   return (
     <main className="w-full py-12 text-center flex-grow">
       <h1 className="text-3xl font-extrabold mb-4">Luyện Nói Du Kích cùng AI</h1>
@@ -27,9 +25,9 @@ export default async function SpeakingPage() {
           <span className="text-lg">⚠️</span>
           <div>
             Bạn đang luyện nói ở mode ẩn danh. Cuộc hội thoại và đánh giá phát âm từ AI sẽ không được lưu lại.{" "}
-            <a href={googleLoginUrl} className="underline font-bold text-blue-655 hover:text-blue-700 transition">
+            <Link href="/login" className="underline font-bold text-blue-655 hover:text-blue-700 transition">
               Đăng nhập ngay
-            </a>{" "}
+            </Link>{" "}
             để lưu trữ lịch sử học tập nhé!
           </div>
         </div>

@@ -67,8 +67,6 @@ export default async function DashboardPage() {
     }
   }
 
-  const googleLoginUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "http://localhost:8080/oauth2/authorization/google";
-
   return (
     <main className="py-6 md:py-10 grid grid-cols-1 lg:grid-cols-12 xl:grid-cols-4 gap-6 flex-grow w-full px-2 md:px-0">
       {/* Cột chính (Left/Center Area) - 8/12 Laptops, 3/4 Desktops */}
@@ -102,12 +100,12 @@ export default async function DashboardPage() {
                 </li>
               </ul>
               <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center">
-                <a
-                  href={googleLoginUrl}
+                <Link
+                  href="/login"
                   className="w-full sm:w-auto text-center font-bold text-sm bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl shadow-sm transition duration-200"
                 >
-                  Đăng nhập Google ngay! 🚀
-                </a>
+                  Đăng nhập ngay! 🚀
+                </Link>
                 <span className="text-xs text-blue-100 font-medium hidden sm:inline">
                   ⚡ Đồng bộ tức thì, học miễn phí
                 </span>
@@ -269,12 +267,12 @@ export default async function DashboardPage() {
                       Bạn đang đứng thứ mấy? Đăng nhập bằng Google để kích hoạt ngọn lửa Streak và ghi danh lên bảng vàng liền nè! 🚀
                     </p>
                     <div>
-                      <a
-                        href={googleLoginUrl}
+                      <Link
+                        href="/login"
                         className="inline-flex text-[10px] font-extrabold bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 rounded-xl transition duration-200 shadow-sm"
                       >
-                        Đăng nhập trong 2 giây
-                      </a>
+                        Đăng nhập ngay
+                      </Link>
                     </div>
                   </div>
                 )}

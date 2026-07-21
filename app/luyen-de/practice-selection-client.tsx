@@ -8,10 +8,9 @@ import Link from "next/link";
 
 interface PracticeSelectionClientProps {
   isGuest: boolean;
-  googleLoginUrl: string;
 }
 
-export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: PracticeSelectionClientProps) {
+export default function PracticeSelectionClient({ isGuest }: PracticeSelectionClientProps) {
   const router = useRouter();
   const [examType, setExamType] = useState<"TOEIC" | "IELTS">("TOEIC");
   const [selectedPart, setSelectedPart] = useState<string>("Part5");
@@ -80,9 +79,9 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
           <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
           <div>
             Bạn đang sử dụng hệ thống với tư cách khách vãng lai. Lịch sử luyện tập sẽ chỉ được lưu tạm tại trình duyệt và <strong>không đồng bộ sang Mistake Bank</strong>. Để lưu vết tiến độ bền vững, hãy{" "}
-            <a href={googleLoginUrl} className="underline font-bold text-blue-600 dark:text-blue-400 hover:opacity-90">
-              Đăng nhập Google ngay
-            </a>.
+            <Link href="/login" className="underline font-bold text-blue-600 dark:text-blue-400 hover:opacity-90">
+              Đăng nhập ngay
+            </Link>.
           </div>
         </div>
       )}

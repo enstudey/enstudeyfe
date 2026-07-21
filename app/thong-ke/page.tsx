@@ -13,10 +13,6 @@ export default async function AnalyticsPage() {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
   const isGuest = !token;
-  const googleLoginUrl =
-    process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL ||
-    "http://localhost:8080/oauth2/authorization/google";
-
   return (
     <main className="w-full py-10 flex-grow">
       <h1 className="text-3xl font-extrabold mb-2 text-slate-900 dark:text-slate-100">
@@ -55,7 +51,7 @@ export default async function AnalyticsPage() {
                 size="lg"
                 className="font-bold text-xs bg-gradient-to-r from-blue-500 to-blue-655 text-white px-6 py-5 rounded-2xl shadow-lg hover:shadow-blue-500/20 active:scale-[0.98] transition-all duration-300 cursor-pointer"
               >
-                <a href={googleLoginUrl}>Đăng nhập Google ngay! ⚡</a>
+                <Link href="/login">Đăng nhập ngay! ⚡</Link>
               </Button>
             </div>
           </div>

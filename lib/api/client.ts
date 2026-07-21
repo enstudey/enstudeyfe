@@ -1,5 +1,22 @@
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
+export const getGoogleLoginConfig = (): { url: string; isBEAvailable: boolean } => {
+  const oauthUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL;
+  const isLocalhost = !oauthUrl || oauthUrl.includes("localhost") || oauthUrl.includes("127.0.0.1");
+
+  return {
+    url: oauthUrl || "",
+    isBEAvailable: !isLocalhost
+  };
+};
+
+export const getGoogleLoginUrl = (): string | null => {
+  const config = getGoogleLoginConfig();
+  return config.isBEAvailable ? config.url : null;
+};
+
+
+
 export async function apiFetch<T>(
   path: string,
   options: RequestInit & { token?: string }

@@ -20,7 +20,6 @@ import {
 
 interface GrammarSwipeContainerProps {
   isGuest: boolean;
-  googleLoginUrl: string;
   token?: string;
 }
 
@@ -31,7 +30,7 @@ interface UserAnswerLog {
   isAnswerCorrect: boolean;
 }
 
-export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }: GrammarSwipeContainerProps) {
+export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeContainerProps) {
   const [questions, setQuestions] = useState<GrammarSwipeQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -368,9 +367,9 @@ export default function GrammarSwipeContainer({ isGuest, googleLoginUrl, token }
         {isGuest && (
           <div className="bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-300 rounded-xl p-4 text-xs text-left">
             Đăng nhập tài khoản để tích lũy XP bền vững và tự động lưu các câu làm sai vào Sổ tay câu sai (Mistake Bank).
-            <a href={googleLoginUrl} className="block font-bold text-blue-655 dark:text-blue-400 hover:underline mt-2">
-              Đăng nhập Google ngay &rarr;
-            </a>
+            <Link href="/login" className="block font-bold text-blue-655 dark:text-blue-400 hover:underline mt-2">
+              Đăng nhập ngay &rarr;
+            </Link>
           </div>
         )}
 
