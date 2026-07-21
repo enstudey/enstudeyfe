@@ -210,7 +210,7 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
                 <button
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border text-xs font-medium transition duration-150 flex items-center gap-4 cursor-pointer ${isSelected
+                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border text-xs font-medium btn-interactive flex items-center gap-4 cursor-pointer ${isSelected
                       ? "bg-blue-50 border-blue-500 text-blue-950 shadow-xs font-bold"
                       : "bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:border-slate-350"
                     }`}
