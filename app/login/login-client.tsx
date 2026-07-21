@@ -5,6 +5,13 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 interface LoginClientProps {
   googleLoginUrl: string | null;
@@ -17,13 +24,11 @@ export default function LoginClient({ googleLoginUrl }: LoginClientProps) {
   const handleGoogleLogin = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!googleLoginUrl) {
       e.preventDefault();
-      // BE chưa deploy -> Mở Modal gợi ý dùng thử tài khoản Demo
       setShowDemoModal(true);
     }
   };
 
   const handleDemoLogin = () => {
-    // Lưu mock token vào cookie và redirect về trang chủ
     document.cookie = `token=mock-demo-token-12345; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax; Secure`;
     router.push("/");
     router.refresh();
@@ -69,7 +74,7 @@ export default function LoginClient({ googleLoginUrl }: LoginClientProps) {
             </a>
           </Button>
 
-          {/* Nút đăng nhập trải nghiệm nhanh luôn hiển thị để tăng tính thân thiện */}
+          {/* Nút đăng nhập trải nghiệm nhanh */}
           <Button
             onClick={handleDemoLogin}
             size="lg"
@@ -84,40 +89,41 @@ export default function LoginClient({ googleLoginUrl }: LoginClientProps) {
         </div>
       </div>
 
-      {/* Modal Cảnh báo Backend Offline / Gợi ý Demo */}
-      {showDemoModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-3xl p-8 max-w-sm w-full text-center space-y-6 shadow-2xl animate-scale-in">
-            <div className="w-16 h-16 bg-amber-50 dark:bg-amber-950/40 text-amber-500 rounded-full flex items-center justify-center text-3xl mx-auto border border-amber-200/50">
-              🛠️
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Hệ thống đang được nâng cấp!</h3>
-              <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">
-                Đăng nhập bằng tài khoản Google hiện đang tạm khóa để thực hiện bảo trì hệ thống máy chủ.
-              </p>
-              <p className="text-xs font-semibold text-slate-600 dark:text-zinc-300 leading-relaxed">
-                Bạn có muốn sử dụng chế độ Trải nghiệm nhanh với đầy đủ tính năng ở Frontend không?
-              </p>
-            </div>
-            <div className="flex flex-col gap-2 pt-2">
-              <Button
-                onClick={handleDemoLogin}
-                className="w-full font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-xl py-3 cursor-pointer text-xs"
-              >
-                Vào học ngay bằng Tài khoản Demo
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => setShowDemoModal(false)}
-                className="w-full font-bold text-slate-500 hover:text-slate-800 dark:text-zinc-400 dark:hover:text-white py-3 text-xs"
-              >
-                Đóng
-              </Button>
-            </div>
+      {/* Modal Cảnh báo Backend Offline bằng Shadcn Dialog */}
+      <Dialog open={showDemoModal} onOpenChange={setShowDemoModal}>
+        <DialogContent className="max-w-sm rounded-3xl p-8 text-center space-y-4">
+          <div className="w-16 h-16 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center text-3xl mx-auto border border-amber-200/50">
+            🛠️
           </div>
-        </div>
-      )}
+          <DialogHeader className="space-y-2 text-center">
+            <DialogTitle className="text-lg font-bold text-slate-900">
+              Hệ thống đang được nâng cấp!
+            </DialogTitle>
+            <DialogDescription className="text-xs text-slate-500 leading-relaxed">
+              Đăng nhập bằng tài khoản Google hiện đang tạm khóa để thực hiện bảo trì máy chủ.
+              <br />
+              <span className="font-semibold text-slate-600 block mt-1">
+                Bạn có muốn sử dụng chế độ Trải nghiệm nhanh với đầy đủ tính năng ở Frontend không?
+              </span>
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col gap-2 pt-2">
+            <Button
+              onClick={handleDemoLogin}
+              className="w-full font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-xl py-3 cursor-pointer text-xs"
+            >
+              Vào học ngay bằng Tài khoản Demo
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => setShowDemoModal(false)}
+              className="w-full font-bold text-slate-500 hover:text-slate-800 py-3 text-xs"
+            >
+              Đóng
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

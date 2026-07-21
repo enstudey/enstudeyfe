@@ -2,6 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 interface ErrorReportFormProps {
   errorCode?: string;
@@ -72,107 +80,92 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
 
   return (
     <div className="mt-8">
-      <button
+      <Button
+        variant="link"
         data-testid="btn-open-report-form"
         onClick={() => setIsOpen(true)}
-        className="text-sm font-semibold text-accent hover:underline cursor-pointer"
+        className="text-sm font-semibold text-accent p-0 h-auto cursor-pointer"
       >
         Báo lỗi cho tụi mình nha
-      </button>
+      </Button>
 
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Overlay làm tối background 75% */}
-          <div
-            className="absolute inset-0 bg-black/75 backdrop-blur-xs transition-opacity"
-            onClick={closeModal}
-          />
-
-          {/* Modal Content */}
-          <div className="relative w-full max-w-md transform overflow-hidden rounded-xl bg-card border border-card-border p-6 text-left shadow-2xl transition-all z-10">
-            {submitResult === "success" ? (
-              <div className="text-center py-4">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 border border-emerald-500/10 mb-4">
-                  <svg className="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-foreground mb-3">Tụi mình cảm ơn nha!</h3>
-                <p className="text-sm text-emerald-700 leading-relaxed mb-6">
-                  Cảm ơn bạn đã dành thời gian báo lỗi cho tụi mình nha! 💜 Sự góp ý của bạn thật sự rất quý và giúp tụi mình cải thiện ứng dụng mỗi ngày. Tụi mình sẽ kiểm tra và khắc phục nhanh chóng.
-                </p>
-                <Button
-                  data-testid="btn-close-success-modal"
-                  onClick={closeModal}
-                  className="w-full font-semibold cursor-pointer"
-                >
-                  Đóng và tiếp tục học
-                </Button>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="max-w-md rounded-2xl p-6">
+          {submitResult === "success" ? (
+            <div className="text-center py-4 space-y-4">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 border border-emerald-500/10">
+                <svg className="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-bold text-foreground">Bạn gặp sự cố gì vậy ta?</h3>
-                  <button
-                    type="button"
-                    onClick={closeModal}
-                    className="text-zinc-400 hover:text-zinc-500 cursor-pointer"
-                  >
-                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-
-                <p className="text-xs text-zinc-500 mb-4">
+              <DialogHeader className="text-center space-y-2">
+                <DialogTitle className="text-lg font-bold text-foreground">Tụi mình cảm ơn nha!</DialogTitle>
+                <DialogDescription className="text-sm text-emerald-700 leading-relaxed">
+                  Cảm ơn bạn đã dành thời gian báo lỗi cho tụi mình nha! 💜 Sự góp ý của bạn thật sự rất quý và giúp tụi mình cải thiện ứng dụng mỗi ngày. Tụi mình sẽ kiểm tra và khắc phục nhanh chóng.
+                </DialogDescription>
+              </DialogHeader>
+              <Button
+                data-testid="btn-close-success-modal"
+                onClick={closeModal}
+                className="w-full font-semibold cursor-pointer"
+              >
+                Đóng và tiếp tục học
+              </Button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <DialogHeader className="space-y-1 text-left">
+                <DialogTitle className="text-lg font-bold text-foreground">Bạn gặp sự cố gì vậy ta?</DialogTitle>
+                <DialogDescription className="text-xs text-zinc-500">
                   Chia sẻ một xíu về hành động bạn vừa làm trước khi gặp lỗi nha...
-                </p>
+                </DialogDescription>
+              </DialogHeader>
 
-                <textarea
-                  data-testid="input-error-description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  maxLength={500}
-                  rows={4}
-                  className="w-full rounded-md border border-card-border bg-background p-3 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent resize-none mb-2"
-                  placeholder="Ví dụ: Mình bấm đăng nhập bằng Google thì màn hình báo lỗi này..."
-                  required
-                />
+              <Textarea
+                data-testid="input-error-description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                maxLength={500}
+                rows={4}
+                className="w-full resize-none"
+                placeholder="Ví dụ: Mình bấm đăng nhập bằng Google thì màn hình báo lỗi này..."
+                required
+              />
 
-                <div className="flex justify-between items-center">
-                  <span className="text-xs text-zinc-400">
-                    {description.length}/500 ký tự
-                  </span>
-                  <div className="flex gap-x-2">
-                    <button
-                      data-testid="btn-cancel-report-form"
-                      type="button"
-                      onClick={closeModal}
-                      className="rounded px-4 py-2 text-sm font-semibold text-foreground hover:bg-zinc-100 cursor-pointer"
-                    >
-                      Hủy
-                    </button>
-                    <Button
-                      data-testid="btn-submit-error-report"
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="font-semibold cursor-pointer"
-                    >
-                      {isSubmitting ? "Đang gửi..." : "Gửi báo cáo"}
-                    </Button>
-                  </div>
+              <div className="flex justify-between items-center pt-2">
+                <span className="text-xs text-zinc-400">
+                  {description.length}/500 ký tự
+                </span>
+                <div className="flex gap-x-2">
+                  <Button
+                    data-testid="btn-cancel-report-form"
+                    type="button"
+                    variant="ghost"
+                    onClick={closeModal}
+                    className="font-semibold cursor-pointer"
+                  >
+                    Hủy
+                  </Button>
+                  <Button
+                    data-testid="btn-submit-error-report"
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="font-semibold cursor-pointer"
+                  >
+                    {isSubmitting ? "Đang gửi..." : "Gửi báo cáo"}
+                  </Button>
                 </div>
+              </div>
 
-                {submitResult === "error" && (
-                  <p className="mt-3 text-xs text-error-text text-center">
-                    Oops! Chưa gửi được rồi, bạn kiểm tra lại kết nối mạng nha.
-                  </p>
-                )}
-              </form>
-            )}
-          </div>
-        </div>
-      )}
+              {submitResult === "error" && (
+                <p className="text-xs text-error-text text-center">
+                  Oops! Chưa gửi được rồi, bạn kiểm tra lại kết nối mạng nha.
+                </p>
+              )}
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

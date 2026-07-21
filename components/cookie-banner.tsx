@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+
 export default function CookieBanner() {
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -62,16 +64,18 @@ export default function CookieBanner() {
             🍪
           </div>
           <span className="font-semibold text-foreground text-sm">Cookie & Quyền riêng tư</span>
-          <button
+          <Button
+            variant="ghost"
+            size="icon-xs"
             onClick={() => setIsVisible(false)}
-            className="ml-auto p-1.5 rounded-lg text-zinc-400 hover:text-zinc-650 hover:bg-zinc-100 transition-colors cursor-pointer"
+            className="ml-auto text-zinc-400 hover:text-zinc-650 hover:bg-zinc-100 cursor-pointer"
             aria-label="Đóng thông báo"
             data-testid="btn-close-cookie-banner"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
-          </button>
+          </Button>
         </div>
 
         {/* Content */}
@@ -89,13 +93,13 @@ export default function CookieBanner() {
 
         {/* Action Button */}
         <div className="flex justify-end mt-1">
-          <button
+          <Button
             onClick={handleAccept}
-            className="px-5 py-2 bg-blue-600 text-white rounded-xl text-sm font-medium transition hover:opacity-90 active:scale-95 cursor-pointer shadow-sm"
+            className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium cursor-pointer shadow-sm"
             data-testid="btn-accept-cookie"
           >
             Duyệt luôn 🎯
-          </button>
+          </Button>
         </div>
       </div>
     </div>

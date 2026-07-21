@@ -1,4 +1,3 @@
-import * as React from "react"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 
@@ -41,41 +40,20 @@ const buttonVariants = cva(
   }
 )
 
-interface SlotProps extends React.HTMLAttributes<HTMLElement> {
-  children?: React.ReactNode
+function Button({
+  className,
+  variant = "default",
+  size = "default",
+  asChild,
+  ...props
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants> & { asChild?: boolean }) {
+  return (
+    <ButtonPrimitive
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  )
 }
-
-const Slot = React.forwardRef<HTMLElement, SlotProps>(({ children, ...props }, ref) => {
-  if (React.isValidElement(children)) {
-    const childElement = children as React.ReactElement<Record<string, unknown>>;
-    return React.cloneElement(childElement, {
-      ...props,
-      ...childElement.props,
-      className: cn(props.className, childElement.props.className as string | undefined),
-      ref: ref,
-    })
-  }
-  return null
-})
-Slot.displayName = "Slot"
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-}
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "default", size = "default", asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : ButtonPrimitive
-    return (
-      <Comp
-        data-slot="button"
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Button.displayName = "Button"
 
 export { Button, buttonVariants }
