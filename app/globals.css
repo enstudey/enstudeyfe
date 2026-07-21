@@ -89,6 +89,16 @@ html {
 
 body {
   background-color: var(--background);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem; /* 17px chuẩn trên Mobile */
+  line-height: 1.65;
+  color: #0f172a; /* Slate 900 */
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.125rem; /* 18px chuẩn trên Laptop */
+  }
 }
 
 /* Anti-CLS AdSense Container System */
@@ -252,16 +262,16 @@ body {
   .exam-passage {
     font-family: var(--font-serif);
     color: #1e293b; /* slate-800: Giảm tương phản gắt */
-    max-width: 700px;
-    font-size: 16px; /* text-base: 1.0rem */
-    line-height: 1.8;
+    max-width: 720px;
+    font-size: 19px; /* 19px trên Mobile */
+    line-height: 1.85;
   }
 
   /* Tự động tăng kích thước mượt mà theo kích cỡ màn hình */
   @media (min-width: 768px) {
     .exam-passage {
-      font-size: 18px; /* text-lg: 1.125rem */
-      line-height: 1.8;
+      font-size: 20px; /* 20px trên Laptop */
+      line-height: 2.0;
     }
   }
 

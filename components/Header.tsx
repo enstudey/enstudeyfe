@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X, Coffee } from "lucide-react";
 import UserProfileDropdown from "./UserProfileDropdown";
 
 interface UserDto {
@@ -32,6 +32,7 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [isSticky, setIsSticky] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const lastScrollY = useRef(0);
   const scrollThreshold = 15; // Ngưỡng cuộn lên tối thiểu (px) để tránh giật lag
   const prevPathname = useRef(pathname);
@@ -149,11 +150,11 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
 
   const getLinkClass = (path: string) => {
     const isActive = pathname.startsWith(path);
-    const baseClass = "text-xs font-bold uppercase tracking-wider transition-colors ";
+    const baseClass = "text-xs font-bold uppercase tracking-wider transition-colors flex items-center h-9 ";
     if (isActive) {
-      return baseClass + "text-white border-b-2 border-sky-500 pb-1";
+      return baseClass + "text-sky-400";
     }
-    return baseClass + "text-slate-400 hover:text-white pb-1 border-b-2 border-transparent";
+    return baseClass + "text-slate-400 hover:text-white";
   };
 
   let headerClass = "left-0 right-0 w-full transition-all duration-300 ";
@@ -189,58 +190,70 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
             </Link>
             
             {/* Mode Switch (TOEIC / IELTS) */}
-            <div className="hidden sm:flex bg-slate-800 rounded-xl p-0.5 text-[10px] font-bold border border-slate-700">
+            <div className="hidden sm:flex bg-slate-800 rounded-xl p-0.5 text-[10px] font-bold border border-slate-700 h-8 items-center">
               <button className="bg-sky-500 text-white px-2.5 py-1 rounded-lg">TOEIC Mode</button>
               <button className="text-slate-400 hover:text-white px-2.5 py-1">IELTS Mode</button>
             </div>
 
             <div className="hidden md:flex gap-6 items-center">
               {/* Dropdown Luyện Đề */}
-              <div className="relative group py-2">
-                <button className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors duration-200">
+              <div className="relative group py-2 flex items-center h-full">
+                <button className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors duration-200 h-9">
                   <span>Luyện đề</span>
                   <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
                 </button>
-                <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl p-2 w-48 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <Link href="/exam" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🏛️ Thi thử đầy đủ</Link>
+                <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-xl shadow-xl p-2 w-48 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <Link href="/exam" className="flex items-center justify-between px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
+                    <span>🏛️ Thi thử đầy đủ</span>
+                    <span className="bg-rose-500 text-white text-[9px] px-1.5 py-0.5 rounded-full font-black uppercase tracking-wider scale-90">HOT</span>
+                  </Link>
                   <Link href="/" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">⚡ Mini-test hàng ngày</Link>
                   <Link href="/luyen-noi" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🎙️ Luyện nói AI</Link>
-                  <Link href="/the-ghi-nho" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗂️ Flashcard</Link>
+                  <Link href="/the-ghi-nho" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗂️ Flashcard từ vựng</Link>
                 </div>
               </div>
 
-              {/* Dropdown Khám Phá */}
-              <div className="relative group py-2">
-                <button className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors duration-200">
-                  <span>Khám phá</span>
+              {/* Dropdown Công cụ & Khám Phá */}
+              <div className="relative group py-2 flex items-center h-full">
+                <button className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors duration-200 h-9">
+                  <span>Công cụ & Khám phá</span>
                   <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
                 </button>
-                <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl p-2 w-52 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-xl shadow-xl p-2 w-52 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                   <Link href="/thong-ke" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📊 Phân tích học tập</Link>
-                  <Link href="/lo-trinh" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗺️ Lộ trình</Link>
-                  <Link href="/tin-tuc" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📰 Tin tức học thuật</Link>
-                  <Link href="/tinh-diem-tot-nghiep" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🧮 Tính điểm tốt nghiệp</Link>
-                  <Link href="/tra-cuu-tuyen-sinh" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🎓 Tra cứu tuyển sinh</Link>
-                  <Link href="/tram-sac-nang-luong" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🥤 Trạm sạc</Link>
+                  <Link href="/ngan-hang-cau-sai" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📓 Sổ tay câu sai</Link>
+                  <Link href="/tinh-diem-tot-nghiep" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🧮 Công cụ tính điểm</Link>
+                  <Link href="/tra-cuu-tuyen-sinh" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🏫 Tra cứu Đại học</Link>
+                  <Link href="/lo-trinh" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗺️ Lộ trình học tập</Link>
                 </div>
               </div>
 
-              <Link href="/ngan-hang-cau-sai" className={getLinkClass("/ngan-hang-cau-sai")} data-testid="link-mistake-bank">
-                Sổ câu sai
+              <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news">
+                Tin tức
               </Link>
             </div>
           </div>
           <div className="flex items-center gap-4">
+            {/* Trạm sạc năng lượng ☕ */}
+            <Link
+              href="/tram-sac-nang-luong"
+              className="hidden sm:flex items-center gap-1 border border-amber-300 bg-amber-50 text-amber-700 hover:bg-amber-100 px-3 h-9 rounded-full text-xs font-bold shadow-sm transition"
+              title="Trạm sạc năng lượng - Ủng hộ dự án"
+            >
+              <Coffee className="w-3.5 h-3.5 fill-current text-amber-600" />
+              <span className="hidden md:inline">Trạm sạc ☕</span>
+            </Link>
+
             {/* Streak Widget */}
             <div
-              className={`flex items-center gap-1.5 border px-3 py-1.5 rounded-full transition ${
+              className={`flex items-center gap-1.5 border px-3 h-9 rounded-full transition ${
                 isGuest
                   ? "bg-slate-800 border-slate-700 opacity-60 cursor-help"
                   : "bg-sky-500/10 border-sky-500/20"
               }`}
               title={isGuest ? "Đăng nhập bằng Google để rèn luyện tích luỹ streak mỗi ngày nha!" : "Chuỗi ngày học liên tiếp"}
             >
-              <span className={isGuest ? "grayscale text-lg" : "text-lg"}>🔥</span>
+              <span className={isGuest ? "grayscale text-lg animate-pulse" : "text-lg"}>🔥</span>
               <span className={`font-bold text-xs ${
                 isGuest
                   ? "text-slate-400"
@@ -254,19 +267,99 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
             {isGuest ? (
               <a
                 href={googleLoginUrl}
-                className="text-xs font-bold bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 shadow-sm"
+                className="text-xs font-bold bg-sky-500 hover:bg-sky-600 text-white px-4 h-9 rounded-xl transition duration-200 flex items-center gap-1.5 shadow-sm"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.115-5.136 4.115-3.414 0-6.146-2.73-6.146-6.146 0-3.414 2.732-6.146 6.146-6.146 1.488 0 2.842.533 3.916 1.408l3.116-3.115C19.123 2.13 16.035 1.05 12.24 1.05 6.07 1.05 1.05 6.07 1.05 12.24s5.02 11.19 11.19 11.19c5.8 0 10.66-4.08 10.66-10.66 0-.665-.06-1.305-.165-1.925H12.24z"/>
+                  <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.115-5.136 4.115-3.414 0-6.146-2.73-6.146-6.146 0-3.414 2.732-6.146 6.146-6.146 1.488 0 2.842.533 3.916 1.408l3.116-3.115C19.123 2.13 16.035 1.05 12.24 1.05 6.07 1.05 1.05 6.07 1.05 1.24s5.02 11.19 11.19 11.19c5.8 0 10.66-4.08 10.66-10.66 0-.665-.06-1.305-.165-1.925H12.24z"/>
                 </svg>
                 <span>Đăng nhập</span>
               </a>
             ) : (
               user && token && <UserProfileDropdown user={user} token={token} />
             )}
+
+            {/* Hamburger Menu Icon (Mobile) */}
+            <button 
+              onClick={() => setIsDrawerOpen(true)}
+              className="flex md:hidden text-slate-400 hover:text-white p-1.5 cursor-pointer transition-colors"
+              aria-label="Open menu"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
           </div>
         </nav>
       </header>
+
+      {/* Mobile Drawer Overlay */}
+      {isDrawerOpen && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs md:hidden"
+          onClick={() => setIsDrawerOpen(false)}
+        />
+      )}
+
+      {/* Mobile Drawer Content */}
+      <div className={`fixed top-0 right-0 bottom-0 z-50 w-72 bg-slate-900 border-l border-slate-800 p-6 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
+        isDrawerOpen ? "translate-x-0" : "translate-x-full"
+      }`}>
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+            <span className="font-bold text-sm uppercase tracking-wider text-slate-400">Danh mục</span>
+            <button 
+              onClick={() => setIsDrawerOpen(false)}
+              className="text-slate-400 hover:text-white p-1 cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          
+          <div className="flex flex-col gap-2.5 overflow-y-auto max-h-[70vh] pr-1">
+            <Link href="/thong-ke" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
+              <span className="flex items-center gap-2">📊 Phân tích học tập</span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+            <Link href="/ngan-hang-cau-sai" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
+              <span className="flex items-center gap-2">📓 Sổ tay câu sai</span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+            <Link href="/tinh-diem-tot-nghiep" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
+              <span className="flex items-center gap-2">🧮 Công cụ tính điểm</span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+            <Link href="/tra-cuu-tuyen-sinh" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
+              <span className="flex items-center gap-2">🏫 Tra cứu Đại học</span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+            <Link href="/lo-trinh" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
+              <span className="flex items-center gap-2">🗺️ Lộ trình học tập</span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+            <Link href="/tin-tuc" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
+              <span className="flex items-center gap-2">📰 Tin tức học thuật</span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+            <Link href="/about" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
+              <span className="flex items-center gap-2">ℹ️ Giới thiệu</span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+            <Link href="/privacy-policy" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
+              <span className="flex items-center gap-2">🛡️ Bảo mật</span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+            <Link href="/terms-of-service" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
+              <span className="flex items-center gap-2">📝 Điều khoản</span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+          </div>
+        </div>
+        
+        {/* Drawer Footer / Account */}
+        <div className="border-t border-slate-800 pt-4 mt-auto">
+          <Link href="/tram-sac-nang-luong" onClick={() => setIsDrawerOpen(false)} className="flex items-center justify-center gap-2 border border-amber-500/30 bg-amber-500/10 text-amber-400 py-3.5 rounded-xl text-sm font-bold hover:bg-amber-500/20 transition">
+            <span>Trạm sạc năng lượng ⚡</span>
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

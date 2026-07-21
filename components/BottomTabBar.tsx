@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Award, BookOpen, User } from "lucide-react";
+import { Home, BookOpen, Layers, Mic, User } from "lucide-react";
 
 export default function BottomTabBar() {
   const pathname = usePathname();
@@ -20,15 +20,19 @@ export default function BottomTabBar() {
         <Home className="w-5 h-5" />
         <span>Trang chủ</span>
       </Link>
-      <Link href="/exam" className={getTabClass("/exam")}>
-        <Award className="w-5 h-5" />
-        <span>Thi thử</span>
-      </Link>
-      <Link href="/ngan-hang-cau-sai" className={getTabClass("/ngan-hang-cau-sai")}>
+      <Link href="/luyen-de" className={getTabClass("/luyen-de")}>
         <BookOpen className="w-5 h-5" />
-        <span>Sổ câu sai</span>
+        <span>Luyện đề</span>
       </Link>
-      <Link href="/" className={getTabClass("/profile")}>
+      <Link href="/the-ghi-nho" className={getTabClass("/the-ghi-nho")}>
+        <Layers className="w-5 h-5" />
+        <span>Flashcard</span>
+      </Link>
+      <Link href="/luyen-noi" className={getTabClass("/luyen-noi")}>
+        <Mic className="w-5 h-5" />
+        <span>Nói AI</span>
+      </Link>
+      <Link href="/login" className={getTabClass("/login")}>
         <User className="w-5 h-5" />
         <span>Tôi</span>
       </Link>

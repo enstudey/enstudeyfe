@@ -449,7 +449,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
               )}
 
               {/* Question Text */}
-              <p className="text-sm font-extrabold leading-relaxed text-slate-800 select-text">
+              <p className="text-[17px] md:text-[18px] font-bold leading-relaxed text-slate-800 select-text">
                 {currentQuestion?.questionText}
               </p>
 
@@ -462,13 +462,13 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                     <button
                       key={idx}
                       onClick={() => handleSelectAnswer(currentQuestion.id, idx)}
-                      className={`flex items-center text-left gap-4 p-4 rounded-md border text-xs font-bold transition-all duration-150 cursor-pointer ${
+                      className={`flex items-center text-left gap-4 p-4 md:p-5 rounded-md border text-[17px] md:text-[18px] font-medium transition-all duration-150 cursor-pointer ${
                         isSelected
                           ? "bg-sky-500 text-white border-sky-500 shadow-md shadow-sky-100"
                           : "bg-white text-slate-800 border-slate-100 hover:bg-slate-50 hover:border-sky-500/20"
                       }`}
                     >
-                      <span className={`w-7 h-7 flex items-center justify-center rounded-full text-xs font-black shrink-0 ${
+                      <span className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full text-[15px] md:text-base font-black shrink-0 ${
                         isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
                       }`}>
                         {letter}

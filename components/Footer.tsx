@@ -12,6 +12,9 @@ export default function Footer() {
               <Image src="/icon-transparent.png" alt="EnStudey Logo" width={24} height={24} className="w-6 h-6" />
               <span className="text-xl font-bold text-white">enStudey</span>
             </div>
+            <p className="text-xs text-slate-500 leading-relaxed max-w-xs">
+              Giúp học viên chinh phục điểm số TOEIC/IELTS & THPT QG với AI.
+            </p>
             <div className="space-y-1.5 text-xs text-slate-500">
               <p>Chịu trách nhiệm nội dung: Nguyễn Đức Tâm</p>
               <p>Địa chỉ: Tổ 2, Phường Cầu Giấy, TP. Hà Nội</p>
@@ -42,36 +45,39 @@ export default function Footer() {
           <div className="space-y-3">
             <h2 className="text-xs font-bold text-white tracking-widest uppercase">Khám phá & Công cụ</h2>
             <div className="flex flex-col gap-2.5 text-xs text-slate-400">
-              <Link href="/tin-tuc" className="hover:text-white transition font-medium">
-                Tin tức học thuật
-              </Link>
               <Link href="/tinh-diem-tot-nghiep" className="hover:text-white transition font-medium">
-                Công cụ tính điểm
+                🧮 Công cụ tính điểm
               </Link>
               <Link href="/tra-cuu-tuyen-sinh" className="hover:text-white transition font-medium">
-                Tra cứu trường Đại học
+                🏫 Tra cứu Đại học
+              </Link>
+              <Link href="/ngan-hang-cau-sai" className="hover:text-white transition font-medium">
+                📓 Sổ tay câu sai
+              </Link>
+              <Link href="/thong-ke" className="hover:text-white transition font-medium">
+                📊 Phân tích học tập
               </Link>
               <Link href="/lo-trinh" className="hover:text-white transition font-medium">
-                Lộ trình học tập
+                🗺️ Lộ trình học tập
               </Link>
             </div>
           </div>
 
           {/* Cột 4: An toàn pháp lý */}
           <div className="space-y-3 md:text-right">
-            <h2 className="text-xs font-bold text-white tracking-widest uppercase md:text-right">Pháp lý & Liên hệ</h2>
+            <h2 className="text-xs font-bold text-white tracking-widest uppercase md:text-right">Về EnStudey</h2>
             <div className="flex flex-col md:items-end gap-2.5 text-xs text-slate-400">
               <Link href="/about" className="hover:text-white transition font-medium">
                 Giới thiệu
+              </Link>
+              <Link href="/tram-sac-nang-luong" className="hover:text-white transition font-medium">
+                Trạm sạc ☕
               </Link>
               <Link href="/privacy-policy" className="hover:text-white transition font-medium">
                 Chính sách bảo mật
               </Link>
               <Link href="/terms-of-service" className="hover:text-white transition font-medium">
                 Điều khoản sử dụng
-              </Link>
-              <Link href="/tram-sac-nang-luong" className="hover:text-white transition font-medium">
-                Trạm sạc năng lượng
               </Link>
             </div>
           </div>
