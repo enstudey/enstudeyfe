@@ -56,11 +56,11 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
   if (errorMsg || !result) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA] px-6">
-        <div className="bg-card border border-border rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-sm">
+        <div className="bg-card border border-border rounded-2xl p-8 max-w-md w-full text-center space-y-4 shadow-sm">
           <AlertCircle className="w-12 h-12 text-red-500 mx-auto" />
           <h2 className="text-lg font-bold text-foreground">Lỗi tải kết quả</h2>
           <p className="text-xs text-muted-foreground leading-relaxed">{errorMsg}</p>
-          <Button onClick={() => router.push("/exam")} className="w-full rounded-2xl py-5 font-bold">
+          <Button onClick={() => router.push("/exam")} className="w-full rounded-lg py-5 font-bold">
             Quay lại danh sách đề
           </Button>
         </div>
@@ -91,7 +91,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
       </Link>
 
       {/* Summary Score Panel */}
-      <div className="bg-white border border-slate-100 shadow-xs rounded-3xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+      <div className="bg-white border border-slate-100 shadow-xs rounded-2xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
         <div className="text-center md:text-left space-y-2">
           <div className="inline-flex items-center gap-1 bg-sky-50 text-sky-600 border border-sky-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
             Kết quả thi thử
@@ -191,7 +191,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
               return (
                 <div
                   key={r.questionId}
-                  className={`bg-white border rounded-3xl p-6 shadow-xs space-y-4 ${r.isCorrect
+                  className={`bg-white border rounded-2xl p-6 shadow-xs space-y-4 ${r.isCorrect
                       ? "border-emerald-100"
                       : r.userAnswerIndex === -1
                         ? "border-amber-100"
@@ -307,7 +307,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
 
         {/* Right Column (30% - Sticky Sidebar Ad Slot) */}
         <div className="lg:col-span-4 sticky top-20 hidden lg:block">
-          <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-xs min-h-[600px] flex flex-col items-center justify-center text-center text-slate-400 select-none border-dashed border-slate-200">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-xs min-h-[600px] flex flex-col items-center justify-center text-center text-slate-400 select-none border-dashed border-slate-200">
             <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">ADSENSE CONTAINER</span>
             <p className="text-[9px] text-slate-400 max-w-[150px] leading-relaxed mt-2">Quảng cáo tài trợ hiển thị sidebar, tự động cập nhật refresh.</p>
           </div>

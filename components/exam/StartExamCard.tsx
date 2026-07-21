@@ -60,10 +60,10 @@ export default function StartExamCard({
   };
 
   return (
-    <div className="bg-card border border-border shadow-sm rounded-3xl p-6 md:p-8 space-y-6 w-full max-w-xl mx-auto">
+    <div className="bg-card border border-border shadow-sm rounded-2xl p-6 md:p-8 space-y-6 w-full max-w-xl mx-auto">
       {/* Title */}
       <div className="space-y-2 text-center">
-        <div className="inline-flex items-center justify-center p-3 bg-sky-50 rounded-2xl text-sky-600">
+        <div className="inline-flex items-center justify-center p-3 bg-sky-50 rounded-xl text-sky-600">
           <Sparkles className="w-6 h-6 animate-pulse" />
         </div>
         <h2 className="text-xl md:text-2xl font-black text-foreground">{title}</h2>
@@ -73,7 +73,7 @@ export default function StartExamCard({
       </div>
 
       {/* Compliance / Legal Disclaimer (BR-2) */}
-      <div className="bg-[#FFFBEB] border border-amber-200/60 rounded-2xl p-4 md:p-5 space-y-3">
+      <div className="bg-[#FFFBEB] border border-amber-200/60 rounded-xl p-4 md:p-5 space-y-3">
         <div className="flex items-center gap-2 text-amber-800 font-bold text-sm">
           <ShieldAlert className="w-5 h-5 shrink-0 text-amber-600" />
           <span>Miễn trừ trách nhiệm pháp lý (Nghị định 72/2013/NĐ-CP)</span>
@@ -108,7 +108,7 @@ export default function StartExamCard({
         onClick={handleStart}
         disabled={loading || !acceptedTerms}
         size="lg"
-        className="w-full rounded-2xl py-6 font-bold gap-2 shadow-md transition duration-200 hover:scale-[1.01]"
+        className="w-full rounded-lg py-6 font-bold gap-2 shadow-md transition duration-200 hover:scale-[1.01]"
       >
         {loading ? (
           <span>Đang tạo đề thi...</span>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Merriweather } from "next/font/google";
+import { Inter, Lora, Geist_Mono } from "next/font/google";
 import { headers, cookies } from "next/headers";
 import AdSenseScript from "@/components/AdSenseScript";
 import GA4Provider from "@/components/analytics/GA4Provider";
@@ -15,13 +15,18 @@ import QueryProvider from "@/components/providers/QueryProvider";
 
 const inter = Inter({
   variable: "--font-inter-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
 });
 
-const merriweather = Merriweather({
+const lora = Lora({
   weight: ["400", "700"],
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-lora-serif",
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  variable: "--font-merriweather-serif",
 });
 
 export const metadata: Metadata = {
@@ -66,7 +71,7 @@ export default async function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${inter.variable} ${merriweather.variable} h-full antialiased`}
+      className={`${inter.variable} ${lora.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
     >

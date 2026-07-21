@@ -74,7 +74,7 @@ export default async function DashboardPage() {
         <div className="md:col-span-7 lg:col-span-8 space-y-8">
           {/* Guest CTA Banner */}
           {isGuest && (
-            <div className="bg-gradient-to-r from-sky-500 to-indigo-600 text-white rounded-3xl p-8 shadow-xl relative overflow-hidden">
+            <div className="bg-gradient-to-r from-sky-500 to-indigo-600 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_70%)] pointer-events-none" />
               <div className="relative z-10 space-y-4 max-w-xl">
                 <span className="bg-white/20 text-white text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
@@ -103,7 +103,7 @@ export default async function DashboardPage() {
                 <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center">
                   <a
                     href={googleLoginUrl}
-                    className="w-full sm:w-auto text-center font-bold text-sm bg-white text-sky-600 hover:bg-sky-50 px-6 py-3 rounded-2xl shadow-md transition duration-200"
+                    className="w-full sm:w-auto text-center font-bold text-sm bg-white text-sky-600 hover:bg-sky-50 px-6 py-3 rounded-lg shadow-md transition duration-200"
                   >
                     Đăng nhập Google ngay! 🚀
                   </a>
@@ -122,7 +122,7 @@ export default async function DashboardPage() {
           <DailyQuizWidget userFullName={user?.fullName} token={token} />
 
           {/* Core Feature: Full Mock Test */}
-          <div className="bg-[#0F172A] text-white rounded-3xl p-6 md:p-8 shadow-lg space-y-6 relative overflow-hidden border border-slate-800">
+          <div className="bg-[#0F172A] text-white rounded-2xl p-6 md:p-8 shadow-lg space-y-6 relative overflow-hidden border border-slate-800">
             <div className="absolute right-0 top-0 opacity-5 pointer-events-none text-9xl select-none font-bold translate-x-10 -translate-y-10">
               EXAM
             </div>
@@ -138,7 +138,7 @@ export default async function DashboardPage() {
             <div>
               <Link
                 href="/exam"
-                className="inline-flex items-center gap-1.5 font-bold text-xs bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-2xl shadow-sm transition duration-200"
+                className="inline-flex items-center gap-1.5 font-bold text-xs bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-lg shadow-sm transition duration-200"
               >
                 Vào phòng thi ngay 🚀
               </Link>
@@ -150,7 +150,7 @@ export default async function DashboardPage() {
 
           {/* Quick Access Grid */}
           <div className="grid gap-6 sm:grid-cols-2">
-            <Link href="/luyen-noi" className="bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition text-left group">
+            <Link href="/luyen-noi" className="bg-white border border-slate-100 rounded-2xl p-6 shadow-xs hover:shadow-md transition text-left group">
               <span className="text-3xl">🎙️</span>
               <h3 className="text-base font-bold mt-4 mb-2 group-hover:text-sky-500 transition">Luyện nói &ldquo;Du kích&rdquo; với AI nha</h3>
               <p className="text-slate-500 text-xs leading-relaxed">
@@ -158,7 +158,7 @@ export default async function DashboardPage() {
               </p>
             </Link>
 
-            <Link href="/ngan-hang-cau-sai" className="bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition text-left group">
+            <Link href="/ngan-hang-cau-sai" className="bg-white border border-slate-100 rounded-2xl p-6 shadow-xs hover:shadow-md transition text-left group">
               <span className="text-3xl">💎</span>
               <h3 className="text-base font-bold mt-4 mb-2 group-hover:text-sky-500 transition">Sổ tay &ldquo;gột rửa&rdquo; câu sai 💎</h3>
               <p className="text-slate-500 text-xs leading-relaxed">
@@ -171,7 +171,7 @@ export default async function DashboardPage() {
         {/* Right Column (4 Columns) */}
         <div className="md:col-span-5 lg:col-span-4 space-y-8">
           {/* Bảng Xếp Hạng */}
-          <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-xs min-h-[300px]">
+          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-xs min-h-[300px]">
             <h3 className="text-sm font-bold mb-4 flex items-center justify-between text-slate-800">
               <span>Bảng Xếp Hạng</span>
               <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Chuỗi ngày (Streak)</span>
@@ -283,7 +283,7 @@ export default async function DashboardPage() {
           </div>
 
           {/* Radar Chart (Diagnostics Widget Mock Placeholder or Link) */}
-          <Link href="/thong-ke" className="block bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition text-left">
+          <Link href="/thong-ke" className="block bg-white border border-slate-100 rounded-2xl p-6 shadow-xs hover:shadow-md transition text-left">
             <h3 className="text-sm font-bold mb-2 text-slate-800">Chẩn đoán Năng lực</h3>
             <p className="text-slate-500 text-xs leading-relaxed mb-4">
               Xem biểu đồ Radar phân tích kỹ năng và đánh giá các phần yếu nhất để cải thiện kịp thời.

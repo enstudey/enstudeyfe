@@ -289,7 +289,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0F172A] select-none h-screen overflow-hidden">
       {/* Top Fixed Header */}
-      <header className="h-14 bg-white border-b border-slate-100 flex justify-between px-6 items-center shrink-0 z-10 select-none">
+      <header className="h-16 bg-white border-b border-slate-100 flex justify-between px-6 items-center shrink-0 z-10 select-none">
         <div className="flex items-center gap-4">
           <Button
             variant="ghost"
@@ -323,13 +323,13 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
 
         {/* Timer & Submit CTA */}
         <div className="flex items-center gap-4">
-          <div className={`flex items-center gap-2 px-4 py-1.5 rounded-xl font-bold text-sm shadow-inner transition-colors duration-300 font-mono ${
+          <div className={`flex items-center gap-2 px-3 py-0.5 rounded-xl shadow-inner transition-colors duration-300 font-mono ${
             isTimeUrgent 
               ? "bg-rose-50 border border-rose-100 text-rose-600 animate-pulse" 
               : "bg-sky-50 border border-sky-100/50 text-sky-700"
           }`}>
-            <Clock className="w-4 h-4 shrink-0" />
-            <span data-testid="timer-countdown" className="exam-timer font-mono font-black">
+            <Clock className="w-5 h-5 shrink-0" />
+            <span data-testid="timer-countdown" className="exam-timer font-mono text-3xl md:text-4xl font-extrabold leading-none">
               {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
             </span>
           </div>
@@ -377,7 +377,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
         }`}>
           {/* Passage Section */}
           {isReading && currentQuestion?.passage ? (
-            <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm select-text">
+            <div className="bg-white border border-slate-100 rounded-sm p-6 shadow-sm select-text">
               <span className="inline-flex items-center bg-sky-50 text-sky-600 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider mb-4">
                 📖 Đoạn văn đọc hiểu
               </span>
@@ -388,7 +388,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
           ) : (
             /* Playlist Audio block for Listening (Audio Guard) */
             !isReading && currentQuestion?.audioUrl && (
-              <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col items-center justify-center text-center space-y-6 select-none min-h-[300px]">
+              <div className="bg-white border border-slate-100 rounded-sm p-8 shadow-sm flex flex-col items-center justify-center text-center space-y-6 select-none min-h-[300px]">
                 <div className="w-24 h-24 rounded-full bg-slate-50 flex items-center justify-center border border-dashed border-slate-300 relative">
                   <div className="w-16 h-16 rounded-full bg-sky-500/10 flex items-center justify-center text-sky-600 animate-pulse">
                     <Volume2 className="w-8 h-8" />
@@ -417,7 +417,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
           isReading && currentQuestion?.passage && activeTab !== "question" ? "hidden md:flex" : "flex"
         }`}>
           {/* Answer Panel Card */}
-          <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between gap-6 shrink-0">
+          <div className="bg-white border border-slate-100 rounded-sm p-6 shadow-sm flex flex-col justify-between gap-6 shrink-0">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-slate-100 pb-4 select-none">
                 <span className="bg-sky-50 text-sky-600 border border-sky-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
@@ -427,7 +427,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                   variant="ghost"
                   size="sm"
                   onClick={() => handleToggleFlag(currentIndex)}
-                  className={`rounded-xl gap-1 text-xs font-bold ${
+                  className={`rounded-md gap-1 text-xs font-bold ${
                     flags[currentIndex] ? "bg-amber-50 text-amber-600 border border-amber-100" : "text-slate-400 hover:text-slate-655"
                   }`}
                 >
@@ -443,7 +443,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                   <img
                     src={currentQuestion.imageUrl}
                     alt={`Minh họa câu hỏi ${currentQuestion.order}`}
-                    className="max-h-[180px] object-contain rounded-2xl border border-slate-100"
+                    className="max-h-[180px] object-contain rounded-sm border border-slate-100"
                   />
                 </div>
               )}
@@ -462,7 +462,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                     <button
                       key={idx}
                       onClick={() => handleSelectAnswer(currentQuestion.id, idx)}
-                      className={`flex items-center text-left gap-4 p-4 rounded-2xl border text-xs font-bold transition-all duration-150 cursor-pointer ${
+                      className={`flex items-center text-left gap-4 p-4 rounded-md border text-xs font-bold transition-all duration-150 cursor-pointer ${
                         isSelected
                           ? "bg-sky-500 text-white border-sky-500 shadow-md shadow-sky-100"
                           : "bg-white text-slate-800 border-slate-100 hover:bg-slate-50 hover:border-sky-500/20"
@@ -486,7 +486,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                 variant="outline"
                 disabled={currentIndex === 0}
                 onClick={() => setCurrentIndex((prev) => prev - 1)}
-                className="rounded-xl font-bold gap-1 text-xs px-4"
+                className="rounded-md font-bold gap-1 text-xs px-4"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Câu trước</span>
@@ -495,7 +495,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                 variant="outline"
                 disabled={currentIndex === questions.length - 1}
                 onClick={() => setCurrentIndex((prev) => prev + 1)}
-                className="rounded-xl font-bold gap-1 text-xs px-4"
+                className="rounded-md font-bold gap-1 text-xs px-4"
               >
                 <span>Câu tiếp</span>
                 <ArrowRight className="w-4 h-4" />
@@ -504,7 +504,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
           </div>
 
           {/* Navigation Grid Board */}
-          <div className="bg-white border border-slate-100 rounded-3xl p-5 shadow-sm select-none flex-1 overflow-y-auto">
+          <div className="bg-white border border-slate-100 rounded-sm p-5 shadow-sm select-none flex-1 overflow-y-auto">
             <h3 className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider mb-4">
               Bảng đáp án nhanh
             </h3>
@@ -516,7 +516,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                 const isCurrent = currentIndex === idx;
                 const isFlagged = flags[idx];
 
-                let gridBtnClass = "relative w-9 h-9 flex items-center justify-center text-xs font-bold rounded-xl border transition-all duration-150 cursor-pointer ";
+                let gridBtnClass = "relative w-9 h-9 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-150 cursor-pointer ";
                 
                 if (isCurrent) {
                   gridBtnClass += "bg-sky-500 text-white border-sky-500 shadow-md";
