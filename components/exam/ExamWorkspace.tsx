@@ -345,9 +345,9 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
         </div>
       </header>
 
-      {/* Tab Switcher for Mobile context */}
+      {/* Tab Switcher for Mobile & Tablet context */}
       {isReading && currentQuestion?.passage && (
-        <div className="flex border-b border-slate-100 bg-white md:hidden shrink-0">
+        <div className="flex border-b border-slate-100 bg-white lg:hidden shrink-0">
           <button
             onClick={() => setActiveTab("passage")}
             className={`flex-1 py-3 text-xs font-bold border-b-2 transition-colors ${activeTab === "passage" ? "border-primary text-primary" : "border-transparent text-slate-500"
@@ -365,26 +365,26 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
         </div>
       )}
 
-      {/* Main Workspace Body (Split Screen) */}
-      <main className="flex-1 overflow-hidden grid md:grid-cols-12 w-full max-w-[1500px] mx-auto px-4 py-6 gap-6">
+      {/* Main Workspace Body (Split Screen - Tối ưu 2026) */}
+      <main className="flex-1 overflow-hidden grid lg:grid-cols-12 w-full max-w-[1600px] mx-auto px-2 md:px-6 py-4 md:py-6 gap-4 md:gap-6">
 
         {/* Nửa bên Trái: Ngữ cảnh bài thi */}
-        <div className={`md:col-span-7 h-full overflow-y-auto pr-2 space-y-6 ${isReading && currentQuestion?.passage && activeTab !== "passage" ? "hidden md:block" : "block"
+        <div className={`lg:col-span-7 h-full overflow-y-auto pr-2 space-y-6 ${isReading && currentQuestion?.passage && activeTab !== "passage" ? "hidden lg:block" : "block"
           }`}>
           {/* Passage Section */}
           {isReading && currentQuestion?.passage ? (
-            <div className="bg-white border border-slate-100 rounded-sm p-6 shadow-sm select-text">
+            <div className="bg-white border border-border/50 rounded-xl p-6 shadow-sm select-text">
               <span className="inline-flex items-center bg-blue-50 text-primary text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider mb-4">
                 📖 Đoạn văn đọc hiểu
               </span>
-              <div className="exam-passage whitespace-pre-wrap font-medium select-text">
+              <div className="exam-passage-container whitespace-pre-wrap select-text">
                 {currentQuestion.passage}
               </div>
             </div>
           ) : (
             /* Playlist Audio block for Listening (Audio Guard) */
             !isReading && currentQuestion?.audioUrl && (
-              <div className="bg-white border border-slate-100 rounded-sm p-8 shadow-sm flex flex-col items-center justify-center text-center space-y-6 select-none min-h-[300px]">
+              <div className="bg-white border border-border/50 rounded-xl p-8 shadow-sm flex flex-col items-center justify-center text-center space-y-6 select-none min-h-[300px]">
                 <div className="w-24 h-24 rounded-full bg-slate-50 flex items-center justify-center border border-dashed border-slate-300 relative">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary animate-pulse">
                     <Volume2 className="w-8 h-8" />
@@ -409,10 +409,10 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
         </div>
 
         {/* Nửa bên Phải: Answer options & Navigation Grid */}
-        <div className={`md:col-span-5 h-full overflow-y-auto pl-2 flex flex-col gap-6 ${isReading && currentQuestion?.passage && activeTab !== "question" ? "hidden md:flex" : "flex"
+        <div className={`lg:col-span-5 h-full overflow-y-auto pl-2 flex flex-col gap-6 ${isReading && currentQuestion?.passage && activeTab !== "question" ? "hidden lg:flex" : "flex"
           }`}>
           {/* Answer Panel Card */}
-          <div className="bg-white border border-slate-100 rounded-sm p-6 shadow-sm flex flex-col justify-between gap-6 shrink-0">
+          <div className="bg-white border border-border/50 rounded-xl p-6 shadow-sm flex flex-col justify-between gap-6 shrink-0">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-slate-100 pb-4 select-none">
                 <span className="bg-blue-50 text-primary border border-blue-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
@@ -422,7 +422,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                   variant="ghost"
                   size="sm"
                   onClick={() => handleToggleFlag(currentIndex)}
-                  className={`rounded-md gap-1 text-xs font-bold ${flags[currentIndex] ? "bg-amber-50 text-amber-600 border border-amber-100" : "text-slate-400 hover:text-slate-655"
+                  className={`rounded-xl gap-1 text-xs font-bold ${flags[currentIndex] ? "bg-amber-50 text-amber-600 border border-amber-100" : "text-slate-400 hover:text-slate-600"
                     }`}
                 >
                   <Flag className={`w-4 h-4 ${flags[currentIndex] ? "fill-current text-amber-500" : ""}`} />
@@ -437,7 +437,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                   <img
                     src={currentQuestion.imageUrl}
                     alt={`Minh họa câu hỏi ${currentQuestion.order}`}
-                    className="max-h-[180px] object-contain rounded-sm border border-slate-100"
+                    className="max-h-[180px] object-contain rounded-xl border border-slate-100"
                   />
                 </div>
               )}
@@ -447,7 +447,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                 {currentQuestion?.questionText}
               </p>
 
-              {/* Answer options A-B-C-D grid */}
+              {/* Answer options A-B-C-D grid (Tối ưu Touch Targets >= 48px cho Tablet/Mobile) */}
               <div className="grid grid-cols-1 gap-3">
                 {currentQuestion?.options?.map((option, idx) => {
                   const isSelected = answers[currentQuestion.id.toString()] === idx;
@@ -456,12 +456,12 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                     <button
                       key={idx}
                       onClick={() => handleSelectAnswer(currentQuestion.id, idx)}
-                      className={`flex items-center text-left gap-4 p-4 md:p-5 rounded-md border text-[17px] md:text-[18px] font-medium transition-all duration-150 cursor-pointer ${isSelected
+                      className={`flex items-center text-left gap-4 p-4 md:p-5 rounded-xl border text-[16px] md:text-[18px] font-medium min-h-[48px] transition-all duration-150 cursor-pointer ${isSelected
                           ? "bg-primary text-white border-primary shadow-md shadow-blue-100"
                           : "bg-white text-slate-800 border-slate-100 hover:bg-slate-50 hover:border-primary/20"
                         }`}
                     >
-                      <span className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full text-[15px] md:text-base font-black shrink-0 ${isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
+                      <span className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full text-[15px] md:text-base font-black shrink-0 ${isSelected ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
                         }`}>
                         {letter}
                       </span>
@@ -478,7 +478,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                 variant="outline"
                 disabled={currentIndex === 0}
                 onClick={() => setCurrentIndex((prev) => prev - 1)}
-                className="rounded-md font-bold gap-1 text-xs px-4"
+                className="rounded-xl font-bold gap-1 text-xs px-4"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Câu trước</span>
@@ -487,7 +487,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                 variant="outline"
                 disabled={currentIndex === questions.length - 1}
                 onClick={() => setCurrentIndex((prev) => prev + 1)}
-                className="rounded-md font-bold gap-1 text-xs px-4"
+                className="rounded-xl font-bold gap-1 text-xs px-4"
               >
                 <span>Câu tiếp</span>
                 <ArrowRight className="w-4 h-4" />
@@ -495,20 +495,20 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
             </div>
           </div>
 
-          {/* Navigation Grid Board */}
-          <div className="bg-white border border-slate-100 rounded-sm p-5 shadow-sm select-none flex-1 overflow-y-auto">
+          {/* Navigation Grid Board (Tối ưu hóa lưới câu hỏi đáp án nhanh) */}
+          <div className="bg-white border border-border/50 rounded-xl p-5 shadow-sm select-none flex-1 overflow-y-auto">
             <h3 className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider mb-4">
               Bảng đáp án nhanh
             </h3>
 
-            <div className="grid grid-cols-6 xs:grid-cols-8 sm:grid-cols-10 md:grid-cols-6 lg:grid-cols-7 gap-2">
+            <div className="grid grid-cols-6 xs:grid-cols-8 sm:grid-cols-10 md:grid-cols-8 lg:grid-cols-7 gap-2">
               {questions.map((q, idx) => {
                 const questionIdStr = q.id.toString();
                 const isAnswered = answers[questionIdStr] !== undefined;
                 const isCurrent = currentIndex === idx;
                 const isFlagged = flags[idx];
 
-                let gridBtnClass = "relative w-9 h-9 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-150 cursor-pointer ";
+                let gridBtnClass = "relative w-9 h-9 flex items-center justify-center text-xs font-bold rounded-xl border transition-all duration-150 cursor-pointer ";
 
                 if (isCurrent) {
                   gridBtnClass += "bg-primary text-white border-primary shadow-md";

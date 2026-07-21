@@ -200,7 +200,7 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
       {/* Placeholder để tránh Layout Shift khi Header ở trạng thái fixed */}
       {!isStatic && <div className="h-16 shrink-0" />}
       <header className={headerClass} data-testid="header-container">
-        <nav className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+        <nav className="max-w-[1600px] mx-auto px-4 md:px-8 h-full flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2 font-bold text-2xl text-white tracking-tight" data-testid="link-logo">
               <Image src="/icon-transparent.png" alt="EnStudey Logo" width={32} height={32} className="w-8 h-8" />
@@ -341,11 +341,11 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
         />
       )}
 
-      {/* Mobile Drawer Content */}
-      <div className={`fixed top-0 right-0 bottom-0 z-50 w-72 bg-slate-900 border-l border-slate-800 p-6 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${isDrawerOpen ? "translate-x-0" : "translate-x-full"
+      {/* Mobile Drawer Content (Nâng cấp bo góc rounded-l-2xl và Touch Targets 48px) */}
+      <div className={`fixed top-0 right-0 bottom-0 z-50 w-72 bg-slate-950/95 backdrop-blur-md border-l border-slate-800/80 p-6 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out md:hidden rounded-l-2xl ${isDrawerOpen ? "translate-x-0" : "translate-x-full"
         }`}>
-        <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div className="space-y-6 flex-grow flex flex-col">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-4 shrink-0">
             <span className="font-bold text-sm uppercase tracking-wider text-slate-400">Danh mục</span>
             <button
               onClick={() => setIsDrawerOpen(false)}
@@ -355,64 +355,64 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
             </button>
           </div>
 
-          <div className="flex flex-col gap-2.5 overflow-y-auto max-h-[70vh] pr-1">
-            <Link href="/thong-ke" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/60">
+          <div className="flex flex-col gap-2.5 overflow-y-auto max-h-[70vh] pr-1 flex-grow">
+            <Link href="/thong-ke" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-800/40 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/50">
               <span className="flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-blue-400" />
                 <span>Phân tích học tập</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
-            <Link href="/ngan-hang-cau-sai" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/60">
+            <Link href="/ngan-hang-cau-sai" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-800/40 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/50">
               <span className="flex items-center gap-2">
                 <Notebook className="w-5 h-5 text-blue-400" />
                 <span>Sổ tay câu sai</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
-            <Link href="/tinh-diem-tot-nghiep" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/60">
+            <Link href="/tinh-diem-tot-nghiep" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-800/40 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/50">
               <span className="flex items-center gap-2">
                 <Calculator className="w-5 h-5 text-blue-400" />
                 <span>Công cụ tính điểm</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
-            <Link href="/tra-cuu-tuyen-sinh" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/60">
+            <Link href="/tra-cuu-tuyen-sinh" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-800/40 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/50">
               <span className="flex items-center gap-2">
                 <School className="w-5 h-5 text-blue-400" />
                 <span>Tra cứu Đại học</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
-            <Link href="/lo-trinh" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/60">
+            <Link href="/lo-trinh" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-800/40 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/50">
               <span className="flex items-center gap-2">
                 <Map className="w-5 h-5 text-blue-400" />
                 <span>Lộ trình học tập</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
-            <Link href="/tin-tuc" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/60">
+            <Link href="/tin-tuc" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-800/40 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/50">
               <span className="flex items-center gap-2">
                 <Newspaper className="w-5 h-5 text-blue-400" />
                 <span>Tin tức học thuật</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
-            <Link href="/about" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/60">
+            <Link href="/about" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-800/40 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/50">
               <span className="flex items-center gap-2">
                 <Info className="w-5 h-5 text-blue-400" />
                 <span>Giới thiệu</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
-            <Link href="/privacy-policy" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/60">
+            <Link href="/privacy-policy" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-800/40 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/50">
               <span className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-blue-400" />
                 <span>Bảo mật</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
-            <Link href="/terms-of-service" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/60">
+            <Link href="/terms-of-service" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-800/40 hover:bg-blue-500/10 hover:text-blue-400 rounded-xl transition duration-150 border border-slate-800/50">
               <span className="flex items-center gap-2">
                 <FileText className="w-5 h-5 text-blue-400" />
                 <span>Điều khoản</span>
@@ -423,8 +423,8 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
         </div>
 
         {/* Drawer Footer / Account */}
-        <div className="border-t border-slate-800 pt-4 mt-auto">
-          <Link href="/tram-sac-nang-luong" onClick={() => setIsDrawerOpen(false)} className="flex items-center justify-center gap-2 border border-amber-500/30 bg-amber-500/10 text-amber-400 py-3.5 rounded-xl text-sm font-bold hover:bg-amber-500/20 transition">
+        <div className="border-t border-slate-800 pt-4 mt-auto shrink-0">
+          <Link href="/tram-sac-nang-luong" onClick={() => setIsDrawerOpen(false)} className="flex items-center justify-center gap-2 border border-amber-500/30 bg-amber-500/10 text-amber-400 py-3.5 rounded-xl text-sm font-bold hover:bg-amber-500/20 transition min-h-[48px]">
             <Coffee className="w-4 h-4" />
             <span>Trạm sạc năng lượng</span>
           </Link>

@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0F172A] text-slate-400 border-t border-slate-800 mt-20 min-h-[250px]">
-      <div className="max-w-6xl mx-auto px-6 py-12">
+    <footer className="bg-[#0F172A] text-slate-400 border-t border-slate-800 mt-20 min-h-[250px] hidden md:block">
+      <div className="max-w-[1600px] mx-auto px-4 md:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start justify-between">
           {/* Cột 1: Định danh chủ quản */}
           <div className="space-y-4">

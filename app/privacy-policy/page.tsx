@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="py-12 w-full space-y-6 flex-grow">
+    <main className="py-12 max-w-3xl mx-auto w-full space-y-6 flex-grow">
       <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
         Chính sách bảo mật thông tin – Nền tảng EnStudey
       </h1>
