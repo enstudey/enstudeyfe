@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { getPracticeQuestions, submitPractice, PracticeQuestion } from "@/lib/api/practice";
 import { Button } from "@/components/ui/button";
-import { AlertCircle, Clock, Volume2, BookOpen, ChevronRight, CheckCircle2, XCircle } from "lucide-react";
+import { AlertCircle, Clock, Volume2, BookOpen, ChevronRight, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
 import PracticeResult from "./PracticeResult";
 
 interface PracticeSessionProps {
@@ -427,7 +427,7 @@ export default function PracticeSession({
             part.toLowerCase().includes("part4") ||
             part.toLowerCase().includes("section")) && (
             <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/50 p-4 rounded-2xl flex items-center gap-2.5 text-xs text-amber-850 dark:text-amber-350">
-              <span className="text-base shrink-0">⚠️</span>
+              <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0" />
               <span>Tệp âm thanh đang được bảo trì. Bạn có thể tự chấm đúng hoặc bỏ qua câu này.</span>
             </div>
           )

@@ -8,7 +8,8 @@ import {
   ChevronRight, 
   Award, 
   BookOpen, 
-  WifiOff 
+  WifiOff,
+  AlertTriangle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -186,7 +187,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-xl mx-auto shadow-sm space-y-6">
         <div className="w-16 h-16 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center text-3xl mx-auto">
-          ⚠️
+          <AlertTriangle className="w-8 h-8 text-rose-500" />
         </div>
         <div className="space-y-2">
           <h3 className="text-xl font-bold text-slate-900">Không thể bắt đầu</h3>

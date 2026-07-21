@@ -31,7 +31,15 @@ const MOCK_ADS = [
   }
 ];
 
-export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?: string }) {
+export default function AdBanner({
+  adSlotId = "general-ad-banner",
+  heightClass = "h-[250px]",
+  className = "my-6",
+}: {
+  adSlotId?: string;
+  heightClass?: string;
+  className?: string;
+}) {
   const [isMounted, setIsMounted] = useState(false);
   const [adIndex, setAdIndex] = useState(0);
   const { refreshTrigger } = useActiveAdRefresh(adSlotId, 45000);
@@ -59,9 +67,11 @@ export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?
   if (!isMounted) {
     return (
       <div
-        className="w-full min-h-[250px] bg-slate-50 animate-pulse rounded-2xl border border-slate-200 my-6"
+        className={`w-full ${heightClass} bg-zinc-100 dark:bg-zinc-900 animate-pulse rounded-2xl flex items-center justify-center border border-dashed border-zinc-200 dark:border-zinc-800 ${className}`}
         data-testid="ad-banner-placeholder"
-      />
+      >
+        <span className="text-[11px] text-zinc-400 font-medium tracking-wide">Quảng cáo liên kết tài trợ</span>
+      </div>
     );
   }
 
@@ -69,7 +79,7 @@ export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?
 
   return (
     <div
-      className={`w-full min-h-[250px] bg-gradient-to-r ${ad.gradient} bg-white flex flex-col justify-between p-6 my-6 rounded-2xl overflow-hidden border ${ad.border} shadow-sm transition-all duration-300 relative`}
+      className={`w-full ${heightClass} bg-gradient-to-r ${ad.gradient} bg-white flex flex-col justify-between p-6 rounded-2xl overflow-hidden border ${ad.border} shadow-sm transition-all duration-300 relative ${className}`}
       data-testid="ad-banner"
     >
       <div className="absolute top-3 right-3 flex items-center gap-1">
@@ -82,16 +92,16 @@ export default function AdBanner({ adSlotId = "general-ad-banner" }: { adSlotId?
         <span className="text-xs font-bold text-sky-600 uppercase tracking-wider">
           Quảng cáo được đề xuất
         </span>
-        <h3 className="text-xl font-extrabold text-slate-900 leading-snug">
+        <h3 className="text-xl font-extrabold text-slate-900 leading-snug line-clamp-2">
           {ad.title}
         </h3>
-        <p className="text-slate-650 text-sm max-w-xl leading-relaxed">
+        <p className="text-slate-600 text-sm max-w-xl leading-relaxed line-clamp-3">
           {ad.description}
         </p>
       </div>
 
       <div className="pt-4 flex justify-between items-center border-t border-slate-100">
-        <span className="text-xs text-slate-600">enstudey.com/ads</span>
+        <span className="text-xs text-slate-650">enstudey.com/ads</span>
         <Button
           size="sm"
           className="font-bold text-xs rounded-xl shadow transition duration-200 cursor-pointer"

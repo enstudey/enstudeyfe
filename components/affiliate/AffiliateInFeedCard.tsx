@@ -42,7 +42,7 @@ export default function AffiliateInFeedCard({ currentPage, rowIndex }: Props) {
 
   return (
     <div
-      className="relative group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-md transition duration-300 flex flex-col justify-between"
+      className="relative group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-md transition duration-300 flex flex-col justify-between h-[350px] w-full"
       data-testid="affiliate-infeed-card"
     >
       <div className="h-44 overflow-hidden relative">
@@ -59,7 +59,7 @@ export default function AffiliateInFeedCard({ currentPage, rowIndex }: Props) {
           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-sky-50 text-sky-600 rounded-lg text-[10px] font-bold uppercase tracking-wider">
             Gợi ý dành cho bạn
           </span>
-          <h2 className="text-base font-bold text-foreground leading-snug">
+          <h2 className="text-base font-bold text-foreground leading-snug line-clamp-1">
             {product.title}
           </h2>
           <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed">

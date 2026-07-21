@@ -5,7 +5,7 @@ import QuizSession from "./QuizSession";
 import QuizResult from "./QuizResult";
 import { QuizQuestion, getRandomQuiz } from "@/lib/quiz-helper";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, AlertCircle, Sparkles } from "lucide-react";
+import { GraduationCap, AlertCircle, Sparkles, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import { getDailyQuizStatus, getDailyQuizQuestions, submitDailyQuiz } from "@/lib/api/quiz";
 import { recordStreakActivity } from "@/lib/api/streak";
@@ -351,7 +351,7 @@ export default function QuizContainer({ isGuest, googleLoginUrl, token }: QuizCo
           {/* Cảnh báo chưa đăng nhập (Guest Mode) */}
           {isGuest && (
             <div className="bg-amber-500/10 border border-amber-500/20 text-amber-900 rounded-2xl p-4 flex items-start gap-3 text-left max-w-xl mx-auto text-sm font-medium">
-              <span className="text-lg">⚠️</span>
+              <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
                 Bạn đang làm bài ở chế độ ẩn danh. Để tích lũy Streak hàng ngày và lưu sổ tay câu sai vĩnh viễn, hãy{" "}
                 <a href={googleLoginUrl} className="underline font-bold text-sky-600 hover:text-sky-700 transition">

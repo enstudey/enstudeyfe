@@ -7,6 +7,8 @@ import { ExamSubmitResponse } from "@/types/exam";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, CheckCircle, XCircle, AlertCircle, Clock, BarChart3 } from "lucide-react";
 import Link from "next/link";
+import AdBanner from "@/components/ads/AdBanner";
+import AffiliateInFeedCard from "@/components/affiliate/AffiliateInFeedCard";
 
 interface ExamResultViewProps {
   sessionId: string;
@@ -188,112 +190,126 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
           {/* Questions list */}
           <div className="space-y-6">
             {filteredResults.map((r, idx) => {
+              const showAd = (idx + 1) % 3 === 0;
+              const adType = Math.floor((idx + 1) / 3) % 2 === 1 ? "sense" : "affiliate";
+
               return (
-                <div
-                  key={r.questionId}
-                  className={`bg-white border rounded-2xl p-6 shadow-xs space-y-4 ${r.isCorrect
-                      ? "border-emerald-100"
-                      : r.userAnswerIndex === -1
-                        ? "border-amber-100"
-                        : "border-rose-100"
-                    }`}
-                >
-                  {/* Header */}
-                  <div className="flex items-center justify-between border-b border-slate-50 pb-3">
-                    <span className="text-[10px] font-bold text-slate-400">
-                      Câu {idx + 1} (Mã: #{r.questionId})
-                    </span>
-                    <span className="flex items-center gap-1 text-xs font-bold">
-                      {r.isCorrect ? (
-                        <span className="text-emerald-600 bg-emerald-50 border border-emerald-100 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[10px]">
-                          <CheckCircle className="w-3.5 h-3.5" />
-                          Đúng
-                        </span>
-                      ) : r.userAnswerIndex === -1 ? (
-                        <span className="text-amber-600 bg-amber-50 border border-amber-100 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[10px]">
-                          <AlertCircle className="w-3.5 h-3.5" />
-                          Chưa làm
-                        </span>
-                      ) : (
-                        <span className="text-rose-600 bg-rose-50 border border-rose-100 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[10px]">
-                          <XCircle className="w-3.5 h-3.5" />
-                          Sai
-                        </span>
-                      )}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="space-y-4">
-                    <p className="text-sm font-extrabold leading-relaxed text-slate-800 select-text">
-                      {r.questionText}
-                    </p>
-
-                    {/* Options */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {r.options.map((option, oIdx) => {
-                        const isUserChoice = r.userAnswerIndex === oIdx;
-                        const isCorrectChoice = r.correctAnswerIndex === oIdx;
-                        const letter = ["A", "B", "C", "D"][oIdx];
-
-                        let cardStyle = "bg-white border-slate-100 text-slate-800";
-                        let letterStyle = "bg-slate-100 text-slate-600";
-
-                        if (isCorrectChoice) {
-                          cardStyle = "bg-emerald-50 border-emerald-200 text-emerald-800 font-extrabold";
-                          letterStyle = "bg-emerald-500 text-white";
-                        } else if (isUserChoice && !r.isCorrect) {
-                          cardStyle = "bg-rose-50 border-rose-200 text-rose-800 font-extrabold";
-                          letterStyle = "bg-rose-500 text-white";
-                        }
-
-                        return (
-                          <div
-                            key={oIdx}
-                            className={`flex items-center gap-3 p-3.5 rounded-2xl border text-xs transition duration-200 ${cardStyle}`}
-                          >
-                            <span
-                              className={`w-6 h-6 flex items-center justify-center rounded-lg text-[10px] font-black shrink-0 ${letterStyle}`}
-                            >
-                              {letter}
-                            </span>
-                            <span>{option}</span>
-                          </div>
-                        );
-                      })}
+                <React.Fragment key={r.questionId}>
+                  <div
+                    className={`bg-white border rounded-2xl p-6 shadow-xs space-y-4 ${r.isCorrect
+                        ? "border-emerald-100"
+                        : r.userAnswerIndex === -1
+                          ? "border-amber-100"
+                          : "border-rose-100"
+                      }`}
+                  >
+                    {/* Header */}
+                    <div className="flex items-center justify-between border-b border-slate-50 pb-3">
+                      <span className="text-[10px] font-bold text-slate-400">
+                        Câu {idx + 1} (Mã: #{r.questionId})
+                      </span>
+                      <span className="flex items-center gap-1 text-xs font-bold">
+                        {r.isCorrect ? (
+                          <span className="text-emerald-600 bg-emerald-50 border border-emerald-100 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[10px]">
+                            <CheckCircle className="w-3.5 h-3.5" />
+                            Đúng
+                          </span>
+                        ) : r.userAnswerIndex === -1 ? (
+                          <span className="text-amber-600 bg-amber-50 border border-amber-100 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[10px]">
+                            <AlertCircle className="w-3.5 h-3.5" />
+                            Chưa làm
+                          </span>
+                        ) : (
+                          <span className="text-rose-600 bg-rose-50 border border-rose-100 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[10px]">
+                            <XCircle className="w-3.5 h-3.5" />
+                            Sai
+                          </span>
+                        )}
+                      </span>
                     </div>
 
-                    {/* Detailed Explanation + Affiliate box */}
-                    {r.explanation && (
-                      <div className="bg-sky-50/30 border border-sky-100/50 rounded-2xl p-4 space-y-3.5 select-text">
-                        <div>
-                          <p className="text-xs font-black text-sky-800">Lời giải chi tiết:</p>
-                          <p className="text-xs text-slate-700 leading-relaxed font-medium mt-1">
-                            {r.explanation}
-                          </p>
-                        </div>
-                        {/* Bẫy chuyển đổi Affiliate */}
-                        <div className="bg-white border border-slate-100 rounded-xl p-3 flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-2.5">
-                            <span className="text-lg">📚</span>
-                            <div>
-                              <h4 className="text-[10px] font-bold text-slate-800">Cẩm nang ôn luyện thi ETS 2026</h4>
-                              <p className="text-[9px] text-slate-400 leading-none">Combo giải đề chi tiết cùng phương pháp Linearthinking</p>
+                    {/* Content */}
+                    <div className="space-y-4">
+                      <p className="text-sm font-extrabold leading-relaxed text-slate-800 select-text">
+                        {r.questionText}
+                      </p>
+
+                      {/* Options */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {r.options.map((option, oIdx) => {
+                          const isUserChoice = r.userAnswerIndex === oIdx;
+                          const isCorrectChoice = r.correctAnswerIndex === oIdx;
+                          const letter = ["A", "B", "C", "D"][oIdx];
+
+                          let cardStyle = "bg-white border-slate-100 text-slate-800";
+                          let letterStyle = "bg-slate-100 text-slate-600";
+
+                          if (isCorrectChoice) {
+                            cardStyle = "bg-emerald-50 border-emerald-200 text-emerald-800 font-extrabold";
+                            letterStyle = "bg-emerald-500 text-white";
+                          } else if (isUserChoice && !r.isCorrect) {
+                            cardStyle = "bg-rose-50 border-rose-200 text-rose-800 font-extrabold";
+                            letterStyle = "bg-rose-500 text-white";
+                          }
+
+                          return (
+                            <div
+                              key={oIdx}
+                              className={`flex items-center gap-3 p-3.5 rounded-2xl border text-xs transition duration-200 ${cardStyle}`}
+                            >
+                              <span
+                                className={`w-6 h-6 flex items-center justify-center rounded-lg text-[10px] font-black shrink-0 ${letterStyle}`}
+                              >
+                                {letter}
+                              </span>
+                              <span>{option}</span>
                             </div>
-                          </div>
-                          <a
-                            href="https://shopee.vn"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-sky-500 hover:bg-sky-600 text-white font-bold text-[9px] px-3 py-1.5 rounded-lg transition shrink-0"
-                          >
-                            Mua ngay ⚡
-                          </a>
-                        </div>
+                          );
+                        })}
                       </div>
-                    )}
+
+                      {/* Detailed Explanation + Affiliate box */}
+                      {r.explanation && (
+                        <div className="bg-sky-50/30 border border-sky-100/50 rounded-2xl p-4 space-y-3.5 select-text">
+                          <div>
+                            <p className="text-xs font-black text-sky-800">Lời giải chi tiết:</p>
+                            <p className="text-xs text-slate-700 leading-relaxed font-medium mt-1">
+                              {r.explanation}
+                            </p>
+                          </div>
+                           {/* Bẫy chuyển đổi Affiliate */}
+                           <div className="bg-white border border-slate-100 rounded-xl p-3 flex items-center justify-between gap-4">
+                             <div className="flex items-center gap-2.5">
+                               <BookOpen className="w-5 h-5 text-slate-500 shrink-0" />
+                               <div>
+                                 <h4 className="text-[10px] font-bold text-slate-800">Cẩm nang ôn luyện thi ETS 2026</h4>
+                                 <p className="text-[9px] text-slate-400 leading-none">Combo giải đề chi tiết cùng phương pháp Linearthinking</p>
+                               </div>
+                             </div>
+                             <a
+                               href="https://shopee.vn"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               className="bg-sky-500 hover:bg-sky-600 text-white font-bold text-[9px] px-3 py-1.5 rounded-lg transition shrink-0"
+                             >
+                               Mua ngay
+                             </a>
+                           </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
+
+                  {showAd && (
+                    <div className="my-6">
+                      {adType === "sense" ? (
+                        <AdBanner adSlotId={`in-feed-ad-${r.questionId}`} />
+                      ) : (
+                        <AffiliateInFeedCard currentPage={1} rowIndex={idx} />
+                      )}
+                    </div>
+                  )}
+                </React.Fragment>
               );
             })}
 
@@ -307,10 +323,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
 
         {/* Right Column (30% - Sticky Sidebar Ad Slot) */}
         <div className="lg:col-span-4 sticky top-20 hidden lg:block">
-          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-xs min-h-[600px] flex flex-col items-center justify-center text-center text-slate-400 select-none border-dashed border-slate-200">
-            <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">ADSENSE CONTAINER</span>
-            <p className="text-[9px] text-slate-400 max-w-[150px] leading-relaxed mt-2">Quảng cáo tài trợ hiển thị sidebar, tự động cập nhật refresh.</p>
-          </div>
+          <AdBanner adSlotId="sidebar-result-ad" heightClass="h-[600px]" className="" />
         </div>
       </div>
     </div>

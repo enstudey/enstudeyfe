@@ -4,7 +4,26 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, Coffee } from "lucide-react";
+import { 
+  ChevronDown, 
+  Menu, 
+  X, 
+  Coffee,
+  GraduationCap,
+  Zap,
+  Mic,
+  Layers,
+  BarChart3,
+  Notebook,
+  Calculator,
+  School,
+  Map,
+  Newspaper,
+  Info,
+  ShieldCheck,
+  FileText,
+  Flame
+} from "lucide-react";
 import UserProfileDropdown from "./UserProfileDropdown";
 
 interface UserDto {
@@ -204,12 +223,24 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
                 </button>
                 <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-xl shadow-xl p-2 w-48 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                   <Link href="/exam" className="flex items-center justify-between px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
-                    <span>🏛️ Thi thử đầy đủ</span>
+                    <span className="flex items-center gap-2">
+                      <GraduationCap className="w-5 h-5 text-slate-500" />
+                      <span>Thi thử đầy đủ</span>
+                    </span>
                     <span className="bg-rose-500 text-white text-[9px] px-1.5 py-0.5 rounded-full font-black uppercase tracking-wider scale-90">HOT</span>
                   </Link>
-                  <Link href="/" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">⚡ Mini-test hàng ngày</Link>
-                  <Link href="/luyen-noi" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🎙️ Luyện nói AI</Link>
-                  <Link href="/the-ghi-nho" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗂️ Flashcard từ vựng</Link>
+                  <Link href="/" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
+                    <Zap className="w-5 h-5 text-slate-500" />
+                    <span>Mini-test hàng ngày</span>
+                  </Link>
+                  <Link href="/luyen-noi" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
+                    <Mic className="w-5 h-5 text-slate-500" />
+                    <span>Luyện nói AI</span>
+                  </Link>
+                  <Link href="/the-ghi-nho" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
+                    <Layers className="w-5 h-5 text-slate-500" />
+                    <span>Flashcard từ vựng</span>
+                  </Link>
                 </div>
               </div>
 
@@ -220,11 +251,26 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
                   <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
                 </button>
                 <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-xl shadow-xl p-2 w-52 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <Link href="/thong-ke" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📊 Phân tích học tập</Link>
-                  <Link href="/ngan-hang-cau-sai" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">📓 Sổ tay câu sai</Link>
-                  <Link href="/tinh-diem-tot-nghiep" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🧮 Công cụ tính điểm</Link>
-                  <Link href="/tra-cuu-tuyen-sinh" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🏫 Tra cứu Đại học</Link>
-                  <Link href="/lo-trinh" className="block px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">🗺️ Lộ trình học tập</Link>
+                  <Link href="/thong-ke" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
+                    <BarChart3 className="w-5 h-5 text-slate-500" />
+                    <span>Phân tích học tập</span>
+                  </Link>
+                  <Link href="/ngan-hang-cau-sai" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
+                    <Notebook className="w-5 h-5 text-slate-500" />
+                    <span>Sổ tay câu sai</span>
+                  </Link>
+                  <Link href="/tinh-diem-tot-nghiep" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
+                    <Calculator className="w-5 h-5 text-slate-500" />
+                    <span>Công cụ tính điểm</span>
+                  </Link>
+                  <Link href="/tra-cuu-tuyen-sinh" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
+                    <School className="w-5 h-5 text-slate-500" />
+                    <span>Tra cứu Đại học</span>
+                  </Link>
+                  <Link href="/lo-trinh" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-sky-50 hover:text-sky-600 rounded-xl transition duration-150">
+                    <Map className="w-5 h-5 text-slate-500" />
+                    <span>Lộ trình học tập</span>
+                  </Link>
                 </div>
               </div>
 
@@ -241,7 +287,7 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
               title="Trạm sạc năng lượng - Ủng hộ dự án"
             >
               <Coffee className="w-3.5 h-3.5 fill-current text-amber-600" />
-              <span className="hidden md:inline">Trạm sạc ☕</span>
+              <span className="hidden md:inline">Trạm sạc</span>
             </Link>
 
             {/* Streak Widget */}
@@ -253,7 +299,7 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
               }`}
               title={isGuest ? "Đăng nhập bằng Google để rèn luyện tích luỹ streak mỗi ngày nha!" : "Chuỗi ngày học liên tiếp"}
             >
-              <span className={isGuest ? "grayscale text-lg animate-pulse" : "text-lg"}>🔥</span>
+              <span className={`text-lg select-none ${isGuest ? "grayscale animate-pulse" : "font-emoji animate-pulse"}`}>🔥</span>
               <span className={`font-bold text-xs ${
                 isGuest
                   ? "text-slate-400"
@@ -315,39 +361,66 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
           
           <div className="flex flex-col gap-2.5 overflow-y-auto max-h-[70vh] pr-1">
             <Link href="/thong-ke" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
-              <span className="flex items-center gap-2">📊 Phân tích học tập</span>
+              <span className="flex items-center gap-2">
+                <BarChart3 className="w-5 h-5 text-sky-400" />
+                <span>Phân tích học tập</span>
+              </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
             <Link href="/ngan-hang-cau-sai" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
-              <span className="flex items-center gap-2">📓 Sổ tay câu sai</span>
+              <span className="flex items-center gap-2">
+                <Notebook className="w-5 h-5 text-sky-400" />
+                <span>Sổ tay câu sai</span>
+              </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
             <Link href="/tinh-diem-tot-nghiep" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
-              <span className="flex items-center gap-2">🧮 Công cụ tính điểm</span>
+              <span className="flex items-center gap-2">
+                <Calculator className="w-5 h-5 text-sky-400" />
+                <span>Công cụ tính điểm</span>
+              </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
             <Link href="/tra-cuu-tuyen-sinh" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
-              <span className="flex items-center gap-2">🏫 Tra cứu Đại học</span>
+              <span className="flex items-center gap-2">
+                <School className="w-5 h-5 text-sky-400" />
+                <span>Tra cứu Đại học</span>
+              </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
             <Link href="/lo-trinh" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
-              <span className="flex items-center gap-2">🗺️ Lộ trình học tập</span>
+              <span className="flex items-center gap-2">
+                <Map className="w-5 h-5 text-sky-400" />
+                <span>Lộ trình học tập</span>
+              </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
             <Link href="/tin-tuc" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
-              <span className="flex items-center gap-2">📰 Tin tức học thuật</span>
+              <span className="flex items-center gap-2">
+                <Newspaper className="w-5 h-5 text-sky-400" />
+                <span>Tin tức học thuật</span>
+              </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
             <Link href="/about" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
-              <span className="flex items-center gap-2">ℹ️ Giới thiệu</span>
+              <span className="flex items-center gap-2">
+                <Info className="w-5 h-5 text-sky-400" />
+                <span>Giới thiệu</span>
+              </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
             <Link href="/privacy-policy" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
-              <span className="flex items-center gap-2">🛡️ Bảo mật</span>
+              <span className="flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-sky-400" />
+                <span>Bảo mật</span>
+              </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
             <Link href="/terms-of-service" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between py-3 px-4 bg-slate-800/55 hover:bg-sky-500/10 hover:text-sky-400 rounded-xl transition duration-150 border border-slate-800/60">
-              <span className="flex items-center gap-2">📝 Điều khoản</span>
+              <span className="flex items-center gap-2">
+                <FileText className="w-5 h-5 text-sky-400" />
+                <span>Điều khoản</span>
+              </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
           </div>
@@ -356,7 +429,8 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
         {/* Drawer Footer / Account */}
         <div className="border-t border-slate-800 pt-4 mt-auto">
           <Link href="/tram-sac-nang-luong" onClick={() => setIsDrawerOpen(false)} className="flex items-center justify-center gap-2 border border-amber-500/30 bg-amber-500/10 text-amber-400 py-3.5 rounded-xl text-sm font-bold hover:bg-amber-500/20 transition">
-            <span>Trạm sạc năng lượng ⚡</span>
+            <Coffee className="w-4 h-4" />
+            <span>Trạm sạc năng lượng</span>
           </Link>
         </div>
       </div>

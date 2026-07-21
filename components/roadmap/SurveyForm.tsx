@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { RoadmapItem, TargetAudience } from "@/types/roadmap";
+import { Sprout, GraduationCap, Briefcase, BookOpen } from "lucide-react";
 
 interface SurveyFormProps {
   roadmaps: RoadmapItem[];
@@ -13,30 +14,30 @@ export function SurveyForm({ roadmaps }: SurveyFormProps) {
   const [selectedAudience, setSelectedAudience] = useState<TargetAudience>("SINH_VIEN");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const audienceOptions: { key: TargetAudience; title: string; desc: string; icon: string }[] = [
+  const audienceOptions: { key: TargetAudience; title: string; desc: string; icon: React.ReactNode }[] = [
     {
       key: "MAT_GOC",
       title: "Người Mất Gốc",
       desc: "Bắt đầu lại từ con số 0, lấy lại nền tảng từ vựng & ngữ pháp căn bản.",
-      icon: "🌱"
+      icon: <Sprout className="w-8 h-8 text-emerald-500 shrink-0" />
     },
     {
       key: "SINH_VIEN",
       title: "Sinh Viên (TOEIC 500+ / 750+)",
       desc: "Luyện thi chứng chỉ đáp ứng chuẩn đầu ra đại học và nâng cao phản xạ.",
-      icon: "🎓"
+      icon: <GraduationCap className="w-8 h-8 text-sky-500 shrink-0" />
     },
     {
       key: "NGUOI_DI_LAM",
       title: "Người Đi Làm (Giao Tiếp & IELTS)",
       desc: "Nâng cao vốn từ vựng chuyên ngành, nói lưu khoát phục vụ công việc.",
-      icon: "💼"
+      icon: <Briefcase className="w-8 h-8 text-indigo-500 shrink-0" />
     },
     {
       key: "HOC_SINH",
       title: "Học Sinh THPT",
       desc: "Ôn thi tốt nghiệp THPT Quốc Gia và đánh giá năng lực.",
-      icon: "📘"
+      icon: <BookOpen className="w-8 h-8 text-rose-500 shrink-0" />
     }
   ];
 
@@ -89,7 +90,9 @@ export function SurveyForm({ roadmaps }: SurveyFormProps) {
                 : "bg-white border-border hover:border-zinc-300 dark:bg-zinc-800/40 dark:border-zinc-700/60"
             }`}
           >
-            <span className="text-3xl">{item.icon}</span>
+            <div className="p-1 bg-slate-50 dark:bg-zinc-800 rounded-xl">
+              {item.icon}
+            </div>
             <div>
               <h3 className="font-bold text-zinc-900 dark:text-white mb-1">
                 {item.title}

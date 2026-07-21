@@ -27,16 +27,16 @@ export default function Footer() {
             <h2 className="text-xs font-bold text-white tracking-widest uppercase">Luyện đề</h2>
             <div className="flex flex-col gap-2.5 text-xs text-slate-400">
               <Link href="/exam" className="hover:text-white transition font-medium">
-                🏛️ Thi thử đầy đủ (Full-Test)
+                Thi thử đầy đủ (Full-Test)
               </Link>
               <Link href="/" className="hover:text-white transition font-medium">
-                ⚡ Mini-test hàng ngày
+                Mini-test hàng ngày
               </Link>
               <Link href="/luyen-noi" className="hover:text-white transition font-medium">
-                🎙️ Luyện nói AI
+                Luyện nói AI
               </Link>
               <Link href="/the-ghi-nho" className="hover:text-white transition font-medium">
-                🗂️ Flashcard từ vựng
+                Flashcard từ vựng
               </Link>
             </div>
           </div>
@@ -46,19 +46,19 @@ export default function Footer() {
             <h2 className="text-xs font-bold text-white tracking-widest uppercase">Khám phá & Công cụ</h2>
             <div className="flex flex-col gap-2.5 text-xs text-slate-400">
               <Link href="/tinh-diem-tot-nghiep" className="hover:text-white transition font-medium">
-                🧮 Công cụ tính điểm
+                Công cụ tính điểm
               </Link>
               <Link href="/tra-cuu-tuyen-sinh" className="hover:text-white transition font-medium">
-                🏫 Tra cứu Đại học
+                Tra cứu Đại học
               </Link>
               <Link href="/ngan-hang-cau-sai" className="hover:text-white transition font-medium">
-                📓 Sổ tay câu sai
+                Sổ tay câu sai
               </Link>
               <Link href="/thong-ke" className="hover:text-white transition font-medium">
-                📊 Phân tích học tập
+                Phân tích học tập
               </Link>
               <Link href="/lo-trinh" className="hover:text-white transition font-medium">
-                🗺️ Lộ trình học tập
+                Lộ trình học tập
               </Link>
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function Footer() {
                 Giới thiệu
               </Link>
               <Link href="/tram-sac-nang-luong" className="hover:text-white transition font-medium">
-                Trạm sạc ☕
+                Trạm sạc
               </Link>
               <Link href="/privacy-policy" className="hover:text-white transition font-medium">
                 Chính sách bảo mật
