@@ -21,8 +21,7 @@ import {
   Newspaper,
   Info,
   ShieldCheck,
-  FileText,
-  Flame
+  FileText
 } from "lucide-react";
 import UserProfileDropdown from "./UserProfileDropdown";
 

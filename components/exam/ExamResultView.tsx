@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { submitExam } from "@/lib/api/exam";
 import { ExamSubmitResponse } from "@/types/exam";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, CheckCircle, XCircle, AlertCircle, Clock, BarChart3 } from "lucide-react";
+import { ChevronLeft, CheckCircle, XCircle, AlertCircle, Clock, BarChart3, BookOpen } from "lucide-react";
 import Link from "next/link";
 import AdBanner from "@/components/ads/AdBanner";
 import AffiliateInFeedCard from "@/components/affiliate/AffiliateInFeedCard";
