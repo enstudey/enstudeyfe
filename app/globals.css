@@ -24,7 +24,7 @@ html {
   --font-sans: var(--font-inter-sans);
   --font-serif: var(--font-lora-serif);
   --font-mono: var(--font-geist-mono);
-  --background: #ffffff;
+  --background: #f8fafc;
   --foreground: #0f172a;
   --card-foreground: #0f172a;
   --popover: oklch(1 0 0);

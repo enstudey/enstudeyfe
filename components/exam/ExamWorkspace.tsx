@@ -100,6 +100,13 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
     }
   }, [sessionId, token, router]);
 
+  const handleExit = () => {
+    const confirmExit = window.confirm("Bạn có chắc chắn muốn thoát khỏi phòng thi? Tiến độ làm bài của bạn sẽ được lưu, nhưng thời gian thi vẫn sẽ tiếp tục trôi qua.");
+    if (confirmExit) {
+      router.push("/exam");
+    }
+  };
+
   // Khôi phục phiên thi
   useEffect(() => {
     async function initSession() {
@@ -294,7 +301,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => router.push("/exam")}
+            onClick={handleExit}
             className="rounded-xl hover:bg-slate-50 gap-1 font-bold text-xs"
           >
             <ArrowLeft className="w-4 h-4" />

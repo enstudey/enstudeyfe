@@ -21,7 +21,7 @@ export default async function ExamSessionPage({ params }: PageProps) {
   const token = cookieStore.get("token")?.value;
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA] flex flex-col justify-between">
+    <main className="min-h-screen flex flex-col justify-between">
       <ExamWorkspace sessionId={sessionId} token={token} />
     </main>
   );

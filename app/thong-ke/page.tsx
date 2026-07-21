@@ -18,7 +18,7 @@ export default async function AnalyticsPage() {
     "http://localhost:8080/oauth2/authorization/google";
 
   return (
-    <main className="max-w-5xl mx-auto py-10 px-4 sm:px-6">
+    <main className="w-full py-10 flex-grow">
       <h1 className="text-3xl font-extrabold mb-2 text-slate-900 dark:text-slate-100">
         Hiệu Năng Học Tập
       </h1>

@@ -71,7 +71,7 @@ export default function SoTayClient() {
   };
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full space-y-8">
+    <main className="w-full py-12 flex-grow space-y-8">
       <div className="text-center space-y-2">
         <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
           Kho lưu trữ từ vựng cá nhân 📖✨

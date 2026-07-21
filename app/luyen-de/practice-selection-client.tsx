@@ -59,7 +59,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
   const currentParts = examType === "TOEIC" ? toeicParts : ieltsParts;
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 flex-1 w-full space-y-10">
+    <main className="w-full py-12 flex-grow space-y-10">
       {/* Header Info */}
       <div className="text-center space-y-3">
         <div className="inline-flex items-center gap-1.5 bg-blue-50 dark:bg-blue-950/30 border border-blue-200/50 px-4 py-1.5 rounded-full text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
@@ -87,7 +87,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
         </div>
       )}
 
-      <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-6 md:p-8 shadow-sm space-y-8 max-w-3xl mx-auto">
+      <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-6 md:p-8 shadow-sm space-y-8 max-w-[1200px] mx-auto">
         {/* 1. Chọn loại chứng chỉ (Tabs) */}
         <div className="space-y-3">
           <label className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
@@ -246,7 +246,7 @@ export default function PracticeSelectionClient({ isGuest, googleLoginUrl }: Pra
       </div>
 
       {/* Gamification Grammar Swipe card */}
-      <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md relative overflow-hidden">
+      <div className="max-w-[1200px] mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md relative overflow-hidden">
         <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-y-6 translate-x-6">
           <Sparkles className="w-64 h-64" />
         </div>

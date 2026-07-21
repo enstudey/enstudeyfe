@@ -16,7 +16,7 @@ export default async function MistakeBankPage() {
   const googleLoginUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "http://localhost:8080/oauth2/authorization/google";
 
   return (
-    <main className="max-w-6xl mx-auto py-12 px-4">
+    <main className="w-full py-12 flex-grow">
       <h1 className="text-3xl font-extrabold mb-6 text-slate-900 flex items-center gap-2">
         <span>📖</span> Sổ tay câu sai (Mistake Bank)
       </h1>

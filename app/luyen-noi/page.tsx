@@ -15,7 +15,7 @@ export default async function SpeakingPage() {
   const googleLoginUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "http://localhost:8080/oauth2/authorization/google";
 
   return (
-    <main className="max-w-4xl mx-auto py-12 px-4 text-center">
+    <main className="w-full py-12 text-center flex-grow">
       <h1 className="text-3xl font-extrabold mb-4">Luyện Nói Du Kích cùng AI</h1>
       <p className="text-muted-foreground mb-8 max-w-md mx-auto">
         Trò chuyện phản xạ trực tiếp qua giọng nói với AI. Hệ thống sử dụng Web Speech API miễn phí trên thiết bị của bạn.
