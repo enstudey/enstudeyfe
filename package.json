@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "yarn type-check",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "type-check": "tsc --noEmit",
     "validate:affiliate": "node scripts/validate-affiliate-rules.js"
   },
   "dependencies": {

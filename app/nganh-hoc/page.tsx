@@ -12,10 +12,24 @@ interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
+function parsePageParam(pageParam: string | string[] | undefined): number {
+  if (typeof pageParam === "string") {
+    const parsed = parseInt(pageParam, 10);
+    return Number.isNaN(parsed) || parsed < 1 ? 1 : parsed;
+  }
+  if (Array.isArray(pageParam) && pageParam.length > 0) {
+    const first = pageParam[0];
+    if (typeof first === "string") {
+      const parsed = parseInt(first, 10);
+      return Number.isNaN(parsed) || parsed < 1 ? 1 : parsed;
+    }
+  }
+  return 1;
+}
+
 export default async function NganhHocListPage({ searchParams }: PageProps) {
-  const resolvedSearchParams = await searchParams;
-  const pageParam = resolvedSearchParams.page;
-  const initialPage = typeof pageParam === "string" ? parseInt(pageParam, 10) : 1;
+  const resolvedParams = await searchParams;
+  const initialPage = parsePageParam(resolvedParams?.page);
 
   // Lọc lấy các bài viết thuộc danh mục nganh-hoc
   const posts = getAllPostsMetadata().filter((post) => post.category === "nganh-hoc");

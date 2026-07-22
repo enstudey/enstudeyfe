@@ -428,6 +428,8 @@ export default function CalculatorPage() {
 
   const visibleScores = getVisibleScores();
   const subjectsInTranscriptGroup = TRANSCRIPT_SUBJECT_GROUPS[selectedTranscriptGroup] || [];
+  const transcriptUserScore = computedTranscriptData?.results[selectedTranscriptGroup] ?? 0;
+  const transcriptGpaSum = subjectsInTranscriptGroup.reduce((sum, sub) => sum + (computedTranscriptData?.subjectAvgs[sub] ?? 0), 0);
 
   return (
     <main className="py-12 w-full space-y-8 flex-grow">
@@ -557,16 +559,16 @@ export default function CalculatorPage() {
             {isTranscriptCalculated && computedTranscriptData && (
               <>
                 <TranscriptResultDashboard
-                  computedScores={computedTranscriptData.results}
-                  highestGroup={computedTranscriptData.highestGroup}
+                  computedScores={computedTranscriptData?.results ?? null}
+                  highestGroup={computedTranscriptData?.highestGroup ?? null}
                   selectedGroup={selectedTranscriptGroup}
                   setSelectedGroup={setSelectedTranscriptGroup}
                 />
 
                 <TranscriptEligibilityList
                   selectedGroup={selectedTranscriptGroup}
-                  userScore={computedTranscriptData.results[selectedTranscriptGroup] || 0}
-                  gpaSum={subjectsInTranscriptGroup.reduce((sum, sub) => sum + (computedTranscriptData.subjectAvgs[sub] || 0), 0)}
+                  userScore={transcriptUserScore}
+                  gpaSum={transcriptGpaSum}
                   thptScores={{}}
                   subjects={subjectsInTranscriptGroup}
                 />
