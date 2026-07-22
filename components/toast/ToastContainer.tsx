@@ -16,7 +16,7 @@ export default function ToastContainer() {
 
       // Reset state để tạo cảm giác flash mượt mà nếu tin nhắn mới trùng tin nhắn cũ
       setVisible(false);
-      
+
       setTimeout(() => {
         setToast({ message, type });
         setVisible(true);
@@ -62,9 +62,9 @@ export default function ToastContainer() {
       icon: "⚠",
     },
     info: {
-      bg: "bg-blue-50",
-      border: "border-blue-200",
-      text: "text-blue-800",
+      bg: "bg-indigo-50",
+      border: "border-indigo-200",
+      text: "text-indigo-800",
       icon: "ℹ",
     },
   };
@@ -73,9 +73,8 @@ export default function ToastContainer() {
 
   return (
     <div
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-[9999] w-[90%] sm:w-[400px] transition-all duration-300 transform ${
-        visible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0 pointer-events-none"
-      }`}
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-[9999] w-[90%] sm:w-[400px] transition-all duration-300 transform ${visible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0 pointer-events-none"
+        }`}
       role="alert"
     >
       <div className={`flex items-start gap-3 p-4 rounded-2xl border shadow-lg ${config.bg} ${config.border} backdrop-blur-sm`}>
@@ -83,7 +82,7 @@ export default function ToastContainer() {
         <div className={`flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold ${config.text} border border-current mt-0.5`}>
           {config.icon}
         </div>
-        
+
         {/* Content */}
         <div className="flex-1 min-w-0">
           <p className={`text-xs font-semibold leading-relaxed ${config.text}`}>

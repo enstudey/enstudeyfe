@@ -25,7 +25,7 @@ export default async function SpeakingPage() {
           <span className="text-lg">⚠️</span>
           <div>
             Bạn đang luyện nói ở mode ẩn danh. Cuộc hội thoại và đánh giá phát âm từ AI sẽ không được lưu lại.{" "}
-            <Link href="/login" className="underline font-bold text-blue-655 hover:text-blue-700 transition">
+            <Link href="/login" className="underline font-bold text-indigo-655 hover:text-indigo-700 transition">
               Đăng nhập ngay
             </Link>{" "}
             để lưu trữ lịch sử học tập nhé!
@@ -36,7 +36,7 @@ export default async function SpeakingPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-4xl mx-auto items-start text-center lg:text-left">
         {/* Khung chính */}
         <div className="lg:col-span-8 bg-white dark:bg-zinc-900 border border-slate-100 dark:border-zinc-800 rounded-3xl p-8 shadow-xs text-center">
-          <div className="w-20 h-20 bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+          <div className="w-20 h-20 bg-indigo-50 dark:bg-zinc-800 text-indigo-600 dark:text-indigo-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
             🎙️
           </div>
           <h2 className="text-xl font-bold mb-2">Bắt đầu hội thoại</h2>

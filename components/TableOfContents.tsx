@@ -30,7 +30,7 @@ export default function TableOfContents({ contentHtml }: { contentHtml: string }
             key={i}
             className={`${h.level === 3
               ? "pl-4 text-slate-500"
-              : "text-blue-600 hover:underline"
+              : "text-indigo-600 hover:underline"
               }`}
           >
             <a href={`#${h.id}`} className="hover:underline transition duration-150">

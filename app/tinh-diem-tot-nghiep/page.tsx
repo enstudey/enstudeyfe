@@ -453,7 +453,7 @@ export default function CalculatorPage() {
                 type="button"
                 onClick={() => setCalculationMethod(item.id as "THPT_EXAM" | "TRANSCRIPT")}
                 className={`px-4 py-3 rounded-xl border text-center font-bold text-xs transition duration-150 cursor-pointer ${calculationMethod === item.id
-                  ? "border-blue-600 bg-blue-50 text-blue-700 shadow-sm"
+                  ? "border-indigo-600 bg-indigo-50 text-indigo-700 shadow-sm"
                   : "border-slate-200 hover:bg-slate-50 text-slate-650"
                   }`}
               >

@@ -23,9 +23,9 @@ export default function BentoGrid({ topics, onSelectTopic }: BentoGridProps) {
           statusBadge = "Đã master";
           badgeBg = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
         } else if (topic.status === "studying") {
-          cardBg = "bg-blue-50/50 dark:bg-blue-950/10 border-blue-250 dark:border-blue-900/50 hover:bg-blue-100/50";
+          cardBg = "bg-indigo-50/50 dark:bg-indigo-950/10 border-indigo-250 dark:border-indigo-900/50 hover:bg-indigo-100/50";
           statusBadge = "Đang học";
-          badgeBg = "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300";
+          badgeBg = "bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300";
           pulseClass = "animate-pulse";
         }
 
@@ -77,7 +77,7 @@ export default function BentoGrid({ topics, onSelectTopic }: BentoGridProps) {
 
             {/* Middle Row: Title & Count */}
             <div className="my-3 space-y-1">
-              <h3 className="font-extrabold text-slate-800 dark:text-white text-sm tracking-tight leading-snug group-hover:text-blue-650 transition-colors">
+              <h3 className="font-extrabold text-slate-800 dark:text-white text-sm tracking-tight leading-snug group-hover:text-indigo-650 transition-colors">
                 {topic.topicId}
               </h3>
               <p className="text-[11px] text-slate-500 font-medium">

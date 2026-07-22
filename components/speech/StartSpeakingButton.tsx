@@ -13,7 +13,7 @@ export default function StartSpeakingButton() {
   useEffect(() => {
     const today = new Date().toDateString();
     const storedData = localStorage.getItem("speaking_turns_data");
-    
+
     if (storedData) {
       const { date, count } = JSON.parse(storedData);
       if (date === today) {
@@ -46,7 +46,7 @@ export default function StartSpeakingButton() {
       const newCount = turns + 1;
       setTurns(newCount);
       localStorage.setItem("speaking_turns_data", JSON.stringify({ date: today, count: newCount }));
-      
+
       alert(`Đã kết nối Micro thành công! Bắt đầu lượt nói thứ ${newCount}/5 của bạn.`);
     }, 1500);
   };
@@ -73,7 +73,7 @@ export default function StartSpeakingButton() {
     localStorage.setItem("speaking_turns_data", JSON.stringify({ date: today, count: 0 }));
     setTurns(0);
     setShowPopup(false);
-    
+
     alert("Cảm ơn bạn đã ủng hộ đối tác Tiki Trading! Hệ thống đã sạc đầy năng lượng cho bạn thêm 5 lượt nói miễn phí.");
   };
 
@@ -82,7 +82,7 @@ export default function StartSpeakingButton() {
       <button
         onClick={handleStart}
         disabled={isConnecting}
-        className="font-bold w-full py-3.5 bg-blue-600 hover:bg-blue-750 text-white rounded-xl shadow-md transition duration-200 cursor-pointer disabled:opacity-50"
+        className="font-bold w-full py-3.5 bg-indigo-600 hover:bg-indigo-750 text-white rounded-xl shadow-md transition duration-200 cursor-pointer disabled:opacity-50"
       >
         {isConnecting ? "Đang kết nối Micro..." : `Kết nối Micro & Bắt đầu (${turns}/5 lượt)`}
       </button>
@@ -98,7 +98,7 @@ export default function StartSpeakingButton() {
               ✕
             </button>
 
-            <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto">
+            <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center text-3xl mx-auto">
               ⚡
             </div>
 
@@ -117,7 +117,7 @@ export default function StartSpeakingButton() {
                 target="_blank"
                 rel="sponsored nofollow noopener noreferrer"
                 onClick={handleTikiClick}
-                className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold rounded-xl shadow-md transition-colors text-sm text-center"
+                className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold rounded-xl shadow-md transition-colors text-sm text-center"
               >
                 Ghé gian hàng Tai nghe & Sách Tiki Trading 🚀
               </a>

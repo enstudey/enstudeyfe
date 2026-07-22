@@ -63,7 +63,7 @@ export default function StartExamCard({
   return (
     <Card className="max-w-xl mx-auto rounded-2xl border-border shadow-sm p-6 md:p-8 space-y-6">
       <CardHeader className="space-y-2 text-center p-0">
-        <div className="inline-flex items-center justify-center p-3 bg-blue-50 rounded-xl text-blue-600 mx-auto w-fit">
+        <div className="inline-flex items-center justify-center p-3 bg-indigo-50 rounded-xl text-indigo-600 mx-auto w-fit">
           <Sparkles className="w-6 h-6 animate-pulse" />
         </div>
         <CardTitle className="text-xl md:text-2xl font-black text-foreground">{title}</CardTitle>

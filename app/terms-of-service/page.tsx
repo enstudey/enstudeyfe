@@ -20,7 +20,7 @@ export default function TermsOfServicePage() {
 
         <div className="prose max-w-none space-y-6 text-sm text-slate-700 leading-relaxed">
           <p>
-            Chào mừng bạn đến với <strong>EnStudey</strong> tại địa chỉ <a href="https://enstudey.com" className="underline font-semibold text-blue-600">enstudey.com</a>. Bằng việc truy cập, tham khảo tin tức hoặc sử dụng bất kỳ tiện ích tính toán nào trên trang web của chúng tôi, bạn đồng ý tuân thủ toàn bộ các điều khoản và quy định sử dụng dịch vụ dưới đây.
+            Chào mừng bạn đến với <strong>EnStudey</strong> tại địa chỉ <a href="https://enstudey.com" className="underline font-semibold text-indigo-600">enstudey.com</a>. Bằng việc truy cập, tham khảo tin tức hoặc sử dụng bất kỳ tiện ích tính toán nào trên trang web của chúng tôi, bạn đồng ý tuân thủ toàn bộ các điều khoản và quy định sử dụng dịch vụ dưới đây.
           </p>
 
           <hr className="border-slate-200 my-6" />
@@ -88,7 +88,7 @@ export default function TermsOfServicePage() {
             </ul>
           </section>
 
-          <p className="font-bold text-blue-600 text-center mt-6">
+          <p className="font-bold text-indigo-600 text-center mt-6">
             EnStudey kính chúc toàn thể các bạn sĩ tử ôn tập hiệu quả, xây dựng chiến thuật nguyện vọng thông minh và đạt kết quả cao trong kỳ thi Đại học sắp tới!
           </p>
         </div>

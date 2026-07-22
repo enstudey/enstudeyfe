@@ -269,7 +269,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
   if (loading) {
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center gap-4">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
         <p className="text-slate-500 text-sm font-medium">Đang tải phòng thi giả lập, chờ xíu nhé...</p>
       </div>
     );
@@ -331,8 +331,8 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
         {/* Timer & Submit CTA */}
         <div className="flex items-center gap-4">
           <div className={`flex items-center gap-2 px-3 py-0.5 rounded-xl shadow-inner transition-colors duration-300 font-mono ${isTimeUrgent
-              ? "bg-rose-50 border border-rose-100 text-rose-600 animate-pulse"
-              : "bg-blue-50 border border-blue-100/50 text-blue-700"
+            ? "bg-rose-50 border border-rose-100 text-rose-600 animate-pulse"
+            : "bg-indigo-50 border border-indigo-100/50 text-indigo-700"
             }`}>
             <Clock className="w-5 h-5 shrink-0" />
             <span data-testid="timer-countdown" className="exam-timer font-mono text-3xl md:text-4xl font-extrabold leading-none">
@@ -381,7 +381,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
           {/* Passage Section */}
           {isReading && currentQuestion?.passage ? (
             <div className="bg-white border border-border/50 rounded-xl p-6 shadow-sm select-text">
-              <span className="inline-flex items-center bg-blue-50 text-primary text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider mb-4">
+              <span className="inline-flex items-center bg-indigo-50 text-primary text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider mb-4">
                 📖 Đoạn văn đọc hiểu
               </span>
               <div className="exam-passage-container whitespace-pre-wrap select-text">
@@ -422,7 +422,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
           <div className="bg-white border border-border/50 rounded-xl p-6 shadow-sm flex flex-col justify-between gap-6 shrink-0">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-slate-100 pb-4 select-none">
-                <span className="bg-blue-50 text-primary border border-blue-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
+                <span className="bg-indigo-50 text-primary border border-indigo-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
                   {currentQuestion?.part || "TEST"} - Câu {currentQuestion?.order || currentIndex + 1}
                 </span>
                 <Button
@@ -464,8 +464,8 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                       key={idx}
                       onClick={() => handleSelectAnswer(currentQuestion.id, idx)}
                       className={`flex items-center text-left gap-4 p-4 md:p-5 rounded-xl border text-[16px] md:text-[18px] font-medium min-h-[48px] transition-all duration-150 cursor-pointer ${isSelected
-                          ? "bg-primary text-white border-primary shadow-md shadow-blue-100"
-                          : "bg-white text-slate-800 border-slate-100 hover:bg-slate-50 hover:border-primary/20"
+                        ? "bg-primary text-white border-primary shadow-md shadow-indigo-100"
+                        : "bg-white text-slate-800 border-slate-100 hover:bg-slate-50 hover:border-primary/20"
                         }`}
                     >
                       <span className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full text-[15px] md:text-base font-black shrink-0 ${isSelected ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
@@ -522,7 +522,7 @@ export default function ExamWorkspace({ sessionId, token }: ExamWorkspaceProps) 
                 } else if (isFlagged) {
                   gridBtnClass += "bg-amber-50 text-amber-800 border-amber-400";
                 } else if (isAnswered) {
-                  gridBtnClass += "bg-blue-50 text-primary border-blue-100";
+                  gridBtnClass += "bg-indigo-50 text-primary border-indigo-100";
                 } else {
                   gridBtnClass += "bg-white text-slate-400 border-slate-100 hover:bg-slate-50";
                 }

@@ -50,7 +50,7 @@ marked.use({
       },
       renderer(token) {
         const text = (token as { text?: string }).text ?? "";
-        return `<span class="glossary-term cursor-help border-b border-dashed border-blue-500 bg-blue-50/50 px-1 font-semibold text-blue-750" data-term="${text}">${text}</span>`;
+        return `<span class="glossary-term cursor-help border-b border-dashed border-indigo-500 bg-indigo-50/50 px-1 font-semibold text-indigo-750" data-term="${text}">${text}</span>`;
       },
     },
   ],
@@ -160,7 +160,7 @@ export const getPostBySlug = cache((
         });
 
         if (question && optionsList.length > 0 && correct && explanation) {
-          return `<div class="interactive-quiz-block my-6 p-5 bg-blue-50/50 border border-blue-100 rounded-2xl" 
+          return `<div class="interactive-quiz-block my-6 p-5 bg-indigo-50/50 border border-indigo-100 rounded-2xl" 
             data-question="${encodeURIComponent(question)}"
             data-options="${encodeURIComponent(JSON.stringify(optionsList))}"
             data-correct="${encodeURIComponent(correct)}"
@@ -170,8 +170,8 @@ export const getPostBySlug = cache((
 
         const htmlBody = marked(body.trim()) as string;
         return `<div class="interactive-answer my-4" data-testid="interactive-answer">
-          <button class="toggle-answer-btn px-3 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer">Xem đáp án</button>
-          <div class="answer-content hidden border-l-2 border-blue-500 pl-4 py-2 my-2 bg-slate-50 dark:bg-slate-900 rounded-r-xl">${htmlBody}</div>
+          <button class="toggle-answer-btn px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer">Xem đáp án</button>
+          <div class="answer-content hidden border-l-2 border-indigo-500 pl-4 py-2 my-2 bg-slate-50 dark:bg-slate-900 rounded-r-xl">${htmlBody}</div>
         </div>`;
       });
 

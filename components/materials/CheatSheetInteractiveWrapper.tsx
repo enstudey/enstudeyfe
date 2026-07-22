@@ -189,7 +189,7 @@ export default function CheatSheetInteractiveWrapper({
           }}
           data-testid="glossary-tooltip"
         >
-          <div className="font-extrabold text-blue-400 mb-1">{tooltip.term}</div>
+          <div className="font-extrabold text-indigo-400 mb-1">{tooltip.term}</div>
           <div className="leading-relaxed opacity-90">{tooltip.definition}</div>
           <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-full w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-slate-900"></div>
         </div>
@@ -220,7 +220,7 @@ function InteractiveQuiz({
 
   return (
     <div className="space-y-4">
-      <div className="text-xs font-bold text-blue-600 uppercase tracking-widest">
+      <div className="text-xs font-bold text-indigo-600 uppercase tracking-widest">
         Câu hỏi luyện tập (Từ vựng trong bài viết)
       </div>
       <div className="text-sm font-semibold text-slate-800 leading-relaxed whitespace-pre-line">
@@ -232,7 +232,7 @@ function InteractiveQuiz({
           const isCorrect = option === correct;
 
           let btnClass =
-            "bg-white border-slate-200 hover:border-blue-300 hover:bg-blue-50 text-slate-700";
+            "bg-white border-slate-200 hover:border-indigo-300 hover:bg-indigo-50 text-slate-700";
           if (selected) {
             if (isCorrect) {
               btnClass = "bg-emerald-50 border-emerald-300 text-emerald-700 font-bold";

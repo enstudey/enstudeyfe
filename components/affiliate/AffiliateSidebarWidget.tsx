@@ -55,7 +55,7 @@ export default function AffiliateSidebarWidget({ currentPage, seed }: Props) {
       data-testid="affiliate-sidebar-widget"
     >
       <div className="w-full text-left">
-        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">
+        <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider">
           Gợi ý dành cho bạn
         </span>
       </div>

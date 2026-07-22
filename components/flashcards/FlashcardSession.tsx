@@ -181,7 +181,7 @@ export default function FlashcardSession({
           &larr; Thoát
         </Button>
         <span className="text-xs font-extrabold text-slate-400">
-          Chủ đề: <span className="text-blue-600">{topicId}</span> ({queue.length} từ còn lại)
+          Chủ đề: <span className="text-indigo-600">{topicId}</span> ({queue.length} từ còn lại)
         </span>
       </div>
 
@@ -198,7 +198,7 @@ export default function FlashcardSession({
             {hasGhost && !isFlipped && (
               <div className="absolute top-0 left-0 w-full h-1 bg-slate-100">
                 <div
-                  className="h-full bg-blue-400/40 transition-all ease-linear"
+                  className="h-full bg-indigo-400/40 transition-all ease-linear"
                   style={{
                     width: startGhostAnim ? "100%" : "0%",
                     transitionDuration: startGhostAnim ? `${ghostDuration}ms` : "0ms",
@@ -248,7 +248,7 @@ export default function FlashcardSession({
           {/* BACK FACE */}
           <div className="absolute inset-0 backface-hidden rotate-y-180 bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between items-center shadow-md">
             <div className="w-full flex justify-between items-center pb-2 border-b border-slate-100">
-              <Badge variant="secondary" className="text-[9px] font-bold px-2 py-0.5 bg-blue-100 text-blue-750 uppercase tracking-wider">
+              <Badge variant="secondary" className="text-[9px] font-bold px-2 py-0.5 bg-indigo-100 text-indigo-750 uppercase tracking-wider">
                 Giải nghĩa
               </Badge>
               {getGhostFeedback()}
@@ -274,7 +274,7 @@ export default function FlashcardSession({
                   />
                 </div>
               </div>
-              <h4 className="text-lg font-extrabold text-blue-700">
+              <h4 className="text-lg font-extrabold text-indigo-700">
                 {currentCard.meaning}
               </h4>
               <p className="text-xs text-slate-500 leading-relaxed font-medium">

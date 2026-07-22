@@ -46,7 +46,7 @@ export default function ExamLibraryShelf() {
         <h3 className="text-lg font-bold text-slate-900 uppercase tracking-wide flex items-center gap-2">
           <span>📚</span> Ngân hàng đề thi thử
         </h3>
-        <Link href="/exam" className="text-xs font-semibold text-blue-600 hover:text-blue-700 transition">
+        <Link href="/exam" className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition">
           Xem tất cả &rarr;
         </Link>
       </div>
@@ -59,7 +59,7 @@ export default function ExamLibraryShelf() {
             className="min-w-[260px] md:min-w-0 snap-start bg-white border border-slate-100 rounded-3xl p-6 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
           >
             <div className="space-y-4">
-              <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl">
+              <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-2xl">
                 {exam.thumbnail}
               </div>
               <div className="space-y-2">
@@ -78,7 +78,7 @@ export default function ExamLibraryShelf() {
               </div>
               <Link
                 href={`/exam`}
-                className="bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold text-xs px-4 py-2 rounded-xl transition duration-150"
+                className="bg-indigo-50 hover:bg-indigo-100 text-indigo-600 font-bold text-xs px-4 py-2 rounded-xl transition duration-150"
               >
                 Vào thi ⚡
               </Link>

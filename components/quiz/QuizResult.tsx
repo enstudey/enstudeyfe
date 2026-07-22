@@ -66,7 +66,7 @@ export default function QuizResult({ questions, answers, elapsedSeconds, examTyp
   } else if (correctCount >= 7) {
     // Tốt
     ratingText = "Rất tốt! Cố gắng phát huy phong độ nhé! 🎉";
-    ratingColor = "text-blue-700 bg-blue-50 border-blue-200";
+    ratingColor = "text-indigo-700 bg-indigo-50 border-indigo-200";
   } else if (correctCount >= 5) {
     // Khá
     ratingText = "Khá ổn, nhưng vẫn còn một số lỗ hổng cần vá đấy! 🎯";
@@ -78,11 +78,11 @@ export default function QuizResult({ questions, answers, elapsedSeconds, examTyp
       {/* Khung điểm số nổi bật */}
       <div className={`border p-6 sm:p-8 rounded-3xl shadow-sm text-center space-y-4 ${ratingColor}`}>
         <div className="mx-auto w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-          <Award className="w-9 h-9 text-blue-500" />
+          <Award className="w-9 h-9 text-indigo-500" />
         </div>
         <h2 className="text-xl sm:text-2xl font-extrabold">Kết Quả Daily Quiz</h2>
         <div className="flex justify-center items-baseline gap-1 text-slate-800">
-          <span className="text-4xl font-black text-blue-500 font-mono">{correctCount}</span>
+          <span className="text-4xl font-black text-indigo-500 font-mono">{correctCount}</span>
           <span className="text-sm font-bold opacity-60">/ {totalQuestions} câu đúng</span>
         </div>
         <p className="text-xs font-semibold max-w-md mx-auto leading-relaxed">
@@ -107,7 +107,7 @@ export default function QuizResult({ questions, answers, elapsedSeconds, examTyp
         </Button>
         <Button
           onClick={handleShare}
-          className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl flex items-center gap-2 py-5 px-6 shadow-md cursor-pointer text-xs"
+          className="w-full sm:w-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-xl flex items-center gap-2 py-5 px-6 shadow-md cursor-pointer text-xs"
         >
           <Share2 className="w-4 h-4" />
           Chia sẻ kết quả
@@ -123,7 +123,7 @@ export default function QuizResult({ questions, answers, elapsedSeconds, examTyp
       {/* Review chi tiết câu hỏi */}
       <div className="space-y-6">
         <h3 className="text-base font-bold text-slate-800 flex items-center gap-2">
-          <BookOpen className="w-5 h-5 text-blue-500" />
+          <BookOpen className="w-5 h-5 text-indigo-500" />
           Xem lại đáp án chi tiết
         </h3>
 
@@ -137,8 +137,8 @@ export default function QuizResult({ questions, answers, elapsedSeconds, examTyp
               <div
                 key={q.id}
                 className={`bg-white border rounded-2xl p-5 sm:p-6 shadow-sm space-y-4 transition ${isCorrect
-                    ? "border-emerald-100 hover:border-emerald-250"
-                    : "border-rose-100 hover:border-rose-250"
+                  ? "border-emerald-100 hover:border-emerald-250"
+                  : "border-rose-100 hover:border-rose-250"
                   }`}
               >
                 {/* Header câu hỏi */}
@@ -185,10 +185,10 @@ export default function QuizResult({ questions, answers, elapsedSeconds, examTyp
                       >
                         <span
                           className={`w-6 h-6 rounded-md flex items-center justify-center font-bold text-[10px] ${isCorrectOption
-                              ? "bg-emerald-500 text-white"
-                              : isUserSelected
-                                ? "bg-rose-500 text-white"
-                                : "bg-slate-200 text-slate-500"
+                            ? "bg-emerald-500 text-white"
+                            : isUserSelected
+                              ? "bg-rose-500 text-white"
+                              : "bg-slate-200 text-slate-500"
                             }`}
                         >
                           {String.fromCharCode(65 + optIdx)}
@@ -200,8 +200,8 @@ export default function QuizResult({ questions, answers, elapsedSeconds, examTyp
                 </div>
 
                 {/* Giải thích câu hỏi */}
-                <div className="bg-blue-50/20 p-4 rounded-xl border border-blue-100/50 text-xs space-y-1">
-                  <div className="font-bold text-blue-850">Giải thích chi tiết:</div>
+                <div className="bg-indigo-50/20 p-4 rounded-xl border border-indigo-100/50 text-xs space-y-1">
+                  <div className="font-bold text-indigo-850">Giải thích chi tiết:</div>
                   <p className="text-slate-600 leading-relaxed">{q.explanation}</p>
                 </div>
               </div>

@@ -60,7 +60,7 @@ export default function CookieBanner() {
       <div className="relative flex flex-col gap-3">
         {/* Header */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-600 text-sm">
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 text-sm">
             🍪
           </div>
           <span className="font-semibold text-foreground text-sm">Cookie & Quyền riêng tư</span>
@@ -83,7 +83,7 @@ export default function CookieBanner() {
           Hello! Việc bạn cho phép EnStudey dùng một xíu Cookie 🍪 chính là cách &quot;tài trợ&quot; tuyệt vời để duy trì nền tảng này 100% miễn phí đó. Xem chi tiết tại{" "}
           <Link
             href="/privacy-policy"
-            className="underline text-blue-600 hover:opacity-80 font-medium transition-opacity"
+            className="underline text-indigo-600 hover:opacity-80 font-medium transition-opacity"
             data-testid="link-privacy-policy"
           >
             Chính sách bảo mật
@@ -95,7 +95,7 @@ export default function CookieBanner() {
         <div className="flex justify-end mt-1">
           <Button
             onClick={handleAccept}
-            className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium cursor-pointer shadow-sm"
+            className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-medium cursor-pointer shadow-sm"
             data-testid="btn-accept-cookie"
           >
             Duyệt luôn 🎯

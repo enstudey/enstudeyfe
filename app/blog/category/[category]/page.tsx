@@ -44,7 +44,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ c
       </h1>
 
       <div className="mb-8">
-        <Link href="/blog" className="text-blue-600 hover:underline inline-flex items-center gap-1 font-medium">
+        <Link href="/blog" className="text-indigo-600 hover:underline inline-flex items-center gap-1 font-medium">
           &larr; Tất cả bài viết nha
         </Link>
       </div>
@@ -52,16 +52,16 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ c
       <div className="grid gap-6 md:grid-cols-2">
         {filteredPosts.map((post, idx) => (
           <React.Fragment key={post.slug}>
-            <div className="border border-slate-150 bg-slate-50/50 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-blue-500/30 transition duration-300">
+            <div className="border border-slate-150 bg-slate-50/50 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-indigo-500/30 transition duration-300">
               <h2 className="text-xl font-bold mb-3 text-slate-955">
-                <Link href={`/blog/${post.slug}`} className="hover:text-blue-600 transition duration-200">
+                <Link href={`/blog/${post.slug}`} className="hover:text-indigo-600 transition duration-200">
                   {post.title}
                 </Link>
               </h2>
               <p className="text-slate-600 text-sm leading-relaxed mb-4">
                 {post.description}
               </p>
-              <Link href={`/blog/${post.slug}`} className="text-sm text-blue-600 font-medium hover:underline inline-flex items-center gap-1">
+              <Link href={`/blog/${post.slug}`} className="text-sm text-indigo-600 font-medium hover:underline inline-flex items-center gap-1">
                 Đọc tiếp nha &rarr;
               </Link>
             </div>

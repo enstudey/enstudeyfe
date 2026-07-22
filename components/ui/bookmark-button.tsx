@@ -36,7 +36,7 @@ export default function BookmarkButton({
       type="button"
       onClick={handleToggle}
       className={`btn-interactive cursor-pointer ${active
-        ? "text-blue-600 bg-blue-50"
+        ? "text-indigo-600 bg-indigo-50"
         : "text-slate-450 hover:text-slate-700 hover:bg-slate-50"
         } ${className}`}
       title={active ? "Xóa khỏi Sổ tay" : "Lưu vào Sổ tay"}

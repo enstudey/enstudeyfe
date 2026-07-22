@@ -40,7 +40,7 @@ export default function SubjectScoresInput({
 }: Props) {
   return (
     <div className="space-y-6">
-      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-blue-600 pl-3">
+      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-indigo-600 pl-3">
         1. Nhập điểm thi THPT quốc gia (Thang điểm 10)
       </h2>
 

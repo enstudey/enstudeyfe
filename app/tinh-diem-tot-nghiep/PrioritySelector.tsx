@@ -22,7 +22,7 @@ export default function PrioritySelector({
 }: Props) {
   return (
     <div className="space-y-4">
-      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-blue-600 pl-3">
+      <h2 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-l-4 border-indigo-600 pl-3">
         3. Chọn khu vực & Đối tượng ưu tiên tuyển sinh
       </h2>
       <div className="grid grid-cols-1 md:flex md:gap-5">

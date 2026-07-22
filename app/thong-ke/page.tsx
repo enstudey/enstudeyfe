@@ -35,8 +35,8 @@ export default async function AnalyticsPage() {
           </div>
 
           {/* CTA Box overlay */}
-          <div className="relative z-10 bg-white/90 dark:bg-slate-900/90 border border-blue-500/20 text-slate-900 dark:text-slate-100 rounded-3xl p-8 max-w-md text-center shadow-2xl space-y-6 backdrop-blur-md">
-            <div className="w-16 h-16 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-3xl mx-auto border border-blue-500/20">
+          <div className="relative z-10 bg-white/90 dark:bg-slate-900/90 border border-indigo-500/20 text-slate-900 dark:text-slate-100 rounded-3xl p-8 max-w-md text-center shadow-2xl space-y-6 backdrop-blur-md">
+            <div className="w-16 h-16 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-full flex items-center justify-center text-3xl mx-auto border border-indigo-500/20">
               📊
             </div>
             <div className="space-y-2">
@@ -49,7 +49,7 @@ export default async function AnalyticsPage() {
               <Button
                 asChild
                 size="lg"
-                className="font-bold text-xs bg-gradient-to-r from-blue-500 to-blue-655 text-white px-6 py-5 rounded-2xl shadow-lg hover:shadow-blue-500/20 active:scale-[0.98] transition-all duration-300 cursor-pointer"
+                className="font-bold text-xs bg-gradient-to-r from-indigo-500 to-indigo-655 text-white px-6 py-5 rounded-2xl shadow-lg hover:shadow-indigo-500/20 active:scale-[0.98] transition-all duration-300 cursor-pointer"
               >
                 <Link href="/login">Đăng nhập ngay! ⚡</Link>
               </Button>

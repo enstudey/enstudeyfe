@@ -43,7 +43,7 @@ export default function RelatedArticles({ posts }: RelatedArticlesProps) {
                         </Badge>
                       );
                     })()}
-                    <h4 className="text-sm font-bold text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
+                    <h4 className="text-sm font-bold text-foreground group-hover:text-indigo-600 transition-colors line-clamp-2">
                       {post.title}
                     </h4>
                   </div>

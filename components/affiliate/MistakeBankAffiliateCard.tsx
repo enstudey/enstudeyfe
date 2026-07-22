@@ -61,7 +61,7 @@ export default function MistakeBankAffiliateCard({
 
   return (
     <div
-      className={`w-full bg-blue-50/40 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/40 rounded-xl p-3 flex items-center justify-between gap-3 text-xs shadow-2xs ${className}`}
+      className={`w-full bg-indigo-50/40 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40 rounded-xl p-3 flex items-center justify-between gap-3 text-xs shadow-2xs ${className}`}
       data-testid="mistake-bank-affiliate-card"
     >
       <div className="flex items-center gap-3 min-w-0 flex-1">
@@ -75,7 +75,7 @@ export default function MistakeBankAffiliateCard({
           />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-[9px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+          <p className="text-[9px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
             Lỗ Hổng Kiến Thức • Gợi Ý Ôn Tập
           </p>
           <h4 className="font-extrabold text-slate-900 dark:text-white truncate text-xs">

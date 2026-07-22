@@ -56,7 +56,7 @@ export default function DonateSection() {
       className="mt-8 pt-8 border-t border-slate-200 space-y-6"
       data-testid="donate-section"
     >
-      <div className="bg-blue-50/30 border border-blue-500/10 rounded-3xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <div className="bg-indigo-50/30 border border-indigo-500/10 rounded-3xl p-6 flex flex-col md:flex-row gap-6 items-center">
         {/* Thư ngỏ */}
         <div className="flex-1 space-y-3">
           <h2 className="text-lg font-bold text-slate-955 flex items-center gap-2">
@@ -83,14 +83,14 @@ export default function DonateSection() {
             <div className="flex justify-between items-center gap-2 pt-1 border-t border-slate-100">
               <span className="text-slate-400">Số tài khoản</span>
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-blue-600">
+                <span className="font-bold text-indigo-600">
                   {config.account_no}
                 </span>
                 <Button
                   onClick={handleCopy}
                   data-testid="btn-copy-section"
                   variant="secondary"
-                  className="px-2.5 py-1 text-blue-750 bg-blue-100 hover:bg-blue-200 transition font-bold rounded-lg text-[10px] cursor-pointer"
+                  className="px-2.5 py-1 text-indigo-750 bg-indigo-100 hover:bg-indigo-200 transition font-bold rounded-lg text-[10px] cursor-pointer"
                 >
                   {copied ? "Đã chép ✓" : "Sao chép 📋"}
                 </Button>
@@ -100,7 +100,7 @@ export default function DonateSection() {
         </div>
 
         {/* Mã QR */}
-        <div className="w-44 h-44 border-4 border-dashed border-blue-500/20 rounded-2xl overflow-hidden shadow-md shrink-0 bg-slate-50 flex items-center justify-center">
+        <div className="w-44 h-44 border-4 border-dashed border-indigo-500/20 rounded-2xl overflow-hidden shadow-md shrink-0 bg-slate-50 flex items-center justify-center">
           <Image
             src={config.qr_template_url}
             alt="Mã QR chuyển khoản ủng hộ VietQR"
@@ -144,12 +144,12 @@ export default function DonateSection() {
               {config.donors.map((donor, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-50 border border-slate-200/50 px-3.5 py-3 rounded-2xl shrink-0 w-48 snap-start shadow-2xs hover:border-blue-500/20 transition-colors flex items-center justify-between"
+                  className="bg-slate-50 border border-slate-200/50 px-3.5 py-3 rounded-2xl shrink-0 w-48 snap-start shadow-2xs hover:border-indigo-500/20 transition-colors flex items-center justify-between"
                 >
                   <span className="font-bold text-slate-800 truncate pr-1 text-xs">
                     {donor.name}
                   </span>
-                  <span className="text-[10px] font-extrabold px-1.5 py-0.5 bg-blue-100 text-blue-600 rounded-md shrink-0">
+                  <span className="text-[10px] font-extrabold px-1.5 py-0.5 bg-indigo-100 text-indigo-600 rounded-md shrink-0">
                     {donor.amount}
                   </span>
                 </div>

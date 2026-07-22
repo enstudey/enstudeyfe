@@ -39,7 +39,7 @@ export default function FreshmanAffiliateCard({
 
   return (
     <div
-      className={`w-full bg-gradient-to-r from-emerald-50/60 via-blue-50/60 to-emerald-50/60 dark:from-emerald-950/20 dark:to-blue-950/20 border border-emerald-200/60 dark:border-emerald-900/40 rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 my-6 ${className}`}
+      className={`w-full bg-gradient-to-r from-emerald-50/60 via-indigo-50/60 to-emerald-50/60 dark:from-emerald-950/20 dark:to-indigo-950/20 border border-emerald-200/60 dark:border-emerald-900/40 rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 my-6 ${className}`}
       data-testid="freshman-affiliate-card"
     >
       <div className="flex items-center gap-4 w-full sm:w-auto">

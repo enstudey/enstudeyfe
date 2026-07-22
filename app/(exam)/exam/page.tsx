@@ -31,7 +31,7 @@ export default async function ExamsPage() {
       {/* Header Section */}
       <div className="space-y-4 text-center md:text-left">
         <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground flex items-center justify-center md:justify-start gap-3">
-          <GraduationCap className="w-10 h-10 text-blue-600 shrink-0" />
+          <GraduationCap className="w-10 h-10 text-indigo-600 shrink-0" />
           <span>Hệ Thống Thi Thử Chuẩn Hóa</span>
         </h1>
         <p className="text-muted-foreground text-base max-w-2xl">
@@ -52,11 +52,11 @@ export default async function ExamsPage() {
           {exams.map((exam) => (
             <div
               key={exam.id}
-              className="bg-card border border-border hover:border-blue-500/20 shadow-sm hover:shadow-md transition duration-300 rounded-3xl p-6 flex flex-col justify-between space-y-6"
+              className="bg-card border border-border hover:border-indigo-500/20 shadow-sm hover:shadow-md transition duration-300 rounded-3xl p-6 flex flex-col justify-between space-y-6"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="bg-blue-50 text-blue-600 border border-blue-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
+                  <span className="bg-indigo-50 text-indigo-600 border border-indigo-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
                     {exam.examType}
                   </span>
                   <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full uppercase tracking-wider">
@@ -70,11 +70,11 @@ export default async function ExamsPage() {
 
                 <div className="grid grid-cols-2 gap-4 pt-2">
                   <div className="flex items-center gap-2 text-muted-foreground text-xs">
-                    <Clock className="w-4 h-4 text-blue-500" />
+                    <Clock className="w-4 h-4 text-indigo-500" />
                     <span>{Math.round(exam.durationSeconds / 60)} phút làm bài</span>
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground text-xs">
-                    <BookOpen className="w-4 h-4 text-blue-500" />
+                    <BookOpen className="w-4 h-4 text-indigo-500" />
                     <span>{exam.totalQuestions} câu hỏi</span>
                   </div>
                 </div>

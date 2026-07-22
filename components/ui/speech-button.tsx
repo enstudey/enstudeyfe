@@ -84,7 +84,7 @@ export default function SpeechButton({
       data-testid={testId}
       onClick={handleSpeak}
       className={`btn-interactive cursor-pointer ${sizeClasses[size]} ${isSpeaking
-        ? "bg-blue-100 text-blue-750 animate-pulse"
+        ? "bg-indigo-100 text-indigo-750 animate-pulse"
         : "bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-800"
         } ${className}`}
       title="Phát âm từ vựng (Bấm lần 2 để đọc chậm)"

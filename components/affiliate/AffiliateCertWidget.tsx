@@ -43,7 +43,7 @@ export default function AffiliateCertWidget({ certType, certScore }: Props) {
 
   return (
     <div
-      className="w-full bg-blue-50/40 border border-blue-500/10 rounded-2xl p-4 flex items-center gap-4 mt-6"
+      className="w-full bg-indigo-50/40 border border-indigo-500/10 rounded-2xl p-4 flex items-center gap-4 mt-6"
       data-testid="affiliate-cert-widget"
     >
       <div className="flex-shrink-0 relative">
@@ -56,7 +56,7 @@ export default function AffiliateCertWidget({ certType, certScore }: Props) {
         />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-0.5">
+        <p className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider mb-0.5">
           Gợi ý dành cho bạn
         </p>
         <p className="font-bold text-sm text-slate-900 leading-snug truncate">

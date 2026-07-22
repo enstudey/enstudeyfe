@@ -21,7 +21,7 @@ export default function TramSacNangLuongPage() {
       {/* 1. Phần đầu trang */}
       <div className="bg-card border border-border rounded-3xl p-6 md:p-10 shadow-xs space-y-6">
         <div className="space-y-3">
-          <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
+          <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest block">
             Tiếp sức cộng đồng 🥤
           </span>
           <h1 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
@@ -68,21 +68,21 @@ export default function TramSacNangLuongPage() {
                 return (
                   <div key={rowIndex} className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {first && (
-                      <div className="bg-slate-50/50 border border-slate-200/50 px-4 py-3.5 rounded-2xl flex items-center justify-between hover:border-blue-500/20 transition duration-200">
+                      <div className="bg-slate-50/50 border border-slate-200/50 px-4 py-3.5 rounded-2xl flex items-center justify-between hover:border-indigo-500/20 transition duration-200">
                         <span className="font-bold text-slate-800 text-xs truncate">
                           {first.name}
                         </span>
-                        <span className="text-[10px] font-extrabold px-2 py-0.5 bg-blue-100 text-blue-600 rounded-md shrink-0">
+                        <span className="text-[10px] font-extrabold px-2 py-0.5 bg-indigo-100 text-indigo-600 rounded-md shrink-0">
                           {first.amount}
                         </span>
                       </div>
                     )}
                     {second && (
-                      <div className="bg-slate-50/50 border border-slate-200/50 px-4 py-3.5 rounded-2xl flex items-center justify-between hover:border-blue-500/20 transition duration-200">
+                      <div className="bg-slate-50/50 border border-slate-200/50 px-4 py-3.5 rounded-2xl flex items-center justify-between hover:border-indigo-500/20 transition duration-200">
                         <span className="font-bold text-slate-800 text-xs truncate">
                           {second.name}
                         </span>
-                        <span className="text-[10px] font-extrabold px-2 py-0.5 bg-blue-100 text-blue-600 rounded-md shrink-0">
+                        <span className="text-[10px] font-extrabold px-2 py-0.5 bg-indigo-100 text-indigo-600 rounded-md shrink-0">
                           {second.amount}
                         </span>
                       </div>
@@ -110,7 +110,7 @@ export default function TramSacNangLuongPage() {
             href="/qr-donate.webp"
             target="_blank"
             rel="sponsored nofollow noopener noreferrer"
-            className="mx-auto w-44 h-44 border-4 border-blue-500/10 rounded-2xl overflow-hidden shadow-md bg-slate-50 flex items-center justify-center cursor-zoom-in block"
+            className="mx-auto w-44 h-44 border-4 border-indigo-500/10 rounded-2xl overflow-hidden shadow-md bg-slate-50 flex items-center justify-center cursor-zoom-in block"
             title="Bấm để phóng to / mở ảnh QR trong tab mới"
           >
             <Image
@@ -135,7 +135,7 @@ export default function TramSacNangLuongPage() {
             </div>
             <div className="flex justify-between items-center gap-2 pt-1 border-t border-slate-100">
               <span className="text-slate-500">Số tài khoản</span>
-              <span className="font-bold text-blue-600">{account_no}</span>
+              <span className="font-bold text-indigo-600">{account_no}</span>
             </div>
           </div>
         </div>

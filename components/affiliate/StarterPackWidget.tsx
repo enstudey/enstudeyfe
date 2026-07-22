@@ -42,7 +42,7 @@ export default function StarterPackWidget({
       data-testid="starter-pack-widget"
     >
       <div className="space-y-1">
-        <span className="text-[10px] font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest block">
+        <span className="text-[10px] font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest block">
           🎁 Góc Hành Trang Học Viên
         </span>
         <h3 className="font-extrabold text-base text-foreground leading-snug">
@@ -66,7 +66,7 @@ export default function StarterPackWidget({
       <Button
         asChild
         size="lg"
-        className="w-full font-bold text-xs rounded-xl py-3 cursor-pointer shadow-xs bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
+        className="w-full font-bold text-xs rounded-xl py-3 cursor-pointer shadow-xs bg-gradient-to-r from-indigo-600 to-indigo-600 hover:from-indigo-700 hover:to-indigo-700 text-white"
       >
         <a
           href={redirectUrl}

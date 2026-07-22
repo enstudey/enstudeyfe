@@ -68,10 +68,10 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                 </div>
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div className="space-y-2">
-                    <span className="text-[10px] font-extrabold text-blue-600 uppercase tracking-widest">
+                    <span className="text-[10px] font-extrabold text-indigo-600 uppercase tracking-widest">
                       Ngành học
                     </span>
-                    <h3 className="font-extrabold text-slate-900 text-base leading-snug hover:text-blue-600 transition">
+                    <h3 className="font-extrabold text-slate-900 text-base leading-snug hover:text-indigo-600 transition">
                       <Link href={`/nganh-hoc/${post.slug}`}>{post.title}</Link>
                     </h3>
                     <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
@@ -80,7 +80,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                   </div>
                   <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-4 text-[11px] text-slate-400 font-semibold">
                     <span>{post.date}</span>
-                    <Link href={`/nganh-hoc/${post.slug}`} className="text-blue-600 hover:underline">
+                    <Link href={`/nganh-hoc/${post.slug}`} className="text-indigo-600 hover:underline">
                       Đọc chi tiết &rarr;
                     </Link>
                   </div>
@@ -110,7 +110,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                     key={item}
                     href={`/nganh-hoc?page=${item}`}
                     className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-full transition ${currentPage === item
-                      ? "bg-blue-600 text-white"
+                      ? "bg-indigo-600 text-white"
                       : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-55"
                       }`}
                   >

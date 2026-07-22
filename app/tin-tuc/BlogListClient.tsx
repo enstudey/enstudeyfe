@@ -95,7 +95,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
 
           {/* Text đè lên phía bên trái */}
           <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 md:w-1/2 flex flex-col justify-center p-6 z-10 text-white space-y-1.5 md:space-y-2">
-            <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-blue-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
+            <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-indigo-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
               Tài liệu đề xuất
             </span>
             <h3 className="font-extrabold text-sm md:text-lg leading-snug">
@@ -105,7 +105,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
               Tài liệu luyện thi thử IELTS Academic mới nhất, chuẩn bị tốt nhất cho kỳ thi IELTS của bạn.
             </p>
             <div className="pt-1">
-              <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-blue-600 group-hover:bg-blue-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
+              <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-indigo-600 group-hover:bg-indigo-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
                 Mua trên Tiki &rarr;
               </span>
             </div>
@@ -128,7 +128,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
               key={tab.id}
               onClick={() => handleTabChange(tab.id)}
               className={`inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full transition cursor-pointer ${selectedTab === tab.id
-                ? "bg-blue-600 text-white"
+                ? "bg-indigo-600 text-white"
                 : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
                 }`}
             >
@@ -167,7 +167,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                             </span>
                           );
                         })()}
-                        <h2 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                        <h2 className="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-2">
                           <Link href={`/tin-tuc/${post.slug}`} className="after:absolute after:inset-0">
                             {post.title}
                           </Link>
@@ -180,7 +180,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                         <div className="flex items-center gap-2 text-[10px] text-slate-600 font-semibold uppercase tracking-wider">
                           <span>{post.date}</span>
                         </div>
-                        <span className="text-xs font-bold text-blue-600 group-hover:underline">
+                        <span className="text-xs font-bold text-indigo-600 group-hover:underline">
                           Đọc tiếp &rarr;
                         </span>
                       </div>
@@ -281,7 +281,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                       <Link
                         key={`dots-${index}`}
                         href={`/tin-tuc?page=${item.page}`}
-                        className="flex items-center justify-center w-8 h-8 text-xs font-bold text-slate-400 hover:text-blue-600 hover:bg-slate-100 rounded-full transition"
+                        className="flex items-center justify-center w-8 h-8 text-xs font-bold text-slate-400 hover:text-indigo-600 hover:bg-slate-100 rounded-full transition"
                         title={`Đi tới trang ${item.page}`}
                       >
                         {item.label}
@@ -294,7 +294,7 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
                       key={item}
                       href={`/tin-tuc?page=${item}`}
                       className={`flex items-center justify-center w-8 h-8 text-xs font-bold rounded-full transition ${currentPage === item
-                        ? "bg-blue-600 text-white"
+                        ? "bg-indigo-600 text-white"
                         : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
                         }`}
                     >

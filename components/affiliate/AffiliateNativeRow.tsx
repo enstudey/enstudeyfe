@@ -60,7 +60,7 @@ export default function AffiliateNativeRow({ rowIndex, currentPage, isCard = fal
               className="rounded-xl object-cover flex-shrink-0"
             />
             <div>
-              <p className="font-bold text-xs text-foreground group-hover:text-blue-600 transition line-clamp-1">
+              <p className="font-bold text-xs text-foreground group-hover:text-indigo-600 transition line-clamp-1">
                 {product.title}
               </p>
               <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">
@@ -95,7 +95,7 @@ export default function AffiliateNativeRow({ rowIndex, currentPage, isCard = fal
               className="rounded-xl object-cover flex-shrink-0"
             />
             <div>
-              <p className="font-bold text-sm text-foreground group-hover:text-blue-600 transition">
+              <p className="font-bold text-sm text-foreground group-hover:text-indigo-600 transition">
                 {product.title}
               </p>
               <p className="text-xs text-slate-400 mt-0.5">

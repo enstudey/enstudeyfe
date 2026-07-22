@@ -332,14 +332,14 @@ export default function QuizContainer({ isGuest, token }: QuizContainerProps) {
 
       {loading ? (
         <div className="flex flex-col items-center justify-center min-h-[350px] space-y-4">
-          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-slate-500 text-sm font-medium">Đang chuẩn bị học liệu...</p>
         </div>
       ) : stage === "select" ? (
         <div className="space-y-8">
           <div className="space-y-4">
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight flex items-center justify-center gap-2">
-              <GraduationCap className="w-9 h-9 text-blue-500" />
+              <GraduationCap className="w-9 h-9 text-indigo-500" />
               Daily Mini-Test 10 Câu
             </h1>
             <p className="text-slate-500 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
@@ -353,7 +353,7 @@ export default function QuizContainer({ isGuest, token }: QuizContainerProps) {
               <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
                 Bạn đang làm bài ở chế độ ẩn danh. Để tích lũy Streak hàng ngày và lưu sổ tay câu sai vĩnh viễn, hãy{" "}
-                <Link href="/login" className="underline font-bold text-blue-600 hover:text-blue-700 transition">
+                <Link href="/login" className="underline font-bold text-indigo-600 hover:text-indigo-700 transition">
                   Đăng nhập ngay
                 </Link>!
               </div>
@@ -379,7 +379,7 @@ export default function QuizContainer({ isGuest, token }: QuizContainerProps) {
             {/* TOEIC Option Card */}
             <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition text-left flex flex-col justify-between space-y-6">
               <div className="space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center font-bold text-blue-655 text-lg">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center font-bold text-indigo-655 text-lg">
                   T
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">TOEIC Mini-Test</h3>
@@ -389,7 +389,7 @@ export default function QuizContainer({ isGuest, token }: QuizContainerProps) {
               </div>
               <Button
                 onClick={() => handleStartQuiz("TOEIC")}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-xl shadow cursor-pointer"
+                className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-4 rounded-xl shadow cursor-pointer"
               >
                 Làm đề TOEIC
               </Button>

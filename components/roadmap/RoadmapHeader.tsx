@@ -28,7 +28,7 @@ export function RoadmapHeader({ roadmap }: RoadmapHeaderProps) {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <div className="flex items-center gap-3 mb-2 flex-wrap">
-            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300">
+            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300">
               {getAudienceLabel(roadmap.targetAudience)}
             </span>
             <span className="text-xs text-zinc-500 dark:text-zinc-400">
@@ -57,13 +57,13 @@ export function RoadmapHeader({ roadmap }: RoadmapHeaderProps) {
           <span className="font-semibold text-zinc-800 dark:text-zinc-200">
             Tiến độ hoàn thành toàn bộ lộ trình
           </span>
-          <span className="font-bold text-blue-600 dark:text-blue-400">
+          <span className="font-bold text-indigo-600 dark:text-indigo-400">
             {roadmap.progressPercentage}%
           </span>
         </div>
         <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-3 rounded-full overflow-hidden">
           <div
-            className="bg-gradient-to-r from-blue-500 to-indigo-600 h-full rounded-full transition-all duration-500"
+            className="bg-gradient-to-r from-indigo-500 to-indigo-600 h-full rounded-full transition-all duration-500"
             style={{ width: `${Math.min(100, Math.max(0, roadmap.progressPercentage))}%` }}
           />
         </div>

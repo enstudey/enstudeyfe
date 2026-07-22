@@ -59,15 +59,15 @@ export default function AdSenseSlot({
     if (isVertical) {
       return (
         <div
-          className={`relative w-full border border-blue-100 dark:border-blue-950/40 bg-linear-to-b from-blue-50/50 to-blue-500/5 dark:from-zinc-900 dark:to-blue-950/10 rounded-3xl p-6 flex flex-col justify-between items-center text-center overflow-hidden group hover:shadow-md transition-all duration-300 ${className}`}
+          className={`relative w-full border border-indigo-100 dark:border-indigo-950/40 bg-linear-to-b from-indigo-50/50 to-indigo-500/5 dark:from-zinc-900 dark:to-indigo-950/10 rounded-3xl p-6 flex flex-col justify-between items-center text-center overflow-hidden group hover:shadow-md transition-all duration-300 ${className}`}
           style={{ minHeight }}
         >
-          <div className="absolute top-2 right-2 text-[8px] font-bold px-1.5 py-0.5 bg-blue-600/10 text-blue-600 dark:text-blue-400 rounded uppercase tracking-wider">
+          <div className="absolute top-2 right-2 text-[8px] font-bold px-1.5 py-0.5 bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 rounded uppercase tracking-wider">
             Tiki Partner
           </div>
-          
+
           <div className="space-y-4 my-auto">
-            <span className="text-[10px] text-blue-600 dark:text-blue-400 font-extrabold uppercase tracking-widest block">
+            <span className="text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-widest block">
               Tủ Sách Sĩ Tử
             </span>
             <h4 className="text-base font-extrabold text-slate-900 dark:text-white leading-snug max-w-[200px]">
@@ -83,7 +83,7 @@ export default function AdSenseSlot({
             target="_blank"
             rel="sponsored nofollow noopener noreferrer"
             onClick={handleTikiClick}
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold rounded-xl transition duration-200 shadow-xs uppercase tracking-wider"
+            className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-extrabold rounded-xl transition duration-200 shadow-xs uppercase tracking-wider"
           >
             Mua trên Tiki &rarr;
           </a>
@@ -132,15 +132,15 @@ export default function AdSenseSlot({
 
     return (
       <div
-        className={`relative w-full border border-blue-100 dark:border-blue-950/40 bg-linear-to-r from-blue-50/50 to-blue-500/5 dark:from-zinc-900 dark:to-blue-950/10 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4 hover:shadow-md transition-all duration-300 ${className}`}
+        className={`relative w-full border border-indigo-100 dark:border-indigo-950/40 bg-linear-to-r from-indigo-50/50 to-indigo-500/5 dark:from-zinc-900 dark:to-indigo-950/10 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4 hover:shadow-md transition-all duration-300 ${className}`}
         style={{ minHeight }}
       >
-        <div className="absolute top-2 right-2 text-[8px] font-bold px-1.5 py-0.5 bg-blue-600/10 text-blue-600 dark:text-blue-400 rounded uppercase tracking-wider">
+        <div className="absolute top-2 right-2 text-[8px] font-bold px-1.5 py-0.5 bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 rounded uppercase tracking-wider">
           Tiki Partner
         </div>
 
         <div className="flex items-center gap-4 text-center sm:text-left w-full sm:w-auto">
-          <div className="w-12 h-12 bg-blue-100 dark:bg-zinc-800 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-2xl flex-shrink-0 mx-auto sm:mx-0">
+          <div className="w-12 h-12 bg-indigo-100 dark:bg-zinc-800 text-indigo-600 dark:text-indigo-400 rounded-full flex items-center justify-center text-2xl flex-shrink-0 mx-auto sm:mx-0">
             📚
           </div>
           <div className="space-y-1">
@@ -158,7 +158,7 @@ export default function AdSenseSlot({
           target="_blank"
           rel="sponsored nofollow noopener noreferrer"
           onClick={handleTikiClick}
-          className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold rounded-xl transition duration-200 whitespace-nowrap shadow-xs uppercase tracking-wider w-full sm:w-auto text-center"
+          className="px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-extrabold rounded-xl transition duration-200 whitespace-nowrap shadow-xs uppercase tracking-wider w-full sm:w-auto text-center"
         >
           Mua trên Tiki &rarr;
         </a>

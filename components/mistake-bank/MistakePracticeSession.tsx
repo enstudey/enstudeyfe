@@ -177,7 +177,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   if (loading) {
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-xl mx-auto shadow-sm flex flex-col items-center justify-center min-h-[350px] space-y-4">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
         <p className="text-sm font-semibold text-slate-500">Đang chuẩn bị đề ôn tập câu sai...</p>
       </div>
     );
@@ -206,8 +206,8 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
   if (scoreInfo) {
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-8 max-w-xl mx-auto shadow-xl text-center space-y-6 animate-fadeIn">
-        <div className="mx-auto w-20 h-20 rounded-full bg-blue-50 flex items-center justify-center">
-          <Award className="w-10 h-10 text-blue-500" />
+        <div className="mx-auto w-20 h-20 rounded-full bg-indigo-50 flex items-center justify-center">
+          <Award className="w-10 h-10 text-indigo-500" />
         </div>
 
         {isOffline ? (
@@ -227,7 +227,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
               Bạn đã hoàn thành lượt ôn tập này. Hệ thống đã cập nhật độ thành thạo và streak tương ứng.
             </p>
             <div className="pt-4">
-              <span className="text-5xl font-black text-blue-500 font-mono">{scoreInfo.score}</span>
+              <span className="text-5xl font-black text-indigo-500 font-mono">{scoreInfo.score}</span>
               <span className="text-xl font-bold text-slate-400"> / {scoreInfo.total} câu đúng</span>
             </div>
           </div>
@@ -251,7 +251,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {/* Top Navigation */}
       <div className="flex justify-between items-center pb-4 border-b border-slate-100">
         <div className="space-y-1">
-          <span className="text-[10px] font-black text-blue-600 uppercase tracking-wider">Phiên ôn tập câu sai</span>
+          <span className="text-[10px] font-black text-indigo-600 uppercase tracking-wider">Phiên ôn tập câu sai</span>
           <h3 className="text-sm font-bold text-slate-800">
             Câu hỏi {currentIndex + 1} / {questions.length}
           </h3>
@@ -267,7 +267,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {/* Tiến độ chạy (Progress Bar) */}
       <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
         <div
-          className="bg-blue-500 h-full transition-all duration-300"
+          className="bg-indigo-500 h-full transition-all duration-300"
           style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
         />
       </div>
@@ -275,7 +275,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {/* Nội dung câu hỏi */}
       <div className="space-y-4">
         <div className="flex items-start gap-2 text-slate-800">
-          <HelpCircle className="w-5 h-5 text-blue-500 mt-1 shrink-0" />
+          <HelpCircle className="w-5 h-5 text-indigo-500 mt-1 shrink-0" />
           <p className="font-semibold text-sm sm:text-base leading-relaxed">
             {currentQuestion.questionText}
           </p>
@@ -296,22 +296,22 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
                 onClick={() => handleSelectOption(idx)}
                 disabled={isAnswered}
                 className={`p-4 rounded-2xl border text-xs sm:text-sm font-semibold flex items-center justify-between text-left transition ${isCorrectOption
-                    ? "bg-emerald-50/30 text-emerald-800 border-emerald-250 shadow-xs"
-                    : isWrongChoice
-                      ? "bg-rose-50/50 text-rose-800 border-rose-250 shadow-xs"
-                      : isSelected
-                        ? "bg-blue-50 text-blue-800 border-blue-300 shadow-xs"
-                        : "bg-white text-slate-700 hover:bg-slate-50 border-slate-200"
+                  ? "bg-emerald-50/30 text-emerald-800 border-emerald-250 shadow-xs"
+                  : isWrongChoice
+                    ? "bg-rose-50/50 text-rose-800 border-rose-250 shadow-xs"
+                    : isSelected
+                      ? "bg-indigo-50 text-indigo-800 border-indigo-300 shadow-xs"
+                      : "bg-white text-slate-700 hover:bg-slate-50 border-slate-200"
                   } ${isAnswered ? "cursor-default" : "cursor-pointer hover:scale-[1.01] active:scale-[0.99]"}`}
               >
                 <div className="flex items-center gap-3">
                   <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${isCorrectOption
-                      ? "bg-emerald-500 text-white"
-                      : isWrongChoice
-                        ? "bg-rose-500 text-white"
-                        : isSelected
-                          ? "bg-blue-500 text-white"
-                          : "bg-slate-100 text-slate-500"
+                    ? "bg-emerald-500 text-white"
+                    : isWrongChoice
+                      ? "bg-rose-500 text-white"
+                      : isSelected
+                        ? "bg-indigo-500 text-white"
+                        : "bg-slate-100 text-slate-500"
                     }`}>
                     {["A", "B", "C", "D"][idx]}
                   </span>
@@ -328,8 +328,8 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
 
       {/* Hiển thị Giải thích câu hỏi sau khi chọn */}
       {isAnswered && explanation && (
-        <div className="bg-blue-50/20 border border-blue-100/50 rounded-2xl p-4 text-xs sm:text-sm space-y-2 animate-slideDown">
-          <div className="font-bold text-blue-850 flex items-center gap-1.5">
+        <div className="bg-indigo-50/20 border border-indigo-100/50 rounded-2xl p-4 text-xs sm:text-sm space-y-2 animate-slideDown">
+          <div className="font-bold text-indigo-850 flex items-center gap-1.5">
             <BookOpen className="w-4 h-4" />
             Giải thích đáp án:
           </div>
@@ -343,7 +343,7 @@ export default function MistakePracticeSession({ token, onClose }: MistakePracti
       {isAnswered && (
         <Button
           onClick={handleNext}
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow hover:shadow-lg transition active:scale-[0.98]"
+          className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow hover:shadow-lg transition active:scale-[0.98]"
         >
           {currentIndex < questions.length - 1 ? "Câu tiếp theo" : "Nộp bài và hoàn thành"}
           <ChevronRight className="w-4 h-4" />

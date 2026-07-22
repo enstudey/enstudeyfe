@@ -83,8 +83,8 @@ export const AnalyticsDashboard: React.FC = () => {
           <button
             onClick={() => handleExamTypeChange(EXAM_TYPES.TOEIC)}
             className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${examType === EXAM_TYPES.TOEIC
-                ? "bg-white dark:bg-slate-800 text-blue-655 dark:text-blue-400 shadow-sm"
-                : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+              ? "bg-white dark:bg-slate-800 text-indigo-655 dark:text-indigo-400 shadow-sm"
+              : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
               }`}
           >
             📘 TOEIC (990)
@@ -92,8 +92,8 @@ export const AnalyticsDashboard: React.FC = () => {
           <button
             onClick={() => handleExamTypeChange(EXAM_TYPES.IELTS)}
             className={`px-4 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${examType === EXAM_TYPES.IELTS
-                ? "bg-white dark:bg-slate-800 text-emerald-650 dark:text-emerald-400 shadow-sm"
-                : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+              ? "bg-white dark:bg-slate-800 text-emerald-650 dark:text-emerald-400 shadow-sm"
+              : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
               }`}
           >
             📕 IELTS (9.0)

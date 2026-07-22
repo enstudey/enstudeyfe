@@ -74,7 +74,7 @@ export default function DailyQuizWidget({ userFullName = "bạn", token }: Daily
     return (
       <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300">
         <div className="flex-1 space-y-4 text-left">
-          <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 text-[10px] px-2.5 py-1 rounded-full font-extrabold uppercase tracking-wider">
+          <span className="inline-flex items-center gap-1 bg-indigo-50 text-indigo-600 text-[10px] px-2.5 py-1 rounded-full font-extrabold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" /> Hôm nay nè bạn ơi! 🔥
           </span>
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -102,7 +102,7 @@ export default function DailyQuizWidget({ userFullName = "bạn", token }: Daily
                 cx="48"
                 cy="48"
                 r={radius}
-                className="stroke-blue-500 transition-all duration-1000 ease-out"
+                className="stroke-indigo-500 transition-all duration-1000 ease-out"
                 strokeWidth={strokeWidth}
                 fill="transparent"
                 strokeDasharray={circumference}
@@ -118,7 +118,7 @@ export default function DailyQuizWidget({ userFullName = "bạn", token }: Daily
 
           <Link
             href="/quiz"
-            className="w-full sm:w-auto text-center h-14 px-8 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl transition duration-150 flex items-center justify-center gap-1.5 shadow-lg shadow-blue-500/20 text-sm hover:scale-[1.02] active:scale-[0.98]"
+            className="w-full sm:w-auto text-center h-14 px-8 bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-xl transition duration-150 flex items-center justify-center gap-1.5 shadow-lg shadow-indigo-500/20 text-sm hover:scale-[1.02] active:scale-[0.98]"
           >
             Luyện Ngay (5 Phút) ⚡
           </Link>

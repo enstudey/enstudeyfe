@@ -296,7 +296,7 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
   if (isSubmitting) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] gap-3">
-        <RefreshCw className="w-10 h-10 text-blue-500 animate-spin" />
+        <RefreshCw className="w-10 h-10 text-indigo-500 animate-spin" />
         <p className="text-slate-500 font-bold text-sm">Đang nộp bài và tính điểm...</p>
       </div>
     );
@@ -305,7 +305,7 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
   if (loading) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] gap-3">
-        <RefreshCw className="w-10 h-10 text-blue-500 animate-spin" />
+        <RefreshCw className="w-10 h-10 text-indigo-500 animate-spin" />
         <p className="text-slate-500 font-bold text-sm">Đang tải danh sách câu hỏi...</p>
       </div>
     );
@@ -317,7 +317,7 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
         <AlertCircle className="w-12 h-12 text-red-500 mx-auto" />
         <h3 className="text-lg font-bold text-slate-900 dark:text-white">Đã xảy ra lỗi</h3>
         <p className="text-slate-500 text-sm">{error}</p>
-        <Button onClick={loadQuestions} className="w-full bg-blue-500 hover:bg-blue-600 cursor-pointer">
+        <Button onClick={loadQuestions} className="w-full bg-indigo-500 hover:bg-indigo-600 cursor-pointer">
           Thử lại
         </Button>
       </div>
@@ -330,8 +330,8 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
     return (
       <div className="max-w-md mx-auto px-6 py-12 space-y-8 text-center">
         <div className="space-y-3">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 mb-2">
-            <Sparkles className="w-8 h-8 text-blue-500 dark:text-blue-400 animate-bounce" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 mb-2">
+            <Sparkles className="w-8 h-8 text-indigo-500 dark:text-indigo-400 animate-bounce" />
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Hoàn Thành Phiên Chơi!</h2>
           <p className="text-slate-500 text-sm">Báo cáo kết quả phiên vuốt ngữ pháp của bạn</p>
@@ -339,7 +339,7 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
 
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-5 rounded-2xl">
-            <div className="text-2xl font-extrabold text-blue-500 dark:text-blue-400 font-mono">
+            <div className="text-2xl font-extrabold text-indigo-500 dark:text-indigo-400 font-mono">
               {submitResult.score}/{submitResult.total}
             </div>
             <div className="text-xs text-slate-400 font-bold mt-1">ĐÚNG HOÀN TOÀN</div>
@@ -367,7 +367,7 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
         {isGuest && (
           <div className="bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-300 rounded-xl p-4 text-xs text-left">
             Đăng nhập tài khoản để tích lũy XP bền vững và tự động lưu các câu làm sai vào Sổ tay câu sai (Mistake Bank).
-            <Link href="/login" className="block font-bold text-blue-655 dark:text-blue-400 hover:underline mt-2">
+            <Link href="/login" className="block font-bold text-indigo-655 dark:text-indigo-400 hover:underline mt-2">
               Đăng nhập ngay &rarr;
             </Link>
           </div>
@@ -376,7 +376,7 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
         <div className="flex gap-3">
           <Button
             onClick={loadQuestions}
-            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl py-3 cursor-pointer text-xs"
+            className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-xl py-3 cursor-pointer text-xs"
           >
             Chơi lượt tiếp theo
           </Button>
@@ -425,7 +425,7 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
       {/* Progress Bar */}
       <div className="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
         <div
-          className="bg-blue-500 h-full transition-all duration-350"
+          className="bg-indigo-500 h-full transition-all duration-350"
           style={{ width: `${((currentIndex) / questions.length) * 100}%` }}
         />
       </div>
@@ -444,12 +444,12 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
             onTouchMove={(e) => dragStart && handleDragMove(e.touches[0].clientX, e.touches[0].clientY)}
             onTouchEnd={handleDragEnd}
             className={`w-full max-w-sm bg-white dark:bg-slate-950 border-2 rounded-3xl shadow-lg p-6 md:p-8 flex flex-col justify-between items-center text-center cursor-grab active:cursor-grabbing transition-transform duration-300 relative overflow-hidden ${isWordSelectionMode
-                ? "border-blue-400 dark:border-blue-900"
-                : dragOffset.x > 30
-                  ? "border-emerald-400 dark:border-emerald-900 bg-emerald-50/5 dark:bg-emerald-950/5"
-                  : dragOffset.x < -30
-                    ? "border-red-400 dark:border-red-900 bg-red-50/5 dark:bg-red-950/5"
-                    : "border-slate-200 dark:border-slate-850"
+              ? "border-indigo-400 dark:border-indigo-900"
+              : dragOffset.x > 30
+                ? "border-emerald-400 dark:border-emerald-900 bg-emerald-50/5 dark:bg-emerald-950/5"
+                : dragOffset.x < -30
+                  ? "border-red-400 dark:border-red-900 bg-red-50/5 dark:bg-red-950/5"
+                  : "border-slate-200 dark:border-slate-850"
               }`}
           >
             {/* Visual indicator on card overlay */}
@@ -468,7 +468,7 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
             {isWordSelectionMode ? (
               <div className="w-full flex-1 flex flex-col justify-center space-y-6">
                 <div className="space-y-1">
-                  <span className="text-blue-655 dark:text-blue-400 text-[10px] font-bold uppercase tracking-widest">
+                  <span className="text-indigo-655 dark:text-indigo-400 text-[10px] font-bold uppercase tracking-widest">
                     Chế độ phát hiện lỗi
                   </span>
                   <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 leading-relaxed">
@@ -511,7 +511,7 @@ export default function GrammarSwipeContainer({ isGuest, token }: GrammarSwipeCo
 
                 {clickedWordIndex !== null && (
                   <div className="bg-slate-50 dark:bg-slate-900/50 border border-slate-150 dark:border-slate-850 p-4 rounded-xl text-left text-xs text-slate-600 dark:text-slate-400 space-y-1.5 animate-fadeIn">
-                    <div className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider">
+                    <div className="flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-wider">
                       <Info className="w-3.5 h-3.5" />
                       <span>Giải thích lỗi sai</span>
                     </div>

@@ -75,7 +75,7 @@ export default function TranscriptResultDashboard({
             type="button"
             onClick={() => setActiveTab(tab.id as "all" | "A" | "B" | "C" | "D" | "X_TH")}
             className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${activeTab === tab.id
-              ? "bg-blue-600 text-white"
+              ? "bg-indigo-600 text-white"
               : "bg-slate-100 text-slate-600 hover:bg-slate-200"
               }`}
           >
@@ -96,12 +96,12 @@ export default function TranscriptResultDashboard({
                 type="button"
                 onClick={() => setSelectedGroup(grp)}
                 className={`p-4 border rounded-xl flex flex-col items-center justify-center gap-1 transition duration-150 cursor-pointer text-center w-full ${selectedGroup === grp
-                  ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-600"
+                  ? "border-indigo-600 bg-indigo-50/50 ring-2 ring-indigo-600"
                   : "border-slate-200 bg-slate-50/50 hover:bg-slate-100"
                   }`}
               >
                 <span className="font-bold text-xs text-slate-500">{grp}</span>
-                <span className="font-extrabold text-lg text-blue-600">
+                <span className="font-extrabold text-lg text-indigo-600">
                   {val.toFixed(2)}
                 </span>
               </button>

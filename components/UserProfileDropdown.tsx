@@ -55,7 +55,7 @@ export default function UserProfileDropdown({ user, token }: UserProfileDropdown
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none cursor-pointer group rounded-full" data-testid="user-profile-dropdown">
-        <Avatar className="w-9 h-9 border border-slate-200 transition-all duration-200 group-hover:ring-2 group-hover:ring-blue-500">
+        <Avatar className="w-9 h-9 border border-slate-200 transition-all duration-200 group-hover:ring-2 group-hover:ring-indigo-500">
           {isAnon ? (
             <AvatarFallback
               className="text-sm font-bold text-white uppercase"

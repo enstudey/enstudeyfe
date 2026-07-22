@@ -261,18 +261,18 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
       {computedScores ? (
         <div className="space-y-4">
-          <div className="bg-blue-50 border border-blue-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="bg-indigo-50 border border-indigo-500/20 rounded-2xl p-4 text-xs font-semibold text-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <span className="leading-relaxed">
               Hệ thống đang đối sánh tự động dựa trên điểm số đã tính:{" "}
               <span className="inline-flex flex-wrap gap-x-2 gap-y-1 mt-1.5 sm:mt-0 sm:ml-1 align-middle">
                 {topThreeScores.map(([group, score]) => (
-                  <span key={group} className="inline-block bg-white px-2 py-0.5 rounded border border-blue-500/10 whitespace-nowrap text-[11px]">
-                    <span className="font-bold text-blue-600">{group}</span>: {score.toFixed(2)}
+                  <span key={group} className="inline-block bg-white px-2 py-0.5 rounded border border-indigo-500/10 whitespace-nowrap text-[11px]">
+                    <span className="font-bold text-indigo-600">{group}</span>: {score.toFixed(2)}
                   </span>
                 ))}
               </span>
             </span>
-            <Link href="/tinh-diem-tot-nghiep" className="text-blue-600 hover:underline whitespace-nowrap font-bold flex-shrink-0 self-start sm:self-auto">
+            <Link href="/tinh-diem-tot-nghiep" className="text-indigo-600 hover:underline whitespace-nowrap font-bold flex-shrink-0 self-start sm:self-auto">
               Tính điểm lại &rarr;
             </Link>
           </div>
@@ -310,7 +310,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
 
               {/* Text đè lên phía bên trái */}
               <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 md:w-1/2 flex flex-col justify-center p-6 z-10 text-white space-y-1.5 md:space-y-2">
-                <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-blue-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
+                <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest text-indigo-300 bg-white/10 px-2.5 py-0.5 rounded-full w-max">
                   Tài liệu đề xuất
                 </span>
                 <h3 className="font-extrabold text-sm md:text-lg leading-snug">
@@ -320,7 +320,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                   Tài liệu luyện thi thử IELTS Academic mới nhất, chuẩn bị tốt nhất cho kỳ thi IELTS của bạn.
                 </p>
                 <div className="pt-1">
-                  <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-blue-600 group-hover:bg-blue-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
+                  <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-bold bg-indigo-600 group-hover:bg-indigo-750 text-white px-3.5 py-1.5 rounded-xl transition duration-200">
                     Mua trên Tiki &rarr;
                   </span>
                 </div>
@@ -331,7 +331,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
       ) : (
         <div className="bg-slate-100 border border-slate-200 rounded-2xl p-4 text-xs font-semibold text-slate-650 flex justify-between items-center">
           <span>Bạn chưa tính điểm thi THPT? Tính ngay để xem gợi ý các phân vùng an toàn/rủi ro.</span>
-          <Link href="/tinh-diem-tot-nghiep" className="text-blue-600 hover:underline">
+          <Link href="/tinh-diem-tot-nghiep" className="text-indigo-600 hover:underline">
             Tính điểm thi &rarr;
           </Link>
         </div>
@@ -349,7 +349,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 data-testid="input-search"
-                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 text-sm font-semibold"
+                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-600 text-sm font-semibold"
               />
             </div>
             <div className="lg:col-span-2 space-y-1.5">
@@ -411,7 +411,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
           <div className="space-y-2 pt-4 border-t border-border">
             <div className="flex justify-between text-[10px] font-bold text-slate-500 tracking-wider uppercase">
               <label htmlFor="score-range-input">Khoảng điểm sàn</label>
-              <span className="text-blue-600">{scoreRange} Điểm</span>
+              <span className="text-indigo-600">{scoreRange} Điểm</span>
             </div>
             <input
               id="score-range-input"
@@ -422,7 +422,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
               value={scoreRange}
               onChange={(e) => setScoreRange(parseFloat(e.target.value))}
               data-testid="input-score-range"
-              className="w-full accent-blue-600 cursor-pointer"
+              className="w-full accent-indigo-600 cursor-pointer"
             />
           </div>
         </div>
@@ -453,14 +453,14 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                           <p className="font-bold text-slate-900">
                             {item.majorName}
                             {item.scale === 40 && (
-                              <span className="ml-2 text-[9px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
+                              <span className="ml-2 text-[9px] bg-indigo-50 text-indigo-700 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
                             )}
                           </p>
                           <p className="text-xs text-slate-500 mt-0.5">
                             {item.universityName} ({item.universityCode})
                           </p>
                           {item.note && (
-                            <p className="text-[10px] text-blue-600 italic mt-0.5">{item.note}</p>
+                            <p className="text-[10px] text-indigo-600 italic mt-0.5">{item.note}</p>
                           )}
                         </td>
                         <td className="px-6 py-4 font-bold text-slate-650 text-xs">
@@ -505,7 +505,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                         <h2 className="font-bold text-slate-900 text-sm leading-snug">
                           {item.majorName}
                           {item.scale === 40 && (
-                            <span className="ml-2 text-[9px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
+                            <span className="ml-2 text-[9px] bg-indigo-50 text-indigo-700 px-1.5 py-0.5 rounded font-bold uppercase whitespace-nowrap">Thang 40</span>
                           )}
                         </h2>
                         <p className="text-xs text-slate-500 font-medium">
@@ -532,7 +532,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                       </span>
                     </div>
                     {item.note && (
-                      <p className="text-[10px] text-blue-600 italic leading-relaxed bg-blue-50 p-2 rounded-lg border border-blue-500/10 mt-1">{item.note}</p>
+                      <p className="text-[10px] text-indigo-600 italic leading-relaxed bg-indigo-50 p-2 rounded-lg border border-indigo-500/10 mt-1">{item.note}</p>
                     )}
                   </div>
 
@@ -588,7 +588,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                         <Link
                           key={`mobile-dots-${idx}`}
                           href={`/tra-cuu-tuyen-sinh?page=${item.page}`}
-                          className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-blue-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex-shrink-0 text-center flex items-center justify-center"
+                          className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-indigo-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex-shrink-0 text-center flex items-center justify-center"
                         >
                           {item.label}
                         </Link>
@@ -599,7 +599,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                         key={`mobile-page-${item}`}
                         href={`/tra-cuu-tuyen-sinh?page=${item}`}
                         className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer flex-shrink-0 ${currentPage === item
-                          ? "bg-blue-600 text-white font-extrabold"
+                          ? "bg-indigo-600 text-white font-extrabold"
                           : "border border-slate-200 bg-white hover:bg-slate-50 text-slate-650"
                           }`}
                       >
@@ -663,7 +663,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                         <Link
                           key={`desktop-dots-${idx}`}
                           href={`/tra-cuu-tuyen-sinh?page=${item.page}`}
-                          className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-blue-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex items-center justify-center"
+                          className="w-8 h-8 text-xs font-bold text-slate-400 hover:text-indigo-600 hover:bg-slate-100 rounded-full transition cursor-pointer flex items-center justify-center"
                         >
                           {item.label}
                         </Link>
@@ -674,7 +674,7 @@ export default function FinderClient({ scoresData, initialPage }: FinderClientPr
                         key={`desktop-page-${item}`}
                         href={`/tra-cuu-tuyen-sinh?page=${item}`}
                         className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition cursor-pointer ${currentPage === item
-                          ? "bg-blue-600 text-white font-extrabold"
+                          ? "bg-indigo-600 text-white font-extrabold"
                           : "border border-slate-200 bg-white hover:bg-slate-50 text-slate-650"
                           }`}
                       >

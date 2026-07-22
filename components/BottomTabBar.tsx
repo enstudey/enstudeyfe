@@ -9,9 +9,8 @@ export default function BottomTabBar() {
 
   const getTabClass = (path: string) => {
     const isActive = pathname === path || (path !== "/" && pathname.startsWith(path));
-    return `flex flex-col items-center gap-1.5 py-1.5 text-[10px] font-extrabold tracking-wide transition-colors ${
-      isActive ? "text-blue-500" : "text-slate-400 hover:text-slate-600"
-    }`;
+    return `flex flex-col items-center gap-1.5 py-1.5 text-[10px] font-extrabold tracking-wide transition-colors ${isActive ? "text-indigo-500" : "text-slate-400 hover:text-slate-600"
+      }`;
   };
 
   return (

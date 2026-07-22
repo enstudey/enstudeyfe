@@ -18,7 +18,7 @@ export default function DonateBarMinimal() {
   return (
     <>
       <div
-        className="w-full bg-blue-50/40 border border-blue-500/10 rounded-2xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 transition duration-300"
+        className="w-full bg-indigo-50/40 border border-indigo-500/10 rounded-2xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 transition duration-300"
         data-testid="donate-bar-minimal"
       >
         <div className="space-y-1">

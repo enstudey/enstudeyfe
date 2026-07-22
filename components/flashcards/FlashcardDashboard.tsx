@@ -300,7 +300,7 @@ export default function FlashcardDashboard({ token, isGuest = true }: FlashcardD
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[350px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
         <p className="text-xs text-slate-500 mt-3 font-semibold">Đang nạp dữ liệu từ vựng...</p>
       </div>
     );
@@ -316,8 +316,8 @@ export default function FlashcardDashboard({ token, isGuest = true }: FlashcardD
             <button
               onClick={() => handleSwitchExam("TOEIC")}
               className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${examType === "TOEIC"
-                  ? "bg-white dark:bg-slate-800 text-blue-655 dark:text-blue-400 shadow-sm"
-                  : "text-slate-500 hover:text-slate-700"
+                ? "bg-white dark:bg-slate-800 text-indigo-655 dark:text-indigo-400 shadow-sm"
+                : "text-slate-500 hover:text-slate-700"
                 }`}
             >
               TOEIC 600 từ
@@ -325,8 +325,8 @@ export default function FlashcardDashboard({ token, isGuest = true }: FlashcardD
             <button
               onClick={() => handleSwitchExam("IELTS")}
               className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${examType === "IELTS"
-                  ? "bg-white dark:bg-slate-800 text-blue-655 dark:text-blue-400 shadow-sm"
-                  : "text-slate-500 hover:text-slate-700"
+                ? "bg-white dark:bg-slate-800 text-indigo-655 dark:text-indigo-400 shadow-sm"
+                : "text-slate-500 hover:text-slate-700"
                 }`}
             >
               IELTS Cốt lõi
@@ -337,7 +337,7 @@ export default function FlashcardDashboard({ token, isGuest = true }: FlashcardD
           <div className="flex gap-6 w-full sm:w-auto justify-end sm:justify-start px-2">
             <div className="text-center">
               <span className="block text-[9px] uppercase font-bold text-slate-400 tracking-wider">Streak</span>
-              <span className="text-sm font-extrabold text-blue-500">🔥 {streak} ngày</span>
+              <span className="text-sm font-extrabold text-indigo-500">🔥 {streak} ngày</span>
             </div>
             <div className="text-center">
               <span className="block text-[9px] uppercase font-bold text-slate-400 tracking-wider">Kinh nghiệm</span>

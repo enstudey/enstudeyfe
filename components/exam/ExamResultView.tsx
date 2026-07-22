@@ -97,7 +97,7 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
       {/* Summary Score Panel */}
       <div className="bg-white border border-slate-100 shadow-xs rounded-2xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
         <div className="text-center md:text-left space-y-2">
-          <div className="inline-flex items-center gap-1 bg-blue-50 text-primary border border-blue-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
+          <div className="inline-flex items-center gap-1 bg-indigo-50 text-primary border border-indigo-100 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">
             Kết quả thi thử
           </div>
           <h2 className="text-xl font-black text-slate-900">Hoàn Thành Bài Thi!</h2>
@@ -156,8 +156,8 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
               <button
                 onClick={() => setFilterType("all")}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition duration-200 cursor-pointer ${filterType === "all"
-                    ? "bg-slate-900 text-white shadow-sm"
-                    : "bg-slate-100 hover:bg-slate-200 text-slate-600"
+                  ? "bg-slate-900 text-white shadow-sm"
+                  : "bg-slate-100 hover:bg-slate-200 text-slate-600"
                   }`}
               >
                 Tất cả ({result.totalQuestions})
@@ -165,8 +165,8 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
               <button
                 onClick={() => setFilterType("correct")}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition duration-200 cursor-pointer ${filterType === "correct"
-                    ? "bg-emerald-500 text-white shadow-sm"
-                    : "bg-emerald-50 hover:bg-emerald-100 text-emerald-700"
+                  ? "bg-emerald-500 text-white shadow-sm"
+                  : "bg-emerald-50 hover:bg-emerald-100 text-emerald-700"
                   }`}
               >
                 Đúng ({result.correctAnswers})
@@ -174,8 +174,8 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
               <button
                 onClick={() => setFilterType("incorrect")}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition duration-200 cursor-pointer ${filterType === "incorrect"
-                    ? "bg-rose-500 text-white shadow-sm"
-                    : "bg-rose-50 hover:bg-rose-100 text-rose-700"
+                  ? "bg-rose-500 text-white shadow-sm"
+                  : "bg-rose-50 hover:bg-rose-100 text-rose-700"
                   }`}
               >
                 Sai ({result.results.filter((r) => !r.isCorrect && r.userAnswerIndex !== -1).length})
@@ -183,8 +183,8 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
               <button
                 onClick={() => setFilterType("unanswered")}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition duration-200 cursor-pointer ${filterType === "unanswered"
-                    ? "bg-amber-500 text-white shadow-sm"
-                    : "bg-amber-50 hover:bg-amber-100 text-amber-700"
+                  ? "bg-amber-500 text-white shadow-sm"
+                  : "bg-amber-50 hover:bg-amber-100 text-amber-700"
                   }`}
               >
                 Bỏ trống ({result.results.filter((r) => r.userAnswerIndex === -1).length})
@@ -202,10 +202,10 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
                 <React.Fragment key={r.questionId}>
                   <div
                     className={`bg-white border rounded-2xl p-6 shadow-xs space-y-4 ${r.isCorrect
-                        ? "border-emerald-100"
-                        : r.userAnswerIndex === -1
-                          ? "border-amber-100"
-                          : "border-rose-100"
+                      ? "border-emerald-100"
+                      : r.userAnswerIndex === -1
+                        ? "border-amber-100"
+                        : "border-rose-100"
                       }`}
                   >
                     {/* Header */}
@@ -275,14 +275,14 @@ export default function ExamResultView({ sessionId, token }: ExamResultViewProps
 
                       {/* Detailed Explanation + Affiliate box */}
                       {r.explanation && (
-                        <div className="bg-blue-50/30 border border-blue-100/50 rounded-2xl p-4 space-y-3.5 select-text">
+                        <div className="bg-indigo-50/30 border border-indigo-100/50 rounded-2xl p-4 space-y-3.5 select-text">
                           <div>
                             <p className="text-xs font-black text-primary">Lời giải chi tiết:</p>
                             <p className="text-xs text-slate-700 leading-relaxed font-medium mt-1">
                               {r.explanation}
                             </p>
                           </div>
-                           <MistakeBankAffiliateCard tag="toeic" className="mt-2" />
+                          <MistakeBankAffiliateCard tag="toeic" className="mt-2" />
                         </div>
                       )}
                     </div>

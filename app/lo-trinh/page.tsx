@@ -33,7 +33,7 @@ export default async function RoadmapPage() {
           </p>
           <Link
             href="/lo-trinh/khao-sat"
-            className="inline-flex items-center justify-center px-6 py-3 bg-primary hover:bg-blue-600 text-white font-semibold text-sm rounded-btn shadow-md transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 bg-primary hover:bg-indigo-600 text-white font-semibold text-sm rounded-btn shadow-md transition-colors"
           >
             Bắt Đầu Khảo Sát Ngay →
           </Link>

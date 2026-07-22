@@ -61,7 +61,7 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
     <main className="w-full py-12 flex-grow space-y-10">
       {/* Header Info */}
       <div className="text-center space-y-3">
-        <div className="inline-flex items-center gap-1.5 bg-blue-50 dark:bg-blue-950/30 border border-blue-200/50 px-4 py-1.5 rounded-full text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
+        <div className="inline-flex items-center gap-1.5 bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200/50 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
           <Sparkles className="w-3.5 h-3.5 shrink-0 animate-pulse" />
           <span>Luyện tập tập trung - Nâng cao phản xạ</span>
         </div>
@@ -79,7 +79,7 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
           <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
           <div>
             Bạn đang sử dụng hệ thống với tư cách khách vãng lai. Lịch sử luyện tập sẽ chỉ được lưu tạm tại trình duyệt và <strong>không đồng bộ sang Mistake Bank</strong>. Để lưu vết tiến độ bền vững, hãy{" "}
-            <Link href="/login" className="underline font-bold text-blue-600 dark:text-blue-400 hover:opacity-90">
+            <Link href="/login" className="underline font-bold text-indigo-600 dark:text-indigo-400 hover:opacity-90">
               Đăng nhập ngay
             </Link>.
           </div>
@@ -96,7 +96,7 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
             <button
               onClick={() => handleExamTypeChange("TOEIC")}
               className={`py-4 px-6 rounded-2xl border text-center transition font-bold text-sm cursor-pointer ${examType === "TOEIC"
-                ? "bg-blue-55/10 border-blue-600 text-blue-650 dark:bg-blue-950/20 dark:text-blue-400"
+                ? "bg-indigo-55/10 border-indigo-600 text-indigo-650 dark:bg-indigo-950/20 dark:text-indigo-400"
                 : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-500 hover:border-slate-300"
                 }`}
             >
@@ -125,13 +125,13 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
                 key={p.value}
                 onClick={() => setSelectedPart(p.value)}
                 className={`py-3 px-4 rounded-xl border text-left transition flex items-center justify-between text-xs cursor-pointer ${selectedPart === p.value
-                  ? "bg-blue-50/50 dark:bg-blue-950/10 border-blue-500 text-blue-750 dark:text-blue-400 font-bold"
+                  ? "bg-indigo-50/50 dark:bg-indigo-950/10 border-indigo-500 text-indigo-750 dark:text-indigo-400 font-bold"
                   : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-650 dark:text-slate-350 hover:bg-slate-50 dark:hover:bg-slate-900/50"
                   }`}
               >
                 <span>{p.label}</span>
                 <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${p.type === "Listening"
-                  ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
+                  ? "bg-indigo-50 text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400"
                   : "bg-amber-50 text-amber-600 dark:bg-amber-950/30 dark:text-amber-400"
                   }`}>
                   {p.type === "Listening" ? "Nghe" : "Đọc"}
@@ -196,7 +196,7 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
             <button
               onClick={() => setMode("PRACTICE")}
               className={`p-4 rounded-2xl border text-left transition flex flex-col justify-between cursor-pointer space-y-2 ${mode === "PRACTICE"
-                ? "bg-blue-50/30 border-blue-500 text-blue-750 dark:text-blue-400"
+                ? "bg-indigo-50/30 border-indigo-500 text-indigo-750 dark:text-indigo-400"
                 : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
                 }`}
             >
@@ -213,7 +213,7 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
             <button
               onClick={() => setMode("TEST")}
               className={`p-4 rounded-2xl border text-left transition flex flex-col justify-between cursor-pointer space-y-2 ${mode === "TEST"
-                ? "bg-blue-50/30 border-blue-500 text-blue-750 dark:text-blue-400"
+                ? "bg-indigo-50/30 border-indigo-500 text-indigo-750 dark:text-indigo-400"
                 : "bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300"
                 }`}
             >
@@ -236,7 +236,7 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
           <Button
             onClick={handleStart}
             size="lg"
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow-md hover:scale-[1.01] transition"
+            className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-6 px-8 rounded-2xl flex items-center justify-center gap-2 cursor-pointer shadow-md hover:scale-[1.01] transition"
           >
             <span>Bắt đầu phiên học</span>
             <ArrowRight className="w-4 h-4 shrink-0" />
@@ -245,7 +245,7 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
       </div>
 
       {/* Gamification Grammar Swipe card */}
-      <div className="max-w-[1200px] mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md relative overflow-hidden">
+      <div className="max-w-[1200px] mx-auto bg-gradient-to-r from-indigo-600 to-indigo-600 rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md relative overflow-hidden">
         <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-y-6 translate-x-6">
           <Sparkles className="w-64 h-64" />
         </div>
@@ -260,7 +260,7 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
         </div>
         <Button
           onClick={() => router.push("/luyen-de/luyen-ngu-phap")}
-          className="w-full md:w-auto bg-white text-blue-600 hover:bg-slate-100 font-bold py-6 px-8 rounded-2xl cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] transition"
+          className="w-full md:w-auto bg-white text-indigo-600 hover:bg-slate-100 font-bold py-6 px-8 rounded-2xl cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02] transition"
         >
           <span>Trải nghiệm ngay</span>
           <ArrowRight className="w-4 h-4 shrink-0" />

@@ -53,7 +53,7 @@ export default function ResultPageAffiliateBox({
 
   return (
     <div
-      className={`w-full bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-blue-50/70 dark:from-blue-950/30 dark:to-indigo-950/30 border border-blue-100 dark:border-blue-900/50 rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 my-6 ${className}`}
+      className={`w-full bg-gradient-to-r from-indigo-50/70 via-indigo-50/40 to-indigo-50/70 dark:from-indigo-950/30 dark:to-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 my-6 ${className}`}
       data-testid="result-page-affiliate-box"
     >
       <div className="flex items-center gap-4 w-full sm:w-auto">
@@ -67,7 +67,7 @@ export default function ResultPageAffiliateBox({
           />
         </div>
         <div className="space-y-1 text-left">
-          <div className="inline-flex items-center gap-1 text-[9px] font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wider bg-blue-100/60 dark:bg-blue-900/60 px-2 py-0.5 rounded-md">
+          <div className="inline-flex items-center gap-1 text-[9px] font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider bg-indigo-100/60 dark:bg-indigo-900/60 px-2 py-0.5 rounded-md">
             🚀 Hành trang bứt phá Band điểm
           </div>
           <h4 className="font-extrabold text-sm text-slate-900 dark:text-white line-clamp-1">
