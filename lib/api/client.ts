@@ -24,7 +24,7 @@ export async function apiFetch<T>(
   const { token, headers, ...rest } = options;
   const requestHeaders = new Headers(headers);
 
-  if (token) {
+  if (token && token !== "mock-demo-token-12345") {
     requestHeaders.set("Authorization", `Bearer ${token}`);
   }
   

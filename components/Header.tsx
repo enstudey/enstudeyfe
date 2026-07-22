@@ -60,10 +60,26 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
   useEffect(() => {
     if (token) {
       const fetchData = async () => {
+        if (token === "mock-demo-token-12345") {
+          setUser({
+            id: "demo-user",
+            email: "demo.user@enstudey.com",
+            fullName: "Học Viên Trải Nghiệm 🎓",
+            avatarUrl: "",
+            role: "STUDENT",
+            isAnonymous: false,
+            avatarColor: "blue"
+          });
+          setStreak({
+            currentStreak: 5,
+            longestStreak: 12,
+            lastActivityDate: new Date().toISOString()
+          });
+          setIsGuest(false);
+          return;
+        }
+
         try {
-          if (token === "mock-demo-token-12345") {
-            throw new Error("DemoMode");
-          }
           const headers = { Authorization: `Bearer ${token}` };
           const [userRes, streakRes] = await Promise.all([
             fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}/api/v1/users/me`, { headers }),
@@ -86,23 +102,10 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
           } else if (hasUser) {
             setStreak({ currentStreak: 0, longestStreak: 0, lastActivityDate: null });
           }
-        } catch (e) {
-          console.warn("Failed to fetch user data in header, fallback to Demo User.", e);
-          setUser({
-            id: "demo-user",
-            email: "demo.user@enstudey.com",
-            fullName: "Học Viên Trải Nghiệm 🎓",
-            avatarUrl: "",
-            role: "STUDENT",
-            isAnonymous: false,
-            avatarColor: "blue"
-          });
-          setStreak({
-            currentStreak: 5,
-            longestStreak: 12,
-            lastActivityDate: new Date().toISOString()
-          });
-          setIsGuest(false);
+        } catch {
+          setIsGuest(true);
+          setUser(null);
+          setStreak(null);
         }
       };
       fetchData();

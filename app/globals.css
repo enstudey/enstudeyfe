@@ -98,6 +98,20 @@ html {
   .btn-interactive {
     @apply transition-all duration-150 ease-in-out active:scale-95 hover:-translate-y-0.5 motion-reduce:transition-none;
   }
+
+  /* Button Design System Tokens 2026 */
+  .btn-xs {
+    @apply h-7 px-2 text-xs font-semibold rounded-lg inline-flex items-center justify-center transition-all duration-150 active:scale-95;
+  }
+  .btn-sm {
+    @apply h-9 px-3 text-sm font-semibold rounded-xl inline-flex items-center justify-center transition-all duration-150 active:scale-95;
+  }
+  .btn-md {
+    @apply h-11 px-4 text-base font-bold rounded-xl inline-flex items-center justify-center transition-all duration-150 active:scale-95;
+  }
+  .btn-lg {
+    @apply h-13 px-6 text-lg font-extrabold rounded-2xl inline-flex items-center justify-center transition-all duration-150 active:scale-95;
+  }
   
   /* Utility class mở rộng UI mượt mà */
   .smooth-expand {

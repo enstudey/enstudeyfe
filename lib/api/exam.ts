@@ -2,9 +2,17 @@ import { apiFetch } from "./client";
 import { EnvelopeResponse } from "./practice";
 import { Exam, ExamDetail, ExamStartResponse, ExamResumeResponse, ExamSubmitResponse } from "@/types/exam";
 
-export function getExams(page: number = 0, size: number = 10, token?: string) {
+export function getExams(page: number = 0, size: number = 10, token?: string, examType?: string) {
+  const query = new URLSearchParams({
+    page: page.toString(),
+    size: size.toString(),
+  });
+  if (examType && examType !== "ALL") {
+    query.append("examType", examType);
+  }
+
   return apiFetch<EnvelopeResponse<Exam[]>>(
-    `/api/v1/exams?page=${page}&size=${size}`,
+    `/api/v1/exams?${query.toString()}`,
     {
       method: "GET",
       token
