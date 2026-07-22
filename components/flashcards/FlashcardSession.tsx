@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Flashcard, CardProgress } from "@/lib/flashcards-helper";
 import SpeechButton from "@/components/ui/speech-button";
 import BookmarkButton from "@/components/ui/bookmark-button";
@@ -42,7 +43,7 @@ export default function FlashcardSession({
   // Ref to tracking container height
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 1. Chỉ trigger animation của Ghost Timer mượt mà khi đổi thẻ
+  // 1. Trigger animation của Ghost Timer mượt mà khi đổi thẻ
   useEffect(() => {
     if (queue.length > 0 && !isFlipped) {
       const timer = setTimeout(() => {
@@ -99,9 +100,9 @@ export default function FlashcardSession({
 
   if (queue.length === 0) {
     return (
-      <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 p-8 rounded-3xl text-center space-y-5 shadow-sm max-w-md mx-auto">
+      <div className="bg-white border border-slate-200 p-8 rounded-3xl text-center space-y-5 shadow-sm max-w-md mx-auto">
         <div className="text-4xl animate-bounce">🎉</div>
-        <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
+        <h3 className="text-base font-extrabold text-slate-900">
           Chủ đề &quot;{topicId}&quot; đã học hết!
         </h3>
         <p className="text-xs text-slate-500 leading-relaxed max-w-sm mx-auto">
@@ -114,7 +115,7 @@ export default function FlashcardSession({
           <Button
             size="sm"
             onClick={onBackToDashboard}
-            className="cursor-pointer font-bold rounded-xl shadow hover:scale-103 transition-all"
+            className="cursor-pointer font-bold rounded-xl shadow hover:scale-[1.02] transition-all"
           >
             Quay lại Dashboard
           </Button>
@@ -138,7 +139,6 @@ export default function FlashcardSession({
     setFlipDuration(null);
     setStartTime(Date.now());
 
-    // Đợi hiệu ứng lật hoàn thành rồi mới chuyển thẻ
     setTimeout(() => {
       const nextQueue = queue.filter((_, idx) => idx !== currentIndex);
       setQueue(nextQueue);
@@ -155,15 +155,15 @@ export default function FlashcardSession({
 
     if (diff < 0) {
       return (
-        <span className="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded">
+        <Badge variant="secondary" className="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 border-0">
           ⚡ Nhanh hơn {Math.abs(diff).toFixed(1)}s! (Kỷ lục: {(ghostDuration / 1000).toFixed(1)}s)
-        </span>
+        </Badge>
       );
     } else {
       return (
-        <span className="text-[10px] font-bold text-slate-500 bg-slate-100 dark:bg-slate-900 px-2 py-0.5 rounded">
+        <Badge variant="outline" className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5">
           🐌 Chậm hơn {diff.toFixed(1)}s (Mục tiêu: {(ghostDuration / 1000).toFixed(1)}s)
-        </span>
+        </Badge>
       );
     }
   };
@@ -181,7 +181,7 @@ export default function FlashcardSession({
           &larr; Thoát
         </Button>
         <span className="text-xs font-extrabold text-slate-400">
-          Chủ đề: <span className="text-blue-600 dark:text-blue-400">{topicId}</span> ({queue.length} từ còn lại)
+          Chủ đề: <span className="text-blue-600">{topicId}</span> ({queue.length} từ còn lại)
         </span>
       </div>
 
@@ -193,12 +193,12 @@ export default function FlashcardSession({
           onClick={handleFlip}
         >
           {/* FRONT FACE */}
-          <div className="absolute inset-0 backface-hidden bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-8 flex flex-col justify-between items-center shadow-md overflow-hidden">
-            {/* Ghost Timer progress bar (CSS transitions pure) */}
+          <div className="absolute inset-0 backface-hidden bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between items-center shadow-md overflow-hidden">
+            {/* Ghost Timer progress bar */}
             {hasGhost && !isFlipped && (
-              <div className="absolute top-0 left-0 w-full h-1 bg-slate-100 dark:bg-slate-900">
+              <div className="absolute top-0 left-0 w-full h-1 bg-slate-100">
                 <div
-                  className={`h-full bg-blue-400/40 transition-all ease-linear`}
+                  className="h-full bg-blue-400/40 transition-all ease-linear"
                   style={{
                     width: startGhostAnim ? "100%" : "0%",
                     transitionDuration: startGhostAnim ? `${ghostDuration}ms` : "0ms",
@@ -207,13 +207,13 @@ export default function FlashcardSession({
               </div>
             )}
 
-            <span className="text-[9px] font-bold px-2 py-0.5 bg-slate-100 dark:bg-slate-900 text-slate-500 rounded uppercase tracking-wider">
+            <Badge variant="secondary" className="text-[9px] font-bold px-2 py-0.5 bg-slate-100 text-slate-500 uppercase tracking-wider">
               {hasGhost ? "🔥 Ôn tập phản xạ" : "Thẻ mới"}
-            </span>
+            </Badge>
 
             <div className="text-center space-y-2">
               <div className="flex items-center justify-center gap-3">
-                <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                <h3 className="text-3xl font-extrabold text-slate-900 tracking-tight">
                   {currentCard.word}
                 </h3>
                 <div className="flex items-center gap-1.5">
@@ -239,18 +239,18 @@ export default function FlashcardSession({
             <Button
               size="sm"
               variant="outline"
-              className="font-bold text-xs rounded-xl shadow cursor-pointer hover:scale-103 transition-all"
+              className="font-bold text-xs rounded-xl shadow cursor-pointer hover:scale-[1.02] transition-all"
             >
               Lật xem nghĩa &rarr;
             </Button>
           </div>
 
           {/* BACK FACE */}
-          <div className="absolute inset-0 backface-hidden rotate-y-180 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-3xl p-8 flex flex-col justify-between items-center shadow-md">
-            <div className="w-full flex justify-between items-center pb-2 border-b border-slate-100 dark:border-slate-900">
-              <span className="text-[9px] font-bold px-2 py-0.5 bg-blue-100 text-blue-750 dark:bg-blue-950 dark:text-blue-300 rounded uppercase tracking-wider">
+          <div className="absolute inset-0 backface-hidden rotate-y-180 bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between items-center shadow-md">
+            <div className="w-full flex justify-between items-center pb-2 border-b border-slate-100">
+              <Badge variant="secondary" className="text-[9px] font-bold px-2 py-0.5 bg-blue-100 text-blue-750 uppercase tracking-wider">
                 Giải nghĩa
-              </span>
+              </Badge>
               {getGhostFeedback()}
             </div>
 
@@ -274,37 +274,40 @@ export default function FlashcardSession({
                   />
                 </div>
               </div>
-              <h4 className="text-lg font-extrabold text-blue-700 dark:text-blue-400">
+              <h4 className="text-lg font-extrabold text-blue-700">
                 {currentCard.meaning}
               </h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+              <p className="text-xs text-slate-500 leading-relaxed font-medium">
                 {currentCard.description}
               </p>
             </div>
 
-            {/* Ratings Actions (Giữ nguyên 3 nút: Khó - 2, Trung bình - 4, Dễ - 5) */}
+            {/* Ratings Actions */}
             <div
-              className="flex gap-2 w-full pt-4 border-t border-slate-100 dark:border-slate-900"
-              onClick={(e) => e.stopPropagation()} // Stop click lật ngược
+              className="flex gap-2 w-full pt-4 border-t border-slate-100"
+              onClick={(e) => e.stopPropagation()}
             >
-              <button
+              <Button
                 onClick={() => handleRateClick(2)}
-                className="flex-1 py-2 px-3 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/20 dark:hover:bg-rose-950/30 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-900 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer animate-fadeIn"
+                variant="outline"
+                className="flex-1 py-2 px-3 bg-rose-50 hover:bg-rose-100 text-rose-700 border-rose-200 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer"
               >
                 Khó
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={() => handleRateClick(4)}
-                className="flex-1 py-2 px-3 bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/20 dark:hover:bg-amber-950/30 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer animate-fadeIn"
+                variant="outline"
+                className="flex-1 py-2 px-3 bg-amber-50 hover:bg-amber-100 text-amber-700 border-amber-200 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer"
               >
                 Trung bình
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={() => handleRateClick(5)}
-                className="flex-1 py-2 px-3 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/20 dark:hover:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer animate-fadeIn"
+                variant="outline"
+                className="flex-1 py-2 px-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border-emerald-200 text-xs font-extrabold rounded-xl transition duration-200 cursor-pointer"
               >
                 Dễ
-              </button>
+              </Button>
             </div>
           </div>
         </div>

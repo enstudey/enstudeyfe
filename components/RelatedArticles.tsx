@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { PostData } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
 import { getCategoryBySlug } from "@/lib/categories";
@@ -19,41 +21,38 @@ export default function RelatedArticles({ posts }: RelatedArticlesProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {posts.map((post, idx) => (
           <React.Fragment key={post.slug}>
-            <Link
-              href={`/tin-tuc/${post.slug}`}
-              scroll={false}
-              className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:shadow-md transition duration-300 flex flex-col h-full"
-            >
-              <div className="h-32 overflow-hidden relative">
-                <Image
-                  alt={post.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 300px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  src={post.image || getCategoryFallbackImage(post.category)}
-                />
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between space-y-2">
-                <div className="space-y-1">
-                  {(() => {
-                    const cat = getCategoryBySlug(post.category);
-                    return (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-slate-100 text-slate-800 rounded-lg text-[9px] font-bold uppercase tracking-wider">
-                        {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={10} />}
-                        {cat ? cat.name : post.category}
-                      </span>
-                    );
-                  })()}
-                  <h4 className="text-sm font-bold text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {post.title}
-                  </h4>
+            <Link href={`/tin-tuc/${post.slug}`} scroll={false} className="group">
+              <Card className="rounded-2xl overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col h-full border-border">
+                <div className="h-32 overflow-hidden relative">
+                  <Image
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 300px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    src={post.image || getCategoryFallbackImage(post.category)}
+                  />
                 </div>
-                <p className="text-xs text-muted-foreground">{post.date}</p>
-              </div>
+                <CardContent className="p-4 flex-1 flex flex-col justify-between space-y-2">
+                  <div className="space-y-1">
+                    {(() => {
+                      const cat = getCategoryBySlug(post.category);
+                      return (
+                        <Badge variant="secondary" className="inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider">
+                          {cat && <CategoryIcon icon={cat.icon} iconType={cat.iconType} size={10} />}
+                          {cat ? cat.name : post.category}
+                        </Badge>
+                      );
+                    })()}
+                    <h4 className="text-sm font-bold text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {post.title}
+                    </h4>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{post.date}</p>
+                </CardContent>
+              </Card>
             </Link>
             {posts.length >= 3 && idx === 1 && (
               <div className="col-span-full py-2">
-                {/* Khung trống giữ chỗ chống CLS, hiển thị nhãn Quảng cáo mờ */}
                 <div className="ad-container ad-in-feed w-full min-h-[90px] sm:min-h-[250px] bg-slate-100/50 border border-dashed border-border rounded-xl flex items-center justify-center">
                   <span className="text-[10px] uppercase tracking-wider text-slate-400 select-none font-semibold">Quảng cáo</span>
                 </div>

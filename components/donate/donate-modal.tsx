@@ -4,6 +4,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 interface Props {
   isOpen: boolean;
@@ -13,8 +20,6 @@ interface Props {
 export default function DonateModal({ isOpen, onClose }: Props) {
   const [copied, setCopied] = useState(false);
   const accountNo = "70026112004";
-
-  if (!isOpen) return null;
 
   const handleCopy = async () => {
     try {
@@ -27,36 +32,18 @@ export default function DonateModal({ isOpen, onClose }: Props) {
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs px-4"
-      data-testid="donate-modal"
-      role="dialog"
-      aria-modal="true"
-    >
-      {/* Backdrop click to close */}
-      <div className="absolute inset-0 cursor-default" onClick={onClose}></div>
-
-      {/* Modal Card */}
-      <div className="bg-card border border-border rounded-3xl p-6 w-full max-w-sm relative shadow-2xl animate-in fade-in zoom-in-95 duration-200 z-10">
-        {/* Nút đóng */}
-        <button
-          onClick={onClose}
-          data-testid="btn-close-modal"
-          className="absolute top-4 right-4 text-slate-400 hover:text-slate-650 font-bold p-1 cursor-pointer transition-colors"
-          aria-label="Đóng hộp thoại"
-        >
-          ✕
-        </button>
-
-        {/* Nội dung */}
-        <div className="text-center space-y-4">
-          <h3 className="text-lg font-bold text-slate-900">
+    <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onClose(); }}>
+      <DialogContent className="max-w-sm rounded-3xl p-6 shadow-2xl">
+        <DialogHeader className="text-center space-y-2">
+          <DialogTitle className="text-lg font-bold text-slate-900">
             Tiếp sức cho EnStudey ☕🚀
-          </h3>
-          <p className="text-xs text-slate-500 leading-relaxed px-2">
+          </DialogTitle>
+          <DialogDescription className="text-xs text-slate-500 leading-relaxed">
             Nếu công cụ này vừa giúp bạn tiết kiệm thời gian hoặc gỡ rối mùa thi, bạn có thể &quot;tiếp sức&quot; cho mình một ly trà sữa nha!
-          </p>
+          </DialogDescription>
+        </DialogHeader>
 
+        <div className="text-center space-y-4 pt-2">
           {/* QR Code Container */}
           <a
             href="/qr-donate.webp"
@@ -104,7 +91,8 @@ export default function DonateModal({ isOpen, onClose }: Props) {
                   onClick={handleCopy}
                   data-testid="btn-copy-account"
                   variant="secondary"
-                  className="px-2.5 py-1 text-blue-750 bg-blue-100 hover:bg-blue-200 transition font-bold rounded-lg text-[10px] cursor-pointer"
+                  size="xs"
+                  className="font-bold rounded-lg text-[10px] cursor-pointer"
                 >
                   {copied ? "Đã chép ✓" : "Sao chép 📋"}
                 </Button>
@@ -112,7 +100,7 @@ export default function DonateModal({ isOpen, onClose }: Props) {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }

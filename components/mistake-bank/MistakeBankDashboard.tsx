@@ -8,13 +8,13 @@ import {
   ChevronRight,
   Filter,
   Sparkles,
-  Bookmark,
-  Calendar,
-  Flame,
-  CheckCircle2
+  Bookmark
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import MistakePracticeSession from "./MistakePracticeSession";
-import MistakeBankAffiliateCard from "@/components/affiliate/MistakeBankAffiliateCard";
 import { fetchMistakes as apiFetchMistakes, deleteMistake as apiDeleteMistake } from "@/lib/api/mistake-bank";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -23,19 +23,15 @@ interface MistakeBankDashboardProps {
 }
 
 export default function MistakeBankDashboard({ token }: MistakeBankDashboardProps) {
-  // Bộ lọc & phân trang
   const [status, setStatus] = useState<string>("ALL");
-  const [category, setCategory] = useState<string>("ALL");
+  const [category] = useState<string>("ALL");
   const [page, setPage] = useState<number>(0);
   const [size] = useState<number>(10);
 
-  // Trạng thái làm bài ôn tập
   const [isPracticing, setIsPracticing] = useState<boolean>(false);
-  const [expandedId, setExpandedId] = useState<number | null>(null);
 
   const queryClient = useQueryClient();
 
-  // Lấy danh sách câu sai từ Backend bằng useQuery
   const {
     data,
     isLoading: loading,
@@ -50,23 +46,15 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
   const totalItems = data?.meta?.total || 0;
   const totalPages = Math.ceil(totalItems / size);
 
-  // Xóa câu sai khỏi sổ tay bằng useMutation
   const deleteMutation = useMutation({
     mutationFn: (id: number) => apiDeleteMistake(token, id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["mistakes"] });
-      setExpandedId(null);
     },
-    onError: (err) => {
-      alert(err instanceof Error ? err.message : "Xóa câu hỏi thất bại.");
-    }
   });
 
-  const handleDelete = (id: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!confirm("Bạn có chắc chắn muốn xóa câu hỏi này khỏi sổ tay câu sai?")) {
-      return;
-    }
+  const handleDelete = (id: number) => {
+    if (!confirm("Bạn có chắc chắn muốn xóa câu hỏi này khỏi Sổ tay câu sai?")) return;
     deleteMutation.mutate(id);
   };
 
@@ -83,235 +71,157 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
   }
 
   return (
-    <div className="space-y-8 animate-fadeIn">
-      {/* Khung Header Banner & Quick Action */}
-      <div className="bg-[#0F172A] border border-slate-800 rounded-3xl p-6 sm:p-8 text-white shadow-sm flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="space-y-2 text-center md:text-left">
-          <h2 className="text-xl sm:text-2xl font-extrabold flex items-center justify-center md:justify-start gap-2">
-            <Sparkles className="w-6 h-6 text-blue-400" />
-            Luyện Tập Gột Rửa Sai Lầm
-          </h2>
-          <p className="text-slate-400 text-xs max-w-xl leading-relaxed">
-            Tự động lưu và bốc ngẫu nhiên tối đa 10 câu hỏi bạn đã làm sai để tiến hành ôn luyện, gia tăng chuỗi trả lời đúng để đánh dấu thành thạo!
+    <div className="max-w-4xl mx-auto space-y-6">
+      {/* Header Banner */}
+      <Card className="rounded-3xl bg-gradient-to-br from-rose-500 via-rose-600 to-amber-600 text-white p-6 md:p-8 shadow-xl border-0 relative overflow-hidden">
+        <div className="relative z-10 space-y-4">
+          <div className="flex items-center gap-2">
+            <Badge className="bg-white/20 hover:bg-white/30 text-white border-0 text-xs font-bold backdrop-blur-md px-3 py-1">
+              <Bookmark className="w-3.5 h-3.5 mr-1 fill-white" />
+              Sổ tay Phản xạ 2.0
+            </Badge>
+          </div>
+          <h1 className="text-2xl md:text-3xl font-black tracking-tight">
+            Ngân hàng Câu sai & Từ khó
+          </h1>
+          <p className="text-rose-100 text-xs md:text-sm max-w-xl leading-relaxed font-medium">
+            Hệ thống tự động lưu trữ các câu bạn trả lời sai để luyện tập lại theo thuật toán lặp lại ngắt quãng (Spaced Repetition).
           </p>
-        </div>
-        <button
-          onClick={() => setIsPracticing(true)}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-blue-500/20 flex items-center gap-2 hover:scale-[1.03] active:scale-[0.98] transition cursor-pointer text-xs shrink-0"
-        >
-          <Play className="w-4 h-4 fill-current" />
-          Bắt đầu Ôn tập ngay
-        </button>
-      </div>
 
-      {/* Thanh Điều Hướng Bộ Lọc */}
-      <div className="bg-white border border-slate-100 rounded-2xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between shadow-xs">
-        <div className="flex flex-wrap gap-2 items-center">
-          <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1 uppercase mr-2">
-            <Filter className="w-3.5 h-3.5" /> Trạng thái:
-          </span>
-          {["ALL", "UNSEEN", "REVIEWED", "MASTERED"].map((st) => (
-            <button
-              key={st}
-              onClick={() => {
-                setStatus(st);
-                setPage(0);
-              }}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${status === st
-                  ? "bg-slate-900 text-white shadow-xs"
-                  : "bg-slate-50 hover:bg-slate-100 text-slate-500"
-                }`}
+          <div className="pt-2 flex flex-wrap items-center gap-3">
+            <Button
+              onClick={() => setIsPracticing(true)}
+              disabled={items.length === 0}
+              className="bg-white text-rose-600 hover:bg-rose-50 font-black rounded-2xl px-6 py-3 text-sm shadow-lg hover:scale-[1.02] active:scale-95 transition-all cursor-pointer border-0"
             >
-              {st === "ALL" ? "Tất cả" : st === "UNSEEN" ? "Chưa ôn" : st === "REVIEWED" ? "Đang ôn" : "Thành thạo 💎"}
-            </button>
-          ))}
+              <Play className="w-4 h-4 fill-current mr-2" />
+              Luyện tập ngay ({totalItems} câu)
+            </Button>
+          </div>
+        </div>
+      </Card>
+
+      {/* Filter Tabs */}
+      <Card className="p-4 rounded-2xl border-slate-100 bg-white shadow-xs flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <Filter className="w-4 h-4 text-slate-400" />
+          <span className="text-xs font-bold text-slate-700">Bộ lọc:</span>
         </div>
 
-        <div className="flex flex-wrap gap-2 items-center">
-          <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1 uppercase mr-2">
-            <Bookmark className="w-3.5 h-3.5" /> Loại câu:
-          </span>
-          {["ALL", "GRAMMAR", "VOCABULARY", "READING"].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => {
-                setCategory(cat);
-                setPage(0);
-              }}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${category === cat
-                  ? "bg-blue-500 text-white shadow-xs"
-                  : "bg-slate-50 hover:bg-slate-100 text-slate-500"
-                }`}
-            >
-              {cat === "ALL" ? "Tất cả" : cat}
-            </button>
-          ))}
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center bg-slate-100 p-1 rounded-xl">
+            {["ALL", "NEEDS_REVIEW", "MASTERED"].map((st) => (
+              <Button
+                key={st}
+                variant={status === st ? "default" : "ghost"}
+                size="xs"
+                onClick={() => { setStatus(st); setPage(0); }}
+                className={`text-[11px] font-bold rounded-lg ${status === st ? "bg-white text-slate-900 shadow-xs" : "text-slate-500"}`}
+              >
+                {st === "ALL" && "Tất cả"}
+                {st === "NEEDS_REVIEW" && "Cần ôn tập 🔴"}
+                {st === "MASTERED" && "Đã thuộc 🟢"}
+              </Button>
+            ))}
+          </div>
         </div>
-      </div>
+      </Card>
 
-      {/* Hiển thị lỗi */}
-      {error && (
-        <div className="bg-rose-50 border border-rose-200 text-rose-700 px-4 py-2.5 rounded-xl text-xs font-semibold">
-          {error}
-        </div>
-      )}
-
+      {/* Content List */}
       {loading ? (
-        <div className="flex flex-col items-center justify-center min-h-[250px] space-y-3">
-          <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-xs font-semibold text-slate-400">Đang đồng bộ sổ tay câu sai...</span>
+        <div className="text-center py-12 space-y-3">
+          <div className="w-8 h-8 border-3 border-rose-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <p className="text-xs text-slate-400 font-medium">Đang tải danh sách câu sai...</p>
         </div>
+      ) : error ? (
+        <Card className="p-6 text-center text-rose-500 bg-rose-50 border-rose-100 rounded-2xl text-xs font-medium">
+          {error}
+        </Card>
       ) : items.length === 0 ? (
-        /* Empty State */
-        <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-xl mx-auto shadow-sm space-y-4">
-          <div className="text-5xl">🎉</div>
-          <div className="space-y-1">
-            <h3 className="text-xl font-bold text-slate-900">Sổ tay sạch bóng lỗi sai!</h3>
-            <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed">
-              {status !== "ALL" || category !== "ALL"
-                ? "Không tìm thấy câu hỏi sai nào phù hợp với bộ lọc bạn chọn. Hãy thử thay đổi bộ lọc nhé!"
-                : "Không có câu sai nào trong hệ thống. Bạn đang làm cực tốt! Hãy tiếp tục phát huy ở các đề thi thật nhé!"
-              }
-            </p>
-          </div>
-        </div>
+        <Card className="p-12 text-center space-y-4 rounded-3xl bg-white border-slate-100 shadow-xs">
+          <Sparkles className="w-10 h-10 text-amber-400 mx-auto animate-pulse" />
+          <h3 className="text-base font-bold text-slate-800">Không có câu hỏi nào!</h3>
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            Tuyệt vời! Bạn chưa có câu hỏi nào bị sai hoặc chưa đến lịch ôn tập.
+          </p>
+        </Card>
       ) : (
-        /* Danh sách câu sai */
-        <div className="space-y-4">
-          <div className="flex justify-between items-center text-xs font-bold text-slate-400 px-2 uppercase">
-            <span>Danh sách câu hỏi ({totalItems})</span>
-            <span>Click để xem đáp án giải thích</span>
-          </div>
-
-          <div className="grid gap-3">
-            {items.map((item) => {
-              const isExpanded = expandedId === item.id;
-              const formattedDate = new Date(item.lastFailedAt).toLocaleDateString("vi-VN", {
-                hour: "2-digit",
-                minute: "2-digit",
-                day: "2-digit",
-                month: "2-digit",
-              });
-
-              return (
-                <div
-                  key={item.id}
-                  onClick={() => setExpandedId(isExpanded ? null : item.id)}
-                  className={`bg-white border rounded-2xl p-5 shadow-xs transition hover:shadow-sm cursor-pointer text-left space-y-4 overflow-hidden border-l-4 ${item.status === "MASTERED"
-                      ? "border-l-emerald-450 border-slate-200"
-                      : item.status === "REVIEWED"
-                        ? "border-l-amber-450 border-slate-200"
-                        : "border-l-rose-450 border-slate-200"
-                    }`}
-                >
-                  <div className="flex justify-between items-start gap-4">
-                    <div className="space-y-2">
-                      <div className="flex flex-wrap items-center gap-2">
-                        {/* Tag trạng thái */}
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${item.status === "MASTERED"
-                            ? "bg-emerald-50/50 text-emerald-700 border border-emerald-100"
-                            : item.status === "REVIEWED"
-                              ? "bg-amber-50/50 text-amber-800 border border-amber-100"
-                              : "bg-rose-50/50 text-rose-700 border border-rose-100"
-                          }`}>
-                          {item.status === "MASTERED" ? "Thành thạo" : item.status === "REVIEWED" ? "Đang ôn tập" : "Chưa làm"}
-                        </span>
-
-                        {/* Streak */}
-                        {item.correctStreak > 0 && (
-                          <span className="text-[10px] font-bold bg-orange-50 text-orange-700 border border-orange-100 px-2 py-0.5 rounded-full flex items-center gap-0.5">
-                            <Flame className="w-3 h-3 text-orange-500 fill-current" />
-                            Streak: {item.correctStreak}
-                          </span>
-                        )}
-
-                        {/* Lần sai */}
-                        <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
-                          Lần sai: {item.mistakeCount}
+        <div className="space-y-3">
+          <Accordion className="space-y-3">
+            {items.map((item) => (
+              <AccordionItem
+                key={item.id}
+                value={String(item.id)}
+                className="bg-white border border-slate-100 rounded-2xl px-5 py-3 shadow-xs hover:border-slate-200 transition-all border-b-0"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <AccordionTrigger className="hover:no-underline py-2 flex-1 text-left">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <Badge variant="outline" className="text-[10px] font-bold text-rose-600 bg-rose-50 border-rose-200">
+                          {item.status}
+                        </Badge>
+                        <span className="text-xs font-extrabold text-slate-800 line-clamp-1">
+                          {item.questionText}
                         </span>
                       </div>
-                      <h4 className="font-semibold text-slate-800 text-sm leading-relaxed pr-6">
-                        {item.questionText}
-                      </h4>
-                    </div>
-
-                    <button
-                      onClick={(e) => handleDelete(item.id, e)}
-                      className="text-slate-400 hover:text-rose-600 p-2 rounded-xl hover:bg-rose-50/50 transition cursor-pointer"
-                      title="Xóa khỏi sổ tay"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  {/* Chi tiết đáp án và giải thích */}
-                  {isExpanded && (
-                    <div className="pt-4 border-t border-slate-100 space-y-4 animate-slideDown">
-                      <div className="grid gap-2 sm:grid-cols-2">
-                        {item.options.map((opt, oIdx) => {
-                          const isCorrect = oIdx === item.correctIndex;
-                          return (
-                            <div
-                              key={oIdx}
-                              className={`p-3 rounded-xl text-xs font-semibold flex items-center gap-2 border ${isCorrect
-                                  ? "bg-emerald-50/30 text-emerald-800 border-emerald-100"
-                                  : "bg-slate-50/50 text-slate-600 border-slate-100"
-                                }`}
-                            >
-                              <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${isCorrect ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-500"
-                                }`}>
-                                {["A", "B", "C", "D"][oIdx]}
-                              </span>
-                              {opt}
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      {item.explanation && (
-                        <div className="bg-blue-50/20 border border-blue-100/50 rounded-xl p-4 text-xs space-y-1">
-                          <div className="font-bold text-blue-850 flex items-center gap-1">
-                            <CheckCircle2 className="w-3.5 h-3.5" /> Giải thích chi tiết:
-                          </div>
-                          <p className="text-slate-600 leading-relaxed font-medium">
-                            {item.explanation}
-                          </p>
-                        </div>
-                      )}
-
-                      <MistakeBankAffiliateCard tag={category !== "ALL" ? category : undefined} />
-
-                      <div className="text-[10px] font-bold text-slate-400 flex items-center gap-1.5 justify-end font-mono">
-                        <Calendar className="w-3.5 h-3.5" />
-                        Lần sai cuối: {formattedDate}
+                      <div className="flex items-center gap-3 text-[10px] text-slate-400 font-medium">
+                        <span>Lỗi: {item.mistakeCount} lần</span>
+                        <span>Đáp án đúng: <strong className="text-emerald-600">{item.options?.[item.correctIndex] || "N/A"}</strong></span>
                       </div>
                     </div>
-                  )}
+                  </AccordionTrigger>
+                  <Button
+                    variant="ghost"
+                    size="icon-xs"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDelete(item.id);
+                    }}
+                    className="text-slate-300 hover:text-rose-600 hover:bg-rose-50 cursor-pointer shrink-0"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
                 </div>
-              );
-            })}
-          </div>
 
-          {/* Phân trang */}
+                <AccordionContent className="pt-3 border-t border-slate-100 text-xs text-slate-600 leading-relaxed space-y-2">
+                  <p className="font-semibold text-slate-700">Giải thích chi tiết:</p>
+                  <p className="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                    {item.explanation || "Chưa có lời giải thích chi tiết cho câu hỏi này."}
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+
+          {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-between items-center pt-6 max-w-sm mx-auto text-xs font-bold text-slate-500">
-              <button
-                onClick={() => setPage(p => Math.max(0, p - 1))}
-                disabled={page === 0}
-                className="px-4 py-2 bg-white border border-slate-200 rounded-xl flex items-center gap-1 hover:bg-slate-50 disabled:opacity-50 transition cursor-pointer"
-              >
-                <ChevronLeft className="w-4 h-4" /> Trang trước
-              </button>
-
-              <span>Trang {page + 1} / {totalPages}</span>
-
-              <button
-                onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
-                disabled={page >= totalPages - 1}
-                className="px-4 py-2 bg-white border border-slate-200 rounded-xl flex items-center gap-1 hover:bg-slate-50 disabled:opacity-50 transition cursor-pointer"
-              >
-                Trang sau <ChevronRight className="w-4 h-4" />
-              </button>
+            <div className="flex items-center justify-between pt-4">
+              <span className="text-xs text-slate-400 font-medium">
+                Trang {page + 1} / {totalPages}
+              </span>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={page === 0}
+                  onClick={() => setPage(p => Math.max(0, p - 1))}
+                  className="rounded-xl cursor-pointer"
+                >
+                  <ChevronLeft className="w-4 h-4 mr-1" />
+                  Trước
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={page >= totalPages - 1}
+                  onClick={() => setPage(p => p + 1)}
+                  className="rounded-xl cursor-pointer"
+                >
+                  Sau
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </Button>
+              </div>
             </div>
           )}
         </div>

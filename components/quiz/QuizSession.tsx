@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 import AdBanner from "@/components/ads/AdBanner";
 import { QuizQuestion } from "@/lib/quiz-helper";
 import { Timer, ArrowLeft, ArrowRight, CheckSquare, Award } from "lucide-react";
@@ -177,16 +179,11 @@ export default function QuizSession({ questions, examType, onComplete }: QuizSes
         <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-xs space-y-3">
           <div className="flex justify-between items-center text-sm font-bold text-slate-700">
             <span>Câu hỏi {currentIndex + 1} trên {questions.length}</span>
-            <span className="text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full text-xs uppercase tracking-wider font-mono">
+            <Badge variant="secondary" className="font-mono uppercase tracking-wider text-blue-600 bg-blue-50">
               {examType} • {currentQuestion.part}
-            </span>
+            </Badge>
           </div>
-          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
-            <div
-              className="bg-gradient-to-r from-blue-400 to-blue-655 h-full transition-all duration-300"
-              style={{ width: `${progressPercent}%` }}
-            />
-          </div>
+          <Progress value={progressPercent} className="h-2.5" />
         </div>
 
         {/* Card câu hỏi */}
