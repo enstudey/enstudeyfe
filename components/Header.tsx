@@ -14,8 +14,6 @@ import {
   Layers,
   BarChart3,
   Notebook,
-  Calculator,
-  School,
   Map,
   Newspaper,
 } from "lucide-react";
@@ -277,14 +275,6 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
                     <Notebook className="w-5 h-5 text-slate-500" />
                     <span>Sổ tay câu sai</span>
                   </Link>
-                  <Link href="/tinh-diem-tot-nghiep" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition duration-150">
-                    <Calculator className="w-5 h-5 text-slate-500" />
-                    <span>Công cụ tính điểm</span>
-                  </Link>
-                  <Link href="/tra-cuu-tuyen-sinh" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition duration-150">
-                    <School className="w-5 h-5 text-slate-500" />
-                    <span>Tra cứu Đại học</span>
-                  </Link>
                   <Link href="/lo-trinh" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition duration-150">
                     <Map className="w-5 h-5 text-slate-500" />
                     <span>Lộ trình học tập</span>
@@ -376,20 +366,6 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
               <span className="flex items-center gap-2">
                 <Notebook className="w-5 h-5 text-indigo-400" />
                 <span>Sổ tay câu sai</span>
-              </span>
-              <span className="text-slate-500 text-xs font-light">&rarr;</span>
-            </Link>
-            <Link href="/tinh-diem-tot-nghiep" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-900 hover:bg-indigo-500/10 hover:text-indigo-400 rounded-xl transition duration-150 border border-slate-800">
-              <span className="flex items-center gap-2">
-                <Calculator className="w-5 h-5 text-indigo-400" />
-                <span>Công cụ tính điểm</span>
-              </span>
-              <span className="text-slate-500 text-xs font-light">&rarr;</span>
-            </Link>
-            <Link href="/tra-cuu-tuyen-sinh" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-900 hover:bg-indigo-500/10 hover:text-indigo-400 rounded-xl transition duration-150 border border-slate-800">
-              <span className="flex items-center gap-2">
-                <School className="w-5 h-5 text-indigo-400" />
-                <span>Tra cứu Đại học</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>

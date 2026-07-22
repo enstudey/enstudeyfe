@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { cookies } from "next/headers";
+import { notFound } from "next/navigation";
 import StartExamCard from "@/components/exam/StartExamCard";
 import { getExamDetail } from "@/lib/api/exam";
 import { ChevronLeft } from "lucide-react";
@@ -20,9 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: res.data.description,
     };
   } catch {
-    return {
-      title: "Chuẩn bị thi thử - EnStudey",
-    };
+    notFound();
   }
 }
 
@@ -32,14 +31,17 @@ export default async function ExamPreparePage({ params }: PageProps) {
   const token = cookieStore.get("token")?.value;
 
   let exam = null;
-  let errorMsg = null;
 
   try {
     const res = await getExamDetail(id, token);
     exam = res.data;
   } catch (err) {
     console.error("Failed to load exam detail", err);
-    errorMsg = "Không tìm thấy thông tin đề thi thử hoặc đề thi chưa được kích hoạt.";
+    notFound();
+  }
+
+  if (!exam) {
+    notFound();
   }
 
   return (
@@ -55,22 +57,13 @@ export default async function ExamPreparePage({ params }: PageProps) {
         </Link>
       </div>
 
-      {errorMsg || !exam ? (
-        <div className="bg-card border border-border p-8 rounded-3xl text-center shadow-sm max-w-xl mx-auto w-full space-y-4">
-          <p className="text-red-600 text-sm font-semibold">{errorMsg || "Không tìm thấy đề thi."}</p>
-          <Link href="/exam" className="text-indigo-600 hover:underline text-xs font-bold block">
-            Quay lại danh sách đề thi &rarr;
-          </Link>
-        </div>
-      ) : (
-        <StartExamCard
-          id={exam.id}
-          title={exam.title}
-          durationSeconds={exam.durationSeconds}
-          totalQuestions={exam.totalQuestions}
-          token={token}
-        />
-      )}
+      <StartExamCard
+        id={exam.id}
+        title={exam.title}
+        durationSeconds={exam.durationSeconds}
+        totalQuestions={exam.totalQuestions}
+        token={token}
+      />
     </main>
   );
 }

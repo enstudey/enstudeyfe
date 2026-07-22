@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { getAllPosts, getRelatedPosts } from "@/lib/markdown";
 import { getCategoryFallbackImage } from "@/lib/images";
 import TableOfContents from "@/components/TableOfContents";
@@ -89,10 +90,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = posts.find(p => p.slug === slug);
 
   if (!post) {
-    return {
-      title: "Bài viết không tồn tại - EnStudy",
-      description: "Đọc các bài viết chuyên sâu về luyện thi tiếng Anh.",
-    };
+    notFound();
   }
 
   return {
@@ -108,17 +106,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<{
   const post = posts.find(p => p.slug === slug);
 
   if (!post) {
-    return (
-      <main className="max-w-3xl mx-auto py-12 w-full flex-grow space-y-6 text-center">
-        <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
-          Bài viết không tồn tại rồi bạn ơi 🥺
-        </h1>
-        <p className="text-slate-500">Hình như bài viết bạn yêu cầu hiện không có trên hệ thống hoặc đã được di chuyển đi nơi khác.</p>
-        <Link href="/tin-tuc" className="text-sm text-indigo-600 hover:underline font-semibold">
-          &larr; Quay lại danh sách tin tức
-        </Link>
-      </main>
-    );
+    notFound();
   }
 
   const relatedPosts = getRelatedPosts(slug, post.category, 4);

@@ -23,6 +23,8 @@ import {
 } from "./utils";
 import { useScoreValidation } from "@/hooks/useScoreValidation";
 
+import { notFound } from "next/navigation";
+
 const INITIAL_SEMESTER_SCORES: SubjectSemesterScores = {
   grade10_hk1: "",
   grade10_hk2: "",
@@ -33,6 +35,7 @@ const INITIAL_SEMESTER_SCORES: SubjectSemesterScores = {
 };
 
 export default function CalculatorPage() {
+  notFound();
   const { validateScore, sanitizeInput } = useScoreValidation();
 
   // Lựa chọn phương thức xét tuyển
@@ -406,8 +409,9 @@ export default function CalculatorPage() {
   };
 
   const getVisibleScores = () => {
-    if (!computedScores) return [];
-    let list = Object.entries(computedScores);
+    const scoresData = computedScores;
+    if (!scoresData) return [];
+    let list = Object.entries(scoresData);
     if (activeTab !== "all") {
       const testMapping: Record<string, string[]> = {
         A: ["A00", "A01", "A02", "A0T", "A0C", "A09", "A10", "A08", "AH2", "AH3", "AH4"],

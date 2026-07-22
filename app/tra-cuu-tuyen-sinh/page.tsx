@@ -1,22 +1,15 @@
 import fs from "fs";
 import path from "path";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import FinderClient from "./FinderClient";
 
 export const metadata: Metadata = {
-  title: "Hệ thống tra cứu nguyện vọng thông minh 2026 - EnStudey",
-  description: "Gợi ý các trường Đại học, ngành học và phân tích tổ hợp môn xét tuyển tối ưu theo khoảng điểm thi tốt nghiệp THPT.",
-  openGraph: {
-    title: "Hệ thống tra cứu nguyện vọng thông minh 2026 - EnStudey",
-    description: "Gợi ý các trường Đại học, ngành học và phân tích tổ hợp môn xét tuyển tối ưu theo khoảng điểm thi tốt nghiệp THPT.",
-    images: [
-      {
-        url: "/icon-transparent.png",
-        width: 512,
-        height: 512,
-        alt: "EnStudey Hướng nghiệp",
-      },
-    ],
+  title: "404 - Không tìm thấy trang | EnStudey",
+  description: "Trang bạn tìm kiếm không tồn tại hoặc đã được di chuyển trên hệ thống EnStudey.",
+  robots: {
+    index: false,
+    follow: false,
   },
 };
 
@@ -25,6 +18,7 @@ interface PageProps {
 }
 
 export default async function FinderPage({ searchParams }: PageProps) {
+  notFound();
   const resolvedSearchParams = await searchParams;
   const pageParam = resolvedSearchParams.page;
   const initialPage = typeof pageParam === "string" ? parseInt(pageParam, 10) : 1;

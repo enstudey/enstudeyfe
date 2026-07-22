@@ -1,14 +1,25 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
+import { notFound } from "next/navigation";
 import AdBanner from "@/components/ads/AdBanner";
 import { getCategoryBySlug } from "@/lib/categories";
 import CategoryIcon from "@/components/category-icon";
 
-export const metadata: Metadata = {
-  title: "Danh mục bài viết - Blog EnStudey",
-  description: "Lọc các bài viết chia sẻ theo danh mục kỹ năng hoặc mẹo học tiếng Anh.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const cat = getCategoryBySlug(resolvedParams.category);
+  if (!cat) {
+    return {
+      title: "404 - Không tìm thấy trang | EnStudey",
+      robots: { index: false, follow: false },
+    };
+  }
+  return {
+    title: `Danh mục: ${cat.name} - Blog EnStudey`,
+    description: `Lọc các bài viết chia sẻ thuộc danh mục ${cat.name}.`,
+  };
+}
 
 const MOCK_POSTS = [
   {
@@ -34,6 +45,9 @@ const MOCK_POSTS = [
 export default async function BlogCategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const resolvedParams = await params;
   const cat = getCategoryBySlug(resolvedParams.category);
+  if (!cat) {
+    notFound();
+  }
   const filteredPosts = MOCK_POSTS.filter(post => post.category === resolvedParams.category);
 
   return (

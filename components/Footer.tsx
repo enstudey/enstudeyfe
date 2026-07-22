@@ -45,12 +45,6 @@ export default function Footer() {
           <div className="space-y-3">
             <h2 className="text-xs font-bold text-white tracking-widest uppercase">Khám phá & Công cụ</h2>
             <div className="flex flex-col gap-2.5 text-xs text-slate-400">
-              <Link href="/tinh-diem-tot-nghiep" className="hover:text-white transition font-medium">
-                Công cụ tính điểm
-              </Link>
-              <Link href="/tra-cuu-tuyen-sinh" className="hover:text-white transition font-medium">
-                Tra cứu Đại học
-              </Link>
               <Link href="/ngan-hang-cau-sai" className="hover:text-white transition font-medium">
                 Sổ tay câu sai
               </Link>

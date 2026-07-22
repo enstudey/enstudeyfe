@@ -15,8 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: "https://enstudey.com", priority: 1.0 },
     { url: "https://enstudey.com/tin-tuc", priority: 0.9 },
-    { url: "https://enstudey.com/tinh-diem-tot-nghiep", priority: 0.9 },
-    { url: "https://enstudey.com/tra-cuu-tuyen-sinh", priority: 0.8 },
     { url: "https://enstudey.com/nganh-hoc", priority: 0.8 },
     { url: "https://enstudey.com/so-tay", priority: 0.8 },
     { url: "https://enstudey.com/luyen-noi", priority: 0.8 },

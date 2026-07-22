@@ -84,9 +84,9 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
         variant="link"
         data-testid="btn-open-report-form"
         onClick={() => setIsOpen(true)}
-        className="text-sm font-semibold text-accent p-0 h-auto cursor-pointer"
+        className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 p-0 h-auto cursor-pointer hover:underline transition-colors"
       >
-        Báo lỗi cho tụi mình nha
+        Báo cáo sự cố cho ban quản trị
       </Button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -99,9 +99,9 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
                 </svg>
               </div>
               <DialogHeader className="text-center space-y-2">
-                <DialogTitle className="text-lg font-bold text-foreground">Tụi mình cảm ơn nha!</DialogTitle>
+                <DialogTitle className="text-lg font-bold text-foreground">Đã gửi báo cáo thành công</DialogTitle>
                 <DialogDescription className="text-sm text-emerald-700 leading-relaxed">
-                  Cảm ơn bạn đã dành thời gian báo lỗi cho tụi mình nha! 💜 Sự góp ý của bạn thật sự rất quý và giúp tụi mình cải thiện ứng dụng mỗi ngày. Tụi mình sẽ kiểm tra và khắc phục nhanh chóng.
+                  Cảm ơn bạn đã gửi phản hồi. Chúng tôi đã ghi nhận thông tin và sẽ tiến hành kiểm tra xử lý trong thời gian sớm nhất.
                 </DialogDescription>
               </DialogHeader>
               <Button
@@ -109,15 +109,15 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
                 onClick={closeModal}
                 className="w-full font-semibold cursor-pointer"
               >
-                Đóng và tiếp tục học
+                Đóng cửa sổ
               </Button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <DialogHeader className="space-y-1 text-left">
-                <DialogTitle className="text-lg font-bold text-foreground">Bạn gặp sự cố gì vậy ta?</DialogTitle>
+                <DialogTitle className="text-lg font-bold text-foreground">Báo cáo sự cố hệ thống</DialogTitle>
                 <DialogDescription className="text-xs text-zinc-500">
-                  Chia sẻ một xíu về hành động bạn vừa làm trước khi gặp lỗi nha...
+                  Vui lòng mô tả chi tiết thao tác hoặc lỗi bạn vừa gặp phải để ban quản trị hỗ trợ xử lý.
                 </DialogDescription>
               </DialogHeader>
 
@@ -128,7 +128,7 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
                 maxLength={500}
                 rows={4}
                 className="w-full resize-none"
-                placeholder="Ví dụ: Mình bấm đăng nhập bằng Google thì màn hình báo lỗi này..."
+                placeholder="Mô tả chi tiết lỗi hoặc thao tác xảy ra trước khi gặp sự cố..."
                 required
               />
 
@@ -158,8 +158,8 @@ export default function ErrorReportForm({ errorCode, errorMessage }: ErrorReport
               </div>
 
               {submitResult === "error" && (
-                <p className="text-xs text-error-text text-center">
-                  Oops! Chưa gửi được rồi, bạn kiểm tra lại kết nối mạng nha.
+                <p className="text-xs text-error-text text-center font-medium">
+                  Không thể gửi báo cáo. Vui lòng kiểm tra lại kết nối mạng.
                 </p>
               )}
             </form>

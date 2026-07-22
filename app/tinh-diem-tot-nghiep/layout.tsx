@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Công cụ tính điểm tốt nghiệp THPT 2026 chính xác - EnStudey",
-  description: "Tính điểm xét tuyển đại học các khối A00, A01, B00, D01 tự động, chính xác và nhanh chóng.",
+  title: "404 - Không tìm thấy trang | EnStudey",
+  description: "Trang bạn tìm kiếm không tồn tại hoặc đã được di chuyển trên hệ thống EnStudey.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function CalculatorLayout({

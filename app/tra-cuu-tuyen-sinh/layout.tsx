@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hệ thống tra cứu nguyện vọng thông minh - EnStudey",
-  description: "Gợi ý các trường Đại học, ngành học và phân tích tổ hợp môn xét tuyển tối ưu theo khoảng điểm thi tốt nghiệp THPT.",
+  title: "404 - Không tìm thấy trang | EnStudey",
+  description: "Trang bạn tìm kiếm không tồn tại hoặc đã được di chuyển trên hệ thống EnStudey.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function FinderLayout({

@@ -18,24 +18,26 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 py-24 text-center sm:py-32 lg:px-8">
-      <div className="text-center">
-        <p className="text-base font-semibold text-red-600">Có chút trục trặc rồi</p>
-        <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-5xl">Oops! Có lỗi xảy ra mất rồi</h1>
-        <p className="mt-6 text-base leading-7 text-zinc-500 max-w-md mx-auto">
-          Tụi mình đang kiểm tra và xử lý trục trặc này. Bạn yên tâm nha, thử bấm nút dưới để tải lại xem sao nè.
+    <div className="flex min-h-[80vh] flex-col items-center justify-center bg-background px-6 py-16 text-center lg:px-8">
+      <div className="text-center max-w-md mx-auto">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-600 text-xs font-bold uppercase tracking-wider mb-4">
+          <span>500 • Lỗi hệ thống</span>
+        </div>
+        <h1 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">Đã xảy ra sự cố kỹ thuật</h1>
+        <p className="mt-4 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+          Hệ thống gặp phải lỗi không mong muốn trong quá trình xử lý yêu cầu. Vui lòng tải lại trang hoặc quay về trang chủ.
         </p>
-        <div className="mt-10 flex items-center justify-center gap-x-4">
+        <div className="mt-8 flex items-center justify-center gap-x-4">
           <Button
             onClick={() => reset()}
-            className="rounded-md px-5 py-2.5 text-sm font-semibold shadow-sm cursor-pointer"
+            className="rounded-xl px-5 py-2.5 text-sm font-bold shadow-md cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white transition-all btn-interactive"
             id="btn-retry"
           >
-            Thử lại nha
+            Thử lại
           </Button>
-          <Button asChild variant="ghost" className="cursor-pointer">
+          <Button asChild variant="outline" className="rounded-xl px-5 py-2.5 text-sm font-bold cursor-pointer">
             <Link href="/">
-              Về trang chủ thôi &rarr;
+              Về trang chủ
             </Link>
           </Button>
         </div>

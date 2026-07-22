@@ -27,9 +27,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const resolvedParams = await params;
   const post = getPostBySlug(resolvedParams.category, resolvedParams.slug);
   if (!post) {
-    return {
-      title: "Bài viết không tồn tại - EnStudey",
-    };
+    notFound();
   }
 
   return {
