@@ -3,10 +3,9 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { startExam } from "@/lib/api/exam";
-import { Play, ShieldAlert, Sparkles } from "lucide-react";
+import { Play, ShieldCheck, Clock, FileText, GraduationCap, Loader2 } from "lucide-react";
 
 interface StartExamCardProps {
   id: string;
@@ -26,15 +25,8 @@ export default function StartExamCard({
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const handleStart = async () => {
-    if (!acceptedTerms) {
-      setErrorMsg("Bạn cần đồng ý với các tuyên bố miễn trừ trách nhiệm pháp lý trước khi làm bài.");
-      return;
-    }
-
-    setLoading(false);
     setErrorMsg(null);
     setLoading(true);
 
@@ -60,67 +52,84 @@ export default function StartExamCard({
     }
   };
 
+  const durationMinutes = Math.round(durationSeconds / 60);
+
   return (
-    <Card className="max-w-xl mx-auto rounded-2xl border-border shadow-sm p-6 md:p-8 space-y-6">
-      <CardHeader className="space-y-2 text-center p-0">
-        <div className="inline-flex items-center justify-center p-3 bg-indigo-50 rounded-xl text-indigo-600 mx-auto w-fit">
-          <Sparkles className="w-6 h-6 animate-pulse" />
+    <Card className="max-w-xl mx-auto rounded-3xl border border-border/60 shadow-lg shadow-slate-200/40 dark:shadow-none p-6 md:p-8 space-y-6 bg-card text-card-foreground">
+      {/* Header Badge & Title */}
+      <CardHeader className="space-y-4 text-center p-0">
+        <div className="inline-flex items-center justify-center p-3.5 bg-primary/10 text-primary rounded-2xl mx-auto ring-8 ring-primary/5">
+          <GraduationCap className="w-8 h-8" />
         </div>
-        <CardTitle className="text-xl md:text-2xl font-black text-foreground">{title}</CardTitle>
-        <CardDescription className="text-xs text-muted-foreground">
-          Thời gian làm bài: {Math.round(durationSeconds / 60)} phút | Số câu hỏi: {totalQuestions} câu
-        </CardDescription>
+        
+        <div className="space-y-1.5">
+          <CardTitle className="text-xl md:text-2xl font-extrabold text-foreground leading-snug tracking-tight">
+            {title}
+          </CardTitle>
+        </div>
+
+        {/* Specs Badges Grid */}
+        <div className="grid grid-cols-2 gap-3 pt-2">
+          <div className="flex items-center justify-center gap-2.5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800">
+            <Clock className="w-4.5 h-4.5 text-primary shrink-0" />
+            <div className="text-left">
+              <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">Thời gian</p>
+              <p className="text-xs font-extrabold text-foreground">{durationMinutes} phút</p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-2.5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800">
+            <FileText className="w-4.5 h-4.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <div className="text-left">
+              <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">Số câu hỏi</p>
+              <p className="text-xs font-extrabold text-foreground">{totalQuestions} câu</p>
+            </div>
+          </div>
+        </div>
       </CardHeader>
 
-      <CardContent className="p-0 space-y-6">
-        <div className="bg-[#FFFBEB] border border-amber-200/60 rounded-xl p-4 md:p-5 space-y-3">
-          <div className="flex items-center gap-2 text-amber-800 font-bold text-sm">
-            <ShieldAlert className="w-5 h-5 shrink-0 text-amber-600" />
+      <CardContent className="p-0 space-y-4">
+        {/* Clean Flat Disclaimer Box */}
+        <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200/70 dark:border-slate-800 rounded-2xl p-4 text-left space-y-1.5">
+          <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300 font-bold text-xs">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <span>Miễn trừ trách nhiệm pháp lý (Nghị định 72/2013/NĐ-CP)</span>
           </div>
-          <p className="text-amber-800/85 text-[11px] leading-relaxed text-left">
+          <p className="text-muted-foreground text-xs leading-relaxed pl-6">
             Đây là hệ thống thi thử và tự ôn luyện cá nhân phi thương mại. Điểm số chỉ mang tính chất tham khảo, không tương đương chứng chỉ chính thức cấp bởi ETS hay IDP/British Council.
           </p>
-          <div className="flex items-start gap-3 pt-2 select-none cursor-pointer">
-            <Checkbox
-              id="terms"
-              checked={acceptedTerms}
-              onCheckedChange={(checked) => {
-                const val = Boolean(checked);
-                setAcceptedTerms(val);
-                if (val) setErrorMsg(null);
-              }}
-              className="mt-0.5"
-            />
-            <label htmlFor="terms" className="text-[11px] text-amber-900/90 font-medium text-left cursor-pointer">
-              Tôi đã đọc kỹ và đồng ý với các tuyên bố miễn trừ trách nhiệm trên.
-            </label>
-          </div>
         </div>
 
         {errorMsg && (
-          <div className="bg-red-50 border border-red-100 text-red-600 p-3 rounded-xl text-xs text-center font-medium">
+          <div className="bg-destructive/10 border border-destructive/20 text-destructive p-3 rounded-xl text-xs text-center font-semibold">
             {errorMsg}
           </div>
         )}
       </CardContent>
 
-      <CardFooter className="p-0">
+      <CardFooter className="p-0 flex flex-col space-y-3">
         <Button
           onClick={handleStart}
-          disabled={loading || !acceptedTerms}
+          disabled={loading}
           size="lg"
-          className="w-full rounded-lg py-6 font-bold gap-2 shadow-md transition duration-200 hover:scale-[1.01]"
+          className="w-full h-13 text-base font-extrabold rounded-2xl gap-2 shadow-md shadow-primary/20 btn-interactive"
         >
           {loading ? (
-            <span>Đang tạo đề thi...</span>
+            <>
+              <Loader2 className="w-5 h-5 animate-spin" />
+              <span>Đang tạo bài thi...</span>
+            </>
           ) : (
             <>
-              <Play className="w-4 h-4 fill-current" />
+              <Play className="w-5 h-5 fill-current" />
               <span>Bắt đầu làm bài</span>
             </>
           )}
         </Button>
+
+        <p className="text-[11px] text-center text-muted-foreground font-medium">
+          ⚡ Hệ thống tự động ghi nhận thời gian làm bài khi bạn nhấn bắt đầu.
+        </p>
       </CardFooter>
     </Card>
   );
