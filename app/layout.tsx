@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import { Inter, Lora, Geist_Mono } from "next/font/google";
-import { headers, cookies } from "next/headers";
+import { cookies } from "next/headers";
 import Script from "next/script";
 import AdSenseScript from "@/components/AdSenseScript";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import CookieBanner from "@/components/cookie-banner";
 import ToastContainer from "@/components/toast/ToastContainer";
-import BottomTabBar from "@/components/BottomTabBar";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import AppShell from "@/components/AppShell";
 import "./globals.css";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -61,14 +59,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
-  const pathname = headersList.get("x-pathname") || "";
-  const isIsolated =
-    pathname.startsWith("/quiz") ||
-    pathname.startsWith("/login") ||
-    pathname.includes("/exam/session/");
   return (
     <html
       lang="vi"
@@ -126,20 +118,11 @@ export default async function RootLayout({
         />
         <QueryProvider>
           <TooltipProvider>
-            {!isIsolated && <Header token={token} />}
-            {isIsolated ? (
-              children
-            ) : (
-              <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 flex-grow flex flex-col">
-                {children}
-              </div>
-            )}
-            {!isIsolated && <Footer />}
+            <AppShell token={token}>{children}</AppShell>
           </TooltipProvider>
         </QueryProvider>
         <CookieBanner />
         <ToastContainer />
-        {!isIsolated && <BottomTabBar />}
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXX"} />
       </body>
     </html>
