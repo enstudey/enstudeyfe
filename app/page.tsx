@@ -73,8 +73,7 @@ export default async function DashboardPage() {
       <div className="lg:col-span-8 xl:col-span-3 space-y-6">
         {/* Guest CTA Banner */}
         {isGuest && (
-          <div className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white rounded-xl p-8 shadow-md relative overflow-hidden border border-indigo-600/30">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_70%)] pointer-events-none" />
+          <div className="bg-indigo-600 text-white rounded-xl p-8 shadow-md relative overflow-hidden border border-indigo-600/30">
             <div className="relative z-10 space-y-4 max-w-xl">
               <span className="bg-white/20 text-white text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
                 Trải nghiệm không giới hạn 🚀

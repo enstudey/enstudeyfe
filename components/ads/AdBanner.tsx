@@ -10,7 +10,7 @@ const MOCK_ADS = [
     description: "Nhận giáo trình luyện nói phản xạ 1-1 miễn phí tối ưu cho người bận rộn.",
     cta: "Thử Ngay Lên Trình",
     tag: "Tài trợ",
-    gradient: "from-indigo-500/10 via-indigo-500/5 to-transparent",
+    bgColor: "bg-indigo-50/50 dark:bg-indigo-950/20",
     border: "border-indigo-500/20"
   },
   {
@@ -18,7 +18,7 @@ const MOCK_ADS = [
     description: "E-book độc quyền tổng hợp từ Mistake Bank của hơn 10,000 học viên tại EnStudey.",
     cta: "Tải E-book Free",
     tag: "Đề xuất",
-    gradient: "from-emerald-500/10 via-teal-500/5 to-transparent",
+    bgColor: "bg-emerald-50/50 dark:bg-emerald-950/20",
     border: "border-emerald-500/20"
   },
   {
@@ -26,7 +26,7 @@ const MOCK_ADS = [
     description: "Nâng cấp tài khoản để làm Mini-test không giới hạn và nhận dự báo đề tủ TOEIC/IELTS.",
     cta: "Nâng Cấp Premium",
     tag: "EnStudey Pro",
-    gradient: "from-indigo-500/10 via-purple-500/5 to-transparent",
+    bgColor: "bg-purple-50/50 dark:bg-purple-950/20",
     border: "border-indigo-500/20"
   }
 ];
@@ -79,7 +79,7 @@ export default function AdBanner({
 
   return (
     <div
-      className={`w-full ${heightClass} bg-gradient-to-r ${ad.gradient} bg-white flex flex-col justify-between p-6 rounded-2xl overflow-hidden border ${ad.border} shadow-sm transition-all duration-300 relative ${className}`}
+      className={`w-full ${heightClass} ${ad.bgColor} bg-white dark:bg-zinc-900 flex flex-col justify-between p-6 rounded-2xl overflow-hidden border ${ad.border} shadow-sm transition-all duration-300 relative ${className}`}
       data-testid="ad-banner"
     >
       <div className="absolute top-3 right-3 flex items-center gap-1">

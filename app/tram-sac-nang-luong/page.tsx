@@ -58,7 +58,7 @@ export default function TramSacNangLuongPage() {
           </div>
 
           {/* Infinite Scroll Container */}
-          <div className="relative h-[320px] overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-8 before:bg-gradient-to-b before:from-white before:to-transparent before:z-10 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-8 after:bg-gradient-to-t after:from-white after:to-transparent after:z-10">
+          <div className="relative h-[320px] overflow-hidden border-y border-slate-100 dark:border-zinc-800">
             <div className="animate-scroll-vertical space-y-3 py-4">
               {/* Nhân đôi danh sách để tạo loop nối đuôi mượt mà */}
               {Array.from({ length: Math.ceil((donors.length * 2) / 2) }).map((_, rowIndex) => {

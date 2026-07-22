@@ -66,7 +66,7 @@ export default function StarterPackWidget({
       <Button
         asChild
         size="lg"
-        className="w-full font-bold text-xs rounded-xl py-3 cursor-pointer shadow-xs bg-gradient-to-r from-indigo-600 to-indigo-600 hover:from-indigo-700 hover:to-indigo-700 text-white"
+        className="w-full font-bold text-xs rounded-xl py-3 cursor-pointer shadow-xs bg-indigo-600 hover:bg-indigo-700 text-white"
       >
         <a
           href={redirectUrl}

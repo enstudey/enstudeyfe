@@ -245,7 +245,7 @@ export default function PracticeSelectionClient({ isGuest }: PracticeSelectionCl
       </div>
 
       {/* Gamification Grammar Swipe card */}
-      <div className="max-w-[1200px] mx-auto bg-gradient-to-r from-indigo-600 to-indigo-600 rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md relative overflow-hidden">
+      <div className="max-w-[1200px] mx-auto bg-indigo-600 rounded-3xl p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md relative overflow-hidden">
         <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-y-6 translate-x-6">
           <Sparkles className="w-64 h-64" />
         </div>

@@ -59,7 +59,7 @@ export default function AdSenseSlot({
     if (isVertical) {
       return (
         <div
-          className={`relative w-full border border-indigo-100 dark:border-indigo-950/40 bg-linear-to-b from-indigo-50/50 to-indigo-500/5 dark:from-zinc-900 dark:to-indigo-950/10 rounded-3xl p-6 flex flex-col justify-between items-center text-center overflow-hidden group hover:shadow-md transition-all duration-300 ${className}`}
+          className={`relative w-full border border-indigo-100 dark:border-indigo-950/40 bg-indigo-50/40 dark:bg-indigo-950/20 rounded-3xl p-6 flex flex-col justify-between items-center text-center overflow-hidden group hover:shadow-md transition-all duration-300 ${className}`}
           style={{ minHeight }}
         >
           <div className="absolute top-2 right-2 text-[8px] font-bold px-1.5 py-0.5 bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 rounded uppercase tracking-wider">
@@ -97,7 +97,7 @@ export default function AdSenseSlot({
     if (isZaloAd) {
       return (
         <div
-          className={`relative w-full border border-emerald-100 dark:border-emerald-950/40 bg-linear-to-r from-emerald-50/50 to-emerald-500/5 dark:from-zinc-900 dark:to-emerald-950/10 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4 hover:shadow-md transition-all duration-300 ${className}`}
+          className={`relative w-full border border-emerald-100 dark:border-emerald-950/40 bg-emerald-50/40 dark:bg-emerald-950/20 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4 hover:shadow-md transition-all duration-300 ${className}`}
           style={{ minHeight }}
         >
           <div className="absolute top-2 right-2 text-[8px] font-bold px-1.5 py-0.5 bg-emerald-600/10 text-emerald-600 dark:text-emerald-400 rounded uppercase tracking-wider">
@@ -132,7 +132,7 @@ export default function AdSenseSlot({
 
     return (
       <div
-        className={`relative w-full border border-indigo-100 dark:border-indigo-950/40 bg-linear-to-r from-indigo-50/50 to-indigo-500/5 dark:from-zinc-900 dark:to-indigo-950/10 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4 hover:shadow-md transition-all duration-300 ${className}`}
+        className={`relative w-full border border-indigo-100 dark:border-indigo-950/40 bg-indigo-50/40 dark:bg-indigo-950/20 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4 hover:shadow-md transition-all duration-300 ${className}`}
         style={{ minHeight }}
       >
         <div className="absolute top-2 right-2 text-[8px] font-bold px-1.5 py-0.5 bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 rounded uppercase tracking-wider">

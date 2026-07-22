@@ -23,7 +23,7 @@ export const ScorePredictorCard: React.FC<ScorePredictorCardProps> = ({
   );
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-indigo-500/20 bg-gradient-to-br from-indigo-950/20 via-slate-900/40 to-purple-950/30 p-6 sm:p-8 shadow-xl backdrop-blur-md">
+    <div className="relative overflow-hidden rounded-3xl border border-indigo-500/20 bg-slate-900 p-6 sm:p-8 shadow-xl backdrop-blur-md">
       {/* Background ambient light */}
       <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-indigo-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-purple-500/10 blur-3xl" />
@@ -49,7 +49,7 @@ export const ScorePredictorCard: React.FC<ScorePredictorCardProps> = ({
             <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
               Điểm Dự Báo Hiện Tại
             </span>
-            <div className="mt-1 text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <div className="mt-1 text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400">
               {isIelts ? predictedScore.toFixed(1) : predictedScore}
               <span className="text-xs font-normal text-slate-400 ml-1">
                 /{isIelts ? "9.0" : "990"}
@@ -92,7 +92,7 @@ export const ScorePredictorCard: React.FC<ScorePredictorCardProps> = ({
           </div>
           <div className="h-3 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800 p-0.5">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 transition-all duration-1000 ease-out shadow-sm"
+              className="h-full rounded-full bg-indigo-600 transition-all duration-1000 ease-out shadow-sm"
               style={{ width: `${progressPercent}%` }}
             />
           </div>

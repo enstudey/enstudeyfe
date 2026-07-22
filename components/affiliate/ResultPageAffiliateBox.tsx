@@ -53,7 +53,7 @@ export default function ResultPageAffiliateBox({
 
   return (
     <div
-      className={`w-full bg-gradient-to-r from-indigo-50/70 via-indigo-50/40 to-indigo-50/70 dark:from-indigo-950/30 dark:to-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 my-6 ${className}`}
+      className={`w-full bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 rounded-2xl p-5 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 my-6 ${className}`}
       data-testid="result-page-affiliate-box"
     >
       <div className="flex items-center gap-4 w-full sm:w-auto">

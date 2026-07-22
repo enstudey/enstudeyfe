@@ -90,8 +90,8 @@ export default function BlogListClient({ posts, initialPage }: BlogListClientPro
             minHeight: "180px"
           }}
         >
-          {/* Overlay màu tối nhẹ ở nửa bên trái để chữ dễ đọc */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-900/40 to-transparent z-1" />
+          {/* Overlay màu tối phẳng để chữ dễ đọc */}
+          <div className="absolute inset-0 bg-slate-950/75 z-1" />
 
           {/* Text đè lên phía bên trái */}
           <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 md:w-1/2 flex flex-col justify-center p-6 z-10 text-white space-y-1.5 md:space-y-2">

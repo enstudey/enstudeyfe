@@ -63,7 +63,7 @@ export function RoadmapHeader({ roadmap }: RoadmapHeaderProps) {
         </div>
         <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-3 rounded-full overflow-hidden">
           <div
-            className="bg-gradient-to-r from-indigo-500 to-indigo-600 h-full rounded-full transition-all duration-500"
+            className="bg-indigo-600 h-full rounded-full transition-all duration-500"
             style={{ width: `${Math.min(100, Math.max(0, roadmap.progressPercentage))}%` }}
           />
         </div>

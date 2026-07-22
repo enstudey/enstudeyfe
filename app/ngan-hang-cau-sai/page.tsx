@@ -34,7 +34,7 @@ export default async function MistakeBankPage() {
             <Button
               asChild
               size="lg"
-              className="font-bold text-sm bg-gradient-to-r from-indigo-500 to-indigo-655 text-white px-8 py-6 rounded-2xl shadow-lg hover:shadow-indigo-500/20 active:scale-[0.98] transition-all duration-300 cursor-pointer"
+              className="font-bold text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-6 rounded-2xl shadow-lg active:scale-[0.98] transition-all duration-300 cursor-pointer"
             >
               <Link href="/login">
                 Đăng nhập ngay! 🚀

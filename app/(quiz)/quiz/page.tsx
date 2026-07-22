@@ -12,7 +12,7 @@ export default async function QuizPage() {
   const token = cookieStore.get("token")?.value;
   const isGuest = !token;
   return (
-    <main className="min-h-screen bg-[#FAFAFA] bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.03),transparent_60%)]">
+    <main className="min-h-screen bg-[#FAFAFA] dark:bg-black">
       <QuizContainer isGuest={isGuest} token={token} />
     </main>
   );

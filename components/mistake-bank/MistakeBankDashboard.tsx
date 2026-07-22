@@ -73,7 +73,7 @@ export default function MistakeBankDashboard({ token }: MistakeBankDashboardProp
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header Banner */}
-      <Card className="rounded-3xl bg-gradient-to-br from-rose-500 via-rose-600 to-amber-600 text-white p-6 md:p-8 shadow-xl border-0 relative overflow-hidden">
+      <Card className="rounded-3xl bg-rose-600 text-white p-6 md:p-8 shadow-xl border-0 relative overflow-hidden">
         <div className="relative z-10 space-y-4">
           <div className="flex items-center gap-2">
             <Badge className="bg-white/20 hover:bg-white/30 text-white border-0 text-xs font-bold backdrop-blur-md px-3 py-1">

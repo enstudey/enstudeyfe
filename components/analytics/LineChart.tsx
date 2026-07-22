@@ -54,13 +54,6 @@ export const LineChart: React.FC<LineChartProps> = ({
   return (
     <div className="relative w-full overflow-hidden">
       <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto">
-        <defs>
-          <linearGradient id="lineAreaGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.0" />
-          </linearGradient>
-        </defs>
-
         {/* Horizontal Grid Lines */}
         {[0.25, 0.5, 0.75, 1.0].map((ratio, idx) => {
           const y = height - padding - ratio * chartHeight;
@@ -92,7 +85,7 @@ export const LineChart: React.FC<LineChartProps> = ({
 
         {/* Area Fill Below Line */}
         {pointsCoords.length > 1 && (
-          <path d={`M ${areaString}`} fill="url(#lineAreaGradient)" />
+          <path d={`M ${areaString}`} fill="rgba(99, 102, 241, 0.1)" />
         )}
 
         {/* Score Polyline */}

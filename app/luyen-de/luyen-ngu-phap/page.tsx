@@ -12,7 +12,7 @@ export default async function GrammarSwipePage() {
   const token = cookieStore.get("token")?.value;
   const isGuest = !token;
   return (
-    <main className="flex-grow flex flex-col bg-[#FAFAFA] dark:bg-black bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.03),transparent_60%)]">
+    <main className="flex-grow flex flex-col bg-[#FAFAFA] dark:bg-black">
       <GrammarSwipeContainer 
         isGuest={isGuest} 
         token={token} 

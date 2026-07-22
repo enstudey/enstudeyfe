@@ -44,7 +44,7 @@ export default function LoginClient({ googleLoginUrl }: LoginClientProps) {
         <div className="space-y-2 flex flex-col items-center">
           <Link href="/" className="inline-flex items-center gap-2 text-3xl font-extrabold text-foreground hover:text-indigo-600 transition-colors tracking-tight">
             <Image src="/icon-transparent.png" alt="EnStudey Logo" width={36} height={36} className="w-9 h-9" />
-            <span className="bg-gradient-to-r from-indigo-600 to-indigo-500 text-transparent bg-clip-text">EnStudey</span>
+            <span className="text-indigo-600 dark:text-indigo-400">EnStudey</span>
           </Link>
           <p className="text-muted-foreground text-sm">Chinh phục TOEIC & IELTS thông minh cùng trợ lý AI</p>
         </div>
@@ -78,7 +78,7 @@ export default function LoginClient({ googleLoginUrl }: LoginClientProps) {
           <Button
             onClick={handleDemoLogin}
             size="lg"
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-indigo-650 text-white font-bold px-6 py-6 rounded-2xl shadow-md hover:scale-[1.02] active:scale-[0.98] hover:shadow-indigo-500/20 transition-all duration-300 cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-6 rounded-2xl shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
           >
             ⚡ Trải nghiệm nhanh (Tài khoản Demo)
           </Button>

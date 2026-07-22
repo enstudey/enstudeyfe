@@ -44,13 +44,6 @@ export const RadarChart: React.FC<RadarChartProps> = ({ skills }) => {
           viewBox={`0 0 ${size} ${size}`}
           className="w-full h-full overflow-visible"
         >
-          <defs>
-            <linearGradient id="radarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#a855f7" stopOpacity="0.2" />
-            </linearGradient>
-          </defs>
-
           {/* Grid Level Polygons */}
           {levels.map((level, lvlIdx) => {
             const levelPoints = chartSkills
@@ -87,7 +80,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({ skills }) => {
           {/* Data Polygon */}
           <polygon
             points={polygonPoints}
-            fill="url(#radarGradient)"
+            fill="rgba(99, 102, 241, 0.15)"
             className="stroke-indigo-500 stroke-[2.5] transition-all duration-500 ease-out"
           />
 
