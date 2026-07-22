@@ -61,3 +61,11 @@ export interface ExamSubmitResponse {
   completedDurationSeconds: number;
   results: QuestionResult[];
 }
+
+export interface TextHighlight {
+  id: string;
+  text: string;
+  color: "yellow" | "cyan" | "green";
+  questionId?: number;
+}
+
