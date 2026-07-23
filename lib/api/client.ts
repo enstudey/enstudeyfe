@@ -1,12 +1,11 @@
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
 export const getGoogleLoginConfig = (): { url: string; isBEAvailable: boolean } => {
-  const oauthUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL;
-  const isLocalhost = !oauthUrl || oauthUrl.includes("localhost") || oauthUrl.includes("127.0.0.1");
+  const oauthUrl = process.env.NEXT_PUBLIC_BE_OAUTH2_GOOGLE_URL || "";
 
   return {
-    url: oauthUrl || "",
-    isBEAvailable: !isLocalhost
+    url: oauthUrl,
+    isBEAvailable: Boolean(oauthUrl)
   };
 };
 

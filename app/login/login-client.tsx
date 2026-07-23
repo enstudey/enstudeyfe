@@ -28,6 +28,15 @@ export default function LoginClient({ googleLoginUrl }: LoginClientProps) {
       return;
     }
 
+    const isLocalhost = googleLoginUrl.includes("localhost") || googleLoginUrl.includes("127.0.0.1");
+
+    // Local Dev: Chuyển hướng trực tiếp sang Google OAuth
+    if (isLocalhost) {
+      window.location.href = googleLoginUrl;
+      return;
+    }
+
+    // Server Prod: Kiểm tra kết nối Render trước khi chuyển hướng
     setIsChecking(true);
     try {
       const controller = new AbortController();
