@@ -51,17 +51,27 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
   const scrollThreshold = 15; // Ngưỡng cuộn lên tối thiểu (px) để tránh giật lag
   const prevPathname = useRef(pathname);
 
-  const [user, setUser] = useState<UserDto | null>(null);
+  const [user, setUser] = useState<UserDto | null>(() => {
+    if (typeof window !== "undefined" && token) {
+      try {
+        const cached = localStorage.getItem("user_profile_cache");
+        if (cached) return JSON.parse(cached);
+      } catch {}
+    }
+    return null;
+  });
   const [streak, setStreak] = useState<UserStreakDto | null>(null);
-  const [isGuest, setIsGuest] = useState(true);
-
-
+  const [isLoadingUser, setIsLoadingUser] = useState<boolean>(Boolean(token) && !user);
+  const [isGuest, setIsGuest] = useState<boolean>(!token);
 
   useEffect(() => {
     if (token) {
+      if (!user) {
+        setIsLoadingUser(true);
+      }
       const fetchData = async () => {
         if (token === "mock-demo-token-12345") {
-          setUser({
+          const demoUser: UserDto = {
             id: "demo-user",
             email: "demo.user@enstudey.com",
             fullName: "Học Viên Trải Nghiệm 🎓",
@@ -69,13 +79,15 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
             role: "STUDENT",
             isAnonymous: false,
             avatarColor: "blue"
-          });
+          };
+          setUser(demoUser);
           setStreak({
             currentStreak: 5,
             longestStreak: 12,
             lastActivityDate: new Date().toISOString()
           });
           setIsGuest(false);
+          setIsLoadingUser(false);
           return;
         }
 
@@ -89,11 +101,19 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
           let hasUser = false;
           if (userRes.ok) {
             const userData = await userRes.json();
-            setUser(userData.data as UserDto);
+            const u = userData.data as UserDto;
+            setUser(u);
             setIsGuest(false);
             hasUser = true;
+            try {
+              localStorage.setItem("user_profile_cache", JSON.stringify(u));
+            } catch {}
           } else if (userRes.status === 401) {
             setIsGuest(true);
+            setUser(null);
+            try {
+              localStorage.removeItem("user_profile_cache");
+            } catch {}
           }
 
           if (streakRes.ok) {
@@ -106,15 +126,22 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
           setIsGuest(true);
           setUser(null);
           setStreak(null);
+          try {
+            localStorage.removeItem("user_profile_cache");
+          } catch {}
+        } finally {
+          setIsLoadingUser(false);
         }
       };
       fetchData();
     } else {
-      Promise.resolve().then(() => {
-        setIsGuest(true);
-        setUser(null);
-        setStreak(null);
-      });
+      setIsGuest(true);
+      setUser(null);
+      setStreak(null);
+      setIsLoadingUser(false);
+      try {
+        localStorage.removeItem("user_profile_cache");
+      } catch {}
     }
   }, [token]);
 
@@ -318,8 +345,10 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
               </span>
             </div>
 
-            {/* User Profile / Login */}
-            {isGuest ? (
+            {/* User Profile / Skeleton / Login */}
+            {isLoadingUser ? (
+              <div className="w-9 h-9 rounded-full bg-slate-800 animate-pulse border border-slate-700 shrink-0" />
+            ) : isGuest ? (
               <Link
                 href="/login"
                 className="text-xs font-bold bg-indigo-500 hover:bg-indigo-600 text-white px-4 h-9 rounded-xl transition duration-200 flex items-center gap-1.5 shadow-sm"
