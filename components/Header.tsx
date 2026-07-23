@@ -51,24 +51,21 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
   const scrollThreshold = 15; // Ngưỡng cuộn lên tối thiểu (px) để tránh giật lag
   const prevPathname = useRef(pathname);
 
-  const [user, setUser] = useState<UserDto | null>(() => {
-    if (typeof window !== "undefined" && token) {
-      try {
-        const cached = localStorage.getItem("user_profile_cache");
-        if (cached) return JSON.parse(cached);
-      } catch {}
-    }
-    return null;
-  });
+  const [user, setUser] = useState<UserDto | null>(null);
   const [streak, setStreak] = useState<UserStreakDto | null>(null);
-  const [isLoadingUser, setIsLoadingUser] = useState<boolean>(Boolean(token) && !user);
+  const [isLoadingUser, setIsLoadingUser] = useState<boolean>(Boolean(token));
   const [isGuest, setIsGuest] = useState<boolean>(!token);
 
   useEffect(() => {
     if (token) {
-      if (!user) {
-        setIsLoadingUser(true);
-      }
+      try {
+        const cached = localStorage.getItem("user_profile_cache");
+        if (cached) {
+          setUser(JSON.parse(cached));
+          setIsLoadingUser(false);
+        }
+      } catch {}
+
       const fetchData = async () => {
         if (token === "mock-demo-token-12345") {
           const demoUser: UserDto = {
