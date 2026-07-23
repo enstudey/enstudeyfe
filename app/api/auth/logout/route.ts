@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { logoutApi } from "@/lib/api/auth";
 
 export async function GET(request: NextRequest) {
   const origin = request.nextUrl.origin;
@@ -6,17 +7,9 @@ export async function GET(request: NextRequest) {
 
   if (token && token !== "mock-demo-token-12345") {
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
-      await fetch(`${apiUrl}/api/v1/auth/logout`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        signal: AbortSignal.timeout(2000),
-      });
+      await logoutApi(token);
     } catch {
-      // Best effort logout signal to backend
+      // Best-effort logout signal to backend
     }
   }
 
