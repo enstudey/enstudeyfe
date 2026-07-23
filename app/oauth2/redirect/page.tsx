@@ -12,7 +12,7 @@ function RedirectHandler() {
 
     if (token) {
       document.cookie = `token=${token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax; Secure`;
-      router.replace("/");
+      window.location.href = "/";
     } else {
       router.replace("/login");
     }
