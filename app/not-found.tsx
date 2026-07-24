@@ -47,9 +47,9 @@ export default function NotFound() {
       color: "text-emerald-500 bg-emerald-50 dark:bg-emerald-950/40",
     },
     {
-      title: "Bàn tính điểm TOEIC",
-      description: "Tra cứu điểm TOEIC & Quy đổi điểm tuyển sinh Đại học",
-      href: "/tra-cuu-tuyen-sinh",
+      title: "Phân tích điểm TOEIC",
+      description: "Thống kê năng lực Listening & Reading 500-750+",
+      href: "/thong-ke",
       icon: GraduationCap,
       color: "text-sky-500 bg-sky-50 dark:bg-sky-950/40",
     },

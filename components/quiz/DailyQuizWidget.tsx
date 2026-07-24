@@ -8,9 +8,10 @@ import { getDailyQuizStatus } from "@/lib/api/quiz";
 interface DailyQuizWidgetProps {
   userFullName?: string;
   token?: string;
+  isGuest?: boolean;
 }
 
-export default function DailyQuizWidget({ userFullName = "bạn", token }: DailyQuizWidgetProps) {
+export default function DailyQuizWidget({ userFullName = "bạn", token, isGuest }: DailyQuizWidgetProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [isCompletedToday, setIsCompletedToday] = useState(false);
   const [scoreInfo, setScoreInfo] = useState<{ score: number; examType: string } | null>(null);

@@ -294,10 +294,6 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
                     <Notebook className="w-5 h-5 text-slate-500" />
                     <span>Sổ tay câu sai TOEIC</span>
                   </Link>
-                  <Link href="/tra-cuu-tuyen-sinh" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition duration-150">
-                    <GraduationCap className="w-5 h-5 text-slate-500" />
-                    <span>Bàn tính điểm TOEIC</span>
-                  </Link>
                 </div>
               </div>
 

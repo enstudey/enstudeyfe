@@ -45,9 +45,6 @@ export default function Footer() {
               <Link href="/thong-ke" className="hover:text-white transition font-medium">
                 Phân tích điểm TOEIC
               </Link>
-              <Link href="/tra-cuu-tuyen-sinh" className="hover:text-white transition font-medium">
-                Bàn tính điểm TOEIC
-              </Link>
               <Link href="/tin-tuc" className="hover:text-white transition font-medium">
                 Cẩm nang ôn thi TOEIC
               </Link>
