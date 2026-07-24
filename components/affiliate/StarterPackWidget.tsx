@@ -72,7 +72,7 @@ export default function StarterPackWidget({
       <Button
         asChild
         size="lg"
-        className="w-full sm:w-auto font-bold text-xs rounded-lg px-5 h-10 cursor-pointer shadow-xs bg-[#3349D8] hover:bg-[#2940C5] text-white shrink-0"
+        className="w-full sm:w-auto font-bold text-xs rounded-lg px-5 h-10 cursor-pointer shadow-xs bg-[#3349D8] hover:bg-[#2940C5] active:bg-[#1F32A5] text-white shrink-0 transition-transform duration-150 active:scale-95 transform-gpu"
       >
         <a
           href={redirectUrl}

@@ -65,6 +65,65 @@ export default function DailyQuizWidget({ userFullName = "bạn", token, isGuest
     };
   }, [token]);
 
+  // Trường hợp Guest User: Không hiển thị Streak banner
+  if (isGuest) {
+    return (
+      <div className="bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-6 sm:p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300">
+        <div className="flex-1 space-y-2 text-left">
+          <span className="inline-flex items-center gap-1 bg-[#EEF2FF] text-[#3349D8] text-[10px] px-2.5 py-0.5 rounded-full font-extrabold uppercase tracking-wider border border-[#3349D8]/20">
+            <Sparkles className="w-3.5 h-3.5" /> Diagnostic Test 10 câu
+          </span>
+          <h3 className="text-lg sm:text-xl font-extrabold text-[#16213A] tracking-tight">
+            Đánh giá trình độ TOEIC ngay tức thì 🎯
+          </h3>
+          <p className="text-[#5C667A] text-xs leading-relaxed max-w-md">
+            Làm bài test 15 phút không cần đăng nhập để nhận ngay báo cáo phân tích lỗ hổng kiến thức từ AI.
+          </p>
+        </div>
+
+        {/* Progress Ring & CTA Button Wrapper */}
+        <div className="flex flex-col sm:flex-row items-center gap-5 shrink-0">
+          {/* Progress Ring SVG */}
+          <div className="relative w-20 h-20 flex items-center justify-center shrink-0">
+            <svg className="w-full h-full transform -rotate-90">
+              <circle
+                cx="40"
+                cy="40"
+                r={30}
+                className="stroke-[#E4E8F1]"
+                strokeWidth={6}
+                fill="transparent"
+              />
+              <circle
+                cx="40"
+                cy="40"
+                r={30}
+                className="stroke-[#3349D8]"
+                strokeWidth={6}
+                fill="transparent"
+                strokeDasharray={188.5}
+                strokeDashoffset={188.5}
+                strokeLinecap="round"
+              />
+            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span className="font-mono text-base font-black text-[#16213A]">0/10</span>
+              <span className="text-[8px] text-[#5C667A] font-extrabold uppercase">Câu đúng</span>
+            </div>
+          </div>
+
+          <Link
+            href="/quiz"
+            className="w-full sm:w-auto h-12 px-6 bg-[#3349D8] hover:bg-[#2940C5] active:bg-[#1F32A5] text-white font-bold rounded-lg transition duration-150 flex items-center justify-center gap-2 shadow-xs text-xs active:scale-95 cursor-pointer"
+          >
+            <span>Luyện ngay (5 phút)</span>
+            <Sparkles className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   // SSR Fallback (trước khi mount) hoặc khi chưa làm bài
   if (!isMounted || !isCompletedToday) {
     const radius = 36;

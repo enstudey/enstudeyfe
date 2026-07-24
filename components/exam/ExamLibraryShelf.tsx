@@ -72,7 +72,7 @@ export default function ExamLibraryShelf() {
         {STATIC_EXAMS.map((exam) => (
           <div
             key={exam.id}
-            className="min-w-[260px] md:min-w-0 snap-start bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-5 shadow-xs hover:border-[#3349D8]/40 hover:shadow-sm transition duration-200 flex flex-col justify-between"
+            className="min-w-[260px] md:min-w-0 snap-start bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-5 shadow-xs hover:border-[#3349D8]/40 hover:-translate-y-1 transform-gpu transition-all duration-200 flex flex-col justify-between"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -94,7 +94,7 @@ export default function ExamLibraryShelf() {
                 </div>
 
                 <div className="flex items-center justify-between text-[10px] text-[#5C667A] pt-0.5 border-t border-[#F1F4FA]">
-                  <span>Điểm TB: <strong className="text-[#3349D8]">{exam.avgScore}đ</strong></span>
+                  <span>Điểm TB: <strong className="text-[#3349D8]">{exam.avgScore} điểm</strong></span>
                   <span>Hoàn thành: <strong className="text-[#0E9F9A]">{exam.completionRate}</strong></span>
                 </div>
               </div>
@@ -107,7 +107,7 @@ export default function ExamLibraryShelf() {
               </div>
               <Link
                 href={`/exam`}
-                className="bg-[#3349D8] hover:bg-[#2940C5] text-[#FFFFFF] font-bold text-xs px-4 py-1.5 rounded-lg transition duration-150 shadow-xs"
+                className="bg-[#3349D8] hover:bg-[#2940C5] active:bg-[#1F32A5] text-[#FFFFFF] font-bold text-xs px-4 py-1.5 rounded-lg transition-transform duration-150 active:scale-95 transform-gpu shadow-xs"
               >
                 Vào thi
               </Link>

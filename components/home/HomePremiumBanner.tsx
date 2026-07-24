@@ -50,7 +50,7 @@ export default function HomePremiumBanner() {
 
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 bg-[#3349D8] hover:bg-[#2940C5] active:bg-[#1F32A5] text-[#FFFFFF] font-bold text-xs sm:text-sm px-5 h-10 rounded-lg transition duration-150 shadow-xs cursor-pointer"
+            className="inline-flex items-center gap-2 bg-[#3349D8] hover:bg-[#2940C5] active:bg-[#1F32A5] text-[#FFFFFF] font-bold text-xs sm:text-sm px-5 h-10 rounded-lg transition-transform duration-150 active:scale-95 transform-gpu shadow-xs cursor-pointer"
           >
             <Sparkles className="w-4 h-4 text-amber-300" />
             <span>Khám phá gói Premium</span>

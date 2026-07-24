@@ -48,7 +48,7 @@ export default function HomeHowItWorks() {
           return (
             <div
               key={item.num}
-              className="bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-5 md:p-6 shadow-xs relative flex flex-col justify-between min-h-[210px] space-y-4 hover:border-[#3349D8]/30 transition duration-150"
+              className="bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-5 md:p-6 shadow-xs relative flex flex-col justify-between min-h-[210px] space-y-4 hover:border-[#3349D8]/30 hover:-translate-y-1 transform-gpu transition-all duration-200"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">

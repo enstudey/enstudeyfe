@@ -41,15 +41,15 @@ export default function GuestHeroOutcome() {
             <span>Luyện thi TOEIC chuẩn ETS 2026 cá nhân hóa</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#16213A] tracking-tight leading-tight">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#16213A] tracking-tight leading-tight">
             Chinh phục TOEIC <span className="text-[#3349D8]">{targetScore}+</span> nhanh hơn với lộ trình cá nhân hóa
           </h1>
 
           {/* Progress Visualization Bar */}
           <div className="bg-[#F7F8FC] border border-[#E4E8F1] rounded-lg p-4 space-y-2.5">
             <div className="flex items-center justify-between text-xs font-bold">
-              <span className="text-[#5C667A]">Hiện tại: <strong className="text-[#16213A]">{currentScore}đ</strong></span>
-              <span className="text-[#3349D8]">Mục tiêu: <strong>{targetScore}đ</strong></span>
+              <span className="text-[#5C667A]">Hiện tại (Mô phỏng): <strong className="text-[#16213A]">{currentScore} điểm</strong></span>
+              <span className="text-[#3349D8]">Mục tiêu: <strong>{targetScore} điểm</strong></span>
             </div>
 
             {/* Dynamic Progress Track */}
@@ -64,124 +64,72 @@ export default function GuestHeroOutcome() {
             <div className="pt-1 flex items-start gap-2 text-xs text-[#16213A] font-semibold">
               <Target className="w-4 h-4 text-[#0E9F9A] shrink-0 mt-0.5" />
               <span>
-                Bạn chỉ cần đúng thêm khoảng <span className="text-[#3349D8] font-extrabold">{extraQuestions} câu</span> (luyện ~{sessions} buổi 15 phút) để cán mốc <strong className="text-[#0E9F9A]">{targetScore}+</strong>.
+                Làm bài test 10 câu để AI xác định chính xác số câu bạn cần đúng thêm (ước tính ~{extraQuestions} câu / {sessions} buổi học) để cán mốc <strong className="text-[#0E9F9A]">{targetScore}+ điểm</strong>.
               </span>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center gap-4 pt-1">
             <button
               onClick={scrollToQuiz}
-              className="inline-flex items-center gap-2 bg-[#3349D8] hover:bg-[#2940C5] active:bg-[#1F32A5] text-[#FFFFFF] font-bold text-sm px-6 h-12 rounded-lg shadow-sm transition-all active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-2 bg-[#3349D8] hover:bg-[#2940C5] active:bg-[#1F32A5] text-[#FFFFFF] font-bold text-xs sm:text-sm px-6 h-11 sm:h-12 rounded-lg shadow-xs transition-all duration-200 active:scale-95 transform-gpu cursor-pointer"
             >
               <Sparkles className="w-4 h-4 text-amber-300 fill-amber-300" />
-              <span>Bắt đầu bài test chẩn đoán (Miễn phí)</span>
+              <span>Test chẩn đoán 10 câu (Miễn phí)</span>
             </button>
 
             <Link
               href="/exam"
-              className="inline-flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#F1F4FA] text-[#16213A] font-bold text-sm px-5 h-12 rounded-lg border border-[#E4E8F1] transition-all active:scale-95"
+              className="text-xs font-bold text-[#3349D8] hover:underline inline-flex items-center gap-1 py-2 cursor-pointer transition transform-gpu"
             >
-              <GraduationCap className="w-4.5 h-4.5 text-[#3349D8]" />
-              <span>Thi thử full-test 200 câu</span>
-              <ArrowRight className="w-4 h-4 text-[#5C667A]" />
+              <span>Xem danh sách 200+ đề thi</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
 
-        {/* Right Column: Interactive Personalization Selector Form (Col 5) */}
-        <div className="lg:col-span-5 bg-[#F7F8FC] border border-[#E4E8F1] rounded-xl p-5 sm:p-6 space-y-4">
-          <div className="flex items-center justify-between border-b border-[#E4E8F1] pb-3">
-            <h3 className="text-sm font-bold text-[#16213A] flex items-center gap-1.5">
-              <Target className="w-4 h-4 text-[#3349D8]" />
-              <span>Thiết lập lộ trình mục tiêu</span>
+        {/* Right Column: AI Diagnosis Preview Card (Mockup Visual Report) */}
+        <div className="lg:col-span-5 bg-[#F7F8FC] border border-[#E4E8F1] rounded-xl p-4 sm:p-5 space-y-3.5 shadow-xs transform-gpu">
+          <div className="flex items-center justify-between border-b border-[#E4E8F1] pb-2.5">
+            <h3 className="text-xs sm:text-sm font-bold text-[#16213A] flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-[#3349D8]" />
+              <span>Báo cáo mô phỏng phân tích AI</span>
             </h3>
             <span className="text-[10px] font-bold text-[#0E9F9A] bg-[#EEFDF8] px-2 py-0.5 rounded border border-[#0E9F9A]/20">
-              Tính toán tự động
+              Ví dụ mẫu
             </span>
           </div>
 
-          {/* Selector 1: Điểm hiện tại */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#5C667A] flex items-center justify-between">
-              <span>1. Mức điểm hiện tại:</span>
-              <span className="text-[11px] font-bold text-[#3349D8]">{currentScore} TOEIC</span>
-            </label>
-            <div className="grid grid-cols-3 gap-2">
-              {(["350", "500", "650"] as CurrentScore[]).map((val) => (
-                <button
-                  key={val}
-                  onClick={() => setCurrentScore(val)}
-                  className={`py-2 rounded-lg text-xs font-bold border transition cursor-pointer ${
-                    currentScore === val
-                      ? "bg-[#EEF2FF] text-[#3349D8] border-[#3349D8]"
-                      : "bg-[#FFFFFF] text-[#5C667A] border-[#E4E8F1] hover:bg-[#F1F4FA]"
-                  }`}
-                >
-                  {val}+ TOEIC
-                </button>
-              ))}
+          <div className="space-y-2.5 text-xs">
+            <div className="bg-[#FFFFFF] border border-[#E4E8F1] rounded-lg p-2.5 space-y-0.5">
+              <span className="text-[10px] font-bold text-[#5C667A] uppercase tracking-wider block">Dự đoán điểm hiện tại</span>
+              <div className="flex items-baseline justify-between">
+                <span className="text-lg font-extrabold text-[#16213A]">520 điểm</span>
+                <span className="text-xs font-bold text-[#3349D8]">Target 750+</span>
+              </div>
+            </div>
+
+            <div className="bg-[#FFFFFF] border border-[#E4E8F1] rounded-lg p-2.5 space-y-0.5">
+              <span className="text-[10px] font-bold text-[#C0392B] uppercase tracking-wider block">Lỗ hổng kiến thức cần gỡ</span>
+              <p className="text-xs text-[#16213A] font-semibold">
+                Hay mắc bẫy chia thì Part 5 & Đọc từ vựng Part 7 đoạn đôi
+              </p>
+            </div>
+
+            <div className="bg-[#EEF2FF] border border-[#3349D8]/20 rounded-lg p-2.5 space-y-0.5">
+              <span className="text-[10px] font-bold text-[#3349D8] uppercase tracking-wider block">Lộ trình khuyến nghị</span>
+              <p className="text-xs text-[#16213A] font-medium">
+                48 buổi 15 phút mỗi ngày kèm thuật toán Spaced Repetition (SM-2)
+              </p>
             </div>
           </div>
 
-          {/* Selector 2: Điểm mục tiêu */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#5C667A] flex items-center justify-between">
-              <span>2. Mục tiêu mong muốn:</span>
-              <span className="text-[11px] font-bold text-[#0E9F9A]">Target {targetScore}+</span>
-            </label>
-            <div className="grid grid-cols-3 gap-2">
-              {(["650", "750", "850"] as TargetScore[]).map((val) => (
-                <button
-                  key={val}
-                  onClick={() => setTargetScore(val)}
-                  className={`py-2 rounded-lg text-xs font-bold border transition cursor-pointer ${
-                    targetScore === val
-                      ? "bg-[#EEFDF8] text-[#0E9F9A] border-[#0E9F9A]"
-                      : "bg-[#FFFFFF] text-[#5C667A] border-[#E4E8F1] hover:bg-[#F1F4FA]"
-                  }`}
-                >
-                  Target {val}+
-                </button>
-              ))}
-            </div>
+          {/* Static Notice Box (loại bỏ nút bấm xanh cạnh tranh thị giác) */}
+          <div className="pt-1 text-center">
+            <span className="text-[11px] font-semibold text-[#5C667A] bg-[#FFFFFF] border border-[#E4E8F1] rounded-lg py-2 px-3 block">
+              ✨ Làm bài test 10 câu bên dưới để nhận phân tích AI chi tiết
+            </span>
           </div>
-
-          {/* Selector 3: Thời gian thi */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[#5C667A] flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5 text-[#5C667A]" />
-              <span>3. Dự kiến thời gian thi:</span>
-            </label>
-            <div className="grid grid-cols-3 gap-2">
-              {[
-                { key: "1m", label: "30 Ngày" },
-                { key: "2m", label: "60 Ngày" },
-                { key: "3m", label: "90 Ngày" },
-              ].map((item) => (
-                <button
-                  key={item.key}
-                  onClick={() => setExamTime(item.key as ExamTime)}
-                  className={`py-2 rounded-lg text-xs font-bold border transition cursor-pointer ${
-                    examTime === item.key
-                      ? "bg-[#FFFBEB] text-[#D97706] border-[#D97706]"
-                      : "bg-[#FFFFFF] text-[#5C667A] border-[#E4E8F1] hover:bg-[#F1F4FA]"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Form CTA */}
-          <button
-            onClick={scrollToQuiz}
-            className="w-full mt-2 inline-flex items-center justify-center gap-2 bg-[#3349D8] hover:bg-[#2940C5] active:bg-[#1F32A5] text-[#FFFFFF] font-bold text-xs h-10 rounded-lg transition active:scale-95 cursor-pointer shadow-xs"
-          >
-            <span>Tạo lộ trình cá nhân hóa ngay</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
         </div>
       </div>
     </section>
