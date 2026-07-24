@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Lora, Geist_Mono } from "next/font/google";
+import { Be_Vietnam_Pro, Lora, JetBrains_Mono } from "next/font/google";
 import { cookies } from "next/headers";
 import Script from "next/script";
 import AdSenseScript from "@/components/AdSenseScript";
@@ -12,9 +12,10 @@ import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import QueryProvider from "@/components/providers/QueryProvider";
 
-const inter = Inter({
-  variable: "--font-inter-sans",
+const beVietnamPro = Be_Vietnam_Pro({
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin", "vietnamese"],
+  variable: "--font-be-vietnam-pro",
 });
 
 const lora = Lora({
@@ -23,15 +24,16 @@ const lora = Lora({
   variable: "--font-lora-serif",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
-  title: "EnStudey - Luyện đề thi thử TOEIC & IELTS online miễn phí",
-  description: "Hệ thống luyện đề thi thử TOEIC & IELTS online miễn phí có chấm điểm chi tiết, thống kê năng lực thích ứng và trợ lý AI giải thích đáp án thông minh.",
+  title: "EnStudey - Nền tảng Luyện thi TOEIC Online chuẩn ETS (Reading & Listening)",
+  description: "Hệ thống luyện đề thi thử TOEIC Reading & Listening online miễn phí chuẩn cấu trúc ETS 2026 có chấm điểm tức thì, thống kê năng lực 500-750+ và AI giải thích chi tiết.",
   icons: {
     icon: "/favicon-cropped.png",
     apple: "/favicon-cropped.png",
@@ -41,8 +43,8 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "EnStudey - Luyện đề thi thử TOEIC & IELTS online miễn phí",
-    description: "Hệ thống luyện đề thi thử TOEIC & IELTS online miễn phí có chấm điểm chi tiết, thống kê năng lực thích ứng và trợ lý AI giải thích đáp án thông minh.",
+    title: "EnStudey - Nền tảng Luyện thi TOEIC Online chuẩn ETS",
+    description: "Hệ thống luyện đề thi thử TOEIC Reading & Listening online miễn phí chuẩn cấu trúc ETS 2026 có chấm điểm tức thì, thống kê năng lực 500-750+ và AI giải thích chi tiết.",
     images: [
       {
         url: "/icon-transparent.png",
@@ -64,7 +66,7 @@ export default async function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${inter.variable} ${lora.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${beVietnamPro.variable} ${lora.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
     >
@@ -72,7 +74,6 @@ export default async function RootLayout({
         <meta name="tikiaff-domain-verification" content="e5c63657b4f07e7902f7c15c088fd738dd1de8588b6ad035c495f17b35d59f4f" />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground pb-16 md:pb-0">
-        {/* Tích hợp Google AdSense Auto Ads có điều kiện lọc trang */}
         <AdSenseScript />
         <Script
           id="schema-ld-json"
@@ -83,7 +84,7 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "EnStudey",
-              "alternateName": "EnStudey - Hệ thống luyện đề thi thử TOEIC & IELTS thích ứng",
+              "alternateName": "EnStudey - Nền tảng Luyện thi TOEIC Online chuẩn ETS",
               "url": "https://enstudey.com",
               "potentialAction": {
                 "@type": "SearchAction",
@@ -128,6 +129,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
-
-
