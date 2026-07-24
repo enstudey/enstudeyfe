@@ -79,23 +79,23 @@ export default async function DashboardPage() {
                 Trải nghiệm không giới hạn 🚀
               </span>
               <h2 className="text-2xl font-extrabold leading-tight">
-                Chào bạn mới nha! Cùng bẻ gãy TOEIC & IELTS nào
+                Chào bạn mới nha! Cùng chinh phục mốc 500 – 750+ TOEIC nào 🎯
               </h2>
               <p className="text-indigo-50/90 text-sm leading-relaxed">
                 Bạn đang sử dụng hệ thống ở chế độ Khách. Đăng nhập bằng Google chỉ 3s để sở hữu toàn bộ đặc quyền sau:
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium pt-2">
                 <li className="flex items-center gap-2">
-                  <span className="text-indigo-200">⚡</span> Lưu tiến độ học tập
+                  <span className="text-indigo-200">⚡</span> Lưu tiến độ học tập TOEIC
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-indigo-200">🔥</span> Tích luỹ Streak rèn luyện
+                  <span className="text-indigo-200">🎯</span> Phân tích điểm TOEIC 500-750+
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-indigo-200">🏆</span> Leo top Bảng Xếp Hạng
+                  <span className="text-indigo-200">💎</span> Sổ tay câu sai TOEIC (Spaced Repetition)
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-indigo-200">💎</span> Tự động lưu Sổ tay câu sai
+                  <span className="text-indigo-200">📊</span> Bàn tính điểm TOEIC & Quy đổi tuyển sinh
                 </li>
               </ul>
               <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center">
@@ -111,7 +111,7 @@ export default async function DashboardPage() {
               </div>
             </div>
             <div className="absolute right-6 bottom-4 opacity-10 pointer-events-none text-8xl select-none font-bold hidden lg:block">
-              GUEST
+              TOEIC
             </div>
           </div>
         )}
@@ -122,23 +122,23 @@ export default async function DashboardPage() {
         {/* Core Feature: Full Mock Test */}
         <div className="bg-[#0F172A] text-white rounded-xl p-6 md:p-8 shadow-sm space-y-6 relative overflow-hidden border border-slate-800/80">
           <div className="absolute right-0 top-0 opacity-5 pointer-events-none text-9xl select-none font-bold translate-x-10 -translate-y-10">
-            EXAM
+            TOEIC
           </div>
           <div className="space-y-3">
             <span className="bg-indigo-500/10 text-indigo-400 text-[10px] px-2.5 py-1 rounded-full font-extrabold uppercase tracking-wider border border-indigo-500/20">
-              🏛️ Phòng thi giả lập áp lực cao
+              🏛️ Phòng thi thử TOEIC ETS 2026
             </span>
-            <h3 className="text-xl md:text-2xl font-extrabold">Full-Length Mock Test Workspace</h3>
+            <h3 className="text-xl md:text-2xl font-extrabold">TOEIC Full-Length Mock Test Workspace</h3>
             <p className="text-slate-400 text-xs md:text-sm leading-relaxed max-w-xl">
-              Trải nghiệm phòng thi máy IDP/BC & ETS thực tế. Hệ thống tự kích hoạt Full-Screen Mode, ghim Listening Audio Guard khóa tua/tạm dừng file nghe và đếm ngược thời gian nghiêm ngặt.
+              Trải nghiệm thi thử TOEIC Reading & Listening 200 câu chuẩn cấu trúc ETS 2026. Tự động chấm điểm tức thì, phân tích điểm số và lưu câu sai vào sổ tay.
             </p>
           </div>
           <div>
             <Link
               href="/exam"
-              className="inline-flex items-center gap-1.5 font-bold text-xs bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-xl shadow-sm transition duration-200"
+              className="inline-flex items-center gap-1.5 font-bold text-xs bg-[#3349D8] hover:bg-[#2940C5] text-white px-6 py-3 rounded-xl shadow-sm transition duration-200"
             >
-              Vào phòng thi ngay 🚀
+              Luyện đề TOEIC ngay 🚀
             </Link>
           </div>
         </div>

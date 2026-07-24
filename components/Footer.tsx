@@ -22,21 +22,18 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Cột 2: Luyện đề (Quick Menu) */}
+          {/* Cột 2: Luyện đề TOEIC (Quick Menu) */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold text-white tracking-widest uppercase">Luyện đề</h2>
+            <h2 className="text-xs font-bold text-white tracking-widest uppercase">Luyện đề TOEIC</h2>
             <div className="flex flex-col gap-2.5 text-xs text-slate-400">
               <Link href="/exam" className="hover:text-white transition font-medium">
-                Thi thử đầy đủ (Full-Test)
+                Thi thử đầy đủ (200 câu Part 1-7)
               </Link>
               <Link href="/" className="hover:text-white transition font-medium">
-                Mini-test hàng ngày
+                Daily Mini-Test (10 câu)
               </Link>
-              <Link href="/luyen-noi" className="hover:text-white transition font-medium">
-                Luyện nói AI
-              </Link>
-              <Link href="/the-ghi-nho" className="hover:text-white transition font-medium">
-                Flashcard từ vựng
+              <Link href="/ngan-hang-cau-sai" className="hover:text-white transition font-medium">
+                Sổ tay câu sai TOEIC
               </Link>
             </div>
           </div>
@@ -45,14 +42,14 @@ export default function Footer() {
           <div className="space-y-3">
             <h2 className="text-xs font-bold text-white tracking-widest uppercase">Khám phá & Công cụ</h2>
             <div className="flex flex-col gap-2.5 text-xs text-slate-400">
-              <Link href="/ngan-hang-cau-sai" className="hover:text-white transition font-medium">
-                Sổ tay câu sai
-              </Link>
               <Link href="/thong-ke" className="hover:text-white transition font-medium">
-                Phân tích học tập
+                Phân tích điểm TOEIC
               </Link>
-              <Link href="/lo-trinh" className="hover:text-white transition font-medium">
-                Lộ trình học tập
+              <Link href="/tra-cuu-tuyen-sinh" className="hover:text-white transition font-medium">
+                Bàn tính điểm TOEIC
+              </Link>
+              <Link href="/tin-tuc" className="hover:text-white transition font-medium">
+                Cẩm nang ôn thi TOEIC
               </Link>
             </div>
           </div>
@@ -62,10 +59,7 @@ export default function Footer() {
             <h2 className="text-xs font-bold text-white tracking-widest uppercase md:text-right">Về EnStudey</h2>
             <div className="flex flex-col md:items-end gap-2.5 text-xs text-slate-400">
               <Link href="/about" className="hover:text-white transition font-medium">
-                Giới thiệu
-              </Link>
-              <Link href="/tram-sac-nang-luong" className="hover:text-white transition font-medium">
-                Trạm sạc
+                Giới thiệu EnStudey
               </Link>
               <Link href="/privacy-policy" className="hover:text-white transition font-medium">
                 Chính sách bảo mật

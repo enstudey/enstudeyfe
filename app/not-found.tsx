@@ -6,10 +6,11 @@ import {
   Home,
   BookOpen,
   Notebook,
-  Map,
+  GraduationCap,
   Newspaper,
   Compass,
   FileQuestion,
+  Zap,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -25,31 +26,31 @@ export const metadata: Metadata = {
 export default function NotFound() {
   const quickLinks = [
     {
-      title: "Luyện đề thi",
-      description: "Thực hành đề thi thử THPT QG & Tiếng Anh",
-      href: "/luyen-de",
+      title: "Thi thử TOEIC đầy đủ",
+      description: "Thực hành đề thi thử TOEIC Reading & Listening 200 câu chuẩn ETS",
+      href: "/exam",
       icon: BookOpen,
       color: "text-indigo-500 bg-indigo-50 dark:bg-indigo-950/40",
     },
     {
-      title: "Sổ tay câu sai",
-      description: "Ôn tập và làm lại các câu hỏi đã chọn đáp án sai",
-      href: "/ngan-hang-cau-sai",
-      icon: Notebook,
+      title: "Daily Mini-Test",
+      description: "Luyện 10 câu trắc nghiệm TOEIC chọn lọc mỗi ngày",
+      href: "/",
+      icon: Zap,
       color: "text-amber-500 bg-amber-50 dark:bg-amber-950/40",
     },
     {
-      title: "Lộ trình học tập",
-      description: "Định hướng kế hoạch học tập theo mục tiêu điểm số",
-      href: "/lo-trinh",
-      icon: Map,
+      title: "Sổ tay câu sai TOEIC",
+      description: "Ôn tập và làm lại các câu hỏi TOEIC đã chọn sai",
+      href: "/ngan-hang-cau-sai",
+      icon: Notebook,
       color: "text-emerald-500 bg-emerald-50 dark:bg-emerald-950/40",
     },
     {
-      title: "Tin tức học thuật",
-      description: "Cập nhật tin tức tuyển sinh & cẩm nang học tập",
-      href: "/tin-tuc",
-      icon: Newspaper,
+      title: "Bàn tính điểm TOEIC",
+      description: "Tra cứu điểm TOEIC & Quy đổi điểm tuyển sinh Đại học",
+      href: "/tra-cuu-tuyen-sinh",
+      icon: GraduationCap,
       color: "text-sky-500 bg-sky-50 dark:bg-sky-950/40",
     },
   ];
@@ -79,10 +80,10 @@ export default function NotFound() {
           <Link
             href="/"
             id="btn-go-home"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl shadow-md shadow-indigo-500/20 transition-all btn-interactive"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#3349D8] hover:bg-[#2940C5] text-white font-bold text-sm rounded-xl shadow-md transition-all btn-interactive"
           >
             <Home className="w-4 h-4" />
-            <span>Về trang chủ</span>
+            <span>Luyện đề TOEIC ngay</span>
           </Link>
 
           <GoBackButton />
@@ -93,7 +94,7 @@ export default function NotFound() {
           <div className="flex items-center justify-center gap-2 mb-6">
             <Compass className="w-4 h-4 text-indigo-500" />
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Khám phá các phân hệ học tập khác
+              Khám phá các phân hệ luyện thi TOEIC
             </h2>
           </div>
 
