@@ -3,9 +3,9 @@ import { Sparkles, Check, ArrowRight, Crown } from "lucide-react";
 
 export default function HomePremiumBanner() {
   const benefits = [
-    "Không giới hạn 200+ bộ đề thi ETS Reading & Listening",
-    "AI Giải thích chuyên sâu từng đáp án & phân tích bẫy đề thi",
-    "Trải nghiệm học tập tập trung 100% không quảng cáo",
+    "AI phân tích tận gốc lý do bạn hay làm sai ở Part 5 & Part 7",
+    "Mở khóa 200+ bộ đề ETS 2026 mới nhất kèm lời giải chi tiết tiếng Việt",
+    "Tự động lưu & nhắc nhở ôn lại câu sai với Spaced Repetition",
   ];
 
   return (
@@ -17,11 +17,11 @@ export default function HomePremiumBanner() {
         <div className="space-y-3 max-w-2xl">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3349D8]/40 border border-[#3349D8]/60 text-amber-300 text-xs font-bold">
             <Crown className="w-3.5 h-3.5 fill-amber-300" />
-            <span>Nâng cấp trải nghiệm Premium</span>
+            <span>Gỡ điểm nghẽn TOEIC với gói Premium</span>
           </div>
 
           <h2 className="text-xl sm:text-2xl font-extrabold text-[#FFFFFF] tracking-tight leading-tight">
-            Chinh phục TOEIC tốc độ cao với các công cụ AI thông minh
+            Bạn đang mất nhiều điểm nhất ở Part 5 ngữ pháp & Part 7 đọc hiểu?
           </h2>
 
           <ul className="space-y-2 pt-1">

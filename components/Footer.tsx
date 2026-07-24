@@ -6,14 +6,14 @@ export default function Footer() {
     <footer className="bg-[#0F172A] text-slate-400 border-t border-slate-800 mt-20 min-h-[250px] hidden md:block">
       <div className="max-w-[1600px] mx-auto px-4 md:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start justify-between">
-          {/* Cột 1: Định danh chủ quản */}
+          {/* Cột 1: Định danh chủ quản & Thương hiệu */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Image src="/icon-transparent.png" alt="EnStudey Logo" width={24} height={24} className="w-6 h-6" />
-              <span className="text-xl font-bold text-white">enStudey</span>
+              <span className="text-xl font-bold text-white">EnStudey</span>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed max-w-xs">
-              Giúp học viên chinh phục điểm số TOEIC/IELTS & THPT QG với AI.
+            <p className="text-xs text-slate-400 leading-relaxed max-w-xs">
+              Nền tảng luyện TOEIC chuẩn ETS được cá nhân hóa bằng AI.
             </p>
             <div className="space-y-1.5 text-xs text-slate-500">
               <p>Chịu trách nhiệm nội dung: Nguyễn Đức Tâm</p>
@@ -22,9 +22,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Cột 2: Luyện đề TOEIC (Quick Menu) */}
+          {/* Cột 2: Luyện đề TOEIC */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold text-white tracking-widest uppercase">Luyện đề TOEIC</h2>
+            <h2 className="text-xs font-bold text-white tracking-wider uppercase">Luyện đề TOEIC</h2>
             <div className="flex flex-col gap-2.5 text-xs text-slate-400">
               <Link href="/exam" className="hover:text-white transition font-medium">
                 Thi thử đầy đủ (200 câu Part 1-7)
@@ -33,28 +33,40 @@ export default function Footer() {
                 Daily Mini-Test (10 câu)
               </Link>
               <Link href="/ngan-hang-cau-sai" className="hover:text-white transition font-medium">
-                Sổ tay câu sai TOEIC
+                Sổ tay ôn tập (SuperMemo-2)
+              </Link>
+              <Link href="/roadmap" className="hover:text-white transition font-medium">
+                Lộ trình học cá nhân
               </Link>
             </div>
           </div>
 
-          {/* Cột 3: Khám phá & Công cụ */}
+          {/* Cột 3: Khám phá & Cẩm nang */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold text-white tracking-widest uppercase">Khám phá & Công cụ</h2>
+            <h2 className="text-xs font-bold text-white tracking-wider uppercase">Khám phá & Cẩm nang</h2>
             <div className="flex flex-col gap-2.5 text-xs text-slate-400">
               <Link href="/thong-ke" className="hover:text-white transition font-medium">
-                Phân tích điểm TOEIC
+                Phân tích điểm & Tiến độ
               </Link>
               <Link href="/tin-tuc" className="hover:text-white transition font-medium">
                 Cẩm nang ôn thi TOEIC
               </Link>
+              <Link href="/about" className="hover:text-white transition font-medium">
+                Khám phá gói Premium
+              </Link>
             </div>
           </div>
 
-          {/* Cột 4: An toàn pháp lý */}
+          {/* Cột 4: Cộng đồng & Pháp lý */}
           <div className="space-y-3 md:text-right">
-            <h2 className="text-xs font-bold text-white tracking-widest uppercase md:text-right">Về EnStudey</h2>
+            <h2 className="text-xs font-bold text-white tracking-wider uppercase md:text-right">Cộng đồng & Thông tin</h2>
             <div className="flex flex-col md:items-end gap-2.5 text-xs text-slate-400">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition font-medium">
+                Cộng đồng Facebook
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition font-medium">
+                Kênh Youtube Bài giảng
+              </a>
               <Link href="/about" className="hover:text-white transition font-medium">
                 Giới thiệu EnStudey
               </Link>
@@ -74,10 +86,10 @@ export default function Footer() {
             © 2026 EnStudey. All rights reserved.
           </p>
 
-          {/* Badge Version trực quan */}
+          {/* Badge Version trực quan SaaS */}
           <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-[9px] font-bold text-slate-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Version 2.0</span>
+            <span>Version 2.1.0</span>
           </div>
         </div>
       </div>

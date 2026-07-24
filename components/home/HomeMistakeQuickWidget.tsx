@@ -14,12 +14,12 @@ export default function HomeMistakeQuickWidget({ isGuest }: HomeMistakeQuickWidg
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#EEF2FF] text-[#3349D8] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#EEF2FF] text-[#3349D8] flex items-center justify-center shrink-0">
               <Notebook className="w-4.5 h-4.5" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-[#16213A]">
-                Sổ tay câu sai TOEIC
+              <h3 className="text-sm font-bold text-[#16213A] flex items-center gap-1">
+                <span>Sổ tay câu sai TOEIC</span>
               </h3>
               <p className="text-[11px] text-[#5C667A]">
                 Spaced Repetition (SuperMemo-2)
@@ -27,8 +27,8 @@ export default function HomeMistakeQuickWidget({ isGuest }: HomeMistakeQuickWidg
             </div>
           </div>
 
-          <span className="px-2.5 py-0.5 rounded-lg bg-[#EEFDF8] text-[#0E9F9A] text-[10px] font-bold border border-[#0E9F9A]/20">
-            SM-2
+          <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-[#EEFDF8] text-[#0E9F9A] border border-[#0E9F9A]/20">
+            ⭐ Core Feature
           </span>
         </div>
 

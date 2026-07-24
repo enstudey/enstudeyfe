@@ -14,7 +14,7 @@ export default function HomeHowItWorks() {
     {
       num: "02",
       icon: Brain,
-      title: "AI Phân tích & Giải thích",
+      title: "AI phân tích & giải thích",
       desc: "Xem lời giải chi tiết 100% tiếng Việt, nhận diện bẫy ngữ pháp và mẹo xử lý nhanh Part 1 - Part 7.",
       badge: "100% Tiếng Việt",
       color: "text-[#0E9F9A]",
@@ -48,7 +48,7 @@ export default function HomeHowItWorks() {
           return (
             <div
               key={item.num}
-              className="bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-6 shadow-xs relative flex flex-col justify-between space-y-4 hover:border-[#3349D8]/30 transition duration-150"
+              className="bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-5 md:p-6 shadow-xs relative flex flex-col justify-between min-h-[210px] space-y-4 hover:border-[#3349D8]/30 transition duration-150"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -64,7 +64,7 @@ export default function HomeHowItWorks() {
                   {item.title}
                 </h3>
 
-                <p className="text-xs text-[#5C667A] leading-relaxed">
+                <p className="text-xs text-[#5C667A] leading-relaxed block break-words">
                   {item.desc}
                 </p>
               </div>

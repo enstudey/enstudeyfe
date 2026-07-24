@@ -12,6 +12,8 @@ interface ExamItem {
   durationMinutes: number;
   difficultyStars: number;
   targetBadge: string;
+  avgScore: number;
+  completionRate: string;
 }
 
 const STATIC_EXAMS: ExamItem[] = [
@@ -24,6 +26,8 @@ const STATIC_EXAMS: ExamItem[] = [
     durationMinutes: 120,
     difficultyStars: 3,
     targetBadge: "Target 650+",
+    avgScore: 580,
+    completionRate: "92%",
   },
   {
     id: "hackers-3-test-2",
@@ -34,6 +38,8 @@ const STATIC_EXAMS: ExamItem[] = [
     durationMinutes: 120,
     difficultyStars: 4,
     targetBadge: "Target 750+",
+    avgScore: 640,
+    completionRate: "88%",
   },
   {
     id: "ets-2026-starter-1",
@@ -44,6 +50,8 @@ const STATIC_EXAMS: ExamItem[] = [
     durationMinutes: 60,
     difficultyStars: 2,
     targetBadge: "Target 500+",
+    avgScore: 495,
+    completionRate: "95%",
   },
 ];
 
@@ -51,8 +59,8 @@ export default function ExamLibraryShelf() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center px-1">
-        <h3 className="text-base font-extrabold text-[#16213A] tracking-tight flex items-center gap-2">
-          <span>📚</span> Ngân hàng đề thi thử ETS 2026
+        <h3 className="text-base font-extrabold text-[#16213A] tracking-tight">
+          Ngân hàng đề thi thử ETS 2026
         </h3>
         <Link href="/exam" className="text-xs font-bold text-[#3349D8] hover:underline transition">
           Xem tất cả đề thi &rarr;
@@ -82,24 +90,26 @@ export default function ExamLibraryShelf() {
                 </h4>
 
                 <div className="flex items-center justify-between text-[11px] text-[#5C667A]">
-                  <span>⏱️ {exam.durationMinutes} phút</span>
-                  <span className="text-amber-500 font-bold">
-                    {"★".repeat(exam.difficultyStars)}
-                  </span>
+                  <span>Thời gian: {exam.durationMinutes} phút</span>
+                </div>
+
+                <div className="flex items-center justify-between text-[10px] text-[#5C667A] pt-0.5 border-t border-[#F1F4FA]">
+                  <span>Điểm TB: <strong className="text-[#3349D8]">{exam.avgScore}đ</strong></span>
+                  <span>Hoàn thành: <strong className="text-[#0E9F9A]">{exam.completionRate}</strong></span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-[#F1F4FA] flex items-center justify-between">
+            <div className="mt-3 pt-3 border-t border-[#F1F4FA] flex items-center justify-between">
               <div className="text-left">
                 <span className="block text-[9px] text-[#5C667A] font-bold uppercase">Lượt làm</span>
                 <span className="font-mono text-xs font-extrabold text-[#16213A]">{exam.attemptsCount}</span>
               </div>
               <Link
                 href={`/exam`}
-                className="bg-[#3349D8] hover:bg-[#2940C5] text-[#FFFFFF] font-bold text-xs px-3.5 py-1.5 rounded-lg transition duration-150 shadow-xs"
+                className="bg-[#3349D8] hover:bg-[#2940C5] text-[#FFFFFF] font-bold text-xs px-4 py-1.5 rounded-lg transition duration-150 shadow-xs"
               >
-                Vào thi ⚡
+                Vào thi
               </Link>
             </div>
           </div>

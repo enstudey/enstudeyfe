@@ -38,35 +38,41 @@ export default function StarterPackWidget({
 
   return (
     <div
-      className={`w-full bg-card border border-border rounded-3xl p-5 flex flex-col justify-between space-y-4 shadow-sm hover:shadow-md transition duration-300 ${className}`}
+      className={`w-full bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xs ${className}`}
       data-testid="starter-pack-widget"
     >
-      <div className="space-y-1">
-        <span className="text-[10px] font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest block">
-          🎁 Góc Hành Trang Học Viên
-        </span>
-        <h3 className="font-extrabold text-base text-foreground leading-snug">
-          EnStudey Starter Pack 2026
-        </h3>
-        <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-          Bộ sưu tập giáo trình học tốt Tiếng Anh, đề thi thử chuẩn và thiết bị học tập tối ưu cho sĩ tử.
-        </p>
-      </div>
+      <div className="flex flex-col sm:flex-row items-center gap-4">
+        <div className="relative w-20 h-24 rounded-lg overflow-hidden bg-[#F7F8FC] border border-[#E4E8F1] shrink-0">
+          <Image
+            src={product.imagePath}
+            alt={product.title}
+            fill
+            sizes="100px"
+            className="object-cover"
+          />
+        </div>
 
-      <div className="relative w-full h-36 rounded-2xl overflow-hidden bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-zinc-800">
-        <Image
-          src={product.imagePath}
-          alt={product.title}
-          fill
-          sizes="(max-width: 768px) 100vw, 300px"
-          className="object-cover"
-        />
+        <div className="space-y-1.5 text-center sm:text-left">
+          <div className="flex items-center justify-center sm:justify-start gap-2">
+            <span className="text-[10px] font-extrabold text-[#3349D8] uppercase tracking-wider bg-[#EEF2FF] px-2 py-0.5 rounded">
+              ⭐ Khuyên Dùng Bởi EnStudey
+            </span>
+            <span className="text-xs text-amber-500 font-bold">5.0 ★</span>
+          </div>
+
+          <h3 className="font-extrabold text-sm text-[#16213A] leading-snug">
+            {product.title}
+          </h3>
+          <p className="text-xs text-[#5C667A] line-clamp-2 leading-relaxed max-w-xl">
+            Giáo trình tự học TOEIC được đội ngũ EnStudey lựa chọn sát với cấu trúc đề thi ETS 2026 dành cho mục tiêu 500-750+.
+          </p>
+        </div>
       </div>
 
       <Button
         asChild
         size="lg"
-        className="w-full font-bold text-xs rounded-xl py-3 cursor-pointer shadow-xs bg-indigo-600 hover:bg-indigo-700 text-white"
+        className="w-full sm:w-auto font-bold text-xs rounded-lg px-5 h-10 cursor-pointer shadow-xs bg-[#3349D8] hover:bg-[#2940C5] text-white shrink-0"
       >
         <a
           href={redirectUrl}
@@ -74,7 +80,7 @@ export default function StarterPackWidget({
           rel="noopener noreferrer nofollow sponsored"
           onClick={handleClick}
         >
-          Bỏ túi Combo Học Tập Dành Cho Sĩ Tử 🚀
+          Xem giáo trình khuyên dùng &rarr;
         </a>
       </Button>
     </div>

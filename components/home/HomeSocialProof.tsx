@@ -1,41 +1,41 @@
-import { Users, FileCheck, Star, Award } from "lucide-react";
+import { ShieldCheck, BrainCircuit, RefreshCw, Zap } from "lucide-react";
 
 export default function HomeSocialProof() {
-  const stats = [
+  const trustAnchors = [
     {
-      icon: Users,
-      value: "12,450+",
-      label: "Học viên active ôn luyện",
+      icon: ShieldCheck,
+      value: "Đề chuẩn ETS 2026",
+      label: "Cấu trúc 200 câu đếm giờ áp lực thật",
       color: "text-[#3349D8]",
       bgColor: "bg-[#EEF2FF]",
     },
     {
-      icon: FileCheck,
-      value: "8,200+",
-      label: "Lượt thi thử chuẩn ETS",
+      icon: BrainCircuit,
+      value: "100% Tiếng Việt",
+      label: "AI phân tích chi tiết bẫy Part 1-7",
       color: "text-[#0E9F9A]",
       bgColor: "bg-[#EEFDF8]",
     },
     {
-      icon: Star,
-      value: "4.9 / 5★",
-      label: "Đánh giá chất lượng đề & giải thích",
+      icon: RefreshCw,
+      value: "Thuật toán SM-2",
+      label: "Tự động nhắc ôn câu sai đúng thời điểm",
       color: "text-[#D97706]",
       bgColor: "bg-[#FFFBEB]",
     },
     {
-      icon: Award,
-      value: "98.2%",
-      label: "Học viên bứt phá target mốc điểm",
+      icon: Zap,
+      value: "15 Phút mỗi ngày",
+      label: "Tiết kiệm 50% thời gian luyện đề dông dài",
       color: "text-[#1D8F6A]",
       bgColor: "bg-[#E6F4EA]",
     },
   ];
 
   return (
-    <section className="bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-4 sm:p-6 shadow-xs">
+    <section className="bg-[#FFFFFF] border border-[#E4E8F1] rounded-xl p-4 sm:p-5 shadow-xs">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E4E8F1]">
-        {stats.map((item, index) => {
+        {trustAnchors.map((item, index) => {
           const IconComponent = item.icon;
           return (
             <div
@@ -50,10 +50,10 @@ export default function HomeSocialProof() {
                 <IconComponent className={`w-5 h-5 ${item.color}`} />
               </div>
               <div>
-                <div className="text-lg sm:text-xl font-extrabold text-[#16213A] tracking-tight tabular-nums">
+                <div className="text-xs sm:text-sm font-extrabold text-[#16213A] tracking-tight">
                   {item.value}
                 </div>
-                <div className="text-[11px] sm:text-xs font-medium text-[#5C667A] line-clamp-1">
+                <div className="text-[11px] font-medium text-[#5C667A] line-clamp-1">
                   {item.label}
                 </div>
               </div>

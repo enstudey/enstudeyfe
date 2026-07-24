@@ -212,11 +212,11 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
 
   const getLinkClass = (path: string) => {
     const isActive = pathname.startsWith(path);
-    const baseClass = "text-xs font-bold uppercase tracking-wider transition-colors flex items-center h-9 ";
+    const baseClass = "text-xs font-bold transition-colors flex items-center h-9 ";
     if (isActive) {
       return baseClass + "text-indigo-400";
     }
-    return baseClass + "text-slate-400 hover:text-white";
+    return baseClass + "text-slate-300 hover:text-white";
   };
 
   let headerClass = "left-0 right-0 w-full transition-all duration-300 ";
@@ -245,24 +245,24 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
       {!isStatic && <div className="h-16 shrink-0" />}
       <header className={headerClass} data-testid="header-container">
         <nav className="max-w-[1600px] mx-auto px-4 md:px-8 h-full flex items-center justify-between">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2 font-bold text-2xl text-white tracking-tight" data-testid="link-logo">
               <Image src="/icon-transparent.png" alt="EnStudey Logo" width={32} height={32} className="w-8 h-8" />
-              <span className="font-light tracking-tight text-white">en<span className="font-semibold text-indigo-400">Studey</span></span>
+              <span className="font-light tracking-tight text-white">En<span className="font-semibold text-indigo-400">Studey</span></span>
             </Link>
 
-            {/* TOEIC Single Mode Badge */}
-            <div className="hidden sm:flex bg-slate-800 rounded-xl px-3 py-1 text-[11px] font-bold border border-slate-700 h-8 items-center gap-1.5 text-indigo-300">
-              <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
-              <span>TOEIC Mode (2026 ETS Format)</span>
+            {/* TOEIC Single Mode Badge (Refined smaller SaaS style) */}
+            <div className="hidden sm:flex bg-slate-800/80 rounded-lg px-2.5 py-0.5 text-[10px] font-bold border border-slate-700/60 items-center gap-1.5 text-indigo-300">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
+              <span>TOEIC ETS 2026</span>
             </div>
 
             <div className="hidden md:flex gap-6 items-center">
               {/* Dropdown Luyện Đề */}
               <div className="relative group py-2 flex items-center h-full">
-                <button className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors duration-200 h-9">
-                  <span>Luyện đề TOEIC</span>
-                  <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
+                <button className="text-xs font-bold text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer transition-colors duration-200 h-9">
+                  <span>Luyện đề</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" />
                 </button>
                 <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-xl shadow-xl p-2 w-52 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                   <Link href="/exam" className="flex items-center justify-between px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition duration-150">
@@ -279,26 +279,22 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
                 </div>
               </div>
 
-              {/* Dropdown Công cụ & Thống kê */}
-              <div className="relative group py-2 flex items-center h-full">
-                <button className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors duration-200 h-9">
-                  <span>Công cụ & Thống kê</span>
-                  <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
-                </button>
-                <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-slate-200 rounded-xl shadow-xl p-2 w-56 mt-0 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <Link href="/thong-ke" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition duration-150">
-                    <BarChart3 className="w-5 h-5 text-slate-500" />
-                    <span>Phân tích điểm TOEIC</span>
-                  </Link>
-                  <Link href="/ngan-hang-cau-sai" className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-xl transition duration-150">
-                    <Notebook className="w-5 h-5 text-slate-500" />
-                    <span>Sổ tay câu sai TOEIC</span>
-                  </Link>
-                </div>
-              </div>
+              {/* Sổ tay ôn tập ⭐ */}
+              <Link href="/ngan-hang-cau-sai" className={getLinkClass("/ngan-hang-cau-sai")} data-testid="link-mistakes">
+                <span className="flex items-center gap-1">
+                  <span>Sổ tay ôn tập</span>
+                  <span className="text-amber-400 text-xs">⭐</span>
+                </span>
+              </Link>
 
+              {/* Tiến độ */}
+              <Link href="/thong-ke" className={getLinkClass("/thong-ke")} data-testid="link-[#stats]">
+                <span>Tiến độ</span>
+              </Link>
+
+              {/* Cẩm nang */}
               <Link href="/tin-tuc" className={getLinkClass("/tin-tuc")} data-testid="link-news">
-                Cẩm nang TOEIC
+                <span>Cẩm nang</span>
               </Link>
             </div>
           </div>
@@ -348,21 +344,21 @@ export default function Header({ isStatic = false, token }: HeaderProps) {
             <Link href="/exam" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-900 hover:bg-indigo-500/10 hover:text-indigo-400 rounded-xl transition duration-150 border border-slate-800">
               <span className="flex items-center gap-2">
                 <GraduationCap className="w-5 h-5 text-indigo-400" />
-                <span>Thi thử đầy đủ (200c)</span>
-              </span>
-              <span className="text-slate-500 text-xs font-light">&rarr;</span>
-            </Link>
-            <Link href="/thong-ke" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-900 hover:bg-indigo-500/10 hover:text-indigo-400 rounded-xl transition duration-150 border border-slate-800">
-              <span className="flex items-center gap-2">
-                <BarChart3 className="w-5 h-5 text-indigo-400" />
-                <span>Phân tích điểm TOEIC</span>
+                <span>Luyện đề TOEIC (200c)</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
             <Link href="/ngan-hang-cau-sai" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-900 hover:bg-indigo-500/10 hover:text-indigo-400 rounded-xl transition duration-150 border border-slate-800">
               <span className="flex items-center gap-2">
                 <Notebook className="w-5 h-5 text-indigo-400" />
-                <span>Sổ tay câu sai TOEIC</span>
+                <span>Sổ tay ôn tập ⭐</span>
+              </span>
+              <span className="text-slate-500 text-xs font-light">&rarr;</span>
+            </Link>
+            <Link href="/thong-ke" onClick={() => setIsDrawerOpen(false)} className="text-sm font-bold text-slate-200 hover:text-white flex items-center justify-between min-h-[48px] px-4 bg-slate-900 hover:bg-indigo-500/10 hover:text-indigo-400 rounded-xl transition duration-150 border border-slate-800">
+              <span className="flex items-center gap-2">
+                <BarChart3 className="w-5 h-5 text-indigo-400" />
+                <span>Tiến độ học tập</span>
               </span>
               <span className="text-slate-500 text-xs font-light">&rarr;</span>
             </Link>
